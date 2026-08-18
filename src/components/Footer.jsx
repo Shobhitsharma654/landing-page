@@ -34,7 +34,7 @@ const LEGAL_LINKS = [
   { label: "Privacy Policy",      path: "/privacy" },
   { label: "Terms & Conditions",  path: "/terms" },
   { label: "Refund & Cancellation", path: "/refundpolicy" },
-  { label: "DPA",                 path: "/privacy" },
+  { label: "DPA",                 path: "/dpa" },
   { label: "Cookie Policy",       path: "/cookies" },
 ];
 
@@ -289,11 +289,7 @@ const Footer = () => {
           <div style={{ fontSize: 12, color: "#475569", lineHeight: 1.7 }}>
             <span style={{ color: "#64748B", fontWeight: 600 }}>© 2026 MessBee.</span>
             {" "}All Rights Reserved.
-            <br />
-            <span style={{ fontSize: 11 }}>
-              MessBee is operated by{" "}
-              <span style={{ color: "#94A3B8", fontWeight: 600 }}>ATRI Admission Anytime Pvt. Ltd.</span>
-            </span>
+            
           </div>
 
           {/* Quick links */}

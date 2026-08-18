@@ -3,24 +3,27 @@ import React, { useState, useEffect } from "react";
 import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
 
-/* ══════════════════════════════════════════════════════
-   MessBee — Terms & Conditions Page
-   Color palette mirrors LandingPage:
-     Navbar : #18181B dark
-     Accent : #16A34A green
-     Body   : #FFFFFF white
-   ══════════════════════════════════════════════════════ */
-
 const sections = [
   {
     id: "introduction",
     title: "1. Introduction",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <line x1="12" y1="8" x2="12" y2="12" />
+        <line x1="12" y1="16" x2="12.01" y2="16" />
       </svg>
     ),
-    content: `Welcome to MessBee, India's Digital Business Operating System. These Terms & Conditions ("Terms", "Terms of Service" or "Agreement") govern your access to and use of the MessBee website, applications, software, platform, APIs and related services. MessBee is operated by: MessBee.
+    content: `Welcome to MessBee, India's Digital Business Operating System. These Terms & Conditions govern your access to and use of the MessBee website, applications, software, platform, APIs and related services. MessBee is operated by: MessBee.
 
 By registering for, accessing or using MessBee, you agree to these Terms and the policies referenced in them. If you do not agree with these Terms, you must not access or use MessBee. If you are using MessBee on behalf of a company, organization or other legal entity, you represent that you have the authority to bind that entity to these Terms.`,
   },
@@ -28,8 +31,18 @@ By registering for, accessing or using MessBee, you agree to these Terms and the
     id: "about-messbee",
     title: "2. About MessBee",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" /><polygon points="12 8 8 12 12 16 16 12 12 8" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <polygon points="12 8 8 12 12 16 16 12 12 8" />
       </svg>
     ),
     content: `MessBee is a cloud-based digital business platform designed to help businesses manage customer communication, CRM, WhatsApp Business communication and commerce, digital storefronts, AI-assisted customer engagement, marketing automation, lead management, orders, payments, inventory, loyalty, analytics, Business Library, team management, multi-location operations and other digital business workflows.
@@ -49,8 +62,19 @@ The availability of particular features may depend on:
     id: "eligibility",
     title: "3. Eligibility",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><polyline points="16 11 18 13 22 9" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <polyline points="16 11 18 13 22 9" />
       </svg>
     ),
     content: `To use MessBee, you must:
@@ -66,8 +90,21 @@ If you are using MessBee on behalf of an organization, you are responsible for e
     id: "account-registration",
     title: "4. Account Registration",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /><polyline points="10 9 9 9 8 9" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+        <polyline points="14 2 14 8 20 8" />
+        <line x1="16" y1="13" x2="8" y2="13" />
+        <line x1="16" y1="17" x2="8" y2="17" />
+        <polyline points="10 9 9 9 8 9" />
       </svg>
     ),
     content: `Certain MessBee features require an account. When creating an account, you agree to provide information that is accurate, complete and current. You are responsible for:
@@ -85,8 +122,20 @@ You are responsible for activities performed through your account unless caused 
     id: "business-users",
     title: "5. Business Users & Administrators",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
       </svg>
     ),
     content: `Business Customers may allow employees, representatives or other authorized users to access MessBee. The Business Customer is responsible for:
@@ -104,8 +153,20 @@ Actions performed by authorized users may be treated as actions of the Business 
     id: "messbee-services",
     title: "6. MessBee Services",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="2" width="20" height="8" rx="2" ry="2" /><rect x="2" y="14" width="20" height="8" rx="2" ry="2" /><line x1="6" y1="6" x2="6.01" y2="6" /><line x1="6" y1="18" x2="6.01" y2="18" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />
+        <rect x="2" y="14" width="20" height="8" rx="2" ry="2" />
+        <line x1="6" y1="6" x2="6.01" y2="6" />
+        <line x1="6" y1="18" x2="6.01" y2="18" />
       </svg>
     ),
     content: `Subject to your applicable plan and agreement, MessBee may provide functionality including:
@@ -136,7 +197,16 @@ Not every feature is necessarily available to every user, plan, region or accoun
     id: "saas-model",
     title: "7. SaaS Service Model",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
       </svg>
     ),
@@ -152,7 +222,16 @@ Not every feature is necessarily available to every user, plan, region or accoun
     id: "customer-data",
     title: "8. Customer Data",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
       </svg>
     ),
@@ -179,7 +258,16 @@ The Business Customer remains responsible for ensuring that it has the necessary
     id: "communication-permissions",
     title: "9. Customer Consent & Communication Permissions",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <polyline points="20 6 9 17 4 12" />
       </svg>
     ),
@@ -198,7 +286,16 @@ You must respect customer requests to stop or modify communications. You must no
     id: "whatsapp-compliance",
     title: "10. WhatsApp & Meta Compliance",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
       </svg>
     ),
@@ -230,8 +327,18 @@ Meta may independently impose restrictions, limits, suspension or termination on
     id: "messaging-responsibility",
     title: "11. Messaging Responsibility",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" /><path d="M13.73 21a2 2 0 0 1-3.46 0" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+        <path d="M13.73 21a2 2 0 0 1-3.46 0" />
       </svg>
     ),
     content: `MessBee provides technology for business communication. MessBee does not determine:
@@ -248,8 +355,18 @@ You remain responsible for your communications and campaigns. You must comply wi
     id: "prohibited-uses",
     title: "12. Prohibited Uses",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" /><line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
       </svg>
     ),
     content: `You must not use MessBee to:
@@ -293,8 +410,19 @@ You must not use MessBee to distribute content that is unlawful, fraudulent, thr
     id: "uploaded-content",
     title: "13. Business Library & Uploaded Content",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="17 8 12 3 7 8" /><line x1="12" y1="3" x2="12" y2="15" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+        <polyline points="17 8 12 3 7 8" />
+        <line x1="12" y1="3" x2="12" y2="15" />
       </svg>
     ),
     content: `MessBee may provide a Business Library for storing and organizing supported digital assets. You may upload content such as:
@@ -324,8 +452,19 @@ MessBee may remove or restrict access to content where reasonably necessary to c
     id: "ai-features",
     title: "14. AI Features",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M12 2v9" /><path d="M8 5h8" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+        <path d="M12 2v9" />
+        <path d="M8 5h8" />
       </svg>
     ),
     content: `MessBee may provide AI-assisted functionality. AI features may assist with:
@@ -347,8 +486,19 @@ AI-generated outputs may be incomplete, inaccurate or inappropriate in some circ
     id: "automated-workflows",
     title: "15. Automated Workflows",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="23 4 23 10 17 10" /><polyline points="1 20 1 14 7 14" /><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <polyline points="23 4 23 10 17 10" />
+        <polyline points="1 20 1 14 7 14" />
+        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
       </svg>
     ),
     content: `MessBee may allow users to create automated workflows. These may include:
@@ -370,8 +520,18 @@ You are responsible for configuring automation appropriately. You must ensure th
     id: "digital-store",
     title: "16. Digital Store & Commerce",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="7" width="20" height="14" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
       </svg>
     ),
     content: `MessBee may provide digital storefront and commerce functionality. Business Customers are solely responsible for:
@@ -394,8 +554,18 @@ MessBee does not become the seller of products or services merely because it pro
     id: "orders-payments",
     title: "17. Orders & Payments",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="1" y="4" width="22" height="16" rx="2" ry="2" /><line x1="1" y1="10" x2="23" y2="10" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
+        <line x1="1" y1="10" x2="23" y2="10" />
       </svg>
     ),
     content: `MessBee may provide functionality for order and payment-related workflows. Payment processing may be provided through third-party payment gateways. MessBee does not necessarily process or hold customer funds unless expressly stated for a particular service.
@@ -416,8 +586,18 @@ Third-party payment providers may impose their own terms, fees, restrictions and
     id: "subscription-plans",
     title: "18. Subscription Plans & Fees",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <line x1="12" y1="1" x2="12" y2="23" />
+        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
       </svg>
     ),
     content: `MessBee may offer:
@@ -437,8 +617,20 @@ Applicable taxes, including GST where applicable, may be charged in addition to 
     id: "billing",
     title: "19. Billing",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+        <line x1="16" y1="2" x2="16" y2="6" />
+        <line x1="8" y1="2" x2="8" y2="6" />
+        <line x1="3" y1="10" x2="21" y2="10" />
       </svg>
     ),
     content: `Depending on your selected plan, billing may be:
@@ -454,8 +646,19 @@ You authorize MessBee or its authorized payment provider to process applicable c
     id: "refunds-cancellations",
     title: "20. Refunds & Cancellations",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" /><line x1="15" y1="9" x2="9" y2="15" /><line x1="9" y1="9" x2="15" y2="15" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <line x1="15" y1="9" x2="9" y2="15" />
+        <line x1="9" y1="9" x2="15" y2="15" />
       </svg>
     ),
     content: `Refunds, cancellations, credits and related matters are governed by the MessBee Refund & Cancellation Policy. Unless expressly stated in that policy or required by applicable law, fees already paid may not be refundable.
@@ -466,8 +669,18 @@ Third-party communication or platform charges may be subject to separate rules a
     id: "third-party",
     title: "21. Third-Party Services",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
       </svg>
     ),
     content: `MessBee may integrate with third-party services, including:
@@ -497,8 +710,18 @@ Your use of third-party services may be subject to separate terms.`,
     id: "whatsapp-delivery",
     title: "22. WhatsApp Message Delivery",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M22 2L11 13" /><polyline points="22 2 15 22 11 13 2 9 22 2" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M22 2L11 13" />
+        <polyline points="22 2 15 22 11 13 2 9 22 2" />
       </svg>
     ),
     content: `MessBee does not guarantee delivery of every WhatsApp message or communication. Delivery may be affected by:
@@ -519,8 +742,18 @@ MessBee is not responsible for delivery failures caused by third-party platforms
     id: "platform-availability",
     title: "23. Platform Availability",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <line x1="2" y1="12" x2="22" y2="12" />
       </svg>
     ),
     content: `MessBee aims to provide reliable services but does not guarantee uninterrupted or error-free availability. Service may be temporarily unavailable due to:
@@ -542,8 +775,18 @@ Where reasonably practicable, MessBee may provide advance notice of planned main
     id: "changes-to-services",
     title: "24. Changes to Services",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M12 20h9" />
+        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
       </svg>
     ),
     content: `MessBee may modify, improve, add, remove or discontinue features. Changes may be made to:
@@ -562,7 +805,16 @@ Where a material change substantially affects a paid service, MessBee may provid
     id: "intellectual-property",
     title: "25. Intellectual Property",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
       </svg>
     ),
@@ -587,8 +839,18 @@ Nothing in these Terms transfers ownership of MessBee intellectual property to y
     id: "limited-license",
     title: "26. Limited License to Use MessBee",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
       </svg>
     ),
     content: `Subject to these Terms and payment of applicable fees, MessBee grants you a limited, non-exclusive, non-transferable and revocable right to access and use the services for your internal business purposes. You must not:
@@ -606,8 +868,18 @@ Nothing in these Terms transfers ownership of MessBee intellectual property to y
     id: "your-content",
     title: "27. Your Content",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M12 20h9" />
+        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
       </svg>
     ),
     content: `You retain your rights in content and business information that you lawfully submit to MessBee. You grant MessBee the limited rights necessary to host, process, transmit, display and otherwise use such content solely to provide and operate the services, subject to the applicable agreement and Privacy Policy.
@@ -618,7 +890,16 @@ You represent that you have the necessary rights and permissions for content you
     id: "feedback",
     title: "28. Feedback",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
       </svg>
     ),
@@ -628,8 +909,18 @@ You represent that you have the necessary rights and permissions for content you
     id: "confidentiality",
     title: "29. Confidentiality",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
       </svg>
     ),
     content: `Each party may receive confidential information from the other. The receiving party shall use reasonable care to protect confidential information and shall not disclose it except:
@@ -644,7 +935,16 @@ Confidentiality obligations do not apply to information that is publicly availab
     id: "privacy-protection",
     title: "30. Privacy & Data Protection",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
       </svg>
     ),
@@ -656,8 +956,18 @@ Business Customers may also be required to enter into a Data Processing Agreemen
     id: "security",
     title: "31. Security",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
       </svg>
     ),
     content: `Users must not attempt to compromise the security of MessBee. Prohibited activities include:
@@ -675,8 +985,19 @@ If you identify a security vulnerability, you should report it through the appro
     id: "suspension-restriction",
     title: "32. Suspension & Restriction",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2" />
+        <line x1="12" y1="8" x2="12" y2="12" />
+        <line x1="12" y1="16" x2="12.01" y2="16" />
       </svg>
     ),
     content: `MessBee may suspend, restrict or limit access to an account where reasonably necessary, including where:
@@ -699,8 +1020,19 @@ Where reasonably practicable and legally permitted, MessBee may provide notice a
     id: "termination",
     title: "33. Termination",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /><line x1="10" y1="11" x2="10" y2="17" /><line x1="14" y1="11" x2="14" y2="17" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+        <line x1="10" y1="11" x2="10" y2="17" />
+        <line x1="14" y1="11" x2="14" y2="17" />
       </svg>
     ),
     content: `You may terminate your MessBee account according to the applicable subscription and cancellation process. MessBee may terminate or suspend access where permitted under these Terms.
@@ -715,8 +1047,19 @@ Upon termination:
     id: "effect-of-termination",
     title: "34. Effect of Termination",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        <line x1="12" y1="8" x2="12" y2="12" />
+        <line x1="12" y1="16" x2="12.01" y2="16" />
       </svg>
     ),
     content: `Termination does not automatically release either party from obligations accrued before termination. Sections concerning:
@@ -734,8 +1077,19 @@ Upon termination:
     id: "disclaimer",
     title: "35. Disclaimer of Warranties",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" /><line x1="12" y1="9" x2="12" y2="13" /><line x1="12" y1="17" x2="12.01" y2="17" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+        <line x1="12" y1="9" x2="12" y2="13" />
+        <line x1="12" y1="17" x2="12.01" y2="17" />
       </svg>
     ),
     content: `To the maximum extent permitted by applicable law, MessBee services are provided on an "as available" and, where applicable, "as is" basis. MessBee does not guarantee that:
@@ -756,8 +1110,18 @@ Nothing in these Terms excludes warranties or rights that cannot legally be excl
     id: "business-results",
     title: "36. Business Results",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" /><polyline points="16 7 22 7 22 13" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+        <polyline points="16 7 22 7 22 13" />
       </svg>
     ),
     content: `MessBee provides technology and tools. MessBee does not guarantee:
@@ -776,8 +1140,18 @@ Business outcomes depend on factors including customer demand, pricing, content,
     id: "limitation-of-liability",
     title: "37. Limitation of Liability",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="5" width="20" height="14" rx="2" ry="2" /><line x1="2" y1="10" x2="22" y2="10" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <rect x="2" y="5" width="20" height="14" rx="2" ry="2" />
+        <line x1="2" y1="10" x2="22" y2="10" />
       </svg>
     ),
     content: `To the maximum extent permitted by applicable law, MessBee shall not be liable for indirect, incidental, special, consequential or punitive damages arising from or relating to use of the services. This may include, where legally permissible:
@@ -798,11 +1172,20 @@ Where liability cannot legally be excluded, it will be limited to the extent per
     id: "indemnification",
     title: "38. Indemnification",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
       </svg>
     ),
-    content: `To the extent permitted by applicable law, you agree to defend, indemnify and hold harmless MessBee, ATRI Admission Anytime Pvt. Ltd., and their respective officers, employees and representatives from claims, losses, liabilities, damages and reasonable expenses arising from:
+    content: `To the extent permitted by applicable law, you agree to defend, indemnify and hold harmless MessBee, and their respective officers, employees and representatives from claims, losses, liabilities, damages and reasonable expenses arising from:
 
 • Your misuse of MessBee;
 • Your violation of these Terms;
@@ -820,7 +1203,16 @@ This provision does not apply to the extent a claim results from MessBee's own b
     id: "force-majeure",
     title: "39. Force Majeure",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <path d="M5 12h14M12 5l7 7-7 7" />
       </svg>
     ),
@@ -846,8 +1238,18 @@ This provision does not apply to the extent a claim results from MessBee's own b
     id: "notices",
     title: "40. Notices",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+        <polyline points="22,6 12,13 2,6" />
       </svg>
     ),
     content: `MessBee may provide notices through:
@@ -863,8 +1265,18 @@ You are responsible for keeping your contact information current.`,
     id: "changes-to-terms",
     title: "41. Changes to These Terms",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M12 20h9" />
+        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
       </svg>
     ),
     content: `MessBee may update these Terms from time to time. Changes may be made to reflect:
@@ -884,8 +1296,22 @@ Continued use of MessBee after the effective date of updated Terms may constitut
     id: "governing-law",
     title: "42. Governing Law",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <line x1="8" y1="6" x2="21" y2="6" /><line x1="8" y1="12" x2="21" y2="12" /><line x1="8" y1="18" x2="21" y2="18" /><line x1="3" y1="6" x2="3.01" y2="6" /><line x1="3" y1="12" x2="3.01" y2="12" /><line x1="3" y1="18" x2="3.01" y2="18" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <line x1="8" y1="6" x2="21" y2="6" />
+        <line x1="8" y1="12" x2="21" y2="12" />
+        <line x1="8" y1="18" x2="21" y2="18" />
+        <line x1="3" y1="6" x2="3.01" y2="6" />
+        <line x1="3" y1="12" x2="3.01" y2="12" />
+        <line x1="3" y1="18" x2="3.01" y2="18" />
       </svg>
     ),
     content: `These Terms are governed by the laws of India. Subject to applicable law, disputes arising from or relating to these Terms or the services shall be subject to the jurisdiction of the competent courts in Ghaziabad, Uttar Pradesh, India.
@@ -896,14 +1322,24 @@ Nothing in this clause prevents a party from seeking urgent or legally available
     id: "grievance-support",
     title: "43. Grievance & Support",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /><line x1="9" y1="10" x2="15" y2="10" /><line x1="9" y1="14" x2="13" y2="14" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+        <line x1="9" y1="10" x2="15" y2="10" />
+        <line x1="9" y1="14" x2="13" y2="14" />
       </svg>
     ),
     content: `For questions, complaints or concerns regarding MessBee services or these Terms, contact:
 
 MessBee Support & Grievance Team
-MessBee Operated by ATRI Admission Anytime Pvt. Ltd.
 Email: support@messbee.com
 Address: 510, Devika Tower, Chander Nagar, Ghaziabad, Uttar Pradesh – 201011, India
 
@@ -914,8 +1350,20 @@ Subject: Legal / Compliance Request – MessBee`,
     id: "entire-agreement",
     title: "44. Entire Agreement",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+        <polyline points="14 2 14 8 20 8" />
+        <line x1="16" y1="13" x2="8" y2="13" />
+        <line x1="16" y1="17" x2="8" y2="17" />
       </svg>
     ),
     content: `These Terms, together with the applicable:
@@ -936,8 +1384,18 @@ If there is a conflict between these Terms and a separately executed written agr
     id: "severability",
     title: "45. Severability",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" /><line x1="8" y1="12" x2="16" y2="12" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <line x1="8" y1="12" x2="16" y2="12" />
       </svg>
     ),
     content: `If any provision of these Terms is found to be invalid, unlawful or unenforceable, that provision will be interpreted or modified to the minimum extent necessary to make it enforceable, where legally permitted. The remaining provisions will continue in full force and effect.`,
@@ -946,8 +1404,18 @@ If there is a conflict between these Terms and a separately executed written agr
     id: "no-waiver",
     title: "46. No Waiver",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" /><line x1="4" y1="4" x2="20" y2="20" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <line x1="4" y1="4" x2="20" y2="20" />
       </svg>
     ),
     content: `Failure by MessBee to enforce any provision of these Terms does not constitute a waiver of its right to enforce that provision later.`,
@@ -956,8 +1424,19 @@ If there is a conflict between these Terms and a separately executed written agr
     id: "assignment",
     title: "47. Assignment",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M17 11l2 2 4-4" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M17 11l2 2 4-4" />
       </svg>
     ),
     content: `You may not transfer or assign your rights or obligations under these Terms without MessBee's prior written consent, except where permitted by applicable law.
@@ -968,8 +1447,20 @@ MessBee may assign or transfer its rights and obligations in connection with a m
     id: "relationship",
     title: "48. Relationship Between the Parties",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
       </svg>
     ),
     content: `These Terms do not create a partnership, joint venture, employment relationship, agency relationship or franchise between you and MessBee.
@@ -980,8 +1471,18 @@ MessBee provides technology services and does not become the agent, seller, empl
     id: "compliance-statement",
     title: "49. Compliance Statement",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><polyline points="9 11 11 13 15 9" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+        <polyline points="9 11 11 13 15 9" />
       </svg>
     ),
     content: `MessBee is committed to responsible technology and lawful digital communication. MessBee does not support or promote:
@@ -1000,8 +1501,18 @@ Business Customers remain responsible for their own business practices, communic
     id: "acceptance",
     title: "50. Acceptance",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+        <polyline points="22 4 12 14.01 9 11.01" />
       </svg>
     ),
     content: `By clicking "I Agree", registering for an account, purchasing a subscription, accessing or using MessBee services, you acknowledge that:
@@ -1033,11 +1544,21 @@ const TermsPage = () => {
 
   const scrollToSection = (id) => {
     setActiveSection(id);
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document
+      .getElementById(id)
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "clip", minHeight: "100vh" }}>
+    <div
+      style={{
+        fontFamily: "'Inter', sans-serif",
+        background: "#FFFFFF",
+        color: "#0F172A",
+        overflowX: "clip",
+        minHeight: "100vh",
+      }}
+    >
       <style>{`
         .no-scrollbar::-webkit-scrollbar {
           display: none !important;
@@ -1091,12 +1612,22 @@ const TermsPage = () => {
           border-left-color: #16A34A;
           padding-left: 16px;
         }
+        @media (max-width: 1366px) {
+          .terms-container {
+            gap: 32px !important;
+          }
+          .terms-sidebar {
+            width: 270px !important;
+            padding: 16px !important;
+            max-height: calc(100vh - 120px) !important;
+          }
+        }
         @media (max-width: 1024px) {
           .terms-sidebar {
             display: none !important;
           }
           .terms-container {
-            gap: 0;
+            gap: 0 !important;
           }
         }
       `}</style>
@@ -1105,81 +1636,197 @@ const TermsPage = () => {
       <Navbar />
 
       {/* ═══ HERO BANNER ═══ */}
-      <section style={{
-        background: "#FFFFFF",
-        paddingTop: 130,
-        paddingBottom: 35,
-        paddingLeft: "6%",
-        paddingRight: "6%",
-        position: "relative",
-        overflow: "hidden",
-        borderBottom: "1px solid #F1F5F9",
-      }}>
+      <section
+        style={{
+          background: "#FFFFFF",
+          paddingTop: 130,
+          paddingBottom: 35,
+          paddingLeft: "6%",
+          paddingRight: "6%",
+          position: "relative",
+          overflow: "hidden",
+          borderBottom: "1px solid #F1F5F9",
+        }}
+      >
         {/* Subtle green radial glow */}
-        <div style={{
-          position: "absolute", inset: 0,
-          backgroundImage: "radial-gradient(circle at 18% 55%, rgba(22,163,74,0.06) 0%, transparent 50%), radial-gradient(circle at 82% 20%, rgba(22,163,74,0.04) 0%, transparent 40%)",
-          pointerEvents: "none",
-        }} />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage:
+              "radial-gradient(circle at 18% 55%, rgba(22,163,74,0.06) 0%, transparent 50%), radial-gradient(circle at 82% 20%, rgba(22,163,74,0.04) 0%, transparent 40%)",
+            pointerEvents: "none",
+          }}
+        />
         {/* Fine dot grid */}
-        <div style={{
-          position: "absolute", inset: 0,
-          backgroundImage: "radial-gradient(circle, #CBD5E1 1px, transparent 1px)",
-          backgroundSize: "28px 28px",
-          opacity: 0.4,
-          pointerEvents: "none",
-        }} />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage:
+              "radial-gradient(circle, #CBD5E1 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+            opacity: 0.4,
+            pointerEvents: "none",
+          }}
+        />
 
-        <div style={{ maxWidth: 1280, margin: "0 auto", position: "relative", zIndex: 1 }}>
+        <div
+          style={{
+            maxWidth: 1280,
+            margin: "0 auto",
+            position: "relative",
+            zIndex: 1,
+          }}
+        >
           {/* Badge */}
-          <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#F0FDF4", border: "1px solid #BBF7D0", borderRadius: 40, padding: "6px 16px", marginBottom: 24 }}>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="#16A34A"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
-            <span style={{ fontSize: 12, fontWeight: 700, color: "#16A34A", letterSpacing: "0.3px" }}>Governing Rules &amp; Terms</span>
+          <div
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              background: "#F0FDF4",
+              border: "1px solid #BBF7D0",
+              borderRadius: 40,
+              padding: "6px 16px",
+              marginBottom: 24,
+            }}
+          >
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="#16A34A">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+            <span
+              style={{
+                fontSize: 12,
+                fontWeight: 700,
+                color: "#16A34A",
+                letterSpacing: "0.3px",
+              }}
+            >
+              Governing Rules &amp; Terms
+            </span>
           </div>
 
           {/* Heading */}
-          <h1 style={{ fontSize: "clamp(36px, 4.5vw, 58px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-2px", lineHeight: 1.08, marginBottom: 20 }}>
+          <h1
+            style={{
+              fontSize: "clamp(35px, 2.9vw, 62px)",
+              fontWeight: 900,
+              color: "#0F172A",
+              letterSpacing: "-2px",
+              lineHeight: 1.08,
+              marginBottom: 20,
+            }}
+          >
             Terms &amp; <span style={{ color: "#16A34A" }}>Conditions</span>
           </h1>
 
           {/* Green accent divider */}
-          <div style={{ width: 48, height: 4, background: "linear-gradient(90deg, #16A34A, #4ADE80)", borderRadius: 4, marginBottom: 24 }} />
+          <div
+            style={{
+              width: 48,
+              height: 4,
+              background: "linear-gradient(90deg, #16A34A, #4ADE80)",
+              borderRadius: 4,
+              marginBottom: 24,
+            }}
+          />
 
           {/* Description */}
-          <p style={{ fontSize: 17, color: "#475569", lineHeight: 1.75, maxWidth: 560, margin: 0 }}>
-            Please read these terms carefully before accessing MessBee. By utilizing our services, you agree to comply with this governing agreement.
+          <p
+            style={{
+              fontSize: 17,
+              color: "#475569",
+              lineHeight: 1.75,
+              maxWidth: 860,
+              margin: 0,
+            }}
+          >
+            Please read these terms carefully before accessing MessBee. By
+            utilizing our services, you agree to comply with this governing
+            agreement.
           </p>
         </div>
       </section>
 
-
       {/* ═══ MAIN CONTENT ═══ */}
       <section style={{ padding: "40px 6%", background: "#FFFFFF" }}>
-        <div className="terms-container" style={{ maxWidth: 1380, margin: "0 auto" }}>
-
+        <div
+          className="terms-container"
+          style={{ maxWidth: 1380, margin: "0 auto" }}
+        >
           {/* ── Sticky Table of Contents ── */}
           <aside className="terms-sidebar no-scrollbar">
-            <div style={{ fontSize: 11, fontWeight: 700, color: "#16A34A", textTransform: "uppercase", letterSpacing: "1px", marginBottom: 16 }}>
+            <div
+              style={{
+                fontSize: 11,
+                fontWeight: 700,
+                color: "#16A34A",
+                textTransform: "uppercase",
+                letterSpacing: "1px",
+                marginBottom: 16,
+              }}
+            >
               Table of Contents
             </div>
             <nav style={{ display: "flex", flexDirection: "column" }}>
               {sections.map((s) => (
-                <span key={s.id}
+                <span
+                  key={s.id}
                   className={`toc-item${activeSection === s.id ? " active" : ""}`}
-                  onClick={() => scrollToSection(s.id)}>
+                  onClick={() => scrollToSection(s.id)}
+                >
                   {s.title}
                 </span>
               ))}
             </nav>
 
             {/* Support info card */}
-            <div style={{ marginTop: 24, paddingTop: 20, borderTop: "1px solid #E5E7EB" }}>
-              <div style={{ background: "linear-gradient(135deg, #F0FDF4, #ECFDF5)", border: "1px solid #D1FAE5", borderRadius: 10, padding: "14px" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="#16A34A"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
-                  <span style={{ fontSize: 12, fontWeight: 700, color: "#065F46" }}>Legal Support</span>
+            <div
+              style={{
+                marginTop: 24,
+                paddingTop: 20,
+                borderTop: "1px solid #E5E7EB",
+              }}
+            >
+              <div
+                style={{
+                  background: "linear-gradient(135deg, #F0FDF4, #ECFDF5)",
+                  border: "1px solid #D1FAE5",
+                  borderRadius: 10,
+                  padding: "14px",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 8,
+                    marginBottom: 8,
+                  }}
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="#16A34A"
+                  >
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                  <span
+                    style={{ fontSize: 12, fontWeight: 700, color: "#065F46" }}
+                  >
+                    Legal Support
+                  </span>
                 </div>
-                <p style={{ fontSize: 11, color: "#047857", lineHeight: 1.5, margin: 0 }}>
+                <p
+                  style={{
+                    fontSize: 11,
+                    color: "#047857",
+                    lineHeight: 1.5,
+                    margin: 0,
+                  }}
+                >
                   Contact: support@messbee.com for terms inquiries.
                 </p>
               </div>
@@ -1189,16 +1836,30 @@ const TermsPage = () => {
           {/* ── Article Body ── */}
           <article style={{ flex: 1, minWidth: 0 }}>
             {/* Quick summary highlight */}
-            <div style={{
-              background: "linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 100%)",
-              border: "1px solid #D1FAE5",
-              borderLeft: "4px solid #16A34A",
-              borderRadius: 12,
-              padding: "20px 24px",
-              marginBottom: 48,
-            }}>
-              <p style={{ fontSize: 14, color: "#065F46", lineHeight: 1.7, fontWeight: 500, margin: 0 }}>
-                <strong>In plain language:</strong> These terms constitute a legal agreement between you and MessBee governing your subscription, account conduct, Meta WhatsApp integrations, and billing. Please review the 50 clauses below for complete details.
+            <div
+              style={{
+                background: "linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 100%)",
+                border: "1px solid #D1FAE5",
+                borderLeft: "4px solid #16A34A",
+                borderRadius: 12,
+                padding: "20px 24px",
+                marginBottom: 48,
+              }}
+            >
+              <p
+                style={{
+                  fontSize: 14,
+                  color: "#065F46",
+                  lineHeight: 1.7,
+                  fontWeight: 500,
+                  margin: 0,
+                }}
+              >
+                <strong>In plain language:</strong> These terms constitute a
+                legal agreement between you and MessBee governing your
+                subscription, account conduct, Meta WhatsApp integrations, and
+                billing. Please review the 50 clauses below for complete
+                details.
               </p>
             </div>
 
@@ -1214,36 +1875,57 @@ const TermsPage = () => {
                   marginBottom: 20,
                   boxShadow: "0 4px 12px rgba(15, 23, 42, 0.01)",
                   textAlign: "left",
-                  scrollMarginTop: "100px"
+                  scrollMarginTop: "100px",
                 }}
-                onMouseEnter={() => setActiveSection(s.id)}>
-                <div style={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: 10,
-                  background: "rgba(22, 163, 74, 0.08)",
-                  color: "#16A34A",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: 20
-                }}>{s.icon}</div>
-                <h2 style={{ fontSize: 20, fontWeight: 800, color: "#111827", marginBottom: 16, letterSpacing: "-0.3px", fontFamily: "'Inter', sans-serif" }}>
+                onMouseEnter={() => setActiveSection(s.id)}
+              >
+                <div
+                  style={{
+                    width: 40,
+                    height: 40,
+                    borderRadius: 10,
+                    background: "rgba(22, 163, 74, 0.08)",
+                    color: "#16A34A",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginBottom: 20,
+                  }}
+                >
+                  {s.icon}
+                </div>
+                <h2
+                  style={{
+                    fontSize: 20,
+                    fontWeight: 800,
+                    color: "#111827",
+                    marginBottom: 16,
+                    letterSpacing: "-0.3px",
+                    fontFamily: "'Inter', sans-serif",
+                  }}
+                >
                   {s.title}
                 </h2>
-                <p style={{ fontSize: 14.5, color: "#4B5563", lineHeight: 1.85, whiteSpace: "pre-line", margin: 0, fontFamily: "'Inter', sans-serif" }}>
+                <p
+                  style={{
+                    fontSize: 14.5,
+                    color: "#4B5563",
+                    lineHeight: 1.85,
+                    whiteSpace: "pre-line",
+                    margin: 0,
+                    fontFamily: "'Inter', sans-serif",
+                  }}
+                >
                   {s.content}
                 </p>
               </div>
             ))}
-
           </article>
         </div>
       </section>
 
       {/* ═══ FOOTER ═══ */}
       <Footer />
-
     </div>
   );
 };

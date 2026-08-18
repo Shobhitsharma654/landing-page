@@ -1,5 +1,5 @@
-import { lazy, Suspense } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { lazy, Suspense, useEffect } from "react";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 
 const LandingPage    = lazy(() => import("./components/LandingPage"));
 const SolutionsPage  = lazy(() => import("./components/SolutionsPage"));
@@ -16,11 +16,20 @@ const CookiesPage    = lazy(() => import("./components/CookiesPage"));
 const LicensePage    = lazy(() => import("./components/LicensePage"));
 const RefundPage     = lazy(() => import("./components/RefundPage"));
 const CareersPage    = lazy(() => import("./components/CareersPage"));
+const DpaPage        = lazy(() => import("./components/DpaPage"));
 const CrmPage        = lazy(() => import("./components/CrmPage"));
 const WaPage         = lazy(() => import("./components/WhatsAppPage"));
 const MarketingPage  = lazy(() => import("./components/MarketingPage"));
 const AiPage         = lazy(() => import("./components/AiAutomationPage"));
 const DigitalStorePage = lazy(() => import("./components/DigitalStorePage"));
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
 
 const Loader = () => (
   <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh", background: "#fff" }}>
@@ -32,6 +41,7 @@ const Loader = () => (
 function App() {
   return (
     <Suspense fallback={<Loader />}>
+      <ScrollToTop />
       <Routes>
         <Route path="/"          element={<LandingPage />} />
         <Route path="/solutions" element={<SolutionsPage />} />
@@ -48,6 +58,7 @@ function App() {
         <Route path="/license"      element={<LicensePage />} />
         <Route path="/refundpolicy" element={<RefundPage />} />
         <Route path="/careers"      element={<CareersPage />} />
+        <Route path="/dpa"          element={<DpaPage />} />
         <Route path="/crm"                element={<CrmPage />} />
         <Route path="/whatsapp-business"   element={<WaPage />} />
         <Route path="/marketing-automation" element={<MarketingPage />} />
