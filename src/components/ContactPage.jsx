@@ -1,67 +1,173 @@
-import Navbar from "./Navbar";
 import React, { useState, useEffect } from "react";
+import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
-import { 
-  FiMail, 
-  FiTrendingUp, 
-  FiLifeBuoy, 
-  FiAward, 
-  FiBriefcase, 
-  FiMapPin, 
-  FiShare2, 
-  FiHelpCircle, 
-  FiSend, 
-  FiPhone, 
-  FiClock,
-  FiChevronDown
-} from "react-icons/fi";
+import defaultLogo from "../assets/logo.jpeg";
 
-/* ══════════════════════════════════════════════════════
-   MessBee — Contact Us Page
-   Premium styling, stacked vertical sections, animated, react-icons.
-   ══════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════════════
+   MessBee — Contact Support Page
+   Official MessBee logo in Hero graphic.
+   Strictly adheres ONLY to the text provided in the user prompt.
+   Compact, sleek typography & clean responsive layout.
+   ═══════════════════════════════════════════════════════════════════════ */
 
-const FAQS = [
+// 1. How Can We Help? (6 Category Cards from prompt)
+const HELP_CATEGORIES = [
   {
-    q: "What can I contact MessBee about?",
-    a: "You can contact us regarding products, pricing, sales, partnerships, general enquiries, account-related questions and other business requirements."
+    title: "Account & Setup",
+    subtitle: "Get help with:",
+    color: "#3B82F6",
+    bg: "#EFF6FF",
+    border: "#BFDBFE",
+    icon: "👤",
+    bullets: [
+      "Account setup",
+      "Business profile",
+      "User access",
+      "Account settings",
+      "Subscription-related questions",
+    ],
   },
   {
-    q: "How can I contact MessBee Support?",
-    a: "For existing customers who need product or technical assistance, contact support@messbee.com or visit the Help Center."
+    title: "CRM",
+    subtitle: "Need help managing your customers or leads? Our team can assist with questions related to:",
+    color: "#16A34A",
+    bg: "#F0FDF4",
+    border: "#BBF7D0",
+    icon: "📊",
+    bullets: [
+      "Customers",
+      "Contacts",
+      "Leads",
+      "Customer profiles",
+      "Sales pipeline",
+      "Segmentation",
+    ],
   },
   {
-    q: "Can I request a MessBee product demonstration?",
-    a: "Yes, where demo availability is offered. You can submit a sales enquiry with details about your business and requirements."
+    title: "WhatsApp Business",
+    subtitle: "Get assistance with supported WhatsApp Business integrations and features, including:",
+    color: "#059669",
+    bg: "#D1FAE5",
+    border: "#A7F3D0",
+    icon: "💬",
+    bullets: [
+      "Account connection",
+      "Business messaging",
+      "Message templates",
+      "Customer conversations",
+      "Integration-related issues",
+    ],
+    footerNote: "WhatsApp Business Platform accounts, approvals, limits and policy enforcement may be controlled by Meta and are subject to applicable Meta/WhatsApp requirements.",
   },
   {
-    q: "Can businesses become MessBee partners?",
-    a: "Yes. Businesses interested in partnership opportunities can contact the MessBee partnership team through the relevant enquiry channel."
+    title: "Marketing & Automation",
+    subtitle: "Need help with your marketing workflows? Get guidance on:",
+    color: "#8B5CF6",
+    bg: "#F5F3FF",
+    border: "#DDD6FE",
+    icon: "⚡",
+    bullets: [
+      "Campaign setup",
+      "Customer segments",
+      "Automated workflows",
+      "Follow-ups",
+      "Email and SMS integrations",
+      "Supported WhatsApp campaigns",
+    ],
   },
   {
-    q: "Where is MessBee based?",
-    a: "MessBee is operated in India."
+    title: "AI & Automation",
+    subtitle: "For questions about supported AI and automation features:",
+    color: "#EC4899",
+    bg: "#FCE7F3",
+    border: "#FBCFE8",
+    icon: "🤖",
+    bullets: [
+      "AI configuration",
+      "Chatbot workflows",
+      "Automation rules",
+      "Triggers and actions",
+      "AI-assisted features",
+    ],
   },
   {
-    q: "How long does it take to receive a response?",
-    a: "Response times can vary depending on the type and complexity of the enquiry. Support and business enquiries may have different response processes."
-  }
+    title: "Digital Store",
+    subtitle: "Get help with:",
+    color: "#F59E0B",
+    bg: "#FEF3C7",
+    border: "#FDE68A",
+    icon: "🛍️",
+    bullets: [
+      "Store setup",
+      "Products and services",
+      "Catalogue",
+      "Orders",
+      "Payment integrations",
+      "Store settings",
+    ],
+  },
 ];
 
-const INTERESTED_OPTIONS = [
-  "MessBee Products",
-  "CRM",
-  "WhatsApp Business",
-  "Marketing Automation",
-  "AI & Automation",
-  "Digital Store",
-  "Enterprise Solutions",
-  "Partnership",
-  "General Enquiry",
-  "Other"
+// 2. Before You Contact Support (6 items from prompt)
+const BEFORE_YOU_CONTACT = [
+  "Getting Started Guides",
+  "Product Documentation",
+  "How-To Guides",
+  "Troubleshooting",
+  "FAQs",
+  "Product Updates",
 ];
 
+// 3. Technical Support Guidelines (5 items from prompt)
+const TECH_GUIDELINES = [
+  {
+    q: "What happened?",
+    a: "Briefly describe the issue.",
+  },
+  {
+    q: "Where did it happen?",
+    a: "Mention the relevant product, page or feature.",
+  },
+  {
+    q: "What were you trying to do?",
+    a: "Explain the action you were attempting.",
+  },
+  {
+    q: "What did you see?",
+    a: "Include the exact error message if available.",
+  },
+  {
+    q: "When did it happen?",
+    a: "Mention the approximate date and time if relevant.",
+  },
+];
+
+// 4. Frequently Asked Questions (5 items from prompt)
+const SUPPORT_FAQS = [
+  {
+    q: "How do I contact MessBee Support?",
+    a: "You can contact MessBee Support through the support channel provided on the MessBee website or email support@messbee.com.",
+  },
+  {
+    q: "What should I include in my support request?",
+    a: "Include your registered email, account or business name, the product you're using, a description of the issue and any relevant error message or screenshot.",
+  },
+  {
+    q: "Can Support help with WhatsApp Business issues?",
+    a: "MessBee Support can assist with supported MessBee-side configuration and integration issues. However, certain WhatsApp Business Platform approvals, limits, account restrictions and policy decisions are controlled by Meta.",
+  },
+  {
+    q: "Can Support access my account password?",
+    a: "You should never share your password, OTP, authentication code or other account credentials with support.",
+  },
+  {
+    q: "Where can I find quick answers?",
+    a: "Visit the MessBee Help Center and FAQs for product guides, troubleshooting information and common questions.",
+  },
+];
+
+/* ── FAQ Accordion Item Component ── */
 const FaqItem = ({ q, a }) => {
   const [open, setOpen] = useState(false);
   return (
@@ -69,62 +175,66 @@ const FaqItem = ({ q, a }) => {
       onClick={() => setOpen(!open)}
       style={{
         background: "#FFFFFF",
-        border: `1px solid ${open ? "#16A34A" : "#E2E8F0"}`,
-        borderRadius: 16,
-        padding: "18px 26px",
+        border: `1px solid ${open ? "#BBF7D0" : "#E2E8F0"}`,
+        borderRadius: 14,
+        padding: "16px 20px",
         cursor: "pointer",
-        transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-        boxShadow: open ? "0 10px 25px -5px rgba(22,163,74,0.08)" : "0 2px 8px rgba(0,0,0,0.01)",
+        transition: "all 0.25s ease",
+        boxShadow: open ? "0 6px 20px rgba(22,163,74,0.06)" : "0 2px 4px rgba(0,0,0,0.01)",
         marginBottom: 10,
-        textAlign: "left"
       }}
-      className="faq-card"
     >
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16 }}>
-        <span style={{ fontSize: 15.5, fontWeight: 700, color: "#0F172A", transition: "color 0.2s" }} className="faq-question">{q}</span>
-        <span style={{
-          width: 32, height: 32, borderRadius: "50%",
-          background: open ? "#16A34A" : "#F1F5F9",
-          display: "flex", alignItems: "center", justifyContent: "center",
-          flexShrink: 0, transition: "all 0.3s ease"
-        }} className="faq-icon-holder">
-          <FiChevronDown style={{ 
-            width: 16, height: 16, 
-            stroke: open ? "#fff" : "#64748B", 
-            transform: open ? "rotate(180deg)" : "rotate(0)",
-            transition: "transform 0.3s ease"
-          }} />
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 14 }}>
+        <span style={{ fontSize: 13.5, fontWeight: 800, color: "#0F172A", lineHeight: 1.4 }}>{q}</span>
+        <span
+          style={{
+            width: 26,
+            height: 26,
+            borderRadius: "50%",
+            background: open ? "#16A34A" : "#F1F5F9",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexShrink: 0,
+            transition: "all 0.25s ease",
+            transform: open ? "rotate(180deg)" : "rotate(0deg)",
+          }}
+        >
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke={open ? "#FFFFFF" : "#64748B"} strokeWidth="2.5" strokeLinecap="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
         </span>
       </div>
-      <div style={{
-        maxHeight: open ? 200 : 0,
-        opacity: open ? 1 : 0,
-        overflow: "hidden",
-        transition: "all 0.3s ease"
-      }}>
-        <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.75, margin: "16px 0 0", paddingRight: 44 }}>
+      {open && (
+        <p style={{ fontSize: 13, color: "#475569", lineHeight: 1.7, margin: "12px 0 0", paddingRight: 24 }}>
           {a}
         </p>
-      </div>
+      )}
     </div>
   );
 };
 
+/* ═══════════════════════════════════════════════════════════════════
+   MAIN CONTACT SUPPORT PAGE COMPONENT
+   ═══════════════════════════════════════════════════════════════════ */
 const ContactPage = () => {
   const navigate = useNavigate();
-  const [form, setForm] = useState({
-    fullName: "",
-    businessName: "",
-    email: "",
-    phone: "",
-    interestedIn: "MessBee Products",
-    message: ""
-  });
+  const [form, setForm] = useState({ name: "", email: "", accountName: "", product: "CRM", message: "" });
   const [status, setStatus] = useState("idle");
 
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-  const handleSubmit = async (e) => {
+  const handleHelpCenter = () => {
+    navigate("/docs");
+  };
+
+  const handleBusinessEnquiries = () => {
+    navigate("/business");
+  };
+
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     setStatus("submitting");
     try {
@@ -133,550 +243,909 @@ const ContactPage = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: form.fullName,
+          name: form.name,
           email: form.email,
-          subject: form.interestedIn,
-          message: `Business: ${form.businessName || "N/A"}\nPhone: ${form.phone || "N/A"}\n\n${form.message}`
-        })
+          subject: `[${form.product}] Account: ${form.accountName || "N/A"}`,
+          message: form.message,
+        }),
       });
       if (res.ok) {
         setStatus("success");
-        setForm({ fullName: "", businessName: "", email: "", phone: "", interestedIn: "MessBee Products", message: "" });
+        setForm({ name: "", email: "", accountName: "", product: "CRM", message: "" });
         setTimeout(() => setStatus("idle"), 4000);
       } else {
         setStatus("error");
         setTimeout(() => setStatus("idle"), 3000);
       }
-    } catch (err) {
-      console.error(err);
+    } catch {
       setStatus("error");
       setTimeout(() => setStatus("idle"), 3000);
     }
   };
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "clip", minHeight: "100vh" }}>
+    <div style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "hidden", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-        * { box-sizing: border-box; }
-        .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 0px; position: relative; }
-        .form-label { font-size: 13.5px; font-weight: 700; color: #475569; text-align: left; transition: color 0.2s; }
-        .required-indicator {
-          color: #EF4444;
-          border-bottom: 1.5px dotted #EF4444;
-          margin-left: 3px;
-          cursor: help;
-          display: inline-block;
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        /* ── BUTTONS ── */
+        .contact-btn-primary {
+          background: #16A34A;
+          color: #FFFFFF;
+          border: none;
+          border-radius: 40px;
+          padding: 11px 26px;
+          font-size: 13.5px;
           font-weight: 700;
+          cursor: pointer;
+          font-family: 'Inter', sans-serif;
+          transition: all 0.25s ease;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          box-shadow: 0 8px 18px rgba(22, 163, 74, 0.22);
+          user-select: none;
+          text-decoration: none;
         }
-        
-        .form-input-container { position: relative; width: 100%; }
-        .form-input { width: 100%; height: 50px; border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 0 18px; font-size: 14.5px; font-family: inherit; color: #0F172A; transition: all 0.3s; outline: none; background: #FAFAFA; }
-        .form-input:hover { border-color: #CBD5E1; background: #FFFFFF; }
-        .form-input:focus { border-color: #16A34A; background: #FFFFFF; box-shadow: 0 0 0 4px rgba(22,163,74,0.1); }
-        .form-group:focus-within .form-label { color: #16A34A; }
-
-        .form-select { width: 100%; height: 50px; border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 0 18px; font-size: 14.5px; font-family: inherit; color: #0F172A; outline: none; background: #FAFAFA; cursor: pointer; transition: all 0.3s; }
-        .form-select:hover { border-color: #CBD5E1; background: #FFFFFF; }
-        .form-select:focus { border-color: #16A34A; background: #FFFFFF; box-shadow: 0 0 0 4px rgba(22,163,74,0.1); }
-        
-        .form-textarea { width: 100%; min-height: 120px; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px 18px; font-size: 14.5px; font-family: inherit; color: #0F172A; transition: all 0.3s; outline: none; resize: vertical; background: #FAFAFA; }
-        .form-textarea:hover { border-color: #CBD5E1; background: #FFFFFF; }
-        .form-textarea:focus { border-color: #16A34A; background: #FFFFFF; box-shadow: 0 0 0 4px rgba(22,163,74,0.1); }
-        
-        .submit-btn { width: 100%; height: 52px; background: linear-gradient(135deg, #16A34A 0%, #15803D 100%); color: #FFFFFF; border: none; border-radius: 9999px; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(22,163,74,0.25); }
-        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(22,163,74,0.35); }
-
-        .contact-form-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 24px;
-          margin-bottom: 1px;
+        .contact-btn-primary:hover {
+          background: #15803D;
+          transform: translateY(-2px);
+          box-shadow: 0 12px 24px rgba(22, 163, 74, 0.32);
         }
-        @media (max-width: 640px) {
-          .contact-form-grid {
-            grid-template-columns: 1fr;
-            gap: 20px;
+
+        .contact-btn-secondary {
+          background: #FFFFFF;
+          color: #0F172A;
+          border: 1.5px solid #E2E8F0;
+          border-radius: 40px;
+          padding: 10px 22px;
+          font-size: 13.5px;
+          font-weight: 700;
+          cursor: pointer;
+          font-family: 'Inter', sans-serif;
+          transition: all 0.25s ease;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          box-shadow: 0 3px 8px rgba(0,0,0,0.03);
+          user-select: none;
+          text-decoration: none;
+        }
+        .contact-btn-secondary:hover {
+          border-color: #16A34A;
+          color: #16A34A;
+          background: #F0FDF4;
+          transform: translateY(-2px);
+        }
+
+        /* ── CARDS & ANIMATION ── */
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(12px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
           }
         }
-        
-        /* Interactive Cards System */
-        .channel-card { 
-          background: #FFFFFF; 
-          border: 1.5px solid #F1F5F9; 
-          border-radius: 20px; 
-          padding: 28px; 
-          text-align: left; 
-          transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); 
-          cursor: pointer;
-          position: relative;
-          overflow: hidden;
-          box-shadow: 0 4px 12px rgba(15,23,42,0.015);
-        }
-        
-        .channel-card::before {
-          content: "";
-          position: absolute;
-          left: 0; top: 0; bottom: 0; width: 4px;
-          transition: all 0.3s ease;
-        }
 
-        /* Color Coding with custom highlights & border gradients */
-        .card-green::before { background: #16A34A; opacity: 0; }
-        .card-green:hover { border-color: #BBF7D0; transform: translateY(-5px); box-shadow: 0 12px 24px -8px rgba(22,163,74,0.12); }
-        .card-green:hover::before { opacity: 1; }
-
-        .card-purple::before { background: #7C3AED; opacity: 0; }
-        .card-purple:hover { border-color: #DDD6FE; transform: translateY(-5px); box-shadow: 0 12px 24px -8px rgba(124,58,237,0.12); }
-        .card-purple:hover::before { opacity: 1; }
-
-        .card-blue::before { background: #0284C7; opacity: 0; }
-        .card-blue:hover { border-color: #BAE6FD; transform: translateY(-5px); box-shadow: 0 12px 24px -8px rgba(2,132,199,0.12); }
-        .card-blue:hover::before { opacity: 1; }
-
-        .card-amber::before { background: #D97706; opacity: 0; }
-        .card-amber:hover { border-color: #FDE68A; transform: translateY(-5px); box-shadow: 0 12px 24px -8px rgba(217,119,6,0.12); }
-        .card-amber:hover::before { opacity: 1; }
-
-        .card-slate::before { background: #475569; opacity: 0; }
-        .card-slate:hover { border-color: #E2E8F0; transform: translateY(-5px); box-shadow: 0 12px 24px -8px rgba(71,85,105,0.12); }
-        .card-slate:hover::before { opacity: 1; }
-
-        .contact-btn { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #16A34A 0%, #15803D 100%); color: #FFFFFF; padding: 10px 22px; border-radius: 9999px; font-size: 13.5px; font-weight: 700; text-decoration: none; transition: all 0.3s ease; border: none; cursor: pointer; margin-top: 16px; box-shadow: 0 4px 12px rgba(22,163,74,0.2); }
-        .contact-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(22,163,74,0.3); }
-
-        .contact-btn.btn-purple { background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%); box-shadow: 0 4px 12px rgba(124,58,237,0.2); }
-        .contact-btn.btn-purple:hover { box-shadow: 0 6px 16px rgba(124,58,237,0.3); }
-
-        .contact-btn.btn-blue { background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%); box-shadow: 0 4px 12px rgba(2,132,199,0.2); }
-        .contact-btn.btn-blue:hover { box-shadow: 0 6px 16px rgba(2,132,199,0.3); }
-
-        .contact-btn.btn-amber { background: linear-gradient(135deg, #D97706 0%, #B45309 100%); box-shadow: 0 4px 12px rgba(217,119,6,0.2); }
-        .contact-btn.btn-amber:hover { box-shadow: 0 6px 16px rgba(217,119,6,0.3); }
-        
-        .contact-btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: #16A34A; border: 1.5px solid #16A34A; padding: 9px 20px; border-radius: 9999px; font-size: 13.5px; font-weight: 700; text-decoration: none; transition: all 0.3s ease; cursor: pointer; margin-top: 16px; }
-        .contact-btn-secondary:hover { background: #F0FDF4; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(22,163,74,0.06); }
-        
-        .enquiry-form-container {
+        .contact-glass-card {
           background: #FFFFFF;
           border: 1px solid #E2E8F0;
-          border-radius: 24px;
-          padding: 48px;
-          box-shadow: 0 8px 30px rgba(15,23,42,0.03);
-          max-width: 960px;
-          margin: 0 auto 80px auto;
-          text-align: left;
+          border-radius: 16px;
+          transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+          animation: fadeInUp 0.5s ease-out both;
+        }
+        .contact-glass-card:hover {
+          transform: translateY(-6px) scale(1.015);
+          box-shadow: 0 14px 30px rgba(22, 163, 74, 0.08), 0 4px 12px rgba(0, 0, 0, 0.02);
+          border-color: #BBF7D0 !important;
         }
 
-        .contact-btn-secondary.btn-secondary-slate { color: #475569; border-color: #CBD5E1; }
-        .contact-btn-secondary.btn-secondary-slate:hover { background: #F8FAFC; border-color: #475569; box-shadow: 0 4px 12px rgba(71,85,105,0.06); }
-
-        .contact-hero { padding-top: 130px; padding-bottom: 56px; padding-left: 6%; padding-right: 6%; }
-        .contact-content { padding: 56px 6%; }
-
-        /* Responsive Breakpoints */
-        @media (max-width: 1200px) {
-          .contact-hero { padding-left: 4%; padding-right: 4%; }
-          .contact-content { padding-left: 4%; padding-right: 4%; }
-        }
-        @media (max-width: 1024px) {
-          .contact-hero { padding-top: 120px; padding-bottom: 36px; }
-          .enquiry-form-container { padding: 40px 32px; }
-        }
-        @media (max-width: 768px) {
-          .enquiry-form-container { padding: 32px 20px; border-radius: 16px; margin-bottom: 56px; }
-        }
-        @media (max-width: 480px) {
-          .contact-hero { padding-top: 110px; padding-bottom: 24px; }
+        /* ── RESPONSIVE GRID & LAYOUT ── */
+        .contact-hero-row {
+          display: flex;
+          align-items: center;
+          gap: 48px;
         }
 
-        .faq-card:hover { border-color: #16A34A; }
-        
-        /* Spin animation */
-        @keyframes spin {
-          to { transform: rotate(360deg); }
+        .grid-col-3 {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 18px;
+        }
+        .grid-col-2 {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+        }
+        .grid-col-5 {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 14px;
+        }
+
+        /* Large Laptops / Desktops (1440px +) */
+        @media (min-width: 1440px) {
+          .contact-hero-row { gap: 60px; }
+          .grid-col-3 { gap: 22px; }
+        }
+
+        /* Medium Laptops (1200px - 1439px) */
+        @media (max-width: 1439px) and (min-width: 1200px) {
+          .grid-col-5 { grid-template-columns: repeat(3, 1fr); }
+          .grid-col-3 { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        /* Small Laptops (1024px - 1199px) */
+        @media (max-width: 1199px) and (min-width: 1024px) {
+          .grid-col-5 { grid-template-columns: repeat(3, 1fr); }
+          .grid-col-3 { grid-template-columns: repeat(2, 1fr); }
+          .contact-hero-row { gap: 32px; }
+        }
+
+        /* Compact Laptop / Tablet (under 1024px) */
+        @media (max-width: 1023px) {
+          .contact-hero-row { flex-direction: column !important; gap: 32px; }
+          .grid-col-5 { grid-template-columns: repeat(2, 1fr); }
+          .grid-col-3 { grid-template-columns: repeat(1, 1fr); }
+          .grid-col-2 { grid-template-columns: repeat(1, 1fr); }
+        }
+
+        /* Glowing Pulse Animation */
+        @keyframes auraPulse {
+          0%, 100% { transform: scale(1); opacity: 0.4; }
+          50% { transform: scale(1.08); opacity: 0.8; }
+        }
+        .pulse-aura {
+          animation: auraPulse 3.5s ease-in-out infinite;
         }
       `}</style>
 
-      <title>Contact MessBee | Sales, Support &amp; Business Enquiries</title>
-      <meta name="description" content="Contact MessBee for product information, sales enquiries, customer support, partnerships and business solutions for CRM, marketing, automation and digital commerce." />
+      {/* SEO Document Title & Meta Description (Exact Prompt Meta) */}
+      <title>Contact MessBee Support | Help With Products &amp; Integrations</title>
+      <meta
+        name="description"
+        content="Contact MessBee Support for help with CRM, WhatsApp Business, marketing automation, AI, Digital Store, account setup and technical issues."
+      />
 
       <Navbar />
 
-      {/* ═══ HERO ═══ */}
-      <section className="contact-hero" style={{
-        background: "#FFFFFF",
-        position: "relative", overflow: "hidden",
-        borderBottom: "1px solid #F1F5F9",
-      }}>
-        <div style={{
-          position: "absolute", inset: 0,
-          backgroundImage: "radial-gradient(circle, #E2E8F0 1px, transparent 1px)",
-          backgroundSize: "30px 30px", opacity: 0.5, pointerEvents: "none"
-        }} />
-        <div style={{
-          position: "absolute", inset: 0,
-          backgroundImage: "radial-gradient(circle at 8% 50%, rgba(22,163,74,0.06) 0%, transparent 45%), radial-gradient(circle at 90% 20%, rgba(22,163,74,0.04) 0%, transparent 40%)",
-          pointerEvents: "none"
-        }} />
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 1: HERO (Strictly Provided Copy & Recommended H1)
+         ═══════════════════════════════════════════════════════════════════ */}
+      <section
+        style={{
+          marginTop: 70,
+          padding: "56px 6% 64px",
+          position: "relative",
+          background: "linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)",
+          overflow: "hidden",
+          borderBottom: "1px solid #F1F5F9",
+        }}
+      >
+        {/* Ambient Glow */}
+        <div
+          style={{
+            position: "absolute",
+            top: -180,
+            right: -120,
+            width: 700,
+            height: 700,
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(22,163,74,0.06) 0%, rgba(255,255,255,0) 70%)",
+            pointerEvents: "none",
+          }}
+        />
 
-        <div style={{ maxWidth: 1280, margin: "0 auto", position: "relative", zIndex: 1 }}>
-          <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#F0FDF4", border: "1px solid #BBF7D0", borderRadius: 40, padding: "6px 16px", marginBottom: 24 }}>
-            <FiMail style={{ color: "#16A34A", width: 14, height: 14 }} />
-            <span style={{ fontSize: 12, fontWeight: 700, color: "#16A34A", letterSpacing: "0.4px" }}>Get In Touch</span>
+        <div className="contact-hero-row" style={{ maxWidth: 1280, margin: "0 auto", position: "relative", zIndex: 1 }}>
+          {/* Left Text Column */}
+          <div style={{ flex: 1.1, minWidth: 320 }}>
+            {/* Provided Badge: Contact Support */}
+            <div
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                background: "#D1FAE5",
+                color: "#059669",
+                padding: "5px 14px",
+                borderRadius: 40,
+                fontSize: 10.5,
+                fontWeight: 800,
+                letterSpacing: "1px",
+                marginBottom: 18,
+                textTransform: "uppercase",
+              }}
+            >
+              <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#16A34A", boxShadow: "0 0 6px #16A34A" }} />
+              Contact Support
+            </div>
+
+            {/* Recommended H1 */}
+            <h1
+              style={{
+                fontSize: "clamp(28px, 2.9vw, 42px)",
+                fontWeight: 900,
+                lineHeight: 1.12,
+                color: "#0F172A",
+                marginBottom: 14,
+                letterSpacing: "-1px",
+              }}
+            >
+              Contact MessBee Support – <span style={{ color: "#16A34A" }}>We&apos;re Here to Help</span>
+            </h1>
+
+            {/* Provided Sub-headline */}
+            <p style={{ fontSize: "clamp(15px, 1.4vw, 18px)", fontWeight: 800, color: "#16A34A", marginBottom: 14, letterSpacing: "-0.3px" }}>
+              We&apos;re Here to Help
+            </p>
+
+            {/* Provided Paragraph 1 */}
+            <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 12, maxWidth: 540 }}>
+              Need help with your MessBee account, a product feature, integration or a technical issue? MessBee Support is here to help you find the right information and get your issue resolved as efficiently as possible.
+            </p>
+
+            {/* Provided Paragraph 2 */}
+            <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 26, maxWidth: 540 }}>
+              Whether you&apos;re setting up MessBee for the first time or already using it for your business, you can reach out to our support team when you need assistance.
+            </p>
+
+            {/* Primary & Secondary CTAs from Prompt */}
+            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+              <button
+                className="contact-btn-primary"
+                onClick={() => document.getElementById("contact-form-section")?.scrollIntoView({ behavior: "smooth" })}
+              >
+                Contact Support
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </button>
+
+              <button className="contact-btn-secondary" onClick={handleHelpCenter}>
+                Visit Help Center
+              </button>
+            </div>
           </div>
 
-          <h1 style={{ fontSize: "clamp(35px, 2.9vw, 62px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-2px", lineHeight: 1.06, marginBottom: 20 }}>
-            Contact MessBee – <span style={{ color: "#16A34A" }}>Let’s Talk About Your Business</span>
-          </h1>
+          {/* Right Column: Visual Support Hub Node Graphic with Official MessBee Logo */}
+          <div style={{ flex: 0.9, minWidth: 320, position: "relative" }}>
+            <div
+              style={{
+                background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
+                borderRadius: 24,
+                padding: "28px 24px",
+                boxShadow: "0 20px 50px rgba(2, 44, 34, 0.4)",
+                border: "1px solid rgba(52, 211, 153, 0.25)",
+                color: "#FFFFFF",
+                position: "relative",
+                overflow: "hidden",
+              }}
+            >
+              {/* Outer Pulse aura background */}
+              <div
+                className="pulse-aura"
+                style={{
+                  position: "absolute",
+                  top: "20%",
+                  left: "25%",
+                  width: 240,
+                  height: 240,
+                  borderRadius: "50%",
+                  background: "radial-gradient(circle, rgba(52,211,153,0.3) 0%, rgba(52,211,153,0) 70%)",
+                  pointerEvents: "none",
+                }}
+              />
 
-          <div style={{ width: 48, height: 4, background: "linear-gradient(90deg, #16A34A, #4ADE80)", borderRadius: 4, marginBottom: 24 }} />
+              {/* Graphic Title Header featuring Official MessBee Logo */}
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20, borderBottom: "1px solid rgba(255,255,255,0.12)", paddingBottom: 14 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <div style={{ width: 34, height: 34, borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.2)", flexShrink: 0, background: "#FFFFFF", padding: 2 }}>
+                    <img src={defaultLogo} alt="MessBee" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 13, fontWeight: 900, color: "#FFFFFF" }}>MessBee Support Desk</div>
+                    <div style={{ fontSize: 10, color: "#4ADE80", fontWeight: 700 }}>Dedicated Technical Assistance</div>
+                  </div>
+                </div>
+                <span style={{ fontSize: 10, background: "rgba(52,211,153,0.2)", color: "#34D399", padding: "3px 10px", borderRadius: 20, fontWeight: 700, border: "1px solid rgba(52,211,153,0.3)" }}>
+                  24/7 Queue
+                </span>
+              </div>
 
-          <p style={{ fontSize: 17, color: "#475569", lineHeight: 1.75, maxWidth: 1190, margin: 0 }}>
-            Have a question about MessBee, want to explore a business solution, or interested in working with us?<br /><br />
-            Whether you're looking for product information, support, a partnership opportunity, or a solution for your business, our team is here to help.
-          </p>
+              {/* Support Email Card Box */}
+              <div style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 14, padding: 14, marginBottom: 14, backdropFilter: "blur(4px)" }}>
+                <div style={{ fontSize: 10.5, fontWeight: 800, color: "#A7F3D0", textTransform: "uppercase", letterSpacing: "0.5px", marginBottom: 6 }}>
+                  Direct Email Channel
+                </div>
+                <a href="mailto:support@messbee.com" style={{ fontSize: 15, fontWeight: 900, color: "#4ADE80", textDecoration: "none" }}>
+                  support@messbee.com
+                </a>
+              </div>
 
-          <p style={{ fontSize: 15, fontWeight: 600, color: "#16A34A", marginTop: 16, margin: "16px 0 0 0" }}>
-            Tell us what you need. We’ll help you find the right way forward.
-          </p>
+              {/* 4 Support Topics Quick Grid */}
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+                {[
+                  { title: "CRM & Contacts", icon: "👤" },
+                  { title: "WhatsApp Business", icon: "💬" },
+                  { title: "Marketing & AI", icon: "⚡" },
+                  { title: "Digital Store", icon: "🛍️" },
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      background: "rgba(255,255,255,0.05)",
+                      border: "1px solid rgba(255,255,255,0.1)",
+                      borderRadius: 10,
+                      padding: "10px 12px",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 8,
+                      backdropFilter: "blur(4px)",
+                    }}
+                  >
+                    <span style={{ fontSize: 14 }}>{item.icon}</span>
+                    <span style={{ fontSize: 11.5, fontWeight: 800, color: "#FFFFFF" }}>{item.title}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-          <div style={{ display: "flex", gap: 14, marginTop: 28 }}>
-            <button className="contact-btn" style={{ margin: 0 }} onClick={() => document.getElementById("enquiry-form")?.scrollIntoView({ behavior: "smooth" })}>
-              <FiSend style={{ width: 14, height: 14 }} /> Send an Enquiry
-            </button>
-            <button className="contact-btn-secondary" style={{ margin: 0 }} onClick={() => window.open((import.meta.env.VITE_ADMIN_URL || "http://localhost:5174") + "/signup", "_blank")}>
-              Get Started
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 2: HOW CAN WE HELP? (6 FEATURED CATEGORY CARDS)
+         ═══════════════════════════════════════════════════════════════════ */}
+      <section style={{ padding: "48px 6%", background: "#FAFAFA" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+          {/* Headings from Prompt */}
+          <div style={{ textAlign: "center", marginBottom: 32 }}>
+            <div
+              style={{
+                display: "inline-block",
+                background: "#D1FAE5",
+                color: "#059669",
+                padding: "4px 12px",
+                borderRadius: 40,
+                fontSize: 10.5,
+                fontWeight: 800,
+                letterSpacing: "1px",
+                marginBottom: 10,
+                textTransform: "uppercase",
+              }}
+            >
+              Support Scope
+            </div>
+            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+              How Can <span style={{ color: "#16A34A" }}>We Help?</span>
+            </h2>
+          </div>
+
+          {/* 6 Category Cards Grid */}
+          <div className="grid-col-3">
+            {HELP_CATEGORIES.map((cat, idx) => (
+              <div
+                key={idx}
+                className="contact-glass-card"
+                style={{
+                  padding: "16px 18px",
+                  border: `1px solid ${cat.border}`,
+                  animationDelay: `${idx * 50}ms`,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                }}
+              >
+                <div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+                    <div
+                      style={{
+                        width: 34,
+                        height: 34,
+                        borderRadius: 8,
+                        background: cat.bg,
+                        color: cat.color,
+                        border: `1px solid ${cat.border}`,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexShrink: 0,
+                        fontSize: 18,
+                      }}
+                    >
+                      {cat.icon}
+                    </div>
+                    <h3 style={{ fontSize: 14.5, fontWeight: 900, color: "#0F172A" }}>{cat.title}</h3>
+                  </div>
+
+                  <p style={{ fontSize: 12, color: "#64748B", lineHeight: 1.5, marginBottom: 8 }}>
+                    {cat.subtitle}
+                  </p>
+
+                  <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                    {cat.bullets.map((b, i) => (
+                      <div key={i} style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                        <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#16A34A", flexShrink: 0 }} />
+                        <span style={{ fontSize: 12, fontWeight: 700, color: "#334155" }}>{b}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {cat.footerNote && (
+                  <p style={{ fontSize: 11, color: "#64748B", lineHeight: 1.45, borderTop: "1px solid #F1F5F9", paddingTop: 8, marginTop: 8 }}>
+                    {cat.footerNote}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 3: BEFORE YOU CONTACT SUPPORT
+         ═══════════════════════════════════════════════════════════════════ */}
+      <section style={{ padding: "64px 6%", background: "#FFFFFF" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+          {/* Headings from Prompt */}
+          <div style={{ textAlign: "center", marginBottom: 36 }}>
+            <div
+              style={{
+                display: "inline-block",
+                background: "#D1FAE5",
+                color: "#059669",
+                padding: "4px 12px",
+                borderRadius: 40,
+                fontSize: 10.5,
+                fontWeight: 800,
+                letterSpacing: "1px",
+                marginBottom: 12,
+                textTransform: "uppercase",
+              }}
+            >
+              Self-Service Help
+            </div>
+            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+              Before You <span style={{ color: "#16A34A" }}>Contact Support</span>
+            </h2>
+
+            <p style={{ fontSize: 13.5, color: "#64748B", maxWidth: 600, margin: "0 auto 6px", lineHeight: 1.68 }}>
+              You may find a quick answer in the MessBee Help Center.
+            </p>
+            <p style={{ fontSize: 13, fontWeight: 700, color: "#0F172A", maxWidth: 500, margin: "0 auto" }}>
+              It includes:
+            </p>
+          </div>
+
+          {/* 6 Help Center Items Grid */}
+          <div className="grid-col-3" style={{ marginBottom: 32 }}>
+            {BEFORE_YOU_CONTACT.map((item, idx) => (
+              <div
+                key={idx}
+                className="contact-glass-card"
+                style={{
+                  padding: 16,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 12,
+                  animationDelay: `${idx * 40}ms`,
+                }}
+              >
+                <div style={{ width: 28, height: 28, borderRadius: 8, background: "#F0FDF4", border: "1px solid #BBF7D0", color: "#16A34A", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12" /></svg>
+                </div>
+                <span style={{ fontSize: 13, fontWeight: 800, color: "#0F172A" }}>{item}</span>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ textAlign: "center" }}>
+            <button className="contact-btn-primary" onClick={handleHelpCenter}>
+              Visit Help Center
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
             </button>
           </div>
         </div>
       </section>
 
-      {/* ═══ MAIN CONTENT ═══ */}
-      <section className="contact-content" style={{ background: "#FFFFFF" }}>
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 4: CONTACT OUR SUPPORT TEAM & FORM
+         ═══════════════════════════════════════════════════════════════════ */}
+      <section id="contact-form-section" style={{ padding: "64px 6%", background: "#FAFAFA" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          
-          {/* 1. "How Can We Help?" Section */}
-          <div style={{ textAlign: "left", marginBottom: 80 }}>
-            <h2 style={{ fontSize: 26, fontWeight: 900, color: "#0F172A", letterSpacing: "-0.8px", marginBottom: 12 }}>How Can We Help?</h2>
-            <div style={{ width: 48, height: 4, background: "linear-gradient(90deg, #16A34A, #4ADE80)", borderRadius: 2, marginBottom: 32 }} />
-            
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 24 }}>
-              
-              {/* General Enquiries */}
-              <div className="channel-card card-green">
-                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14 }}>
-                  <div style={{ width: 36, height: 36, borderRadius: 10, background: "#F0FDF4", border: "1px solid #BBF7D0", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <FiMail style={{ color: "#16A34A", width: 18, height: 18 }} />
-                  </div>
-                  <span style={{ fontSize: 16, fontWeight: 800, color: "#0F172A" }}>General Enquiries</span>
+          <div style={{ textAlign: "center", marginBottom: 36 }}>
+            <div
+              style={{
+                display: "inline-block",
+                background: "#D1FAE5",
+                color: "#059669",
+                padding: "4px 12px",
+                borderRadius: 40,
+                fontSize: 10.5,
+                fontWeight: 800,
+                letterSpacing: "1px",
+                marginBottom: 12,
+                textTransform: "uppercase",
+              }}
+            >
+              Direct Message
+            </div>
+            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+              Contact Our <span style={{ color: "#16A34A" }}>Support Team</span>
+            </h2>
+            <p style={{ fontSize: 13.5, color: "#64748B", maxWidth: 620, margin: "0 auto", lineHeight: 1.68 }}>
+              If you couldn&apos;t find the answer in our Help Center, send us your question and our team will review it.
+            </p>
+          </div>
+
+          <div className="contact-hero-row" style={{ alignItems: "stretch" }}>
+            {/* Left Box: Email Support Details & Security Disclaimer from Prompt */}
+            <div style={{ flex: 1, background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 20, padding: "24px 26px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+              <div>
+                <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#F0FDF4", border: "1px solid #BBF7D0", borderRadius: 30, padding: "5px 14px", marginBottom: 14 }}>
+                  <span style={{ fontSize: 12, fontWeight: 800, color: "#16A34A" }}>Email Support</span>
                 </div>
-                <p style={{ fontSize: 13.8, color: "#475569", lineHeight: 1.6, margin: "0 0 18px 0" }}>
-                  Have a question about MessBee, our products or how the platform works?
+
+                <div style={{ fontSize: 16, fontWeight: 900, color: "#16A34A", marginBottom: 16 }}>
+                  <a href="mailto:support@messbee.com" style={{ color: "#16A34A", textDecoration: "none" }}>
+                    support@messbee.com
+                  </a>
+                </div>
+
+                <p style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", marginBottom: 10 }}>
+                  For faster assistance, please include:
                 </p>
-                <div style={{ fontSize: 13.8, fontWeight: 700, color: "#16A34A" }}>
-                  Email: <a href="mailto:info@messbee.com" style={{ color: "#16A34A", textDecoration: "none", borderBottom: "1.5px solid transparent", transition: "border-color 0.2s" }} onMouseOver={e => e.currentTarget.style.borderColor = "#16A34A"} onMouseOut={e => e.currentTarget.style.borderColor = "transparent"}>info@messbee.com</a>
-                </div>
-              </div>
 
-              {/* Sales & Business */}
-              <div className="channel-card card-purple" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-                <div>
-                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14 }}>
-                    <div style={{ width: 36, height: 36, borderRadius: 10, background: "#F5F3FF", border: "1px solid #DDD6FE", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <FiTrendingUp style={{ color: "#7C3AED", width: 18, height: 18 }} />
+                <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 20 }}>
+                  {[
+                    "Your registered email address",
+                    "Business or account name",
+                    "Product or feature you're using",
+                    "A clear description of the issue",
+                    "Relevant error message, if any",
+                    "Screenshot or screen recording, where useful",
+                  ].map((item, i) => (
+                    <div key={i} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                      <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#16A34A", flexShrink: 0 }} />
+                      <span style={{ fontSize: 12.5, fontWeight: 600, color: "#475569" }}>{item}</span>
                     </div>
-                    <span style={{ fontSize: 16, fontWeight: 800, color: "#0F172A" }}>Sales &amp; Business Enquiries</span>
-                  </div>
-                  <p style={{ fontSize: 13.8, color: "#475569", lineHeight: 1.6, margin: 0 }}>
-                    Interested in MessBee for your business or want to discuss a suitable plan?
-                  </p>
-                </div>
-                <button className="contact-btn btn-purple" style={{ alignSelf: "flex-start", fontSize: 12.5, padding: "8px 18px" }} onClick={() => document.getElementById("enquiry-form")?.scrollIntoView({ behavior: "smooth" })}>
-                  Talk to Sales
-                </button>
-              </div>
-
-              {/* Customer Support */}
-              <div className="channel-card card-blue" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-                <div>
-                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14 }}>
-                    <div style={{ width: 36, height: 36, borderRadius: 10, background: "#F0F9FF", border: "1px solid #BAE6FD", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <FiLifeBuoy style={{ color: "#0284C7", width: 18, height: 18 }} />
-                    </div>
-                    <span style={{ fontSize: 16, fontWeight: 800, color: "#0F172A" }}>Customer Support</span>
-                  </div>
-                  <p style={{ fontSize: 13.8, color: "#475569", lineHeight: 1.6, margin: 0 }}>
-                    Already using MessBee and need help with your account, product or integration?
-                  </p>
-                  <div style={{ fontSize: 13.8, fontWeight: 700, color: "#0284C7", marginTop: 14, marginBottom: 14 }}>
-                    Email: <a href="mailto:support@messbee.com" style={{ color: "#0284C7", textDecoration: "none", borderBottom: "1.5px solid transparent", transition: "border-color 0.2s" }} onMouseOver={e => e.currentTarget.style.borderColor = "#0284C7"} onMouseOut={e => e.currentTarget.style.borderColor = "transparent"}>support@messbee.com</a>
-                  </div>
-                </div>
-                <button className="contact-btn btn-blue" style={{ alignSelf: "flex-start", fontSize: 12.5, padding: "8px 18px", margin: 0 }} onClick={() => window.location.href = "mailto:support@messbee.com"}>
-                  Contact Support
-                </button>
-              </div>
-
-              {/* Partnerships */}
-              <div className="channel-card card-amber" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-                <div>
-                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14 }}>
-                    <div style={{ width: 36, height: 36, borderRadius: 10, background: "#FFFBEB", border: "1px solid #FDE68A", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <FiAward style={{ color: "#D97706", width: 18, height: 18 }} />
-                    </div>
-                    <span style={{ fontSize: 16, fontWeight: 800, color: "#0F172A" }}>Partnerships</span>
-                  </div>
-                  <p style={{ fontSize: 13.8, color: "#475569", lineHeight: 1.6, margin: 0 }}>
-                    Interested in becoming a MessBee partner, technology partner or business partner?
-                  </p>
-                </div>
-                <button className="contact-btn btn-amber" style={{ alignSelf: "flex-start", fontSize: 12.5, padding: "8px 18px" }} onClick={() => document.getElementById("enquiry-form")?.scrollIntoView({ behavior: "smooth" })}>
-                  Become a Partner
-                </button>
-              </div>
-
-              {/* Careers */}
-              <div className="channel-card card-slate" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-                <div>
-                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14 }}>
-                    <div style={{ width: 36, height: 36, borderRadius: 10, background: "#FAFAFA", border: "1px solid #E2E8F0", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <FiBriefcase style={{ color: "#475569", width: 18, height: 18 }} />
-                    </div>
-                    <span style={{ fontSize: 16, fontWeight: 800, color: "#0F172A" }}>Careers</span>
-                  </div>
-                  <p style={{ fontSize: 13.8, color: "#475569", lineHeight: 1.6, margin: 0 }}>
-                    Looking for career or internship opportunities at MessBee?
-                  </p>
-                  <div style={{ fontSize: 13.8, fontWeight: 700, color: "#475569", marginTop: 14, marginBottom: 14 }}>
-                    Email: <a href="mailto:info@messbee.com" style={{ color: "#475569", textDecoration: "none", borderBottom: "1.5px solid transparent", transition: "border-color 0.2s" }} onMouseOver={e => e.currentTarget.style.borderColor = "#475569"} onMouseOut={e => e.currentTarget.style.borderColor = "transparent"}>info@messbee.com</a>
-                  </div>
-                </div>
-                <button className="contact-btn-secondary btn-secondary-slate" style={{ alignSelf: "flex-start", fontSize: 12.5, padding: "8px 18px", margin: 0 }} onClick={() => navigate("/careers")}>
-                  View Careers
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* 2. "Tell Us About Your Requirement" Section */}
-          <div id="enquiry-form" className="enquiry-form-container">
-            <div style={{ marginBottom: 26 }}>
-              <h2 style={{ fontSize: 24, fontWeight: 900, color: "#0F172A", letterSpacing: "-0.8px", marginBottom: 8 }}>Tell Us About Your Requirement</h2>
-              <p style={{ fontSize: 14.5, color: "#64748B", margin: 0 }}>
-                Use our contact form and provide a few details so the right team can understand your requirement.
-              </p>
-            </div>
-
-            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-              <div className="contact-form-grid">
-                <div className="form-group">
-                  <label className="form-label">Full Name <span className="required-indicator">*</span></label>
-                  <input
-                    type="text"
-                    required
-                    className="form-input"
-                    placeholder="Enter your name"
-                    value={form.fullName}
-                    onChange={e => setForm({ ...form, fullName: e.target.value })}
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Business / Organization Name</label>
-                  <input
-                    type="text"
-                    className="form-input"
-                    placeholder="Enter your business name"
-                    value={form.businessName}
-                    onChange={e => setForm({ ...form, businessName: e.target.value })}
-                  />
-                </div>
-              </div>
-
-              <div className="contact-form-grid">
-                <div className="form-group">
-                  <label className="form-label">Work Email <span className="required-indicator">*</span></label>
-                  <input
-                    type="email"
-                    required
-                    className="form-input"
-                    placeholder="Enter your business email"
-                    value={form.email}
-                    onChange={e => setForm({ ...form, email: e.target.value })}
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label className="form-label">Phone Number</label>
-                  <input
-                    type="tel"
-                    className="form-input"
-                    placeholder="Enter your contact number"
-                    value={form.phone}
-                    onChange={e => setForm({ ...form, phone: e.target.value })}
-                  />
-                </div>
-              </div>
-
-              <div className="form-group">
-                <label className="form-label">I’m Interested In <span className="required-indicator">*</span></label>
-                <select
-                  className="form-select"
-                  value={form.interestedIn}
-                  onChange={e => setForm({ ...form, interestedIn: e.target.value })}
-                >
-                  {INTERESTED_OPTIONS.map((opt) => (
-                    <option key={opt} value={opt}>{opt}</option>
                   ))}
-                </select>
+                </div>
               </div>
 
-              <div className="form-group">
-                <label className="form-label">How Can We Help? <span className="required-indicator">*</span></label>
-                <textarea
-                  required
-                  className="form-textarea"
-                  placeholder="Tell us about your requirement or question."
-                  value={form.message}
-                  onChange={e => setForm({ ...form, message: e.target.value })}
-                />
+              {/* Security Disclaimer Box from Prompt */}
+              <div style={{ background: "#FEF2F2", border: "1px solid #FCA5A5", borderRadius: 12, padding: 14 }}>
+                <p style={{ fontSize: 12, color: "#991B1B", lineHeight: 1.55, fontWeight: 600 }}>
+                  ⚠️ Please avoid sharing passwords, authentication codes, payment card details or other sensitive credentials in your support request.
+                </p>
               </div>
+            </div>
 
-              <div style={{ marginTop: 8 }}>
-                <button type="submit" disabled={status === "submitting"} className="submit-btn">
-                  {status === "submitting" ? (
-                    <>
-                      <div style={{ width: 18, height: 18, border: "2.5px solid rgba(255,255,255,0.3)", borderTopColor: "#FFF", borderRadius: "50%", animation: "spin 0.8s linear infinite" }} />
-                      Submitting...
-                    </>
-                  ) : status === "success" ? (
-                    "Submitted Successfully ✓"
-                  ) : status === "error" ? (
-                    "Failed to Submit — Try Again"
-                  ) : (
-                    <>
-                      <FiSend style={{ width: 14, height: 14 }} /> Submit Enquiry
-                    </>
-                  )}
-                </button>
+            {/* Right Box: Interactive Support Form (Equal Height Matching Left Card) */}
+            <div style={{ flex: 1.25, background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 20, padding: "24px 26px", boxShadow: "0 6px 24px rgba(0,0,0,0.02)", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+              <div>
+                <h3 style={{ fontSize: 16, fontWeight: 900, color: "#0F172A", marginBottom: 14 }}>
+                  Submit Support Request
+                </h3>
+
+                <form onSubmit={handleFormSubmit} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                  {/* Row 1: Name + Email */}
+                  <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                    <div style={{ flex: "1 1 180px" }}>
+                      <label style={{ display: "block", fontSize: 12, fontWeight: 700, color: "#374151", marginBottom: 5 }}>
+                        Full Name *
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="Your Name"
+                        value={form.name}
+                        onChange={(e) => setForm({ ...form, name: e.target.value })}
+                        style={{
+                          width: "100%", padding: "10px 13px", border: "1px solid #CBD5E1",
+                          borderRadius: 9, fontSize: 13, color: "#0F172A", outline: "none",
+                          fontFamily: "'Inter', sans-serif",
+                        }}
+                      />
+                    </div>
+
+                    <div style={{ flex: "1 1 180px" }}>
+                      <label style={{ display: "block", fontSize: 12, fontWeight: 700, color: "#374151", marginBottom: 5 }}>
+                        Registered Email Address *
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        placeholder="name@company.com"
+                        value={form.email}
+                        onChange={(e) => setForm({ ...form, email: e.target.value })}
+                        style={{
+                          width: "100%", padding: "10px 13px", border: "1px solid #CBD5E1",
+                          borderRadius: 9, fontSize: 13, color: "#0F172A", outline: "none",
+                          fontFamily: "'Inter', sans-serif",
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Row 2: Account Name + Product */}
+                  <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                    <div style={{ flex: "1 1 180px" }}>
+                      <label style={{ display: "block", fontSize: 12, fontWeight: 700, color: "#374151", marginBottom: 5 }}>
+                        Business or Account Name
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="Your Business Name"
+                        value={form.accountName}
+                        onChange={(e) => setForm({ ...form, accountName: e.target.value })}
+                        style={{
+                          width: "100%", padding: "10px 13px", border: "1px solid #CBD5E1",
+                          borderRadius: 9, fontSize: 13, color: "#0F172A", outline: "none",
+                          fontFamily: "'Inter', sans-serif",
+                        }}
+                      />
+                    </div>
+
+                    <div style={{ flex: "1 1 180px" }}>
+                      <label style={{ display: "block", fontSize: 12, fontWeight: 700, color: "#374151", marginBottom: 5 }}>
+                        Product or Feature
+                      </label>
+                      <select
+                        value={form.product}
+                        onChange={(e) => setForm({ ...form, product: e.target.value })}
+                        style={{
+                          width: "100%", padding: "10px 13px", border: "1px solid #CBD5E1",
+                          borderRadius: 9, fontSize: 13, color: "#0F172A", outline: "none",
+                          fontFamily: "'Inter', sans-serif", cursor: "pointer", background: "#FFFFFF",
+                        }}
+                      >
+                        <option value="Account & Setup">Account &amp; Setup</option>
+                        <option value="CRM">CRM</option>
+                        <option value="WhatsApp Business">WhatsApp Business</option>
+                        <option value="Marketing Automation">Marketing Automation</option>
+                        <option value="AI & Automation">AI &amp; Automation</option>
+                        <option value="Digital Store">Digital Store</option>
+                        <option value="Technical Issue">Technical Issue</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Row 3: Description Textarea */}
+                  <div>
+                    <label style={{ display: "block", fontSize: 12, fontWeight: 700, color: "#374151", marginBottom: 5 }}>
+                      Description of the Issue *
+                    </label>
+                    <textarea
+                      required
+                      rows={4}
+                      placeholder="Describe your issue or question..."
+                      value={form.message}
+                      onChange={(e) => setForm({ ...form, message: e.target.value })}
+                      style={{
+                        width: "100%", padding: "10px 13px", border: "1px solid #CBD5E1",
+                        borderRadius: 9, fontSize: 13, color: "#0F172A", outline: "none",
+                        fontFamily: "'Inter', sans-serif", resize: "vertical",
+                      }}
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={status === "submitting"}
+                    className="contact-btn-primary"
+                    style={{ width: "100%", justifyContent: "center", marginTop: 4, borderRadius: 9, padding: "12px 20px", fontSize: 14 }}
+                  >
+                    {status === "submitting" ? "Submitting..." : status === "success" ? "Message Sent ✓" : "Send Support Request"}
+                  </button>
+                </form>
               </div>
-            </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 5: TECHNICAL SUPPORT GUIDELINES
+         ═══════════════════════════════════════════════════════════════════ */}
+      <section style={{ padding: "64px 6%", background: "#FFFFFF" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+          {/* Headings from Prompt */}
+          <div style={{ textAlign: "center", marginBottom: 36 }}>
+            <div
+              style={{
+                display: "inline-block",
+                background: "#D1FAE5",
+                color: "#059669",
+                padding: "4px 12px",
+                borderRadius: 40,
+                fontSize: 10.5,
+                fontWeight: 800,
+                letterSpacing: "1px",
+                marginBottom: 12,
+                textTransform: "uppercase",
+              }}
+            >
+              Investigation Details
+            </div>
+            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+              Technical <span style={{ color: "#16A34A" }}>Support</span>
+            </h2>
+
+            <p style={{ fontSize: 13.5, color: "#64748B", maxWidth: 680, margin: "0 auto", lineHeight: 1.68 }}>
+              If you&apos;re reporting a technical problem, providing the following information can help us investigate it faster:
+            </p>
           </div>
 
-          {/* ═══ OFFICE VISIT SECTION ═══ */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24, marginTop: 44, borderTop: "1px solid #F1F5F9", paddingTop: 56, textAlign: "left" }}>
-            
-            {/* Visit Us Address */}
-            <div style={{ background: "#FAFAFA", border: "1px solid #E2E8F0", borderRadius: 16, padding: "28px", transition: "all 0.3s ease" }} className="hover-lift">
-              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-                <div style={{ width: 36, height: 36, borderRadius: 10, background: "#F0FDF4", border: "1px solid #BBF7D0", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <FiMapPin style={{ color: "#16A34A", width: 16, height: 16 }} />
+          {/* 5 Technical Questions Cards from Prompt */}
+          <div className="grid-col-5">
+            {TECH_GUIDELINES.map((t, idx) => (
+              <div
+                key={idx}
+                className="contact-glass-card"
+                style={{
+                  padding: 18,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  animationDelay: `${idx * 45}ms`,
+                }}
+              >
+                <div>
+                  <span style={{ fontSize: 11, fontWeight: 900, color: "#16A34A", background: "#F0FDF4", padding: "3px 8px", borderRadius: 12, display: "inline-block", marginBottom: 8 }}>
+                    Question {idx + 1}
+                  </span>
+                  <h3 style={{ fontSize: 14, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>
+                    {t.q}
+                  </h3>
+                  <p style={{ fontSize: 12, color: "#64748B", lineHeight: 1.55 }}>
+                    {t.a}
+                  </p>
                 </div>
-                <span style={{ fontSize: 16, fontWeight: 800, color: "#0F172A" }}>Visit Us</span>
               </div>
-              <p style={{ fontSize: 14.5, fontWeight: 700, color: "#334155", margin: "0 0 4px" }}>MessBee</p>
-              <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.7, margin: "0 0 16px" }}>
-                <br />
-                510, Devika Tower, Chander Nagar, Ghaziabad, Uttar Pradesh – 201011, India
-              </p>
-              <p style={{ fontSize: 13.5, color: "#475569", margin: "0 0 6px" }}>
-                <FiPhone style={{ display: "inline", verticalAlign: "middle", marginRight: 6, color: "#16A34A" }} /> 0120-2611111, +91-9217742081
-              </p>
-              <p style={{ fontSize: 13.5, color: "#475569", margin: 0 }}>
-                <FiMail style={{ display: "inline", verticalAlign: "middle", marginRight: 6, color: "#16A34A" }} /> support@messbee.com
-              </p>
-            </div>
-
-            {/* Connect With MessBee */}
-            <div style={{ background: "#FAFAFA", border: "1px solid #E2E8F0", borderRadius: 16, padding: "28px", transition: "all 0.3s ease" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-                <div style={{ width: 36, height: 36, borderRadius: 10, background: "#F0FDF4", border: "1px solid #BBF7D0", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <FiShare2 style={{ color: "#16A34A", width: 16, height: 16 }} />
-                </div>
-                <span style={{ fontSize: 16, fontWeight: 800, color: "#0F172A" }}>Connect With MessBee</span>
-              </div>
-              <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.7, marginBottom: 16 }}>
-                Follow MessBee for product updates, business insights, and company news.
-              </p>
-              
-              {/* Social Channels List */}
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 18 }}>
-                {["LinkedIn", "Facebook", "Instagram", "YouTube", "X"].map((social) => (
-                  <span key={social} style={{
-                    fontSize: 12.5, fontWeight: 600, color: "#166534",
-                    background: "#DCFCE7", border: "1px solid #86EFAC",
-                    borderRadius: 20, padding: "5px 12px", cursor: "pointer",
-                    transition: "all 0.2s"
-                  }} onMouseOver={e => { e.currentTarget.style.background = "#16A34A"; e.currentTarget.style.color = "#FFF"; }} onMouseOut={e => { e.currentTarget.style.background = "#DCFCE7"; e.currentTarget.style.color = "#166534"; }}>{social}</span>
-                ))}
-              </div>
-              <p style={{ fontSize: 13.5, color: "#475569", margin: 0 }}>
-                <FiMail style={{ display: "inline", verticalAlign: "middle", marginRight: 6, color: "#16A34A" }} /> hello@messbee.com
-              </p>
-            </div>
-
-            {/* Product Help */}
-            <div style={{ background: "#FAFAFA", border: "1px solid #E2E8F0", borderRadius: 16, padding: "28px", transition: "all 0.3s ease" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-                <div style={{ width: 36, height: 36, borderRadius: 10, background: "#F0FDF4", border: "1px solid #BBF7D0", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <FiHelpCircle style={{ color: "#16A34A", width: 16, height: 16 }} />
-                </div>
-                <span style={{ fontSize: 16, fontWeight: 800, color: "#0F172A" }}>Looking for Product Help?</span>
-              </div>
-              <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.7, marginBottom: 16 }}>
-                If you're already a MessBee customer and need technical or account assistance, the Help Center may be the quickest place to find an answer.
-              </p>
-              
-              <div style={{ display: "flex", gap: 12 }}>
-                <button className="contact-btn" style={{ fontSize: 12.5, padding: "8px 16px", margin: 0 }} onClick={() => document.getElementById("faq-section")?.scrollIntoView({ behavior: "smooth" })}>
-                  Visit FAQs
-                </button>
-                <button className="contact-btn-secondary" style={{ fontSize: 12.5, padding: "8px 16px", margin: 0 }} onClick={() => window.location.href = "mailto:support@messbee.com"}>
-                  Contact Support
-                </button>
-              </div>
-            </div>
-
+            ))}
           </div>
+        </div>
+      </section>
 
-          {/* ═══ FAQ SECTION ═══ */}
-          <div id="faq-section" style={{ marginTop: 80, borderTop: "1px solid #F1F5F9", paddingTop: 46 }}>
-            <div style={{ textAlign: "center", marginBottom: 30 }}>
-              <p style={{ fontSize: 12, fontWeight: 700, color: "#16A34A", textTransform: "uppercase", letterSpacing: "1.5px", marginBottom: 10 }}>FAQ</p>
-              <h2 style={{ fontSize: "clamp(26px, 3vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1.2px", margin: 0 }}>
-                Frequently Asked <span style={{ color: "#16A34A" }}>Questions</span>
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 6: BUSINESS & PARTNERSHIP ENQUIRIES
+         ═══════════════════════════════════════════════════════════════════ */}
+      <section style={{ padding: "64px 6%", background: "#FAFAFA" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+          <div
+            style={{
+              background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
+              borderRadius: 22,
+              padding: "48px 40px",
+              color: "#FFFFFF",
+              position: "relative",
+              overflow: "hidden",
+              border: "1px solid rgba(52, 211, 153, 0.25)",
+              boxShadow: "0 20px 50px rgba(2, 44, 34, 0.35)",
+            }}
+          >
+            <div style={{ maxWidth: 840, position: "relative", zIndex: 1 }}>
+              <div
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 8,
+                  background: "rgba(22,163,74,0.15)",
+                  border: "1px solid rgba(22,163,74,0.3)",
+                  borderRadius: 40,
+                  padding: "4px 12px",
+                  marginBottom: 16,
+                }}
+              >
+                <span style={{ fontSize: 10.5, fontWeight: 800, color: "#4ADE80" }}>Partnerships</span>
+              </div>
+
+              {/* Title from Prompt */}
+              <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, marginBottom: 14, letterSpacing: "-1px" }}>
+                Business &amp; Partnership Enquiries
               </h2>
-            </div>
-            
-            <div style={{ maxWidth: 860, margin: "0 auto" }}>
-              {FAQS.map((faq, i) => (
-                <FaqItem key={i} {...faq} />
-              ))}
-            </div>
-          </div>
 
-          {/* ═══ JOIN US / TALK TO MESSBEE SECTION ═══ */}
-          <div style={{ marginTop: 80, background: "linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%)", border: "1px solid #BBF7D0", borderRadius: 24, padding: "48px", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 32, textAlign: "left" }}>
-            <div style={{ flex: "1 1 400px" }}>
-              <h2 style={{ fontSize: "clamp(22px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 10 }}>
-                We’re Ready to <span style={{ color: "#16A34A" }}>Hear From You</span>
-              </h2>
-              <p style={{ fontSize: 14.5, color: "#166534", lineHeight: 1.7, margin: 0 }}>
-                Whether you're starting your digital journey, looking to improve your existing business operations or exploring a partnership with MessBee, we're happy to hear from you. Have a question? Start the conversation.
+              {/* Paragraph from Prompt */}
+              <p style={{ fontSize: 13.5, color: "#94A3B8", lineHeight: 1.7, marginBottom: 24 }}>
+                Looking to work with MessBee, discuss a partnership or explore a business integration? Please use the appropriate business enquiry channel provided on the Contact Us / Partners page.
               </p>
-            </div>
-            
-            <div style={{ display: "flex", gap: 14, alignItems: "center" }}>
-              <button className="contact-btn" style={{ margin: 0 }} onClick={() => document.getElementById("enquiry-form")?.scrollIntoView({ behavior: "smooth" })}>
-                <FiSend style={{ width: 14, height: 14 }} /> Send an Enquiry
-              </button>
-              <button className="contact-btn-secondary" style={{ background: "#FFFFFF", margin: 0 }} onClick={() => window.location.href = "mailto:support@messbee.com"}>
-                Contact Support
+
+              {/* CTA from Prompt */}
+              <button className="contact-btn-primary" onClick={handleBusinessEnquiries}>
+                Business Enquiries
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
               </button>
             </div>
           </div>
+        </div>
+      </section>
 
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 7: A BETTER SUPPORT EXPERIENCE (FINAL CALLOUT)
+         ═══════════════════════════════════════════════════════════════════ */}
+      <section
+        style={{
+          padding: "68px 6%",
+          background: "linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%)",
+          borderTop: "1px solid #BBF7D0",
+          borderBottom: "1px solid #BBF7D0",
+        }}
+      >
+        <div style={{ maxWidth: 860, margin: "0 auto", textAlign: "center" }}>
+          {/* Headings from Prompt */}
+          <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 14 }}>
+            A Better Support Experience Starts With the Right Information
+          </h2>
+
+          <p style={{ fontSize: 15.5, fontWeight: 800, color: "#16A34A", marginBottom: 12 }}>
+            We want support conversations to be straightforward.
+          </p>
+
+          <p style={{ fontSize: 13.5, color: "#374151", lineHeight: 1.68, marginBottom: 20, maxWidth: 700, margin: "0 auto 20px" }}>
+            Providing accurate information about your issue helps our team understand the problem and provide more relevant guidance.
+          </p>
+
+          <div style={{ fontSize: 16.5, fontWeight: 900, color: "#15803D", marginBottom: 26, letterSpacing: "-0.3px" }}>
+            Tell us what you need help with. We&apos;ll take it from there.
+          </div>
+
+          <button
+            className="contact-btn-primary"
+            onClick={() => document.getElementById("contact-form-section")?.scrollIntoView({ behavior: "smooth" })}
+            style={{ fontSize: 14, padding: "13px 30px" }}
+          >
+            Contact Support
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 8: FREQUENTLY ASKED QUESTIONS
+         ═══════════════════════════════════════════════════════════════════ */}
+      <section style={{ padding: "64px 6%", background: "#FAFAFA" }}>
+        <div style={{ maxWidth: 820, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 36 }}>
+            <div
+              style={{
+                display: "inline-block",
+                background: "#D1FAE5",
+                color: "#059669",
+                padding: "4px 12px",
+                borderRadius: 40,
+                fontSize: 10.5,
+                fontWeight: 800,
+                letterSpacing: "1px",
+                marginBottom: 12,
+                textTransform: "uppercase",
+              }}
+            >
+              FAQ
+            </div>
+            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+              Frequently Asked <span style={{ color: "#16A34A" }}>Questions</span>
+            </h2>
+          </div>
+
+          {SUPPORT_FAQS.map((faq, idx) => (
+            <FaqItem key={idx} {...faq} />
+          ))}
         </div>
       </section>
 

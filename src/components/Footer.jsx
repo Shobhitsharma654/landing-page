@@ -13,18 +13,18 @@ const PRODUCT_LINKS = [
 ];
 
 const SOLUTIONS_LINKS = [
-  { label: "Small & Medium Businesses", path: "/solutions" },
-  { label: "Retail & Local Businesses", path: "/solutions" },
-  { label: "E-commerce",               path: "/solutions" },
-  { label: "Service Businesses",       path: "/solutions" },
+  { label: "Small & Medium Businesses", path: "/solutions/small-medium-businesses" },
+  { label: "Retail & Local Businesses", path: "/solutions/retail-local-businesses" },
+  { label: "E-commerce",               path: "/solutions/e-commerce" },
+  { label: "Service Businesses",       path: "/solutions/service-businesses" },
 ];
 
 const RESOURCES_LINKS = [
-  { label: "Business Library",  path: "/resources" },
-  { label: "Help Center",       path: "/contact" },
-  { label: "Blog",              path: "/resources" },
-  { label: "FAQs",              path: "/faq" },
-  { label: "Contact Support",   path: "/contact" },
+  { label: "Business Library",  path: "/resources/business-library" },
+  { label: "Help Center",       path: "/resources/help-center" },
+  { label: "Blog",              path: "/resources/blog" },
+  { label: "FAQs",              path: "/resources/faqs" },
+  { label: "Contact Support",   path: "/resources/contact-support" },
 ];
 
 const LEGAL_LINKS = [

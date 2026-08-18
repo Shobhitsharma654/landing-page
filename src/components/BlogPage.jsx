@@ -1,0 +1,1200 @@
+import React, { useState, useEffect } from "react";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+import { useNavigate } from "react-router-dom";
+import defaultLogo from "../assets/logo.jpeg";
+
+/* ═══════════════════════════════════════════════════════════════════════
+   MessBee — Blog Page Component
+   Official MessBee logo in Hero graphic.
+   Strictly adheres ONLY to the text provided in the user prompt.
+   Unified, cohesive emerald design system across all sections & cards.
+   Same dark forest green gradient (#14532D -> #022C22) & typography.
+   Fully responsive across all laptop, tablet, and mobile displays.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+// 1. Explore Business Topics (7 Topics from prompt)
+const BUSINESS_TOPICS = [
+  {
+    title: "Business Growth",
+    desc: "Practical ideas for attracting customers, improving operations and building a stronger foundation for long-term business growth.",
+    icon: "🚀",
+    subhead: "Explore topics such as:",
+    bullets: [
+      "Customer acquisition",
+      "Business planning",
+      "Customer retention",
+      "Digital transformation",
+      "Business productivity",
+      "Growth strategies",
+    ],
+  },
+  {
+    title: "CRM & Customer Management",
+    desc: "Your customer information becomes more valuable when it is organized and easy to use. Learn how businesses can use CRM tools to manage customers, leads, conversations and follow-ups more effectively.",
+    icon: "📊",
+    subhead: "Topics include:",
+    bullets: [
+      "CRM basics",
+      "Lead management",
+      "Customer segmentation",
+      "Customer profiles",
+      "Sales pipeline",
+      "Customer retention",
+      "Follow-up strategies",
+    ],
+  },
+  {
+    title: "WhatsApp Business",
+    desc: "WhatsApp is an important communication channel for many businesses in India. Learn about WhatsApp Business, customer communication, messaging workflows and responsible business use.",
+    icon: "💬",
+    subhead: "Topics include:",
+    bullets: [
+      "WhatsApp Business Platform",
+      "Business messaging",
+      "Customer communication",
+      "Message templates",
+      "WhatsApp automation",
+      "Customer engagement",
+      "WhatsApp marketing",
+      "Meta/WhatsApp policy updates",
+    ],
+  },
+  {
+    title: "Marketing & Customer Engagement",
+    desc: "Marketing is not only about reaching more people. It is also about reaching the right customers with relevant communication. Explore practical ideas for planning campaigns, improving engagement and building better customer journeys.",
+    icon: "📢",
+    subhead: "Topics include:",
+    bullets: [
+      "Marketing automation",
+      "Customer journeys",
+      "Lead nurturing",
+      "Email marketing",
+      "SMS marketing",
+      "Customer re-engagement",
+      "Campaign planning",
+      "Customer retention",
+    ],
+  },
+  {
+    title: "AI & Automation",
+    desc: "AI and automation are becoming useful parts of everyday business operations. Our articles explain where these technologies can help, where human involvement is still important and how businesses can introduce automation responsibly.",
+    icon: "🤖",
+    subhead: "Topics include:",
+    bullets: [
+      "AI for business",
+      "AI customer support",
+      "AI chatbots",
+      "Business automation",
+      "Workflow automation",
+      "AI-assisted marketing",
+      "Productivity automation",
+      "Responsible AI",
+    ],
+  },
+  {
+    title: "Digital Commerce",
+    desc: "Customers increasingly discover products and services online before contacting or purchasing from a business. Learn about digital storefronts, online customer journeys and ways businesses can create a stronger digital presence.",
+    icon: "🛍️",
+    subhead: "Topics include:",
+    bullets: [
+      "Digital stores",
+      "Online catalogues",
+      "E-commerce",
+      "Customer journeys",
+      "Digital selling",
+      "Online customer engagement",
+      "Product discovery",
+    ],
+  },
+  {
+    title: "Small & Local Business",
+    desc: "Small businesses often have different challenges from large enterprises. Limited teams, multiple responsibilities and changing customer expectations require practical solutions.",
+    icon: "🏪",
+    subhead: "Explore ideas specifically relevant to:",
+    bullets: [
+      "Retail businesses",
+      "Local businesses",
+      "Service providers",
+      "Professional businesses",
+      "Startups",
+      "Growing SMEs",
+      "E-commerce businesses",
+    ],
+  },
+];
+
+// 2. Recommended Article Categories (5 items from prompt)
+const RECOMMENDED_CATEGORIES = [
+  {
+    title: "How-To Guides",
+    desc: "Step-by-step information for using digital tools and improving business processes.",
+    icon: "📖",
+  },
+  {
+    title: "Business Insights",
+    desc: "Practical ideas around customers, marketing, sales and growth.",
+    icon: "💡",
+  },
+  {
+    title: "Technology",
+    desc: "Understand how CRM, AI, automation and digital commerce can affect everyday business operations.",
+    icon: "⚙️",
+  },
+  {
+    title: "Industry Updates",
+    desc: "Important developments in business technology and supported platforms.",
+    icon: "🌐",
+  },
+  {
+    title: "Product Updates",
+    desc: "News about new MessBee features, improvements and capabilities.",
+    icon: "🔔",
+  },
+];
+
+// 3. Guides That Help You Take Action (4 framework steps from prompt)
+const ACTION_GUIDES = [
+  {
+    q: "What is it?",
+    desc: "Understand the technology, concept or business problem.",
+    icon: "❓",
+  },
+  {
+    q: "Why does it matter?",
+    desc: "See how it can affect your business.",
+    icon: "💡",
+  },
+  {
+    q: "When should you use it?",
+    desc: "Understand where the solution may actually be useful.",
+    icon: "⏰",
+  },
+  {
+    q: "How can you get started?",
+    desc: "Follow practical steps and examples where appropriate.",
+    icon: "🚀",
+  },
+];
+
+// 4. For Business Owners & Teams (5 audience roles from prompt)
+const AUDIENCE_ROLES = [
+  {
+    role: "Business Owners",
+    desc: "Understand tools and strategies that can help you manage and grow your business.",
+    icon: "👔",
+  },
+  {
+    role: "Marketing Teams",
+    desc: "Find ideas for campaigns, customer engagement and marketing automation.",
+    icon: "📢",
+  },
+  {
+    role: "Sales Teams",
+    desc: "Learn about lead management, customer follow-ups and sales workflows.",
+    icon: "🎯",
+  },
+  {
+    role: "Customer Support Teams",
+    desc: "Explore ways to organize customer communication and improve response workflows.",
+    icon: "🎧",
+  },
+  {
+    role: "Technology Teams",
+    desc: "Understand integrations, automation, APIs and business technology from a practical perspective.",
+    icon: "💻",
+  },
+];
+
+// 5. Why Read the MessBee Blog? (5 Pillars from prompt)
+const WHY_READ_BLOG = [
+  {
+    title: "Practical Content",
+    desc: "We focus on information that can be useful in real business situations.",
+    icon: "📌",
+  },
+  {
+    title: "Easy to Understand",
+    desc: "Technical topics are explained in straightforward language wherever possible.",
+    icon: "📝",
+  },
+  {
+    title: "Business First",
+    desc: "Technology is discussed in terms of how it can solve a business problem—not simply because it is a new technology.",
+    icon: "💼",
+  },
+  {
+    title: "India-Relevant",
+    desc: "Where appropriate, content considers the Indian business environment, customer behaviour and applicable requirements.",
+    icon: "🇮🇳",
+  },
+  {
+    title: "Regularly Updated",
+    desc: "Important articles may be reviewed and updated when products, platforms, technologies or requirements change.",
+    icon: "🔄",
+  },
+];
+
+// 6. Popular Searches (13 tags from prompt)
+const POPULAR_SEARCHES = [
+  "CRM for small businesses",
+  "WhatsApp Business for businesses",
+  "Marketing automation",
+  "AI for small businesses",
+  "Customer engagement",
+  "Lead management",
+  "Business automation",
+  "Digital commerce",
+  "E-commerce marketing",
+  "Customer retention",
+  "Local business marketing",
+  "SME technology",
+  "Digital transformation",
+];
+
+// 7. Frequently Asked Questions (6 items from prompt)
+const BLOG_FAQS = [
+  {
+    q: "What is the MessBee Blog?",
+    a: "The MessBee Blog is a collection of business articles, guides, insights and technology resources covering CRM, WhatsApp Business, marketing, AI, automation, digital commerce and business growth.",
+  },
+  {
+    q: "Who can read the MessBee Blog?",
+    a: "The content is intended for business owners, entrepreneurs, marketing and sales teams, customer support professionals and technology teams.",
+  },
+  {
+    q: "Is the MessBee Blog only for MessBee customers?",
+    a: "No. Publicly available articles can be useful for businesses whether or not they currently use MessBee.",
+  },
+  {
+    q: "What topics does the Blog cover?",
+    a: "The main topics include CRM, WhatsApp Business, marketing automation, AI, business automation, digital commerce, customer engagement and small business growth.",
+  },
+  {
+    q: "Does MessBee provide legal or professional advice through its Blog?",
+    a: "No. Blog content is provided for general informational purposes and should not be treated as legal, financial, medical or other professional advice.",
+  },
+  {
+    q: "How often will the Blog be updated?",
+    a: "New articles and updates can be published as new topics, product developments and relevant business information become available.",
+  },
+];
+
+/* ── FAQ Accordion Item Component ── */
+const FaqItem = ({ q, a }) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <div
+      onClick={() => setOpen(!open)}
+      style={{
+        background: "#FFFFFF",
+        border: `1px solid ${open ? "#BBF7D0" : "#E2E8F0"}`,
+        borderRadius: 14,
+        padding: "16px 20px",
+        cursor: "pointer",
+        transition: "all 0.25s ease",
+        boxShadow: open ? "0 6px 20px rgba(22,163,74,0.06)" : "0 2px 4px rgba(0,0,0,0.01)",
+        marginBottom: 10,
+      }}
+    >
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 14 }}>
+        <span style={{ fontSize: 13.5, fontWeight: 800, color: open ? "#16A34A" : "#0F172A", lineHeight: 1.4 }}>{q}</span>
+        <span
+          style={{
+            width: 26,
+            height: 26,
+            borderRadius: "50%",
+            background: open ? "#16A34A" : "#F1F5F9",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexShrink: 0,
+            transition: "all 0.25s ease",
+            transform: open ? "rotate(180deg)" : "rotate(0deg)",
+          }}
+        >
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke={open ? "#FFFFFF" : "#64748B"} strokeWidth="2.5" strokeLinecap="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </span>
+      </div>
+      {open && (
+        <p style={{ fontSize: 13, color: "#475569", lineHeight: 1.7, margin: "12px 0 0", paddingRight: 24, borderTop: "1px solid #F1F5F9", paddingTop: 10 }}>
+          {a}
+        </p>
+      )}
+    </div>
+  );
+};
+
+/* ═══════════════════════════════════════════════════════════════════
+   MAIN BLOG PAGE COMPONENT
+   ═══════════════════════════════════════════════════════════════════ */
+const BlogPage = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const handleExplore = () => {
+    const el = document.getElementById("explore-topics");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <div style={{ fontFamily: "'Inter', sans-serif", color: "#0F172A", background: "#FFFFFF" }}>
+      {/* Dynamic CSS Styling & Media Queries matching Solution/Resource Pages */}
+      <style>{`
+        .blog-glass-card {
+          background: #FFFFFF;
+          border: 1px solid #E2E8F0;
+          border-radius: 16px;
+          transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+          box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+        .blog-glass-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 14px 32px rgba(22, 163, 74, 0.08);
+          border-color: #BBF7D0 !important;
+        }
+
+        .blog-btn-primary {
+          background: linear-gradient(135deg, #16A34A 0%, #15803D 100%);
+          color: #FFFFFF;
+          border: none;
+          border-radius: 12px;
+          padding: 12px 24px;
+          font-size: 13.5px;
+          font-weight: 800;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          box-shadow: 0 4px 14px rgba(22, 163, 74, 0.3);
+        }
+        .blog-btn-primary:hover {
+          background: linear-gradient(135deg, #15803D 0%, #166534 100%);
+          transform: translateY(-1.5px);
+          box-shadow: 0 6px 20px rgba(22, 163, 74, 0.4);
+        }
+
+        .blog-hero-row {
+          display: flex;
+          align-items: center;
+          gap: 48px;
+        }
+
+        .topics-auto-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+          gap: 22px;
+        }
+
+        .flex-auto-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+          gap: 18px;
+        }
+
+        .action-auto-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+          gap: 18px;
+        }
+
+        /* Large Laptops / Desktops (1440px +) */
+        @media (min-width: 1440px) {
+          .blog-hero-row { gap: 60px; }
+          .topics-auto-grid { gap: 26px; }
+        }
+
+        /* Small Laptops & Tablets (under 1024px) */
+        @media (max-width: 1023px) {
+          .blog-hero-row { flex-direction: column !important; gap: 32px; }
+          .topics-auto-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+        }
+
+        @keyframes auraPulse {
+          0%, 100% { transform: scale(1); opacity: 0.4; }
+          50% { transform: scale(1.08); opacity: 0.8; }
+        }
+        .pulse-aura {
+          animation: auraPulse 3.5s ease-in-out infinite;
+        }
+      `}</style>
+
+      {/* SEO Title & Meta Description */}
+      <title>MessBee Blog | Business, CRM, WhatsApp, AI & Marketing Insights</title>
+      <meta
+        name="description"
+        content="Explore the MessBee Blog for practical business guides and insights on CRM, WhatsApp Business, marketing automation, AI, digital commerce and customer engagement."
+      />
+      <link rel="canonical" href="https://messbee.com/resources/blog" />
+
+      <Navbar />
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 1: HERO (Uniform Dark Forest Green Branding)
+         ═══════════════════════════════════════════════════════════════════ */}
+      <section
+        style={{
+          marginTop: 70,
+          padding: "56px 6% 64px",
+          position: "relative",
+          background: "linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)",
+          overflow: "hidden",
+          borderBottom: "1px solid #F1F5F9",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: -180,
+            right: -120,
+            width: 500,
+            height: 500,
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(22,163,74,0.06) 0%, rgba(255,255,255,0) 70%)",
+            pointerEvents: "none",
+          }}
+        />
+
+        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+          <div className="blog-hero-row">
+            {/* Left Column: Text Copy */}
+            <div style={{ flex: 1.15 }}>
+              <div
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 6,
+                  background: "#D1FAE5",
+                  color: "#059669",
+                  padding: "4px 12px",
+                  borderRadius: 20,
+                  fontSize: 11,
+                  fontWeight: 900,
+                  letterSpacing: "0.5px",
+                  textTransform: "uppercase",
+                  marginBottom: 16,
+                  border: "1px solid #A7F3D0",
+                }}
+              >
+                MessBee Blog
+              </div>
+
+              {/* H1 Heading */}
+              <h1
+                style={{
+                  fontSize: "clamp(24px, 2.6vw, 36px)",
+                  fontWeight: 900,
+                  color: "#0F172A",
+                  lineHeight: 1.18,
+                  letterSpacing: "-1.2px",
+                  marginBottom: 12,
+                }}
+              >
+                MessBee Blog – <span style={{ color: "#16A34A" }}>Practical Insights for Modern Businesses</span>
+              </h1>
+
+              <p style={{ fontSize: 16, fontWeight: 800, color: "#16A34A", marginBottom: 16, letterSpacing: "-0.2px" }}>
+                Practical Ideas, Guides &amp; Insights for Growing Businesses
+              </p>
+
+              <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 12 }}>
+                Running a business means dealing with customers, leads, marketing, technology and everyday operations. As your business grows, choosing the right tools and processes becomes increasingly important.
+              </p>
+
+              <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 12 }}>
+                The MessBee Blog brings together practical business advice, technology insights, how-to guides and product-related information to help business owners and teams make better decisions.
+              </p>
+
+              <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 20 }}>
+                From CRM and WhatsApp Business to marketing automation, AI, digital commerce and customer engagement, explore ideas that can help you build a more organized and connected business.
+              </p>
+
+              <div style={{ fontSize: 16, fontWeight: 900, color: "#15803D", marginBottom: 24, letterSpacing: "-0.3px" }}>
+                Read. Learn. Apply. Grow.
+              </div>
+
+              <div>
+                <button className="blog-btn-primary" onClick={handleExplore}>
+                  Explore Latest Articles
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            {/* Right Column: Hero Graphic Box with Dark Forest Green Gradient */}
+            <div style={{ flex: 0.85, minWidth: 320, position: "relative" }}>
+              <div
+                style={{
+                  background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
+                  borderRadius: 24,
+                  padding: "28px 24px",
+                  boxShadow: "0 20px 50px rgba(2, 44, 34, 0.4)",
+                  border: "1px solid rgba(52, 211, 153, 0.25)",
+                  color: "#FFFFFF",
+                  position: "relative",
+                  overflow: "hidden",
+                }}
+              >
+                <div
+                  className="pulse-aura"
+                  style={{
+                    position: "absolute",
+                    top: "20%",
+                    left: "25%",
+                    width: 240,
+                    height: 240,
+                    borderRadius: "50%",
+                    background: "radial-gradient(circle, rgba(52,211,153,0.3) 0%, rgba(52,211,153,0) 70%)",
+                    pointerEvents: "none",
+                  }}
+                />
+
+                {/* Header featuring Official MessBee Logo */}
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20, borderBottom: "1px solid rgba(255,255,255,0.12)", paddingBottom: 14 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                    <div style={{ width: 34, height: 34, borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.2)", flexShrink: 0, background: "#FFFFFF", padding: 2 }}>
+                      <img src={defaultLogo} alt="MessBee" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+                    </div>
+                    <div>
+                      <div style={{ fontSize: 13, fontWeight: 900, color: "#FFFFFF" }}>MessBee Blog Insights</div>
+                      <div style={{ fontSize: 10, color: "#4ADE80", fontWeight: 700 }}>Practical Knowledge Hub</div>
+                    </div>
+                  </div>
+                  <span style={{ fontSize: 10, background: "rgba(52,211,153,0.2)", color: "#34D399", padding: "3px 10px", borderRadius: 20, fontWeight: 700, border: "1px solid rgba(52,211,153,0.3)" }}>
+                    Updated Weekly
+                  </span>
+                </div>
+
+                {/* Topic Nodes Grid */}
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 16 }}>
+                  {[
+                    { label: "Business Growth", icon: "🚀" },
+                    { label: "WhatsApp Guide", icon: "💬" },
+                    { label: "AI & Automation", icon: "🤖" },
+                    { label: "Digital Commerce", icon: "🛍️" },
+                  ].map((node, i) => (
+                    <div
+                      key={i}
+                      style={{
+                        background: "rgba(255,255,255,0.06)",
+                        border: "1px solid rgba(52,211,153,0.2)",
+                        borderRadius: 14,
+                        padding: 12,
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 4,
+                      }}
+                    >
+                      <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                        <span style={{ fontSize: 18 }}>{node.icon}</span>
+                        <span style={{ fontSize: 12, fontWeight: 800, color: "#FFFFFF" }}>{node.label}</span>
+                      </div>
+                      <span style={{ fontSize: 10, color: "#34D399", fontWeight: 700 }}>Actionable Ideas</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div style={{ background: "rgba(52,211,153,0.15)", border: "1px solid rgba(52,211,153,0.3)", borderRadius: 12, padding: 12, textAlign: "center" }}>
+                  <span style={{ fontSize: 11.5, fontWeight: 800, color: "#4ADE80" }}>
+                    Read. Learn. Apply. Grow.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 2: EXPLORE BUSINESS TOPICS (Organized Balanced Grid & Unified Emerald System)
+         ═══════════════════════════════════════════════════════════════════ */}
+      <section id="explore-topics" style={{ padding: "64px 6%", background: "#FFFFFF" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 44 }}>
+            <div
+              style={{
+                display: "inline-block",
+                background: "#D1FAE5",
+                color: "#059669",
+                padding: "4px 14px",
+                borderRadius: 20,
+                fontSize: 11,
+                fontWeight: 900,
+                letterSpacing: "0.5px",
+                textTransform: "uppercase",
+                marginBottom: 10,
+              }}
+            >
+              Categories &amp; Themes
+            </div>
+            <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+              Explore <span style={{ color: "#16A34A" }}>Business Topics</span>
+            </h2>
+          </div>
+
+          {/* 7 Business Topic Cards with Cohesive Palette */}
+          <div className="topics-auto-grid">
+            {BUSINESS_TOPICS.map((topic, idx) => (
+              <div
+                key={idx}
+                className="blog-glass-card"
+                style={{
+                  padding: 24,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  animationDelay: `${idx * 45}ms`,
+                  border: "1px solid #E2E8F0",
+                }}
+              >
+                <div>
+                  {/* Unified Header with Emerald Icon Box */}
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14 }}>
+                    <div
+                      style={{
+                        width: 40,
+                        height: 40,
+                        borderRadius: 12,
+                        background: "#F0FDF4",
+                        border: "1px solid #BBF7D0",
+                        color: "#16A34A",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: 22,
+                        flexShrink: 0,
+                      }}
+                    >
+                      {topic.icon}
+                    </div>
+                    <h3 style={{ fontSize: 16, fontWeight: 900, color: "#0F172A", lineHeight: 1.3 }}>
+                      {topic.title}
+                    </h3>
+                  </div>
+
+                  <p style={{ fontSize: 12.8, color: "#64748B", lineHeight: 1.62, marginBottom: 16 }}>
+                    {topic.desc}
+                  </p>
+
+                  <div style={{ fontSize: 11.5, fontWeight: 800, color: "#16A34A", marginBottom: 10, textTransform: "uppercase", letterSpacing: "0.4px" }}>
+                    {topic.subhead}
+                  </div>
+
+                  {/* Bullet Chips List */}
+                  <div style={{ display: "flex", flexDirection: "column", gap: 9, marginBottom: 16 }}>
+                    {topic.bullets.map((b, i) => (
+                      <div key={i} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                        <span style={{ color: "#16A34A", fontWeight: 900, fontSize: 12 }}>•</span>
+                        <span style={{ fontSize: 12.5, fontWeight: 700, color: "#334155" }}>{b}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Anchored Footer Bar for 100% uniform card sizing */}
+                <div
+                  style={{
+                    marginTop: "auto",
+                    borderTop: "1px solid #F1F5F9",
+                    paddingTop: 12,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <span style={{ fontSize: 11, fontWeight: 800, color: "#059669", background: "#D1FAE5", padding: "3px 10px", borderRadius: 20 }}>
+                    {topic.bullets.length} Key Topics
+                  </span>
+                  <span style={{ fontSize: 11.5, fontWeight: 800, color: "#16A34A" }}>
+                    Explore Guides ➔
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 3: FEATURED ARTICLES & LATEST FROM MESSBEE
+         ═══════════════════════════════════════════════════════════════════ */}
+      <section style={{ padding: "64px 6%", background: "#FAFAFA" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 44 }}>
+            <div
+              style={{
+                display: "inline-block",
+                background: "#D1FAE5",
+                color: "#059669",
+                padding: "4px 14px",
+                borderRadius: 20,
+                fontSize: 11,
+                fontWeight: 900,
+                letterSpacing: "0.5px",
+                textTransform: "uppercase",
+                marginBottom: 10,
+              }}
+            >
+              Featured Articles
+            </div>
+            <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 10 }}>
+              Latest From MessBee
+            </h2>
+            <p style={{ fontSize: 13.5, color: "#64748B", maxWidth: 640, margin: "0 auto" }}>
+              Stay updated with our latest business guides, product insights and technology articles.
+            </p>
+          </div>
+
+          <div style={{ fontSize: 13, fontWeight: 900, color: "#0F172A", marginBottom: 18, textAlign: "center", textTransform: "uppercase", letterSpacing: "0.5px" }}>
+            Recommended article categories:
+          </div>
+
+          {/* 5 Recommended Categories Grid - Unified Emerald Palette */}
+          <div className="flex-auto-grid">
+            {RECOMMENDED_CATEGORIES.map((cat, i) => (
+              <div
+                key={i}
+                className="blog-glass-card"
+                style={{
+                  padding: 20,
+                  border: "1px solid #E2E8F0",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  animationDelay: `${i * 45}ms`,
+                }}
+              >
+                <div>
+                  <div
+                    style={{
+                      width: 38,
+                      height: 38,
+                      borderRadius: 10,
+                      background: "#F0FDF4",
+                      border: "1px solid #BBF7D0",
+                      color: "#16A34A",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: 20,
+                      marginBottom: 12,
+                    }}
+                  >
+                    {cat.icon}
+                  </div>
+                  <h3 style={{ fontSize: 14.5, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>
+                    {cat.title}
+                  </h3>
+                  <p style={{ fontSize: 12, color: "#64748B", lineHeight: 1.55 }}>
+                    {cat.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 4: GUIDES THAT HELP YOU TAKE ACTION
+         ═══════════════════════════════════════════════════════════════════ */}
+      <section style={{ padding: "64px 6%", background: "#FFFFFF" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 44 }}>
+            <div
+              style={{
+                display: "inline-block",
+                background: "#D1FAE5",
+                color: "#059669",
+                padding: "4px 14px",
+                borderRadius: 20,
+                fontSize: 11,
+                fontWeight: 900,
+                letterSpacing: "0.5px",
+                textTransform: "uppercase",
+                marginBottom: 10,
+              }}
+            >
+              Structured Approach
+            </div>
+            <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+              Guides That Help You Take Action
+            </h2>
+            <p style={{ fontSize: 13.5, color: "#64748B", maxWidth: 680, margin: "0 auto 6px", lineHeight: 1.68 }}>
+              The MessBee Blog is not intended to be another collection of generic business articles.
+            </p>
+            <p style={{ fontSize: 13.5, fontWeight: 800, color: "#16A34A", maxWidth: 500, margin: "0 auto" }}>
+              Our goal is to explain:
+            </p>
+          </div>
+
+          {/* 4 Action Steps Grid - Unified Palette */}
+          <div className="action-auto-grid" style={{ marginBottom: 24 }}>
+            {ACTION_GUIDES.map((item, idx) => (
+              <div
+                key={idx}
+                className="blog-glass-card"
+                style={{
+                  padding: 22,
+                  animationDelay: `${idx * 50}ms`,
+                  borderLeft: "4px solid #16A34A",
+                }}
+              >
+                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+                  <div
+                    style={{
+                      width: 34,
+                      height: 34,
+                      borderRadius: 8,
+                      background: "#F0FDF4",
+                      border: "1px solid #BBF7D0",
+                      color: "#16A34A",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: 18,
+                      flexShrink: 0,
+                    }}
+                  >
+                    {item.icon}
+                  </div>
+                  <h3 style={{ fontSize: 15, fontWeight: 900, color: "#0F172A" }}>
+                    {item.q}
+                  </h3>
+                </div>
+                <p style={{ fontSize: 12.5, color: "#64748B", lineHeight: 1.6 }}>
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <p style={{ fontSize: 13, color: "#475569", textAlign: "center", fontWeight: 700 }}>
+            This keeps the content useful for business owners who may not have a technical background.
+          </p>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 5: FOR BUSINESS OWNERS & TEAMS
+         ═══════════════════════════════════════════════════════════════════ */}
+      <section style={{ padding: "64px 6%", background: "#FAFAFA" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 44 }}>
+            <div
+              style={{
+                display: "inline-block",
+                background: "#D1FAE5",
+                color: "#059669",
+                padding: "4px 14px",
+                borderRadius: 20,
+                fontSize: 11,
+                fontWeight: 900,
+                letterSpacing: "0.5px",
+                textTransform: "uppercase",
+                marginBottom: 10,
+              }}
+            >
+              Audience Focus
+            </div>
+            <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+              For Business Owners &amp; Teams
+            </h2>
+            <p style={{ fontSize: 13.5, color: "#64748B", maxWidth: 760, margin: "0 auto", lineHeight: 1.68 }}>
+              Whether you are running a local shop, managing an e-commerce brand, providing professional services or building a growing company, the MessBee Blog is designed to provide information that can be applied to real business situations.
+            </p>
+          </div>
+
+          {/* 5 Audience Cards - Unified Palette */}
+          <div className="flex-auto-grid">
+            {AUDIENCE_ROLES.map((aud, idx) => (
+              <div
+                key={idx}
+                className="blog-glass-card"
+                style={{
+                  padding: 20,
+                  border: "1px solid #E2E8F0",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  animationDelay: `${idx * 45}ms`,
+                }}
+              >
+                <div>
+                  <div
+                    style={{
+                      width: 40,
+                      height: 40,
+                      borderRadius: 12,
+                      background: "#F0FDF4",
+                      border: "1px solid #BBF7D0",
+                      color: "#16A34A",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: 22,
+                      marginBottom: 12,
+                    }}
+                  >
+                    {aud.icon}
+                  </div>
+                  <h3 style={{ fontSize: 14.5, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>
+                    {aud.role}
+                  </h3>
+                  <p style={{ fontSize: 12, color: "#64748B", lineHeight: 1.55 }}>
+                    {aud.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 6: WHY READ THE MESSBEE BLOG?
+         ═══════════════════════════════════════════════════════════════════ */}
+      <section style={{ padding: "64px 6%", background: "#FFFFFF" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 44 }}>
+            <div
+              style={{
+                display: "inline-block",
+                background: "#D1FAE5",
+                color: "#059669",
+                padding: "4px 14px",
+                borderRadius: 20,
+                fontSize: 11,
+                fontWeight: 900,
+                letterSpacing: "0.5px",
+                textTransform: "uppercase",
+                marginBottom: 10,
+              }}
+            >
+              Our Core Pillars
+            </div>
+            <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+              Why Read the <span style={{ color: "#16A34A" }}>MessBee Blog?</span>
+            </h2>
+          </div>
+
+          {/* 5 Reasons Grid - Unified Palette */}
+          <div className="flex-auto-grid">
+            {WHY_READ_BLOG.map((item, idx) => (
+              <div
+                key={idx}
+                className="blog-glass-card"
+                style={{
+                  padding: 20,
+                  animationDelay: `${idx * 45}ms`,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                }}
+              >
+                <div>
+                  <div
+                    style={{
+                      width: 38,
+                      height: 38,
+                      borderRadius: 10,
+                      background: "#F0FDF4",
+                      border: "1px solid #BBF7D0",
+                      color: "#16A34A",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: 20,
+                      marginBottom: 12,
+                    }}
+                  >
+                    {item.icon}
+                  </div>
+                  <h3 style={{ fontSize: 14.5, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>
+                    {item.title}
+                  </h3>
+                  <p style={{ fontSize: 12, color: "#64748B", lineHeight: 1.55 }}>
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 7: OUR APPROACH TO BUSINESS INFORMATION
+         ═══════════════════════════════════════════════════════════════════ */}
+      <section
+        style={{
+          padding: "64px 6%",
+          background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
+          color: "#FFFFFF",
+          borderTop: "1px solid rgba(52, 211, 153, 0.25)",
+          borderBottom: "1px solid rgba(52, 211, 153, 0.25)",
+        }}
+      >
+        <div style={{ maxWidth: 860, margin: "0 auto", textAlign: "center" }}>
+          <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#FFFFFF", letterSpacing: "-1px", marginBottom: 14 }}>
+            Our Approach to Business Information
+          </h2>
+
+          <p style={{ fontSize: 15.5, fontWeight: 800, color: "#4ADE80", marginBottom: 14 }}>
+            Technology and platform policies can change quickly.
+          </p>
+
+          <p style={{ fontSize: 13.5, color: "#94A3B8", lineHeight: 1.68, marginBottom: 14 }}>
+            Where an article discusses services such as Meta, WhatsApp, payment providers, APIs or regulatory requirements, readers should also refer to the relevant official source for the latest information.
+          </p>
+
+          <p style={{ fontSize: 13.5, color: "#94A3B8", lineHeight: 1.68, marginBottom: 20 }}>
+            MessBee does not present third-party policies or services as being under its control.
+          </p>
+
+          <div style={{ fontSize: 15, fontWeight: 900, color: "#4ADE80", letterSpacing: "-0.2px" }}>
+            This approach helps keep our content useful without making unsupported guarantees.
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 8: POPULAR SEARCHES
+         ═══════════════════════════════════════════════════════════════════ */}
+      <section style={{ padding: "64px 6%", background: "#FFFFFF" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 32 }}>
+            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 8 }}>
+              Popular Searches
+            </h2>
+            <p style={{ fontSize: 13.5, color: "#64748B" }}>
+              Visitors can explore the Blog by topics such as:
+            </p>
+          </div>
+
+          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 10, maxWidth: 960, margin: "0 auto" }}>
+            {POPULAR_SEARCHES.map((tag, idx) => (
+              <span
+                key={idx}
+                style={{
+                  background: "#F8FAFC",
+                  border: "1px solid #E2E8F0",
+                  borderRadius: 30,
+                  padding: "8px 16px",
+                  fontSize: 12.5,
+                  fontWeight: 700,
+                  color: "#334155",
+                  transition: "all 0.2s ease",
+                  cursor: "pointer",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = "#16A34A";
+                  e.currentTarget.style.color = "#16A34A";
+                  e.currentTarget.style.background = "#F0FDF4";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "#E2E8F0";
+                  e.currentTarget.style.color = "#334155";
+                  e.currentTarget.style.background = "#F8FAFC";
+                }}
+              >
+                • {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 9: START WITH WHAT YOUR BUSINESS NEEDS (FINAL CTA)
+         ═══════════════════════════════════════════════════════════════════ */}
+      <section
+        style={{
+          padding: "68px 6%",
+          background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
+          color: "#FFFFFF",
+          borderTop: "1px solid rgba(52, 211, 153, 0.25)",
+          borderBottom: "1px solid rgba(52, 211, 153, 0.25)",
+        }}
+      >
+        <div style={{ maxWidth: 860, margin: "0 auto", textAlign: "center" }}>
+          <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#FFFFFF", letterSpacing: "-1px", marginBottom: 14 }}>
+            Start With What Your Business Needs
+          </h2>
+
+          <p style={{ fontSize: 15.5, fontWeight: 800, color: "#4ADE80", marginBottom: 12 }}>
+            You don't need to adopt every new technology to build a better business.
+          </p>
+
+          <p style={{ fontSize: 13.5, color: "#94A3B8", lineHeight: 1.68, marginBottom: 12, maxWidth: 700, margin: "0 auto 12px" }}>
+            Start by understanding the problem you are trying to solve.
+          </p>
+
+          <p style={{ fontSize: 13.5, color: "#94A3B8", lineHeight: 1.68, marginBottom: 20, maxWidth: 700, margin: "0 auto 20px" }}>
+            Then explore the tools, processes and strategies that make sense for your business. The MessBee Blog is here to help you make that decision with better information.
+          </p>
+
+          <div style={{ fontSize: 16.5, fontWeight: 900, color: "#4ADE80", marginBottom: 26, letterSpacing: "-0.3px" }}>
+            Read Something Useful Today.
+          </div>
+
+          <button className="blog-btn-primary" onClick={handleExplore} style={{ fontSize: 14, padding: "13px 30px" }}>
+            Explore the Blog
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 10: FREQUENTLY ASKED QUESTIONS
+         ═══════════════════════════════════════════════════════════════════ */}
+      <section style={{ padding: "64px 6%", background: "#FFFFFF" }}>
+        <div style={{ maxWidth: 860, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 40 }}>
+            <div
+              style={{
+                display: "inline-block",
+                background: "#D1FAE5",
+                color: "#059669",
+                padding: "4px 12px",
+                borderRadius: 40,
+                fontSize: 10.5,
+                fontWeight: 800,
+                letterSpacing: "1px",
+                marginBottom: 12,
+                textTransform: "uppercase",
+              }}
+            >
+              Blog FAQs
+            </div>
+            <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+              Frequently Asked Questions
+            </h2>
+          </div>
+
+          <div>
+            {BLOG_FAQS.map((faq, idx) => (
+              <FaqItem key={idx} q={faq.q} a={faq.a} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default BlogPage;

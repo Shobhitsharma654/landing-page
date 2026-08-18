@@ -50,9 +50,10 @@ const ResourcesPage = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const categories = ["All", "Guides", "Videos", "API Docs", "Templates", "Product Updates"];
+  const categories = ["All", "Guides", "Videos", "API Docs", "Templates", "Product Updates", "FAQs"];
   const searchTags = [
     "Getting Started",
+    "FAQs",
     "API",
     "WhatsApp",
     "CRM",
@@ -74,7 +75,8 @@ const ResourcesPage = () => {
       readTime: "8 min read",
       icon: "🚀",
       badgeColor: "#16A34A",
-      badgeBg: "#E6F9EE"
+      badgeBg: "#E6F9EE",
+      link: "/docs"
     },
     {
       id: 2,
@@ -85,7 +87,8 @@ const ResourcesPage = () => {
       readTime: "12 min video",
       icon: "🎥",
       badgeColor: "#3B82F6",
-      badgeBg: "#EFF6FF"
+      badgeBg: "#EFF6FF",
+      link: "/docs"
     },
     {
       id: 3,
@@ -96,7 +99,8 @@ const ResourcesPage = () => {
       readTime: "15 min read",
       icon: "⚡",
       badgeColor: "#8B5CF6",
-      badgeBg: "#F3E8FF"
+      badgeBg: "#F3E8FF",
+      link: "/docs"
     },
     {
       id: 4,
@@ -107,7 +111,8 @@ const ResourcesPage = () => {
       readTime: "5 min read",
       icon: "💬",
       badgeColor: "#F59E0B",
-      badgeBg: "#FEF3C7"
+      badgeBg: "#FEF3C7",
+      link: "/docs"
     },
     {
       id: 5,
@@ -118,7 +123,8 @@ const ResourcesPage = () => {
       readTime: "4 min read",
       icon: "📢",
       badgeColor: "#EC4899",
-      badgeBg: "#FCE7F3"
+      badgeBg: "#FCE7F3",
+      link: "/docs"
     },
     {
       id: 6,
@@ -129,7 +135,20 @@ const ResourcesPage = () => {
       readTime: "10 min read",
       icon: "🛒",
       badgeColor: "#14B8A6",
-      badgeBg: "#CCFBF1"
+      badgeBg: "#CCFBF1",
+      link: "/docs"
+    },
+    {
+      id: 7,
+      category: "FAQs",
+      tag: "Help Center",
+      title: "MessBee FAQs – Products, Pricing, Meta & Support",
+      desc: "Find answers to common questions about MessBee CRM, WhatsApp Business, marketing automation, AI, Digital Store, pricing, security, privacy and support.",
+      readTime: "3 min read",
+      icon: "❓",
+      badgeColor: "#16A34A",
+      badgeBg: "#E6F9EE",
+      link: "/resources/faqs"
     }
   ];
 
@@ -170,6 +189,31 @@ const ResourcesPage = () => {
 
   return (
     <div style={{ fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", color: "#111827", background: "#FFFFFF", minHeight: "100vh" }}>
+      <style>{`
+        .res-hero-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 4vw;
+        }
+        /* Large Laptops / Desktops (1440px +) */
+        @media (min-width: 1440px) {
+          .res-hero-row { gap: 60px; }
+        }
+        /* Medium Laptops (1200px - 1439px) */
+        @media (max-width: 1439px) and (min-width: 1200px) {
+          .res-hero-row { gap: 40px; }
+        }
+        /* Small Laptops (1024px - 1199px) */
+        @media (max-width: 1199px) and (min-width: 1024px) {
+          .res-hero-row { gap: 32px; }
+        }
+        /* Compact Laptop / Tablet (under 1024px) */
+        @media (max-width: 1023px) {
+          .res-hero-row { flex-direction: column !important; gap: 40px; }
+        }
+      `}</style>
+
       {/* ═══════════════ NAVBAR ═══════════════ */}
       <Navbar />
 
@@ -207,7 +251,7 @@ const ResourcesPage = () => {
           pointerEvents: "none"
         }} />
 
-        <div style={{ maxWidth: 1280, margin: "0 auto", display: "flex", alignItems: "center", justify: "space-between", gap: "4vw", position: "relative", zIndex: 1, flexWrap: "wrap" }}>
+        <div className="res-hero-row" style={{ maxWidth: 1280, margin: "0 auto", position: "relative", zIndex: 1 }}>
           
           {/* Left Content Column */}
           <div style={{ flex: "1 1 540px", minWidth: 320 }}>
@@ -230,11 +274,11 @@ const ResourcesPage = () => {
 
             {/* Main Title */}
             <h1 style={{
-              fontSize: "clamp(36px, 4.5vw, 56px)",
-              fontWeight: 800,
-              lineHeight: 1.15,
+              fontSize: "clamp(28px, 2.9vw, 42px)",
+              fontWeight: 900,
+              lineHeight: 1.12,
               color: "#0F172A",
-              letterSpacing: "-1.5px",
+              letterSpacing: "-1px",
               marginBottom: 24
             }}>
               Everything You Need<br />
@@ -646,6 +690,7 @@ const ResourcesPage = () => {
                 {filteredResources.map((card) => (
                   <div
                     key={card.id}
+                    onClick={() => navigate(card.link || "/docs")}
                     style={{
                       background: "#FFFFFF",
                       border: "1.5px solid #F1F5F9",
@@ -1042,10 +1087,19 @@ const ResourcesPage = () => {
 
                   {/* Bullet list */}
                   <ul style={{ listStyle: "none", padding: 0, margin: "0 0 24px 0", display: "flex", flexDirection: "column", gap: 10 }}>
-                    {["Help Center", "FAQs", "Raise a Ticket", "System Status"].map((item, idx) => (
-                      <li key={idx} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13, fontWeight: 600, color: "#334155" }}>
+                    {[
+                      { name: "Help Center", path: "/docs" },
+                      { name: "FAQs", path: "/resources/faqs" },
+                      { name: "Raise a Ticket", path: "modal" },
+                      { name: "System Status", path: "/contact" }
+                    ].map((item, idx) => (
+                      <li
+                        key={idx}
+                        onClick={() => item.path === "modal" ? setShowSupportModal(true) : navigate(item.path)}
+                        style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13, fontWeight: 600, color: "#334155", cursor: "pointer" }}
+                      >
                         <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#F59E0B", display: "inline-block" }} />
-                        {item}
+                        {item.name}
                       </li>
                     ))}
                   </ul>
@@ -1053,7 +1107,7 @@ const ResourcesPage = () => {
 
                 {/* View All Button */}
                 <button
-                  onClick={() => navigate("/docs?section=whatsapp")}
+                  onClick={() => navigate("/resources/faqs")}
                   style={{
                     width: "100%",
                     padding: "12px 0",
@@ -1074,7 +1128,7 @@ const ResourcesPage = () => {
                   onMouseOver={(e) => e.currentTarget.style.background = "#FDE68A"}
                   onMouseOut={(e) => e.currentTarget.style.background = "#FEF3C7"}
                 >
-                  View All &nbsp;&gt;
+                  View FAQs &nbsp;&gt;
                 </button>
               </div>
             </div>
