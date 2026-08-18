@@ -222,32 +222,12 @@ const LandingPage = () => {
               MessBee is India's comprehensive Digital Business Operating System, powered by the Official WhatsApp Business API. We help businesses connect with customers at scale through WhatsApp Broadcasting, automated messaging, customer engagement, sales workflows, payments and AI-powered business automation all from one unified platform.
             </p>
 
-            <div style={{ display: "flex", gap: 16, marginBottom: 48 }}>
+            <div style={{ display: "flex", gap: 16, marginBottom: 20 }}>
               <button onClick={() => window.open((import.meta.env.VITE_ADMIN_URL || "http://localhost:5174") + "/signup", "_blank")} style={{ background: "#16A34A", color: "#FFF", border: "none", borderRadius: 40, padding: "8px 16px", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>Start Free</button>
               <button onClick={() => window.open((import.meta.env.VITE_ADMIN_URL || "http://localhost:5174") + "/login", "_blank")} style={{ background: "#111827", color: "#FFF", border: "none", borderRadius: 40, padding: "8px 16px", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", display: "flex", alignItems: "center", gap: 8 }}>
                 Book Demo
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
               </button>
-            </div>
-
-            {/* Trust stats */}
-            <div style={{ display: "flex", gap: 40 }}>
-              {[
-                { val: 35000, suf: "+", label: "Businesses" },
-                { val: 50, suf: "M+", label: "Customers Engaged" },
-                { val: 99.9, suf: "%", label: "Uptime" },
-              ].map((s, i) => (
-                <div key={i}>
-                  <div style={{ fontSize: 14, fontWeight: 800, color: "#0F172A" }}>
-                    {i === 2 ? "99.9%" : <><Counter target={s.val} />{s.suf}</>}
-                  </div>
-                  <div style={{ fontSize: 10, color: "#64748B", marginTop: 2, fontWeight: 500 }}>{s.label}</div>
-                </div>
-              ))}
-              <div>
-                <div style={{ fontSize: 14, fontWeight: 800, color: "#0F172A" }}>Pan India</div>
-                <div style={{ fontSize: 10, color: "#64748B", marginTop: 2, fontWeight: 500 }}>Trusted Across India</div>
-              </div>
             </div>
           </div>
 
@@ -261,6 +241,134 @@ const LandingPage = () => {
 
             <img src={heroDashboard} alt="Dashboard Preview" style={{ width: "115%", maxWidth: "none", height: "auto", objectFit: "contain", marginTop: "-30px", marginLeft: "15%", maskImage: "linear-gradient(to bottom, transparent 0%, black 15%)" }} />
           </div>
+        </div>
+      </section>
+
+      {/* ═══════════════ FEATURES STRIP BAR ═══════════════ */}
+      <section style={{ background: "#FFFFFF", padding: "10px 5% 35px 5%", borderBottom: "1px solid #F1F5F9" }}>
+        <div style={{
+          maxWidth: 1380,
+          margin: "0 auto",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          flexWrap: "wrap",
+          gap: "20px 24px"
+        }}>
+          {[
+            {
+              title: "CRM",
+              desc: "Manage relationships",
+              icon: (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="8" r="3.2" />
+                  <path d="M6 18c0-3 2.7-5 6-5s6 2 6 5" />
+                  <circle cx="4" cy="9" r="1.5" />
+                  <circle cx="20" cy="9" r="1.5" />
+                  <path d="M5.5 9.5l2.5 1.5" />
+                  <path d="M18.5 9.5l-2.5 1.5" />
+                </svg>
+              )
+            },
+            {
+              title: "Digital Store",
+              desc: "Launch your storefront",
+              icon: (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 9l1.5-5h15L21 9v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z" />
+                  <path d="M3 9h18" />
+                  <path d="M9 13h6" />
+                  <path d="M10 9v4" />
+                  <path d="M14 9v4" />
+                </svg>
+              )
+            },
+            {
+              title: "Marketing Automation",
+              desc: "Run campaigns that convert",
+              icon: (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="m15 4 4 4L8 19l-4-4L15 4z" />
+                  <path d="m18 1 2 2" />
+                  <path d="M20 7l2 2" />
+                  <path d="M13 2l-1 2" />
+                  <path d="M7 16l-3 3" />
+                </svg>
+              )
+            },
+            {
+              title: "Inventory",
+              desc: "Track & manage stock",
+              icon: (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                  <line x1="12" y1="22.08" x2="12" y2="12" />
+                </svg>
+              )
+            },
+            {
+              title: "Orders",
+              desc: "Manage orders seamlessly",
+              icon: (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="8" cy="21" r="1.5" />
+                  <circle cx="19" cy="21" r="1.5" />
+                  <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+                </svg>
+              )
+            },
+            {
+              title: "Payments",
+              desc: "Accept payments securely",
+              icon: (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                  <path d="M2 17l10 5 10-5" />
+                  <path d="M2 12l10 5 10-5" />
+                </svg>
+              )
+            },
+            {
+              title: "Analytics",
+              desc: "Track performance",
+              icon: (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="20" x2="18" y2="10" />
+                  <line x1="12" y1="20" x2="12" y2="4" />
+                  <line x1="6" y1="20" x2="6" y2="14" />
+                  <polyline points="4 8 10 2 16 8 21 3" />
+                  <polyline points="17 3 21 3 21 7" />
+                </svg>
+              )
+            },
+            {
+              title: "Team Management",
+              desc: "Roles, access & control",
+              icon: (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              )
+            }
+          ].map((item, idx) => (
+            <div key={idx} style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
+              <div style={{ flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                {item.icon}
+              </div>
+              <div style={{ textAlign: "left" }}>
+                <div style={{ fontSize: 13, fontWeight: 700, color: "#0F172A", lineHeight: 1.2 }}>
+                  {item.title}
+                </div>
+                <div style={{ fontSize: 11, color: "#64748B", fontWeight: 500, marginTop: 2 }}>
+                  {item.desc}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
