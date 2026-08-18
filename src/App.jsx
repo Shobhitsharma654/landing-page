@@ -16,6 +16,11 @@ const CookiesPage    = lazy(() => import("./components/CookiesPage"));
 const LicensePage    = lazy(() => import("./components/LicensePage"));
 const RefundPage     = lazy(() => import("./components/RefundPage"));
 const CareersPage    = lazy(() => import("./components/CareersPage"));
+const CrmPage        = lazy(() => import("./components/CrmPage"));
+const WaPage         = lazy(() => import("./components/WhatsAppPage"));
+const MarketingPage  = lazy(() => import("./components/MarketingPage"));
+const AiPage         = lazy(() => import("./components/AiAutomationPage"));
+const DigitalStorePage = lazy(() => import("./components/DigitalStorePage"));
 
 const Loader = () => (
   <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh", background: "#fff" }}>
@@ -43,6 +48,11 @@ function App() {
         <Route path="/license"      element={<LicensePage />} />
         <Route path="/refundpolicy" element={<RefundPage />} />
         <Route path="/careers"      element={<CareersPage />} />
+        <Route path="/crm"                element={<CrmPage />} />
+        <Route path="/whatsapp-business"   element={<WaPage />} />
+        <Route path="/marketing-automation" element={<MarketingPage />} />
+        <Route path="/ai-automation"         element={<AiPage />} />
+        <Route path="/digital-store"          element={<DigitalStorePage />} />
         <Route path="*"             element={<Navigate to="/" replace />} />
       </Routes>
     </Suspense>

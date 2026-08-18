@@ -5,11 +5,11 @@ import messbeeText from '../assets/messbee_text.png';
 
 
 const PRODUCT_LINKS = [
-  { label: "CRM",                   path: "/solutions" },
-  { label: "WhatsApp Business",     path: "/solutions" },
-  { label: "Marketing Automation",  path: "/solutions" },
-  { label: "AI & Automation",       path: "/solutions" },
-  { label: "Digital Store",         path: "/solutions" },
+  { label: "CRM",                   path: "/crm" },
+  { label: "WhatsApp Business",     path: "/whatsapp-business" },
+  { label: "Marketing Automation",  path: "/marketing-automation" },
+  { label: "AI & Automation",         path: "/ai-automation" },
+  { label: "Digital Store",         path: "/digital-store" },
 ];
 
 const SOLUTIONS_LINKS = [
