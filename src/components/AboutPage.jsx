@@ -2884,7 +2884,7 @@ const AboutPage = () => {
           {/* Big Editorial Quote */}
           <div style={{ position: "relative", padding: "12px 0", marginBottom: 20 }}>
             <span style={{ position: "absolute", top: -5, left: "5%", fontSize: 70, color: "rgba(22,163,74,0.1)", lineHeight: 0, fontFamily: "serif" }}>&ldquo;</span>
-            <p style={{ fontSize: "17.5px", fontWeight: 800, color: "#334155", lineHeight: 1.5, maxWidth: 820, margin: "0 auto", fontStyle: "italic", fontFamily: "'Inter', sans-serif" }}>
+            <p style={{ fontSize: "17.5px", fontWeight: 800, color: "#334155", lineHeight: 1.5, maxWidth: 820, margin: "0 auto", fontFamily: "'Inter', sans-serif" }}>
               Because your business deserves technology that works around your business&mdash;not the other way around.
             </p>
             <span style={{ position: "absolute", bottom: -25, right: "5%", fontSize: 70, color: "rgba(22,163,74,0.1)", lineHeight: 0, fontFamily: "serif" }}>&rdquo;</span>

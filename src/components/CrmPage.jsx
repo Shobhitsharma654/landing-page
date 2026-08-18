@@ -388,7 +388,7 @@ const CrmPage = () => {
                       </li>
                     ))}
                   </ul>
-                  <p style={{ fontSize:13, fontWeight:600, color:sec.color, fontStyle:"italic" }}>{sec.tagline}</p>
+                  <p style={{ fontSize:13, fontWeight:600, color:sec.color }}>{sec.tagline}</p>
                 </div>
 
                 {/* Visual side */}

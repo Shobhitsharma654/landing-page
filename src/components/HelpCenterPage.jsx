@@ -4,6 +4,17 @@ import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
 import defaultLogo from "../assets/logo.jpeg";
 
+const G  = "#16A34A";
+const GL = "#F0FDF4";
+const GB = "#BBF7D0";
+const D2 = "#111827";
+const MU = "#64748B";
+
+const Pill = ({ children }) => (
+  <div style={{ display:"inline-block", background:GL, border:`1px solid ${GB}`, color:G, fontSize:11, fontWeight:700, textTransform:"uppercase", letterSpacing:"1.5px", padding:"5px 14px", borderRadius:20, marginBottom:16 }}>
+    {children}
+  </div>
+);
 /* ═══════════════════════════════════════════════════════════════════════
    MessBee — Help Center Page Component
    Official MessBee logo in Hero graphic.
@@ -155,44 +166,46 @@ const HELP_FAQS = [
 const FaqItem = ({ q, a }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div
-      onClick={() => setOpen(!open)}
-      style={{
-        background: "#FFFFFF",
-        border: `1px solid ${open ? "#BBF7D0" : "#E2E8F0"}`,
-        borderRadius: 14,
-        padding: "16px 20px",
-        cursor: "pointer",
-        transition: "all 0.25s ease",
-        boxShadow: open ? "0 6px 20px rgba(22,163,74,0.06)" : "0 2px 4px rgba(0,0,0,0.01)",
-        marginBottom: 10,
-      }}
-    >
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 14 }}>
-        <span style={{ fontSize: 13.5, fontWeight: 800, color: open ? "#16A34A" : "#0F172A", lineHeight: 1.4 }}>{q}</span>
-        <span
+    <div style={{ borderBottom: `1px solid #F1F5F9` }}>
+      <div
+        onClick={() => setOpen(!open)}
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "20px 0",
+          cursor: "pointer",
+        }}
+      >
+        <span style={{ fontSize: 14, fontWeight: 700, color: open ? G : D2, transition: "color .2s" }}>{q}</span>
+        <div
           style={{
-            width: 26,
-            height: 26,
-            borderRadius: "50%",
-            background: open ? "#16A34A" : "#F1F5F9",
+            width: 28,
+            height: 28,
+            borderRadius: 8,
+            background: open ? GL : "#F8FAFC",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             flexShrink: 0,
-            transition: "all 0.25s ease",
-            transform: open ? "rotate(180deg)" : "rotate(0deg)",
+            transition: "all .2s",
+            color: open ? G : MU,
+            border: open ? `1px solid ${GB}` : "1px solid transparent",
           }}
         >
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke={open ? "#FFFFFF" : "#64748B"} strokeWidth="2.5" strokeLinecap="round">
-            <polyline points="6 9 12 15 18 9" />
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path
+              d={open ? "M3 9l4-4 4 4" : "M3 5l4 4 4-4"}
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
-        </span>
+        </div>
       </div>
       {open && (
-        <p style={{ fontSize: 13, color: "#475569", lineHeight: 1.7, margin: "12px 0 0", paddingRight: 24, borderTop: "1px solid #F1F5F9", paddingTop: 10 }}>
-          {a}
-        </p>
+        <div style={{ fontSize: 13, color: MU, lineHeight: 1.8, paddingBottom: 16 }}>{a}</div>
       )}
     </div>
   );
@@ -681,88 +694,35 @@ const HelpCenterPage = () => {
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 4: TROUBLESHOOTING
          ═══════════════════════════════════════════════════════════════════ */}
-      <section
-        style={{
-          padding: "64px 6%",
-          background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
-          color: "#FFFFFF",
-          borderTop: "1px solid rgba(52, 211, 153, 0.25)",
-          borderBottom: "1px solid rgba(52, 211, 153, 0.25)",
-        }}
-      >
-        <div style={{ maxWidth: 960, margin: "0 auto", textAlign: "center" }}>
-          <div
-            style={{
-              display: "inline-block",
-              background: "rgba(52, 211, 153, 0.2)",
-              color: "#34D399",
-              padding: "4px 14px",
-              borderRadius: 20,
-              fontSize: 11,
-              fontWeight: 900,
-              letterSpacing: "0.5px",
-              textTransform: "uppercase",
-              marginBottom: 12,
-              border: "1px solid rgba(52, 211, 153, 0.3)",
-            }}
-          >
-            Issue Resolution
-          </div>
-          <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#FFFFFF", letterSpacing: "-1px", marginBottom: 12 }}>
-            Troubleshooting
+      <section style={{ padding: "60px 6%", background: GL, borderTop: `1px solid ${GB}`, borderBottom: `1px solid ${GB}` }}>
+        <div style={{ maxWidth: 1060, margin: "0 auto", textAlign: "center" }}>
+          <Pill>Issue Resolution</Pill>
+          <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 900, color: D2, letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 16 }}>
+            Troubleshooting<br />
+            <span style={{ color: G }}>Something isn't working as expected?</span>
           </h2>
-
-          <p style={{ fontSize: 16, fontWeight: 800, color: "#4ADE80", marginBottom: 14 }}>
-            Something isn't working as expected?
-          </p>
-
-          <p style={{ fontSize: 13.5, color: "#94A3B8", lineHeight: 1.68, marginBottom: 24, maxWidth: 720, margin: "0 auto 24px" }}>
+          <p style={{ fontSize: 13.5, color: MU, lineHeight: 1.68, marginBottom: 20, maxWidth: 720, margin: "0 auto 20px" }}>
             Our troubleshooting guides can help you identify and resolve common issues related to:
           </p>
 
-          {/* Pipeline Flow Bar */}
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: 10,
-              marginBottom: 28,
-            }}
-          >
-            {TROUBLESHOOTING_NODES.map((node, i) => (
-              <React.Fragment key={i}>
-                <div
-                  style={{
-                    background: "rgba(255, 255, 255, 0.08)",
-                    border: "1px solid rgba(52, 211, 153, 0.3)",
-                    padding: "8px 16px",
-                    borderRadius: 30,
-                    fontSize: 13,
-                    fontWeight: 800,
-                    color: "#FFFFFF",
-                  }}
-                >
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: 0, marginBottom: 26 }}>
+            {TROUBLESHOOTING_NODES.map((node, i, arr) => (
+              <React.Fragment key={node}>
+                <span style={{ background: "#fff", border: `1.5px solid ${GB}`, color: G, borderRadius: 6, padding: "8px 16px", fontSize: 12, fontWeight: 700 }}>
                   {node}
-                </div>
-                {i < TROUBLESHOOTING_NODES.length - 1 && (
-                  <span style={{ color: "#34D399", fontWeight: 900, fontSize: 14 }}>➔</span>
+                </span>
+                {i < arr.length - 1 && (
+                  <span style={{ color: "#94A3B8", fontSize: 15, padding: "0 6px" }}>→</span>
                 )}
               </React.Fragment>
             ))}
           </div>
 
-          <p style={{ fontSize: 13.5, color: "#94A3B8", marginBottom: 24 }}>
+          <p style={{ fontSize: 13, color: MU, marginBottom: 24, fontWeight: 700 }}>
             If you still need help, you can contact the MessBee Support team.
           </p>
-
-          <button className="help-btn-primary" onClick={handleContactSupport} style={{ fontSize: 14, padding: "13px 30px" }}>
+          <button className="help-btn-primary" onClick={handleContactSupport} style={{ fontSize: 13, padding: "11px 26px" }}>
             Contact Support
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
-            </svg>
           </button>
         </div>
       </section>
@@ -890,30 +850,15 @@ const HelpCenterPage = () => {
           SECTION 7: FREQUENTLY ASKED QUESTIONS
          ═══════════════════════════════════════════════════════════════════ */}
       <section style={{ padding: "64px 6%", background: "#FFFFFF" }}>
-        <div style={{ maxWidth: 860, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 40 }}>
-            <div
-              style={{
-                display: "inline-block",
-                background: "#D1FAE5",
-                color: "#059669",
-                padding: "4px 12px",
-                borderRadius: 40,
-                fontSize: 10.5,
-                fontWeight: 800,
-                letterSpacing: "1px",
-                marginBottom: 12,
-                textTransform: "uppercase",
-              }}
-            >
-              Support FAQs
-            </div>
-            <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+        <div style={{ maxWidth: 760, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 36 }}>
+            <Pill>FAQ</Pill>
+            <h2 style={{ fontSize: "clamp(18px, 2.5vw, 30px)", fontWeight: 900, color: D2, letterSpacing: "-1px" }}>
               Frequently Asked Questions
             </h2>
           </div>
 
-          <div>
+          <div style={{ borderTop: "1px solid #F1F5F9" }}>
             {HELP_FAQS.map((faq, idx) => (
               <FaqItem key={idx} q={faq.q} a={faq.a} />
             ))}

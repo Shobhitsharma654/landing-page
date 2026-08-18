@@ -221,7 +221,7 @@ const DigitalStorePage = () => {
                 <button id="ds-hero-start" className="dsp" onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started</button>
                 <button id="ds-hero-explore" className="dsd" onClick={() => document.getElementById("ds-features")?.scrollIntoView({behavior:"smooth"})}>Explore Digital Store</button>
               </div>
-              <p style={{ fontSize:12, color:MU, fontStyle:"italic" }}>
+              <p style={{ fontSize:12, color:MU }}>
                 <span style={{ color:G, fontWeight:600 }}>Showcase. Sell. Connect. Grow.</span>
               </p>
             </div>
@@ -372,7 +372,7 @@ const DigitalStorePage = () => {
                 </div>
                 {step.tagline && (
                   <div style={{ marginTop:16, padding:"10px 14px", background:GL, border:`1px solid ${GB}`, borderRadius:8 }}>
-                    <p style={{ fontSize:12, color:GD, fontStyle:"italic", margin:0 }}>{step.tagline}</p>
+                    <p style={{ fontSize:12, color:GD, margin:0 }}>{step.tagline}</p>
                   </div>
                 )}
               </div>
@@ -469,7 +469,7 @@ const DigitalStorePage = () => {
           <p style={{ fontSize:13, color:MU, lineHeight:1.75, maxWidth:580, margin:"0 auto 16px" }}>
             Instead of treating your storefront, customer communication, CRM and marketing as separate systems, MessBee brings supported business functions together into one connected platform.
           </p>
-          <p style={{ fontSize:13, fontWeight:700, color:G, fontStyle:"italic" }}>
+          <p style={{ fontSize:13, fontWeight:700, color:G }}>
             Build Your Presence. Own Your Customer Relationship. Grow Your Business.
           </p>
         </div>

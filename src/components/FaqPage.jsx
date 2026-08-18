@@ -332,7 +332,7 @@ const FaqCard = ({ item, index }) => {
           )}
 
           {item.footerText && (
-            <p style={{ fontSize: 12, color: "#64748B", marginTop: 10, fontStyle: "italic", lineHeight: 1.5 }}>
+            <p style={{ fontSize: 12, color: "#64748B", marginTop: 10, lineHeight: 1.5 }}>
               {item.footerText}
             </p>
           )}

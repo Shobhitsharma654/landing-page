@@ -4,6 +4,17 @@ import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
 import defaultLogo from "../assets/logo.jpeg";
 
+const G  = "#16A34A";
+const GL = "#F0FDF4";
+const GB = "#BBF7D0";
+const D2 = "#111827";
+const MU = "#64748B";
+
+const Pill = ({ children }) => (
+  <div style={{ display:"inline-block", background:GL, border:`1px solid ${GB}`, color:G, fontSize:11, fontWeight:700, textTransform:"uppercase", letterSpacing:"1.5px", padding:"5px 14px", borderRadius:20, marginBottom:16 }}>
+    {children}
+  </div>
+);
 /* ═══════════════════════════════════════════════════════════════════════
    MessBee — Contact Support Page
    Official MessBee logo in Hero graphic.
@@ -171,44 +182,46 @@ const SUPPORT_FAQS = [
 const FaqItem = ({ q, a }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div
-      onClick={() => setOpen(!open)}
-      style={{
-        background: "#FFFFFF",
-        border: `1px solid ${open ? "#BBF7D0" : "#E2E8F0"}`,
-        borderRadius: 14,
-        padding: "16px 20px",
-        cursor: "pointer",
-        transition: "all 0.25s ease",
-        boxShadow: open ? "0 6px 20px rgba(22,163,74,0.06)" : "0 2px 4px rgba(0,0,0,0.01)",
-        marginBottom: 10,
-      }}
-    >
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 14 }}>
-        <span style={{ fontSize: 13.5, fontWeight: 800, color: "#0F172A", lineHeight: 1.4 }}>{q}</span>
-        <span
+    <div style={{ borderBottom: `1px solid #F1F5F9` }}>
+      <div
+        onClick={() => setOpen(!open)}
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "20px 0",
+          cursor: "pointer",
+        }}
+      >
+        <span style={{ fontSize: 14, fontWeight: 700, color: open ? G : D2, transition: "color .2s" }}>{q}</span>
+        <div
           style={{
-            width: 26,
-            height: 26,
-            borderRadius: "50%",
-            background: open ? "#16A34A" : "#F1F5F9",
+            width: 28,
+            height: 28,
+            borderRadius: 8,
+            background: open ? GL : "#F8FAFC",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             flexShrink: 0,
-            transition: "all 0.25s ease",
-            transform: open ? "rotate(180deg)" : "rotate(0deg)",
+            transition: "all .2s",
+            color: open ? G : MU,
+            border: open ? `1px solid ${GB}` : "1px solid transparent",
           }}
         >
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke={open ? "#FFFFFF" : "#64748B"} strokeWidth="2.5" strokeLinecap="round">
-            <polyline points="6 9 12 15 18 9" />
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path
+              d={open ? "M3 9l4-4 4 4" : "M3 5l4 4 4-4"}
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
-        </span>
+        </div>
       </div>
       {open && (
-        <p style={{ fontSize: 13, color: "#475569", lineHeight: 1.7, margin: "12px 0 0", paddingRight: 24 }}>
-          {a}
-        </p>
+        <div style={{ fontSize: 13, color: MU, lineHeight: 1.8, paddingBottom: 16 }}>{a}</div>
       )}
     </div>
   );
@@ -1020,98 +1033,44 @@ const ContactPage = () => {
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 6: BUSINESS & PARTNERSHIP ENQUIRIES
          ═══════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: "64px 6%", background: "#FAFAFA" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <div
-            style={{
-              background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
-              borderRadius: 22,
-              padding: "48px 40px",
-              color: "#FFFFFF",
-              position: "relative",
-              overflow: "hidden",
-              border: "1px solid rgba(52, 211, 153, 0.25)",
-              boxShadow: "0 20px 50px rgba(2, 44, 34, 0.35)",
-            }}
-          >
-            <div style={{ maxWidth: 840, position: "relative", zIndex: 1 }}>
-              <div
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  background: "rgba(22,163,74,0.15)",
-                  border: "1px solid rgba(22,163,74,0.3)",
-                  borderRadius: 40,
-                  padding: "4px 12px",
-                  marginBottom: 16,
-                }}
-              >
-                <span style={{ fontSize: 10.5, fontWeight: 800, color: "#4ADE80" }}>Partnerships</span>
-              </div>
-
-              {/* Title from Prompt */}
-              <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, marginBottom: 14, letterSpacing: "-1px" }}>
-                Business &amp; Partnership Enquiries
-              </h2>
-
-              {/* Paragraph from Prompt */}
-              <p style={{ fontSize: 13.5, color: "#94A3B8", lineHeight: 1.7, marginBottom: 24 }}>
-                Looking to work with MessBee, discuss a partnership or explore a business integration? Please use the appropriate business enquiry channel provided on the Contact Us / Partners page.
-              </p>
-
-              {/* CTA from Prompt */}
-              <button className="contact-btn-primary" onClick={handleBusinessEnquiries}>
-                Business Enquiries
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" />
-                </svg>
-              </button>
-            </div>
-          </div>
+      <section style={{ padding: "64px 6%", background: "#FFFFFF" }}>
+        <div style={{ maxWidth: 860, margin: "0 auto", textAlign: "center" }}>
+          <Pill>Partnerships</Pill>
+          <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 900, color: D2, letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 16 }}>
+            Business &amp; Partnership Enquiries
+          </h2>
+          <p style={{ fontSize: 13.5, color: MU, lineHeight: 1.68, marginBottom: 20, maxWidth: 720, margin: "0 auto 20px" }}>
+            Looking to work with MessBee, discuss a partnership or explore a business integration? Please use the appropriate business enquiry channel provided on the Contact Us / Partners page.
+          </p>
+          <button className="contact-btn-primary" onClick={handleBusinessEnquiries} style={{ fontSize: 13, padding: "11px 26px" }}>
+            Business Enquiries
+          </button>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 7: A BETTER SUPPORT EXPERIENCE (FINAL CALLOUT)
          ═══════════════════════════════════════════════════════════════════ */}
-      <section
-        style={{
-          padding: "68px 6%",
-          background: "linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%)",
-          borderTop: "1px solid #BBF7D0",
-          borderBottom: "1px solid #BBF7D0",
-        }}
-      >
-        <div style={{ maxWidth: 860, margin: "0 auto", textAlign: "center" }}>
-          {/* Headings from Prompt */}
-          <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 14 }}>
-            A Better Support Experience Starts With the Right Information
+      <section style={{ background: GL, padding: "72px 6%", textAlign: "center", position: "relative", overflow: "hidden", borderBottom: `1px solid ${GB}` }}>
+        <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 500, height: 500, background: "rgba(22,163,74,.08)", borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none" }} />
+        <div style={{ position: "relative", zIndex: 2, maxWidth: 860, margin: "0 auto" }}>
+          <Pill>A Better Support Experience</Pill>
+          <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 900, color: D2, letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 16 }}>
+            We want support conversations<br />
+            <span style={{ color: G }}>to be straightforward.</span>
           </h2>
-
-          <p style={{ fontSize: 15.5, fontWeight: 800, color: "#16A34A", marginBottom: 12 }}>
-            We want support conversations to be straightforward.
-          </p>
-
-          <p style={{ fontSize: 13.5, color: "#374151", lineHeight: 1.68, marginBottom: 20, maxWidth: 700, margin: "0 auto 20px" }}>
+          <p style={{ fontSize: 13.5, color: MU, lineHeight: 1.68, marginBottom: 20, maxWidth: 700, margin: "0 auto 20px" }}>
             Providing accurate information about your issue helps our team understand the problem and provide more relevant guidance.
           </p>
-
-          <div style={{ fontSize: 16.5, fontWeight: 900, color: "#15803D", marginBottom: 26, letterSpacing: "-0.3px" }}>
+          <div style={{ fontSize: 16.5, fontWeight: 900, color: G, marginBottom: 26, letterSpacing: "-0.3px" }}>
             Tell us what you need help with. We&apos;ll take it from there.
           </div>
-
           <button
             className="contact-btn-primary"
             onClick={() => document.getElementById("contact-form-section")?.scrollIntoView({ behavior: "smooth" })}
-            style={{ fontSize: 14, padding: "13px 30px" }}
+            style={{ fontSize: 13, padding: "11px 26px" }}
           >
             Contact Support
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
-            </svg>
           </button>
         </div>
       </section>
@@ -1119,33 +1078,20 @@ const ContactPage = () => {
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 8: FREQUENTLY ASKED QUESTIONS
          ═══════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: "64px 6%", background: "#FAFAFA" }}>
-        <div style={{ maxWidth: 820, margin: "0 auto" }}>
+      <section style={{ padding: "64px 6%", background: "#FFFFFF" }}>
+        <div style={{ maxWidth: 760, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 36 }}>
-            <div
-              style={{
-                display: "inline-block",
-                background: "#D1FAE5",
-                color: "#059669",
-                padding: "4px 12px",
-                borderRadius: 40,
-                fontSize: 10.5,
-                fontWeight: 800,
-                letterSpacing: "1px",
-                marginBottom: 12,
-                textTransform: "uppercase",
-              }}
-            >
-              FAQ
-            </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
-              Frequently Asked <span style={{ color: "#16A34A" }}>Questions</span>
+            <Pill>FAQ</Pill>
+            <h2 style={{ fontSize: "clamp(18px, 2.5vw, 30px)", fontWeight: 900, color: D2, letterSpacing: "-1px" }}>
+              Frequently Asked Questions
             </h2>
           </div>
 
-          {SUPPORT_FAQS.map((faq, idx) => (
-            <FaqItem key={idx} {...faq} />
-          ))}
+          <div style={{ borderTop: "1px solid #F1F5F9" }}>
+            {SUPPORT_FAQS.map((faq, idx) => (
+              <FaqItem key={idx} {...faq} />
+            ))}
+          </div>
         </div>
       </section>
 
