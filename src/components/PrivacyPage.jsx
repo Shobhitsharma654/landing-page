@@ -20,7 +20,7 @@ const sections = [
         <circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" />
       </svg>
     ),
-    content: `Welcome to MessBee, India's Digital Business Operating System. MessBee is a digital business platform operated by ATRI Admission Anytime Pvt. Ltd. ("MessBee", "Company", "we", "us", or "our"). MessBee provides businesses with technology for customer communication, CRM, WhatsApp Business communication and commerce, digital storefronts, AI-assisted customer engagement, marketing automation, lead management, orders, payments, inventory, loyalty, analytics, business content management, automation and other digital business workflows.
+    content: `Welcome to MessBee, India's Digital Business Operating System. MessBee is a digital business platform operated in India. MessBee provides businesses with technology for customer communication, CRM, WhatsApp Business communication and commerce, digital storefronts, AI-assisted customer engagement, marketing automation, lead management, orders, payments, inventory, loyalty, analytics, business content management, automation and other digital business workflows.
 
 We respect the privacy of individuals whose personal data is processed through our website, applications, platform and services. This Privacy Policy explains how MessBee may collect, receive, use, disclose, store, retain and otherwise process personal data in connection with our services.
 
@@ -775,7 +775,7 @@ Where material changes are made, MessBee may provide appropriate notice through 
       </svg>
     ),
     content: `MessBee Privacy & Grievance Team
-MessBee Operated by ATRI Admission Anytime Pvt. Ltd.
+MessBee 
 Email: support@MessBee.com
 Address: 510, Devika Tower, Chander Nagar, Ghaziabad, Uttar Pradesh – 201011, India
 
@@ -915,12 +915,22 @@ const PrivacyPage = () => {
           border-left-color: #16A34A;
           padding-left: 16px;
         }
+        @media (max-width: 1366px) {
+          .privacy-container {
+            gap: 32px !important;
+          }
+          .privacy-sidebar {
+            width: 270px !important;
+            padding: 16px !important;
+            max-height: calc(100vh - 120px) !important;
+          }
+        }
         @media (max-width: 1024px) {
           .privacy-sidebar {
             display: none !important;
           }
           .privacy-container {
-            gap: 0;
+            gap: 0 !important;
           }
         }
       `}</style>
@@ -961,7 +971,7 @@ const PrivacyPage = () => {
           </div>
 
           {/* Heading */}
-          <h1 style={{ fontSize: "clamp(36px, 4.5vw, 58px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-2px", lineHeight: 1.08, marginBottom: 20 }}>
+          <h1 style={{ fontSize: "clamp(35px, 2.9vw, 62px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-2px", lineHeight: 1.08, marginBottom: 20 }}>
             Privacy <span style={{ color: "#16A34A" }}>Policy</span>
           </h1>
 
@@ -969,8 +979,8 @@ const PrivacyPage = () => {
           <div style={{ width: 48, height: 4, background: "linear-gradient(90deg, #16A34A, #4ADE80)", borderRadius: 4, marginBottom: 24 }} />
 
           {/* Description */}
-          <p style={{ fontSize: 17, color: "#475569", lineHeight: 1.75, maxWidth: 560, margin: 0 }}>
-            We take your privacy seriously. Learn how MessBee collects, uses, and protects your personal information to keep your data safe.
+          <p style={{ fontSize: 17, color: "#475569", lineHeight: 1.75, maxWidth: 1060, margin: 0 }}>
+            We take your privacy seriously. Learn how MessBee collects, uses and protects your personal information to keep your data safe.
           </p>
         </div>
       </section>

@@ -195,6 +195,7 @@ const FaqItem = ({ q, a }) => {
 
 const CareersPage = () => {
   const navigate = useNavigate();
+  const [activeStep, setActiveStep] = useState(0);
 
   return (
     <div style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A" }}>
@@ -221,13 +222,76 @@ const CareersPage = () => {
         }
         .careers-btn-secondary:hover { background: #F0FDF4; transform: translateY(-2px); }
         .why-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(15,23,42,0.08); }
-        .trait-pill:hover { background: #DCFCE7; border-color: #86EFAC; color: #166534; }
+        .trait-pill:hover { background: #DCFCE7; border-color: #86EFAC; color: #166534; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(22, 163, 74, 0.1); }
+        .tech-row-card:hover { border-color: #BBF7D0 !important; box-shadow: 0 8px 24px rgba(22, 163, 74, 0.04); }
+        .tech-tag:hover { background: #F0FDF4 !important; border-color: #86EFAC !important; color: #166534 !important; transform: scale(1.04); }
+        
+        .hiring-step-card {
+          background: rgba(255,255,255,0.04);
+          border: 1px solid rgba(255,255,255,0.08);
+          border-radius: 18px;
+          padding: 28px 24px;
+          position: relative;
+          z-index: 1;
+          cursor: pointer;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+        }
+        .hiring-step-card:hover {
+          transform: translateY(-6px);
+          background: rgba(255, 255, 255, 0.08);
+          border-color: rgba(74, 222, 128, 0.4);
+          box-shadow: 0 12px 30px -10px rgba(34, 197, 94, 0.25);
+        }
+        .hiring-step-card:hover .step-badge {
+          background: #22C55E !important;
+          border-color: #22C55E !important;
+          color: #FFFFFF !important;
+          box-shadow: 0 0 12px rgba(34, 197, 94, 0.5);
+        }
+        .hiring-step-card:hover h3 {
+          color: #4ADE80 !important;
+        }
+        
+        .hiring-step-card.active {
+          background: rgba(34, 197, 94, 0.08) !important;
+          border-color: #4ADE80 !important;
+          box-shadow: 0 12px 30px -10px rgba(34, 197, 94, 0.3) !important;
+          transform: translateY(-6px);
+        }
+        .hiring-step-card.active .step-badge {
+          background: #22C55E !important;
+          border-color: #22C55E !important;
+          color: #FFFFFF !important;
+          box-shadow: 0 0 12px rgba(34, 197, 94, 0.5);
+        }
+        .hiring-step-card.active h3 {
+          color: #4ADE80 !important;
+        }
+
+        .step-connection-line {
+          position: absolute;
+          top: 30px;
+          left: calc(100% - 12px);
+          width: 24px;
+          height: 2px;
+          background: rgba(74,222,128,0.3);
+          z-index: 0;
+          transition: background 0.3s ease;
+        }
+        .step-connection-line.active {
+          background: #4ADE80;
+        }
+
         @media (max-width: 768px) {
           .careers-hero-btns { flex-direction: column; }
           .teams-grid { grid-template-columns: 1fr !important; }
           .steps-grid { grid-template-columns: 1fr 1fr !important; }
           .tech-grid { grid-template-columns: 1fr !important; }
           .why-grid { grid-template-columns: 1fr !important; }
+          .step-connection-line { display: none !important; }
         }
       `}</style>
 
@@ -238,7 +302,7 @@ const CareersPage = () => {
 
       {/* ═══ HERO ═══ */}
       <section style={{
-        background: "#FFFFFF", paddingTop: 130, paddingBottom: 80,
+        background: "#FFFFFF", paddingTop: 130, paddingBottom: 50,
         paddingLeft: "6%", paddingRight: "6%",
         position: "relative", overflow: "hidden",
         borderBottom: "1px solid #F1F5F9",
@@ -262,20 +326,20 @@ const CareersPage = () => {
             <span style={{ fontSize: 12, fontWeight: 700, color: "#16A34A", letterSpacing: "0.3px" }}>We're Hiring</span>
           </div>
 
-          <h1 style={{ fontSize: "clamp(36px, 5vw, 64px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-2.5px", lineHeight: 1.05, marginBottom: 20, maxWidth: 740 }}>
+          <h1 style={{ fontSize: "clamp(35px, 2.9vw, 62px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-2.5px", lineHeight: 1.05, marginBottom: 20, maxWidth: 740 }}>
             Careers at <span style={{ color: "#16A34A" }}>MessBee</span>
           </h1>
           <p style={{ fontSize: 16, fontWeight: 700, color: "#334155", marginBottom: 16, letterSpacing: "-0.3px" }}>
             Build the Future of Digital Business With Us
           </p>
           <div style={{ width: 48, height: 4, background: "linear-gradient(90deg, #16A34A, #4ADE80)", borderRadius: 4, marginBottom: 28 }} />
-          <p style={{ fontSize: 17, color: "#475569", lineHeight: 1.8, maxWidth: 600, marginBottom: 20 }}>
+          <p style={{ fontSize: 16, color: "#475569", lineHeight: 1.8, maxWidth: 900, marginBottom: 20 }}>
             MessBee is building tools that help businesses manage customers, communication, marketing, automation and digital commerce from one connected platform.
           </p>
-          <p style={{ fontSize: 16, color: "#475569", lineHeight: 1.8, maxWidth: 600, marginBottom: 20 }}>
+          <p style={{ fontSize: 16, color: "#475569", lineHeight: 1.8, maxWidth: 900, marginBottom: 20 }}>
             We are looking for people who enjoy solving real problems, learning new technologies and building products that businesses can actually use.
           </p>
-          <p style={{ fontSize: 17, fontWeight: 800, color: "#16A34A", lineHeight: 1.6, maxWidth: 600, marginBottom: 40, letterSpacing: "-0.3px" }}>
+          <p style={{ fontSize: 17, fontWeight: 800, color: "#16A34A", lineHeight: 1.6, maxWidth: 900, marginBottom: 40, letterSpacing: "-0.3px" }}>
             If you want to work on meaningful technology and grow with a developing product, we'd like to hear from you.
           </p>
 
@@ -295,7 +359,7 @@ const CareersPage = () => {
       {/* ═══ WHY MESSBEE ═══ */}
       <section style={{ padding: "80px 6%", background: "#FAFAFA" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 56 }}>
+          <div style={{ textAlign: "center", marginBottom: 46 }}>
             <p style={{ fontSize: 12, fontWeight: 700, color: "#16A34A", textTransform: "uppercase", letterSpacing: "1.5px", marginBottom: 12 }}>Why MessBee</p>
             <h2 style={{ fontSize: "clamp(28px, 3vw, 42px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1.5px", marginBottom: 16 }}>
               Why Work With <span style={{ color: "#16A34A" }}>MessBee?</span>
@@ -327,66 +391,109 @@ const CareersPage = () => {
       </section>
 
       {/* ═══ WHAT WE LOOK FOR ═══ */}
-      <section style={{ padding: "80px 6%", background: "#FFFFFF" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
-          <div>
+      <section style={{ padding: "60px 6%", background: "#FFFFFF" }}>
+        <div style={{ maxWidth: 960, margin: "0 auto" }}>
+          {/* Header */}
+          <div style={{ textAlign: "center", marginBottom: 40 }}>
             <p style={{ fontSize: 12, fontWeight: 700, color: "#16A34A", textTransform: "uppercase", letterSpacing: "1.5px", marginBottom: 12 }}>Our Ideal Candidate</p>
-            <h2 style={{ fontSize: "clamp(28px, 3vw, 42px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1.5px", marginBottom: 20 }}>
+            <h2 style={{ fontSize: "clamp(28px, 3vw, 42px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1.5px", marginBottom: 16 }}>
               What We <span style={{ color: "#16A34A" }}>Look For</span>
             </h2>
-            <div style={{ width: 48, height: 4, background: "linear-gradient(90deg,#16A34A,#4ADE80)", borderRadius: 4, marginBottom: 24 }} />
-            <p style={{ fontSize: 16, color: "#475569", lineHeight: 1.8, marginBottom: 16 }}>
-              We value people who are:
+            <div style={{ width: 48, height: 4, background: "linear-gradient(90deg, #16A34A, #4ADE80)", borderRadius: 4, margin: "0 auto 24px auto" }} />
+            <p style={{ fontSize: 16, color: "#64748B", maxWidth: 600, margin: "0 auto" }}>
+              We value people who are curious, responsible, and passionate about building excellent products.
             </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              {TRAITS.map((trait, i) => (
-                <div key={i} className="trait-pill" style={{
-                  display: "inline-flex", alignItems: "center", gap: 10,
-                  background: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: 40,
-                  padding: "10px 18px", fontSize: 14, fontWeight: 600, color: "#334155",
-                  transition: "background 0.2s, border-color 0.2s, color 0.2s", width: "fit-content",
-                }}>
-                  <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#16A34A", flexShrink: 0 }} />
-                  {trait}
-                </div>
-              ))}
-            </div>
-            <div style={{
-              marginTop: 32, background: "#F0FDF4", border: "1px solid #BBF7D0",
-              borderRadius: 14, padding: "18px 22px",
-            }}>
-              <p style={{ fontSize: 14, color: "#166534", lineHeight: 1.75, fontWeight: 500 }}>
-                <strong>You don't need to know everything when you join.</strong> A willingness to learn and improve matters.
-              </p>
-            </div>
           </div>
 
-          {/* Tech Stack */}
-          <div>
+          {/* Traits Cloud */}
+          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 12, marginBottom: 32 }}>
+            {TRAITS.map((trait, i) => (
+              <div key={i} className="trait-pill" style={{
+                display: "inline-flex", alignItems: "center", gap: 10,
+                background: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: 40,
+                padding: "12px 22px", fontSize: 14.5, fontWeight: 600, color: "#334155",
+                transition: "all 0.25s ease", cursor: "default"
+              }}>
+                <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#16A34A", flexShrink: 0 }} />
+                {trait}
+              </div>
+            ))}
+          </div>
+
+          {/* Info Box */}
+          <div style={{
+            background: "#F0FDF4", border: "1px solid #BBF7D0",
+            borderRadius: 16, padding: "20px 24px", maxWidth: 640, margin: "0 auto"
+          }}>
+            <p style={{ fontSize: 14.5, color: "#166534", lineHeight: 1.75, fontWeight: 500, margin: 0, textAlign: "center" }}>
+              <strong>You don't need to know everything when you join.</strong> A willingness to learn and improve matters.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ OUR TECH STACK ═══ */}
+      <section style={{ padding: "60px 6%", background: "#FAFAFA", borderTop: "1px solid #F1F5F9" }}>
+        <div style={{ maxWidth: 960, margin: "0 auto" }}>
+          {/* Header */}
+          <div style={{ textAlign: "center", marginBottom: 40 }}>
             <p style={{ fontSize: 12, fontWeight: 700, color: "#16A34A", textTransform: "uppercase", letterSpacing: "1.5px", marginBottom: 12 }}>Technology Environment</p>
-            <h2 style={{ fontSize: "clamp(24px, 2.5vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 20 }}>
+            <h2 style={{ fontSize: "clamp(28px, 3vw, 42px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1.5px", marginBottom: 16 }}>
               Our <span style={{ color: "#16A34A" }}>Tech Stack</span>
             </h2>
-            <p style={{ fontSize: 14, color: "#64748B", lineHeight: 1.75, marginBottom: 28 }}>
-              MessBee works with modern web, mobile and backend technologies. Technology choices may evolve as the product and engineering requirements grow.
+            <div style={{ width: 48, height: 4, background: "linear-gradient(90deg, #16A34A, #4ADE80)", borderRadius: 4, margin: "0 auto 24px auto" }} />
+            <p style={{ fontSize: 16, color: "#64748B", maxWidth: 600, margin: "0 auto" }}>
+              MessBee works with modern web, mobile and backend technologies. Our choices adapt as our product and scale grow.
             </p>
-            <div className="tech-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-              {TECH_STACK.map((t, i) => (
-                <div key={i} style={{
-                  background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 14,
-                  padding: "16px 18px", gridColumn: i === 4 ? "1 / -1" : undefined,
-                }}>
-                  <div style={{ fontSize: 10, fontWeight: 800, color: t.color, textTransform: "uppercase", letterSpacing: "1px", marginBottom: 6 }}>{t.label}</div>
-                  <div style={{ fontSize: 13, color: "#334155", fontWeight: 500, lineHeight: 1.6 }}>{t.value}</div>
+          </div>
+
+          {/* Tech Rows */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            {TECH_STACK.map((t, i) => (
+              <div key={i} className="tech-row-card" style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 24,
+                background: "#FFFFFF",
+                border: "1px solid #E2E8F0",
+                borderRadius: 16,
+                padding: "20px 24px",
+                transition: "all 0.2s ease",
+                flexWrap: "wrap"
+              }}>
+                {/* Category Label */}
+                <div style={{ width: 140, flexShrink: 0, display: "flex", flexDirection: "column", gap: 4 }}>
+                  <div style={{ fontSize: 11, fontWeight: 800, color: t.color, textTransform: "uppercase", letterSpacing: "1px" }}>
+                    {t.label}
+                  </div>
+                  <div style={{ width: 20, height: 2, background: t.color, borderRadius: 1 }} />
                 </div>
-              ))}
-            </div>
+                {/* Technologies Row */}
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap", flex: 1 }}>
+                  {t.value.split(", ").map((tech, idx) => (
+                    <span key={idx} style={{
+                      fontSize: 13,
+                      fontWeight: 600,
+                      color: "#334155",
+                      background: "#F8FAFC",
+                      border: "1px solid #E2E8F0",
+                      borderRadius: 30,
+                      padding: "6px 14px",
+                      transition: "all 0.2s ease",
+                      cursor: "default"
+                    }} className="tech-tag">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ═══ TEAMS ═══ */}
-      <section style={{ padding: "80px 6%", background: "#FAFAFA" }}>
+      <section style={{ padding: "60px 6%", background: "#FAFAFA" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 56 }}>
             <p style={{ fontSize: 12, fontWeight: 700, color: "#16A34A", textTransform: "uppercase", letterSpacing: "1.5px", marginBottom: 12 }}>Our Teams</p>
@@ -480,28 +587,27 @@ const CareersPage = () => {
           </div>
           <div className="steps-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24 }}>
             {STEPS.map((step, i) => (
-              <div key={i} style={{ position: "relative" }}>
+              <div key={i} style={{ position: "relative", display: "flex", flexDirection: "column", height: "100%" }}>
                 {i < STEPS.length - 1 && (
-                  <div style={{
-                    position: "absolute", top: 30, left: "calc(100% - 12px)", width: "24px",
-                    height: 2, background: "rgba(74,222,128,0.3)", zIndex: 0,
-                    display: window.innerWidth > 768 ? "block" : "none",
-                  }} />
+                  <div className={`step-connection-line ${activeStep >= i + 1 ? "active" : ""}`} />
                 )}
-                <div style={{
-                  background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)",
-                  borderRadius: 18, padding: "28px 24px", position: "relative", zIndex: 1,
-                }}>
-                  <div style={{
-                    width: 52, height: 52, borderRadius: 14,
-                    background: "rgba(22,163,74,0.15)", border: "1px solid rgba(22,163,74,0.3)",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    marginBottom: 20,
-                  }}>
-                    <span style={{ fontSize: 16, fontWeight: 900, color: "#4ADE80" }}>{step.num}</span>
+                <div
+                  className={`hiring-step-card ${activeStep === i ? "active" : ""}`}
+                  onClick={() => setActiveStep(i)}
+                >
+                  <div
+                    className="step-badge"
+                    style={{
+                      width: 52, height: 52, borderRadius: 14,
+                      background: "rgba(22,163,74,0.15)", border: "1px solid rgba(22,163,74,0.3)",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      marginBottom: 20, transition: "all 0.3s ease",
+                    }}
+                  >
+                    <span style={{ fontSize: 16, fontWeight: 900, color: "#4ADE80", transition: "all 0.3s ease" }}>{step.num}</span>
                   </div>
-                  <h3 style={{ fontSize: 16, fontWeight: 800, color: "#FFFFFF", marginBottom: 10 }}>{step.title}</h3>
-                  <p style={{ fontSize: 13, color: "#94A3B8", lineHeight: 1.75 }}>{step.desc}</p>
+                  <h3 style={{ fontSize: 16, fontWeight: 800, color: "#FFFFFF", marginBottom: 10, transition: "all 0.3s ease" }}>{step.title}</h3>
+                  <p style={{ fontSize: 13, color: "#94A3B8", lineHeight: 1.75, transition: "all 0.3s ease" }}>{step.desc}</p>
                 </div>
               </div>
             ))}
@@ -510,7 +616,7 @@ const CareersPage = () => {
       </section>
 
       {/* ═══ OPEN POSITIONS / NO OPENING ═══ */}
-      <section id="open-positions" style={{ padding: "80px 6%", background: "#FAFAFA" }}>
+      <section id="open-positions" style={{ padding: "60px 6%", background: "#FAFAFA" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, alignItems: "stretch" }}>
           {/* Open Positions */}
           <div style={{ background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 24, padding: "44px 40px" }}>
@@ -577,10 +683,10 @@ const CareersPage = () => {
       </section>
 
       {/* ═══ FAQ ═══ */}
-      <section style={{ padding: "80px 6%", background: "#FAFAFA" }}>
+      <section style={{ padding: "60px 6%", background: "#FAFAFA" }}>
         <div style={{ maxWidth: 860, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 48 }}>
-            <p style={{ fontSize: 12, fontWeight: 700, color: "#16A34A", textTransform: "uppercase", letterSpacing: "1.5px", marginBottom: 12 }}>FAQ</p>
+          <div style={{ textAlign: "center", marginBottom: 40 }}>
+            <p style={{ fontSize: 14, fontWeight: 700, color: "#16A34A", textTransform: "uppercase", letterSpacing: "1.5px", marginBottom: 12 }}>FAQ</p>
             <h2 style={{ fontSize: "clamp(28px, 3vw, 38px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               Frequently Asked <span style={{ color: "#16A34A" }}>Questions</span>
             </h2>
@@ -633,126 +739,6 @@ const CareersPage = () => {
         </div>
       </section>
 
-      {/* ═══ SEO INFORMATION ═══ */}
-      <section style={{ padding: "64px 6%", background: "#FFFFFF", borderTop: "1px solid #F1F5F9" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          {/* Section header */}
-          <div style={{ marginBottom: 40 }}>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#F0FDF4", border: "1px solid #BBF7D0", borderRadius: 40, padding: "5px 14px", marginBottom: 16 }}>
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-              </svg>
-              <span style={{ fontSize: 11, fontWeight: 700, color: "#16A34A", letterSpacing: "0.4px" }}>SEO Information</span>
-            </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 6 }}>
-              Page SEO <span style={{ color: "#16A34A" }}>Details</span>
-            </h2>
-            <p style={{ fontSize: 14, color: "#64748B" }}>Metadata and keyword information for this careers page.</p>
-          </div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
-
-            {/* SEO Title */}
-            <div style={{ background: "#FAFAFA", border: "1px solid #E2E8F0", borderRadius: 16, padding: "24px 22px" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-                <div style={{ width: 32, height: 32, borderRadius: 8, background: "#F0FDF4", border: "1px solid #BBF7D0", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 6h16M4 12h8M4 18h12"/></svg>
-                </div>
-                <span style={{ fontSize: 11, fontWeight: 800, color: "#16A34A", textTransform: "uppercase", letterSpacing: "1px" }}>SEO Title</span>
-              </div>
-              <p style={{ fontSize: 14, fontWeight: 600, color: "#0F172A", lineHeight: 1.6 }}>
-                Careers at MessBee | Jobs, Internships &amp; Career Opportunities
-              </p>
-            </div>
-
-            {/* Meta Description */}
-            <div style={{ background: "#FAFAFA", border: "1px solid #E2E8F0", borderRadius: 16, padding: "24px 22px" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-                <div style={{ width: 32, height: 32, borderRadius: 8, background: "#F0FDF4", border: "1px solid #BBF7D0", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                </div>
-                <span style={{ fontSize: 11, fontWeight: 800, color: "#16A34A", textTransform: "uppercase", letterSpacing: "1px" }}>Meta Description</span>
-              </div>
-              <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.7 }}>
-                Explore career and internship opportunities at MessBee across technology, product, design, marketing, sales, customer success and business operations.
-              </p>
-            </div>
-
-            {/* Suggested URL + H1 */}
-            <div style={{ background: "#FAFAFA", border: "1px solid #E2E8F0", borderRadius: 16, padding: "24px 22px", display: "flex", flexDirection: "column", gap: 18 }}>
-              <div>
-                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
-                  <div style={{ width: 32, height: 32, borderRadius: 8, background: "#F0FDF4", border: "1px solid #BBF7D0", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-                  </div>
-                  <span style={{ fontSize: 11, fontWeight: 800, color: "#16A34A", textTransform: "uppercase", letterSpacing: "1px" }}>Suggested URL</span>
-                </div>
-                <code style={{ fontSize: 12, color: "#16A34A", background: "#F0FDF4", border: "1px solid #BBF7D0", borderRadius: 6, padding: "4px 10px", fontFamily: "monospace" }}>
-                  messbee.com/careers
-                </code>
-              </div>
-              <div>
-                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
-                  <div style={{ width: 32, height: 32, borderRadius: 8, background: "#F0FDF4", border: "1px solid #BBF7D0", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 6h16M4 12h16M4 18h7"/></svg>
-                  </div>
-                  <span style={{ fontSize: 11, fontWeight: 800, color: "#16A34A", textTransform: "uppercase", letterSpacing: "1px" }}>Recommended H1</span>
-                </div>
-                <p style={{ fontSize: 13, fontWeight: 700, color: "#0F172A", lineHeight: 1.5 }}>
-                  Careers at MessBee – Build, Learn &amp; Grow With Us
-                </p>
-              </div>
-            </div>
-
-            {/* Primary Keywords */}
-            <div style={{ background: "#FAFAFA", border: "1px solid #E2E8F0", borderRadius: 16, padding: "24px 22px" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
-                <div style={{ width: 32, height: 32, borderRadius: 8, background: "#F0FDF4", border: "1px solid #BBF7D0", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                </div>
-                <span style={{ fontSize: 11, fontWeight: 800, color: "#16A34A", textTransform: "uppercase", letterSpacing: "1px" }}>Primary Keywords</span>
-              </div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                {[
-                  "MessBee careers", "MessBee jobs", "MessBee internship",
-                  "SaaS jobs India", "Software developer jobs", "Technology careers",
-                  "Startup jobs India", "Software internship India",
-                  "Product design jobs", "Business development jobs"
-                ].map((kw, i) => (
-                  <span key={i} style={{
-                    fontSize: 12, fontWeight: 600, color: "#166534",
-                    background: "#DCFCE7", border: "1px solid #86EFAC",
-                    borderRadius: 20, padding: "4px 12px",
-                  }}>{kw}</span>
-                ))}
-              </div>
-            </div>
-
-            {/* CTAs */}
-            <div style={{ background: "#FAFAFA", border: "1px solid #E2E8F0", borderRadius: 16, padding: "24px 22px", gridColumn: "2 / span 2" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
-                <div style={{ width: 32, height: 32, borderRadius: 8, background: "#F0FDF4", border: "1px solid #BBF7D0", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M14 12H3"/></svg>
-                </div>
-                <span style={{ fontSize: 11, fontWeight: 800, color: "#16A34A", textTransform: "uppercase", letterSpacing: "1px" }}>Page CTAs</span>
-              </div>
-              <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-                <div style={{ flex: 1, minWidth: 200, background: "#FFFFFF", border: "1px solid #BBF7D0", borderRadius: 12, padding: "16px 20px" }}>
-                  <p style={{ fontSize: 10, fontWeight: 800, color: "#16A34A", textTransform: "uppercase", letterSpacing: "1px", marginBottom: 6 }}>Primary CTA</p>
-                  <p style={{ fontSize: 15, fontWeight: 800, color: "#0F172A" }}>View Open Positions</p>
-                  <p style={{ fontSize: 12, color: "#64748B", marginTop: 4 }}>Scrolls to open positions section</p>
-                </div>
-                <div style={{ flex: 1, minWidth: 200, background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 12, padding: "16px 20px" }}>
-                  <p style={{ fontSize: 10, fontWeight: 800, color: "#64748B", textTransform: "uppercase", letterSpacing: "1px", marginBottom: 6 }}>Secondary CTA</p>
-                  <p style={{ fontSize: 15, fontWeight: 800, color: "#0F172A" }}>Send Your Resume</p>
-                  <p style={{ fontSize: 12, color: "#64748B", marginTop: 4 }}>Opens careers@messbee.com</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
 
       <Footer />
     </div>
