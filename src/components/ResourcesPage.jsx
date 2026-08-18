@@ -3250,7 +3250,7 @@ const ResourcesPage = () => {
                 </div>
 
                 {/* Quote */}
-                <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.6, fontStyle: "italic", marginBottom: 24 }}>
+                <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.6, marginBottom: 24 }}>
                   "MessBee paid for itself in the first week. WhatsApp sales tripled and our customer engagement score went from 42 to 91."
                 </p>
               </div>
@@ -3308,7 +3308,7 @@ const ResourcesPage = () => {
                   ★★★★★
                 </div>
 
-                <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.6, fontStyle: "italic", marginBottom: 24 }}>
+                <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.6, marginBottom: 24 }}>
                   "Automated reminders cut no-shows by 60%. The AI assistant handles 70% of patient queries without any manual effort."
                 </p>
               </div>
@@ -3365,7 +3365,7 @@ const ResourcesPage = () => {
                   ★★★★★
                 </div>
 
-                <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.6, fontStyle: "italic", marginBottom: 24 }}>
+                <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.6, marginBottom: 24 }}>
                   "From enquiry to enrollment is fully automated. We handle 10x more students with the same 4-person admissions team."
                 </p>
               </div>

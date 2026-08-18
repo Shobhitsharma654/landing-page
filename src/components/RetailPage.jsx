@@ -4,6 +4,17 @@ import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
 import defaultLogo from "../assets/logo.jpeg";
 
+const G  = "#16A34A";
+const GL = "#F0FDF4";
+const GB = "#BBF7D0";
+const D2 = "#111827";
+const MU = "#64748B";
+
+const Pill = ({ children }) => (
+  <div style={{ display:"inline-block", background:GL, border:`1px solid ${GB}`, color:G, fontSize:11, fontWeight:700, textTransform:"uppercase", letterSpacing:"1.5px", padding:"5px 14px", borderRadius:20, marginBottom:16 }}>
+    {children}
+  </div>
+);
 /* ═══════════════════════════════════════════════════════════════════════
    MessBee — Retail & Local Businesses Solutions Page
    Strictly adheres ONLY to the text provided in the user prompt.
@@ -237,43 +248,46 @@ const RETAIL_FAQS = [
 const FaqItem = ({ q, a }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div
-      onClick={() => setOpen(!open)}
-      style={{
-        background: "#FFFFFF",
-        border: `1px solid ${open ? "#BBF7D0" : "#E2E8F0"}`,
-        borderRadius: 14,
-        padding: "16px 20px",
-        cursor: "pointer",
-        transition: "all 0.25s ease",
-        boxShadow: open ? "0 6px 20px rgba(22,163,74,0.06)" : "0 2px 4px rgba(0,0,0,0.01)",
-        marginBottom: 10,
-      }}
-    >
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 14 }}>
-        <span style={{ fontSize: 13.5, fontWeight: 700, color: "#0F172A", lineHeight: 1.4 }}>{q}</span>
-        <span
+    <div style={{ borderBottom: `1px solid #F1F5F9` }}>
+      <div
+        onClick={() => setOpen(!open)}
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "20px 0",
+          cursor: "pointer",
+        }}
+      >
+        <span style={{ fontSize: 14, fontWeight: 700, color: open ? G : D2, transition: "color .2s" }}>{q}</span>
+        <div
           style={{
-            width: 26,
-            height: 26,
-            borderRadius: "50%",
-            background: open ? "#16A34A" : "#F1F5F9",
+            width: 28,
+            height: 28,
+            borderRadius: 8,
+            background: open ? GL : "#F8FAFC",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             flexShrink: 0,
-            transition: "all 0.25s ease",
+            transition: "all .2s",
+            color: open ? G : MU,
+            border: open ? `1px solid ${GB}` : "1px solid transparent",
           }}
         >
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke={open ? "#FFFFFF" : "#64748B"} strokeWidth="2.5" strokeLinecap="round">
-            {open ? <line x1="5" y1="12" x2="19" y2="12" /> : <><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></>}
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path
+              d={open ? "M3 9l4-4 4 4" : "M3 5l4 4 4-4"}
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
-        </span>
+        </div>
       </div>
       {open && (
-        <p style={{ fontSize: 13, color: "#475569", lineHeight: 1.7, margin: "12px 0 0", paddingRight: 24 }}>
-          {a}
-        </p>
+        <div style={{ fontSize: 13, color: MU, lineHeight: 1.8, paddingBottom: 16 }}>{a}</div>
       )}
     </div>
   );
@@ -964,73 +978,32 @@ const RetailPage = () => {
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 6: KEEP YOUR CUSTOMERS CONNECTED TO YOUR BUSINESS
          ═══════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: "64px 6%", background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)", color: "#FFFFFF" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+      <section style={{ padding: "60px 6%", background: GL, borderTop: `1px solid ${GB}`, borderBottom: `1px solid ${GB}` }}>
+        <div style={{ maxWidth: 1060, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 36 }}>
-            <div
-              style={{
-                display: "inline-block",
-                background: "rgba(22,163,74,0.15)",
-                color: "#4ADE80",
-                border: "1px solid rgba(22,163,74,0.3)",
-                padding: "4px 12px",
-                borderRadius: 40,
-                fontSize: 10.5,
-                fontWeight: 800,
-                letterSpacing: "1px",
-                marginBottom: 12,
-                textTransform: "uppercase",
-              }}
-            >
-              Unified Experience
-            </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#FFFFFF", letterSpacing: "-1px", marginBottom: 14 }}>
-              Keep Your Customers <span style={{ color: "#4ADE80" }}>Connected to Your Business</span>
+            <Pill>Unified Experience</Pill>
+            <h2 style={{ fontSize: "clamp(18px, 2.5vw, 30px)", fontWeight: 900, color: D2, letterSpacing: "-1px", marginBottom: 12 }}>
+              Keep Your Customers <span style={{ color: G }}>Connected to Your Business</span>
             </h2>
-            <p style={{ fontSize: 13.5, color: "#94A3B8", maxWidth: 680, margin: "0 auto", lineHeight: 1.68 }}>
+            <p style={{ fontSize: 13, color: MU, maxWidth: 680, margin: "0 auto", lineHeight: 1.68 }}>
               Customers may discover your business through different channels, but your relationship with them should not have to remain scattered.
             </p>
           </div>
 
-          {/* Sequence Box from Prompt */}
-          <div
-            style={{
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.1)",
-              borderRadius: 18,
-              padding: "26px 20px",
-              marginBottom: 26,
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 8 }}>
-              {RETAIL_FLOW_NODES.map((node, i, arr) => (
-                <React.Fragment key={node}>
-                  <div
-                    className="retail-dark-card"
-                    style={{
-                      background: "rgba(22,163,74,0.12)",
-                      border: "1px solid rgba(22,163,74,0.25)",
-                      borderRadius: 12,
-                      padding: "12px 18px",
-                      fontSize: 13,
-                      fontWeight: 800,
-                      color: "#4ADE80",
-                      flex: 1,
-                      minWidth: 110,
-                      textAlign: "center",
-                    }}
-                  >
-                    {node}
-                  </div>
-                  {i < arr.length - 1 && (
-                    <span style={{ fontSize: 15, color: "#4ADE80", fontWeight: 900 }}>→</span>
-                  )}
-                </React.Fragment>
-              ))}
-            </div>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: 0, marginBottom: 26 }}>
+            {RETAIL_FLOW_NODES.map((node, i, arr) => (
+              <React.Fragment key={node}>
+                <span style={{ background: "#fff", border: `1.5px solid ${GB}`, color: G, borderRadius: 6, padding: "8px 16px", fontSize: 12, fontWeight: 700 }}>
+                  {node}
+                </span>
+                {i < arr.length - 1 && (
+                  <span style={{ color: "#94A3B8", fontSize: 15, padding: "0 6px" }}>→</span>
+                )}
+              </React.Fragment>
+            ))}
           </div>
 
-          <p style={{ fontSize: 13.5, fontWeight: 800, color: "#94A3B8", textAlign: "center", letterSpacing: "0.2px" }}>
+          <p style={{ fontSize: 13, fontWeight: 700, color: MU, textAlign: "center", letterSpacing: "0.2px" }}>
             This gives your business a more organized way to manage customer relationships and day-to-day communication.
           </p>
         </div>
@@ -1170,30 +1143,16 @@ const RetailPage = () => {
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 9: FINAL CTA
          ═══════════════════════════════════════════════════════════════════ */}
-      <section
-        style={{
-          padding: "68px 6%",
-          background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
-          color: "#FFFFFF",
-          borderTop: "1px solid rgba(52, 211, 153, 0.25)",
-          borderBottom: "1px solid rgba(52, 211, 153, 0.25)",
-        }}
-      >
-        <div style={{ maxWidth: 860, margin: "0 auto", textAlign: "center" }}>
-          <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#FFFFFF", letterSpacing: "-1px", marginBottom: 14 }}>
-            Start Local. Grow With MessBee.
+      <section style={{ background: GL, padding: "72px 6%", textAlign: "center", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 500, height: 500, background: "rgba(22,163,74,.08)", borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none" }} />
+        <div style={{ position: "relative", zIndex: 2, maxWidth: 760, margin: "0 auto" }}>
+          <Pill>Start Local. Grow With MessBee.</Pill>
+          <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 900, color: D2, letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 16 }}>
+            Bring your retail shop or local business<br />
+            <span style={{ color: G }}>closer to your customers.</span>
           </h2>
-
-          <p style={{ fontSize: 15.5, fontWeight: 800, color: "#4ADE80", marginBottom: 24 }}>
-            Bring your retail shop or local business closer to your customers.
-          </p>
-
-          <button className="retail-btn-primary" onClick={handleStart} style={{ fontSize: 14, padding: "13px 30px" }}>
+          <button className="retail-btn-primary" onClick={handleStart} style={{ fontSize: 13, padding: "11px 26px", marginTop: 10 }}>
             Get Started with MessBee
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
-            </svg>
           </button>
         </div>
       </section>
@@ -1201,33 +1160,20 @@ const RetailPage = () => {
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 10: FREQUENTLY ASKED QUESTIONS
          ═══════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: "64px 6%", background: "#FAFAFA" }}>
-        <div style={{ maxWidth: 820, margin: "0 auto" }}>
+      <section style={{ padding: "64px 6%", background: "#FFFFFF" }}>
+        <div style={{ maxWidth: 760, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 36 }}>
-            <div
-              style={{
-                display: "inline-block",
-                background: "#D1FAE5",
-                color: "#059669",
-                padding: "4px 12px",
-                borderRadius: 40,
-                fontSize: 10.5,
-                fontWeight: 800,
-                letterSpacing: "1px",
-                marginBottom: 12,
-                textTransform: "uppercase",
-              }}
-            >
-              FAQ
-            </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
-              Frequently Asked <span style={{ color: "#16A34A" }}>Questions</span>
+            <Pill>FAQ</Pill>
+            <h2 style={{ fontSize: "clamp(18px, 2.5vw, 30px)", fontWeight: 900, color: D2, letterSpacing: "-1px" }}>
+              Frequently Asked Questions
             </h2>
           </div>
 
-          {RETAIL_FAQS.map((faq, idx) => (
-            <FaqItem key={idx} {...faq} />
-          ))}
+          <div style={{ borderTop: "1px solid #F1F5F9" }}>
+            {RETAIL_FAQS.map((faq, idx) => (
+              <FaqItem key={idx} {...faq} />
+            ))}
+          </div>
         </div>
       </section>
 

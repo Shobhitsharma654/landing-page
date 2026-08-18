@@ -4,6 +4,17 @@ import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
 import defaultLogo from "../assets/logo.jpeg";
 
+const G  = "#16A34A";
+const GL = "#F0FDF4";
+const GB = "#BBF7D0";
+const D2 = "#111827";
+const MU = "#64748B";
+
+const Pill = ({ children }) => (
+  <div style={{ display:"inline-block", background:GL, border:`1px solid ${GB}`, color:G, fontSize:11, fontWeight:700, textTransform:"uppercase", letterSpacing:"1.5px", padding:"5px 14px", borderRadius:20, marginBottom:16 }}>
+    {children}
+  </div>
+);
 /* ═══════════════════════════════════════════════════════════════════════
    MessBee — Business Library Page Component
    Official MessBee logo in Hero graphic.
@@ -142,44 +153,46 @@ const LIBRARY_FAQS = [
 const FaqItem = ({ q, a }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div
-      onClick={() => setOpen(!open)}
-      style={{
-        background: "#FFFFFF",
-        border: `1px solid ${open ? "#BBF7D0" : "#E2E8F0"}`,
-        borderRadius: 14,
-        padding: "16px 20px",
-        cursor: "pointer",
-        transition: "all 0.25s ease",
-        boxShadow: open ? "0 6px 20px rgba(22,163,74,0.06)" : "0 2px 4px rgba(0,0,0,0.01)",
-        marginBottom: 10,
-      }}
-    >
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 14 }}>
-        <span style={{ fontSize: 13.5, fontWeight: 800, color: open ? "#16A34A" : "#0F172A", lineHeight: 1.4 }}>{q}</span>
-        <span
+    <div style={{ borderBottom: `1px solid #F1F5F9` }}>
+      <div
+        onClick={() => setOpen(!open)}
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "20px 0",
+          cursor: "pointer",
+        }}
+      >
+        <span style={{ fontSize: 14, fontWeight: 700, color: open ? G : D2, transition: "color .2s" }}>{q}</span>
+        <div
           style={{
-            width: 26,
-            height: 26,
-            borderRadius: "50%",
-            background: open ? "#16A34A" : "#F1F5F9",
+            width: 28,
+            height: 28,
+            borderRadius: 8,
+            background: open ? GL : "#F8FAFC",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             flexShrink: 0,
-            transition: "all 0.25s ease",
-            transform: open ? "rotate(180deg)" : "rotate(0deg)",
+            transition: "all .2s",
+            color: open ? G : MU,
+            border: open ? `1px solid ${GB}` : "1px solid transparent",
           }}
         >
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke={open ? "#FFFFFF" : "#64748B"} strokeWidth="2.5" strokeLinecap="round">
-            <polyline points="6 9 12 15 18 9" />
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path
+              d={open ? "M3 9l4-4 4 4" : "M3 5l4 4 4-4"}
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
-        </span>
+        </div>
       </div>
       {open && (
-        <p style={{ fontSize: 13, color: "#475569", lineHeight: 1.7, margin: "12px 0 0", paddingRight: 24, borderTop: "1px solid #F1F5F9", paddingTop: 10 }}>
-          {a}
-        </p>
+        <div style={{ fontSize: 13, color: MU, lineHeight: 1.8, paddingBottom: 16 }}>{a}</div>
       )}
     </div>
   );
@@ -778,40 +791,24 @@ const BusinessLibraryPage = () => {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 6: A RESOURCE CENTRE FOR MODERN BUSINESSES (Dark Green Gradient Banner)
+          SECTION 6: A RESOURCE CENTRE FOR MODERN BUSINESSES
          ═══════════════════════════════════════════════════════════════════ */}
-      <section
-        style={{
-          padding: "68px 6%",
-          background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
-          color: "#FFFFFF",
-          borderTop: "1px solid rgba(52, 211, 153, 0.25)",
-          borderBottom: "1px solid rgba(52, 211, 153, 0.25)",
-        }}
-      >
-        <div style={{ maxWidth: 860, margin: "0 auto", textAlign: "center" }}>
-          <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#FFFFFF", letterSpacing: "-1px", marginBottom: 14 }}>
-            A Resource Centre for Modern Businesses
+      <section style={{ background: GL, padding: "72px 6%", textAlign: "center", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 500, height: 500, background: "rgba(22,163,74,.08)", borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none" }} />
+        <div style={{ position: "relative", zIndex: 2, maxWidth: 860, margin: "0 auto" }}>
+          <Pill>A Resource Centre for Modern Businesses</Pill>
+          <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 900, color: D2, letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 16 }}>
+            Whether you're a local retailer or growing company,<br />
+            <span style={{ color: G }}>the right information helps you grow.</span>
           </h2>
-
-          <p style={{ fontSize: 14.5, color: "#94A3B8", lineHeight: 1.68, marginBottom: 16 }}>
-            Whether you're a local retailer, service provider, e-commerce business, professional firm or growing company, the right information can help you make better decisions.
-          </p>
-
-          <p style={{ fontSize: 14.5, color: "#94A3B8", lineHeight: 1.68, marginBottom: 24, maxWidth: 760, margin: "0 auto 24px" }}>
+          <p style={{ fontSize: 13.5, color: MU, lineHeight: 1.68, marginBottom: 20, maxWidth: 760, margin: "0 auto 20px" }}>
             The MessBee Business Library is designed to become a practical resource centre for businesses looking to improve how they manage customers, communicate, market, automate and grow.
           </p>
-
-          <div style={{ fontSize: 16.5, fontWeight: 900, color: "#4ADE80", marginBottom: 26, letterSpacing: "-0.3px" }}>
+          <div style={{ fontSize: 16.5, fontWeight: 900, color: G, marginBottom: 26, letterSpacing: "-0.3px" }}>
             Explore a topic. Learn something useful. Put it into practice.
           </div>
-
-          <button className="library-btn-primary" onClick={handleExplore} style={{ fontSize: 14, padding: "13px 30px" }}>
+          <button className="library-btn-primary" onClick={handleExplore} style={{ fontSize: 13, padding: "11px 26px" }}>
             Explore the Business Library
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
-            </svg>
           </button>
         </div>
       </section>
@@ -820,30 +817,15 @@ const BusinessLibraryPage = () => {
           SECTION 7: FREQUENTLY ASKED QUESTIONS
          ═══════════════════════════════════════════════════════════════════ */}
       <section style={{ padding: "64px 6%", background: "#FFFFFF" }}>
-        <div style={{ maxWidth: 860, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 40 }}>
-            <div
-              style={{
-                display: "inline-block",
-                background: "#D1FAE5",
-                color: "#059669",
-                padding: "4px 12px",
-                borderRadius: 40,
-                fontSize: 10.5,
-                fontWeight: 800,
-                letterSpacing: "1px",
-                marginBottom: 12,
-                textTransform: "uppercase",
-              }}
-            >
-              Library FAQs
-            </div>
-            <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+        <div style={{ maxWidth: 760, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 36 }}>
+            <Pill>FAQ</Pill>
+            <h2 style={{ fontSize: "clamp(18px, 2.5vw, 30px)", fontWeight: 900, color: D2, letterSpacing: "-1px" }}>
               Frequently Asked Questions
             </h2>
           </div>
 
-          <div>
+          <div style={{ borderTop: "1px solid #F1F5F9" }}>
             {LIBRARY_FAQS.map((faq, idx) => (
               <FaqItem key={idx} q={faq.q} a={faq.a} />
             ))}
