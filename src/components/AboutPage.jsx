@@ -5,6 +5,43 @@ import { useNavigate } from "react-router-dom";
 import defaultLogo from "../assets/logo.jpeg";
 import messbeeText from "../assets/messbee_text.png";
 import aboutHero from "../assets/about_hero.png";
+import {
+  FiGlobe,
+  FiCpu,
+  FiSettings,
+  FiUsers,
+  FiLayers,
+  FiLink2,
+  FiCloud,
+  FiBarChart2,
+  FiShoppingBag,
+  FiCoffee,
+  FiScissors,
+  FiPackage,
+  FiPlusSquare,
+  FiActivity,
+  FiFolderPlus,
+  FiBriefcase,
+  FiBookOpen,
+  FiBook,
+  FiTruck,
+  FiSmartphone,
+  FiCreditCard,
+  FiDatabase,
+  FiMessageSquare,
+  FiLock,
+  FiKey,
+  FiShield,
+  FiClipboard,
+  FiFileText,
+  FiHeart,
+  FiTrendingUp,
+  FiEye,
+  FiZap,
+  FiTarget,
+  FiCheckSquare
+} from "react-icons/fi";
+import { FiFolder, FiGift, FiAward, FiRefreshCw, FiArrowUpRight, FiTag } from "react-icons/fi";
 
 /* ══════════════════════════════════════════════════════
    MessBee — About Page
@@ -23,7 +60,7 @@ const FOOTER_LINKS = {
     { label: "Privacy policy", path: "/privacy" },
     { label: "Cookies policy", path: "/cookies" },
     { label: "License agreement", path: "/license" },
-    {label :"Refund & Cancellation Policy", path:"/refundpolicy"}
+    { label: "Refund & Cancellation Policy", path: "/refundpolicy" }
   ],
 };
 
@@ -90,6 +127,8 @@ const AboutPage = () => {
   const [activeFeature, setActiveFeature] = useState(0);
   const [selectedIndustryTab, setSelectedIndustryTab] = useState("all");
   const [aboutFaqOpenIdx, setAboutFaqOpenIdx] = useState(null);
+  const [hoveredCap, setHoveredCap] = useState(null);
+  const [hoveredLeaderCap, setHoveredLeaderCap] = useState(null);
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
   useEffect(() => {
@@ -126,38 +165,150 @@ const AboutPage = () => {
         .cap-card:hover .cap-icon { animation: iconBounce 0.6s ease; }
         .cap-card:hover .cap-icon-spin { animation: iconSpin 0.7s linear; }
         .cap-card:hover .cap-icon-pulse { animation: iconPulse 0.5s ease; }
+
+        .capabilities-grid-cols {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 12px 20px;
+          flex: 1 1 380px;
+          margin-top: 8px;
+          align-content: flex-start;
+        }
+        @media (max-width: 640px) {
+          .capabilities-grid-cols {
+            grid-template-columns: 1fr !important;
+            gap: 10px !important;
+            margin-top: 16px !important;
+          }
+        }
+
+        /* ── RESPONSIVE MEDIA QUERIES ── */
+        .about-section {
+          padding: 60px 6%;
+        }
+        .about-hero-section {
+          padding: 80px 6% 70px;
+        }
+        @media (max-width: 1280px) {
+          .about-section {
+            padding: 50px 4% !important;
+          }
+          .about-hero-section {
+            padding: 60px 4% 50px !important;
+          }
+          .hero-flex-container {
+            gap: 40px !important;
+          }
+          .hero-left-col {
+            flex: 0 0 55% !important;
+          }
+          .capabilities-container {
+            gap: 50px !important;
+          }
+          .capabilities-left {
+            flex: 1.2 1 480px !important;
+          }
+          .connectivity-container {
+            gap: 40px !important;
+          }
+          .connectivity-left {
+            flex: 1 1 440px !important;
+          }
+          .security-container {
+            gap: 40px !important;
+          }
+          .security-left {
+            flex: 1 1 440px !important;
+          }
+        }
+        @media (max-width: 1024px) {
+          .about-section {
+            padding: 60px 4% !important;
+          }
+          .about-hero-section {
+            padding: 60px 4% 50px !important;
+          }
+          .hero-flex-container {
+            gap: 30px !important;
+            flex-direction: column !important;
+            align-items: stretch !important;
+          }
+          .hero-left-col {
+            flex: 1 1 100% !important;
+          }
+          .hero-right-col {
+            flex: 1 1 100% !important;
+            margin-top: 30px !important;
+          }
+          .capabilities-container {
+            gap: 30px !important;
+            flex-direction: column !important;
+            align-items: stretch !important;
+          }
+          .capabilities-left {
+            flex: 1 1 100% !important;
+          }
+          .capabilities-right {
+            flex: 1 1 100% !important;
+            margin-top: 24px !important;
+          }
+          .connectivity-container {
+            gap: 30px !important;
+            flex-direction: column !important;
+            align-items: stretch !important;
+          }
+          .connectivity-left {
+            flex: 1 1 100% !important;
+          }
+          .connectivity-right {
+            flex: 1 1 100% !important;
+            margin-top: 30px !important;
+          }
+          .security-container {
+            gap: 30px !important;
+            flex-direction: column !important;
+            align-items: stretch !important;
+          }
+          .security-left {
+            flex: 1 1 100% !important;
+          }
+          .security-right {
+            flex: 1 1 100% !important;
+            margin-top: 30px !important;
+          }
+        }
       `}</style>
 
       {/* ── NAVBAR ── */}
       <Navbar />
 
       {/* ── HERO ── */}
-      <section style={{ background: "#FFFFFF", padding: "100px 6% 90px" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", gap: 60, flexWrap: "wrap" }}>
+      <section className="about-hero-section" style={{ background: "#FFFFFF" }}>
+        <div className="hero-flex-container" style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", gap: 60, flexWrap: "wrap" }}>
 
           {/* ── LEFT 60% — text ── */}
-          <div className="about-hero-animate" style={{ flex: "0 0 58%", minWidth: 280 }}>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(0,200,83,0.12)", border: "1px solid rgba(0,200,83,0.3)", borderRadius: 40, padding: "6px 18px", marginBottom: 28 }}>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="#16A34A"><circle cx="12" cy="12" r="10" /></svg>
+          <div className="about-hero-animate hero-left-col" style={{ flex: "0 0 58%", minWidth: 280 }}>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(22,163,74,0.08)", border: "1px solid rgba(22,163,74,0.22)", borderRadius: 40, padding: "6px 18px", marginBottom: 28 }}>
+              <FiBookOpen style={{ color: "#16A34A", width: 14, height: 14 }} />
               <span style={{ color: "#16A34A", fontSize: 13, fontWeight: 600 }}>Our Story</span>
             </div>
-            <h1 style={{ fontSize: "clamp(30px,4vw,52px)", fontWeight: 900, color: "#FFFFFF", lineHeight: 1.1, marginBottom: 20, textAlign: "left" }}>
+            <h1 style={{ fontSize: "clamp(30px,4vw,52px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.1, marginBottom: 20, textAlign: "left" }}>
               India&apos;s Digital Business<br />
               <span style={{ color: "#16A34A" }}>Operating System</span>
             </h1>
-            <p style={{ fontSize: 18, color: "#9CA3AF", lineHeight: 1.7, marginBottom: 20, textAlign: "left" }}>
+            <p style={{ fontSize: 18, color: "#475569", lineHeight: 1.7, marginBottom: 20, textAlign: "left" }}>
               Own Your Business.{" "}
               <span style={{ color: "#16A34A", fontWeight: 700 }}>Own Your Customers.</span>{" "}
               Own Your Growth.
             </p>
-            <p style={{ fontSize: 15, color: "#D1D5DB", lineHeight: 1.85, marginBottom: 16, textAlign: "left" }}>
+            <p style={{ fontSize: 15, color: "#334155", lineHeight: 1.85, marginBottom: 16, textAlign: "left" }}>
               MessBee is a unified digital business platform built for Indian businesses to manage customer relationships,
               communication, sales, marketing, automation, and everyday business operations from one connected system.
               From a local shop or restaurant to a growing company, educational institution, healthcare business,
               distributor, manufacturer or multi-location enterprise, MessBee brings essential digital business
-              capabilities together in one platform.Instead of managing separate tools for customer communication, CRM, marketing, orders, automation and business operations, businesses can use MessBee to create a more connected and organized digital ecosystem around their own brand. 
+              capabilities together in one platform.Instead of managing separate tools for customer communication, CRM, marketing, orders, automation and business operations, businesses can use MessBee to create a more connected and organized digital ecosystem around their own brand.
             </p>
-            <p style={{ fontSize: 14, color: "#9CA3AF", lineHeight: 1.85, marginBottom: 36, fontWeight: 600, textAlign: "left" }}>
+            <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.85, marginBottom: 36, fontWeight: 600, textAlign: "left" }}>
               <span style={{ color: "#16A34A" }}>One platform.</span>{" "}
               One business ecosystem.{" "}
               <span style={{ color: "#16A34A" }}>One place to manage your digital growth.</span>
@@ -168,7 +319,7 @@ const AboutPage = () => {
                 style={{
                   background: "#16A34A", color: "#FFFFFF", border: "none", borderRadius: 40,
                   padding: "14px 36px", fontSize: 15, fontWeight: 700, cursor: "pointer",
-                  boxShadow: "0 4px 24px rgba(0,200,83,0.4)", transition: "all 0.2s",
+                  boxShadow: "0 4px 24px rgba(22,163,74,0.25)", transition: "all 0.2s",
                 }}
                 onMouseEnter={e => e.currentTarget.style.transform = "scale(1.04)"}
                 onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
@@ -178,11 +329,11 @@ const AboutPage = () => {
               <button
                 onClick={() => navigate("/business")}
                 style={{
-                  background: "rgba(255,255,255,0.08)", color: "#E4E4E7", border: "1px solid rgba(255,255,255,0.15)",
+                  background: "#F1F5F9", color: "#334155", border: "1px solid #E2E8F0",
                   borderRadius: 40, padding: "14px 36px", fontSize: 15, fontWeight: 600, cursor: "pointer", transition: "all 0.2s",
                 }}
-                onMouseEnter={e => e.currentTarget.style.background = "rgba(255,255,255,0.14)"}
-                onMouseLeave={e => e.currentTarget.style.background = "rgba(255,255,255,0.08)"}
+                onMouseEnter={e => { e.currentTarget.style.background = "#E2E8F0"; e.currentTarget.style.transform = "scale(1.04)"; }}
+                onMouseLeave={e => { e.currentTarget.style.background = "#F1F5F9"; e.currentTarget.style.transform = "scale(1)"; }}
               >
                 Find a Business →
               </button>
@@ -190,7 +341,7 @@ const AboutPage = () => {
           </div>
 
           {/* ── RIGHT 40% — image ── */}
-          <div style={{ flex: "1 1 300px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div className="hero-right-col" style={{ flex: "1 1 300px", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <div style={{
               borderRadius: 24,
               overflow: "hidden",
@@ -211,17 +362,17 @@ const AboutPage = () => {
       </section>
 
       {/* ── WHAT IS MESSBEE ── */}
-      <section style={{ padding: "96px 6%", background: "#ffffff" }}>
-        <div style={{ maxWidth: 1140, margin: "0 auto", display: "flex", gap: 72, alignItems: "flex-start", flexWrap: "wrap" }}>
+      <section className="about-section" style={{ background: "#ffffff" }}>
+        <div className="capabilities-container" style={{ maxWidth: 1200, margin: "0 auto", display: "flex", gap: 60, alignItems: "flex-start", flexWrap: "wrap" }}>
 
           {/* LEFT — text */}
-          <div style={{ flex: "1 1 420px" }}>
+          <div className="capabilities-left" style={{ flex: "1.3 1 540px" }}>
             <div style={{
               display: "inline-flex", alignItems: "center", gap: 8,
               background: "rgba(22,163,74,0.08)", border: "1px solid rgba(22,163,74,0.22)",
               borderRadius: 40, padding: "5px 16px", marginBottom: 24,
             }}>
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="#16A34A"><circle cx="12" cy="12" r="10" /></svg>
+              <FiGlobe style={{ color: "#16A34A", width: 12, height: 12 }} />
               <span style={{ color: "#16A34A", fontSize: 12, fontWeight: 700, letterSpacing: 0.8, textTransform: "uppercase" }}>What Is MessBee?</span>
             </div>
 
@@ -270,8 +421,8 @@ const AboutPage = () => {
             </button>
           </div>
 
-          {/* RIGHT — capabilities grid (SVG icons + animated) */}
-          <div style={{ flex: "1 1 380px", display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14, marginTop: 56 }}>
+          {/* RIGHT — premium wrapping tag cloud (flexible pill badges) */}
+          <div className="capabilities-grid-cols">
             {[
               {
                 anim: "bounce", color: "#6366F1", bg: "#EEF2FF",
@@ -353,45 +504,59 @@ const AboutPage = () => {
                 title: "No-code Automation", desc: "Automate without coding",
                 svg: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>,
               },
-            ].map((f, i) => (
-              <div
-                key={i}
-                className="cap-card"
-                style={{
-                  background: "#F8FAFC", borderRadius: 12, padding: "14px 12px",
-                  border: "1px solid #E2E8F0", transition: "all 0.25s ease",
-                  cursor: "default", animationDelay: `${i * 0.04}s`,
-                  minHeight: 77, display: "flex", alignItems: "center", justifyContent: "center",
-                }}>
-
-                {/* Default: title text only */}
-                <div className="cap-front" style={{ textAlign: "center" }}>
-                  <div style={{ fontSize: 14, fontWeight: 700, color: "#0F172A", lineHeight: 1.4 }}>{f.title}</div>
-                </div>
-
-                {/* Hover: icon only */}
-                <div className="cap-back">
-                  <div
-                    className={f.anim === "spin" ? "cap-icon cap-icon-spin" : f.anim === "pulse" ? "cap-icon cap-icon-pulse" : "cap-icon"}
-                    style={{
-                      width: 36, height: 36, borderRadius: 10, background: f.bg,
-                      display: "flex", alignItems: "center", justifyContent: "center",
-                    }}>
-                    <svg style={{ width: 18, height: 18 }} viewBox="0 0 24 24" fill="none" stroke={f.color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+            ].map((f, i) => {
+              const isHovered = hoveredCap === i;
+              return (
+                <div
+                  key={i}
+                  onMouseEnter={() => setHoveredCap(i)}
+                  onMouseLeave={() => setHoveredCap(null)}
+                  style={{
+                    background: isHovered ? f.color : `${f.color}0a`,
+                    borderRadius: "30px",
+                    padding: "6px 12px",
+                    border: `1px solid ${isHovered ? f.color : `${f.color}25`}`,
+                    transition: "all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1)",
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    transform: isHovered ? "translateY(-3px)" : "translateY(0)",
+                    boxShadow: isHovered ? `0 6px 18px ${f.color}35` : "none",
+                  }}
+                  title={f.desc}
+                >
+                  <div style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: isHovered ? "#FFFFFF" : f.color,
+                    transition: "color 0.25s ease",
+                    flexShrink: 0
+                  }}>
+                    <svg style={{ width: 15, height: 15 }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                       {f.svg.props.children}
                     </svg>
                   </div>
-                  <div style={{ fontSize: 12, fontWeight: 700, color: "#16A34A" }}>{f.title}</div>
+                  <span style={{
+                    fontSize: 15,
+                    fontWeight: 750,
+                    color: isHovered ? "#FFFFFF" : "#0F172A",
+                    transition: "color 0.25s ease",
+                    fontFamily: "'Inter', sans-serif",
+                    whiteSpace: "nowrap"
+                  }}>
+                    {f.title}
+                  </span>
                 </div>
-
-              </div>
-            ))}
+              );
+            })}
           </div>
 
         </div>
       </section>
 
-      {/* ── INDIAN BUSINESSES OPERATING SYSTEM (PREMIUM DESIGN) ── */}
+
       {/* ── INDIAN BUSINESSES OPERATING SYSTEM (PREMIUM DESIGN) ── */}
       <section style={{ padding: "100px 6%", background: "linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)", borderTop: "1px solid #F1F5F9", borderBottom: "1px solid #F1F5F9", position: "relative" }}>
         <style>{`
@@ -401,23 +566,13 @@ const AboutPage = () => {
             align-items: flex-start;
             position: relative;
             max-width: 600px;
-            margin: 40px 0 0 0;
+            margin: 20px 0 0 0;
             padding: 10px 0 10px 32px;
-          }
-          .growth-timeline-vertical::before {
-            content: '';
-            position: absolute;
-            left: 39px;
-            top: 24px;
-            bottom: 24px;
-            width: 2px;
-            background: #16A34A;
           }
           .growth-step-item {
             display: flex;
             align-items: flex-start;
-            gap: 20px;
-            margin-bottom: 24px;
+            margin-bottom: 12px;
             position: relative;
             z-index: 2;
             width: 100%;
@@ -426,58 +581,31 @@ const AboutPage = () => {
           .growth-step-item:last-child {
             margin-bottom: 0;
           }
-          .growth-circle {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: #FFFFFF;
-            border: 2px solid #E2E8F0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            font-weight: 800;
-            color: #475569;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.01);
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-            margin-top: 6px;
-          }
           .growth-step-card {
             background: #FFFFFF;
-            border: 1px solid #E2E8F0;
+            border: 1.5px solid #E2E8F0;
             border-radius: 12px;
-            padding: 16px 20px;
+            padding: 10px 16px;
             box-shadow: 0 4px 12px rgba(15, 23, 42, 0.01);
             flex-grow: 1;
             transition: all 0.25s ease;
           }
-          .growth-step-item:hover .growth-circle {
-            border-color: #16A34A;
-            color: #FFFFFF;
-            background: #16A34A;
-            transform: scale(1.1);
-            box-shadow: 0 6px 15px rgba(22, 163, 74, 0.2);
-          }
           .growth-step-item:hover .growth-step-card {
-            border-color: #16A34A;
-            box-shadow: 0 10px 25px rgba(22, 163, 74, 0.04);
-            transform: translateX(6px);
+            border-color: #CBD5E1;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+            transform: translateY(-2px);
           }
           .growth-step-title {
-            font-size: 15px;
+            font-size: 14.5px;
             font-weight: 700;
             color: #0F172A;
-            margin-bottom: 4px;
+            margin-bottom: 3px;
             transition: color 0.2s ease;
-          }
-          .growth-step-item:hover .growth-step-title {
-            color: #16A34A;
           }
           .growth-step-desc {
             font-size: 13px;
             color: #64748B;
-            line-height: 1.5;
+            line-height: 1.45;
           }
         `}</style>
 
@@ -561,7 +689,7 @@ const AboutPage = () => {
 
             {/* Right Column: Timeline Cards */}
             <div style={{ flex: "1 1 480px" }}>
-              <div className="growth-timeline-vertical" style={{ margin: 0, padding: "10px 0 10px 24px" }}>
+              <div className="growth-timeline-vertical" style={{ margin: 0, padding: "10px 0" }}>
                 {[
                   { title: "Customer Communication", desc: "Start conversations with customers instantly over WhatsApp.", color: "#10B981", bg: "#F0FDF4", badge: "01", tag: "CONNECT" },
                   { title: "CRM", desc: "Organize contacts, tags, and all customer history details.", color: "#10B981", bg: "#F0FDF4", badge: "02", tag: "CONNECT" },
@@ -574,39 +702,20 @@ const AboutPage = () => {
                   { title: "Loyalty", desc: "Encourage repeat customers with automated loyalty rewards.", color: "#F59E0B", bg: "#FFFBEB", badge: "09", tag: "TRANSACT" },
                   { title: "Analytics", desc: "Keep track of active leads, conversions, and growth metrics.", color: "#EC4899", bg: "#FDF2F8", badge: "10", tag: "SCALE" },
                   { title: "Multi-Location Management", desc: "Manage operational catalog and branches from one central hub.", color: "#EC4899", bg: "#FDF2F8", badge: "11", tag: "SCALE" }
-                ].map((step, idx, arr) => (
-                  <div key={idx} className="growth-step-item" style={{ position: "relative" }}>
-                    <div className="growth-circle" style={{ borderColor: step.color, color: step.color }}>
-                      {step.badge}
-                    </div>
-                    <div className="growth-step-card" style={{ borderLeft: `3px solid ${step.color}` }}>
+                ].map((step, idx) => (
+                  <div key={idx} className="growth-step-item">
+                    <div className="growth-step-card">
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                        <div className="growth-step-title" style={{ margin: 0 }}>{step.title}</div>
+                        <div className="growth-step-title" style={{ margin: 0 }}>
+                          <span style={{ color: step.color, marginRight: 8, fontWeight: 800 }}>{step.badge}</span>
+                          {step.title}
+                        </div>
                         <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: 0.5, padding: "3px 8px", borderRadius: 4, background: step.bg, color: step.color }}>
                           {step.tag}
                         </span>
                       </div>
+                      <p className="growth-step-desc" style={{ margin: "6px 0 0 0" }}>{step.desc}</p>
                     </div>
-                    {idx < arr.length - 1 && (
-                      <div style={{
-                        position: "absolute",
-                        left: "9px",
-                        bottom: "-18px",
-                        zIndex: 3,
-                        color: step.color,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        background: "#FFFFFF",
-                        borderRadius: "50%",
-                        padding: "2px",
-                        border: `1.5px solid ${step.color}`
-                      }}>
-                        <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round">
-                          <polyline points="6 9 12 15 18 9" />
-                        </svg>
-                      </div>
-                    )}
                   </div>
                 ))}
               </div>
@@ -690,7 +799,7 @@ const AboutPage = () => {
           </div>
 
           {/* Slider Layout */}
-          <div style={{ position: "relative", width: "100%", height: "540px", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto" }}>
+          <div style={{ position: "relative", width: "100%", height: "580px", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto" }}>
 
             {/* Left Control Arrow */}
             <button
@@ -723,28 +832,28 @@ const AboutPage = () => {
                   title: "CRM & Customer Management",
                   tag: "CRM",
                   gradient: "linear-gradient(135deg, #10B981, #059669)",
-                  icon: "👥",
+                  icon: <FiUsers style={{ width: 64, height: 64, color: "#FFFFFF" }} />,
                   desc: "Build organized customer profiles and maintain a connected view of customer interactions. MessBee helps businesses manage contacts, enquiries, conversations, leads, customer activity and relationship history in one centralized environment. Instead of keeping customer data scattered across spreadsheets, chats and applications, create a structured management process."
                 },
                 {
                   title: "WhatsApp Business & Commerce",
                   tag: "WHATSAPP",
                   gradient: "linear-gradient(135deg, #22C55E, #16A34A)",
-                  icon: "💬",
+                  icon: <FiMessageSquare style={{ width: 64, height: 64, color: "#FFFFFF" }} />,
                   desc: "Turn customer conversations into meaningful business interactions. Using WhatsApp Business, communicate with customers, answer enquiries, showcase products, support ordering workflows and send updates. MessBee connects WhatsApp with CRM, automation and business functions so conversations become part of the wider customer journey."
                 },
                 {
                   title: "Digital Storefront",
                   tag: "STOREFRONT",
                   gradient: "linear-gradient(135deg, #3B82F6, #2563EB)",
-                  icon: "🏪",
+                  icon: <FiShoppingBag style={{ width: 64, height: 64, color: "#FFFFFF" }} />,
                   desc: "Give your business a digital presence that works around your brand. MessBee enables businesses to create a branded digital storefront where customers can discover products, services, offers, and other business information. A digital storefront can help businesses create a more direct customer experience without making their digital presence dependent on a single marketplace."
                 },
                 {
                   title: "AI Business Assistant",
                   tag: "AI ASSISTANT",
                   gradient: "linear-gradient(135deg, #8B5CF6, #7C3AED)",
-                  icon: "🤖",
+                  icon: <FiCpu style={{ width: 64, height: 64, color: "#FFFFFF" }} />,
                   desc: "Intelligent Assistance for Everyday Customer Interactions. Customers often ask the same questions repeatedly: Product availability, pricing, services, business hours, appointment details, order queries, and general FAQs. MessBee&apos;s AI-powered capabilities automate customer interactions 24/7.",
                   points: [
                     "Answering frequently asked FAQs",
@@ -757,55 +866,54 @@ const AboutPage = () => {
                   title: "Marketing Automation",
                   tag: "AUTOMATION",
                   gradient: "linear-gradient(135deg, #EC4899, #D946EF)",
-                  icon: "🚀",
-                  desc: "Reach the Right Customer at the Right Stage. Marketing becomes more effective when communication is connected to customer activity. MessBee helps businesses create structured campaigns, follow-ups, reminders and customer engagement workflows across supported channels.",
+                  icon: <FiZap style={{ width: 64, height: 64, color: "#FFFFFF" }} />,
+                  desc: "Reach the Right Customer at the Right Stage. Marketing becomes more effective when communication is connected to customer activity. MessBee helps businesses create structured campaigns, follow-ups, reminders and customer engagement workflows across supported communication channels. Businesses can use automation for activities such as:",
                   points: [
                     "Lead follow-ups",
-                    "Customer re-engagement ",
-                    "Promotional campaigns ",
-                    "Order updates ",
+                    "Customer re-engagement",
+                    "Promotional campaigns",
+                    "Order updates",
                     "Appointment reminders",
-                    "Service reminders ",
-                    "Loyalty communication ",
-                    "Notifications ",
-                    "Customer journeys ",
-                    "Internal alerts ",
-                  ],
-                
+                    "Service reminders",
+                    "Loyalty communication",
+                    "Notifications",
+                    "Customer journeys",
+                    "Internal alerts"
+                  ]
                 },
                 {
                   title: "From Lead to Loyal Customer",
                   tag: "JOURNEY",
                   gradient: "linear-gradient(135deg, #F59E0B, #D97706)",
-                  icon: "🔄",
+                  icon: <FiRefreshCw style={{ width: 64, height: 64, color: "#FFFFFF" }} />,
                   desc: "A successful business relationship does not end after the first sale. MessBee is designed around the complete customer journey: Discover ➔ Enquire ➔ Engage ➔ Recommend ➔ Convert ➔ Order ➔ Pay ➔ Follow Up ➔ Retain ➔ Grow. By connecting these stages, businesses can create more consistent customer experiences and identify repeat opportunities."
                 },
                 {
                   title: "Orders, Payments & Workflows",
                   tag: "TRANSACTIONS",
                   gradient: "linear-gradient(135deg, #EF4444, #DC2626)",
-                  icon: "💳",
+                  icon: <FiCreditCard style={{ width: 64, height: 64, color: "#FFFFFF" }} />,
                   desc: "Bring customer requests and order-related activities into a more organized workflow. MessBee supports business processes around orders, customer requests, and payment-related workflows, helping businesses connect transactions with the customer relationship and communication journey."
                 },
                 {
                   title: "Inventory Management",
                   tag: "INVENTORY",
                   gradient: "linear-gradient(135deg, #64748B, #475569)",
-                  icon: "📦",
+                  icon: <FiPackage style={{ width: 64, height: 64, color: "#FFFFFF" }} />,
                   desc: "For businesses that manage products, keeping track of inventory is an essential part of daily operations. MessBee provides inventory-related capabilities to help businesses organize products, monitor stock and maintain better visibility into product availability. This can be particularly useful for managing multiple products."
                 },
                 {
                   title: "Loyalty & Customer Retention",
                   tag: "LOYALTY",
                   gradient: "linear-gradient(135deg, #06B6D4, #0891B2)",
-                  icon: "🎁",
+                  icon: <FiGift style={{ width: 64, height: 64, color: "#FFFFFF" }} />,
                   desc: "Acquiring a customer is only one part of business growth. Long-term growth often depends on repeat customers and stronger relationships. MessBee enables businesses to build loyalty initiatives around points, rewards, referrals, special offers, and personalized communication."
                 },
                 {
                   title: "Analytics & Business Insights",
                   tag: "ANALYTICS",
                   gradient: "linear-gradient(135deg, #F43F5E, #EC4899)",
-                  icon: "📈",
+                  icon: <FiBarChart2 style={{ width: 64, height: 64, color: "#FFFFFF" }} />,
                   desc: "Business decisions are stronger when they are supported by useful information. MessBee brings business activity into dashboards and analytics so businesses can better understand customer engagement, campaigns, sales-related activity, and operational performance.",
                   points: [
                     "See what is happening",
@@ -818,7 +926,7 @@ const AboutPage = () => {
                   title: "Team & Multi-Location Management",
                   tag: "MANAGEMENT",
                   gradient: "linear-gradient(135deg, #0F172A, #334155)",
-                  icon: "🏢",
+                  icon: <FiBriefcase style={{ width: 64, height: 64, color: "#FFFFFF" }} />,
                   desc: "Modern businesses often have multiple employees, departments, branches or locations. MessBee supports centralized team and business management as operations become more complex.",
                   points: [
                     "User roles & permissions",
@@ -831,7 +939,7 @@ const AboutPage = () => {
                   title: "No-Code Business Automation",
                   tag: "NO-CODE",
                   gradient: "linear-gradient(135deg, #4F46E5, #3730A3)",
-                  icon: "⚙️",
+                  icon: <FiSettings style={{ width: 64, height: 64, color: "#FFFFFF" }} />,
                   desc: "Automate Workflows Without Building Everything From Scratch. Businesses should not need a large development team for repetitive digital tasks. MessBee is designed to make business automation accessible through configurable workflows.",
                   points: [
                     "Customer enquiries & follow-ups",
@@ -891,7 +999,7 @@ const AboutPage = () => {
                     style={{
                       position: "absolute",
                       width: "360px",
-                      height: "460px",
+                      height: "510px",
                       borderRadius: "20px",
                       background: "#FFFFFF",
                       border: "1px solid #E2E8F0",
@@ -1043,16 +1151,16 @@ const AboutPage = () => {
         `}</style>
 
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <div style={{ display: "flex", gap: "80px", alignItems: "center", flexWrap: "wrap" }}>
+          <div className="connectivity-container" style={{ display: "flex", gap: "80px", alignItems: "center", flexWrap: "wrap" }}>
 
             {/* Left Column: Descriptions and Pills */}
-            <div style={{ flex: "1 1 480px" }}>
+            <div className="connectivity-left" style={{ flex: "1 1 480px" }}>
               <div style={{
                 display: "inline-flex", alignItems: "center", gap: 8,
                 background: "rgba(22,163,74,0.08)", border: "1px solid rgba(22,163,74,0.22)",
                 borderRadius: 40, padding: "5px 16px", marginBottom: 20,
               }}>
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="#16A34A"><circle cx="12" cy="12" r="10" /></svg>
+                <FiLink2 style={{ color: "#16A34A", width: 12, height: 12 }} />
                 <span style={{ color: "#16A34A", fontSize: 12, fontWeight: 700, letterSpacing: 0.8, textTransform: "uppercase" }}>Connectivity & API</span>
               </div>
 
@@ -1091,7 +1199,7 @@ const AboutPage = () => {
             </div>
 
             {/* Right Column: High-Fidelity CSS Connectivity Visualizer */}
-            <div style={{ flex: "1 1 400px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+            <div className="connectivity-right" style={{ flex: "1 1 400px", display: "flex", justifyContent: "center", alignItems: "center" }}>
               <div className="visualizer-container" style={{ position: "relative", width: "400px", height: "380px", display: "flex", alignItems: "center", justifyContent: "center" }}>
 
                 {/* SVG Connections Line */}
@@ -1107,39 +1215,53 @@ const AboutPage = () => {
                 {/* Center Node (MessBee) */}
                 <div style={{
                   position: "absolute",
-                  width: "84px",
-                  height: "84px",
+                  width: "88px",
+                  height: "88px",
                   borderRadius: "50%",
                   background: "linear-gradient(135deg, #16A34A 0%, #10B981 100%)",
                   boxShadow: "0 8px 32px rgba(22, 163, 74, 0.35)",
                   display: "flex",
+                  flexDirection: "column",
                   alignItems: "center",
                   justifyContent: "center",
+                  gap: 4,
                   zIndex: 20,
                   border: "3px solid #FFFFFF"
                 }}>
                   <div className="pulse-indicator" />
-                  <span style={{ color: "#FFFFFF", fontWeight: 900, fontSize: 13, letterSpacing: 0.5 }}>MessBee</span>
+                  <img
+                    src={defaultLogo}
+                    alt="MessBee Logo"
+                    style={{
+                      width: "32px",
+                      height: "32px",
+                      borderRadius: "50%",
+                      border: "1.5px solid #FFFFFF",
+                      objectFit: "cover",
+                      display: "block"
+                    }}
+                  />
+                  <span style={{ color: "#FFFFFF", fontWeight: 900, fontSize: 10.5, letterSpacing: 0.5 }}>MessBee</span>
                 </div>
 
                 {/* Surrounding Nodes */}
                 {[
-                  { label: "Websites", icon: "🌐", x: 340, y: 190 },
-                  { label: "Applications", icon: "📱", x: 270, y: 311 },
-                  { label: "Payment Systems", icon: "💳", x: 130, y: 311 },
-                  { label: "CRM Tools", icon: "👥", x: 60, y: 190 },
-                  { label: "Internal Software", icon: "⚙️", x: 130, y: 69 },
-                  { label: "Databases", icon: "📊", x: 270, y: 69 }
+                  { label: "Websites", icon: <FiGlobe style={{ color: "#16A34A", width: 28, height: 28 }} />, x: 340, y: 190 },
+                  { label: "Applications", icon: <FiSmartphone style={{ color: "#16A34A", width: 28, height: 28 }} />, x: 270, y: 311 },
+                  { label: "Payment Systems", icon: <FiCreditCard style={{ color: "#16A34A", width: 28, height: 28 }} />, x: 130, y: 311 },
+                  { label: "CRM Tools", icon: <FiUsers style={{ color: "#16A34A", width: 28, height: 28 }} />, x: 60, y: 190 },
+                  { label: "Internal Software", icon: <FiSettings style={{ color: "#16A34A", width: 28, height: 28 }} />, x: 130, y: 69 },
+                  { label: "Databases", icon: <FiDatabase style={{ color: "#16A34A", width: 28, height: 28 }} />, x: 270, y: 69 }
                 ].map((node, nIdx) => (
                   <div
                     key={nIdx}
                     className="visualizer-node"
                     style={{
                       position: "absolute",
-                      left: node.x - 28,
-                      top: node.y - 28,
-                      width: "56px",
-                      height: "56px",
+                      left: node.x - 34,
+                      top: node.y - 34,
+                      width: "68px",
+                      height: "68px",
                       borderRadius: "50%",
                       background: "#FFFFFF",
                       border: "1px solid #E2E8F0",
@@ -1147,7 +1269,6 @@ const AboutPage = () => {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      fontSize: "24px",
                       zIndex: 10
                     }}
                   >
@@ -1164,7 +1285,7 @@ const AboutPage = () => {
       </section>
 
       {/* ── BUILT FOR DIFFERENT INDUSTRIES SECTION ── */}
-      <section style={{ padding: "100px 6%", background: "#F8FAFC", borderTop: "1px solid #F1F5F9", borderBottom: "1px solid #F1F5F9" }}>
+      <section style={{ padding: "80px 6%", background: "#F8FAFC", borderTop: "1px solid #F1F5F9", borderBottom: "1px solid #F1F5F9" }}>
         <style>{`
           .industry-tab-btn {
             background: #FFFFFF;
@@ -1189,22 +1310,46 @@ const AboutPage = () => {
             color: #FFFFFF;
             box-shadow: 0 6px 16px rgba(22, 163, 74, 0.2);
           }
+          .marquee-container {
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+            padding: 24px 0;
+            display: flex;
+            mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+          }
+          .marquee-track {
+            display: flex;
+            gap: 20px;
+            width: max-content;
+            animation: marqueeScroll 40s linear infinite;
+          }
+          .marquee-container:hover .marquee-track {
+            animation-play-state: paused;
+          }
+          @keyframes marqueeScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
           .industry-card {
             background: #FFFFFF;
             border: 1px solid #E2E8F0;
             border-radius: 16px;
-            padding: 28px;
-            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.02);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-align: left;
+            width: 290px;
+            height: 250px;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.015);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: left;
+            flex-shrink: 0;
           }
           .industry-card:hover {
             transform: translateY(-6px);
             border-color: #16A34A;
-            box-shadow: 0 16px 36px rgba(22, 163, 74, 0.06);
+            box-shadow: 0 16px 36px rgba(22, 163, 74, 0.08);
           }
         `}</style>
 
@@ -1227,7 +1372,7 @@ const AboutPage = () => {
           </div>
 
           {/* Dynamic Tabs Filters */}
-          <div style={{ display: "flex", justifyContent: "center", gap: 12, flexWrap: "wrap", marginBottom: 40 }}>
+          <div style={{ display: "flex", justifyContent: "center", gap: 12, flexWrap: "wrap", marginBottom: 30 }}>
             {[
               { id: "all", label: "All Industries" },
               { id: "commerce", label: "Commerce & Retail" },
@@ -1244,127 +1389,156 @@ const AboutPage = () => {
             ))}
           </div>
 
-          {/* Cards Grid */}
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
-            gap: 24
-          }}>
-            {[
+          {/* Dynamic marquee loop */}
+          {(() => {
+            const filteredInd = [
               {
                 title: "Retail & Kirana",
-                icon: "🛍️",
+                icon: <FiShoppingBag style={{ color: "#16A34A", width: 15, height: 15 }} />,
                 category: "commerce",
+                image: "https://images.unsplash.com/photo-1578916171728-46686eac8d58?w=400&auto=format&fit=crop&q=60",
                 desc: "Manage customer enquiries, product communication, offers, orders and repeat-customer engagement."
               },
               {
                 title: "Restaurants & Food Businesses",
-                icon: "🍔",
+                icon: <FiCoffee style={{ color: "#16A34A", width: 15, height: 15 }} />,
                 category: "commerce",
+                image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&auto=format&fit=crop&q=60",
                 desc: "Share menus, handle customer enquiries, promote offers and support ordering and customer communication workflows."
               },
               {
                 title: "Boutique & Fashion",
-                icon: "👗",
+                icon: <FiScissors style={{ color: "#16A34A", width: 15, height: 15 }} />,
                 category: "commerce",
+                image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400&auto=format&fit=crop&q=60",
                 desc: "Promote collections, communicate offers, engage customers and manage customer relationships."
               },
               {
                 title: "Distributors & Wholesalers",
-                icon: "📦",
+                icon: <FiPackage style={{ color: "#16A34A", width: 15, height: 15 }} />,
                 category: "commerce",
+                image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&auto=format&fit=crop&q=60",
                 desc: "Coordinate retailer communication, product information, orders and business relationships."
               },
               {
                 title: "Pharmacy & Healthcare Businesses",
-                icon: "💊",
+                icon: <FiPlusSquare style={{ color: "#16A34A", width: 15, height: 15 }} />,
                 category: "services",
-                desc: "Support appropriate customer communication, reminders, notifications and service-related workflows while following applicable requirements and responsible communication practices."
+                image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&auto=format&fit=crop&q=60",
+                desc: "Support appropriate customer communication, reminders, notifications and service-related workflows while following guidelines."
               },
               {
                 title: "Gyms & Fitness Centers",
-                icon: "💪",
+                icon: <FiActivity style={{ color: "#16A34A", width: 15, height: 15 }} />,
                 category: "services",
+                image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=400&auto=format&fit=crop&q=60",
                 desc: "Manage customer communication, memberships, schedules, reminders and engagement campaigns."
               },
               {
                 title: "Clinics & Healthcare Services",
-                icon: "🏥",
+                icon: <FiFolderPlus style={{ color: "#16A34A", width: 15, height: 15 }} />,
                 category: "services",
+                image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=400&auto=format&fit=crop&q=60",
                 desc: "Support appointment enquiries, reminders, follow-ups and customer communication workflows."
               },
               {
                 title: "Professional & Service Businesses",
-                icon: "💼",
+                icon: <FiBriefcase style={{ color: "#16A34A", width: 15, height: 15 }} />,
                 category: "services",
+                image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&auto=format&fit=crop&q=60",
                 desc: "Centralize leads, enquiries, appointments, follow-ups, customer communication and operational workflows."
               },
               {
                 title: "Coaching & Education",
-                icon: "📚",
+                icon: <FiBookOpen style={{ color: "#16A34A", width: 15, height: 15 }} />,
                 category: "education",
+                image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&auto=format&fit=crop&q=60",
                 desc: "Communicate with students and parents, share schedules, reminders, announcements and important updates."
               },
               {
                 title: "Schools, Colleges & Universities",
-                icon: "🏫",
+                icon: <FiBook style={{ color: "#16A34A", width: 15, height: 15 }} />,
                 category: "education",
+                image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&auto=format&fit=crop&q=60",
                 desc: "Manage enquiries, announcements, admissions-related communication, reminders and engagement."
               },
               {
                 title: "Automobile Businesses",
-                icon: "🚗",
+                icon: <FiTruck style={{ color: "#16A34A", width: 15, height: 15 }} />,
                 category: "education",
+                image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400&auto=format&fit=crop&q=60",
                 desc: "Manage enquiries, service reminders, booking confirmations and customer follow-ups."
               },
               {
                 title: "Manufacturers",
-                icon: "🏭",
+                icon: <FiSettings style={{ color: "#16A34A", width: 15, height: 15 }} />,
                 category: "education",
+                image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&auto=format&fit=crop&q=60",
                 desc: "Support dealer, distributor and customer communication, enquiries, orders and business workflows."
               }
-            ]
-              .filter(ind => selectedIndustryTab === "all" || ind.category === selectedIndustryTab)
-              .map((ind, idx) => (
-                <div key={idx} className="industry-card">
-                  <div>
-                    <div style={{
-                      width: "48px",
-                      height: "48px",
-                      borderRadius: "14px",
-                      background: "rgba(22, 163, 74, 0.08)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontSize: "22px",
-                      marginBottom: 20,
-                      border: "1px solid rgba(22, 163, 74, 0.15)"
-                    }}>
-                      {ind.icon}
+            ].filter(ind => selectedIndustryTab === "all" || ind.category === selectedIndustryTab);
+
+            // Multiply array so that marquee is filled and loops continuously
+            let marqueeItems = [...filteredInd];
+            while (marqueeItems.length < 10 && filteredInd.length > 0) {
+              marqueeItems = [...marqueeItems, ...filteredInd];
+            }
+            // Double for seamless looping
+            marqueeItems = [...marqueeItems, ...marqueeItems];
+
+            if (marqueeItems.length === 0) return null;
+
+            return (
+              <div className="marquee-container">
+                <div className="marquee-track">
+                  {marqueeItems.map((ind, idx) => (
+                    <div key={idx} className="industry-card">
+                      <div style={{ height: "130px", width: "100%", overflow: "hidden", position: "relative", flexShrink: 0 }}>
+                        <img src={ind.image} alt={ind.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                        <div style={{
+                          position: "absolute",
+                          bottom: 8,
+                          left: 8,
+                          width: "30px",
+                          height: "30px",
+                          borderRadius: "8px",
+                          background: "#FFFFFF",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          boxShadow: "0 2px 8px rgba(0,0,0,0.12)",
+                          border: "1px solid #E2E8F0"
+                        }}>
+                          {ind.icon}
+                        </div>
+                      </div>
+                      <div style={{ padding: "16px", flexGrow: 1, display: "flex", flexDirection: "column", justifyContent: "flex-start", gap: 6 }}>
+                        <h4 style={{ fontSize: "14.5px", fontWeight: 800, color: "#0F172A", margin: 0, fontFamily: "'Inter', sans-serif" }}>
+                          {ind.title}
+                        </h4>
+                        <p style={{ fontSize: "12px", color: "#475569", lineHeight: 1.5, margin: 0, fontFamily: "'Inter', sans-serif" }}>
+                          {ind.desc}
+                        </p>
+                      </div>
                     </div>
-                    <h4 style={{ fontSize: "16px", fontWeight: 800, color: "#0F172A", marginBottom: 10, fontFamily: "'Inter', sans-serif" }}>
-                      {ind.title}
-                    </h4>
-                    <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.6, margin: 0, fontFamily: "'Inter', sans-serif" }}>
-                      {ind.desc}
-                    </p>
-                  </div>
+                  ))}
                 </div>
-              ))}
-          </div>
+              </div>
+            );
+          })()}
 
         </div>
       </section>
 
       {/* ── WHY BUSINESSES CHOOSE MESSBEE SECTION ── */}
-      <section style={{ padding: "100px 6%", background: "#FFFFFF" }}>
+      <section style={{ padding: "80px 6%", background: "#FFFFFF" }}>
         <style>{`
           .choose-card {
             background: #FFFFFF;
             border: 1px solid #E2E8F0;
             border-radius: 16px;
-            padding: 28px;
-            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.01);
+            padding: 20px 24px;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.015);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-align: left;
             position: relative;
@@ -1386,9 +1560,9 @@ const AboutPage = () => {
             transition: transform 0.3s ease;
           }
           .choose-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             border-color: #E2E8F0;
-            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.035);
           }
           .choose-card:hover::after {
             transform: scaleX(1);
@@ -1398,7 +1572,7 @@ const AboutPage = () => {
         <div style={{ maxWidth: 1100, margin: "0 auto", textAlign: "center" }}>
 
           {/* Header */}
-          <div style={{ marginBottom: 50 }}>
+          <div style={{ marginBottom: 40 }}>
             <div style={{
               display: "inline-flex", alignItems: "center", gap: 8,
               background: "rgba(22,163,74,0.08)", border: "1px solid rgba(22,163,74,0.22)",
@@ -1417,75 +1591,76 @@ const AboutPage = () => {
           <div style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
-            gap: 24
+            gap: 20
           }}>
             {[
               {
                 title: "One Connected Business Platform",
-                icon: "🌐",
+                icon: <FiGlobe style={{ color: "#16A34A", width: 20, height: 20 }} />,
                 desc: "Bring communication, CRM, AI, automation, commerce, orders and analytics into one connected ecosystem."
               },
               {
                 title: "Built for Indian Businesses",
-                icon: "🇮🇳",
+                icon: <img src={defaultLogo} alt="MessBee Logo" style={{ width: "22px", height: "22px", borderRadius: "50%", objectFit: "cover", display: "block" }} />,
                 desc: "Designed with the diverse requirements of Indian MSMEs, growing businesses, and larger organizations in mind."
               },
               {
                 title: "AI-Assisted",
-                icon: "🤖",
+                icon: <FiCpu style={{ color: "#16A34A", width: 20, height: 20 }} />,
                 desc: "Use AI capabilities to support customer interactions and automate suitable repetitive tasks."
               },
               {
                 title: "No-Code Automation",
-                icon: "⚙️",
+                icon: <FiSettings style={{ color: "#16A34A", width: 20, height: 20 }} />,
                 desc: "Create business workflows without building every process through custom software development."
               },
               {
                 title: "Customer-Centric",
-                icon: "👥",
+                icon: <FiUsers style={{ color: "#16A34A", width: 20, height: 20 }} />,
                 desc: "Build a more complete understanding of customer interactions across their journey."
               },
               {
                 title: "Multi-User & Multi-Location",
-                icon: "🏢",
+                icon: <FiLayers style={{ color: "#16A34A", width: 20, height: 20 }} />,
                 desc: "Support growing teams, branches, stores, and business locations from a centralized environment."
               },
               {
                 title: "API-Ready",
-                icon: "🔌",
+                icon: <FiLink2 style={{ color: "#16A34A", width: 20, height: 20 }} />,
                 desc: "Connect MessBee with existing applications and business systems where supported."
               },
               {
                 title: "Cloud-Based",
-                icon: "☁️",
+                icon: <FiCloud style={{ color: "#16A34A", width: 20, height: 20 }} />,
                 desc: "Access your business environment across supported devices and locations."
               },
               {
                 title: "Analytics-Driven",
-                icon: "📊",
+                icon: <FiBarChart2 style={{ color: "#16A34A", width: 20, height: 20 }} />,
                 desc: "Turn business activity into useful information for better business decisions."
               }
             ].map((item, idx) => (
               <div key={idx} className="choose-card">
                 <div>
-                  <div style={{
-                    width: "48px",
-                    height: "48px",
-                    borderRadius: "14px",
-                    background: "rgba(22, 163, 74, 0.08)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "22px",
-                    marginBottom: 20,
-                    border: "1px solid rgba(22, 163, 74, 0.15)"
-                  }}>
-                    {item.icon}
+                  <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 16 }}>
+                    <div style={{
+                      width: "38px",
+                      height: "38px",
+                      borderRadius: "10px",
+                      background: "rgba(22, 163, 74, 0.08)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      border: "1px solid rgba(22, 163, 74, 0.15)",
+                      flexShrink: 0
+                    }}>
+                      {item.icon}
+                    </div>
+                    <h4 style={{ fontSize: "15px", fontWeight: 800, color: "#0F172A", margin: 0, fontFamily: "'Inter', sans-serif", textAlign: "left" }}>
+                      {item.title}
+                    </h4>
                   </div>
-                  <h4 style={{ fontSize: "16px", fontWeight: 800, color: "#0F172A", marginBottom: 10, fontFamily: "'Inter', sans-serif" }}>
-                    {item.title}
-                  </h4>
-                  <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.6, margin: 0, fontFamily: "'Inter', sans-serif" }}>
+                  <p style={{ fontSize: 13, color: "#475569", lineHeight: 1.6, margin: 0, fontFamily: "'Inter', sans-serif", textAlign: "left" }}>
                     {item.desc}
                   </p>
                 </div>
@@ -1587,23 +1762,23 @@ const AboutPage = () => {
                 maxWidth: "520px"
               }}>
                 {[
-                  { label: "Communication", icon: "💬" },
+                  { label: "Communication", icon: <FiMessageSquare style={{ color: "#16A34A", width: 15, height: 15 }} /> },
                   { type: "arrow" },
-                  { label: "CRM", icon: "👥" },
+                  { label: "CRM", icon: <FiUsers style={{ color: "#16A34A", width: 15, height: 15 }} /> },
                   { type: "arrow" },
-                  { label: "AI", icon: "🤖" },
+                  { label: "AI", icon: <FiCpu style={{ color: "#16A34A", width: 15, height: 15 }} /> },
 
-                  { label: "Marketing", icon: "🚀" },
+                  { label: "Marketing", icon: <FiZap style={{ color: "#16A34A", width: 15, height: 15 }} /> },
                   { type: "arrow" },
-                  { label: "Commerce", icon: "🏪" },
+                  { label: "Commerce", icon: <FiShoppingBag style={{ color: "#16A34A", width: 15, height: 15 }} /> },
                   { type: "arrow" },
-                  { label: "Orders", icon: "📦" },
+                  { label: "Orders", icon: <FiPackage style={{ color: "#16A34A", width: 15, height: 15 }} /> },
 
-                  { label: "Payments", icon: "💳" },
+                  { label: "Payments", icon: <FiCreditCard style={{ color: "#16A34A", width: 15, height: 15 }} /> },
                   { type: "arrow" },
-                  { label: "Loyalty", icon: "🎁" },
+                  { label: "Loyalty", icon: <FiGift style={{ color: "#16A34A", width: 15, height: 15 }} /> },
                   { type: "arrow" },
-                  { label: "Analytics", icon: "📊" }
+                  { label: "Analytics", icon: <FiBarChart2 style={{ color: "#16A34A", width: 15, height: 15 }} /> }
                 ].map((item, idx) => {
                   if (item.type === "arrow") {
                     return (
@@ -1627,37 +1802,70 @@ const AboutPage = () => {
       </section>
 
       {/* ── MANIFESTO / PHILOSOPHY SECTION ── */}
-      <section style={{ padding: "100px 6%", background: "#FFFFFF" }}>
+      <section style={{ padding: "80px 6%", background: "#FFFFFF" }}>
         <style>{`
-          .manifesto-card {
-            background: #F8FAFC;
-            border: 1px solid #F1F5F9;
-            border-radius: 16px;
-            padding: 28px;
+          .manifesto-container {
+            background: #F0FDF4;
+            border: 1px solid #DCFCE7;
+            border-radius: 20px;
+            padding: 32px;
             text-align: left;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            max-width: 1100px;
+            margin: 0 auto 48px auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(22, 163, 74, 0.01);
+          }
+          .manifesto-card {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 12px 20px;
+            text-align: left;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.015);
           }
           .manifesto-card:hover {
-            background: #FFFFFF;
-            border-color: #16A34A;
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(22, 163, 74, 0.05);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
           }
           .manifesto-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-            max-width: 1100px;
-            margin: 0 auto 48px auto;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+          }
+          .manifesto-btn {
+            border: none;
+            border-radius: 9999px;
+            padding: 8px 18px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+          }
+          .manifesto-btn:hover {
+            filter: brightness(0.9);
+            transform: translateY(-1px);
           }
           @media (max-width: 1024px) {
             .manifesto-grid {
-              grid-template-columns: repeat(2, 1fr);
-            }
-          }
-          @media (max-width: 600px) {
-            .manifesto-grid {
               grid-template-columns: 1fr;
+            }
+            .manifesto-container {
+              padding: 24px 16px;
+            }
+            .manifesto-card {
+              flex-direction: column;
+              align-items: flex-start;
+              gap: 16px;
+            }
+            .manifesto-btn {
+              align-self: flex-end;
             }
           }
         `}</style>
@@ -1687,55 +1895,87 @@ const AboutPage = () => {
             maxWidth: 850,
             margin: "0 auto 30px auto",
             textAlign: "center",
-            
           }}>
             <p style={{ fontSize: 18, fontWeight: 800, color: "#15803D", lineHeight: 1.6, margin: 0, fontFamily: "'Inter', sans-serif" }}>
-              MessBee is built around an important principle: 
+              MessBee is built around an important principle:
             </p>
-            <p style={{ fontSize: 16, fontWeight: 400, color: "#35c01fff", lineHeight: 1.6, margin: 0, fontFamily: "'Inter', sans-serif" }}>
+            <p style={{ fontSize: 16, fontWeight: 400, color: "#35c01f", lineHeight: 1.6, margin: 0, fontFamily: "'Inter', sans-serif" }}>
               Businesses should have greater control over their digital customer relationships.
-
             </p>
           </div>
 
-          {/* Pillars Grid */}
-          <div className="manifesto-grid">
-            {[
-              {
-                title: "Your Brand",
-                icon: "🎯",
-                desc: "Your brand should remain at the center of the customer experience."
-              },
-              {
-                title: "Your Ecosystem",
-                icon: "🌐",
-                desc: "Your customers should be able to interact with your business through your digital ecosystem."
-              },
-              {
-                title: "Your Team",
-                icon: "👥",
-                desc: "Your team should have access to the information and workflows required to serve those customers effectively."
-              },
-              {
-                title: "Long-Term Growth",
-                icon: "🔄",
-                desc: "Your business should be able to build long-term relationships rather than relying only on one-time interactions."
-              }
-            ].map((pillar, pIdx) => (
-              <div key={pIdx} className="manifesto-card">
-                <div style={{ fontSize: 28, marginBottom: 16 }}>{pillar.icon}</div>
-                <h4 style={{ fontSize: 16, fontWeight: 800, color: "#0F172A", marginBottom: 8, fontFamily: "'Inter', sans-serif" }}>
-                  {pillar.title}
-                </h4>
-                <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.6, margin: 0, fontFamily: "'Inter', sans-serif" }}>
-                  {pillar.desc}
-                </p>
-              </div>
-            ))}
+          {/* Pillars Container Box */}
+          <div className="manifesto-container">
+
+            {/* Header tag inside box */}
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 24, fontSize: 15, fontWeight: 800, color: "#15803D" }}>
+              <span>4 Core Pillars of Our Philosophy</span>
+            </div>
+
+            {/* Pillars Grid */}
+            <div className="manifesto-grid">
+              {[
+                {
+                  title: "Your Brand",
+                  icon: "🎯",
+                  desc: "Your brand should remain at the center of the customer experience.",
+                  tip: "Keep customer touchpoints consistent",
+                  color: "#16A34A",
+                  btnText: "Active"
+                },
+                {
+                  title: "Your Ecosystem",
+                  icon: "🌐",
+                  desc: "Your customers should be able to interact with your business through your digital ecosystem.",
+                  tip: "Connect your domain & endpoints",
+                  color: "#0284C7",
+                  btnText: "Configure"
+                },
+                {
+                  title: "Your Team",
+                  icon: "👥",
+                  desc: "Your team should have access to the information and workflows required to serve those customers effectively.",
+                  tip: "Setup custom roles & permissions",
+                  color: "#7C3AED",
+                  btnText: "Manage"
+                },
+                {
+                  title: "Long-Term Growth",
+                  icon: "🔄",
+                  desc: "Your business should be able to build long-term relationships rather than relying only on one-time interactions.",
+                  tip: "Activate loyalty rewards & campaigns",
+                  color: "#D97706",
+                  btnText: "Grow"
+                }
+              ].map((pillar, pIdx) => (
+                <div key={pIdx} className="manifesto-card">
+                  <div style={{ display: "flex", flexDirection: "column", gap: 6, textAlign: "left" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                      <span style={{ fontSize: 18 }}>{pillar.icon}</span>
+                      <h4 style={{ fontSize: 15.5, fontWeight: 800, color: "#0F172A", margin: 0, fontFamily: "'Inter', sans-serif" }}>
+                        {pillar.title}
+                      </h4>
+                    </div>
+                    <p style={{ fontSize: 13, color: "#475569", lineHeight: 1.6, margin: "4px 0 8px 0", fontFamily: "'Inter', sans-serif" }}>
+                      {pillar.desc}
+                    </p>
+                    <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 11, fontWeight: 600, color: pillar.color }}>
+                     
+                      <span>{pillar.tip}</span>
+                    </div>
+                  </div>
+
+                  <button className="manifesto-btn" style={{ background: `${pillar.color}12`, color: pillar.color }} onClick={() => navigate("/solutions")}>
+                    {pillar.btnText}
+                  </button>
+                </div>
+              ))}
+            </div>
+
           </div>
 
           {/* Footer Footnote */}
-          <p style={{ fontSize: 14, color: "#94A3B8", fontStyle: "italic", maxWidth: 750, margin: "0 auto", lineHeight: 1.5, fontFamily: "'Inter', sans-serif" }}>
+          <p style={{ fontSize: 16.5, color: "#64748B", maxWidth: 750, margin: "0 auto", lineHeight: 1.5, fontFamily: "'Inter', sans-serif" }}>
             All customer data and communication workflows remain subject to applicable laws, platform policies, permissions and contractual requirements.
           </p>
 
@@ -1743,13 +1983,13 @@ const AboutPage = () => {
       </section>
 
       {/* ── DESIGNED TO GROW WITH YOUR BUSINESS (GROWTH ROADMAP PATH) ── */}
-      <section style={{ padding: "100px 6%", background: "#F8FAFC", borderTop: "1px solid #F1F5F9", borderBottom: "1px solid #F1F5F9" }}>
+      <section style={{ padding: "60px 5%", background: "#F8FAFC", borderTop: "1px solid #F1F5F9", borderBottom: "1px solid #F1F5F9" }}>
         <style>{`
           .stage-column {
             background: #FFFFFF;
             border: 1px solid #E2E8F0;
             border-radius: 20px;
-            padding: 36px 28px;
+            padding: 30px 28px;
             box-shadow: 0 4px 12px rgba(15, 23, 42, 0.02);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
@@ -1764,8 +2004,8 @@ const AboutPage = () => {
             background: #F8FAFC;
             border: 1px solid #F1F5F9;
             border-radius: 12px;
-            padding: 12px 16px;
-            margin-bottom: 12px;
+            padding: 10px 16px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -1821,14 +2061,14 @@ const AboutPage = () => {
               Designed to <span style={{ color: "#16A34A" }}>Grow With Your Business</span>
             </h2>
 
-            <p style={{ fontSize: 18, color: "#64748B", maxWidth: 720, margin: "0 auto", lineHeight: 1.6 }}>
-              You do not need to implement everything on day one. 
+            <p style={{ fontSize: 19, color: "#1E293B", fontWeight: 800, maxWidth: 720, margin: "0 auto 10px auto", lineHeight: 1.5, fontFamily: "'Inter', sans-serif" }}>
+              You do not need to implement everything on day one.
             </p>
-            <p style={{ fontSize: 15, color: "#64748B", maxWidth: 720, margin: "0 auto", lineHeight: 1.6 }}>
-              Start with the capabilities your business needs today.
+            <p style={{ fontSize: 16, color: "#475569", fontWeight: 500, maxWidth: 720, margin: "0 auto 6px auto", lineHeight: 1.6, fontFamily: "'Inter', sans-serif" }}>
+              Start with the capabilities your business <span style={{ color: "#16A34A", fontWeight: 700 }}>needs today</span>.
             </p>
-            <p style={{ fontSize: 15, color: "#64748B", maxWidth: 720, margin: "0 auto", lineHeight: 1.6 }}>
-               As your business grows, expand into additional workflows and capabilities.
+            <p style={{ fontSize: 16, color: "#475569", fontWeight: 500, maxWidth: 720, margin: "0 auto", lineHeight: 1.6, fontFamily: "'Inter', sans-serif" }}>
+              As your business grows, <span style={{ color: "#16A34A", fontWeight: 700 }}>expand dynamically</span> into additional workflows and capabilities.
             </p>
           </div>
 
@@ -1958,7 +2198,7 @@ const AboutPage = () => {
       </section>
 
       {/* ── SECURITY, PRIVACY & RESPONSIBLE TECH SECTION ── */}
-      <section style={{ padding: "100px 6%", background: "#FFFFFF", borderBottom: "1px solid #F1F5F9" }}>
+      <section className="about-section" style={{ background: "#FFFFFF", borderBottom: "1px solid #F1F5F9" }}>
         <style>{`
           .security-item {
             background: #F8FAFC;
@@ -1968,28 +2208,46 @@ const AboutPage = () => {
             display: flex;
             align-items: center;
             gap: 12px;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-align: left;
+            cursor: default;
           }
           .security-item:hover {
             background: #FFFFFF;
             border-color: #16A34A;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(22, 163, 74, 0.05);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(22, 163, 74, 0.08);
+          }
+          .security-icon-box {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: rgba(22, 163, 74, 0.08);
+            color: #16A34A;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          }
+          .security-item:hover .security-icon-box {
+            transform: scale(1.15) rotate(10deg);
+            background: #16A34A;
+            color: #FFFFFF;
           }
         `}</style>
 
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <div style={{ display: "flex", gap: "80px", alignItems: "center", flexWrap: "wrap" }}>
+          <div className="security-container" style={{ display: "flex", gap: "80px", alignItems: "center", flexWrap: "wrap" }}>
 
             {/* Left Column: Manifesto details */}
-            <div style={{ flex: "1 1 480px", textAlign: "left" }}>
+            <div className="security-left" style={{ flex: "1 1 480px", textAlign: "left" }}>
               <div style={{
                 display: "inline-flex", alignItems: "center", gap: 8,
                 background: "rgba(22,163,74,0.08)", border: "1px solid rgba(22,163,74,0.22)",
                 borderRadius: 40, padding: "5px 16px", marginBottom: 20,
               }}>
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="#16A34A"><circle cx="12" cy="12" r="10" /></svg>
+                <FiShield style={{ color: "#16A34A", width: 12, height: 12 }} />
                 <span style={{ color: "#16A34A", fontSize: 12, fontWeight: 700, letterSpacing: 0.8, textTransform: "uppercase" }}>Trust & Safety</span>
               </div>
 
@@ -2013,13 +2271,13 @@ const AboutPage = () => {
                 </p>
               </div>
 
-              <p style={{ fontSize: 12, color: "#94A3B8", fontStyle: "italic", lineHeight: 1.5, margin: 0, fontFamily: "'Inter', sans-serif" }}>
+              <p style={{ fontSize: 15, color: "#64748B", lineHeight: 1.5, margin: 0, fontFamily: "'Inter', sans-serif" }}>
                 Specific security, privacy and compliance commitments are subject to the applicable MessBee policies, agreements, technical implementation and service terms.
               </p>
             </div>
 
             {/* Right Column: 2x4 Grid Points */}
-            <div style={{ flex: "1 1 450px" }}>
+            <div className="security-right" style={{ flex: "1 1 450px" }}>
               <div style={{ fontSize: 13, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 20, textAlign: "left" }}>
                 MessBee&apos;s approach focuses on:
               </div>
@@ -2029,30 +2287,20 @@ const AboutPage = () => {
                 gap: 16
               }}>
                 {[
-                  { label: "Responsible communication", icon: "💬" },
-                  { label: "Data protection", icon: "🔒" },
-                  { label: "Access control", icon: "🔑" },
-                  { label: "User permissions", icon: "👥" },
-                  { label: "Secure technology practices", icon: "🛡️" },
-                  { label: "Applicable legal requirements", icon: "⚖️" },
-                  { label: "Platform policies", icon: "📋" },
-                  { label: "Responsible use of AI & automation", icon: "🤖" }
+                  { label: "Responsible communication", icon: <FiMessageSquare style={{ width: 16, height: 16 }} /> },
+                  { label: "Data protection", icon: <FiLock style={{ width: 16, height: 16 }} /> },
+                  { label: "Access control", icon: <FiKey style={{ width: 16, height: 16 }} /> },
+                  { label: "User permissions", icon: <FiUsers style={{ width: 16, height: 16 }} /> },
+                  { label: "Secure technology practices", icon: <FiShield style={{ width: 16, height: 16 }} /> },
+                  { label: "Applicable legal requirements", icon: <FiFileText style={{ width: 16, height: 16 }} /> },
+                  { label: "Platform policies", icon: <FiClipboard style={{ width: 16, height: 16 }} /> },
+                  { label: "Responsible use of AI & automation", icon: <FiCpu style={{ width: 16, height: 16 }} /> }
                 ].map((item, idx) => (
                   <div key={idx} className="security-item">
-                    <div style={{
-                      width: "32px",
-                      height: "32px",
-                      borderRadius: "8px",
-                      background: "rgba(22, 163, 74, 0.08)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontSize: "16px",
-                      flexShrink: 0
-                    }}>
+                    <div className="security-icon-box">
                       {item.icon}
                     </div>
-                    <span style={{ fontSize: 13, fontWeight: 600, color: "#334155", fontFamily: "'Inter', sans-serif" }}>
+                    <span style={{ fontSize: 13, fontWeight: 700, color: "#334155", fontFamily: "'Inter', sans-serif" }}>
                       {item.label}
                     </span>
                   </div>
@@ -2128,16 +2376,16 @@ const AboutPage = () => {
                 gap: 12
               }}>
                 {[
-                  { label: "Build direct customer relationships", icon: "👥" },
-                  { label: "Reduce repetitive manual work", icon: "⚙️" },
-                  { label: "Improve customer experience", icon: "❤️" },
-                  { label: "Organize business operations", icon: "📁" },
-                  { label: "Use AI responsibly", icon: "🤖" },
-                  { label: "Automate digital workflows", icon: "🔄" },
-                  { label: "Understand business activity", icon: "📊" },
-                  { label: "Encourage customer loyalty", icon: "🎁" },
-                  { label: "Create scalable processes", icon: "📈" },
-                  { label: "Grow through technology", icon: "🚀" }
+                  { label: "Build direct customer relationships", icon: <FiUsers style={{ width: 14, height: 14, color: "#16A34A" }} /> },
+                  { label: "Reduce repetitive manual work", icon: <FiSettings style={{ width: 14, height: 14, color: "#16A34A" }} /> },
+                  { label: "Improve customer experience", icon: <FiHeart style={{ width: 14, height: 14, color: "#16A34A" }} /> },
+                  { label: "Organize business operations", icon: <FiFolder style={{ width: 14, height: 14, color: "#16A34A" }} /> },
+                  { label: "Use AI responsibly", icon: <FiCpu style={{ width: 14, height: 14, color: "#16A34A" }} /> },
+                  { label: "Automate digital workflows", icon: <FiRefreshCw style={{ width: 14, height: 14, color: "#16A34A" }} /> },
+                  { label: "Understand business activity", icon: <FiBarChart2 style={{ width: 14, height: 14, color: "#16A34A" }} /> },
+                  { label: "Encourage customer loyalty", icon: <FiGift style={{ width: 14, height: 14, color: "#16A34A" }} /> },
+                  { label: "Create scalable processes", icon: <FiTrendingUp style={{ width: 14, height: 14, color: "#16A34A" }} /> },
+                  { label: "Grow through technology", icon: <FiArrowUpRight style={{ width: 14, height: 14, color: "#16A34A" }} /> }
                 ].map((aim, idx) => (
                   <div key={idx} className="aim-pill">
                     <div style={{
@@ -2148,7 +2396,6 @@ const AboutPage = () => {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      fontSize: "14px",
                       flexShrink: 0
                     }}>
                       {aim.icon}
@@ -2218,12 +2465,12 @@ const AboutPage = () => {
             margin: "0 auto 36px auto"
           }}>
             {[
-              { title: "Their Own Brand", icon: "🏷️" },
-              { title: "Their Own Customer Relationships", icon: "🤝" },
-              { title: "Their Own Digital Store", icon: "🛍️" },
-              { title: "Their Own Business Workflows", icon: "⚙️" },
-              { title: "Their Own AI-Assisted Experience", icon: "🤖" },
-              { title: "Their Own Digital Ecosystem", icon: "🌐" }
+              { title: "Their Own Brand", icon: <FiTag style={{ color: "#16A34A", width: 16, height: 16 }} /> },
+              { title: "Their Own Customer Relationships", icon: <FiHeart style={{ color: "#16A34A", width: 16, height: 16 }} /> },
+              { title: "Their Own Digital Store", icon: <FiShoppingBag style={{ color: "#16A34A", width: 16, height: 16 }} /> },
+              { title: "Their Own Business Workflows", icon: <FiSettings style={{ color: "#16A34A", width: 16, height: 16 }} /> },
+              { title: "Their Own AI-Assisted Experience", icon: <FiCpu style={{ color: "#16A34A", width: 16, height: 16 }} /> },
+              { title: "Their Own Digital Ecosystem", icon: <FiGlobe style={{ color: "#16A34A", width: 16, height: 16 }} /> }
             ].map((pillar, idx) => (
               <div key={idx} className="vision-card" style={{ display: "flex", alignItems: "center", gap: 14, padding: "16px 20px" }}>
                 <div style={{
@@ -2263,9 +2510,8 @@ const AboutPage = () => {
 
         </div>
       </section>
-
       {/* ── LEADERSHIP SECTION ── */}
-      <section style={{ padding: "100px 6%", background: "#FFFFFF" }}>
+      <section className="about-section" style={{ padding: "60px 6% 70px", background: "#FFFFFF" }}>
         <style>{`
           .leadership-tag {
             font-size: 13.5px;
@@ -2273,7 +2519,7 @@ const AboutPage = () => {
             color: #16A34A;
             background: rgba(22, 163, 74, 0.06);
             border: 1px solid rgba(22, 163, 74, 0.12);
-            padding: 10px 20px;
+            padding: 8px 16px;
             border-radius: 30px;
             display: inline-flex;
             align-items: center;
@@ -2301,7 +2547,7 @@ const AboutPage = () => {
                 background: "rgba(22,163,74,0.08)", border: "1px solid rgba(22,163,74,0.22)",
                 borderRadius: 40, padding: "5px 16px", marginBottom: 20,
               }}>
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="#16A34A"><circle cx="12" cy="12" r="10" /></svg>
+                <FiUsers style={{ color: "#16A34A", width: 12, height: 12 }} />
                 <span style={{ color: "#16A34A", fontSize: 12, fontWeight: 700, letterSpacing: 0.8, textTransform: "uppercase" }}>Our Leadership</span>
               </div>
 
@@ -2310,18 +2556,22 @@ const AboutPage = () => {
                 <span style={{ color: "#16A34A" }}>Corporate Structure</span>
               </h2>
 
-              <p style={{ fontSize: 16, color: "#475569", lineHeight: 1.9, marginBottom: 20, fontFamily: "'Inter', sans-serif" }}>
+              <p style={{ fontSize: 16, color: "#475569", lineHeight: 1.9, marginBottom: 16, fontFamily: "'Inter', sans-serif" }}>
                 MessBee is founded and led by <strong>Mr. Anil Kumar Atri</strong>, Founder & CEO. The platform is being developed under <strong>ATRI Admission Anytime Pvt. Ltd.</strong>, with a focus on building practical, scalable, and compliance-oriented technology solutions for modern businesses.
+              </p>
+
+              <p style={{ fontSize: 16, fontWeight: 800, color: "#16A34A", marginBottom: 16, fontFamily: "'Inter', sans-serif" }}>
+                The leadership philosophy behind MessBee is straightforward:
               </p>
 
               <div style={{
                 borderLeft: "3px solid #16A34A",
                 paddingLeft: 16,
-                marginTop: 24,
+                marginTop: 16,
                 marginBottom: 24,
               }}>
                 <p style={{ fontSize: 17, fontWeight: 700, color: "#0F172A", lineHeight: 1.6, margin: 0, fontFamily: "'Inter', sans-serif" }}>
-                  The leadership philosophy behind MessBee is straightforward: Technology should give businesses more control—not create more dependency.
+                  Technology should give businesses more control—not create more dependency.
                 </p>
               </div>
 
@@ -2337,36 +2587,69 @@ const AboutPage = () => {
               </div>
               <div style={{ display: "flex", gap: "12px 14px", flexWrap: "wrap", justifyContent: "flex-start" }}>
                 {[
-                  { name: "Innovation", icon: "💡" },
-                  { name: "Reliability", icon: "🤝" },
-                  { name: "Scalability", icon: "📈" },
-                  { name: "Security", icon: "🛡️" },
-                  { name: "Transparency", icon: "👁️" },
-                  { name: "Automation", icon: "🔄" },
-                  { name: "AI", icon: "🤖" },
-                  { name: "Customer Ownership", icon: "🎯" },
-                  { name: "Responsible Technology", icon: "⚖️" }
-                ].map((val, idx) => (
-                  <div key={idx} className="leadership-tag">
-                    <span>{val.icon}</span>
-                    <span style={{ color: "inherit" }}>{val.name}</span>
-                  </div>
-                ))}
+                  { name: "Innovation", icon: <FiZap style={{ width: 14, height: 14 }} />, color: "#F59E0B" },
+                  { name: "Reliability", icon: <FiHeart style={{ width: 14, height: 14 }} />, color: "#0EA5E9" },
+                  { name: "Scalability", icon: <FiTrendingUp style={{ width: 14, height: 14 }} />, color: "#6366F1" },
+                  { name: "Security", icon: <FiShield style={{ width: 14, height: 14 }} />, color: "#10B981" },
+                  { name: "Transparency", icon: <FiEye style={{ width: 14, height: 14 }} />, color: "#8B5CF6" },
+                  { name: "Automation", icon: <FiSettings style={{ width: 14, height: 14 }} />, color: "#F97316" },
+                  { name: "AI", icon: <FiCpu style={{ width: 14, height: 14 }} />, color: "#EC4899" },
+                  { name: "Customer Ownership", icon: <FiTarget style={{ width: 14, height: 14 }} />, color: "#EF4444" },
+                  { name: "Responsible Technology", icon: <FiCheckSquare style={{ width: 14, height: 14 }} />, color: "#64748B" }
+                ].map((val, idx) => {
+                  const isHovered = hoveredLeaderCap === idx;
+                  return (
+                    <div
+                      key={idx}
+                      onMouseEnter={() => setHoveredLeaderCap(idx)}
+                      onMouseLeave={() => setHoveredLeaderCap(null)}
+                      style={{
+                        fontSize: "13.5px",
+                        fontWeight: 750,
+                        background: isHovered ? val.color : `${val.color}0a`,
+                        border: `1px solid ${isHovered ? val.color : `${val.color}25`}`,
+                        padding: "8px 16px",
+                        borderRadius: "30px",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 8,
+                        cursor: "pointer",
+                        transition: "all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1)",
+                        transform: isHovered ? "translateY(-3px)" : "translateY(0)",
+                        boxShadow: isHovered ? `0 6px 18px ${val.color}35` : "none",
+                        fontFamily: "'Inter', sans-serif"
+                      }}
+                    >
+                      <span style={{
+                        display: "flex",
+                        alignItems: "center",
+                        color: isHovered ? "#FFFFFF" : val.color,
+                        transition: "color 0.25s ease"
+                      }}>
+                        {val.icon}
+                      </span>
+                      <span style={{
+                        color: isHovered ? "#FFFFFF" : "#0F172A",
+                        transition: "color 0.25s ease"
+                      }}>
+                        {val.name}
+                      </span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
           </div>
         </div>
-      </section>
-
-      {/* ── FREQUENTLY ASKED QUESTIONS SECTION ── */}
-      <section style={{ padding: "100px 6%", background: "#F8FAFC", borderTop: "1px solid #F1F5F9", borderBottom: "1px solid #F1F5F9" }}>
+      </section>      {/* ── FREQUENTLY ASKED QUESTIONS SECTION ── */}
+      <section style={{ padding: "60px 6%", background: "#F8FAFC", borderTop: "1px solid #F1F5F9", borderBottom: "1px solid #F1F5F9" }}>
         <style>{`
           .about-faq-card {
             background: #FFFFFF;
             border: 1px solid #E2E8F0;
             border-radius: 16px;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(15, 23, 42, 0.01);
             transition: all 0.3s ease;
@@ -2377,7 +2660,7 @@ const AboutPage = () => {
           }
           .about-faq-trigger {
             width: 100%;
-            padding: 24px 32px;
+            padding: 18px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -2510,39 +2793,54 @@ const AboutPage = () => {
       </section>
 
       {/* ── THE MESSBEE PROMISE SECTION ── */}
-      <section style={{ padding: "70px 6%", background: "#1F2937", borderTop: "1px solid rgba(255, 255, 255, 0.08)" }}>
+      <section style={{ padding: "40px 6%", background: "#FFFFFF" }}>
         <style>{`
-          .promise-verb-dark-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+          .promise-container {
+            background: #F0FDF4;
+            border: 1px solid rgba(22, 163, 74, 0.25);
+            border-radius: 20px;
+            padding: 36px 32px;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: inset 0 2px 4px rgba(22, 163, 74, 0.01);
+          }
+          .promise-verb-light-card {
+            background: #FFFFFF;
+            border: 1.5px solid #BBF7D0;
             border-radius: 12px;
-            padding: 16px 20px;
-            font-size: 14px;
+            padding: 10px 16px;
+            font-size: 13.5px;
             font-weight: 800;
-            color: #FFFFFF;
+            color: #0F172A;
             font-family: 'Inter', sans-serif;
             text-align: center;
             transition: all 0.25s ease;
             cursor: default;
+            box-shadow: 0 4px 12px rgba(22, 163, 74, 0.04);
           }
-          .promise-verb-dark-card:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: #22C55E;
+          .promise-verb-light-card:hover {
+            border-color: #16A34A;
             transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(34,197,94,0.12);
+            box-shadow: 0 8px 24px rgba(22, 163, 74, 0.1);
+          }
+          @media (max-width: 640px) {
+            .promise-container {
+              padding: 24px 16px;
+            }
           }
         `}</style>
 
-        <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center" }}>
-          
+        <div className="promise-container">
+
           {/* Heading */}
-          <h2 style={{ fontSize: "clamp(28px,3.5vw,42px)", fontWeight: 900, color: "#FFFFFF", lineHeight: 1.18, marginBottom: 24 }}>
+          <h2 style={{ fontSize: "clamp(26px, 3vw, 36px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.18, marginBottom: 12 }}>
             The MessBee Promise
           </h2>
 
           {/* Negation Text Paragraphs */}
-          <div style={{ fontSize: 16, color: "#94A3B8", lineHeight: 1.8, marginBottom: 20 }}>
-            <p style={{ margin: "0 0 8px 0", fontFamily: "'Inter', sans-serif" }}>
+          <div style={{ fontSize: 15.5, color: "#475569", lineHeight: 1.7, marginBottom: 14 }}>
+            <p style={{ margin: "0 0 4px 0", fontFamily: "'Inter', sans-serif" }}>
               MessBee is not intended to be just another messaging tool.
             </p>
             <p style={{ margin: 0, fontFamily: "'Inter', sans-serif" }}>
@@ -2551,21 +2849,21 @@ const AboutPage = () => {
           </div>
 
           {/* Connection Text Header Highlight */}
-          <p style={{ fontSize: "clamp(20px, 3vw, 24px)", fontWeight: 900, color: "#22C55E", lineHeight: 1.4, margin: "0 auto 28px auto", fontFamily: "'Inter', sans-serif", textShadow: "0 0 20px rgba(34,197,94,0.15)" }}>
+          <p style={{ fontSize: "clamp(18px, 2.5vw, 22px)", fontWeight: 900, color: "#15803D", lineHeight: 1.35, margin: "0 auto 16px auto", fontFamily: "'Inter', sans-serif" }}>
             MessBee brings these capabilities together into one connected business ecosystem.
           </p>
 
           {/* Verbs Heading */}
-          <div style={{ fontSize: 13, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 16 }}>
+          <div style={{ fontSize: 12, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 12 }}>
             A platform where businesses can:
           </div>
 
           {/* Verbs Grid Cards */}
           <div style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
-            gap: 16,
-            marginBottom: 36
+            gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))",
+            gap: 12,
+            marginBottom: 24
           }}>
             {[
               "Communicate",
@@ -2577,33 +2875,33 @@ const AboutPage = () => {
               "Retain",
               "Grow"
             ].map((verb, idx) => (
-              <div key={idx} className="promise-verb-dark-card">
+              <div key={idx} className="promise-verb-light-card">
                 {verb}
               </div>
             ))}
           </div>
 
           {/* Big Editorial Quote */}
-          <div style={{ position: "relative", padding: "20px 0", marginBottom: 28 }}>
-            <span style={{ position: "absolute", top: 10, left: "5%", fontSize: 90, color: "rgba(34,197,94,0.08)", lineHeight: 0, fontFamily: "serif" }}>&ldquo;</span>
-            <p style={{ fontSize: "20px", fontWeight: 800, color: "#E2E8F0", lineHeight: 1.6, maxWidth: 680, margin: "0 auto", fontStyle: "italic", fontFamily: "'Inter', sans-serif" }}>
+          <div style={{ position: "relative", padding: "12px 0", marginBottom: 20 }}>
+            <span style={{ position: "absolute", top: -5, left: "5%", fontSize: 70, color: "rgba(22,163,74,0.1)", lineHeight: 0, fontFamily: "serif" }}>&ldquo;</span>
+            <p style={{ fontSize: "17.5px", fontWeight: 800, color: "#334155", lineHeight: 1.5, maxWidth: 820, margin: "0 auto", fontStyle: "italic", fontFamily: "'Inter', sans-serif" }}>
               Because your business deserves technology that works around your business&mdash;not the other way around.
             </p>
-            <span style={{ position: "absolute", bottom: -20, right: "5%", fontSize: 90, color: "rgba(34,197,94,0.08)", lineHeight: 0, fontFamily: "serif" }}>&rdquo;</span>
+            <span style={{ position: "absolute", bottom: -25, right: "5%", fontSize: 70, color: "rgba(22,163,74,0.1)", lineHeight: 0, fontFamily: "serif" }}>&rdquo;</span>
           </div>
 
           {/* Digital OS Footer Text Details */}
           <div style={{
-            borderTop: "1px solid rgba(255, 255, 255, 0.08)",
-            paddingTop: 32,
-            marginTop: 32
+            borderTop: "1px solid rgba(22, 163, 74, 0.15)",
+            paddingTop: 24,
+            marginTop: 24
           }}>
-            <h3 style={{ fontSize: "20px", fontWeight: 900, color: "#FFFFFF", marginBottom: 10, fontFamily: "'Inter', sans-serif" }}>
-              <span style={{ color: "#22C55E" }}>MessBee</span> &mdash; India&apos;s Digital Business Operating System
+            <h3 style={{ fontSize: "18px", fontWeight: 900, color: "#0F172A", marginBottom: 6, fontFamily: "'Inter', sans-serif" }}>
+              <span style={{ color: "#16A34A" }}>MessBee</span> &mdash; India&apos;s Digital Business Operating System
             </h3>
-            
-            <p style={{ fontSize: "16px", fontWeight: 800, color: "#22C55E", letterSpacing: 0.5, margin: 0, fontFamily: "'Inter', sans-serif" }}>
-              Own Your Business <span style={{ color: "#FFFFFF" }}>&bull;</span> Own Your Customers <span style={{ color: "#FFFFFF" }}>&bull;</span> Own Your Growth
+
+            <p style={{ fontSize: "14.5px", fontWeight: 800, color: "#16A34A", letterSpacing: 0.5, margin: 0, fontFamily: "'Inter', sans-serif" }}>
+              Own Your Business <span style={{ color: "#94A3B8" }}>&bull;</span> Own Your Customers <span style={{ color: "#94A3B8" }}>&bull;</span> Own Your Growth
             </p>
           </div>
 

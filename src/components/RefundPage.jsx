@@ -468,7 +468,6 @@ Nothing in this clause prevents a customer from exercising any mandatory statuto
     title: "32. Contact Information",
     icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>,
     content: `MessBee Billing Support
-MessBee Operated by ATRI Admission Anytime Pvt. Ltd.
 Email: support@messbee.com
 Address: 510, Devika Tower, Chander Nagar, Ghaziabad, Uttar Pradesh – 201011, India
 
@@ -600,7 +599,7 @@ const RefundPage = () => {
           </div>
 
           {/* Heading */}
-          <h1 style={{ fontSize: "clamp(36px, 4.5vw, 58px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-2px", lineHeight: 1.08, marginBottom: 20 }}>
+          <h1 style={{ fontSize: "clamp(35px, 2.9vw, 62px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-2px", lineHeight: 1.08, marginBottom: 20 }}>
             Refund &amp; <span style={{ color: "#16A34A" }}>Cancellation</span> Policy
           </h1>
 
@@ -608,7 +607,7 @@ const RefundPage = () => {
           <div style={{ width: 48, height: 4, background: "linear-gradient(90deg, #16A34A, #4ADE80)", borderRadius: 4, marginBottom: 24 }} />
 
           {/* Description */}
-          <p style={{ fontSize: 17, color: "#475569", lineHeight: 1.75, maxWidth: 560, margin: 0 }}>
+          <p style={{ fontSize: 17, color: "#475569", lineHeight: 1.75, maxWidth: 860, margin: 0 }}>
             Understand how billing, refunds, and cancellations work on the MessBee platform. We believe in transparent and fair billing practices.
           </p>
         </div>
