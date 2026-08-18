@@ -370,23 +370,38 @@ const WaPage = () => {
       </section>
 
       {/* ══ CONNECT FLOW — darker green ══ */}
-      <section style={{ background:"#064E3B", padding:"72px 6%", textAlign:"center" }}>
-        <div style={{ maxWidth:900, margin:"0 auto" }}>
-          <div style={{ display:"inline-block", background:"rgba(37,211,102,.15)", border:"1px solid rgba(37,211,102,.35)", color:WAL, fontSize:11, fontWeight:700, textTransform:"uppercase", letterSpacing:"1.5px", padding:"5px 14px", borderRadius:20, marginBottom:20 }}>Connected Platform</div>
-          <h2 style={{ fontSize:"clamp(20px,2.5vw,32px)", fontWeight:900, color:"#fff", letterSpacing:"-1px", marginBottom:14 }}>
-            WhatsApp + CRM + Automation<br/>
-            <span style={{ color:WA }}>All in One Workflow</span>
-          </h2>
-          <p style={{ fontSize:15, color:"rgba(255,255,255,.55)", lineHeight:1.75, maxWidth:560, margin:"0 auto 40px" }}>
-            WhatsApp is most powerful when it's connected to your customer data and business workflows — not siloed as a standalone messaging app.
-          </p>
-          <div style={{ display:"flex", alignItems:"center", justifyContent:"center", flexWrap:"wrap", gap:0 }}>
-            {["WhatsApp","CRM","Automation","Marketing","Commerce","Analytics"].map((item,i,arr) => (
-              <React.Fragment key={item}>
-                <div style={{ background:"rgba(255,255,255,.08)", border:"1px solid rgba(255,255,255,.15)", borderRadius:10, padding:"10px 18px", fontSize:14, fontWeight:700, color:"#fff" }}>{item}</div>
-                {i < arr.length-1 && <div style={{ color:WA, fontSize:20, padding:"0 6px", fontWeight:900 }}>→</div>}
-              </React.Fragment>
-            ))}
+      <section style={{ padding: "64px 6%", background: "#FAFAFA" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+          <div
+            style={{
+              background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
+              borderRadius: 22,
+              padding: "48px 40px",
+              color: "#FFFFFF",
+              position: "relative",
+              overflow: "hidden",
+              border: "1px solid rgba(52, 211, 153, 0.25)",
+              boxShadow: "0 20px 50px rgba(2, 44, 34, 0.35)",
+            }}
+          >
+            <div style={{ maxWidth: 900, margin: "0 auto", textAlign: "center" }}>
+              <div style={{ display: "inline-block", background: "rgba(37,211,102,.15)", border: "1px solid rgba(37,211,102,.35)", color: WAL, fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "1.5px", padding: "5px 14px", borderRadius: 20, marginBottom: 20 }}>Connected Platform</div>
+              <h2 style={{ fontSize: "clamp(20px,2.5vw,32px)", fontWeight: 900, color: "#fff", letterSpacing: "-1px", marginBottom: 14 }}>
+                WhatsApp + CRM + Automation<br />
+                <span style={{ color: WA }}>All in One Workflow</span>
+              </h2>
+              <p style={{ fontSize: 15, color: "rgba(255,255,255,.55)", lineHeight: 1.75, maxWidth: 560, margin: "0 auto 40px" }}>
+                WhatsApp is most powerful when it's connected to your customer data and business workflows — not siloed as a standalone messaging app.
+              </p>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: 0 }}>
+                {["WhatsApp", "CRM", "Automation", "Marketing", "Commerce", "Analytics"].map((item, i, arr) => (
+                  <React.Fragment key={item}>
+                    <div style={{ background: "rgba(255,255,255,.08)", border: "1px solid rgba(255,255,255,.15)", borderRadius: 10, padding: "10px 18px", fontSize: 14, fontWeight: 700, color: "#fff" }}>{item}</div>
+                    {i < arr.length - 1 && <div style={{ color: WA, fontSize: 20, padding: "0 6px", fontWeight: 900 }}>→</div>}
+                  </React.Fragment>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>

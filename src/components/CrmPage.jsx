@@ -431,26 +431,41 @@ const CrmPage = () => {
       })}
 
       {/* ── CRM CONNECTS GROWTH ── */}
-      <section style={{ background:"#064E3B", padding:"20px 6%", textAlign:"center" }}>
-        <div style={{ maxWidth:900, margin:"0 auto" }}>
-          <Pill color="#4ADE80" bg="rgba(74,222,128,.1)" border="rgba(74,222,128,.3)">Connected Business</Pill>
-          <h2 style={{ fontSize:"clamp(20px,2.5vw,32px)", fontWeight:900, color:"#fff", letterSpacing:"-1px", marginBottom:10 }}>
-            CRM That Connects Customer Data<br />With Business Growth
-          </h2>
-          <p style={{ fontSize:14, color:"rgba(255,255,255,.55)", lineHeight:1.75, maxWidth:580, margin:"0 auto 16px" }}>
-            MessBee CRM is designed to work alongside your broader business operations — not in isolation.
-          </p>
-          <div className="connect-strip">
-            {["CRM","Communication","Marketing","Automation","Commerce","Analytics"].map((item,i,arr) => (
-              <React.Fragment key={item}>
-                <span className="connect-item">{item}</span>
-                {i < arr.length-1 && <span className="connect-arr">&#8594;</span>}
-              </React.Fragment>
-            ))}
+      <section style={{ padding: "64px 6%", background: "#FAFAFA" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+          <div
+            style={{
+              background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
+              borderRadius: 22,
+              padding: "48px 40px",
+              color: "#FFFFFF",
+              position: "relative",
+              overflow: "hidden",
+              border: "1px solid rgba(52, 211, 153, 0.25)",
+              boxShadow: "0 20px 50px rgba(2, 44, 34, 0.35)",
+            }}
+          >
+            <div style={{ maxWidth: 900, margin: "0 auto", textAlign: "center" }}>
+              <Pill color="#4ADE80" bg="rgba(74,222,128,.1)" border="rgba(74,222,128,.3)">Connected Business</Pill>
+              <h2 style={{ fontSize: "clamp(20px,2.5vw,32px)", fontWeight: 900, color: "#fff", letterSpacing: "-1px", marginBottom: 10 }}>
+                CRM That Connects Customer Data<br />With Business Growth
+              </h2>
+              <p style={{ fontSize: 14, color: "rgba(255,255,255,.55)", lineHeight: 1.75, maxWidth: 580, margin: "0 auto 16px" }}>
+                MessBee CRM is designed to work alongside your broader business operations — not in isolation.
+              </p>
+              <div className="connect-strip">
+                {["CRM", "Communication", "Marketing", "Automation", "Commerce", "Analytics"].map((item, i, arr) => (
+                  <React.Fragment key={item}>
+                    <span className="connect-item">{item}</span>
+                    {i < arr.length - 1 && <span className="connect-arr">&#8594;</span>}
+                  </React.Fragment>
+                ))}
+              </div>
+              <p style={{ fontSize: 13, color: "rgba(255,255,255,.35)", marginTop: 16, marginBottom: 0 }}>
+                A more connected digital business workflow — instead of managing every function separately.
+              </p>
+            </div>
           </div>
-          <p style={{ fontSize:13, color:"rgba(255,255,255,.35)", marginTop:16, marginBottom:0 }}>
-            A more connected digital business workflow — instead of managing every function separately.
-          </p>
         </div>
       </section>
 
