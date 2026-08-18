@@ -94,7 +94,10 @@ const FooterLink = ({ label, path }) => {
   const [hovered, setHovered] = React.useState(false);
   return (
     <span
-      onClick={() => navigate(path)}
+      onClick={() => {
+        navigate(path);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -296,7 +299,7 @@ const Footer = () => {
           <div style={{ display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
             {BOTTOM_LINKS.map((l, i) => (
               <React.Fragment key={l.label}>
-                <span className="footer-bottom-link" onClick={() => navigate(l.path)}>
+                <span className="footer-bottom-link" onClick={() => { navigate(l.path); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
                   {l.label}
                 </span>
                 {i < BOTTOM_LINKS.length - 1 && (
