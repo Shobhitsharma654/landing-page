@@ -24,6 +24,11 @@ const BlogPage            = lazy(() => import("./components/BlogPage"));
 const HelpCenterPage      = lazy(() => import("./components/HelpCenterPage"));
 const BusinessLibraryPage = lazy(() => import("./components/BusinessLibraryPage"));
 const DpaPage             = lazy(() => import("./components/DpaPage"));
+const CrmPage             = lazy(() => import("./components/CrmPage"));
+const WaPage              = lazy(() => import("./components/WhatsAppPage"));
+const MarketingPage       = lazy(() => import("./components/MarketingPage"));
+const AiPage              = lazy(() => import("./components/AiAutomationPage"));
+const DigitalStorePage    = lazy(() => import("./components/DigitalStorePage"));
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -89,6 +94,11 @@ function App() {
         <Route path="/refundpolicy" element={<RefundPage />} />
         <Route path="/careers"      element={<CareersPage />} />
         <Route path="/dpa"          element={<DpaPage />} />
+        <Route path="/crm"                element={<CrmPage />} />
+        <Route path="/whatsapp-business"   element={<WaPage />} />
+        <Route path="/marketing-automation" element={<MarketingPage />} />
+        <Route path="/ai-automation"         element={<AiPage />} />
+        <Route path="/digital-store"          element={<DigitalStorePage />} />
         <Route path="*"             element={<Navigate to="/" replace />} />
       </Routes>
     </Suspense>
