@@ -501,25 +501,40 @@ const MarketingPage = () => {
       </section>
 
       {/* ══ CONNECT FLOW — dark green ══ */}
-      <section style={{background:"#064E3B",padding:"60px 6%",textAlign:"center"}}>
-        <div style={{maxWidth:900,margin:"0 auto"}}>
-          <div style={{display:"inline-flex",alignItems:"center",gap:8,background:"rgba(22,163,74,.12)",border:"1px solid rgba(22,163,74,.3)",borderRadius:40,padding:"6px 18px",marginBottom:20}}>
-            <div style={{width:8,height:8,borderRadius:"50%",background:G}}/>
-            <span style={{fontSize:13,fontWeight:600,color:"#86EFAC"}}>Connected Platform</span>
-          </div>
-          <h2 style={{fontSize:"clamp(20px,2.5vw,32px)",fontWeight:900,color:"#fff",letterSpacing:"-1px",marginBottom:14}}>
-            Connect Marketing<br/><span style={{color:"#4ADE80"}}>With Your Entire Business</span>
-          </h2>
-          <p style={{fontSize:15,color:"rgba(255,255,255,.5)",lineHeight:1.75,maxWidth:560,margin:"0 auto 40px"}}>
-            Marketing automation becomes more powerful when connected with CRM, segmentation and analytics — not managed separately.
-          </p>
-          <div style={{display:"flex",alignItems:"center",justifyContent:"center",flexWrap:"wrap",gap:0}}>
-            {["CRM","Segmentation","Campaign","Automation","Engagement","Analytics"].map((item,i,arr) => (
-              <React.Fragment key={item}>
-                <div style={{background:"rgba(255,255,255,.06)",border:"1px solid rgba(255,255,255,.1)",borderRadius:10,padding:"10px 18px",fontSize:14,fontWeight:700,color:"#fff"}}>{item}</div>
-                {i<arr.length-1 && <div style={{color:G,fontSize:20,padding:"0 6px",fontWeight:900}}>→</div>}
-              </React.Fragment>
-            ))}
+      <section style={{ padding: "64px 6%", background: "#FAFAFA" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+          <div
+            style={{
+              background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
+              borderRadius: 22,
+              padding: "48px 40px",
+              color: "#FFFFFF",
+              position: "relative",
+              overflow: "hidden",
+              border: "1px solid rgba(52, 211, 153, 0.25)",
+              boxShadow: "0 20px 50px rgba(2, 44, 34, 0.35)",
+            }}
+          >
+            <div style={{ maxWidth: 900, margin: "0 auto", textAlign: "center" }}>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(22,163,74,.12)", border: "1px solid rgba(22,163,74,.3)", borderRadius: 40, padding: "6px 18px", marginBottom: 20 }}>
+                <div style={{ width: 8, height: 8, borderRadius: "50%", background: G }} />
+                <span style={{ fontSize: 13, fontWeight: 600, color: "#86EFAC" }}>Connected Platform</span>
+              </div>
+              <h2 style={{ fontSize: "clamp(20px,2.5vw,32px)", fontWeight: 900, color: "#fff", letterSpacing: "-1px", marginBottom: 14 }}>
+                Connect Marketing<br /><span style={{ color: "#4ADE80" }}>With Your Entire Business</span>
+              </h2>
+              <p style={{ fontSize: 15, color: "rgba(255,255,255,.5)", lineHeight: 1.75, maxWidth: 560, margin: "0 auto 40px" }}>
+                Marketing automation becomes more powerful when connected with CRM, segmentation and analytics — not managed separately.
+              </p>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: 0 }}>
+                {["CRM", "Segmentation", "Campaign", "Automation", "Engagement", "Analytics"].map((item, i, arr) => (
+                  <React.Fragment key={item}>
+                    <div style={{ background: "rgba(255,255,255,.06)", border: "1px solid rgba(255,255,255,.1)", borderRadius: 10, padding: "10px 18px", fontSize: 14, fontWeight: 700, color: "#fff" }}>{item}</div>
+                    {i < arr.length - 1 && <div style={{ color: G, fontSize: 20, padding: "0 6px", fontWeight: 900 }}>→</div>}
+                  </React.Fragment>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
