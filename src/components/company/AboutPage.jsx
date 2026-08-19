@@ -1,10 +1,10 @@
-import Navbar from "./Navbar";
+import Navbar from "../Navbar";
 import React, { useState, useEffect } from "react";
-import Footer from "./Footer";
+import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
-import defaultLogo from "../assets/logo.jpeg";
-import messbeeText from "../assets/messbee_text.png";
-import aboutHero from "../assets/about_hero.png";
+import defaultLogo from "../../assets/logo.jpeg";
+import messbeeText from "../../assets/messbee_text.png";
+import aboutHero from "../../assets/about_hero.png";
 import {
   FiGlobe,
   FiCpu,
@@ -138,7 +138,7 @@ const AboutPage = () => {
   }, []);
 
   return (
-    <div style={{ fontFamily: "'Inter', 'Segoe UI', sans-serif", minHeight: "100vh", background: "#FFFFFF" }}>
+    <div className="about-page-wrapper" style={{ fontFamily: "'Inter', 'Segoe UI', sans-serif", minHeight: "100vh", background: "#FFFFFF" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -189,12 +189,12 @@ const AboutPage = () => {
         .about-hero-section {
           padding: 80px 6% 70px;
         }
-        @media (max-width: 1280px) {
+        @media (max-width: 1366px) {
           .about-section {
-            padding: 50px 4% !important;
+            padding: 48px 4% !important;
           }
           .about-hero-section {
-            padding: 60px 4% 50px !important;
+            padding: 54px 4% 44px !important;
           }
           .hero-flex-container {
             gap: 40px !important;
@@ -203,7 +203,7 @@ const AboutPage = () => {
             flex: 0 0 55% !important;
           }
           .capabilities-container {
-            gap: 50px !important;
+            gap: 40px !important;
           }
           .capabilities-left {
             flex: 1.2 1 480px !important;
@@ -221,12 +221,45 @@ const AboutPage = () => {
             flex: 1 1 440px !important;
           }
         }
+
+        /* ── Standard Laptops / Desktops (1280px) ── */
+        @media (max-width: 1280px) {
+          .about-page-wrapper .about-hero-section h1,
+          .about-page-wrapper .about-section h1 {
+            font-size: clamp(24px, 2.8vw, 36px) !important;
+          }
+          .about-page-wrapper .about-section h2,
+          .about-page-wrapper section h2,
+          .about-page-wrapper h2 {
+            font-size: clamp(18px, 2.2vw, 26px) !important;
+          }
+          .about-page-wrapper .about-section h3,
+          .about-page-wrapper section h3,
+          .about-page-wrapper h3 {
+            font-size: clamp(16px, 1.8vw, 20px) !important;
+          }
+          .about-page-wrapper .about-hero-section p,
+          .about-page-wrapper .about-section p,
+          .about-page-wrapper section p,
+          .about-page-wrapper p {
+            font-size: 13.5px !important;
+            line-height: 1.65 !important;
+          }
+          .about-page-wrapper .hero-left-col p:first-of-type {
+            font-size: 15px !important;
+          }
+          .about-page-wrapper .capabilities-left p:first-of-type {
+            font-size: 13.5px !important;
+          }
+        }
+
+        /* ── Small Laptops / Netbooks (1024px) ── */
         @media (max-width: 1024px) {
           .about-section {
-            padding: 60px 4% !important;
+            padding: 40px 4% !important;
           }
           .about-hero-section {
-            padding: 60px 4% 50px !important;
+            padding: 44px 4% 36px !important;
           }
           .hero-flex-container {
             gap: 30px !important;
@@ -238,7 +271,7 @@ const AboutPage = () => {
           }
           .hero-right-col {
             flex: 1 1 100% !important;
-            margin-top: 30px !important;
+            margin-top: 24px !important;
           }
           .capabilities-container {
             gap: 30px !important;
@@ -250,7 +283,7 @@ const AboutPage = () => {
           }
           .capabilities-right {
             flex: 1 1 100% !important;
-            margin-top: 24px !important;
+            margin-top: 20px !important;
           }
           .connectivity-container {
             gap: 30px !important;
@@ -262,7 +295,7 @@ const AboutPage = () => {
           }
           .connectivity-right {
             flex: 1 1 100% !important;
-            margin-top: 30px !important;
+            margin-top: 24px !important;
           }
           .security-container {
             gap: 30px !important;
@@ -274,7 +307,75 @@ const AboutPage = () => {
           }
           .security-right {
             flex: 1 1 100% !important;
-            margin-top: 30px !important;
+            margin-top: 24px !important;
+          }
+
+          /* Text size reductions for netbooks/small laptops */
+          .about-page-wrapper .about-hero-section h1,
+          .about-page-wrapper .about-section h1 {
+            font-size: clamp(22px, 2.5vw, 32px) !important;
+          }
+          .about-page-wrapper .about-section h2,
+          .about-page-wrapper section h2,
+          .about-page-wrapper h2 {
+            font-size: clamp(17px, 2vw, 23px) !important;
+          }
+          .about-page-wrapper .about-section h3,
+          .about-page-wrapper section h3,
+          .about-page-wrapper h3 {
+            font-size: clamp(15px, 1.6vw, 18px) !important;
+          }
+          .about-page-wrapper .about-hero-section p,
+          .about-page-wrapper .about-section p,
+          .about-page-wrapper section p,
+          .about-page-wrapper p {
+            font-size: 13px !important;
+            line-height: 1.6 !important;
+          }
+          .about-page-wrapper .hero-left-col p:first-of-type {
+            font-size: 14.5px !important;
+          }
+          .about-page-wrapper .capabilities-left p:first-of-type {
+            font-size: 13px !important;
+          }
+        }
+
+        /* ── Tablets / Large Phones (768px) ── */
+        @media (max-width: 768px) {
+          .about-section {
+            padding: 36px 4% !important;
+          }
+          .about-hero-section {
+            padding: 36px 4% 28px !important;
+          }
+
+          /* Text size reductions for tablets/large phones */
+          .about-page-wrapper .about-hero-section h1,
+          .about-page-wrapper .about-section h1 {
+            font-size: clamp(20px, 2.2vw, 28px) !important;
+          }
+          .about-page-wrapper .about-section h2,
+          .about-page-wrapper section h2,
+          .about-page-wrapper h2 {
+            font-size: clamp(16px, 1.8vw, 21px) !important;
+          }
+          .about-page-wrapper .about-section h3,
+          .about-page-wrapper section h3,
+          .about-page-wrapper h3 {
+            font-size: clamp(14px, 1.4vw, 17px) !important;
+          }
+          .about-page-wrapper .about-hero-section p,
+          .about-page-wrapper .about-section p,
+          .about-page-wrapper section p,
+          .about-page-wrapper p {
+            font-size: 12.5px !important;
+            line-height: 1.55 !important;
+          }
+          .about-page-wrapper .hero-left-col p:first-of-type {
+            font-size: 13.5px !important;
+          }
+          .about-page-wrapper .capabilities-left p:first-of-type {
+            font-size: 12.5px !important;
           }
         }
       `}</style>
@@ -292,21 +393,24 @@ const AboutPage = () => {
               <FiBookOpen style={{ color: "#16A34A", width: 14, height: 14 }} />
               <span style={{ color: "#16A34A", fontSize: 13, fontWeight: 600 }}>Our Story</span>
             </div>
-            <h1 style={{ fontSize: "clamp(30px,4vw,52px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.1, marginBottom: 20, textAlign: "left" }}>
+            <h1 style={{ fontSize: "clamp(20px,4vw,45px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.1, marginBottom: 20, textAlign: "left" }}>
               India&apos;s Digital Business<br />
               <span style={{ color: "#16A34A" }}>Operating System</span>
             </h1>
-            <p style={{ fontSize: 18, color: "#475569", lineHeight: 1.7, marginBottom: 20, textAlign: "left" }}>
+            <p style={{ fontSize: 17, color: "#475569", lineHeight: 1.7, marginBottom: 20, textAlign: "left" }}>
               Own Your Business.{" "}
               <span style={{ color: "#16A34A", fontWeight: 700 }}>Own Your Customers.</span>{" "}
               Own Your Growth.
             </p>
-            <p style={{ fontSize: 15, color: "#334155", lineHeight: 1.85, marginBottom: 16, textAlign: "left" }}>
+            <p style={{ fontSize: 14, color: "#334155", lineHeight: 1.85, marginBottom: 16, textAlign: "left" }}>
               MessBee is a unified digital business platform built for Indian businesses to manage customer relationships,
               communication, sales, marketing, automation, and everyday business operations from one connected system.
+              <br />
               From a local shop or restaurant to a growing company, educational institution, healthcare business,
               distributor, manufacturer or multi-location enterprise, MessBee brings essential digital business
-              capabilities together in one platform.Instead of managing separate tools for customer communication, CRM, marketing, orders, automation and business operations, businesses can use MessBee to create a more connected and organized digital ecosystem around their own brand.
+              capabilities together in one platform.
+              <br />
+              Instead of managing separate tools for customer communication, CRM, marketing, orders, automation and business operations, businesses can use MessBee to create a more connected and organized digital ecosystem around their own brand.
             </p>
             <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.85, marginBottom: 36, fontWeight: 600, textAlign: "left" }}>
               <span style={{ color: "#16A34A" }}>One platform.</span>{" "}
@@ -376,36 +480,38 @@ const AboutPage = () => {
               <span style={{ color: "#16A34A", fontSize: 12, fontWeight: 700, letterSpacing: 0.8, textTransform: "uppercase" }}>What Is MessBee?</span>
             </div>
 
-            <h2 style={{ fontSize: "clamp(28px,3.5vw,42px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.18, marginBottom: 24 }}>
-              More than a messaging<br />
-              <span style={{ color: "#16A34A" }}>platform or CRM.</span>
+            <h2 style={{ fontSize: "clamp(25px,3.5vw,37px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.18, marginBottom: 24 }}>
+              What Is <span style={{ color: "#16A34A" }}>MessBee?</span>
             </h2>
 
-            <p style={{ fontSize: 16, color: "#475569", lineHeight: 1.9, marginBottom: 18 }}>
-              MessBee is more than a messaging platform, CRM, or chatbot. It is designed as a{" "}
-              <strong style={{ color: "#0F172A" }}>Digital Business Operating System</strong> that connects
-              the different parts of a modern business — from the first customer enquiry to engagement,
+            <p style={{ fontSize: "clamp(16px, 1.8vw, 19px)", fontWeight: 800, color: "#16A34A", lineHeight: 1.4, marginBottom: 14 }}>
+              MessBee is more than a messaging platform, CRM, or chatbot.
+            </p>
+
+            <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.9, marginBottom: 16 }}>
+              It is designed as a <strong style={{ color: "#0F172A" }}>Digital Business Operating System</strong> that connects
+              the different parts of a modern business—from the first customer enquiry to engagement,
               conversion, order, payment, follow-up and long-term retention.
             </p>
 
+            <p style={{ fontSize: 14, fontWeight: 700, color: "#334155", marginBottom: 24 }}>
+              With MessBee, businesses can bring together:
+            </p>
 
             {/* Objective callout */}
             <div style={{
               background: "linear-gradient(135deg,#f0fdf4,#dcfce7)", border: "1px solid #bbf7d0",
-              borderRadius: 16, padding: "24px 28px", marginBottom: 36,
+              borderRadius: 16, padding: "20px 24px", marginBottom: 36,
             }}>
-              <div style={{ fontSize: 12, fontWeight: 700, color: "#15803D", textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 12 }}>The Objective</div>
-              {[
-                "Help businesses spend less time managing disconnected digital tools.",
-                "More time serving customers and growing their business.",
-              ].map((line, i) => (
-                <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 20, marginBottom: i < 1 ? 12 : 0 }}>
-                  <div style={{ width: 22, height: 22, borderRadius: "50%", background: "#16A34A", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 1 }}>
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
-                  </div>
-                  <span style={{ fontSize: 15, fontWeight: 600, color: "#15803D", lineHeight: 1.5 }}>{line}</span>
+              <div style={{ fontSize: 12, fontWeight: 700, color: "#15803D", textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 10 }}>The Objective is Simple</div>
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
+                <div style={{ width: 22, height: 22, borderRadius: "50%", background: "#16A34A", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 2 }}>
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
                 </div>
-              ))}
+                <span style={{ fontSize: 14, fontWeight: 600, color: "#15803D", lineHeight: 1.6 }}>
+                  Help businesses spend less time managing disconnected digital tools and more time serving customers and growing their business.
+                </span>
+              </div>
             </div>
 
             <button
@@ -514,7 +620,7 @@ const AboutPage = () => {
                   style={{
                     background: isHovered ? f.color : `${f.color}0a`,
                     borderRadius: "30px",
-                    padding: "6px 12px",
+                    padding: "8px 18px",
                     border: `1px solid ${isHovered ? f.color : `${f.color}25`}`,
                     transition: "all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1)",
                     cursor: "pointer",
@@ -540,7 +646,7 @@ const AboutPage = () => {
                   </div>
                   <span style={{
                     fontSize: 15,
-                    fontWeight: 750,
+                    fontWeight: 700,
                     color: isHovered ? "#FFFFFF" : "#0F172A",
                     transition: "color 0.25s ease",
                     fontFamily: "'Inter', sans-serif",
@@ -609,9 +715,9 @@ const AboutPage = () => {
           }
         `}</style>
 
-        <div style={{ maxWidth: 1100, margin: "0 auto", textAlign: "left" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", textAlign: "left" }}>
 
-          <div style={{ display: "flex", gap: "60px", alignItems: "flex-start", flexWrap: "wrap" }}>
+          <div style={{ display: "flex", gap: "100px", alignItems: "flex-start", flexWrap: "wrap" }}>
 
             {/* Left Column: All Text Content */}
             <div style={{ flex: "1 1 480px" }}>
@@ -643,7 +749,7 @@ const AboutPage = () => {
                   </p>
                 </div>
 
-                <p style={{ fontSize: 16, color: "#475569", lineHeight: 1.9, marginBottom: 20, fontFamily: "'Inter', sans-serif" }}>
+                <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.9, marginBottom: 10, fontFamily: "'Inter', sans-serif" }}>
                   A neighbourhood Kirana store, a restaurant, a coaching institute, a pharmacy, a fashion boutique, a distributor, a manufacturer and a multi-branch enterprise do not operate in the same way.
                 </p>
 
@@ -658,7 +764,7 @@ const AboutPage = () => {
                   </p>
                 </div>
 
-                <p style={{ fontSize: 16, color: "#475569", lineHeight: 1.9, fontFamily: "'Inter', sans-serif" }}>
+                <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.9, fontFamily: "'Inter', sans-serif" }}>
                   Whether your business primarily handles enquiries, bookings, orders, customer relationships, repeat purchases, marketing campaigns or multiple business locations, MessBee provides a flexible digital environment that can adapt to different business workflows.
                 </p>
               </div>
@@ -667,20 +773,20 @@ const AboutPage = () => {
               {/* From Local Business to Growing Enterprise */}
               <div>
 
-                <h3 style={{ fontSize: "clamp(24px,2.8vw,34px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.18, marginBottom: 24, fontFamily: "'Inter', sans-serif" }}>
+                <h3 style={{ fontSize: "clamp(24px,2.8vw,34px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.18, marginBottom: 20, fontFamily: "'Inter', sans-serif" }}>
                   From Local Business<br />
                   <span style={{ color: "#16A34A" }}>to Growing Enterprise</span>
                 </h3>
 
-                <p style={{ fontSize: 16, color: "#475569", lineHeight: 1.9, marginBottom: 15, fontFamily: "'Inter', sans-serif" }}>
+                <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.9, marginBottom: 10, fontFamily: "'Inter', sans-serif" }}>
                   A business can start with customer communication and gradually expand its use of MessBee as its requirements grow.
                 </p>
 
-                <p style={{ fontSize: 16, color: "#475569", lineHeight: 1.9, marginBottom: 10, fontFamily: "'Inter', sans-serif" }}>
+                <p style={{ fontSize: 16, color: "#475569", lineHeight: 1.9, marginBottom: 5, marginTop:15,fontWeight: 700, fontFamily: "'Inter', sans-serif" }}>
                   For example:
                 </p>
 
-                <p style={{ fontSize: 16, color: "#475569", lineHeight: 1.9, marginTop: 5, fontFamily: "'Inter', sans-serif" }}>
+                <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.9, marginTop: 15, fontFamily: "'Inter', sans-serif" }}>
                   This makes MessBee suitable for businesses at different stages of digital growth.
                 </p>
               </div>
@@ -688,20 +794,20 @@ const AboutPage = () => {
             </div>
 
             {/* Right Column: Timeline Cards */}
-            <div style={{ flex: "1 1 480px" }}>
+            <div style={{ flex: "1 1 480px" ,marginTop:140 }}>
               <div className="growth-timeline-vertical" style={{ margin: 0, padding: "10px 0" }}>
                 {[
-                  { title: "Customer Communication", desc: "Start conversations with customers instantly over WhatsApp.", color: "#10B981", bg: "#F0FDF4", badge: "01", tag: "CONNECT" },
-                  { title: "CRM", desc: "Organize contacts, tags, and all customer history details.", color: "#10B981", bg: "#F0FDF4", badge: "02", tag: "CONNECT" },
-                  { title: "Digital Store", desc: "Showcase menus or product catalogs directly in the chat interface.", color: "#10B981", bg: "#F0FDF4", badge: "03", tag: "CONNECT" },
-                  { title: "AI Assistant", desc: "Deploy automated smart agents to answer FAQs 24/7.", color: "#6366F1", bg: "#EEF2FF", badge: "04", tag: "AUTOMATE" },
-                  { title: "Automation", desc: "Build visual interactive auto-reply paths and chat menus.", color: "#6366F1", bg: "#EEF2FF", badge: "05", tag: "AUTOMATE" },
-                  { title: "Marketing", desc: "Broadcast campaigns & newsletters to targeted subscriber segments.", color: "#6366F1", bg: "#EEF2FF", badge: "06", tag: "AUTOMATE" },
-                  { title: "Orders", desc: "Collect order requests directly inside conversational flows.", color: "#F59E0B", bg: "#FFFBEB", badge: "07", tag: "TRANSACT" },
-                  { title: "Payments", desc: "Request and accept secure UPI & card payments instantly.", color: "#F59E0B", bg: "#FFFBEB", badge: "08", tag: "TRANSACT" },
-                  { title: "Loyalty", desc: "Encourage repeat customers with automated loyalty rewards.", color: "#F59E0B", bg: "#FFFBEB", badge: "09", tag: "TRANSACT" },
-                  { title: "Analytics", desc: "Keep track of active leads, conversions, and growth metrics.", color: "#EC4899", bg: "#FDF2F8", badge: "10", tag: "SCALE" },
-                  { title: "Multi-Location Management", desc: "Manage operational catalog and branches from one central hub.", color: "#EC4899", bg: "#FDF2F8", badge: "11", tag: "SCALE" }
+                  { title: "Customer Communication", color: "#10B981", bg: "#F0FDF4", badge: "01", tag: "CONNECT" },
+                  { title: "CRM", color: "#10B981", bg: "#F0FDF4", badge: "02", tag: "CONNECT" },
+                  { title: "Digital Store", color: "#10B981", bg: "#F0FDF4", badge: "03", tag: "CONNECT" },
+                  { title: "AI Assistant", color: "#6366F1", bg: "#EEF2FF", badge: "04", tag: "AUTOMATE" },
+                  { title: "Automation", color: "#6366F1", bg: "#EEF2FF", badge: "05", tag: "AUTOMATE" },
+                  { title: "Marketing", color: "#6366F1", bg: "#EEF2FF", badge: "06", tag: "AUTOMATE" },
+                  { title: "Orders", color: "#F59E0B", bg: "#FFFBEB", badge: "07", tag: "TRANSACT" },
+                  { title: "Payments", color: "#F59E0B", bg: "#FFFBEB", badge: "08", tag: "TRANSACT" },
+                  { title: "Loyalty", color: "#F59E0B", bg: "#FFFBEB", badge: "09", tag: "TRANSACT" },
+                  { title: "Analytics", color: "#EC4899", bg: "#FDF2F8", badge: "10", tag: "SCALE" },
+                  { title: "Multi-Location Management", color: "#EC4899", bg: "#FDF2F8", badge: "11", tag: "SCALE" }
                 ].map((step, idx) => (
                   <div key={idx} className="growth-step-item">
                     <div className="growth-step-card">
@@ -779,17 +885,17 @@ const AboutPage = () => {
         <div style={{ maxWidth: 1140, margin: "0 auto", textAlign: "center" }}>
 
           {/* Header */}
-          <div style={{ marginBottom: 48 }}>
+          <div style={{ marginBottom: 0 }}>
             <div style={{
               display: "inline-flex", alignItems: "center", gap: 8,
               background: "rgba(22,163,74,0.08)", border: "1px solid rgba(22,163,74,0.22)",
-              borderRadius: 40, padding: "5px 16px", marginBottom: 20,
+              borderRadius: 40, padding: "5px 16px", marginBottom: 10,
             }}>
               <svg width="10" height="10" viewBox="0 0 24 24" fill="#16A34A"><circle cx="12" cy="12" r="10" /></svg>
               <span style={{ color: "#16A34A", fontSize: 12, fontWeight: 700, letterSpacing: 0.8, textTransform: "uppercase" }}>All-in-One Capabilities</span>
             </div>
 
-            <h2 style={{ fontSize: "clamp(28px,3.5vw,42px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.18, marginBottom: 16 }}>
+            <h2 style={{ fontSize: "clamp(28px,3.5vw,42px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.18, marginBottom: 10 }}>
               Everything Your Business Needs, <span style={{ color: "#16A34A" }}>Connected</span>
             </h2>
 
@@ -799,7 +905,7 @@ const AboutPage = () => {
           </div>
 
           {/* Slider Layout */}
-          <div style={{ position: "relative", width: "100%", height: "580px", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto" }}>
+          <div style={{ position: "relative", width: "100%", height: "540px", display: "flex", alignItems: "center", justifyContent: "center", margin: "30px auto 0" }}>
 
             {/* Left Control Arrow */}
             <button
@@ -867,17 +973,16 @@ const AboutPage = () => {
                   tag: "AUTOMATION",
                   gradient: "linear-gradient(135deg, #EC4899, #D946EF)",
                   icon: <FiZap style={{ width: 64, height: 64, color: "#FFFFFF" }} />,
-                  desc: "Reach the Right Customer at the Right Stage. Marketing becomes more effective when communication is connected to customer activity. MessBee helps businesses create structured campaigns, follow-ups, reminders and customer engagement workflows across supported communication channels. Businesses can use automation for activities such as:",
+                  desc: "Reach the Right Customer at the Right Stage. Marketing becomes more effective when communication is connected to customer activity. MessBee helps businesses create structured campaigns, follow-ups, reminders and customer engagement workflows across supported communication channels.",
                   points: [
                     "Lead follow-ups",
                     "Customer re-engagement",
-                    "Promotional campaigns",
+                   
                     "Order updates",
                     "Appointment reminders",
                     "Service reminders",
                     "Loyalty communication",
-                    "Notifications",
-                    "Customer journeys",
+                   
                     "Internal alerts"
                   ]
                 },
@@ -886,7 +991,7 @@ const AboutPage = () => {
                   tag: "JOURNEY",
                   gradient: "linear-gradient(135deg, #F59E0B, #D97706)",
                   icon: <FiRefreshCw style={{ width: 64, height: 64, color: "#FFFFFF" }} />,
-                  desc: "A successful business relationship does not end after the first sale. MessBee is designed around the complete customer journey: Discover ➔ Enquire ➔ Engage ➔ Recommend ➔ Convert ➔ Order ➔ Pay ➔ Follow Up ➔ Retain ➔ Grow. By connecting these stages, businesses can create more consistent customer experiences and identify repeat opportunities."
+                  desc: "A successful business relationship does not end after the first sale. MessBee is designed around the complete customer journey. By connecting these stages, businesses can create more consistent customer experiences and identify repeat opportunities."
                 },
                 {
                   title: "Orders, Payments & Workflows",
@@ -999,7 +1104,7 @@ const AboutPage = () => {
                     style={{
                       position: "absolute",
                       width: "360px",
-                      height: "510px",
+                      height: "490px",
                       borderRadius: "20px",
                       background: "#FFFFFF",
                       border: "1px solid #E2E8F0",
@@ -1041,21 +1146,55 @@ const AboutPage = () => {
                         <h4 style={{ fontSize: 17, fontWeight: 800, color: "#0F172A", marginBottom: 12, fontFamily: "'Inter', sans-serif" }}>
                           {step.title}
                         </h4>
-                        <p style={{ fontSize: 13, color: "#64748B", lineHeight: 1.6, margin: 0, fontFamily: "'Inter', sans-serif" }}>
-                          {step.desc}
-                        </p>
-                      </div>
+                        
+                        {step.points && (
+                          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6px 12px", borderBottom: "1px solid #F1F5F9", paddingBottom: 12, marginBottom: 12 }}>
+                            {step.points.map((pt, pIdx) => (
+                              <div key={pIdx} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, fontWeight: 600, color: "#16A34A" }}>
+                                <span>•</span>
+                                <span style={{ color: "#475569" }}>{pt}</span>
+                              </div>
+                            ))}
+                          </div>
+                        )}
 
-                      {step.points && (
-                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6px 12px", borderTop: "1px solid #F1F5F9", paddingTop: 12 }}>
-                          {step.points.map((pt, pIdx) => (
-                            <div key={pIdx} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 10, fontWeight: 600, color: "#16A34A" }}>
-                              <span>•</span>
-                              <span style={{ color: "#475569" }}>{pt}</span>
+                        {step.tag === "JOURNEY" ? (
+                          <>
+                            <p style={{ fontSize: 12.5, color: "#64748B", lineHeight: 1.5, marginBottom: 12, fontFamily: "'Inter', sans-serif" }}>
+                              A successful business relationship does not end after the first sale. MessBee is designed around the complete customer journey:
+                            </p>
+                            <div style={{
+                              display: "flex",
+                              flexWrap: "wrap",
+                              alignItems: "center",
+                              gap: "4px 3px",
+                              background: "#F8FAFC",
+                              border: "1px solid #E2E8F0",
+                              borderRadius: "10px",
+                              padding: "8px",
+                              marginBottom: 12
+                            }}>
+                              {["Discover", "Enquire", "Engage", "Recommend", "Convert", "Order", "Pay", "Follow Up", "Retain", "Grow"].map((stepText, sIdx, arr) => (
+                                <React.Fragment key={sIdx}>
+                                  <span style={{ fontSize: 8.5, fontWeight: 700, background: "#16A34A08", color: "#16A34A", border: "1px solid rgba(22,163,74,0.12)", padding: "2px 5px", borderRadius: 30 }}>
+                                    {stepText}
+                                  </span>
+                                  {sIdx < arr.length - 1 && (
+                                    <span style={{ color: "#94A3B8", fontSize: 9, fontWeight: 800 }}>➔</span>
+                                  )}
+                                </React.Fragment>
+                              ))}
                             </div>
-                          ))}
-                        </div>
-                      )}
+                            <p style={{ fontSize: 12.5, color: "#64748B", lineHeight: 1.5, margin: 0, fontFamily: "'Inter', sans-serif" }}>
+                              By connecting these stages, businesses can create more consistent customer experiences and identify repeat opportunities.
+                            </p>
+                          </>
+                        ) : (
+                          <p style={{ fontSize: 13, color: "#64748B", lineHeight: 1.6, margin: 0, fontFamily: "'Inter', sans-serif" }}>
+                            {step.desc}
+                          </p>
+                        )}
+                      </div>
                     </div>
                   </div>
                 );
@@ -1088,7 +1227,7 @@ const AboutPage = () => {
       </section>
 
       {/* ── API CONNECTIVITY & INTEGRATION SECTION ── */}
-      <section style={{ padding: "100px 6%", background: "#FFFFFF", position: "relative" }}>
+      <section style={{ padding: "80px 6%", background: "#FFFFFF", position: "relative" }}>
         <style>{`
           @keyframes pulseRing {
             0% { transform: scale(0.95); opacity: 0.8; }
@@ -1189,11 +1328,11 @@ const AboutPage = () => {
                 ))}
               </div>
 
-              <p style={{ fontSize: 16, color: "#475569", lineHeight: 1.9, marginBottom: 18, fontFamily: "'Inter', sans-serif" }}>
+              <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.9, marginBottom: 18, fontFamily: "'Inter', sans-serif" }}>
                 MessBee is designed with API connectivity in mind so businesses can connect their existing technology environment with their digital business workflows where supported.
               </p>
 
-              <p style={{ fontSize: 16, color: "#475569", lineHeight: 1.9, margin: 0, fontFamily: "'Inter', sans-serif" }}>
+              <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.9, margin: 0, fontFamily: "'Inter', sans-serif" }}>
                 This makes MessBee suitable not only for businesses starting their digital journey, but also for organizations looking to connect and streamline existing systems.
               </p>
             </div>
@@ -1285,7 +1424,7 @@ const AboutPage = () => {
       </section>
 
       {/* ── BUILT FOR DIFFERENT INDUSTRIES SECTION ── */}
-      <section style={{ padding: "80px 6%", background: "#F8FAFC", borderTop: "1px solid #F1F5F9", borderBottom: "1px solid #F1F5F9" }}>
+      <section style={{ padding: "60px 6%", background: "#F8FAFC", borderTop: "1px solid #F1F5F9", borderBottom: "1px solid #F1F5F9" }}>
         <style>{`
           .industry-tab-btn {
             background: #FFFFFF;
@@ -1366,13 +1505,13 @@ const AboutPage = () => {
               <span style={{ color: "#16A34A", fontSize: 12, fontWeight: 700, letterSpacing: 0.8, textTransform: "uppercase" }}>Industry Adaptability</span>
             </div>
 
-            <h2 style={{ fontSize: "clamp(28px,3.5vw,42px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.18, marginBottom: 16 }}>
+            <h2 style={{ fontSize: "clamp(28px,3.5vw,42px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.18, marginBottom: 10 }}>
               Built for <span style={{ color: "#16A34A" }}>Different Industries</span>
             </h2>
           </div>
 
           {/* Dynamic Tabs Filters */}
-          <div style={{ display: "flex", justifyContent: "center", gap: 12, flexWrap: "wrap", marginBottom: 30 }}>
+          <div style={{ display: "flex", justifyContent: "center", gap: 12, flexWrap: "wrap", marginBottom: 20 }}>
             {[
               { id: "all", label: "All Industries" },
               { id: "commerce", label: "Commerce & Retail" },
@@ -1531,7 +1670,7 @@ const AboutPage = () => {
       </section>
 
       {/* ── WHY BUSINESSES CHOOSE MESSBEE SECTION ── */}
-      <section style={{ padding: "80px 6%", background: "#FFFFFF" }}>
+      <section style={{ padding: "60px 6%", background: "#FFFFFF" }}>
         <style>{`
           .choose-card {
             background: #FFFFFF;
@@ -1672,7 +1811,7 @@ const AboutPage = () => {
       </section>
 
       {/* ── BEYOND MESSAGING CUSTOMER JOURNEY SECTION ── */}
-      <section style={{ padding: "100px 6%", background: "#F8FAFC", borderTop: "1px solid #F1F5F9", borderBottom: "1px solid #F1F5F9" }}>
+      <section style={{ padding: "60px 6%", background: "#F8FAFC", borderTop: "1px solid #F1F5F9", borderBottom: "1px solid #F1F5F9" }}>
         <style>{`
           .flow-step-pill {
             background: #FFFFFF;
@@ -1715,7 +1854,7 @@ const AboutPage = () => {
           <div style={{ display: "flex", gap: "80px", alignItems: "center", flexWrap: "wrap" }}>
 
             {/* Left Column: Descriptions */}
-            <div style={{ flex: "1 1 480px", textAlign: "left" }}>
+            <div style={{ flex: "1 1 540px", textAlign: "left" }}>
               <div style={{
                 display: "inline-flex", alignItems: "center", gap: 8,
                 background: "rgba(22,163,74,0.08)", border: "1px solid rgba(22,163,74,0.22)",
@@ -1731,7 +1870,7 @@ const AboutPage = () => {
                 Not Just Your Messages.
               </h2>
 
-              <p style={{ fontSize: 16, color: "#475569", lineHeight: 1.9, marginBottom: 20, fontFamily: "'Inter', sans-serif" }}>
+              <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.9, marginBottom: 20, fontFamily: "'Inter', sans-serif" }}>
                 Messaging is only one part of a modern business. A customer may discover your business through a campaign, ask a question through WhatsApp, visit your digital store, place an order, make a payment, receive an update, and later return for another purchase.
               </p>
 
@@ -1746,7 +1885,7 @@ const AboutPage = () => {
                 </p>
               </div>
 
-              <p style={{ fontSize: 16, color: "#475569", lineHeight: 1.9, margin: 0, fontFamily: "'Inter', sans-serif" }}>
+              <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.9, margin: 0, fontFamily: "'Inter', sans-serif" }}>
                 This connected approach helps businesses build a more organized digital customer journey.
               </p>
             </div>
@@ -1759,7 +1898,7 @@ const AboutPage = () => {
                 alignItems: "center",
                 gap: "20px 8px",
                 width: "100%",
-                maxWidth: "520px"
+                maxWidth: "540px"
               }}>
                 {[
                   { label: "Communication", icon: <FiMessageSquare style={{ color: "#16A34A", width: 15, height: 15 }} /> },
@@ -1802,7 +1941,7 @@ const AboutPage = () => {
       </section>
 
       {/* ── MANIFESTO / PHILOSOPHY SECTION ── */}
-      <section style={{ padding: "80px 6%", background: "#FFFFFF" }}>
+      <section style={{ padding: "60px 6%", background: "#FFFFFF" }}>
         <style>{`
           .manifesto-container {
             background: #F0FDF4;
@@ -1899,7 +2038,7 @@ const AboutPage = () => {
             <p style={{ fontSize: 18, fontWeight: 800, color: "#15803D", lineHeight: 1.6, margin: 0, fontFamily: "'Inter', sans-serif" }}>
               MessBee is built around an important principle:
             </p>
-            <p style={{ fontSize: 16, fontWeight: 400, color: "#35c01f", lineHeight: 1.6, margin: 0, fontFamily: "'Inter', sans-serif" }}>
+            <p style={{ fontSize: 16, fontWeight: 400, color: "#0d0e0dff", lineHeight: 1.6, margin: 0, fontFamily: "'Inter', sans-serif" }}>
               Businesses should have greater control over their digital customer relationships.
             </p>
           </div>
@@ -1975,7 +2114,7 @@ const AboutPage = () => {
           </div>
 
           {/* Footer Footnote */}
-          <p style={{ fontSize: 16.5, color: "#64748B", maxWidth: 750, margin: "0 auto", lineHeight: 1.5, fontFamily: "'Inter', sans-serif" }}>
+          <p style={{ fontSize: 14, color: "#64748B", maxWidth: 750, margin: "0 auto", lineHeight: 1.5, fontFamily: "'Inter', sans-serif" }}>
             All customer data and communication workflows remain subject to applicable laws, platform policies, permissions and contractual requirements.
           </p>
 
@@ -2411,7 +2550,7 @@ const AboutPage = () => {
       </section>
 
       {/* ── OUR VISION ── */}
-      <section style={{ padding: "100px 6%", background: "#F8FAFC", borderTop: "1px solid #F1F5F9", borderBottom: "1px solid #F1F5F9" }}>
+      <section style={{ padding: "60px 6%", background: "#F8FAFC", borderTop: "1px solid #F1F5F9", borderBottom: "1px solid #F1F5F9" }}>
         <style>{`
           .vision-card {
             background: #FFFFFF;
@@ -2431,7 +2570,7 @@ const AboutPage = () => {
         <div style={{ maxWidth: 1100, margin: "0 auto", textAlign: "center" }}>
 
           {/* Header */}
-          <div style={{ marginBottom: 40 }}>
+          <div style={{ marginBottom: 10 }}>
             <div style={{
               display: "inline-flex", alignItems: "center", gap: 8,
               background: "rgba(22,163,74,0.08)", border: "1px solid rgba(22,163,74,0.22)",
@@ -2511,7 +2650,7 @@ const AboutPage = () => {
         </div>
       </section>
       {/* ── LEADERSHIP SECTION ── */}
-      <section className="about-section" style={{ padding: "60px 6% 70px", background: "#FFFFFF" }}>
+      <section className="about-section" style={{ padding: "60px 6% 60px", background: "#FFFFFF" }}>
         <style>{`
           .leadership-tag {
             font-size: 13.5px;
@@ -2557,7 +2696,7 @@ const AboutPage = () => {
               </h2>
 
               <p style={{ fontSize: 16, color: "#475569", lineHeight: 1.9, marginBottom: 16, fontFamily: "'Inter', sans-serif" }}>
-                MessBee is founded and led by <strong>Mr. Anil Kumar Atri</strong>, Founder & CEO. The platform is being developed under <strong>ATRI Admission Anytime Pvt. Ltd.</strong>, with a focus on building practical, scalable, and compliance-oriented technology solutions for modern businesses.
+                 MessBee is founded and led by <strong>Mr. Anil Kumar Atri</strong>, Founder & CEO. The platform is being developed with a focus on building practical, scalable, and compliance-oriented technology solutions for modern businesses.
               </p>
 
               <p style={{ fontSize: 16, fontWeight: 800, color: "#16A34A", marginBottom: 16, fontFamily: "'Inter', sans-serif" }}>
@@ -2581,21 +2720,21 @@ const AboutPage = () => {
             </div>
 
             {/* Right Column: Key Tenets Board */}
-            <div style={{ flex: "1 1 400px", textAlign: "left" }}>
+            <div style={{ flex: "1 1 200px", textAlign: "left" }}>
               <div style={{ fontSize: 13, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 24 }}>
                 Our approach is centered around:
               </div>
-              <div style={{ display: "flex", gap: "12px 14px", flexWrap: "wrap", justifyContent: "flex-start" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                 {[
-                  { name: "Innovation", icon: <FiZap style={{ width: 14, height: 14 }} />, color: "#F59E0B" },
-                  { name: "Reliability", icon: <FiHeart style={{ width: 14, height: 14 }} />, color: "#0EA5E9" },
-                  { name: "Scalability", icon: <FiTrendingUp style={{ width: 14, height: 14 }} />, color: "#6366F1" },
-                  { name: "Security", icon: <FiShield style={{ width: 14, height: 14 }} />, color: "#10B981" },
-                  { name: "Transparency", icon: <FiEye style={{ width: 14, height: 14 }} />, color: "#8B5CF6" },
-                  { name: "Automation", icon: <FiSettings style={{ width: 14, height: 14 }} />, color: "#F97316" },
-                  { name: "AI", icon: <FiCpu style={{ width: 14, height: 14 }} />, color: "#EC4899" },
-                  { name: "Customer Ownership", icon: <FiTarget style={{ width: 14, height: 14 }} />, color: "#EF4444" },
-                  { name: "Responsible Technology", icon: <FiCheckSquare style={{ width: 14, height: 14 }} />, color: "#64748B" }
+                  { name: "Innovation", icon: <FiZap style={{ width: 12, height: 12 }} />, color: "#F59E0B" },
+                  { name: "Reliability", icon: <FiHeart style={{ width: 12, height: 12 }} />, color: "#0EA5E9" },
+                  { name: "Scalability", icon: <FiTrendingUp style={{ width: 12, height: 12 }} />, color: "#6366F1" },
+                  { name: "Security", icon: <FiShield style={{ width: 12, height: 12 }} />, color: "#10B981" },
+                  { name: "Transparency", icon: <FiEye style={{ width: 12, height: 12 }} />, color: "#8B5CF6" },
+                  { name: "Automation", icon: <FiSettings style={{ width: 12, height: 12 }} />, color: "#F97316" },
+                  { name: "AI", icon: <FiCpu style={{ width: 12, height: 12 }} />, color: "#EC4899" },
+                  { name: "Customer Ownership", icon: <FiTarget style={{ width: 12, height: 12 }} />, color: "#EF4444" },
+                  { name: "Responsible Technology", icon: <FiCheckSquare style={{ width: 12, height: 12 }} />, color: "#64748B" }
                 ].map((val, idx) => {
                   const isHovered = hoveredLeaderCap === idx;
                   return (
@@ -2604,34 +2743,36 @@ const AboutPage = () => {
                       onMouseEnter={() => setHoveredLeaderCap(idx)}
                       onMouseLeave={() => setHoveredLeaderCap(null)}
                       style={{
-                        fontSize: "13.5px",
-                        fontWeight: 750,
-                        background: isHovered ? val.color : `${val.color}0a`,
-                        border: `1px solid ${isHovered ? val.color : `${val.color}25`}`,
-                        padding: "8px 16px",
-                        borderRadius: "30px",
-                        display: "inline-flex",
+                        fontSize: "14px",
+                        fontWeight: 700,
+                        background: isHovered ? val.color : "#F8FAFC",
+                        border: `1.5px solid ${isHovered ? val.color : "#E2E8F0"}`,
+                        padding: "8px 14px",
+                        borderRadius: "20px",
+                        display: "flex",
                         alignItems: "center",
-                        gap: 8,
+                        gap: 20,
                         cursor: "pointer",
-                        transition: "all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1)",
-                        transform: isHovered ? "translateY(-3px)" : "translateY(0)",
-                        boxShadow: isHovered ? `0 6px 18px ${val.color}35` : "none",
+                        transform: isHovered ? "translateX(4px)" : "translateX(0)",
+                        transition: "all 0.2s ease",
+                        boxShadow: isHovered ? "0 4px 12px rgba(0,0,0,0.05)" : "none",
                         fontFamily: "'Inter', sans-serif"
                       }}
                     >
-                      <span style={{
+                      <div style={{
                         display: "flex",
                         alignItems: "center",
+                        justifyContent: "center",
+                        width: 22,
+                        height: 22,
+                        borderRadius: "50%",
+                        background: isHovered ? "rgba(255, 255, 255, 0.2)" : `${val.color}15`,
                         color: isHovered ? "#FFFFFF" : val.color,
-                        transition: "color 0.25s ease"
+                        flexShrink: 0
                       }}>
                         {val.icon}
-                      </span>
-                      <span style={{
-                        color: isHovered ? "#FFFFFF" : "#0F172A",
-                        transition: "color 0.25s ease"
-                      }}>
+                      </div>
+                      <span style={{ color: isHovered ? "#FFFFFF" : "#0F172A", transition: "color 0.2s ease" }}>
                         {val.name}
                       </span>
                     </div>
@@ -2660,7 +2801,7 @@ const AboutPage = () => {
           }
           .about-faq-trigger {
             width: 100%;
-            padding: 18px 30px;
+            padding: 15px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -2722,7 +2863,7 @@ const AboutPage = () => {
           </div>
 
           {/* Heading */}
-          <h2 style={{ fontSize: "clamp(28px,3.5vw,42px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.18, marginBottom: 48 }}>
+          <h2 style={{ fontSize: "clamp(26px, 3vw, 36px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.18, marginBottom: 48 }}>
             Frequently Asked <span style={{ color: "#16A34A" }}>Questions</span>
           </h2>
 
@@ -2796,33 +2937,40 @@ const AboutPage = () => {
       <section style={{ padding: "40px 6%", background: "#FFFFFF" }}>
         <style>{`
           .promise-container {
-            background: #F0FDF4;
-            border: 1px solid rgba(22, 163, 74, 0.25);
+            background: #0B0F19;
+            border: 1.5px solid #16A34A;
             border-radius: 20px;
             padding: 36px 32px;
             max-width: 1100px;
             margin: 0 auto;
             text-align: center;
-            box-shadow: inset 0 2px 4px rgba(22, 163, 74, 0.01);
+            box-shadow: 0 0 30px rgba(22, 163, 74, 0.25), inset 0 0 20px rgba(22, 163, 74, 0.15);
           }
           .promise-verb-light-card {
-            background: #FFFFFF;
-            border: 1.5px solid #BBF7D0;
+            background: #111827;
+            border: 1.5px solid rgba(74, 222, 128, 0.35);
             border-radius: 12px;
             padding: 10px 16px;
             font-size: 13.5px;
             font-weight: 800;
-            color: #0F172A;
+            color: #FFFFFF;
             font-family: 'Inter', sans-serif;
             text-align: center;
             transition: all 0.25s ease;
             cursor: default;
-            box-shadow: 0 4px 12px rgba(22, 163, 74, 0.04);
+            box-shadow: 0 0 12px rgba(74, 222, 128, 0.08);
           }
           .promise-verb-light-card:hover {
-            border-color: #16A34A;
+            background: #16A34A !important;
+            border-color: #4ADE80 !important;
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(22, 163, 74, 0.1);
+            box-shadow: 0 0 20px rgba(74, 222, 128, 0.45) !important;
+          }
+          .promise-verb-light-card:hover .promise-verb-icon {
+            color: #FFFFFF !important;
+          }
+          .promise-verb-light-card:hover .promise-verb-text {
+            color: #FFFFFF !important;
           }
           @media (max-width: 640px) {
             .promise-container {
@@ -2834,12 +2982,12 @@ const AboutPage = () => {
         <div className="promise-container">
 
           {/* Heading */}
-          <h2 style={{ fontSize: "clamp(26px, 3vw, 36px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.18, marginBottom: 12 }}>
+          <h2 style={{ fontSize: "clamp(26px, 3vw, 36px)", fontWeight: 900, color: "#FFFFFF", textShadow: "0 0 10px rgba(22, 163, 74, 0.4)", lineHeight: 1.18, marginBottom: 12 }}>
             The MessBee Promise
           </h2>
 
           {/* Negation Text Paragraphs */}
-          <div style={{ fontSize: 15.5, color: "#475569", lineHeight: 1.7, marginBottom: 14 }}>
+          <div style={{ fontSize: 15.5, color: "#94A3B8", lineHeight: 1.7, marginBottom: 14 }}>
             <p style={{ margin: "0 0 4px 0", fontFamily: "'Inter', sans-serif" }}>
               MessBee is not intended to be just another messaging tool.
             </p>
@@ -2849,7 +2997,7 @@ const AboutPage = () => {
           </div>
 
           {/* Connection Text Header Highlight */}
-          <p style={{ fontSize: "clamp(18px, 2.5vw, 22px)", fontWeight: 900, color: "#15803D", lineHeight: 1.35, margin: "0 auto 16px auto", fontFamily: "'Inter', sans-serif" }}>
+          <p style={{ fontSize: "clamp(18px, 2.5vw, 22px)", fontWeight: 900, color: "#4ADE80", textShadow: "0 0 8px rgba(74, 222, 128, 0.3)", lineHeight: 1.35, margin: "0 auto 16px auto", fontFamily: "'Inter', sans-serif" }}>
             MessBee brings these capabilities together into one connected business ecosystem.
           </p>
 
@@ -2858,50 +3006,68 @@ const AboutPage = () => {
             A platform where businesses can:
           </div>
 
-          {/* Verbs Grid Cards */}
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))",
-            gap: 12,
-            marginBottom: 24
-          }}>
-            {[
-              "Communicate",
-              "Engage",
-              "Automate",
-              "Sell",
-              "Manage",
-              "Understand",
-              "Retain",
-              "Grow"
-            ].map((verb, idx) => (
-              <div key={idx} className="promise-verb-light-card">
-                {verb}
-              </div>
-            ))}
+          {/* Verbs Flex Rows (4 Upper, 4 Lower - Centered) */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 24, alignItems: "center" }}>
+            {/* Row 1 */}
+            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 12, width: "100%" }}>
+              {[
+                { name: "Communicate", icon: <FiMessageSquare style={{ width: 14, height: 14, color: "currentColor" }} /> },
+                { name: "Engage", icon: <FiHeart style={{ width: 14, height: 14, color: "currentColor" }} /> },
+                { name: "Automate", icon: <FiZap style={{ width: 14, height: 14, color: "currentColor" }} /> },
+                { name: "Sell", icon: <FiShoppingBag style={{ width: 14, height: 14, color: "currentColor" }} /> },
+              ].map((item, idx) => (
+                <div key={idx} className="promise-verb-light-card" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, flex: "1 1 180px", maxWidth: "240px" }}>
+                  <span className="promise-verb-icon" style={{ display: "flex", color: "#4ADE80", transition: "color 0.2s ease" }}>
+                    {item.icon}
+                  </span>
+                  <span className="promise-verb-text" style={{ color: "#FFFFFF", transition: "color 0.2s ease" }}>
+                    {item.name}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* Row 2 */}
+            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 12, width: "100%" }}>
+              {[
+                { name: "Manage", icon: <FiBriefcase style={{ width: 14, height: 14, color: "currentColor" }} /> },
+                { name: "Understand", icon: <FiBarChart2 style={{ width: 14, height: 14, color: "currentColor" }} /> },
+                { name: "Retain", icon: <FiGift style={{ width: 14, height: 14, color: "currentColor" }} /> },
+                { name: "Grow", icon: <FiTrendingUp style={{ width: 14, height: 14, color: "currentColor" }} /> }
+              ].map((item, idx) => (
+                <div key={idx} className="promise-verb-light-card" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, flex: "1 1 180px", maxWidth: "240px" }}>
+                  <span className="promise-verb-icon" style={{ display: "flex", color: "#4ADE80", transition: "color 0.2s ease" }}>
+                    {item.icon}
+                  </span>
+                  <span className="promise-verb-text" style={{ color: "#FFFFFF", transition: "color 0.2s ease" }}>
+                    {item.name}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Big Editorial Quote */}
           <div style={{ position: "relative", padding: "12px 0", marginBottom: 20 }}>
-            <span style={{ position: "absolute", top: -5, left: "5%", fontSize: 70, color: "rgba(22,163,74,0.1)", lineHeight: 0, fontFamily: "serif" }}>&ldquo;</span>
-            <p style={{ fontSize: "17.5px", fontWeight: 800, color: "#334155", lineHeight: 1.5, maxWidth: 820, margin: "0 auto", fontFamily: "'Inter', sans-serif" }}>
+            <span style={{ position: "absolute", top: -5, left: "5%", fontSize: 70, color: "rgba(74, 222, 128, 0.15)", lineHeight: 0, fontFamily: "serif" }}>&ldquo;</span>
+            <p style={{ fontSize: "17.5px", fontWeight: 800, color: "#E2E8F0", lineHeight: 1.5, maxWidth: 820, margin: "0 auto", fontFamily: "'Inter', sans-serif" }}>
               Because your business deserves technology that works around your business&mdash;not the other way around.
             </p>
-            <span style={{ position: "absolute", bottom: -25, right: "5%", fontSize: 70, color: "rgba(22,163,74,0.1)", lineHeight: 0, fontFamily: "serif" }}>&rdquo;</span>
+            <span style={{ position: "absolute", bottom: -25, right: "5%", fontSize: 70, color: "rgba(74, 222, 128, 0.15)", lineHeight: 0, fontFamily: "serif" }}>&rdquo;</span>
           </div>
 
           {/* Digital OS Footer Text Details */}
           <div style={{
-            borderTop: "1px solid rgba(22, 163, 74, 0.15)",
+            borderTop: "1px solid rgba(74, 222, 128, 0.2)",
             paddingTop: 24,
             marginTop: 24
           }}>
-            <h3 style={{ fontSize: "18px", fontWeight: 900, color: "#0F172A", marginBottom: 6, fontFamily: "'Inter', sans-serif" }}>
-              <span style={{ color: "#16A34A" }}>MessBee</span> &mdash; India&apos;s Digital Business Operating System
+            <h3 style={{ fontSize: "18px", fontWeight: 900, color: "#FFFFFF", marginBottom: 6, fontFamily: "'Inter', sans-serif" }}>
+              <span style={{ color: "#4ADE80", textShadow: "0 0 6px rgba(74, 222, 128, 0.2)" }}>MessBee</span> &mdash; India&apos;s Digital Business Operating System
             </h3>
 
-            <p style={{ fontSize: "14.5px", fontWeight: 800, color: "#16A34A", letterSpacing: 0.5, margin: 0, fontFamily: "'Inter', sans-serif" }}>
-              Own Your Business <span style={{ color: "#94A3B8" }}>&bull;</span> Own Your Customers <span style={{ color: "#94A3B8" }}>&bull;</span> Own Your Growth
+            <p style={{ fontSize: "14.5px", fontWeight: 800, color: "#4ADE80", letterSpacing: 0.5, margin: 0, fontFamily: "'Inter', sans-serif" }}>
+              Own Your Business <span style={{ color: "#475569" }}>&bull;</span> Own Your Customers <span style={{ color: "#475569" }}>&bull;</span> Own Your Growth
             </p>
           </div>
 
