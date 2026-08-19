@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Navbar from "../Navbar";
+import Footer from "../Footer";
 
 /* ══════════════════════════════════════════════════════
    MessBee — Refund & Cancellation Policy Page
@@ -555,6 +555,16 @@ const RefundPage = () => {
           font-weight: 700; color: #16A34A;
           background: rgba(22,163,74,0.08);
           border-left-color: #16A34A; padding-left: 16px;
+        }
+        @media (max-width: 1366px) {
+          .refund-container {
+            gap: 32px !important;
+          }
+          .refund-sidebar {
+            width: 270px !important;
+            padding: 16px !important;
+            max-height: calc(100vh - 120px) !important;
+          }
         }
         @media (max-width: 1024px) {
           .refund-sidebar { display: none !important; }

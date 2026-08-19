@@ -9,26 +9,27 @@ const ServicePage    = lazy(() => import("./components/ServicePage"));
 const RetailPage     = lazy(() => import("./components/RetailPage"));
 const PricingPage    = lazy(() => import("./components/PricingPage"));
 const ResourcesPage  = lazy(() => import("./components/ResourcesPage"));
-const AboutPage      = lazy(() => import("./components/AboutPage"));
+const AboutPage      = lazy(() => import("./components/company/AboutPage"));
 const BusinessPage   = lazy(() => import("./components/BusinessPage"));
-const ContactPage    = lazy(() => import("./components/ContactPage"));
-const FaqPage        = lazy(() => import("./components/FaqPage"));
+const ContactPage    = lazy(() => import("./components/resources/ContactPage"));
+const ContactUsPage  = lazy(() => import("./components/company/ContactUsPage"));
+const FaqPage        = lazy(() => import("./components/resources/FaqPage"));
 const DocsPage       = lazy(() => import("./components/DocsPage"));
-const TermsPage      = lazy(() => import("./components/TermsPage"));
-const PrivacyPage    = lazy(() => import("./components/PrivacyPage"));
-const CookiesPage    = lazy(() => import("./components/CookiesPage"));
+const TermsPage      = lazy(() => import("./components/company/TermsPage"));
+const PrivacyPage    = lazy(() => import("./components/company/PrivacyPage"));
+const CookiesPage    = lazy(() => import("./components/company/CookiesPage"));
 const LicensePage    = lazy(() => import("./components/LicensePage"));
-const RefundPage     = lazy(() => import("./components/RefundPage"));
-const CareersPage         = lazy(() => import("./components/CareersPage"));
-const BlogPage            = lazy(() => import("./components/BlogPage"));
-const HelpCenterPage      = lazy(() => import("./components/HelpCenterPage"));
-const BusinessLibraryPage = lazy(() => import("./components/BusinessLibraryPage"));
-const DpaPage             = lazy(() => import("./components/DpaPage"));
-const CrmPage             = lazy(() => import("./components/CrmPage"));
-const WaPage              = lazy(() => import("./components/WhatsAppPage"));
-const MarketingPage       = lazy(() => import("./components/MarketingPage"));
-const AiPage              = lazy(() => import("./components/AiAutomationPage"));
-const DigitalStorePage    = lazy(() => import("./components/DigitalStorePage"));
+const RefundPage     = lazy(() => import("./components/company/RefundPage"));
+const CareersPage         = lazy(() => import("./components/company/CareersPage"));
+const BlogPage            = lazy(() => import("./components/resources/BlogPage"));
+const HelpCenterPage      = lazy(() => import("./components/resources/HelpCenterPage"));
+const BusinessLibraryPage = lazy(() => import("./components/resources/BusinessLibraryPage"));
+const DpaPage             = lazy(() => import("./components/company/DpaPage"));
+const CrmPage             = lazy(() => import("./components/product/CrmPage"));
+const WaPage              = lazy(() => import("./components/product/WhatsAppPage"));
+const MarketingPage       = lazy(() => import("./components/product/MarketingPage"));
+const AiPage              = lazy(() => import("./components/product/AiAutomationPage"));
+const DigitalStorePage    = lazy(() => import("./components/product/DigitalStorePage"));
 
 const ScrollToTop = () => {
   const { pathname, hash } = useLocation();
@@ -85,9 +86,11 @@ function App() {
         <Route path="/resources/help-center"     element={<HelpCenterPage />} />
         <Route path="/about"     element={<AboutPage />} />
         <Route path="/business"  element={<BusinessPage />} />
-        <Route path="/contact"                   element={<ContactPage />} />
+        <Route path="/contact"                   element={<ContactUsPage />} />
+        <Route path="/contact-us"                element={<ContactUsPage />} />
+        <Route path="/company/contact-us"        element={<ContactUsPage />} />
         <Route path="/contact-support"           element={<ContactPage />} />
-        <Route path="/resources/contact"         element={<ContactPage />} />
+        <Route path="/resources/contact"         element={<ContactUsPage />} />
         <Route path="/resources/contact-support" element={<ContactPage />} />
         <Route path="/faq"                       element={<FaqPage />} />
         <Route path="/faqs"                      element={<FaqPage />} />

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Navbar from "../Navbar";
+import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
-import defaultLogo from "../assets/logo.jpeg";
+import defaultLogo from "../../assets/logo.jpeg";
 
 const G  = "#16A34A";
 const GL = "#F0FDF4";

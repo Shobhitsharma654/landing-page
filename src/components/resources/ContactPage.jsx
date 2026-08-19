@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Navbar from "../Navbar";
+import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
-import defaultLogo from "../assets/logo.jpeg";
+import defaultLogo from "../../assets/logo.jpeg";
 
 const G  = "#16A34A";
 const GL = "#F0FDF4";
@@ -15,12 +15,6 @@ const Pill = ({ children }) => (
     {children}
   </div>
 );
-/* ═══════════════════════════════════════════════════════════════════════
-   MessBee — Contact Support Page
-   Official MessBee logo in Hero graphic.
-   Strictly adheres ONLY to the text provided in the user prompt.
-   Compact, sleek typography & clean responsive layout.
-   ═══════════════════════════════════════════════════════════════════════ */
 
 // 1. How Can We Help? (6 Category Cards from prompt)
 const HELP_CATEGORIES = [
@@ -227,9 +221,6 @@ const FaqItem = ({ q, a }) => {
   );
 };
 
-/* ═══════════════════════════════════════════════════════════════════
-   MAIN CONTACT SUPPORT PAGE COMPONENT
-   ═══════════════════════════════════════════════════════════════════ */
 const ContactPage = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState({ name: "", email: "", accountName: "", product: "CRM", message: "" });
@@ -282,6 +273,12 @@ const ContactPage = () => {
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
+        /* ── GLOBAL SECTION RESPONSIVENESS ── */
+        .contact-section {
+          padding: 60px 6% !important;
+          transition: padding 0.3s ease;
+        }
+
         /* ── BUTTONS ── */
         .contact-btn-primary {
           background: #16A34A;
@@ -332,6 +329,27 @@ const ContactPage = () => {
           transform: translateY(-2px);
         }
 
+        /* ── FORM INPUTS ── */
+        .contact-input {
+          width: 100%;
+          padding: 11px 14px;
+          border: 1.5px solid #CBD5E1;
+          border-radius: 9px;
+          font-size: 13.5px;
+          color: #0F172A;
+          outline: none;
+          background: #FFFFFF;
+          font-family: 'Inter', sans-serif;
+          transition: all 0.2s ease-in-out;
+        }
+        .contact-input:focus {
+          border-color: #16A34A;
+          box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.12);
+        }
+        .contact-input::placeholder {
+          color: #94A3B8;
+        }
+
         /* ── CARDS & ANIMATION ── */
         @keyframes fadeInUp {
           from {
@@ -363,48 +381,90 @@ const ContactPage = () => {
           align-items: center;
           gap: 48px;
         }
+        .contact-hero-left {
+          flex: 1.1;
+          min-width: 0;
+        }
+        .contact-hero-right {
+          flex: 0.9;
+          min-width: 0;
+          position: relative;
+        }
 
         .grid-col-3 {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 18px;
+          gap: 20px;
         }
         .grid-col-2 {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: 20px;
+          gap: 24px;
         }
         .grid-col-5 {
           display: grid;
           grid-template-columns: repeat(5, 1fr);
-          gap: 14px;
+          gap: 16px;
         }
 
-        /* Large Laptops / Desktops (1440px +) */
-        @media (min-width: 1440px) {
-          .contact-hero-row { gap: 60px; }
-          .grid-col-3 { gap: 22px; }
+        /* Responsive Breakpoints */
+
+        /* Under 1200px (Medium screen / Small Laptop) */
+        @media (max-width: 1200px) {
+          .grid-col-5 {
+            grid-template-columns: repeat(3, 1fr);
+          }
+          .grid-col-3 {
+            grid-template-columns: repeat(2, 1fr);
+          }
         }
 
-        /* Medium Laptops (1200px - 1439px) */
-        @media (max-width: 1439px) and (min-width: 1200px) {
-          .grid-col-5 { grid-template-columns: repeat(3, 1fr); }
-          .grid-col-3 { grid-template-columns: repeat(3, 1fr); }
+        /* Under 992px (Tablet) */
+        @media (max-width: 992px) {
+          .contact-hero-row {
+            flex-direction: column !important;
+            gap: 40px;
+          }
+          .contact-hero-left, .contact-hero-right {
+            width: 100% !important;
+            flex: none !important;
+          }
+          .grid-col-5 {
+            grid-template-columns: repeat(2, 1fr);
+          }
         }
 
-        /* Small Laptops (1024px - 1199px) */
-        @media (max-width: 1199px) and (min-width: 1024px) {
-          .grid-col-5 { grid-template-columns: repeat(3, 1fr); }
-          .grid-col-3 { grid-template-columns: repeat(2, 1fr); }
-          .contact-hero-row { gap: 32px; }
+        /* Under 768px (Mobile Portrait/Landscape) */
+        @media (max-width: 768px) {
+          .contact-section {
+            padding: 40px 4% !important;
+          }
+          .grid-col-3 {
+            grid-template-columns: 1fr;
+          }
+          .grid-col-2 {
+            grid-template-columns: 1fr;
+          }
         }
 
-        /* Compact Laptop / Tablet (under 1024px) */
-        @media (max-width: 1023px) {
-          .contact-hero-row { flex-direction: column !important; gap: 32px; }
-          .grid-col-5 { grid-template-columns: repeat(2, 1fr); }
-          .grid-col-3 { grid-template-columns: repeat(1, 1fr); }
-          .grid-col-2 { grid-template-columns: repeat(1, 1fr); }
+        /* Under 576px (Small Mobile) */
+        @media (max-width: 576px) {
+          .contact-section {
+            padding: 32px 16px !important;
+          }
+          .grid-col-5 {
+            grid-template-columns: 1fr;
+          }
+          .contact-btn-primary, .contact-btn-secondary {
+            width: 100%;
+            justify-content: center;
+          }
+          .contact-hero-row {
+            gap: 28px;
+          }
+          .contact-form-info-box, .contact-form-box {
+            padding: 20px 16px !important;
+          }
         }
 
         /* Glowing Pulse Animation */
@@ -417,7 +477,7 @@ const ContactPage = () => {
         }
       `}</style>
 
-      {/* SEO Document Title & Meta Description (Exact Prompt Meta) */}
+      {/* SEO Document Title & Meta Description */}
       <title>Contact MessBee Support | Help With Products &amp; Integrations</title>
       <meta
         name="description"
@@ -427,12 +487,12 @@ const ContactPage = () => {
       <Navbar />
 
       {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 1: HERO (Strictly Provided Copy & Recommended H1)
+          SECTION 1: HERO
          ═══════════════════════════════════════════════════════════════════ */}
       <section
+        className="contact-section contact-hero-section"
         style={{
           marginTop: 70,
-          padding: "56px 6% 64px",
           position: "relative",
           background: "linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)",
           overflow: "hidden",
@@ -455,8 +515,8 @@ const ContactPage = () => {
 
         <div className="contact-hero-row" style={{ maxWidth: 1280, margin: "0 auto", position: "relative", zIndex: 1 }}>
           {/* Left Text Column */}
-          <div style={{ flex: 1.1, minWidth: 320 }}>
-            {/* Provided Badge: Contact Support */}
+          <div className="contact-hero-left">
+            {/* Provided Badge */}
             <div
               style={{
                 display: "inline-flex",
@@ -477,7 +537,7 @@ const ContactPage = () => {
               Contact Support
             </div>
 
-            {/* Recommended H1 */}
+            {/* Title */}
             <h1
               style={{
                 fontSize: "clamp(28px, 2.9vw, 42px)",
@@ -491,22 +551,20 @@ const ContactPage = () => {
               Contact MessBee Support – <span style={{ color: "#16A34A" }}>We&apos;re Here to Help</span>
             </h1>
 
-            {/* Provided Sub-headline */}
+            {/* Sub-headline */}
             <p style={{ fontSize: "clamp(15px, 1.4vw, 18px)", fontWeight: 800, color: "#16A34A", marginBottom: 14, letterSpacing: "-0.3px" }}>
               We&apos;re Here to Help
             </p>
 
-            {/* Provided Paragraph 1 */}
+            {/* Paragraphs */}
             <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 12, maxWidth: 540 }}>
               Need help with your MessBee account, a product feature, integration or a technical issue? MessBee Support is here to help you find the right information and get your issue resolved as efficiently as possible.
             </p>
 
-            {/* Provided Paragraph 2 */}
             <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 26, maxWidth: 540 }}>
               Whether you&apos;re setting up MessBee for the first time or already using it for your business, you can reach out to our support team when you need assistance.
             </p>
 
-            {/* Primary & Secondary CTAs from Prompt */}
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
               <button
                 className="contact-btn-primary"
@@ -525,8 +583,8 @@ const ContactPage = () => {
             </div>
           </div>
 
-          {/* Right Column: Visual Support Hub Node Graphic with Official MessBee Logo */}
-          <div style={{ flex: 0.9, minWidth: 320, position: "relative" }}>
+          {/* Right Column: Visual Support Hub Node Graphic */}
+          <div className="contact-hero-right">
             <div
               style={{
                 background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
@@ -554,7 +612,7 @@ const ContactPage = () => {
                 }}
               />
 
-              {/* Graphic Title Header featuring Official MessBee Logo */}
+              {/* Header with logo */}
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20, borderBottom: "1px solid rgba(255,255,255,0.12)", paddingBottom: 14 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                   <div style={{ width: 34, height: 34, borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.2)", flexShrink: 0, background: "#FFFFFF", padding: 2 }}>
@@ -570,7 +628,7 @@ const ContactPage = () => {
                 </span>
               </div>
 
-              {/* Support Email Card Box */}
+              {/* Direct email box */}
               <div style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 14, padding: 14, marginBottom: 14, backdropFilter: "blur(4px)" }}>
                 <div style={{ fontSize: 10.5, fontWeight: 800, color: "#A7F3D0", textTransform: "uppercase", letterSpacing: "0.5px", marginBottom: 6 }}>
                   Direct Email Channel
@@ -580,7 +638,7 @@ const ContactPage = () => {
                 </a>
               </div>
 
-              {/* 4 Support Topics Quick Grid */}
+              {/* Topics Grid */}
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
                 {[
                   { title: "CRM & Contacts", icon: "👤" },
@@ -612,11 +670,10 @@ const ContactPage = () => {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 2: HOW CAN WE HELP? (6 FEATURED CATEGORY CARDS)
+          SECTION 2: HOW CAN WE HELP?
          ═══════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: "48px 6%", background: "#FAFAFA" }}>
+      <section className="contact-section" style={{ background: "#FAFAFA" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          {/* Headings from Prompt */}
           <div style={{ textAlign: "center", marginBottom: 32 }}>
             <div
               style={{
@@ -639,7 +696,6 @@ const ContactPage = () => {
             </h2>
           </div>
 
-          {/* 6 Category Cards Grid */}
           <div className="grid-col-3">
             {HELP_CATEGORIES.map((cat, idx) => (
               <div
@@ -704,9 +760,8 @@ const ContactPage = () => {
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 3: BEFORE YOU CONTACT SUPPORT
          ═══════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: "64px 6%", background: "#FFFFFF" }}>
+      <section className="contact-section" style={{ background: "#FFFFFF" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          {/* Headings from Prompt */}
           <div style={{ textAlign: "center", marginBottom: 36 }}>
             <div
               style={{
@@ -736,7 +791,7 @@ const ContactPage = () => {
             </p>
           </div>
 
-          {/* 6 Help Center Items Grid */}
+          {/* 6 Items Grid */}
           <div className="grid-col-3" style={{ marginBottom: 32 }}>
             {BEFORE_YOU_CONTACT.map((item, idx) => (
               <div
@@ -771,9 +826,9 @@ const ContactPage = () => {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 4: CONTACT OUR SUPPORT TEAM & FORM
+          SECTION 4: CONTACT Support Form
          ═══════════════════════════════════════════════════════════════════ */}
-      <section id="contact-form-section" style={{ padding: "64px 6%", background: "#FAFAFA" }}>
+      <section id="contact-form-section" className="contact-section" style={{ background: "#FAFAFA" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 36 }}>
             <div
@@ -801,8 +856,8 @@ const ContactPage = () => {
           </div>
 
           <div className="contact-hero-row" style={{ alignItems: "stretch" }}>
-            {/* Left Box: Email Support Details & Security Disclaimer from Prompt */}
-            <div style={{ flex: 1, background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 20, padding: "24px 26px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+            {/* Left Box */}
+            <div className="contact-form-info-box" style={{ flex: 1, background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 20, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
               <div>
                 <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#F0FDF4", border: "1px solid #BBF7D0", borderRadius: 30, padding: "5px 14px", marginBottom: 14 }}>
                   <span style={{ fontSize: 12, fontWeight: 800, color: "#16A34A" }}>Email Support</span>
@@ -835,7 +890,6 @@ const ContactPage = () => {
                 </div>
               </div>
 
-              {/* Security Disclaimer Box from Prompt */}
               <div style={{ background: "#FEF2F2", border: "1px solid #FCA5A5", borderRadius: 12, padding: 14 }}>
                 <p style={{ fontSize: 12, color: "#991B1B", lineHeight: 1.55, fontWeight: 600 }}>
                   ⚠️ Please avoid sharing passwords, authentication codes, payment card details or other sensitive credentials in your support request.
@@ -843,15 +897,14 @@ const ContactPage = () => {
               </div>
             </div>
 
-            {/* Right Box: Interactive Support Form (Equal Height Matching Left Card) */}
-            <div style={{ flex: 1.25, background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 20, padding: "24px 26px", boxShadow: "0 6px 24px rgba(0,0,0,0.02)", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+            {/* Right Box */}
+            <div className="contact-form-box" style={{ flex: 1.25, background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 20, boxShadow: "0 6px 24px rgba(0,0,0,0.02)", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
               <div>
                 <h3 style={{ fontSize: 16, fontWeight: 900, color: "#0F172A", marginBottom: 14 }}>
                   Submit Support Request
                 </h3>
 
                 <form onSubmit={handleFormSubmit} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                  {/* Row 1: Name + Email */}
                   <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
                     <div style={{ flex: "1 1 180px" }}>
                       <label style={{ display: "block", fontSize: 12, fontWeight: 700, color: "#374151", marginBottom: 5 }}>
@@ -863,11 +916,7 @@ const ContactPage = () => {
                         placeholder="Your Name"
                         value={form.name}
                         onChange={(e) => setForm({ ...form, name: e.target.value })}
-                        style={{
-                          width: "100%", padding: "10px 13px", border: "1px solid #CBD5E1",
-                          borderRadius: 9, fontSize: 13, color: "#0F172A", outline: "none",
-                          fontFamily: "'Inter', sans-serif",
-                        }}
+                        className="contact-input"
                       />
                     </div>
 
@@ -881,16 +930,11 @@ const ContactPage = () => {
                         placeholder="name@company.com"
                         value={form.email}
                         onChange={(e) => setForm({ ...form, email: e.target.value })}
-                        style={{
-                          width: "100%", padding: "10px 13px", border: "1px solid #CBD5E1",
-                          borderRadius: 9, fontSize: 13, color: "#0F172A", outline: "none",
-                          fontFamily: "'Inter', sans-serif",
-                        }}
+                        className="contact-input"
                       />
                     </div>
                   </div>
 
-                  {/* Row 2: Account Name + Product */}
                   <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
                     <div style={{ flex: "1 1 180px" }}>
                       <label style={{ display: "block", fontSize: 12, fontWeight: 700, color: "#374151", marginBottom: 5 }}>
@@ -901,11 +945,7 @@ const ContactPage = () => {
                         placeholder="Your Business Name"
                         value={form.accountName}
                         onChange={(e) => setForm({ ...form, accountName: e.target.value })}
-                        style={{
-                          width: "100%", padding: "10px 13px", border: "1px solid #CBD5E1",
-                          borderRadius: 9, fontSize: 13, color: "#0F172A", outline: "none",
-                          fontFamily: "'Inter', sans-serif",
-                        }}
+                        className="contact-input"
                       />
                     </div>
 
@@ -916,11 +956,8 @@ const ContactPage = () => {
                       <select
                         value={form.product}
                         onChange={(e) => setForm({ ...form, product: e.target.value })}
-                        style={{
-                          width: "100%", padding: "10px 13px", border: "1px solid #CBD5E1",
-                          borderRadius: 9, fontSize: 13, color: "#0F172A", outline: "none",
-                          fontFamily: "'Inter', sans-serif", cursor: "pointer", background: "#FFFFFF",
-                        }}
+                        className="contact-input"
+                        style={{ cursor: "pointer", background: "#FFFFFF" }}
                       >
                         <option value="Account & Setup">Account &amp; Setup</option>
                         <option value="CRM">CRM</option>
@@ -933,7 +970,6 @@ const ContactPage = () => {
                     </div>
                   </div>
 
-                  {/* Row 3: Description Textarea */}
                   <div>
                     <label style={{ display: "block", fontSize: 12, fontWeight: 700, color: "#374151", marginBottom: 5 }}>
                       Description of the Issue *
@@ -944,11 +980,8 @@ const ContactPage = () => {
                       placeholder="Describe your issue or question..."
                       value={form.message}
                       onChange={(e) => setForm({ ...form, message: e.target.value })}
-                      style={{
-                        width: "100%", padding: "10px 13px", border: "1px solid #CBD5E1",
-                        borderRadius: 9, fontSize: 13, color: "#0F172A", outline: "none",
-                        fontFamily: "'Inter', sans-serif", resize: "vertical",
-                      }}
+                      className="contact-input"
+                      style={{ resize: "vertical" }}
                     />
                   </div>
 
@@ -956,7 +989,7 @@ const ContactPage = () => {
                     type="submit"
                     disabled={status === "submitting"}
                     className="contact-btn-primary"
-                    style={{ width: "100%", justifyContent: "center", marginTop: 4, borderRadius: 9, padding: "12px 20px", fontSize: 14 }}
+                    style={{ width: "100%", justifyContent: "center", marginTop: 4, padding: "12px 20px", fontSize: 14 }}
                   >
                     {status === "submitting" ? "Submitting..." : status === "success" ? "Message Sent ✓" : "Send Support Request"}
                   </button>
@@ -970,9 +1003,8 @@ const ContactPage = () => {
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 5: TECHNICAL SUPPORT GUIDELINES
          ═══════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: "64px 6%", background: "#FFFFFF" }}>
+      <section className="contact-section" style={{ background: "#FFFFFF" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          {/* Headings from Prompt */}
           <div style={{ textAlign: "center", marginBottom: 36 }}>
             <div
               style={{
@@ -999,7 +1031,6 @@ const ContactPage = () => {
             </p>
           </div>
 
-          {/* 5 Technical Questions Cards from Prompt */}
           <div className="grid-col-5">
             {TECH_GUIDELINES.map((t, idx) => (
               <div
@@ -1033,7 +1064,7 @@ const ContactPage = () => {
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 6: BUSINESS & PARTNERSHIP ENQUIRIES
          ═══════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: "64px 6%", background: "#FFFFFF" }}>
+      <section className="contact-section" style={{ background: "#FFFFFF" }}>
         <div style={{ maxWidth: 860, margin: "0 auto", textAlign: "center" }}>
           <Pill>Partnerships</Pill>
           <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 900, color: D2, letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 16 }}>
@@ -1049,9 +1080,9 @@ const ContactPage = () => {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 7: A BETTER SUPPORT EXPERIENCE (FINAL CALLOUT)
+          SECTION 7: A BETTER SUPPORT EXPERIENCE
          ═══════════════════════════════════════════════════════════════════ */}
-      <section style={{ background: GL, padding: "72px 6%", textAlign: "center", position: "relative", overflow: "hidden", borderBottom: `1px solid ${GB}` }}>
+      <section className="contact-section" style={{ background: GL, textAlign: "center", position: "relative", overflow: "hidden", borderBottom: `1px solid ${GB}` }}>
         <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 500, height: 500, background: "rgba(22,163,74,.08)", borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none" }} />
         <div style={{ position: "relative", zIndex: 2, maxWidth: 860, margin: "0 auto" }}>
           <Pill>A Better Support Experience</Pill>
@@ -1078,7 +1109,7 @@ const ContactPage = () => {
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 8: FREQUENTLY ASKED QUESTIONS
          ═══════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: "64px 6%", background: "#FFFFFF" }}>
+      <section className="contact-section" style={{ background: "#FFFFFF" }}>
         <div style={{ maxWidth: 760, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 36 }}>
             <Pill>FAQ</Pill>
