@@ -97,6 +97,61 @@ const LandingPage = () => {
   const [activeFaq, setActiveFaq] = useState(null);
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [newsletterStatus, setNewsletterStatus] = useState(null);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [isTestimonialHovered, setIsTestimonialHovered] = useState(false);
+
+  const testimonialsList = [
+    {
+      name: "Rajesh Sharma",
+      role: "Founder, KiranaFresh",
+      rating: "5.0",
+      image: reviewerRajesh,
+      review: "MessBee's WhatsApp API changed the game for our daily orders! Automated broadcasts & payment links helped us scale smoothly."
+    },
+    {
+      name: "Priya Patel",
+      role: "Owner, StyleBoutique Jaipur",
+      rating: "5.0",
+      image: reviewerPriya,
+      review: "Instant customer lead capture and automated catalog sharing on WhatsApp helped us convert inquiries into real sales effortlessly."
+    },
+    {
+      name: "Amit Verma",
+      role: "Director, Apex Health Clinic",
+      rating: "5.0",
+      image: reviewerAmit,
+      review: "Sending report updates & appointment reminders on WhatsApp reduced no-shows by 80%. Super easy to manage for our team."
+    },
+    {
+      name: "Vikram Malhotra",
+      role: "Co-Founder, Malhotra Electronics",
+      rating: "5.0",
+      image: indianAvatar,
+      review: "The WhatsApp broadcasting tool helped us announce festival sales with a 98% open rate. Website lead generation went 3x higher!"
+    },
+    {
+      name: "Sneha Gupta",
+      role: "Founder, Organic Bites D2C",
+      rating: "5.0",
+      image: reviewerPriya,
+      review: "MessBee's automated cart recovery brought back 30% of lost shoppers on WhatsApp. It's like an extra sales rep working 24/7."
+    },
+    {
+      name: "Rohan Desai",
+      role: "Operations Head, QuickRetail",
+      rating: "5.0",
+      image: reviewerRajesh,
+      review: "Instant WhatsApp order confirmation and UPI payment collection doubled our customer satisfaction score within weeks."
+    }
+  ];
+
+  useEffect(() => {
+    if (isTestimonialHovered) return;
+    const timer = setInterval(() => {
+      setCurrentTestimonial(prev => (prev + 1) % testimonialsList.length);
+    }, 3800);
+    return () => clearInterval(timer);
+  }, [isTestimonialHovered, testimonialsList.length]);
 
   const handleNewsletterSubmit = async () => {
     if (!newsletterEmail) return;
@@ -168,14 +223,11 @@ const LandingPage = () => {
 
   return (
     <div style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "hidden" }}>
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• NAVBAR â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      {/* ═══════════════ NAVBAR ═══════════════ */}
       <Navbar />
 
-      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• HERO â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
+      {/* ═══════════════ HERO ═══════════════ */}
       <section style={{ background: "#FFFFFF", display: "flex", flexDirection: "column", justifyContent: "center", padding: "120px 6% 40px", overflow: "hidden" }}>
-
-
-
         <div style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-start", gap: "4vw", width: "100%", maxWidth: 1280, margin: "0 auto" }}>
           {/* Left content */}
           <div style={{ flex: "1 1 500px", minWidth: 300 }}>
@@ -204,7 +256,6 @@ const LandingPage = () => {
                </div>
             </div>
 
-
             <h1 style={{ fontFamily: "'Inter', sans-serif", fontSize: 36, fontWeight: 800, lineHeight: 1.05, letterSpacing: "normal", marginBottom: 8, color: "#111827" }}>
               India's Digital<br />
               <span style={{ color: "#16A34A" }}>Business Operating</span><br />
@@ -231,36 +282,346 @@ const LandingPage = () => {
             </div>
           </div>
 
-          {/* Right: Dashboard preview Image */}
-          <div style={{ flex: "1.3 1 560px", minWidth: 350, display: "flex", flexDirection: "column", alignItems: "center", position: "relative" }}>
-             {/* Trusted Pill */}
-             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#F0FDF4", borderRadius: 40, padding: "6px 14px", marginLeft: "15%", marginBottom: "16px", zIndex: 2 }}>
-                <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#16A34A" }} />
-                <span style={{ fontSize: 11, fontWeight: 700, color: "#16A34A" }}>Trusted by 35,000+ businesses across India</span>
-             </div>
+          {/* Right: Pixel-Perfect Crisp Dashboard UI Mockup */}
+          <div style={{ flex: "1.1 1 460px", minWidth: 320, display: "flex", flexDirection: "column", alignItems: "center", position: "relative" }}>
+            {/* Value / Capability Pill */}
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#F0FDF4", borderRadius: 40, padding: "5px 14px", marginBottom: "16px", zIndex: 2, border: "1px solid #DCFCE7", boxShadow: "0 2px 6px rgba(22, 163, 74, 0.08)" }}>
+              <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#16A34A" }} />
+              <span style={{ fontSize: 10.5, fontWeight: 700, color: "#16A34A" }}>⚡ AI-Powered Lead Generation & Growth Engine</span>
+            </div>
 
-            <img src={heroDashboard} alt="Dashboard Preview" style={{ width: "115%", maxWidth: "none", height: "auto", objectFit: "contain", marginTop: "-30px", marginLeft: "15%", maskImage: "linear-gradient(to bottom, transparent 0%, black 15%)" }} />
+            {/* Dashboard Container with Floating Integration Badges */}
+            <div style={{ position: "relative", width: "100%", maxWidth: 480 }}>
+              
+              {/* Floating Badge: WhatsApp */}
+              <div style={{
+                position: "absolute",
+                left: -48,
+                top: 32,
+                background: "#FFFFFF",
+                borderRadius: 30,
+                padding: "5px 12px",
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+                boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
+                border: "1px solid #F1F5F9",
+                zIndex: 10
+              }}>
+                <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#10B981" }} />
+                <span style={{ fontSize: 10.5, fontWeight: 700, color: "#64748B" }}>WhatsApp</span>
+              </div>
+
+              {/* Floating Badge: API Ready */}
+              <div style={{
+                position: "absolute",
+                left: -54,
+                top: 125,
+                background: "#FFFFFF",
+                borderRadius: 30,
+                padding: "5px 12px",
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+                boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
+                border: "1px solid #F1F5F9",
+                zIndex: 10
+              }}>
+                <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#EC4899" }} />
+                <span style={{ fontSize: 10.5, fontWeight: 700, color: "#64748B" }}>API Ready</span>
+              </div>
+
+              {/* Floating Badge: Razorpay */}
+              <div style={{
+                position: "absolute",
+                left: -50,
+                bottom: 95,
+                background: "#FFFFFF",
+                borderRadius: 30,
+                padding: "5px 12px",
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+                boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
+                border: "1px solid #F1F5F9",
+                zIndex: 10
+              }}>
+                <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#2563EB" }} />
+                <span style={{ fontSize: 10.5, fontWeight: 700, color: "#64748B" }}>Razorpay</span>
+              </div>
+
+              {/* Floating Badge: Shiprocket */}
+              <div style={{
+                position: "absolute",
+                right: -48,
+                top: 35,
+                background: "#FFFFFF",
+                borderRadius: 30,
+                padding: "5px 12px",
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+                boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
+                border: "1px solid #F1F5F9",
+                zIndex: 10
+              }}>
+                <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#F97316" }} />
+                <span style={{ fontSize: 10.5, fontWeight: 700, color: "#64748B" }}>Shiprocket</span>
+              </div>
+
+              {/* Floating Badge: Google */}
+              <div style={{
+                position: "absolute",
+                right: -42,
+                top: 130,
+                background: "#FFFFFF",
+                borderRadius: 30,
+                padding: "5px 12px",
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+                boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
+                border: "1px solid #F1F5F9",
+                zIndex: 10
+              }}>
+                <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#F59E0B" }} />
+                <span style={{ fontSize: 10.5, fontWeight: 700, color: "#64748B" }}>Google</span>
+              </div>
+
+              {/* Floating Badge: ONDC */}
+              <div style={{
+                position: "absolute",
+                right: -42,
+                bottom: 100,
+                background: "#FFFFFF",
+                borderRadius: 30,
+                padding: "5px 12px",
+                display: "flex",
+                alignItems: "center",
+                gap: 6,
+                boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
+                border: "1px solid #F1F5F9",
+                zIndex: 10
+              }}>
+                <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#6366F1" }} />
+                <span style={{ fontSize: 10.5, fontWeight: 700, color: "#64748B" }}>ONDC</span>
+              </div>
+
+              {/* Main Crisp Vector Dashboard Window */}
+              <div style={{
+                background: "#FFFFFF",
+                borderRadius: 16,
+                border: "1px solid #E2E8F0",
+                boxShadow: "0 20px 45px -12px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0,0,0,0.02)",
+                display: "flex",
+                flexDirection: "column",
+                overflow: "hidden"
+              }}>
+                
+                {/* Browser Header Bar */}
+                <div style={{
+                  background: "#FFFFFF",
+                  padding: "8px 14px",
+                  borderBottom: "1px solid #F1F5F9",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between"
+                }}>
+                  <div style={{ display: "flex", gap: 5, alignItems: "center" }}>
+                    <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#FF5F56" }} />
+                    <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#FFBD2E" }} />
+                    <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#27C93F" }} />
+                  </div>
+
+                  <div style={{
+                    background: "#F8FAFC",
+                    borderRadius: 20,
+                    padding: "3px 12px",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 5,
+                    border: "1px solid #E2E8F0",
+                    width: 170,
+                    justifyContent: "center"
+                  }}>
+                    <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <span style={{ fontSize: 9.5, color: "#64748B", fontWeight: 500 }}>app.messbee.com</span>
+                  </div>
+
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#64748B" strokeWidth="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                    <div style={{ width: 14, height: 14, borderRadius: "50%", background: "#10B981" }} />
+                  </div>
+                </div>
+
+                {/* Dashboard Main Viewport */}
+                <div style={{ display: "flex", background: "#F8FAFC", minHeight: 330 }}>
+                  
+                  {/* Left Dark Sidebar */}
+                  <div style={{
+                    width: 42,
+                    background: "#0F172A",
+                    padding: "10px 4px",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: 10,
+                    flexShrink: 0
+                  }}>
+                    {/* Active Apps Grid Icon */}
+                    <div style={{ width: 26, height: 26, borderRadius: 6, background: "#16A34A", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2.5">
+                        <rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/>
+                      </svg>
+                    </div>
+
+                    {/* Nav Icons */}
+                    {[
+                      <><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></>,
+                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>,
+                      <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>,
+                      <path d="m21 16-9 5-9-5V8l9-5 9 5v8z"/>,
+                      <><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></>,
+                      <rect x="2" y="5" width="20" height="14" rx="2"/>,
+                      <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>,
+                      <circle cx="12" cy="12" r="3"/>
+                    ].map((icon, i) => (
+                      <svg key={i} width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#64748B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ cursor: "pointer" }}>
+                        {icon}
+                      </svg>
+                    ))}
+                  </div>
+
+                  {/* Dashboard Content Canvas */}
+                  <div style={{ flex: 1, padding: "10px", display: "flex", flexDirection: "column", gap: 8 }}>
+                    
+                    {/* Top Row: 3 Business Value Cards */}
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 }}>
+                      <div style={{ background: "#FFFFFF", borderRadius: 10, border: "1px solid #E2E8F0", padding: "8px 10px" }}>
+                        <div style={{ fontSize: 9, color: "#64748B", fontWeight: 600 }}>Lead Generation</div>
+                        <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", margin: "1px 0" }}>Create Campaign</div>
+                        <div style={{ fontSize: 8, fontWeight: 700, color: "#16A34A" }}>By Business Type</div>
+                      </div>
+
+                      <div style={{ background: "#FFFFFF", borderRadius: 10, border: "1px solid #E2E8F0", padding: "8px 10px" }}>
+                        <div style={{ fontSize: 9, color: "#64748B", fontWeight: 600 }}>Broadcast</div>
+                        <div style={{ fontSize: 13.5, fontWeight: 800, color: "#0F172A", margin: "1px 0" }}>Instant Reach</div>
+                        <div style={{ fontSize: 8, fontWeight: 700, color: "#16A34A" }}>Offers & Catalog</div>
+                      </div>
+
+                      <div style={{ background: "#FFFFFF", borderRadius: 10, border: "1px solid #E2E8F0", padding: "8px 10px" }}>
+                        <div style={{ fontSize: 9, color: "#64748B", fontWeight: 600 }}>Support</div>
+                        <div style={{ fontSize: 13.5, fontWeight: 800, color: "#0F172A", margin: "1px 0" }}>100% Automated</div>
+                        <div style={{ fontSize: 8, fontWeight: 700, color: "#16A34A" }}>24/7 AI Sales Rep</div>
+                      </div>
+                    </div>
+
+                    {/* Middle Row: Business Growth Funnel */}
+                    <div style={{ background: "#FFFFFF", borderRadius: 10, border: "1px solid #E2E8F0", padding: "8px 12px", display: "flex", flexDirection: "column" }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
+                        <span style={{ fontSize: 10, fontWeight: 700, color: "#334155" }}>Business Growth & Lead Funnel</span>
+                        <span style={{ fontSize: 8, fontWeight: 700, color: "#16A34A", background: "#ECFDF5", padding: "1px 6px", borderRadius: 10, border: "1px solid #A7F3D0" }}>⚡ Active System</span>
+                      </div>
+
+                      {/* Vector SVG Trend Curve */}
+                      <div style={{ width: "100%", height: 36, position: "relative" }}>
+                        <svg viewBox="0 0 400 60" preserveAspectRatio="none" style={{ width: "100%", height: "100%", overflow: "visible" }}>
+                          <defs>
+                            <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                              <stop offset="0%" stopColor="#16A34A" stopOpacity="0.25"/>
+                              <stop offset="100%" stopColor="#16A34A" stopOpacity="0.0"/>
+                            </linearGradient>
+                          </defs>
+                          <path d="M0,45 C60,44 120,46 180,38 C240,30 300,24 400,10 L400,60 L0,60 Z" fill="url(#chartGrad)" />
+                          <path d="M0,45 C60,44 120,46 180,38 C240,30 300,24 400,10" fill="none" stroke="#16A34A" strokeWidth="2.5" strokeLinecap="round" />
+                        </svg>
+                      </div>
+
+                      {/* Funnel Steps on X-Axis */}
+                      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 7.5, color: "#64748B", fontWeight: 600, paddingTop: 2 }}>
+                        <span>Capture Leads</span>
+                        <span>Share Catalog</span>
+                        <span>Auto Followup</span>
+                        <span>Close Sales</span>
+                        <span>Collect Payment</span>
+                      </div>
+                    </div>
+
+                    {/* Bottom Row: Live Leads & AI Assistant */}
+                    <div style={{ display: "grid", gridTemplateColumns: "1.1fr 1.3fr", gap: 8 }}>
+                      
+                      {/* Live Leads & Inquiries */}
+                      <div style={{ background: "#FFFFFF", borderRadius: 10, border: "1px solid #E2E8F0", padding: "8px 10px", display: "flex", flexDirection: "column", gap: 5 }}>
+                        <div style={{ fontSize: 10, fontWeight: 700, color: "#334155", marginBottom: 1 }}>Live WhatsApp Leads</div>
+                        {[
+                          { action: "Website Inquiry", status: "Auto-Replied" },
+                          { action: "Catalog View", status: "Followup Sent" },
+                          { action: "Order Request", status: "Payment Ready" }
+                        ].map((item, i) => (
+                          <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 8.5 }}>
+                            <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                              <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#10B981" }} />
+                              <span style={{ fontWeight: 600, color: "#334155" }}>{item.action}</span>
+                            </div>
+                            <span style={{ fontWeight: 700, color: "#16A34A", background: "#ECFDF5", padding: "1px 5px", borderRadius: 4 }}>{item.status}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* AI Assistant Card (Dark) */}
+                      <div style={{ background: "#0B132B", borderRadius: 10, padding: "8px 10px", display: "flex", flexDirection: "column", gap: 5, color: "#FFFFFF" }}>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                          <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                            <div style={{ width: 12, height: 12, borderRadius: "50%", background: "#16A34A", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                              <svg width="7" height="7" viewBox="0 0 24 24" fill="#FFF"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <span style={{ fontSize: 9.5, fontWeight: 700 }}>AI Sales Assistant</span>
+                          </div>
+                          <div style={{ width: 4, height: 4, borderRadius: "50%", background: "#10B981" }} />
+                        </div>
+
+                        {/* Prompt bubble */}
+                        <div style={{ background: "#1E293B", borderRadius: 5, padding: "5px 7px", fontSize: 8, color: "#CBD5E1", lineHeight: 1.3 }}>
+                          "How do I generate more leads today?"
+                        </div>
+
+                        {/* Reply bubble */}
+                        <div style={{ background: "#064E3B", border: "1px solid #047857", borderRadius: 5, padding: "5px 7px", fontSize: 8, color: "#34D399", lineHeight: 1.3, fontWeight: 500 }}>
+                          Run a broadcast to website visitors with your new catalog link.
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ═══════════════ FEATURES STRIP BAR ═══════════════ */}
-      <section style={{ background: "#FFFFFF", padding: "10px 5% 35px 5%", borderBottom: "1px solid #F1F5F9" }}>
+      {/* ═══════════════ EVERYTHING YOU NEED HEADING & FEATURES STRIP ═══════════════ */}
+      <section style={{ background: "linear-gradient(135deg, #16A34A 0%, #15803D 100%)", padding: "36px 4% 36px", textAlign: "center", boxShadow: "0 10px 30px rgba(22, 163, 74, 0.15)" }}>
+        <h2 style={{ fontFamily: "'Inter', sans-serif", fontSize: 24, fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.5px", margin: "0 0 24px 0" }}>
+          Everything You Need to Run and Grow Your Business
+        </h2>
+
         <div style={{
           maxWidth: 1380,
           margin: "0 auto",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          flexWrap: "wrap",
-          gap: "20px 24px"
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
+          gap: "14px",
+          alignItems: "stretch"
         }}>
           {[
             {
               title: "CRM",
               desc: "Manage relationships",
               icon: (
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="12" cy="8" r="3.2" />
                   <path d="M6 18c0-3 2.7-5 6-5s6 2 6 5" />
                   <circle cx="4" cy="9" r="1.5" />
@@ -274,7 +635,7 @@ const LandingPage = () => {
               title: "Digital Store",
               desc: "Launch your storefront",
               icon: (
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M3 9l1.5-5h15L21 9v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z" />
                   <path d="M3 9h18" />
                   <path d="M9 13h6" />
@@ -287,7 +648,7 @@ const LandingPage = () => {
               title: "Marketing Automation",
               desc: "Run campaigns that convert",
               icon: (
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="m15 4 4 4L8 19l-4-4L15 4z" />
                   <path d="m18 1 2 2" />
                   <path d="M20 7l2 2" />
@@ -297,21 +658,10 @@ const LandingPage = () => {
               )
             },
             {
-              title: "Inventory",
-              desc: "Track & manage stock",
-              icon: (
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-                  <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
-                  <line x1="12" y1="22.08" x2="12" y2="12" />
-                </svg>
-              )
-            },
-            {
               title: "Orders",
               desc: "Manage orders seamlessly",
               icon: (
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="8" cy="21" r="1.5" />
                   <circle cx="19" cy="21" r="1.5" />
                   <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
@@ -322,7 +672,7 @@ const LandingPage = () => {
               title: "Payments",
               desc: "Accept payments securely",
               icon: (
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M12 2L2 7l10 5 10-5-10-5z" />
                   <path d="M2 17l10 5 10-5" />
                   <path d="M2 12l10 5 10-5" />
@@ -330,23 +680,10 @@ const LandingPage = () => {
               )
             },
             {
-              title: "Analytics",
-              desc: "Track performance",
-              icon: (
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="18" y1="20" x2="18" y2="10" />
-                  <line x1="12" y1="20" x2="12" y2="4" />
-                  <line x1="6" y1="20" x2="6" y2="14" />
-                  <polyline points="4 8 10 2 16 8 21 3" />
-                  <polyline points="17 3 21 3 21 7" />
-                </svg>
-              )
-            },
-            {
               title: "Team Management",
               desc: "Roles, access & control",
               icon: (
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
                   <circle cx="9" cy="7" r="4" />
                   <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
@@ -355,15 +692,48 @@ const LandingPage = () => {
               )
             }
           ].map((item, idx) => (
-            <div key={idx} style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
-              <div style={{ flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <div
+              key={idx}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 12,
+                background: "#FFFFFF",
+                padding: "12px 16px",
+                borderRadius: 14,
+                boxShadow: "0 6px 16px rgba(0, 0, 0, 0.08)",
+                border: "1px solid rgba(255, 255, 255, 0.5)",
+                transition: "all 0.2s ease"
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "translateY(-3px)";
+                e.currentTarget.style.boxShadow = "0 12px 24px rgba(0,0,0,0.12)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "0 6px 16px rgba(0, 0, 0, 0.08)";
+              }}
+            >
+              <div
+                style={{
+                  width: 38,
+                  height: 38,
+                  borderRadius: 10,
+                  background: "#F0FDF4",
+                  boxShadow: "0 2px 6px rgba(22, 163, 74, 0.12)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0
+                }}
+              >
                 {item.icon}
               </div>
-              <div style={{ textAlign: "left" }}>
-                <div style={{ fontSize: 13, fontWeight: 700, color: "#0F172A", lineHeight: 1.2 }}>
+              <div style={{ textAlign: "left", minWidth: 0 }}>
+                <div style={{ fontSize: 12.5, fontWeight: 700, color: "#0F172A", lineHeight: 1.2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                   {item.title}
                 </div>
-                <div style={{ fontSize: 11, color: "#64748B", fontWeight: 500, marginTop: 2 }}>
+                <div style={{ fontSize: 10.5, color: "#64748B", fontWeight: 500, marginTop: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                   {item.desc}
                 </div>
               </div>
@@ -372,316 +742,426 @@ const LandingPage = () => {
         </div>
       </section>
 
-
-      {/* ═══════════════ DASHBOARD PREVIEW SECTION ═══════════════ */}
-      <section style={{ padding: "20px 6% 60px 6%", background: "#FFFFFF", textAlign: "center" }}>
-        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
-          <div style={{ color: "#16A34A", fontSize: 13, fontWeight: 800, marginBottom: 12 }}>
+      {/* ═══════════════ PLATFORM PREVIEW & DASHBOARD SECTION ═══════════════ */}
+      <section style={{ background: "#FFFFFF", padding: "40px 6% 90px", textAlign: "center" }}>
+        <div style={{ maxWidth: 1180, margin: "0 auto", position: "relative" }}>
+          
+          <div style={{ color: "#16A34A", fontSize: 13, fontWeight: 800, marginBottom: 10, letterSpacing: "0.5px" }}>
             Explore Services
           </div>
-          <h2 style={{ fontFamily: "'Inter', sans-serif", fontSize: 26, fontWeight: 700, color: "#111827", lineHeight: 1.15, marginBottom: 10, letterSpacing: "-1.2px" }}>
+          <h2 style={{ fontFamily: "'Inter', sans-serif", fontSize: 32, fontWeight: 800, color: "#0F172A", lineHeight: 1.2, marginBottom: 10, letterSpacing: "-0.8px" }}>
             Scale Your Business with <span style={{ color: "#16A34A" }}>MessBee's</span> Powerful<br />WhatsApp API Platform
           </h2>
-          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, color: "#475569", marginBottom: 0, fontWeight: 600 }}>
-            Everything your business need
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: "#64748B", marginBottom: 36, fontWeight: 500 }}>
+            Everything your business needs to connect, engage and grow at scale.
           </p>
 
-          <div style={{ borderRadius: 24, overflow: "hidden", boxShadow: "0 20px 40px rgba(0,0,0,0.1), 0 4px 12px rgba(0,0,0,0.05)", border: "1px solid #E5E7EB", background: "#F8FAFC", padding: 12, width: "100%", maxWidth: 1000, margin: "0 auto", transform: "scale(0.75)", transformOrigin: "top center", marginBottom: "-140px" }}>
-            <div style={{ borderRadius: 16, overflow: "hidden", border: "1px solid #E2E8F0", background: "#FFF", display: "flex", flexDirection: "column" }}>
-              {/* Browser bar */}
-              <div style={{ background: "#F8FAFC", padding: "12px 16px", borderBottom: "1px solid #E5E7EB", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                <div style={{ display: "flex", gap: 6, width: 60 }}>
-                  {["#FF6B6B", "#FFD93D", "#6BCB77"].map((c) => <div key={c} style={{ width: 10, height: 10, borderRadius: "50%", background: c }} />)}
+          {/* Desktop Dashboard Window Container */}
+          <div style={{
+            position: "relative",
+            margin: "0 auto",
+            width: "100%",
+            maxWidth: 1080
+          }}>
+            <div style={{
+              background: "#FFFFFF",
+              borderRadius: 16,
+              border: "1px solid #E2E8F0",
+              boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0,0,0,0.03)",
+              display: "flex",
+              overflow: "hidden",
+              minHeight: 520,
+              width: "100%",
+              textAlign: "left"
+            }}>
+              
+              {/* Dark Left Sidebar */}
+              <div style={{
+                width: 170,
+                background: "#0F172A",
+                padding: "18px 10px",
+                display: "flex",
+                flexDirection: "column",
+                flexShrink: 0,
+                color: "#94A3B8",
+                fontSize: 11
+              }}>
+                {/* Logo inside sidebar */}
+                <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "0 8px 16px 8px", borderBottom: "1px solid #1E293B", marginBottom: 12 }}>
+                  <div style={{ width: 22, height: 22, background: "#16A34A", borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFF"><path d="M12 2C6.48 2 2 6.48 2 12c0 2.17.7 4.17 1.88 5.8L2.8 21.6l3.92-.88C8.36 21.56 10.12 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg>
+                  </div>
+                  <span style={{ fontSize: 15, fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.3px" }}>MessBee</span>
                 </div>
-                <div style={{ background: "#E5E7EB", borderRadius: 6, padding: "4px 12px", fontSize: 12, color: "#94A3B8", textAlign: "center", width: 300 }}>
-                  app.messbee.com/dashboard
+
+                {/* Sidebar Navigation Items */}
+                <div style={{ display: "flex", flexDirection: "column", gap: 2, flex: 1, overflowY: "auto" }}>
+                  {[
+                    { label: "Home", active: true, icon: <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/> },
+                    { label: "Chats", icon: <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/> },
+                    { label: "Contacts", icon: <><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></> },
+                    { label: "Broadcast", icon: <path d="m3 11 18-5v12L3 13v-2z"/> },
+                    { label: "Campaigns", icon: <><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></> },
+                    { label: "Automation", icon: <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/> },
+                    { label: "CRM", icon: <rect x="3" y="4" width="18" height="16" rx="2"/> },
+                    { label: "Orders", icon: <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/> },
+                    { label: "Payments", icon: <rect x="2" y="5" width="20" height="14" rx="2"/> },
+                    { label: "Analytics", icon: <><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></> },
+                    { label: "Templates", icon: <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/> },
+                    { label: "Integrations", icon: <rect x="3" y="3" width="7" height="7"/> },
+                    { label: "Settings", icon: <circle cx="12" cy="12" r="3"/> }
+                  ].map((item, i) => (
+                    <div
+                      key={i}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 10,
+                        padding: "7px 12px",
+                        borderRadius: 6,
+                        background: item.active ? "#16A34A" : "transparent",
+                        color: item.active ? "#FFFFFF" : "#94A3B8",
+                        fontWeight: item.active ? 700 : 500,
+                        cursor: "pointer"
+                      }}
+                    >
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        {item.icon}
+                      </svg>
+                      <span>{item.label}</span>
+                    </div>
+                  ))}
                 </div>
-                <div style={{ width: 60 }}></div>
+
+                {/* Bottom logout */}
+                <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "12px 10px 0 10px", borderTop: "1px solid #1E293B", color: "#EF4444", cursor: "pointer" }}>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                  <span style={{ fontWeight: 600 }}>Logout</span>
+                </div>
               </div>
-              {/* Handcoded Messbee Dashboard UI */}
-              <div style={{ background: "#FFFFFF", display: "flex", flexDirection: "column", height: 480, borderTop: "1px solid #E5E7EB" }}>
-                {/* Dashboard Header */}
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 24px", borderBottom: "1px solid #E5E7EB" }}>
-                  {/* Left: Logo */}
-                  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                    <div style={{ width: 28, height: 28, background: "#16A34A", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFF"><path d="M12 2C6.48 2 2 6.48 2 12c0 2.21.72 4.25 1.93 5.88L3 22l4.12-.93C8.75 22.28 10.79 23 12 23c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.57 0-3.04-.37-4.33-1.02l-2.61.59.59-2.61C4.37 15.04 4 13.57 4 12 4 7.58 7.58 4 12 4s8 3.58 8 8-3.58 8-8 8zm3.5-6.5c-.38 1.13-1.5 2-2.5 2h-2c-1.13 0-2.25-.87-2.62-2l-1.38-4H8.5c1.13 0 2.25.87 2.62 2l1.38 4h2.5z" /></svg>
+
+              {/* Main Content Area */}
+              <div style={{ flex: 1, background: "#F8FAFC", display: "flex", flexDirection: "column", minWidth: 0 }}>
+                
+                {/* Dashboard Header Bar */}
+                <div style={{ background: "#FFFFFF", padding: "12px 20px", borderBottom: "1px solid #E2E8F0", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, flex: 1, maxWidth: 360 }}>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#64748B" strokeWidth="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    <div style={{ background: "#F1F5F9", borderRadius: 8, padding: "6px 12px", display: "flex", alignItems: "center", gap: 8, flex: 1 }}>
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                      <span style={{ fontSize: 11, color: "#94A3B8" }}>Search contacts, conversations and more...</span>
                     </div>
-                    <span style={{ fontSize: 18, fontWeight: 800, color: "#0F172A", letterSpacing: "-0.5px" }}>MessBee</span>
                   </div>
 
-                  {/* Middle: Search */}
-                  <div style={{ background: "#F1F5F9", borderRadius: 8, padding: "8px 16px", display: "flex", alignItems: "center", gap: 8, width: 320 }}>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
-                    <span style={{ fontSize: 12, color: "#94A3B8" }}>Search conversations, contacts...</span>
-                  </div>
-
-                  {/* Right: Actions & Profile */}
-                  <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-                    <div style={{ background: "#F0FDF4", padding: "4px 10px", borderRadius: 20, display: "flex", alignItems: "center", gap: 6, border: "1px solid #DCFCE7" }}>
-                      <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#16A34A" }} />
-                      <div style={{ display: "flex", flexDirection: "column" }}>
-                        <span style={{ fontSize: 8, fontWeight: 700, color: "#059669", letterSpacing: "0.5px" }}>API STATUS</span>
-                        <span style={{ fontSize: 10, fontWeight: 700, color: "#16A34A" }}>Online</span>
-                      </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                    <div style={{ fontSize: 11, color: "#475569", fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                      Need Help? ▾
                     </div>
-                    <div style={{ background: "#F8FAFC", padding: "4px 12px", borderRadius: 20, display: "flex", alignItems: "center", border: "1px solid #E2E8F0" }}>
-                      <div style={{ display: "flex", flexDirection: "column" }}>
-                        <span style={{ fontSize: 8, fontWeight: 700, color: "#64748B", letterSpacing: "0.5px" }}>CREDITS</span>
-                        <span style={{ fontSize: 11, fontWeight: 800, color: "#0F172A" }}>₹618.51</span>
-                      </div>
-                    </div>
-
-                    <div style={{ display: "flex", alignItems: "center", gap: 12, color: "#64748B", paddingLeft: 8 }}>
-                      <div style={{ position: "relative" }}>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" /><path d="M13.73 21a2 2 0 0 1-3.46 0" /></svg>
-                        <div style={{ position: "absolute", top: 0, right: 2, width: 6, height: 6, background: "#EF4444", borderRadius: "50%" }} />
-                      </div>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" /><line x1="12" y1="17" x2="12.01" y2="17" /></svg>
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" /></svg>
-                    </div>
-
-                    <div style={{ display: "flex", alignItems: "center", gap: 8, paddingLeft: 8, borderLeft: "1px solid #E2E8F0" }}>
-                      <div style={{ width: 26, height: 26, borderRadius: "50%", background: "#E2E8F0", overflow: "hidden" }}>
-                        <img src={indianAvatar} alt="user" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                      </div>
-                      <div style={{ display: "flex", flexDirection: "column" }}>
-                        <span style={{ fontSize: 11, fontWeight: 700, color: "#0F172A" }}>Admission Anytime</span>
-                        <span style={{ fontSize: 9, color: "#64748B", fontWeight: 500 }}>9910700008</span>
-                      </div>
+                    <div style={{ width: 28, height: 28, borderRadius: "50%", background: "#E2E8F0", color: "#334155", fontSize: 10.5, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      AA
                     </div>
                   </div>
                 </div>
 
-                {/* Dashboard Body */}
-                <div style={{ display: "flex", flex: 1, overflow: "hidden" }}>
-                  {/* Left Sidebar */}
-                  <div style={{ width: 220, borderRight: "1px solid #E5E7EB", padding: "20px 12px", display: "flex", flexDirection: "column", gap: 4, overflowY: "auto", flexShrink: 0 }}>
-                    <div style={{ background: "#F8FAFC", borderRadius: 8, padding: "8px 12px", display: "flex", alignItems: "center", gap: 8, marginBottom: 12, border: "1px solid #E2E8F0" }}>
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
-                      <span style={{ fontSize: 11, color: "#94A3B8" }}>Search</span>
+                {/* Dashboard Body Canvas */}
+                <div style={{ padding: "18px", overflowY: "auto", display: "flex", flexDirection: "column", gap: 14 }}>
+                  
+                  {/* Greeting */}
+                  <div>
+                    <div style={{ fontSize: 17, fontWeight: 800, color: "#0F172A" }}>Welcome to MessBee!</div>
+                    <div style={{ fontSize: 11.5, color: "#64748B" }}>Let's build stronger connections and grow your business.</div>
+                  </div>
+
+                  {/* 3-Column Top Grid */}
+                  <div style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr 1fr", gap: 12 }}>
+                    
+                    {/* Getting Started */}
+                    <div style={{ background: "#FFFFFF", borderRadius: 10, border: "1px solid #E2E8F0", padding: "14px", display: "flex", flexDirection: "column", gap: 10 }}>
+                      <div>
+                        <div style={{ fontSize: 12, fontWeight: 700, color: "#0F172A" }}>Getting Started</div>
+                        <div style={{ fontSize: 9.5, color: "#94A3B8" }}>Complete these steps to get the most out of MessBee</div>
+                      </div>
+
+                      {[
+                        { icon: "💬", title: "Connect WhatsApp Business API" },
+                        { icon: "👥", title: "Add your contacts" },
+                        { icon: "📢", title: "Create your first campaign" },
+                        { icon: "⚡", title: "Set up automation" }
+                      ].map((step, idx) => (
+                        <div key={idx} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "5px 0", borderBottom: idx < 3 ? "1px solid #F1F5F9" : "none" }}>
+                          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                            <span style={{ fontSize: 13 }}>{step.icon}</span>
+                            <span style={{ fontSize: 10.5, fontWeight: 600, color: "#334155" }}>{step.title}</span>
+                          </div>
+                          <span style={{ fontSize: 9.5, fontWeight: 700, color: "#16A34A", background: "#ECFDF5", padding: "2px 8px", borderRadius: 4, border: "1px solid #A7F3D0" }}>Start</span>
+                        </div>
+                      ))}
                     </div>
 
-                    {[
-                      { icon: <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />, label: "Home" },
-                      { icon: <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />, label: "Chats", active: true, badge: "10+" },
-                      { icon: <><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></>, label: "Contacts & CRM", arrow: true },
-                      { icon: <><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /></>, label: "Templates", arrow: true },
-                      { icon: <><line x1="22" y1="2" x2="11" y2="13" /><polygon points="22 2 15 22 11 13 2 9 22 2" /></>, label: "Campaign" },
-                      { icon: <><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" /></>, label: "Commerce", arrow: true },
-                      { icon: <><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" /></>, label: "Automation" },
-                      { icon: <><line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /></>, label: "Analytics", arrow: true },
-                      { icon: <><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></>, label: "Developer API" },
-                      { icon: <><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></>, label: "App Integration" },
-                      { icon: <><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" /></>, label: "Settings", arrow: true },
-                    ].map((item, i) => (
-                      <div key={i} style={{ padding: "8px 12px", borderRadius: 6, display: "flex", alignItems: "center", gap: 12, cursor: "pointer", background: item.active ? "#F9FAFB" : "transparent" }}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#64748B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          {item.icon}
+                    {/* Account Overview */}
+                    <div style={{ background: "#FFFFFF", borderRadius: 10, border: "1px solid #E2E8F0", padding: "14px", display: "flex", flexDirection: "column", gap: 8 }}>
+                      <div style={{ fontSize: 12, fontWeight: 700, color: "#0F172A" }}>Account Overview</div>
+                      
+                      <div style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 10.5 }}>
+                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                          <span style={{ color: "#64748B" }}>Plan</span>
+                          <span style={{ fontWeight: 700, color: "#16A34A", background: "#ECFDF5", padding: "1px 6px", borderRadius: 3 }}>Free Trial</span>
+                        </div>
+                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                          <span style={{ color: "#64748B" }}>Status</span>
+                          <span style={{ fontWeight: 700, color: "#F59E0B" }}>Not Connected</span>
+                        </div>
+                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                          <span style={{ color: "#64748B" }}>WhatsApp API</span>
+                          <span style={{ fontWeight: 700, color: "#F59E0B" }}>Not Connected</span>
+                        </div>
+                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                          <span style={{ color: "#64748B" }}>Contacts</span>
+                          <span style={{ fontWeight: 700, color: "#0F172A" }}>0</span>
+                        </div>
+                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                          <span style={{ color: "#64748B" }}>Campaigns</span>
+                          <span style={{ fontWeight: 700, color: "#0F172A" }}>0</span>
+                        </div>
+                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                          <span style={{ color: "#64748B" }}>Orders</span>
+                          <span style={{ fontWeight: 700, color: "#0F172A" }}>0</span>
+                        </div>
+                        <div style={{ display: "flex", justifyContent: "space-between" }}>
+                          <span style={{ color: "#64748B" }}>Revenue</span>
+                          <span style={{ fontWeight: 700, color: "#0F172A" }}>₹0</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* AI Assistant Box */}
+                    <div style={{ background: "#FFFFFF", borderRadius: 10, border: "1px solid #E2E8F0", padding: "14px", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", gap: 8, position: "relative" }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", width: "100%", alignItems: "center" }}>
+                        <span style={{ fontSize: 12, fontWeight: 700, color: "#0F172A" }}>AI Assistant</span>
+                        <span style={{ fontSize: 8.5, fontWeight: 800, color: "#7C3AED", background: "#F5F3FF", padding: "2px 6px", borderRadius: 4, border: "1px solid #DDD6FE" }}>BETA</span>
+                      </div>
+
+                      <div style={{ width: 40, height: 40, borderRadius: "50%", background: "#DCFCE7", display: "flex", alignItems: "center", justifyContent: "center", margin: "2px 0" }}>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#16A34A">
+                          <path d="M12 2C6.48 2 2 6.48 2 12c0 2.17.7 4.17 1.88 5.8L2.8 21.6l3.92-.88C8.36 21.56 10.12 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"/>
                         </svg>
-                        <span style={{ fontSize: 12, fontWeight: 600, color: item.active ? "#0F172A" : "#64748B", flex: 1 }}>{item.label}</span>
-                        {item.badge && (
-                          <div style={{ background: "#16A34A", color: "#FFF", fontSize: 9, fontWeight: 700, padding: "2px 6px", borderRadius: 10 }}>{item.badge}</div>
-                        )}
-                        {item.arrow && (
-                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2"><polyline points="6 9 12 15 18 9" /></svg>
-                        )}
                       </div>
-                    ))}
 
-                    <div style={{ padding: "8px 12px", borderRadius: 6, display: "flex", alignItems: "center", gap: 12, cursor: "pointer", marginTop: "auto", color: "#EF4444" }}>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" y1="12" x2="9" y2="12" /></svg>
-                      <span style={{ fontSize: 12, fontWeight: 600 }}>Logout</span>
+                      <div style={{ fontSize: 9.5, color: "#475569", lineHeight: 1.3 }}>
+                        Hi! I'm your AI Business Assistant. I'm here to help you grow.
+                      </div>
+
+                      <div style={{ textAlign: "left", width: "100%", fontSize: 9, color: "#64748B", display: "flex", flexDirection: "column", gap: 3 }}>
+                        <div>✔ Customer conversations</div>
+                        <div>✔ Product recommendations</div>
+                        <div>✔ Order management</div>
+                        <div>✔ Campaign ideas</div>
+                      </div>
+
+                      <button style={{ width: "100%", background: "#16A34A", color: "#FFF", border: "none", borderRadius: 6, padding: "7px", fontSize: 10, fontWeight: 700, cursor: "pointer", marginTop: "auto" }}>
+                        Ask Me Anything
+                      </button>
                     </div>
+
                   </div>
 
-                  {/* Main Canvas */}
-                  <div style={{ flex: 1, background: "#F8FAFC", padding: "24px", overflowY: "auto" }}>
-
-                    {/* Top Card */}
-                    <div style={{ background: "#FFF", borderRadius: 16, border: "1px solid #E2E8F0", padding: "24px", marginBottom: 20, boxShadow: "0 1px 2px rgba(0,0,0,0.02)" }}>
-                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 24 }}>
-                        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-                          <div style={{ width: 48, height: 48, borderRadius: 12, background: "#E0F2FE", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0EA5E9" strokeWidth="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></svg>
-                          </div>
-                          <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                              <span style={{ fontSize: 18, fontWeight: 800, color: "#0F172A" }}>Admission Anytime</span>
-                              <span style={{ fontSize: 9, fontWeight: 700, color: "#64748B", background: "#F1F5F9", padding: "2px 6px", borderRadius: 4 }}>OFFICIAL API</span>
-                            </div>
-                            <span style={{ fontSize: 12, color: "#64748B", fontWeight: 500 }}>+91 1202611111</span>
-                          </div>
+                  {/* 2-Column Bottom Grid */}
+                  <div style={{ display: "grid", gridTemplateColumns: "1.1fr 1.9fr", gap: 12 }}>
+                    
+                    {/* Channel Status */}
+                    <div style={{ background: "#FFFFFF", borderRadius: 10, border: "1px solid #E2E8F0", padding: "14px", display: "flex", flexDirection: "column", gap: 8 }}>
+                      <div style={{ fontSize: 11.5, fontWeight: 700, color: "#0F172A" }}>Channel Status</div>
+                      <div style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 10 }}>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                          <span style={{ display: "flex", alignItems: "center", gap: 6, color: "#334155" }}>
+                            <span style={{ color: "#25D366" }}>●</span> WhatsApp Business API
+                          </span>
+                          <span style={{ color: "#94A3B8" }}>Not Connected</span>
                         </div>
-                        <div style={{ display: "flex", gap: 12 }}>
-                          <button style={{ background: "#0F172A", color: "#FFF", border: "none", padding: "8px 16px", borderRadius: 8, fontSize: 12, fontWeight: 600 }}>Update Profile</button>
-                          <button style={{ background: "#FFF", color: "#374151", border: "1px solid #E2E8F0", padding: "8px 16px", borderRadius: 8, fontSize: 12, fontWeight: 600, display: "flex", alignItems: "center", gap: 6 }}>
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="1 4 1 10 7 10" /><polyline points="23 20 23 14 17 14" /><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15" /></svg>
-                            Sync Data
-                          </button>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                          <span style={{ display: "flex", alignItems: "center", gap: 6, color: "#334155" }}>
+                            <span style={{ color: "#3B82F6" }}>●</span> Email (SMTP)
+                          </span>
+                          <span style={{ color: "#94A3B8" }}>Not Configured</span>
                         </div>
-                      </div>
-
-                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 24, paddingTop: 20, borderTop: "1px solid #E2E8F0" }}>
-                        <div>
-                          <div style={{ fontSize: 10, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.5px", marginBottom: 6 }}>MESSAGE LIMIT TIER</div>
-                          <div style={{ fontSize: 14, fontWeight: 800, color: "#0F172A" }}>10,000 <span style={{ fontSize: 12, fontWeight: 500, color: "#64748B" }}>/ day</span></div>
-                        </div>
-                        <div>
-                          <div style={{ fontSize: 10, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.5px", marginBottom: 6 }}>QUALITY SCORE</div>
-                          <div style={{ fontSize: 14, fontWeight: 700, color: "#16A34A", display: "flex", alignItems: "center", gap: 6 }}>
-                            High <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#16A34A" }} />
-                          </div>
-                        </div>
-                        <div>
-                          <div style={{ fontSize: 10, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.5px", marginBottom: 6 }}>CONNECTION STATUS</div>
-                          <div style={{ fontSize: 14, fontWeight: 700, color: "#0F172A", display: "flex", alignItems: "center", gap: 6 }}>
-                            Connected <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#16A34A" }} />
-                          </div>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                          <span style={{ display: "flex", alignItems: "center", gap: 6, color: "#334155" }}>
+                            <span style={{ color: "#60A5FA" }}>●</span> SMS
+                          </span>
+                          <span style={{ color: "#94A3B8" }}>Not Configured</span>
                         </div>
                       </div>
                     </div>
 
-                    {/* Middle Row */}
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 20 }}>
-
-                      {/* Available Balance */}
-                      <div style={{ background: "#FFF", borderRadius: 16, border: "1px solid #E2E8F0", padding: "24px", boxShadow: "0 1px 2px rgba(0,0,0,0.02)" }}>
-                        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 12 }}>
-                          <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", letterSpacing: "0.5px" }}>AVAILABLE BALANCE</div>
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2"><rect x="3" y="4" width="18" height="16" rx="2" ry="2" /><line x1="3" y1="10" x2="21" y2="10" /></svg>
+                    {/* Resources & Demo */}
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+                      <div style={{ background: "#FFFFFF", borderRadius: 10, border: "1px solid #E2E8F0", padding: "12px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 11, fontWeight: 700, color: "#0F172A" }}>
+                          🎓 New to MessBee?
                         </div>
-                        <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginBottom: 6 }}>
-                          <span style={{ fontSize: 32, fontWeight: 800, color: "#0F172A", letterSpacing: "-1px" }}>₹618.51</span>
-                          <span style={{ fontSize: 10, fontWeight: 700, color: "#16A34A", display: "flex", alignItems: "center", gap: 4 }}><div style={{ width: 4, height: 4, borderRadius: "50%", background: "#16A34A" }} /> Auto-recharge on</span>
-                        </div>
-                        <div style={{ fontSize: 11, color: "#94A3B8", marginBottom: 24 }}>Estimated 14 days of usage remaining based on current volume</div>
-
-                        <div style={{ display: "flex", gap: 12 }}>
-                          <button style={{ flex: 1, background: "#0F172A", color: "#FFF", border: "none", padding: "10px", borderRadius: 8, fontSize: 12, fontWeight: 600 }}>Add Credit</button>
-                          <button style={{ background: "#FFF", color: "#374151", border: "1px solid #E2E8F0", padding: "10px 16px", borderRadius: 8, fontSize: 12, fontWeight: 600 }}>Statement</button>
-                        </div>
+                        <div style={{ fontSize: 9.5, color: "#64748B", margin: "6px 0" }}>Explore guides, tutorials and best practices to grow faster.</div>
+                        <span style={{ fontSize: 9.5, fontWeight: 700, color: "#16A34A", cursor: "pointer" }}>View Resources →</span>
                       </div>
 
-                      {/* Active Subscription */}
-                      <div style={{ background: "#FFF", borderRadius: 16, border: "1px solid #E2E8F0", padding: "24px", boxShadow: "0 1px 2px rgba(0,0,0,0.02)" }}>
-                        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 16 }}>
-                          <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", letterSpacing: "0.5px" }}>ACTIVE SUBSCRIPTION</div>
-                          <div style={{ fontSize: 9, fontWeight: 700, color: "#64748B", background: "#F1F5F9", padding: "4px 8px", borderRadius: 4 }}>ENTERPRISE PLAN</div>
+                      <div style={{ background: "#FFFFFF", borderRadius: 10, border: "1px solid #E2E8F0", padding: "12px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 11, fontWeight: 700, color: "#0F172A" }}>
+                          ▶ Watch Demo
                         </div>
-                        <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginBottom: 6 }}>
-                          <span style={{ fontSize: 32, fontWeight: 800, color: "#0F172A", letterSpacing: "-1px" }}>76 Days</span>
-                          <span style={{ fontSize: 13, fontWeight: 500, color: "#94A3B8" }}>remaining</span>
-                        </div>
-                        <div style={{ fontSize: 11, color: "#94A3B8", marginBottom: 24 }}>Next billing cycle starts April 28, 2026</div>
-
-                        <div style={{ width: "100%", height: 4, background: "#F1F5F9", borderRadius: 2, marginBottom: 24, overflow: "hidden" }}>
-                          <div style={{ width: "70%", height: "100%", background: "#0F172A", borderRadius: 2 }} />
-                        </div>
-
-                        <button style={{ width: "100%", background: "#FFF", color: "#374151", border: "1px solid #E2E8F0", padding: "10px", borderRadius: 8, fontSize: 12, fontWeight: 600 }}>Manage Subscription</button>
-                      </div>
-
-                    </div>
-
-                    {/* Bottom Card */}
-                    <div style={{ background: "#FFF", borderRadius: 16, border: "1px solid #E2E8F0", padding: "24px", boxShadow: "0 1px 2px rgba(0,0,0,0.02)" }}>
-                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 24 }}>
-                        <div>
-                          <div style={{ fontSize: 15, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>Performance Overview</div>
-                          <div style={{ fontSize: 11, color: "#94A3B8" }}>Showing data for <span style={{ fontWeight: 600, color: "#475569" }}>Today</span></div>
-                        </div>
-                        <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-                          <div style={{ display: "flex", alignItems: "center", gap: 8, border: "1px solid #E2E8F0", padding: "6px 12px", borderRadius: 6 }}>
-                            <span style={{ fontSize: 12, fontWeight: 600, color: "#374151" }}>March 17, 2026</span>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></svg>
-                          </div>
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2"><path d="M21 2v6h-6" /><path d="M3 12a9 9 0 0 1 15-6.7L21 8" /><path d="M3 22v-6h6" /><path d="M21 12a9 9 0 0 1-15 6.7L3 16" /></svg>
-                        </div>
-                      </div>
-
-                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr", gap: 16, borderTop: "1px solid #F1F5F9", paddingTop: 16 }}>
-                        {["TOTAL CHATS", "UNREAD", "OPEN CASES", "FAILED", "FREE TIER", "AGENTS"].map(title => (
-                          <div key={title} style={{ fontSize: 9, fontWeight: 700, color: "#94A3B8", letterSpacing: "0.5px" }}>{title}</div>
-                        ))}
+                        <div style={{ fontSize: 9.5, color: "#64748B", margin: "6px 0" }}>See how MessBee helps you engage, automate and grow.</div>
+                        <span style={{ fontSize: 9.5, fontWeight: 700, color: "#16A34A", cursor: "pointer" }}>Watch Now →</span>
                       </div>
                     </div>
 
                   </div>
+
                 </div>
               </div>
             </div>
+
+            {/* Floating Mobile Phone Preview */}
+            <div style={{
+              position: "absolute",
+              right: -30,
+              bottom: -30,
+              width: 220,
+              background: "#FFFFFF",
+              borderRadius: 30,
+              border: "5px solid #0F172A",
+              boxShadow: "0 25px 50px rgba(0,0,0,0.3)",
+              overflow: "hidden",
+              zIndex: 10,
+              display: "flex",
+              flexDirection: "column",
+              textAlign: "left"
+            }}>
+              {/* Dynamic Island Notch */}
+              <div style={{ background: "#0F172A", padding: "6px 0 3px 0", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                <div style={{ width: 55, height: 10, background: "#000", borderRadius: 10 }} />
+              </div>
+
+              {/* Mobile Chat Header */}
+              <div style={{ background: "#F8FAFC", padding: "8px 10px", borderBottom: "1px solid #E2E8F0", display: "flex", alignItems: "center", gap: 8 }}>
+                <div style={{ width: 22, height: 22, borderRadius: "50%", background: "#16A34A", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFF"><path d="M12 2C6.48 2 2 6.48 2 12c0 2.17.7 4.17 1.88 5.8L2.8 21.6l3.92-.88C8.36 21.56 10.12 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg>
+                </div>
+                <div>
+                  <div style={{ fontSize: 10.5, fontWeight: 800, color: "#0F172A" }}>MessBee AI</div>
+                  <div style={{ fontSize: 8, color: "#16A34A", fontWeight: 700 }}>● Online</div>
+                </div>
+              </div>
+
+              {/* Chat Canvas */}
+              <div style={{ background: "#FFFFFF", padding: "10px 8px", display: "flex", flexDirection: "column", gap: 8 }}>
+                <div style={{ background: "#F1F5F9", borderRadius: 8, padding: "8px 10px", fontSize: 9.5, color: "#334155", lineHeight: 1.4 }}>
+                  Hello! I'm your AI Business Assistant. How can I help you today?
+                </div>
+
+                <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                  {["Show today's summary", "Suggest a campaign", "Check order updates", "Help with automation"].map((chip, i) => (
+                    <div key={i} style={{ background: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: 6, padding: "4px 8px", fontSize: 8.5, color: "#475569", fontWeight: 600 }}>
+                      {chip}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Message Input Bar */}
+              <div style={{ background: "#F8FAFC", padding: "6px 8px", borderTop: "1px solid #E2E8F0", display: "flex", alignItems: "center", gap: 6 }}>
+                <div style={{ fontSize: 9, color: "#94A3B8", flex: 1 }}>Type a message...</div>
+                <div style={{ width: 18, height: 18, borderRadius: "50%", background: "#16A34A", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="#FFF"><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* ═══════════════ TRUSTED PILL & COMPARISON SECTION ═══════════════ */}
-      <section style={{ padding: "0px 6% 80px", background: "#FFFFFF", textAlign: "center" }}>
+      {/* ═══════════════ MARKETPLACE VS MESSBEE SECTION ═══════════════ */}
+      <section style={{ padding: "60px 6% 80px", background: "#FFFFFF", textAlign: "center" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
 
-          {/* Trusted Pill */}
-          <div style={{ background: "#e8faee", borderRadius: 12, padding: "24px 60px", marginBottom: 80, border: "1px solid #C8E6C9", width: "calc(100% + 6vw)", marginLeft: "-3vw" }}>
-            <div style={{ fontSize: 9, fontWeight: 400, color: "#4A5568", letterSpacing: "1.5px", textTransform: "uppercase", marginBottom: 16 }}>
-              Trusted by 35,000+ Growing Businesses
-            </div>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 90, flexWrap: "wrap", width: "100%" }}>
-              {["META", "RAZORPAY", "GOOGLE", "SHIPROCKET", "ZAPIER", "SHOPIFY"].map((brand) => (
-                <span key={brand} style={{ fontSize: 14, fontWeight: 800, color: "black", letterSpacing: "0.5px" }}>{brand}</span>
-              ))}
-            </div>
-          </div>
-
           {/* VS Title */}
-          <h2 style={{ fontFamily: "'Inter', sans-serif", fontSize: 32, fontWeight: 600, color: "#0F172A", marginBottom: 16, letterSpacing: "normal" }}>
+          <h2 style={{ fontFamily: "'Inter', sans-serif", fontSize: 34, fontWeight: 800, color: "#0F172A", marginBottom: 12, letterSpacing: "-0.5px" }}>
             Marketplace <span style={{ color: "#16A34A" }}>vs</span> Messbee
           </h2>
-          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 16, color: "#94A3B8", fontWeight: 400, marginBottom: 56 }}>
+          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 16, color: "#64748B", fontWeight: 500, marginBottom: 44 }}>
             Stop renting your business. Start owning your future.
           </p>
 
           {/* Comparison Cards */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, textAlign: "left", maxWidth: 1150, margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 28, textAlign: "left", maxWidth: 1200, margin: "0 auto" }}>
             {/* Left Card - Traditional */}
-            <div style={{ background: "#ebebeb", borderRadius: 24, padding: "36px 28px", border: "1px solid #dcfce7" }}>
-              <h3 style={{ fontSize: 21, fontWeight: 700, color: "#64748B", marginBottom: 24 }}>Traditional Marketplaces</h3>
-              <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-                {[
-                  "High Commissions (up to 30%)",
-                  "No Customer Data Access",
-                  "Competing with your own products"
-                ].map((item, i) => (
-                  <div key={i} style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#dc2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+            <div style={{
+              background: "#F8FAFC",
+              borderRadius: 24,
+              padding: "36px 32px",
+              border: "1px solid #E2E8F0",
+              boxShadow: "0 4px 16px rgba(0, 0, 0, 0.03)",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between"
+            }}>
+              <div>
+                <h3 style={{ fontSize: 22, fontWeight: 700, color: "#475569", marginBottom: 28 }}>Traditional Marketplaces</h3>
+                <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                  {[
+                    "High Commissions (up to 30%)",
+                    "No Customer Data Access",
+                    "Competing with your own products"
+                  ].map((item, i) => (
+                    <div key={i} style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                      <div style={{ width: 28, height: 28, borderRadius: "50%", background: "#FEE2E2", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#DC2626" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <line x1="18" y1="6" x2="6" y2="18"></line>
+                          <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                      </div>
+                      <span style={{ fontSize: 15.5, fontWeight: 500, color: "#DC2626" }}>{item}</span>
                     </div>
-                    <span style={{ fontSize: 15, fontWeight: 400, color: "#dc2626" }}>{item}</span>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* Right Card - Messbee */}
-            <div style={{ background: "#0B1521", borderRadius: 24, padding: "36px 28px", border: "2px solid #16A34A", position: "relative", boxShadow: "0 20px 40px rgba(0, 200, 83, 0.15)" }}>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 24 }}>
-                <h3 style={{ fontSize: 21, fontWeight: 700, color: "#FFFFFF", margin: 0 }}>Messbee Operating System</h3>
-                <div style={{ background: "#059669", color: "#FFFFFF", fontSize: 11, fontWeight: 700, padding: "4px 10px", borderRadius: 20 }}>
-                  RECOMMENDED
-                </div>
-              </div>
-
-              <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-                {[
-                  "0% Transaction Commission",
-                  "Complete CRM & Data Control",
-                  "Direct-to-Consumer Growth"
-                ].map((item, i) => (
-                  <div key={i} style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="16 10 11 15 8 12"></polyline></svg>
-                    </div>
-                    <span style={{ fontSize: 15, fontWeight: 400, color: "#CBD5E1" }}>{item}</span>
+            {/* Right Card - Messbee (Green Background) */}
+            <div style={{
+              background: "linear-gradient(135deg, #16A34A 0%, #15803D 100%)",
+              borderRadius: 24,
+              padding: "36px 32px",
+              border: "1px solid rgba(255, 255, 255, 0.2)",
+              position: "relative",
+              boxShadow: "0 20px 40px rgba(22, 163, 74, 0.28)",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between"
+            }}>
+              <div>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 28 }}>
+                  <h3 style={{ fontSize: 22, fontWeight: 800, color: "#FFFFFF", margin: 0 }}>Messbee Operating System</h3>
+                  <div style={{ background: "#FFFFFF", color: "#15803D", fontSize: 11, fontWeight: 800, padding: "5px 12px", borderRadius: 20, boxShadow: "0 4px 10px rgba(0,0,0,0.1)", letterSpacing: "0.5px" }}>
+                    RECOMMENDED
                   </div>
-                ))}
+                </div>
+
+                <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                  {[
+                    "0% Transaction Commission",
+                    "Complete CRM & Data Control",
+                    "Direct-to-Consumer Growth"
+                  ].map((item, i) => (
+                    <div key={i} style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                      <div style={{ width: 28, height: 28, borderRadius: "50%", background: "rgba(255, 255, 255, 0.25)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      </div>
+                      <span style={{ fontSize: 15.5, fontWeight: 600, color: "#FFFFFF" }}>{item}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -689,41 +1169,83 @@ const LandingPage = () => {
       </section>
 
       {/* ═══════════════ AI POWERED BUSINESS SECTION ═══════════════ */}
-      <section style={{ padding: "18px 0", background: "#FFFFFF", overflow: "visible" }}>
-        <div style={{ width: "100%", display: "grid", gridTemplateColumns: "1.2fr 0.65fr", gap: 60, alignItems: "stretch" }}>
+      <section style={{ padding: "40px 5%", background: "#FFFFFF" }}>
+        <div style={{
+          maxWidth: 1200,
+          margin: "0 auto",
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: 28,
+          alignItems: "stretch"
+        }}>
 
-          {/* Left Column - Content wrapper pushes the card to the bottom */}
-          <div style={{ display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
-            {/* The card itself is set to ~74% of the container height (which matches the image height), so it stays aligned at all sizes */}
-            <div style={{ background: "linear-gradient(135deg, #E6E4DD 0%, #C4C4C4 100%)", borderRadius: "0 100px 0 0", padding: "4% 8% 5% 2%", display: "flex", flexDirection: "column", justifyContent: "flex-start", height: "74%" }}>
-              <h2 style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(30px, 4.5vw, 44px)", fontWeight: 800, color: "#0F172A", marginBottom: "2%", letterSpacing: "-1px" }}>
+          {/* Left Column - Content Card */}
+          <div style={{
+            background: "linear-gradient(135deg, #0F172A 0%, #1E293B 100%)",
+            borderRadius: 24,
+            padding: "30px 30px",
+            color: "#FFFFFF",
+            boxShadow: "0 18px 36px -12px rgba(15, 23, 42, 0.28)",
+            border: "1px solid #334155",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between"
+          }}>
+            <div>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "rgba(16, 185, 129, 0.15)", borderRadius: 30, padding: "4px 12px", border: "1px solid rgba(16, 185, 129, 0.3)", width: "fit-content", marginBottom: 14 }}>
+                <span style={{ fontSize: 10.5, fontWeight: 800, color: "#34D399", letterSpacing: "0.5px" }}>⚡ 24/7 AUTONOMOUS AI</span>
+              </div>
+
+              <h2 style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(24px, 2.6vw, 32px)", fontWeight: 800, color: "#FFFFFF", marginBottom: 10, letterSpacing: "-0.6px", lineHeight: 1.15 }}>
                 <span style={{ color: "#10B981" }}>AI</span> Powered Business
               </h2>
-              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(16px, 1.8vw, 20px)", color: "#334155", lineHeight: 1.5, marginBottom: "4%", fontWeight: 400, maxWidth: 600 }}>
-                Imagine an employee who never sleeps, never makes mistakes, and grows smarter every day.
+              <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(12.5px, 1vw, 14px)", color: "#94A3B8", lineHeight: 1.5, marginBottom: 20, fontWeight: 400 }}>
+                Imagine an employee who never sleeps, never makes mistakes, and grows smarter every day — driving sales, delighting customers, and running your operations on autopilot.
               </p>
+            </div>
 
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginLeft: "6%" }}>
-                {[
-                  "Reply instantly", "Sell products",
-                  "Recommend products", "Collect payments",
-                  "Book appointments", "Recover abandoned carts",
-                  "Answer FAQs", "Generate reports"
-                ].map((item, i) => (
-                  <div key={i} style={{ background: "#e8faee", borderRadius: 12, padding: "14px 20px", display: "flex", alignItems: "center", gap: 12 }}>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+              {[
+                "Reply instantly", "Sell products",
+                "Recommend products", "Collect payments",
+                "Book appointments", "Recover abandoned carts",
+                "Answer FAQs", "Generate reports"
+              ].map((item, i) => (
+                <div key={i} style={{ background: "rgba(255, 255, 255, 0.05)", border: "1px solid rgba(255, 255, 255, 0.08)", borderRadius: 10, padding: "9px 12px", display: "flex", alignItems: "center", gap: 8 }}>
+                  <div style={{ width: 18, height: 18, borderRadius: "50%", background: "#064E3B", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#34D399" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
-                    <span style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(14px, 1.5vw, 16px)", fontWeight: 600, color: "#0F172A" }}>{item}</span>
                   </div>
-                ))}
-              </div>
+                  <span style={{ fontFamily: "'Inter', sans-serif", fontSize: 12.5, fontWeight: 600, color: "#F1F5F9" }}>{item}</span>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Right Column - Robot Image: bottom-aligned so grey area matches card height, head overflows above */}
-          <div style={{ display: "flex", alignItems: "flex-end", overflow: "visible" }}>
-            <img src={aiRobot} alt="AI Assistant Robot" style={{ width: "100%", height: "auto", display: "block" }} />
+          {/* Right Column - Robot Image Showcase Card (Equal Height) */}
+          <div style={{
+            borderRadius: 24,
+            overflow: "hidden",
+            boxShadow: "0 18px 36px -12px rgba(15, 23, 42, 0.28)",
+            border: "1px solid #1E293B",
+            background: "#000000",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "100%",
+            boxSizing: "border-box"
+          }}>
+            <img
+              src="/robotimg.png"
+              alt="AI Assistant Robot"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "contain",
+                display: "block"
+              }}
+            />
           </div>
         </div>
       </section>
@@ -879,13 +1401,13 @@ const LandingPage = () => {
           {/* Right - Text and steps */}
           <div style={{ paddingTop: 64 }}>
             <div style={{ fontFamily: "'Inter', sans-serif", color: "#10B981", fontSize: 12, fontWeight: 500, marginBottom: 8 }}>
-              Simple Processs
+              Simple Process
             </div>
             <h2 style={{ fontFamily: "'Inter', sans-serif", fontSize: 28, fontWeight: 700, color: "#0F172A", marginBottom: 12, letterSpacing: "normal" }}>
               How It <span style={{ color: "#10B981" }}>Works</span>
             </h2>
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: "#64748B", marginBottom: 32 }}>
-              Get your project done in 4 simple step
+              Get your business up and running in 4 simple steps
             </p>
 
             <div style={{ display: "flex", flexDirection: "column", gap: 28, position: "relative" }}>
@@ -893,18 +1415,18 @@ const LandingPage = () => {
               <div style={{ position: "absolute", left: 14, top: 30, bottom: 30, width: 2, background: "#10B981" }}></div>
 
               {[
-                { num: "01", title: "Create Account", desc: "Sign up for free and complete your profile" },
-                { num: "02", title: "Post a Products", desc: "Describe your project and lets talented freelancer bids" },
-                { num: "03", title: "Review", desc: "Compare Proposal, API Chat with and hire the best" },
-                { num: "04", title: "Get Work Done", desc: "Track Progress, and release payment securely" }
+                { num: "01", title: "Create Free Account", desc: "Sign up in 2 minutes with no credit card required" },
+                { num: "02", title: "Connect WhatsApp API", desc: "Link your official WhatsApp Business API number easily" },
+                { num: "03", title: "Launch Lead Generation & Campaigns", desc: "Capture leads, broadcast offers, and automate instant chat replies" },
+                { num: "04", title: "Automate Sales & Get Paid", desc: "Track orders, collect payments securely via UPI/cards, and scale growth" }
               ].map((step, idx) => (
                 <div key={idx} style={{ display: "flex", gap: 16, position: "relative", zIndex: 1 }}>
                   <div style={{ width: 30, height: 30, borderRadius: "50%", background: "#10B981", color: "#FFFFFF", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 600, fontSize: 12, flexShrink: 0 }}>
                     {step.num}
                   </div>
                   <div>
-                    <h4 style={{ fontSize: 12, fontWeight: 500, color: "#111827", marginBottom: 2 }}>{step.title}</h4>
-                    <p style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.5 }}>{step.desc}</p>
+                    <h4 style={{ fontSize: 13, fontWeight: 600, color: "#111827", marginBottom: 2 }}>{step.title}</h4>
+                    <p style={{ fontSize: 11.5, color: "#6B7280", lineHeight: 1.5 }}>{step.desc}</p>
                   </div>
                 </div>
               ))}
@@ -995,13 +1517,13 @@ const LandingPage = () => {
 
           <div style={{ textAlign: "center", marginBottom: 64 }}>
             <div style={{ fontFamily: "'Inter', sans-serif", color: "#10B981", fontSize: 12, fontWeight: 500, marginBottom: 8 }}>
-              Work
+              Industries
             </div>
             <h2 style={{ fontFamily: "'Inter', sans-serif", fontSize: 28, fontWeight: 700, color: "#0F172A", marginBottom: 12, letterSpacing: "normal" }}>
-              Made on <span style={{ color: "#10B981" }}>Eventlancer</span>
+              Built For <span style={{ color: "#10B981" }}>Every Industry</span>
             </h2>
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: "#64748B" }}>
-              Designed for professionals who deliver excellence.
+              Empowering Indian businesses to generate leads, automate support and scale revenue.
             </p>
           </div>
 
@@ -1064,95 +1586,197 @@ const LandingPage = () => {
       </section>
 
       {/* ═══════════════ TESTIMONIALS SECTION ═══════════════ */}
-      <section style={{ padding: "20px 6% 40px", background: "radial-gradient(ellipse at top, #FFF7E3 0%, #FFFFFF 50%)" }}>
-        <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+      <section style={{ padding: "20px 5% 50px", background: "radial-gradient(ellipse at top, #FFF7E3 0%, #FFFFFF 50%)" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
 
           <div style={{ textAlign: "center", marginBottom: 32 }}>
             <div style={{ fontFamily: "'Inter', sans-serif", color: "#10B981", fontSize: 12, fontWeight: 500, marginBottom: 8 }}>
-              Testimonials
+              Success Stories
             </div>
             <h2 style={{ fontFamily: "'Inter', sans-serif", fontSize: 28, fontWeight: 700, color: "#0F172A", marginBottom: 12, letterSpacing: "normal" }}>
-              Trusted by Event <span style={{ color: "#10B981" }}>Professionals</span>
+              Built to Scale <span style={{ color: "#10B981" }}>Your Business</span>
             </h2>
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: "#64748B" }}>
-              Stories from creators and organisers who build events with Event business.
+              Discover how modern businesses generate leads, automate support, and grow revenue on WhatsApp.
             </p>
           </div>
 
           {/* Video Testimonial Banner Card */}
-          <VideoBanner />
+          <div style={{ maxWidth: 1000, margin: "0 auto 32px" }}>
+            <VideoBanner />
+          </div>
 
-          {/* Testimonial Cards Carousel (3 Unique Indian Reviews, Compact Height) */}
-          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", overflow: "hidden", padding: "10px 20px", position: "relative", width: "100vw", left: "50%", transform: "translateX(-50%)", boxSizing: "border-box" }}>
+          {/* Interactive 3-Card Center-Featured Testimonial Carousel */}
+          <div 
+            style={{ position: "relative", maxWidth: 1280, margin: "0 auto", padding: "20px 0" }}
+            onMouseEnter={() => setIsTestimonialHovered(true)}
+            onMouseLeave={() => setIsTestimonialHovered(false)}
+          >
+            {/* Left Nav Arrow Button */}
+            <button
+              onClick={() => setCurrentTestimonial(prev => (prev === 0 ? testimonialsList.length - 1 : prev - 1))}
+              style={{
+                position: "absolute",
+                left: -24,
+                top: "50%",
+                transform: "translateY(-50%)",
+                width: 46,
+                height: 46,
+                borderRadius: "50%",
+                background: "#FFFFFF",
+                border: "1px solid #E2E8F0",
+                boxShadow: "0 6px 18px rgba(0,0,0,0.1)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+                zIndex: 10,
+                transition: "all 0.2s"
+              }}
+              onMouseEnter={e => { e.currentTarget.style.background = "#16A34A"; e.currentTarget.style.color = "#FFFFFF"; }}
+              onMouseLeave={e => { e.currentTarget.style.background = "#FFFFFF"; e.currentTarget.style.color = "#0F172A"; }}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
 
-            {[
-              {
-                name: "Rajesh Sharma",
-                role: "Founder, KiranaFresh",
-                rating: "5.0",
-                image: reviewerRajesh,
-                review: "MessBee's WhatsApp API changed the game for our daily orders! Automated broadcasts & payment links helped us scale sales by 35% smoothly.",
-                featured: false
-              },
-              {
-                name: "Priya Patel",
-                role: "Owner, StyleBoutique Jaipur",
-                rating: "5.0",
-                image: reviewerPriya,
-                review: "MessBee went above and beyond our expectations! Customer support and automated catalog sharing on WhatsApp helped us convert leads instantly.",
-                featured: true
-              },
-              {
-                name: "Amit Verma",
-                role: "Director, Apex Health Clinic",
-                rating: "5.0",
-                image: reviewerAmit,
-                review: "Sending report updates & appointment reminders on WhatsApp has reduced no-shows by 80%. MessBee is super easy to manage for our team.",
-                featured: false
-              }
-            ].map((item, idx) => (
-              <div key={idx} style={{
-                flex: "0 0 auto",
-                width: item.featured ? 480 : 420,
-                margin: "0 12px",
-                background: item.featured ? "linear-gradient(135deg, #FFE492 0%, #FFFFFF 65%)" : "linear-gradient(135deg, #FFFDEB 0%, #FFFFFF 80%)",
-                borderRadius: 20,
-                padding: item.featured ? "20px 24px" : "16px 20px",
-                boxShadow: item.featured ? "0 16px 36px rgba(0,0,0,0.08)" : "0 6px 20px rgba(0,0,0,0.03)",
-                transform: idx === 0 ? "scale(0.88) translateY(6px) translateX(30px)" : idx === 2 ? "scale(0.88) translateY(6px) translateX(-30px)" : "scale(1) translateY(0)",
-                opacity: item.featured ? 1 : 0.65,
-                zIndex: item.featured ? 10 : 1,
-                transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-                border: "1px solid rgba(0,0,0,0.06)"
-              }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 10 }}>
-                  {/* Big Quote Icon */}
-                  <svg width="36" height="36" viewBox="0 0 24 24" fill="#FFFFFF">
-                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                  </svg>
+            {/* Right Nav Arrow Button */}
+            <button
+              onClick={() => setCurrentTestimonial(prev => (prev + 1) % testimonialsList.length)}
+              style={{
+                position: "absolute",
+                right: -24,
+                top: "50%",
+                transform: "translateY(-50%)",
+                width: 46,
+                height: 46,
+                borderRadius: "50%",
+                background: "#FFFFFF",
+                border: "1px solid #E2E8F0",
+                boxShadow: "0 6px 18px rgba(0,0,0,0.1)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+                zIndex: 10,
+                transition: "all 0.2s"
+              }}
+              onMouseEnter={e => { e.currentTarget.style.background = "#16A34A"; e.currentTarget.style.color = "#FFFFFF"; }}
+              onMouseLeave={e => { e.currentTarget.style.background = "#FFFFFF"; e.currentTarget.style.color = "#0F172A"; }}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
 
-                  {/* Rating */}
-                  <div style={{ display: "flex", alignItems: "center", gap: 6, color: "#4A5568", fontSize: 13, fontWeight: 700 }}>
-                    {item.rating}
-                    <div style={{ display: "flex", color: "#4A5568" }}>
-                      {[1, 2, 3, 4, 5].map(star => <svg key={star} width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>)}
+            {/* 3 Cards Container (Left, Center Golden, Right) */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1.15fr 1fr", gap: 16, alignItems: "center" }}>
+              {[
+                { ...testimonialsList[(currentTestimonial - 1 + testimonialsList.length) % testimonialsList.length], isCenter: false },
+                { ...testimonialsList[currentTestimonial], isCenter: true },
+                { ...testimonialsList[(currentTestimonial + 1) % testimonialsList.length], isCenter: false }
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    background: item.isCenter
+                      ? "linear-gradient(135deg, #FFE492 0%, #FFFFFF 65%)"
+                      : "linear-gradient(135deg, #FFFDEB 0%, #FFFFFF 80%)",
+                    borderRadius: 24,
+                    padding: item.isCenter ? "32px 30px" : "24px 22px",
+                    boxShadow: item.isCenter
+                      ? "0 20px 45px rgba(0,0,0,0.09)"
+                      : "0 6px 20px rgba(0,0,0,0.03)",
+                    border: item.isCenter
+                      ? "1px solid rgba(255, 228, 146, 0.6)"
+                      : "1px solid rgba(0,0,0,0.05)",
+                    transform: item.isCenter ? "scale(1.05)" : "scale(0.92)",
+                    opacity: item.isCenter ? 1 : 0.72,
+                    zIndex: item.isCenter ? 5 : 1,
+                    transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    minHeight: item.isCenter ? 260 : 230
+                  }}
+                >
+                  <div>
+                    {/* Top Row: Big Quote + Rating Stars */}
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 14 }}>
+                      {/* Big White Quote Icon */}
+                      <svg width="40" height="40" viewBox="0 0 24 24" fill="#FFFFFF" style={{ filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.04))" }}>
+                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                      </svg>
+
+                      {/* Rating */}
+                      <div style={{ display: "flex", alignItems: "center", gap: 5, color: "#4A5568", fontSize: item.isCenter ? 13 : 12, fontWeight: 700 }}>
+                        <span>{item.rating}</span>
+                        <div style={{ display: "flex", color: "#4A5568" }}>
+                          {[1, 2, 3, 4, 5].map(star => (
+                            <svg key={star} width={item.isCenter ? "13" : "11"} height={item.isCenter ? "13" : "11"} viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                            </svg>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Review Quote */}
+                    <p style={{
+                      fontSize: item.isCenter ? 14.5 : 13,
+                      color: item.isCenter ? "#334155" : "#64748B",
+                      lineHeight: 1.6,
+                      marginBottom: 22,
+                      fontWeight: item.isCenter ? 600 : 400
+                    }}>
+                      "{item.review}"
+                    </p>
+                  </div>
+
+                  {/* Reviewer Details */}
+                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      style={{
+                        width: item.isCenter ? 44 : 38,
+                        height: item.isCenter ? 44 : 38,
+                        borderRadius: "50%",
+                        objectFit: "cover",
+                        border: "2px solid #FFF",
+                        boxShadow: "0 2px 8px rgba(0,0,0,0.1)"
+                      }}
+                    />
+                    <div>
+                      <div style={{ fontWeight: 700, color: "#0F172A", fontSize: item.isCenter ? 14.5 : 13.5 }}>{item.name}</div>
+                      <div style={{ color: "#64748B", fontSize: item.isCenter ? 12.5 : 11.5, fontWeight: 500 }}>{item.role}</div>
                     </div>
                   </div>
                 </div>
+              ))}
+            </div>
 
-                <p style={{ fontSize: item.featured ? 14.5 : 13.5, color: "#4A5568", lineHeight: 1.6, marginBottom: 20, fontWeight: 500 }}>
-                  "{item.review}"
-                </p>
-
-                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                  <img src={item.image} alt={item.name} style={{ width: 44, height: 44, borderRadius: "50%", objectFit: "cover", border: "2px solid #FFF", boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }} />
-                  <div>
-                    <div style={{ fontWeight: 700, color: "#0F172A", fontSize: 15 }}>{item.name}</div>
-                    <div style={{ color: "#4A5568", fontSize: 13, fontWeight: 500 }}>{item.role}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
+            {/* Pagination Dot Indicators */}
+            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 8, marginTop: 28 }}>
+              {testimonialsList.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentTestimonial(idx)}
+                  style={{
+                    width: currentTestimonial === idx ? 28 : 8,
+                    height: 8,
+                    borderRadius: 10,
+                    background: currentTestimonial === idx ? "#16A34A" : "#CBD5E1",
+                    border: "none",
+                    cursor: "pointer",
+                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                    padding: 0
+                  }}
+                  aria-label={`Go to review ${idx + 1}`}
+                />
+              ))}
+            </div>
           </div>
 
         </div>
