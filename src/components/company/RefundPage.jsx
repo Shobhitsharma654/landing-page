@@ -528,7 +528,7 @@ const RefundPage = () => {
   };
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "clip", minHeight: "100vh" }}>
+    <div className="refund-page-wrapper" style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "clip", minHeight: "100vh" }}>
       <style>{`
         .no-scrollbar::-webkit-scrollbar { display: none !important; }
         .no-scrollbar { -ms-overflow-style: none !important; scrollbar-width: none !important; }
@@ -556,6 +556,7 @@ const RefundPage = () => {
           background: rgba(22,163,74,0.08);
           border-left-color: #16A34A; padding-left: 16px;
         }
+        /* ── STANDARDIZED RESPONSIVE TYPOGRAPHY & PADDING ── */
         @media (max-width: 1366px) {
           .refund-container {
             gap: 32px !important;
@@ -565,10 +566,64 @@ const RefundPage = () => {
             padding: 16px !important;
             max-height: calc(100vh - 120px) !important;
           }
+          .refund-page-wrapper section {
+            padding-left: 5% !important;
+            padding-right: 5% !important;
+          }
+          .refund-page-wrapper h1 {
+            font-size: clamp(24px, 2.8vw, 38px) !important;
+          }
+          .refund-page-wrapper h2 {
+            font-size: clamp(20px, 2.4vw, 28px) !important;
+          }
+          .refund-page-wrapper h3 {
+            font-size: 15px !important;
+          }
+          .refund-page-wrapper p {
+            font-size: 13.5px !important;
+            line-height: 1.65 !important;
+          }
+        }
+        @media (max-width: 1299px) {
+          .refund-page-wrapper section {
+            padding-left: 4% !important;
+            padding-right: 4% !important;
+          }
+          .refund-page-wrapper h1 {
+            font-size: clamp(22px, 2.6vw, 34px) !important;
+          }
+          .refund-page-wrapper h2 {
+            font-size: clamp(18px, 2.2vw, 25px) !important;
+          }
+          .refund-page-wrapper h3 {
+            font-size: 14.5px !important;
+          }
+          .refund-page-wrapper p {
+            font-size: 13px !important;
+            line-height: 1.6 !important;
+          }
         }
         @media (max-width: 1024px) {
           .refund-sidebar { display: none !important; }
           .refund-container { gap: 0; }
+        }
+        @media (max-width: 768px) {
+          .refund-page-wrapper section {
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+          }
+          .refund-page-wrapper h1 {
+            font-size: clamp(20px, 2.4vw, 28px) !important;
+          }
+          .refund-page-wrapper h2 {
+            font-size: clamp(17px, 2vw, 22px) !important;
+          }
+          .refund-page-wrapper h3 {
+            font-size: 13.5px !important;
+          }
+          .refund-page-wrapper p {
+            font-size: 12.5px !important;
+          }
         }
       `}</style>
 

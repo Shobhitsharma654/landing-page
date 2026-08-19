@@ -198,7 +198,7 @@ const CareersPage = () => {
   const [activeStep, setActiveStep] = useState(0);
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A" }}>
+    <div className="careers-page-wrapper" style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -285,8 +285,138 @@ const CareersPage = () => {
           background: #4ADE80;
         }
 
+        /* ── RESPONSIVE MEDIA QUERIES FOR LAPTOPS & MOBILE ── */
+        @media (max-width: 1366px) {
+          .careers-page-wrapper section {
+            padding-top: 44px !important;
+            padding-bottom: 44px !important;
+            padding-left: 5% !important;
+            padding-right: 5% !important;
+          }
+          .careers-page-wrapper section:first-of-type {
+            padding-top: 95px !important;
+            padding-bottom: 40px !important;
+          }
+          .careers-cta-section {
+            padding: 36px 5% !important;
+          }
+          .careers-page-wrapper h1 {
+            font-size: clamp(24px, 2.8vw, 38px) !important;
+          }
+          .careers-page-wrapper h2 {
+            font-size: clamp(20px, 2.4vw, 28px) !important;
+          }
+          .careers-page-wrapper h3 {
+            font-size: 15px !important;
+          }
+          .careers-page-wrapper p {
+            font-size: 13.5px !important;
+            line-height: 1.65 !important;
+          }
+          .careers-btn-primary, .careers-btn-secondary {
+            padding: 11px 24px !important;
+            font-size: 13.5px !important;
+          }
+          .why-card {
+            padding: 24px 20px !important;
+          }
+        }
+
+        /* ── 1280px x 720px (HD Laptop Screens) & 1299px ── */
+        @media (max-width: 1299px) {
+          .careers-page-wrapper section {
+            padding-top: 36px !important;
+            padding-bottom: 36px !important;
+            padding-left: 4% !important;
+            padding-right: 4% !important;
+          }
+          .careers-page-wrapper section:first-of-type {
+            padding-top: 90px !important;
+            padding-bottom: 32px !important;
+          }
+          .careers-cta-section {
+            padding: 28px 4% !important;
+          }
+          .careers-page-wrapper h1 {
+            font-size: clamp(22px, 2.6vw, 34px) !important;
+          }
+          .careers-page-wrapper h2 {
+            font-size: clamp(18px, 2.2vw, 25px) !important;
+          }
+          .careers-page-wrapper h3 {
+            font-size: 14.5px !important;
+          }
+          .careers-page-wrapper p {
+            font-size: 13px !important;
+            line-height: 1.6 !important;
+          }
+          .careers-btn-primary, .careers-btn-secondary {
+            padding: 10px 20px !important;
+            font-size: 13px !important;
+          }
+          .why-card {
+            padding: 20px 18px !important;
+          }
+          .why-grid {
+            gap: 16px !important;
+          }
+        }
+
+        /* ── Small Laptops / Netbooks (1024px) ── */
+        @media (max-width: 1024px) {
+          .careers-page-wrapper section {
+            padding-top: 30px !important;
+            padding-bottom: 30px !important;
+            padding-left: 4% !important;
+            padding-right: 4% !important;
+          }
+          .careers-page-wrapper section:first-of-type {
+            padding-top: 85px !important;
+            padding-bottom: 28px !important;
+          }
+          .careers-cta-section {
+            padding: 24px 4% !important;
+          }
+          .why-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 16px !important;
+          }
+        }
+
+        /* ── Mobile Smartphones (768px) ── */
         @media (max-width: 768px) {
+          .careers-page-wrapper section {
+            padding-top: 24px !important;
+            padding-bottom: 24px !important;
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+          }
+          .careers-page-wrapper section:first-of-type {
+            padding-top: 80px !important;
+            padding-bottom: 24px !important;
+          }
+          .careers-cta-section {
+            padding: 20px 16px !important;
+          }
+          .careers-page-wrapper h1 {
+            font-size: clamp(20px, 2.4vw, 28px) !important;
+          }
+          .careers-page-wrapper h2 {
+            font-size: clamp(17px, 2vw, 22px) !important;
+          }
+          .careers-page-wrapper h3 {
+            font-size: 13.5px !important;
+          }
+          .careers-page-wrapper p {
+            font-size: 12.5px !important;
+          }
           .careers-hero-btns { flex-direction: column; }
+          .careers-btn-primary, .careers-btn-secondary {
+            width: 100% !important;
+            justify-content: center !important;
+            padding: 10px 16px !important;
+            font-size: 12.5px !important;
+          }
           .teams-grid { grid-template-columns: 1fr !important; }
           .steps-grid { grid-template-columns: 1fr 1fr !important; }
           .tech-grid { grid-template-columns: 1fr !important; }
@@ -326,7 +456,7 @@ const CareersPage = () => {
             <span style={{ fontSize: 12, fontWeight: 700, color: "#16A34A", letterSpacing: "0.3px" }}>We're Hiring</span>
           </div>
 
-          <h1 style={{ fontSize: "clamp(35px, 2.9vw, 62px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-2.5px", lineHeight: 1.05, marginBottom: 20, maxWidth: 740 }}>
+          <h1 style={{ fontSize: "clamp(35px, 2.9vw, 62px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1.5px", lineHeight: 1.05, marginBottom: 20, maxWidth: 740 }}>
             Careers at <span style={{ color: "#16A34A" }}>MessBee</span>
           </h1>
           <p style={{ fontSize: 16, fontWeight: 700, color: "#334155", marginBottom: 16, letterSpacing: "-0.3px" }}>
@@ -578,7 +708,7 @@ const CareersPage = () => {
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 56 }}>
             <p style={{ fontSize: 12, fontWeight: 700, color: "#4ADE80", textTransform: "uppercase", letterSpacing: "1.5px", marginBottom: 12 }}>Hiring Process</p>
-            <h2 style={{ fontSize: "clamp(28px, 3vw, 42px)", fontWeight: 900, color: "#FFFFFF", letterSpacing: "-1.5px", marginBottom: 16 }}>
+            <h2 style={{ fontSize: "clamp(28px, 2.9vw, 45px)", fontWeight: 900, color: "#FFFFFF", letterSpacing: "-1.5px", marginBottom: 16 }}>
               How Our Hiring <span style={{ color: "#4ADE80" }}>Process Works</span>
             </h2>
             <p style={{ fontSize: 16, color: "#94A3B8", maxWidth: 480, margin: "0 auto" }}>
@@ -696,7 +826,7 @@ const CareersPage = () => {
       </section>
 
       {/* ═══ JOIN US CTA ═══ */}
-      <section style={{ padding: "48px 6%", background: "linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%)", position: "relative", overflow: "hidden", borderTop: "1px solid #BBF7D0" }}>
+      <section className="careers-cta-section" style={{ padding: "48px 6%", background: "linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%)", position: "relative", overflow: "hidden", borderTop: "1px solid #BBF7D0" }}>
         <div style={{
           position: "absolute", inset: 0,
           backgroundImage: "radial-gradient(circle, #86EFAC 1px, transparent 1px)",

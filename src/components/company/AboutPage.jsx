@@ -168,17 +168,69 @@ const AboutPage = () => {
 
         .capabilities-grid-cols {
           display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 12px 20px;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 14px 20px;
           flex: 1 1 380px;
-          margin-top: 8px;
+          margin-top: 24px;
           align-content: flex-start;
         }
-        @media (max-width: 640px) {
+
+        .capability-pill-badge {
+          font-size: 15px;
+        }
+
+        /* Responsive scaling for pill chips grid & margin-top */
+        @media (max-width: 1366px) {
+          .capabilities-grid-cols {
+            gap: 12px 18px;
+            margin-top: 22px;
+          }
+          .capability-pill-badge {
+            font-size: 14px !important;
+            padding: 7px 16px !important;
+          }
+        }
+        @media (max-width: 1299px) {
+          .capabilities-grid-cols {
+            gap: 10px 14px;
+            margin-top: 20px;
+          }
+          .capability-pill-badge {
+            font-size: 13px !important;
+            padding: 6px 14px !important;
+          }
+        }
+        @media (max-width: 1024px) {
+          .capabilities-grid-cols {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px 12px !important;
+            margin-top: 24px !important;
+          }
+          .capability-pill-badge {
+            font-size: 13px !important;
+            padding: 6px 14px !important;
+          }
+        }
+        @media (max-width: 768px) {
+          .capabilities-grid-cols {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 8px 10px !important;
+            margin-top: 20px !important;
+          }
+          .capability-pill-badge {
+            font-size: 12.5px !important;
+            padding: 6px 12px !important;
+          }
+        }
+        @media (max-width: 576px) {
           .capabilities-grid-cols {
             grid-template-columns: 1fr !important;
-            gap: 10px !important;
+            gap: 8px !important;
             margin-top: 16px !important;
+          }
+          .capability-pill-badge {
+            font-size: 12px !important;
+            padding: 6px 14px !important;
           }
         }
 
@@ -187,69 +239,93 @@ const AboutPage = () => {
           padding: 60px 6%;
         }
         .about-hero-section {
-          padding: 80px 6% 70px;
+          padding: 100px 6% 70px;
         }
+
+        /* ── Standard Laptops (1366px) ── */
         @media (max-width: 1366px) {
-          .about-section {
-            padding: 48px 4% !important;
+          .about-page-wrapper section {
+            padding: 48px 5% !important;
           }
-          .about-hero-section {
-            padding: 54px 4% 44px !important;
+          .about-page-wrapper .about-hero-section {
+            padding: 100px 5% 54px !important;
           }
-          .hero-flex-container {
-            gap: 40px !important;
+          .hero-flex-container,
+          .capabilities-container,
+          .connectivity-container,
+          .security-container {
+            gap: 32px !important;
           }
           .hero-left-col {
             flex: 0 0 55% !important;
           }
-          .capabilities-container {
-            gap: 40px !important;
-          }
           .capabilities-left {
             flex: 1.2 1 480px !important;
-          }
-          .connectivity-container {
-            gap: 40px !important;
           }
           .connectivity-left {
             flex: 1 1 440px !important;
           }
-          .security-container {
-            gap: 40px !important;
-          }
           .security-left {
             flex: 1 1 440px !important;
           }
-        }
 
-        /* ── Standard Laptops / Desktops (1280px) ── */
-        @media (max-width: 1280px) {
-          .about-page-wrapper .about-hero-section h1,
-          .about-page-wrapper .about-section h1 {
-            font-size: clamp(24px, 2.8vw, 36px) !important;
+          /* Text sizes for 1366px */
+          .about-page-wrapper h1 {
+            font-size: clamp(24px, 2.8vw, 38px) !important;
           }
-          .about-page-wrapper .about-section h2,
-          .about-page-wrapper section h2,
           .about-page-wrapper h2 {
-            font-size: clamp(18px, 2.2vw, 26px) !important;
+            font-size: clamp(20px, 2.4vw, 28px) !important;
           }
-          .about-page-wrapper .about-section h3,
-          .about-page-wrapper section h3,
           .about-page-wrapper h3 {
-            font-size: clamp(16px, 1.8vw, 20px) !important;
+            font-size: 15px !important;
           }
-          .about-page-wrapper .about-hero-section p,
-          .about-page-wrapper .about-section p,
-          .about-page-wrapper section p,
           .about-page-wrapper p {
             font-size: 13.5px !important;
             line-height: 1.65 !important;
           }
-          .about-page-wrapper .hero-left-col p:first-of-type {
-            font-size: 15px !important;
-          }
+          .about-page-wrapper .hero-left-col p:first-of-type,
           .about-page-wrapper .capabilities-left p:first-of-type {
-            font-size: 13.5px !important;
+            font-size: 14.5px !important;
+          }
+          
+          /* Icon sizes for cards */
+          .about-page-wrapper svg {
+            max-width: 100%;
+          }
+        }
+
+        /* ── Compact Laptops (1299px / 1280x720 HD) ── */
+        @media (max-width: 1299px) {
+          .about-page-wrapper section {
+            padding: 34px 4% !important;
+          }
+          .about-page-wrapper .about-hero-section {
+            padding: 90px 4% 34px !important;
+          }
+          .hero-flex-container,
+          .capabilities-container,
+          .connectivity-container,
+          .security-container {
+            gap: 24px !important;
+          }
+          
+          /* Text sizes for 1299px */
+          .about-page-wrapper h1 {
+            font-size: clamp(22px, 2.6vw, 34px) !important;
+          }
+          .about-page-wrapper h2 {
+            font-size: clamp(18px, 2.2vw, 25px) !important;
+          }
+          .about-page-wrapper h3 {
+            font-size: 14.5px !important;
+          }
+          .about-page-wrapper p {
+            font-size: 13px !important;
+            line-height: 1.6 !important;
+          }
+          .about-page-wrapper .hero-left-col p:first-of-type,
+          .about-page-wrapper .capabilities-left p:first-of-type {
+            font-size: 14px !important;
           }
         }
 
@@ -259,7 +335,7 @@ const AboutPage = () => {
             padding: 40px 4% !important;
           }
           .about-hero-section {
-            padding: 44px 4% 36px !important;
+            padding: 95px 4% 36px !important;
           }
           .hero-flex-container {
             gap: 30px !important;
@@ -346,7 +422,7 @@ const AboutPage = () => {
             padding: 36px 4% !important;
           }
           .about-hero-section {
-            padding: 36px 4% 28px !important;
+            padding: 90px 4% 28px !important;
           }
 
           /* Text size reductions for tablets/large phones */
@@ -615,6 +691,7 @@ const AboutPage = () => {
               return (
                 <div
                   key={i}
+                  className="capability-pill-badge"
                   onMouseEnter={() => setHoveredCap(i)}
                   onMouseLeave={() => setHoveredCap(null)}
                   style={{
@@ -2550,13 +2627,26 @@ const AboutPage = () => {
       </section>
 
       {/* ── OUR VISION ── */}
-      <section style={{ padding: "60px 6%", background: "#F8FAFC", borderTop: "1px solid #F1F5F9", borderBottom: "1px solid #F1F5F9" }}>
+      <section className="vision-section" style={{ background: "#F8FAFC", borderTop: "1px solid #F1F5F9", borderBottom: "1px solid #F1F5F9" }}>
         <style>{`
+          .vision-section {
+            padding: 60px 6%;
+          }
+          .vision-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            max-width: 980px;
+            margin: 0 auto 36px auto;
+          }
           .vision-card {
             background: #FFFFFF;
             border: 1px solid #E2E8F0;
             border-radius: 16px;
-            padding: 24px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-align: left;
           }
@@ -2564,6 +2654,123 @@ const AboutPage = () => {
             transform: translateY(-4px);
             border-color: #16A34A;
             box-shadow: 0 12px 30px rgba(22, 163, 74, 0.05);
+          }
+          .vision-card-title {
+            font-size: 14.5px;
+            font-weight: 800;
+            color: #0F172A;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.3;
+          }
+          .vision-banner {
+            display: inline-block;
+            background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);
+            border: 1px solid #BBF7D0;
+            border-radius: 30px;
+            padding: 14px 36px;
+            box-shadow: 0 4px 12px rgba(22, 163, 74, 0.04);
+          }
+          .vision-banner-text {
+            font-size: 15px;
+            font-weight: 800;
+            color: #15803D;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+          }
+
+          /* Responsive scaling for Vision Section */
+          @media (max-width: 1366px) {
+            .vision-section {
+              padding: 46px 5% !important;
+            }
+            .vision-cards-grid {
+              grid-template-columns: repeat(3, 1fr) !important;
+              gap: 14px !important;
+              max-width: 900px !important;
+              margin-bottom: 28px !important;
+            }
+            .vision-card {
+              padding: 14px 16px !important;
+              gap: 12px !important;
+            }
+            .vision-card-title {
+              font-size: 13.5px !important;
+            }
+            .vision-banner {
+              padding: 12px 28px !important;
+            }
+            .vision-banner-text {
+              font-size: 14px !important;
+            }
+          }
+
+          @media (max-width: 1299px) {
+            .vision-section {
+              padding: 36px 4% !important;
+            }
+            .vision-cards-grid {
+              grid-template-columns: repeat(3, 1fr) !important;
+              gap: 12px !important;
+              max-width: 850px !important;
+              margin-bottom: 24px !important;
+            }
+            .vision-card {
+              padding: 12px 14px !important;
+              gap: 10px !important;
+            }
+            .vision-card-title {
+              font-size: 13px !important;
+            }
+            .vision-banner {
+              padding: 10px 22px !important;
+              border-radius: 24px !important;
+            }
+            .vision-banner-text {
+              font-size: 13px !important;
+            }
+          }
+
+          @media (max-width: 1024px) {
+            .vision-cards-grid {
+              grid-template-columns: repeat(2, 1fr) !important;
+              gap: 12px !important;
+            }
+            .vision-card-title {
+              font-size: 13px !important;
+            }
+          }
+
+          @media (max-width: 768px) {
+            .vision-section {
+              padding: 28px 16px !important;
+            }
+            .vision-cards-grid {
+              grid-template-columns: repeat(2, 1fr) !important;
+              gap: 10px !important;
+              margin-bottom: 20px !important;
+            }
+            .vision-card {
+              padding: 10px 12px !important;
+              gap: 8px !important;
+            }
+            .vision-card-title {
+              font-size: 12px !important;
+            }
+            .vision-banner {
+              padding: 10px 16px !important;
+              border-radius: 20px !important;
+            }
+            .vision-banner-text {
+              font-size: 12px !important;
+            }
+          }
+
+          @media (max-width: 576px) {
+            .vision-cards-grid {
+              grid-template-columns: 1fr !important;
+              gap: 8px !important;
+            }
           }
         `}</style>
 
@@ -2580,29 +2787,23 @@ const AboutPage = () => {
               <span style={{ color: "#16A34A", fontSize: 12, fontWeight: 700, letterSpacing: 0.8, textTransform: "uppercase" }}>Our Vision</span>
             </div>
 
-            <h2 style={{ fontSize: "clamp(28px,3.5vw,42px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.18, maxWidth: 850, margin: "0 auto 24px auto" }}>
+            <h2 style={{ fontSize: "clamp(24px, 2.8vw, 38px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.18, maxWidth: 850, margin: "0 auto 24px auto" }}>
               A Digital Future Where Every Business<br />
               <span style={{ color: "#16A34A" }}>Can Own Its Growth</span>
             </h2>
           </div>
 
           {/* Core Vision Paragraph */}
-          <p style={{ fontSize: 16, color: "#475569", lineHeight: 1.9, maxWidth: 850, margin: "0 auto 48px auto", fontFamily: "'Inter', sans-serif" }}>
+          <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.8, maxWidth: 850, margin: "0 auto 40px auto", fontFamily: "'Inter', sans-serif" }}>
             We envision a future where a local business can access the fundamental digital capabilities required to compete, serve customers and grow—without having to build a complex technology infrastructure from scratch.
           </p>
 
           {/* Grid Layout of Ownership Pillars */}
-          <div style={{ fontSize: 13, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 24 }}>
+          <div style={{ fontSize: 12.5, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 20 }}>
             We want businesses to have:
           </div>
 
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-            gap: 16,
-            maxWidth: 950,
-            margin: "0 auto 36px auto"
-          }}>
+          <div className="vision-cards-grid">
             {[
               { title: "Their Own Brand", icon: <FiTag style={{ color: "#16A34A", width: 16, height: 16 }} /> },
               { title: "Their Own Customer Relationships", icon: <FiHeart style={{ color: "#16A34A", width: 16, height: 16 }} /> },
@@ -2611,22 +2812,22 @@ const AboutPage = () => {
               { title: "Their Own AI-Assisted Experience", icon: <FiCpu style={{ color: "#16A34A", width: 16, height: 16 }} /> },
               { title: "Their Own Digital Ecosystem", icon: <FiGlobe style={{ color: "#16A34A", width: 16, height: 16 }} /> }
             ].map((pillar, idx) => (
-              <div key={idx} className="vision-card" style={{ display: "flex", alignItems: "center", gap: 14, padding: "16px 20px" }}>
+              <div key={idx} className="vision-card">
                 <div style={{
-                  width: "36px",
-                  height: "36px",
+                  width: "34px",
+                  height: "34px",
                   borderRadius: "8px",
                   background: "rgba(22, 163, 74, 0.06)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  fontSize: "16px",
+                  fontSize: "15px",
                   border: "1px solid rgba(22, 163, 74, 0.12)",
                   flexShrink: 0
                 }}>
                   {pillar.icon}
                 </div>
-                <h4 style={{ fontSize: 16.5, fontWeight: 800, color: "#0F172A", margin: 0, fontFamily: "'Inter', sans-serif", lineHeight: 1.3, textAlign: "left" }}>
+                <h4 className="vision-card-title">
                   {pillar.title}
                 </h4>
               </div>
@@ -2634,15 +2835,8 @@ const AboutPage = () => {
           </div>
 
           {/* Bottom Ecosystem Callout */}
-          <div style={{
-            display: "inline-block",
-            background: "linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%)",
-            border: "1px solid #BBF7D0",
-            borderRadius: "30px",
-            padding: "14px 36px",
-            boxShadow: "0 4px 12px rgba(22, 163, 74, 0.04)"
-          }}>
-            <p style={{ fontSize: 16, fontWeight: 800, color: "#15803D", margin: 0, fontFamily: "'Inter', sans-serif" }}>
+          <div className="vision-banner">
+            <p className="vision-banner-text">
               MessBee&apos;s vision is to make these capabilities more accessible through one connected Digital Business Operating System.
             </p>
           </div>
@@ -2801,7 +2995,7 @@ const AboutPage = () => {
           }
           .about-faq-trigger {
             width: 100%;
-            padding: 15px 30px;
+            padding: 14px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -2812,7 +3006,7 @@ const AboutPage = () => {
             outline: none;
           }
           .about-faq-question {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 800;
             color: #0F172A;
             margin: 0;
@@ -2826,12 +3020,13 @@ const AboutPage = () => {
             opacity: 0;
             overflow: hidden;
             transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            padding: 0 32px;
+            padding: 0 24px;
+            font-size: 13.5px;
           }
           .about-faq-answer.open {
             max-height: 250px;
             opacity: 1;
-            padding-bottom: 24px;
+            padding-bottom: 18px;
           }
           .faq-icon-holder {
             width: 32px;
@@ -2847,6 +3042,62 @@ const AboutPage = () => {
           .about-faq-card.open-card .faq-icon-holder {
             background: #16A34A;
             transform: rotate(180deg);
+          }
+
+          /* Small Laptops & Compact Notebooks (max-width: 1299px / 1366px) */
+          @media (max-width: 1330px) {
+            .about-faq-trigger {
+              padding: 9px 18px;
+            }
+            .about-faq-question {
+              font-size: 10.5px;
+            }
+            .about-faq-answer {
+              padding: 0 18px;
+              font-size: 11.5px;
+            }
+            .about-faq-answer.open {
+              padding-bottom: 14px;
+            }
+          }
+          @media (max-width: 1299px) {
+            .about-faq-trigger {
+              padding: 8px 14px;
+            }
+            .about-faq-question {
+              font-size: 10.5px !important;
+            }
+            .about-faq-answer {
+              padding: 0 14px;
+              font-size: 10.5px !important;
+            }
+            .about-faq-answer.open {
+              padding-bottom: 12px;
+            }
+            .faq-icon-holder {
+              width: 24px;
+              height: 24px;
+            }
+          }
+          /* Mobile Smartphones (max-width: 768px) */
+          @media (max-width: 768px) {
+            .about-faq-trigger {
+              padding: 6px 12px;
+            }
+            .about-faq-question {
+              font-size: 10px !important;
+            }
+            .about-faq-answer {
+              padding: 0 12px;
+              font-size: 10px !important;
+            }
+            .about-faq-answer.open {
+              padding-bottom: 10px;
+            }
+            .faq-icon-holder {
+              width: 22px;
+              height: 22px;
+            }
           }
         `}</style>
 
