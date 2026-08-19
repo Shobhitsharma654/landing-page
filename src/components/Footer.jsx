@@ -24,7 +24,7 @@ const RESOURCES_LINKS = [
   { label: "Help Center",       path: "/resources/help-center" },
   { label: "Blog",              path: "/resources/blog" },
   { label: "FAQs",              path: "/resources/faqs" },
-  { label: "Contact Support",   path: "/contact#contact-form-section" },
+  { label: "Contact Support",   path: "/contact-support" },
 ];
 
 const LEGAL_LINKS = [
@@ -171,6 +171,47 @@ const Footer = () => {
           text-decoration: none;
         }
         .footer-bottom-link:hover { color: #4ADE80; }
+
+        .footer-logo-text {
+          font-size: 22px;
+          font-weight: 900;
+          letter-spacing: -0.6px;
+          font-family: 'Inter', sans-serif;
+          display: inline-flex;
+          align-items: center;
+        }
+
+        /* Responsive scaling for laptop and mobile */
+        @media (max-width: 1366px) {
+          .footer-logo-text {
+            font-size: 20px;
+          }
+        }
+        @media (max-width: 1299px) {
+          .footer-logo-text {
+            font-size: 18.5px;
+          }
+        }
+        @media (max-width: 1024px) {
+          .footer-grid-container {
+            grid-template-columns: 1fr 1fr 1fr !important;
+            gap: 24px !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .footer-grid-container {
+            grid-template-columns: 1fr !important;
+            gap: 20px !important;
+          }
+          .footer-top-strip {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 12px !important;
+          }
+          .footer-logo-text {
+            font-size: 17.5px;
+          }
+        }
       `}</style>
 
       {/* ═══ TOP STRIP — Brand & tagline ═══ */}
@@ -178,13 +219,16 @@ const Footer = () => {
         borderBottom: "1px solid rgba(255,255,255,0.06)",
         padding: "20px 6% 18px",
       }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 20 }}>
+        <div className="footer-top-strip" style={{ maxWidth: 1280, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 20 }}>
           {/* Logo + brand */}
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <div style={{ width: 28, height: 28, borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)", flexShrink: 0 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, cursor: "pointer" }} onClick={() => { navigate("/"); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+            <div style={{ width: 32, height: 32, borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)", flexShrink: 0 }}>
               <img src={defaultLogo} alt="MessBee" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
             </div>
-            <img src={messbeeText} alt="MessBee Text" style={{ height: 16, objectFit: "contain", filter: "brightness(0) invert(1)" }} />
+            <span className="footer-logo-text">
+              <span style={{ color: "#15803D" }}>Mess</span>
+              <span style={{ color: "#4ADE80" }}>Bee</span>
+            </span>
           </div>
 
           {/* Tagline badge */}
@@ -204,7 +248,7 @@ const Footer = () => {
 
       {/* ═══ MAIN LINK COLUMNS ═══ */}
       <div style={{ padding: "30px 6%", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-        <div style={{
+        <div className="footer-grid-container" style={{
           maxWidth: 1280, margin: "0 auto",
           display: "grid",
           gridTemplateColumns: "2fr 1.2fr 1.2fr 1.4fr 1.5fr",

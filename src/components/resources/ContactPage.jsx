@@ -375,6 +375,11 @@ const ContactPage = () => {
           border-color: #BBF7D0 !important;
         }
 
+        /* ── FORM CONTAINER BOXES ── */
+        .contact-form-info-box, .contact-form-box {
+          padding: 24px !important;
+        }
+
         /* ── RESPONSIVE GRID & LAYOUT ── */
         .contact-hero-row {
           display: flex;
@@ -417,6 +422,18 @@ const ContactPage = () => {
           .grid-col-3 {
             grid-template-columns: repeat(2, 1fr);
           }
+          .contact-hero-section h1 {
+            font-size: clamp(24px, 3.2vw, 38px) !important;
+          }
+          .contact-section h2 {
+            font-size: clamp(20px, 2.6vw, 28px) !important;
+          }
+          .contact-section h3 {
+            font-size: 15px !important;
+          }
+          .contact-section p {
+            font-size: 13.5px !important;
+          }
         }
 
         /* Under 992px (Tablet) */
@@ -432,6 +449,18 @@ const ContactPage = () => {
           .grid-col-5 {
             grid-template-columns: repeat(2, 1fr);
           }
+          .contact-hero-section h1 {
+            font-size: clamp(22px, 3vw, 34px) !important;
+          }
+          .contact-section h2 {
+            font-size: clamp(18px, 2.4vw, 24px) !important;
+          }
+          .contact-section h3 {
+            font-size: 14px !important;
+          }
+          .contact-section p {
+            font-size: 13px !important;
+          }
         }
 
         /* Under 768px (Mobile Portrait/Landscape) */
@@ -444,6 +473,18 @@ const ContactPage = () => {
           }
           .grid-col-2 {
             grid-template-columns: 1fr;
+          }
+          .contact-hero-section h1 {
+            font-size: clamp(20px, 2.8vw, 30px) !important;
+          }
+          .contact-section h2 {
+            font-size: clamp(17px, 2.2vw, 22px) !important;
+          }
+          .contact-section h3 {
+            font-size: 13.5px !important;
+          }
+          .contact-section p {
+            font-size: 12.5px !important;
           }
         }
 
@@ -464,6 +505,18 @@ const ContactPage = () => {
           }
           .contact-form-info-box, .contact-form-box {
             padding: 20px 16px !important;
+          }
+          .contact-hero-section h1 {
+            font-size: clamp(18px, 2.6vw, 26px) !important;
+          }
+          .contact-section h2 {
+            font-size: clamp(16px, 2vw, 20px) !important;
+          }
+          .contact-section h3 {
+            font-size: 13px !important;
+          }
+          .contact-section p {
+            font-size: 12px !important;
           }
         }
 

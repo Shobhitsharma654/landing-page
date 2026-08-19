@@ -318,23 +318,75 @@ const ContactUsPage = () => {
         .social-link-btn.youtube:hover { background: #FF0000; border-color: #FF0000; box-shadow: 0 6px 15px rgba(255,0,0,0.3); }
         .social-link-btn.x:hover { background: #0F172A; border-color: #0F172A; box-shadow: 0 6px 15px rgba(15,23,42,0.3); }
 
-        /* Responsive Breakpoints */
+        /* ── RESPONSIVE MEDIA QUERIES FOR LAPTOPS & MOBILE ── */
 
-        /* Under 1200px (Medium screen / Small Laptop) */
-        @media (max-width: 1200px) {
-          .grid-col-5 {
-            grid-template-columns: repeat(3, 1fr);
+        /* Standard Laptops (max-width: 1366px) */
+        @media (max-width: 1366px) {
+          .contact-section {
+            padding: 42px 5% !important;
           }
-          .grid-col-3 {
-            grid-template-columns: repeat(2, 1fr);
+          .contact-hero-section h1 {
+            font-size: clamp(24px, 3vw, 40px) !important;
+          }
+          .contact-section h2 {
+            font-size: clamp(20px, 2.4vw, 30px) !important;
+          }
+          .contact-section h3 {
+            font-size: 15px !important;
+          }
+          .contact-section p {
+            font-size: 13.5px !important;
+            line-height: 1.65 !important;
+          }
+          .contact-btn-primary, .contact-btn-secondary {
+            padding: 10px 22px !important;
+            font-size: 13px !important;
           }
         }
 
-        /* Under 992px (Tablet) */
+        /* 1280px x 720px (HD Small Laptop Screens) & max-width: 1299px */
+        @media (max-width: 1299px) {
+          .contact-section {
+            padding: 34px 4% !important;
+          }
+          .grid-col-5 {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+          }
+          .grid-col-3 {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+          }
+          .contact-hero-section h1 {
+            font-size: clamp(22px, 2.6vw, 34px) !important;
+          }
+          .contact-section h2 {
+            font-size: clamp(18px, 2.2vw, 25px) !important;
+          }
+          .contact-section h3 {
+            font-size: 14px !important;
+          }
+          .contact-section p {
+            font-size: 13px !important;
+            line-height: 1.6 !important;
+          }
+          .contact-btn-primary, .contact-btn-secondary {
+            padding: 9px 18px !important;
+            font-size: 12.5px !important;
+          }
+          .contact-glass-card {
+            padding: 20px !important;
+          }
+        }
+
+        /* Tablets (max-width: 992px) */
         @media (max-width: 992px) {
+          .contact-section {
+            padding: 30px 4% !important;
+          }
           .contact-hero-row {
             flex-direction: column !important;
-            gap: 40px;
+            gap: 32px;
           }
           .contact-hero-left, .contact-hero-right {
             width: 100% !important;
@@ -345,10 +397,10 @@ const ContactUsPage = () => {
           }
         }
 
-        /* Under 768px (Mobile Portrait/Landscape) */
+        /* Mobile Landscapes/Portraits (max-width: 768px) */
         @media (max-width: 768px) {
           .contact-section {
-            padding: 48px 4% !important;
+            padding: 24px 16px !important;
           }
           .grid-col-3 {
             grid-template-columns: 1fr;
@@ -358,10 +410,10 @@ const ContactUsPage = () => {
           }
         }
 
-        /* Under 576px (Small Mobile) */
+        /* Small Mobile (max-width: 576px) */
         @media (max-width: 576px) {
           .contact-section {
-            padding: 40px 16px !important;
+            padding: 20px 14px !important;
           }
           .grid-col-5 {
             grid-template-columns: 1fr;
@@ -371,10 +423,10 @@ const ContactUsPage = () => {
             justify-content: center;
           }
           .contact-hero-row {
-            gap: 28px;
+            gap: 24px;
           }
           .contact-form-info-box, .contact-form-box {
-            padding: 24px 20px !important;
+            padding: 20px 16px !important;
           }
         }
 
@@ -446,7 +498,7 @@ const ContactUsPage = () => {
             {/* Recommended H1 */}
             <h1
               style={{
-                fontSize: "clamp(32px, 3.2vw, 48px)",
+                fontSize: "clamp(28px, 3.2vw, 40px)",
                 fontWeight: 900,
                 lineHeight: 1.1,
                 color: "#0F172A",

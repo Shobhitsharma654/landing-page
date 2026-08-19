@@ -483,6 +483,7 @@ const DpaPage = () => {
 
   return (
     <div
+      className="dpa-page-wrapper"
       style={{
         fontFamily: "'Inter', sans-serif",
         background: "#FFFFFF",
@@ -538,6 +539,7 @@ const DpaPage = () => {
           padding: 48px 6%;
         }
 
+        /* ── STANDARDIZED RESPONSIVE TYPOGRAPHY & PADDING ── */
         @media (max-width: 1366px) {
           .dpa-container {
             gap: 32px !important;
@@ -546,6 +548,48 @@ const DpaPage = () => {
             width: 270px !important;
             padding: 16px !important;
             max-height: calc(100vh - 120px) !important;
+          }
+          .dpa-page-wrapper section {
+            padding-left: 5% !important;
+            padding-right: 5% !important;
+          }
+          .dpa-page-wrapper h1 {
+            font-size: clamp(24px, 2.8vw, 38px) !important;
+          }
+          .dpa-page-wrapper h2 {
+            font-size: clamp(20px, 2.4vw, 28px) !important;
+          }
+          .dpa-page-wrapper h3 {
+            font-size: 15px !important;
+          }
+          .dpa-page-wrapper p {
+            font-size: 13.5px !important;
+            line-height: 1.65 !important;
+          }
+          .dpa-section-card {
+            padding: 24px !important;
+          }
+        }
+        @media (max-width: 1299px) {
+          .dpa-page-wrapper section {
+            padding-left: 4% !important;
+            padding-right: 4% !important;
+          }
+          .dpa-page-wrapper h1 {
+            font-size: clamp(22px, 2.6vw, 34px) !important;
+          }
+          .dpa-page-wrapper h2 {
+            font-size: clamp(18px, 2.2vw, 25px) !important;
+          }
+          .dpa-page-wrapper h3 {
+            font-size: 14.5px !important;
+          }
+          .dpa-page-wrapper p {
+            font-size: 13px !important;
+            line-height: 1.6 !important;
+          }
+          .dpa-section-card {
+            padding: 20px !important;
           }
         }
         @media (max-width: 1024px) {
@@ -556,9 +600,25 @@ const DpaPage = () => {
             gap: 0 !important;
           }
         }
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
           .policy-hero { padding-top: 110px; padding-bottom: 24px; }
-          .dpa-section-card { padding: 20px; }
+          .dpa-page-wrapper section {
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+          }
+          .dpa-page-wrapper h1 {
+            font-size: clamp(20px, 2.4vw, 28px) !important;
+          }
+          .dpa-page-wrapper h2 {
+            font-size: clamp(17px, 2vw, 22px) !important;
+          }
+          .dpa-page-wrapper h3 {
+            font-size: 13.5px !important;
+          }
+          .dpa-page-wrapper p {
+            font-size: 12.5px !important;
+          }
+          .dpa-section-card { padding: 18px !important; }
         }
       `}</style>
 

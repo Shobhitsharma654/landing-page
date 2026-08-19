@@ -861,7 +861,7 @@ const PrivacyPage = () => {
   };
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "clip", minHeight: "100vh" }}>
+    <div className="privacy-page-wrapper" style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "clip", minHeight: "100vh" }}>
       <style>{`
         .no-scrollbar::-webkit-scrollbar {
           display: none !important;
@@ -915,6 +915,7 @@ const PrivacyPage = () => {
           border-left-color: #16A34A;
           padding-left: 16px;
         }
+        /* ── STANDARDIZED RESPONSIVE TYPOGRAPHY & PADDING ── */
         @media (max-width: 1366px) {
           .privacy-container {
             gap: 32px !important;
@@ -924,6 +925,42 @@ const PrivacyPage = () => {
             padding: 16px !important;
             max-height: calc(100vh - 120px) !important;
           }
+          .privacy-page-wrapper section {
+            padding-left: 5% !important;
+            padding-right: 5% !important;
+          }
+          .privacy-page-wrapper h1 {
+            font-size: clamp(24px, 2.8vw, 38px) !important;
+          }
+          .privacy-page-wrapper h2 {
+            font-size: clamp(20px, 2.4vw, 28px) !important;
+          }
+          .privacy-page-wrapper h3 {
+            font-size: 15px !important;
+          }
+          .privacy-page-wrapper p {
+            font-size: 13.5px !important;
+            line-height: 1.65 !important;
+          }
+        }
+        @media (max-width: 1299px) {
+          .privacy-page-wrapper section {
+            padding-left: 4% !important;
+            padding-right: 4% !important;
+          }
+          .privacy-page-wrapper h1 {
+            font-size: clamp(22px, 2.6vw, 34px) !important;
+          }
+          .privacy-page-wrapper h2 {
+            font-size: clamp(18px, 2.2vw, 25px) !important;
+          }
+          .privacy-page-wrapper h3 {
+            font-size: 14.5px !important;
+          }
+          .privacy-page-wrapper p {
+            font-size: 13px !important;
+            line-height: 1.6 !important;
+          }
         }
         @media (max-width: 1024px) {
           .privacy-sidebar {
@@ -931,6 +968,24 @@ const PrivacyPage = () => {
           }
           .privacy-container {
             gap: 0 !important;
+          }
+        }
+        @media (max-width: 768px) {
+          .privacy-page-wrapper section {
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+          }
+          .privacy-page-wrapper h1 {
+            font-size: clamp(20px, 2.4vw, 28px) !important;
+          }
+          .privacy-page-wrapper h2 {
+            font-size: clamp(17px, 2vw, 22px) !important;
+          }
+          .privacy-page-wrapper h3 {
+            font-size: 13.5px !important;
+          }
+          .privacy-page-wrapper p {
+            font-size: 12.5px !important;
           }
         }
       `}</style>

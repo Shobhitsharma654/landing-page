@@ -75,7 +75,7 @@ const Navbar = () => {
     { label: "Help Center", path: "/resources/help-center" },
     { label: "Blog", path: "/resources/blog" },
     { label: "FAQs", path: "/resources/faqs" },
-    { label: "Contact Support", path: "/contact#contact-form-section" },
+    { label: "Contact Support", path: "/contact-support" },
   ];
 
   const companyLinks = [
@@ -120,10 +120,13 @@ const Navbar = () => {
       }}>
         {/* Logo */}
         <div style={{ display: "flex", alignItems: "center", gap: 10, cursor: "pointer" }} onClick={() => handleNavigation("/")}>
-          <div style={{ width: 32, height: 32, borderRadius: 8, overflow: "hidden" }}>
+          <div style={{ width: 32, height: 32, borderRadius: 8, overflow: "hidden", flexShrink: 0 }}>
             <img src={defaultLogo} alt="MessBee" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
           </div>
-          <img src={messbeeText} alt="MessBee Text" style={{ height: 16, objectFit: "contain" }} />
+          <span style={{ fontSize: 22, fontWeight: 900, letterSpacing: "-0.6px", fontFamily: "'Inter', sans-serif", display: "inline-flex", alignItems: "center" }}>
+            <span style={{ color: "#15803D" }}>Mess</span>
+            <span style={{ color: "#4ADE80" }}>Bee</span>
+          </span>
         </div>
 
         {/* Nav links */}
