@@ -462,7 +462,7 @@ const AiPage = () => {
                   </div>
 
                   {/* Visual panel varies by step type */}
-                  <div>
+                  <div style={{ marginBottom: -74 }}>
                     {step.visual && step.visual[0]?.q && (
                       /* AI chat Q&A visual */
                       <div style={{background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)",borderRadius:16,padding:22,border:"1px solid rgba(34,197,94,.3)",boxShadow:"0 20px 48px rgba(0,0,0,.25)",transform:"scale(0.82)",transformOrigin:"top right",height:410,display:"flex",flexDirection:"column"}}>
