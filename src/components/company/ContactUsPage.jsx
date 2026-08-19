@@ -257,6 +257,116 @@ const ContactUsPage = () => {
           border-color: #BBF7D0 !important;
         }
 
+        /* ── CATEGORY GLASS CARDS RESPONSIVENESS ── */
+        .category-card {
+          padding: 26px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+        .category-card-icon {
+          width: 42px;
+          height: 42px;
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 18px;
+          flex-shrink: 0;
+        }
+        .category-card-title {
+          font-size: 16.5px;
+          font-weight: 900;
+          color: #0F172A;
+          margin-bottom: 10px;
+          line-height: 1.3;
+        }
+        .category-card-desc {
+          font-size: 13.5px;
+          color: #64748B;
+          line-height: 1.6;
+          margin-bottom: 16px;
+        }
+        .category-card-footer {
+          border-top: 1.5px solid #F1F5F9;
+          padding-top: 14px;
+          font-size: 13.5px;
+          font-weight: 700;
+        }
+
+        @media (max-width: 1366px) {
+          .category-card {
+            padding: 22px !important;
+          }
+          .category-card-icon {
+            width: 38px !important;
+            height: 38px !important;
+            margin-bottom: 14px !important;
+          }
+          .category-card-icon svg {
+            width: 18px !important;
+            height: 18px !important;
+          }
+          .category-card-title {
+            font-size: 15px !important;
+            margin-bottom: 8px !important;
+          }
+          .category-card-desc {
+            font-size: 13px !important;
+            margin-bottom: 14px !important;
+          }
+          .category-card-footer {
+            padding-top: 12px !important;
+            font-size: 13px !important;
+          }
+        }
+
+        @media (max-width: 1299px) {
+          .category-card {
+            padding: 18px 16px !important;
+          }
+          .category-card-icon {
+            width: 36px !important;
+            height: 36px !important;
+            border-radius: 10px !important;
+            margin-bottom: 12px !important;
+          }
+          .category-card-icon svg {
+            width: 16px !important;
+            height: 16px !important;
+          }
+          .category-card-title {
+            font-size: 14px !important;
+            margin-bottom: 6px !important;
+          }
+          .category-card-desc {
+            font-size: 12.5px !important;
+            margin-bottom: 12px !important;
+            line-height: 1.5 !important;
+          }
+          .category-card-footer {
+            padding-top: 10px !important;
+            font-size: 12.5px !important;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .category-card {
+            padding: 16px 14px !important;
+          }
+          .category-card-icon {
+            width: 34px !important;
+            height: 34px !important;
+            margin-bottom: 10px !important;
+          }
+          .category-card-title {
+            font-size: 13.5px !important;
+          }
+          .category-card-desc {
+            font-size: 12px !important;
+          }
+        }
+
         /* ── RESPONSIVE GRID & LAYOUT ── */
         .contact-hero-row {
           display: flex;
@@ -630,29 +740,29 @@ const ContactUsPage = () => {
 
           <div className="grid-col-3" style={{ justifyContent: "center" }}>
             {/* Card 1: General Enquiries */}
-            <div className="contact-glass-card" style={{ padding: "28px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+            <div className="contact-glass-card category-card">
               <div>
-                <div style={{ width: 44, height: 44, borderRadius: 12, background: "#EFF6FF", color: "#3B82F6", border: "1.5px solid #BFDBFE", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20, fontSize: 20 }}>
+                <div className="category-card-icon" style={{ background: "#EFF6FF", color: "#3B82F6", border: "1.5px solid #BFDBFE" }}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
                 </div>
-                <h3 style={{ fontSize: 17, fontWeight: 900, color: "#0F172A", marginBottom: 10 }}>General Enquiries</h3>
-                <p style={{ fontSize: 13.5, color: "#64748B", lineHeight: 1.6, marginBottom: 16 }}>
+                <h3 className="category-card-title">General Enquiries</h3>
+                <p className="category-card-desc">
                   Have a question about MessBee, our products or how the platform works?
                 </p>
               </div>
-              <div style={{ borderTop: "1.5px solid #F1F5F9", paddingTop: 16, fontSize: 14, fontWeight: 700, color: "#3B82F6" }}>
+              <div className="category-card-footer" style={{ color: "#3B82F6" }}>
                 Email: info@messbee.com
               </div>
             </div>
 
             {/* Card 2: Sales & Business Enquiries */}
-            <div className="contact-glass-card" style={{ padding: "28px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+            <div className="contact-glass-card category-card">
               <div>
-                <div style={{ width: 44, height: 44, borderRadius: 12, background: "#F0FDF4", color: "#16A34A", border: "1.5px solid #BBF7D0", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20, fontSize: 20 }}>
+                <div className="category-card-icon" style={{ background: "#F0FDF4", color: "#16A34A", border: "1.5px solid #BBF7D0" }}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg>
                 </div>
-                <h3 style={{ fontSize: 17, fontWeight: 900, color: "#0F172A", marginBottom: 10 }}>Sales &amp; Business Enquiries</h3>
-                <p style={{ fontSize: 13.5, color: "#64748B", lineHeight: 1.6, marginBottom: 18 }}>
+                <h3 className="category-card-title">Sales &amp; Business Enquiries</h3>
+                <p className="category-card-desc">
                   Interested in MessBee for your business or want to discuss a suitable plan?
                 </p>
               </div>
@@ -666,16 +776,16 @@ const ContactUsPage = () => {
             </div>
 
             {/* Card 3: Customer Support */}
-            <div className="contact-glass-card" style={{ padding: "28px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+            <div className="contact-glass-card category-card">
               <div>
-                <div style={{ width: 44, height: 44, borderRadius: 12, background: "#FEF3C7", color: "#D97706", border: "1.5px solid #FDE68A", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20, fontSize: 20 }}>
+                <div className="category-card-icon" style={{ background: "#FEF3C7", color: "#D97706", border: "1.5px solid #FDE68A" }}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /></svg>
                 </div>
-                <h3 style={{ fontSize: 17, fontWeight: 900, color: "#0F172A", marginBottom: 10 }}>Customer Support</h3>
-                <p style={{ fontSize: 13.5, color: "#64748B", lineHeight: 1.6, marginBottom: 12 }}>
+                <h3 className="category-card-title">Customer Support</h3>
+                <p className="category-card-desc" style={{ marginBottom: 8 }}>
                   Already using MessBee and need help with your account, product or integration?
                 </p>
-                <div style={{ fontSize: 13, fontWeight: 600, color: "#D97706", marginBottom: 14 }}>
+                <div style={{ fontSize: 12.5, fontWeight: 600, color: "#D97706", marginBottom: 14 }}>
                   Email: support@messbee.com
                 </div>
               </div>
@@ -689,13 +799,13 @@ const ContactUsPage = () => {
             </div>
 
             {/* Card 4: Partnerships */}
-            <div className="contact-glass-card" style={{ padding: "28px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+            <div className="contact-glass-card category-card">
               <div>
-                <div style={{ width: 44, height: 44, borderRadius: 12, background: "#F5F3FF", color: "#8B5CF6", border: "1.5px solid #DDD6FE", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20, fontSize: 20 }}>
+                <div className="category-card-icon" style={{ background: "#F5F3FF", color: "#8B5CF6", border: "1.5px solid #DDD6FE" }}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
                 </div>
-                <h3 style={{ fontSize: 17, fontWeight: 900, color: "#0F172A", marginBottom: 10 }}>Partnerships</h3>
-                <p style={{ fontSize: 13.5, color: "#64748B", lineHeight: 1.6, marginBottom: 18 }}>
+                <h3 className="category-card-title">Partnerships</h3>
+                <p className="category-card-desc">
                   Interested in becoming a MessBee partner, technology partner or business partner?
                 </p>
               </div>
@@ -709,16 +819,16 @@ const ContactUsPage = () => {
             </div>
 
             {/* Card 5: Careers */}
-            <div className="contact-glass-card" style={{ padding: "28px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+            <div className="contact-glass-card category-card">
               <div>
-                <div style={{ width: 44, height: 44, borderRadius: 12, background: "#FCE7F3", color: "#EC4899", border: "1.5px solid #FBCFE8", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20, fontSize: 20 }}>
+                <div className="category-card-icon" style={{ background: "#FCE7F3", color: "#EC4899", border: "1.5px solid #FBCFE8" }}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" /></svg>
                 </div>
-                <h3 style={{ fontSize: 17, fontWeight: 900, color: "#0F172A", marginBottom: 10 }}>Careers</h3>
-                <p style={{ fontSize: 13.5, color: "#64748B", lineHeight: 1.6, marginBottom: 12 }}>
+                <h3 className="category-card-title">Careers</h3>
+                <p className="category-card-desc" style={{ marginBottom: 8 }}>
                   Looking for career or internship opportunities at MessBee?
                 </p>
-                <div style={{ fontSize: 13, fontWeight: 600, color: "#EC4899", marginBottom: 14 }}>
+                <div style={{ fontSize: 12.5, fontWeight: 600, color: "#EC4899", marginBottom: 14 }}>
                   Email: info@messbee.com
                 </div>
               </div>
@@ -777,13 +887,10 @@ const ContactUsPage = () => {
                   <div style={{ fontSize: 16, fontWeight: 900, color: "#16A34A", display: "flex", alignItems: "center", gap: 8 }}>
                     MessBee
                   </div>
-                  <div style={{ fontSize: 13.5, color: "#475569", display: "flex", alignItems: "flex-start", gap: 8 }}>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2.5" style={{ marginTop: 2, flexShrink: 0 }}><rect x="4" y="2" width="16" height="20" rx="2" ry="2" /><line x1="9" y1="22" x2="9" y2="16" /><line x1="15" y1="22" x2="15" y2="16" /><path d="M8 6h.01M16 6h.01M8 10h.01M16 10h.01" /></svg>
-                    <span><strong>Operated by:</strong> ATRI Admission Anytime Pvt. Ltd.</span>
-                  </div>
+          
                   <div style={{ fontSize: 13.5, color: "#475569", display: "flex", alignItems: "flex-start", gap: 8, lineHeight: 1.55 }}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2.5" style={{ marginTop: 2, flexShrink: 0 }}><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
-                    <span><strong>Office:</strong> 510, Devika Tower, Chander Nagar, Ghaziabad, Uttar Pradesh – 201011, India</span>
+                    <span><strong>Corporate Office:</strong> MessBee, Devika Tower, 510A, Chander Nagar, Surya Nagar, Ghaziabad, Uttar Pradesh 201011</span>
                   </div>
                   <div style={{ fontSize: 13.5, color: "#475569", display: "flex", alignItems: "flex-start", gap: 8 }}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2.5" style={{ marginTop: 2, flexShrink: 0 }}><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
@@ -794,13 +901,8 @@ const ContactUsPage = () => {
                     <span><strong>Email:</strong> support@messbee.com</span>
                   </div>
 
-                  {/* Office Confirm Disclaimer Box */}
-                  <div style={{ background: "#EFF6FF", border: "1px solid #BFDBFE", borderRadius: 12, padding: "12px 14px", marginTop: 8 }}>
-                    <p style={{ fontSize: 11.5, color: "#1E40AF", lineHeight: 1.5, margin: 0, display: "flex", gap: 6, alignItems: "flex-start" }}>
-                      <span style={{ fontSize: 13, flexShrink: 0 }}>ℹ️</span>
-                      <span><em>The website should publish the complete office address only after confirming it against the company's official registration/business records.</em></span>
-                    </p>
-                  </div>
+
+
                 </div>
               </div>
 
@@ -963,6 +1065,109 @@ const ContactUsPage = () => {
                   </button>
                 </form>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          FULL-WIDTH CORPORATE OFFICE ADDRESS SECTION
+         ═══════════════════════════════════════════════════════════════════ */}
+      <section className="contact-section" style={{ background: "#F8FAFC", padding: "36px 5%", borderTop: "1px solid #E2E8F0", borderBottom: "1px solid #E2E8F0" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto", width: "100%" }}>
+          <div style={{
+            background: "#FFFFFF",
+            border: "1.5px solid #BBF7D0",
+            borderRadius: 24,
+            padding: "28px 32px",
+            boxShadow: "0 10px 30px rgba(22, 163, 74, 0.05)",
+            display: "flex",
+            flexDirection: "column",
+            gap: 20,
+            width: "100%",
+            boxSizing: "border-box"
+          }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#F0FDF4", border: "1px solid #BBF7D0", borderRadius: 30, padding: "6px 16px" }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
+                <span style={{ fontSize: 12, fontWeight: 800, color: "#16A34A", letterSpacing: "0.5px", textTransform: "uppercase" }}>Corporate Office Location</span>
+              </div>
+              <a
+                href="https://www.google.com/maps/dir//MessBee,+Devika+Tower,+510,+Chander+Nagar,+Surya+Nagar,+Ghaziabad,+Uttar+Pradesh+201011/@28.6805919,77.4587233,14z/data=!4m8!4m7!1m0!1m5!1m1!1s0x390cfb2702bd3435:0x5174d17b09289b6b!2m2!1d77.3308721!2d28.6686012?entry=ttu&g_ep=EgoyMDI2MDgxNy4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noreferrer"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 8,
+                  background: "#16A34A",
+                  color: "#FFFFFF",
+                  padding: "8px 18px",
+                  borderRadius: 30,
+                  fontSize: 13,
+                  fontWeight: 700,
+                  textDecoration: "none",
+                  transition: "all 0.2s ease"
+                }}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polygon points="3 11 22 2 13 21 11 13 3 11" /></svg>
+                Get Directions on Google Maps
+              </a>
+            </div>
+
+            <div style={{ borderTop: "1px solid #F1F5F9", paddingTop: 16, display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 20 }}>
+              <div style={{ flex: "1 1 500px" }}>
+                <h3 style={{ fontSize: 17, fontWeight: 900, color: "#0F172A", marginBottom: 6, display: "flex", alignItems: "center", gap: 8 }}>
+                  MessBee Corporate Office
+                </h3>
+                <p style={{ fontSize: 15, fontWeight: 700, color: "#1E293B", margin: 0, lineHeight: 1.6, fontFamily: "'Inter', sans-serif" }}>
+                  MessBee, Devika Tower, 510A, Chander Nagar, Surya Nagar, Ghaziabad, Uttar Pradesh 201011
+                </p>
+              </div>
+
+              <div style={{ display: "flex", gap: 24, flexWrap: "wrap", alignItems: "center" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <div style={{ width: 36, height: 36, borderRadius: "50%", background: "#F0FDF4", border: "1px solid #BBF7D0", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", textTransform: "uppercase" }}>Phone</div>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: "#0F172A" }}>0120-2611111 / +91-9217742081</div>
+                  </div>
+                </div>
+
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <div style={{ width: 36, height: 36, borderRadius: "50%", background: "#F0FDF4", border: "1px solid #BBF7D0", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", textTransform: "uppercase" }}>Email</div>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: "#0F172A" }}>support@messbee.com</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Embedded Google Maps iFrame */}
+            <div style={{
+              width: "100%",
+              height: "400px",
+              borderRadius: "16px",
+              overflow: "hidden",
+              border: "1px solid #E2E8F0",
+              boxShadow: "0 4px 16px rgba(0,0,0,0.04)",
+              marginTop: 10
+            }}>
+              <iframe
+                title="MessBee Corporate Office Location Map"
+                src="https://maps.google.com/maps?q=MessBee,+Devika+Tower,+510,+Chander+Nagar,+Surya+Nagar,+Ghaziabad,+Uttar+Pradesh+201011&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
           </div>
         </div>
