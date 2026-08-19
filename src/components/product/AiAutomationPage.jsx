@@ -159,7 +159,7 @@ const CSS = `
   .step-btn.act { background:#F0FDF4;border:1px solid #BBF7D0; }
   .step-card { background:#fff;border:1.5px solid #F1F5F9;border-radius:16px;padding:24px 22px; }
   /* Grids */
-  .a-hg  { display:flex;flex-wrap:wrap;align-items:center;gap:56px; }
+  .a-hg  { display:flex;flex-wrap:wrap;align-items:flex-start;gap:56px; }
   .a-hl  { flex:1 1 440px;min-width:280px; }
   .a-hr  { flex:1 1 360px;min-width:280px;display:flex;justify-content:center; }
   .a-fg  { display:grid;grid-template-columns:repeat(3,1fr);gap:16px; }
@@ -276,9 +276,9 @@ const AiPage = () => {
           <div className="a-hg">
             {/* Left */}
             <div className="a-hl">
-              <div style={{display:"inline-flex",alignItems:"center",gap:8,background:"rgba(22,163,74,.1)",border:"1px solid rgba(22,163,74,.25)",borderRadius:40,padding:"6px 18px",marginBottom:28}}>
-                <div style={{width:8,height:8,borderRadius:"50%",background:G}}/>
-                <span style={{fontSize:13,fontWeight:600,color:GD}}>MessBee AI & Automation</span>
+              <div style={{display:"inline-flex",alignItems:"center",gap:6,background:"rgba(22,163,74,.1)",border:"1px solid rgba(22,163,74,.25)",borderRadius:40,padding:"5px 14px",marginBottom:28}}>
+                <div style={{width:6,height:6,borderRadius:"50%",background:G}}/>
+                <span style={{fontSize:12,fontWeight:600,color:G}}>MessBee AI & Automation</span>
               </div>
 
               <h1 style={{fontSize:"clamp(26px,3.5vw,44px)",fontWeight:900,color:D2,lineHeight:1.08,letterSpacing:"-1.5px",marginBottom:20}}>
@@ -286,16 +286,16 @@ const AiPage = () => {
                 <span style={{color:G}}>AI-Powered Automation</span>
               </h1>
 
-              <p style={{fontSize:16,color:MU,lineHeight:1.75,marginBottom:10,maxWidth:520}}>
+              <p style={{fontSize:14,color:MU,lineHeight:1.75,marginBottom:10,maxWidth:520}}>
                 Automate repetitive tasks, assist customer interactions and create smarter business workflows using AI and configurable automation — all in one connected environment.
               </p>
-              <p style={{fontSize:14,color:"#94A3B8",lineHeight:1.7,marginBottom:36,maxWidth:480}}>
+              <p style={{fontSize:13,color:"#94A3B8",lineHeight:1.7,marginBottom:36,maxWidth:480}}>
                 From answering common customer questions to assisting with leads, follow-ups and business processes.
               </p>
 
               <div style={{display:"flex",flexWrap:"wrap",gap:8,marginBottom:40}}>
                 {["Think Smarter.","Automate Better.","Grow Faster."].map(t => (
-                  <span key={t} style={{background:GL,border:"1px solid "+GB,color:GD,borderRadius:40,padding:"5px 14px",fontSize:13,fontWeight:600}}>{t}</span>
+                  <span key={t} style={{ background:"#F1F5F9", border:"1px solid #E5E7EB", color:MU, borderRadius:40, padding:"4px 12px", fontSize:12, fontWeight:600 }}>{t}</span>
                 ))}
               </div>
 
@@ -309,7 +309,7 @@ const AiPage = () => {
 
             {/* Right — AI workflow visualization */}
             <div className="a-hr">
-              <div style={{background:"linear-gradient(135deg,#14532d 0%,#052e16 60%,#022c22 100%)",borderRadius:14,padding:"14px 16px",boxShadow:"0 20px 50px rgba(2,44,34,.5),0 0 0 1px rgba(52,211,153,.15)",border:"1.5px solid rgba(52,211,153,.2)",width:"100%",maxWidth:320}}>
+              <div style={{background:"linear-gradient(135deg,#14532d 0%,#052e16 60%,#022c22 100%)",borderRadius:14,padding:"14px 16px",boxShadow:"0 20px 50px rgba(2,44,34,.5),0 0 0 1px rgba(52,211,153,.15)",border:"1.5px solid rgba(52,211,153,.2)",width:"100%",maxWidth:320,transform:"scale(0.88)",transformOrigin:"top right",marginTop:"56px"}}>
                 <div style={{marginBottom:10,paddingBottom:8,borderBottom:"1px solid rgba(255,255,255,.1)"}}>
                   <div style={{fontSize:11,fontWeight:700,color:"#fff",marginBottom:1}}>AI & Automation Hub</div>
                   <div style={{fontSize:9,color:"rgba(255,255,255,.5)"}}>MessBee · AI + Automation + CRM</div>
@@ -457,15 +457,15 @@ const AiPage = () => {
                       ))}
                     </ul>
                     <div style={{display:"flex",gap:10,flexWrap:"wrap"}}>
-                      <button className="gbtn" id={"ai-cap-start-"+activeStep} onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started Free</button>
+                      <button className="gbtn" id={"ai-cap-start-"+activeStep} onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started</button>
                     </div>
                   </div>
 
                   {/* Visual panel varies by step type */}
-                  <div>
+                  <div style={{ marginBottom: -74 }}>
                     {step.visual && step.visual[0]?.q && (
                       /* AI chat Q&A visual */
-                      <div style={{background:D,borderRadius:16,padding:22,border:"1px solid rgba(22,163,74,.2)",boxShadow:"0 20px 48px rgba(0,0,0,.18)"}}>
+                      <div style={{background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)",borderRadius:16,padding:22,border:"1px solid rgba(34,197,94,.3)",boxShadow:"0 20px 48px rgba(0,0,0,.25)",transform:"scale(0.82)",transformOrigin:"top right",height:410,display:"flex",flexDirection:"column"}}>
                         <div style={{fontSize:11,color:"rgba(255,255,255,.35)",letterSpacing:1.2,textTransform:"uppercase",marginBottom:14}}>Live AI Responses</div>
                         {step.visual.map((item,i) => (
                           <div key={i} style={{marginBottom:14}}>
@@ -473,14 +473,14 @@ const AiPage = () => {
                             <div style={{background:"rgba(22,163,74,.1)",border:"1px solid rgba(22,163,74,.2)",borderRadius:8,padding:"8px 12px",fontSize:13,color:"rgba(255,255,255,.85)"}}>🤖 {item.a}</div>
                           </div>
                         ))}
-                        <div style={{marginTop:8,padding:"10px 12px",background:"rgba(22,163,74,.08)",border:"1px solid rgba(22,163,74,.2)",borderRadius:8}}>
+                        <div style={{marginTop:"auto",padding:"10px 12px",background:"rgba(22,163,74,.08)",border:"1px solid rgba(22,163,74,.2)",borderRadius:8}}>
                           <div style={{fontSize:11,color:"rgba(255,255,255,.4)"}}>Connected to CRM · Inventory · Order Data</div>
                         </div>
                       </div>
                     )}
                     {step.visual && step.visual[0]?.score && (
                       /* Lead scoring visual */
-                      <div style={{background:D,borderRadius:16,padding:22,border:"1px solid rgba(22,163,74,.2)",boxShadow:"0 20px 48px rgba(0,0,0,.18)"}}>
+                      <div style={{background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)",borderRadius:16,padding:22,border:"1px solid rgba(34,197,94,.3)",boxShadow:"0 20px 48px rgba(0,0,0,.25)",transform:"scale(0.82)",transformOrigin:"top right",height:410,display:"flex",flexDirection:"column"}}>
                         <div style={{fontSize:11,color:"rgba(255,255,255,.35)",letterSpacing:1.2,textTransform:"uppercase",marginBottom:14}}>AI Lead Scoring</div>
                         {step.visual.map((lead,i) => (
                           <div key={i} style={{display:"flex",alignItems:"center",gap:10,padding:"10px 0",borderBottom: i<step.visual.length-1?"1px solid rgba(255,255,255,.05)":"none"}}>
@@ -493,14 +493,14 @@ const AiPage = () => {
                             <div style={{background:lead.c+"20",color:lead.c,fontSize:10,fontWeight:700,padding:"2px 8px",borderRadius:40}}>{lead.tag}</div>
                           </div>
                         ))}
-                        <div style={{marginTop:14,padding:"10px 12px",background:"rgba(22,163,74,.08)",border:"1px solid rgba(22,163,74,.2)",borderRadius:8}}>
+                        <div style={{marginTop:"auto",padding:"10px 12px",background:"rgba(22,163,74,.08)",border:"1px solid rgba(22,163,74,.2)",borderRadius:8}}>
                           <div style={{fontSize:11,color:"rgba(255,255,255,.4)"}}>AI updates scores in real-time · Review before action</div>
                         </div>
                       </div>
                     )}
                     {step.visual && step.visual[0]?.label && (
                       /* Smart response visual */
-                      <div style={{background:D,borderRadius:16,padding:22,border:"1px solid rgba(22,163,74,.2)",boxShadow:"0 20px 48px rgba(0,0,0,.18)"}}>
+                      <div style={{background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)",borderRadius:16,padding:22,border:"1px solid rgba(34,197,94,.3)",boxShadow:"0 20px 48px rgba(0,0,0,.25)",transform:"scale(0.82)",transformOrigin:"top right",height:410,display:"flex",flexDirection:"column"}}>
                         <div style={{fontSize:11,color:"rgba(255,255,255,.35)",letterSpacing:1.2,textTransform:"uppercase",marginBottom:14}}>Smart Response Draft</div>
                         {step.visual.map((item,i) => (
                           <div key={i} style={{marginBottom:14}}>
@@ -511,14 +511,14 @@ const AiPage = () => {
                             </div>
                           </div>
                         ))}
-                        <div style={{padding:"8px 12px",background:"rgba(245,158,11,.1)",border:"1px solid rgba(245,158,11,.25)",borderRadius:8}}>
+                        <div style={{marginTop:"auto",padding:"8px 12px",background:"rgba(245,158,11,.1)",border:"1px solid rgba(245,158,11,.25)",borderRadius:8}}>
                           <div style={{fontSize:11,color:"rgba(245,158,11,.8)"}}>⚠ Always review before sending to customers</div>
                         </div>
                       </div>
                     )}
                     {!step.visual && step.flow && (
                       /* Flow journey visual */
-                      <div style={{background:D,borderRadius:16,padding:22,border:"1px solid rgba(22,163,74,.2)",boxShadow:"0 20px 48px rgba(0,0,0,.18)"}}>
+                      <div style={{background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)",borderRadius:16,padding:22,border:"1px solid rgba(34,197,94,.3)",boxShadow:"0 20px 48px rgba(0,0,0,.25)",transform:"scale(0.82)",transformOrigin:"top right",height:410,display:"flex",flexDirection:"column"}}>
                         <div style={{fontSize:11,color:"rgba(255,255,255,.35)",letterSpacing:1.2,textTransform:"uppercase",marginBottom:16}}>Automation Flow</div>
                         {step.flow.map((s,si) => (
                           <div key={s} style={{display:"flex",alignItems:"flex-start",gap:12}}>
@@ -532,7 +532,7 @@ const AiPage = () => {
                             </div>
                           </div>
                         ))}
-                        <div style={{marginTop:16,padding:"10px 12px",background:"rgba(22,163,74,.1)",border:"1px solid rgba(22,163,74,.2)",borderRadius:8}}>
+                        <div style={{marginTop:"auto",padding:"10px 12px",background:"rgba(22,163,74,.1)",border:"1px solid rgba(22,163,74,.2)",borderRadius:8}}>
                           <div style={{fontSize:11,color:"rgba(255,255,255,.4)"}}>Automated · No manual trigger needed</div>
                         </div>
                       </div>
@@ -618,7 +618,7 @@ const AiPage = () => {
             ))}
           </div>
           <button id="ai-india-start" className="gbtn" style={{fontSize:13,padding:"10px 20px"}} onClick={() => window.open(adminUrl+"/signup","_blank")}>
-            Start With AI & Automation — Free
+            Start With AI & Automation
           </button>
         </div>
       </section>
@@ -712,9 +712,9 @@ const AiPage = () => {
             <button id="ai-cta-final" className="gbtn" style={{fontSize:13,padding:"11px 26px"}} onClick={() => window.open(adminUrl+"/signup","_blank")}>
               Start With AI & Automation
             </button>
-            <button id="ai-cta-sales" className="dbtn" style={{fontSize:13,padding:"11px 26px"}} onClick={() => navigate("/contact")}>Talk to Sales</button>
+            <button id="ai-cta-sales" className="dbtn" style={{fontSize:13,padding:"11px 26px"}} onClick={() => navigate("/contact#contact-form-section")}>Contact Support</button>
           </div>
-          <p style={{fontSize:12,color:MU,marginTop:18}}>No credit card required · Free forever plan available</p>
+
         </div>
       </section>
 

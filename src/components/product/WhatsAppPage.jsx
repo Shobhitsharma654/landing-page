@@ -102,8 +102,8 @@ const CSS = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
   /* Buttons */
-  .wbp  { background:#25D366;color:#fff;border:none;border-radius:40px;padding:10px 24px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;box-shadow:0 4px 20px rgba(37,211,102,.35); }
-  .wbp:hover { background:#1EA952;transform:translateY(-1px);box-shadow:0 8px 28px rgba(37,211,102,.45); }
+  .wbp  { background:#16A34A;color:#fff;border:none;border-radius:40px;padding:10px 24px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;box-shadow:0 4px 18px rgba(22,163,74,.3); }
+  .wbp:hover { background:#15803D;transform:translateY(-1px);box-shadow:0 6px 24px rgba(22,163,74,.4); }
   .wbd  { background:#111827;color:#fff;border:none;border-radius:40px;padding:10px 24px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;display:inline-flex;align-items:center;gap:8px; }
   .wbd:hover  { background:#1F2937;transform:translateY(-1px); }
   .wbo  { background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:40px;padding:10px 24px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s; }
@@ -213,34 +213,31 @@ const WaPage = () => {
           <div className="wa-hg">
             {/* Left */}
             <div className="wa-hl">
-              <div style={{ display:"inline-flex", alignItems:"center", gap:8, background:GL, border:`1px solid ${GB}`, borderRadius:40, padding:"6px 18px", marginBottom:28 }}>
-                <div style={{ width:8, height:8, borderRadius:"50%", background:WA }}/>
-                <span style={{ fontSize:13, fontWeight:600, color:G }}>MessBee WhatsApp Business</span>
+              <div style={{ display:"inline-flex", alignItems:"center", gap:6, background:GL, border:`1px solid ${GB}`, borderRadius:40, padding:"5px 14px", marginBottom:28 }}>
+                <div style={{ width:6, height:6, borderRadius:"50%", background:WA }}/>
+                <span style={{ fontSize:12, fontWeight:600, color:G }}>MessBee WhatsApp Business</span>
               </div>
 
               <h1 style={{ fontSize:"clamp(28px,4vw,44px)", fontWeight:900, color:D2, lineHeight:1.08, letterSpacing:"-1.5px", marginBottom:16 }}>
                 Connect With Customers<br/>
-                on <span style={{ color:WA }}>WhatsApp</span><br/>
+                on <span style={{ color:G }}>WhatsApp</span><br/>
                 The Smarter Way
               </h1>
 
-              <p style={{ fontSize:14, color:MU, lineHeight:1.7, marginBottom:8, maxWidth:520 }}>
+              <p style={{ fontSize:14, color:MU, lineHeight:1.7, marginBottom:32, maxWidth:520 }}>
                 Manage customer conversations, send approved business messages, follow up on leads
                 and build real relationships — all through the WhatsApp Business Platform.
-              </p>
-              <p style={{ fontSize:12, color:MU, lineHeight:1.7, marginBottom:32, maxWidth:480, fontWeight:500 }}>
-                Bring communication, CRM and automation into one connected business workspace.
               </p>
 
               <div style={{ display:"flex", flexWrap:"wrap", gap:8, marginBottom:40 }}>
                 {["Connect.","Communicate.","Automate.","Grow."].map(t => (
-                  <span key={t} style={{ background:GL, border:`1px solid ${GB}`, color:G, borderRadius:40, padding:"5px 14px", fontSize:13, fontWeight:600 }}>{t}</span>
+                  <span key={t} style={{ background:"#F1F5F9", border:"1px solid #E5E7EB", color:MU, borderRadius:40, padding:"4px 12px", fontSize:12, fontWeight:600 }}>{t}</span>
                 ))}
               </div>
 
               <div className="wa-ctr">
                 <button id="wa-hero-start" className="wbp" onClick={() => window.open(adminUrl+"/signup","_blank")}>
-                  Get Started Free
+                  Get Started
                 </button>
                 <button id="wa-hero-explore" style={{ background:"#fff", color:D2, border:`1.5px solid ${GB}`, borderRadius:40, padding:"10px 24px", fontSize:12, fontWeight:600, cursor:"pointer", transition:"all .2s" }} onMouseOver={(e) => { e.currentTarget.style.borderColor=G; e.currentTarget.style.color=G; }} onMouseOut={(e) => { e.currentTarget.style.borderColor=GB; e.currentTarget.style.color=D2; }} onClick={() => document.getElementById("wa-features")?.scrollIntoView({behavior:"smooth"})}>
                   Explore Features →
@@ -251,7 +248,7 @@ const WaPage = () => {
             </div>
 
             <div className="wa-hr" style={{ alignItems:"flex-start" }}>
-              <div style={{ width:"100%", maxWidth:260, marginTop:60, boxShadow:"0 20px 60px rgba(0,0,0,.3)", borderRadius:12, overflow:"hidden" }}>
+              <div style={{ width:"100%", maxWidth:260, marginTop:60, marginLeft:40, boxShadow:"0 20px 60px rgba(0,0,0,.3)", borderRadius:12, overflow:"hidden" }}>
                 {/* phone-style status bar */}
                 <div style={{ background:"#075E54", padding:"4px 8px", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
                   <span style={{ fontSize:9, fontWeight:700, color:"#fff" }}>MessBee Business</span>
@@ -347,7 +344,7 @@ const WaPage = () => {
                   ))}
                 </ul>
                 <div className="wa-ctr">
-                  <button className="wbp" id={"wa-cap-start-"+i} onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started Free</button>
+                  <button className="wbp" id={"wa-cap-start-"+i} onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started</button>
                 </div>
               </div>
 
@@ -448,13 +445,13 @@ const WaPage = () => {
           </div>
           <br/>
           <button id="wa-india-start" className="wbp" onClick={() => window.open(adminUrl+"/signup","_blank")}>
-            Start with MessBee — Free
+            Start with MessBee
           </button>
         </div>
       </section>
 
       {/* ══ COMPLIANCE ══ */}
-      <section style={{ background:"#fff", padding:"64px 6%" }}>
+      <section style={{ background:"#fff", padding:"64px 6% 16px" }}>
         <div style={{ maxWidth:820, margin:"0 auto" }}>
           <div style={{ background:"#F8FAFC", border:"1px solid #E5E7EB", borderRadius:16, padding:"24px 28px" }}>
             <div style={{ display:"flex", alignItems:"flex-start", gap:14, marginBottom:16 }}>
@@ -476,7 +473,7 @@ const WaPage = () => {
       </section>
 
       {/* ══ FAQ ══ */}
-      <section style={{ background:"#F7FFF7", padding:"90px 6%", borderTop:"1px solid #D1FAE5" }}>
+      <section style={{ background:"#FFF", padding:"16px 6% 90px" }}>
         <div style={{ maxWidth:760, margin:"0 auto" }}>
           <div style={{ textAlign:"center", marginBottom:52 }}>
             <div style={{ display:"inline-block", background:WAL, border:"1px solid #A7F3D0", color:WAD, fontSize:11, fontWeight:700, textTransform:"uppercase", letterSpacing:"1.5px", padding:"5px 14px", borderRadius:20, marginBottom:14 }}>FAQ</div>
@@ -517,11 +514,9 @@ const WaPage = () => {
           </p>
           <div style={{ display:"flex", gap:12, justifyContent:"center", flexWrap:"wrap" }}>
             <button id="wa-cta-final" className="wbp" style={{ fontSize:13, padding:"10px 20px" }} onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started with MessBee</button>
-            <button id="wa-cta-sales" style={{ background:"#fff", color:D2, border:`1.5px solid ${GB}`, borderRadius:40, padding:"10px 20px", fontSize:13, fontWeight:600, cursor:"pointer", transition:"all .2s" }} onClick={() => navigate("/contact")} onMouseOver={(e) => { e.currentTarget.style.borderColor=WA; e.currentTarget.style.color=WA; }} onMouseOut={(e) => { e.currentTarget.style.borderColor=GB; e.currentTarget.style.color=D2; }}>Talk to Sales</button>
+            <button id="wa-cta-sales" style={{ background:"#fff", color:D2, border:`1.5px solid ${GB}`, borderRadius:40, padding:"10px 20px", fontSize:13, fontWeight:600, cursor:"pointer", transition:"all .2s" }} onClick={() => navigate("/contact#contact-form-section")} onMouseOver={(e) => { e.currentTarget.style.borderColor=WA; e.currentTarget.style.color=WA; }} onMouseOut={(e) => { e.currentTarget.style.borderColor=GB; e.currentTarget.style.color=D2; }}>Contact Support</button>
           </div>
-          <p style={{ fontSize:11, color:MU, marginTop:20 }}>
-            No credit card required &middot; Free forever plan available
-          </p>
+
         </div>
       </section>
 

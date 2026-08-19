@@ -293,7 +293,7 @@ const LicensePage = () => {
               </p>
               <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
                 <button onClick={() => window.location.href = (import.meta.env.VITE_ADMIN_URL || "http://localhost:5173") + "/login?flow=register"} style={{ background: "#16A34A", color: "#FFF", border: "none", borderRadius: 40, padding: "12px 28px", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>
-                  Accept &amp; Start Free
+                  Accept &amp; Start
                 </button>
                 <button onClick={() => navigate("/terms")} style={{ background: "rgba(255,255,255,0.08)", color: "#E4E4E7", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 40, padding: "12px 28px", fontSize: 14, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>
                   Read Terms &amp; Conditions

@@ -573,7 +573,7 @@ const PricingPage = () => {
         { label: "White Label", ok: false },
         { label: "Dedicated Manager", ok: false },
       ],
-      cta: "Start Free Trial",
+      cta: "Start Trial",
     },
     {
       id: "growth",
@@ -745,7 +745,7 @@ const PricingPage = () => {
 
             <div style={{ display: "flex", gap: 14, marginBottom: 32, flexWrap: "wrap" }}>
               <button onClick={() => window.location.href = (import.meta.env.VITE_ADMIN_URL || "http://localhost:5173") + "/login?flow=register"} style={{ background: "#16A34A", color: "#FFF", border: "none", borderRadius: 40, padding: "14px 32px", fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", display: "flex", alignItems: "center", gap: 8, boxShadow: "0 8px 24px rgba(0,200,83,0.32)" }}>
-                Start Free Trial
+                Start Trial
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </button>
               <button onClick={() => window.location.href = "/contact"} style={{ background: "#FFFFFF", color: "#0F172A", border: "2px solid #E5E7EB", borderRadius: 40, padding: "13px 28px", fontSize: 15, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>
@@ -901,20 +901,20 @@ const PricingPage = () => {
           {/* Cards Row */}
           <div style={{ display: "flex", gap: 16, flexWrap: "nowrap", overflowX: "auto", justifyContent: "center", alignItems: "stretch", paddingBottom: 8 }}>
 
-            {/* ── FREE TRIAL ── */}
+            {/* ── TRIAL ── */}
             <div style={{ flex: "0 0 220px", background: "#FFFFFF", border: "1.5px solid #E5E7EB", borderRadius: 20, padding: "28px 22px", position: "relative", display: "flex", flexDirection: "column", minWidth: 200 }}>
               <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "#FEF9C3", border: "1px solid #FDE68A", borderRadius: 20, padding: "4px 12px", marginBottom: 16, width: "fit-content" }}>
                 <span style={{ fontSize: 13 }}>🏆</span>
                 <span style={{ fontSize: 11, fontWeight: 700, color: "#92400E" }}>Best for New Users</span>
               </div>
-              <div style={{ fontSize: 18, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>Free Trial</div>
+              <div style={{ fontSize: 18, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>Trial</div>
               <div style={{ fontSize: 12, color: "#64748B", marginBottom: 16, lineHeight: 1.5 }}>Explore Messbee with essential features before choosing a paid plan.</div>
               <div style={{ display: "flex", alignItems: "flex-end", gap: 2, marginBottom: 4 }}>
                 <span style={{ fontSize: 13, fontWeight: 700, color: "#0F172A", marginBottom: 6 }}>₹</span>
                 <span style={{ fontSize: 36, fontWeight: 900, color: "#0F172A", lineHeight: 1, letterSpacing: "-1px" }}>0</span>
                 <span style={{ fontSize: 12, color: "#94A3B8", marginBottom: 4 }}>/month</span>
               </div>
-              <div style={{ fontSize: 13, fontWeight: 700, color: "#16A34A", marginBottom: 20 }}>14 Days Free Trial</div>
+              <div style={{ fontSize: 13, fontWeight: 700, color: "#16A34A", marginBottom: 20 }}>14 Days Trial</div>
               <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
                 {["WhatsApp Business API Access","CRM & Contact Management","Up to 500 Contacts","Broadcast Messaging","Basic Automation","Dashboard Analytics","2 Team Members","Email Support","No Credit Card Required"].map((f, i) => (
                   <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: 8, fontSize: 12, color: "#374151", fontWeight: 500 }}>
@@ -926,7 +926,7 @@ const PricingPage = () => {
               <button onClick={() => window.location.href = (import.meta.env.VITE_ADMIN_URL || "http://localhost:5173") + "/login?flow=register"} style={{ marginTop: 24, width: "100%", background: "#16A34A", color: "#FFF", border: "none", borderRadius: 40, padding: "12px 0", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 14px rgba(0,200,83,0.3)", transition: "all 0.22s" }}
                 onMouseEnter={e => e.target.style.background = "#00B248"}
                 onMouseLeave={e => e.target.style.background = "#16A34A"}>
-                Start Free Trial
+                Start Trial
               </button>
             </div>
 
@@ -1001,7 +1001,7 @@ const PricingPage = () => {
               <button onClick={() => window.location.href = (import.meta.env.VITE_ADMIN_URL || "http://localhost:5173") + "/login?flow=register"} style={{ marginTop: 24, width: "100%", background: "#16A34A", color: "#FFF", border: "none", borderRadius: 40, padding: "13px 0", fontSize: 13, fontWeight: 700, cursor: "pointer", fontFamily: "inherit", boxShadow: "0 4px 18px rgba(0,200,83,0.4)", transition: "all 0.22s" }}
                 onMouseEnter={e => e.target.style.background = "#00B248"}
                 onMouseLeave={e => e.target.style.background = "#16A34A"}>
-                Start Free Trial
+                Start Trial
               </button>
             </div>
 

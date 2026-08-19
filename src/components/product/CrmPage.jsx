@@ -271,16 +271,16 @@ const CrmPage = () => {
                 ))}
               </div>
               <div className="ctr">
-                <button id="crm-hero-start" className="cp" onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started Free</button>
-                <button id="crm-hero-explore" className="cd" onClick={() => document.getElementById("crm-overview")?.scrollIntoView({behavior:"smooth"})}>
-                  Explore CRM <Arrow/>
+                <button id="crm-hero-start" className="cp" onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started</button>
+                <button id="crm-hero-explore" style={{ background:"#fff", color:D2, border:`1.5px solid ${GB}`, borderRadius:40, padding:"10px 24px", fontSize:12, fontWeight:600, cursor:"pointer", transition:"all .2s" }} onMouseOver={(e) => { e.currentTarget.style.borderColor=G; e.currentTarget.style.color=G; }} onMouseOut={(e) => { e.currentTarget.style.borderColor=GB; e.currentTarget.style.color=D2; }} onClick={() => document.getElementById("crm-overview")?.scrollIntoView({behavior:"smooth"})}>
+                  Explore CRM →
                 </button>
               </div>
 
             </div>
 
             <div className="hr" style={{ paddingTop: "54px", marginBottom: "-140px" }}>
-              <div style={{ background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)", borderRadius:20, padding:24, boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)", border:"1px solid rgba(34,197,94,.3)", width:"100%", maxWidth:420, transform:"scale(0.75)", transformOrigin:"top right" }}>
+              <div style={{ background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)", borderRadius:20, padding:24, boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)", border:"1px solid rgba(34,197,94,.3)", width:"100%", maxWidth:420, transform:"scale(0.68)", transformOrigin:"top right" }}>
                 <div style={{ display:"flex", alignItems:"center", gap:6, marginBottom:18 }}>
                   {["#EF4444","#F59E0B","#10B981"].map(c => <div key={c} style={{width:10,height:10,borderRadius:"50%",background:c}}/>)}
                   <div style={{ flex:1, background:"rgba(255,255,255,.05)", borderRadius:5, height:16, marginLeft:8 }}/>
@@ -518,7 +518,7 @@ const CrmPage = () => {
           </div>
           <div style={{ marginTop:36 }}>
             <button className="cp" id="crm-india-start" onClick={() => window.open(adminUrl+"/signup","_blank")}>
-              Start with MessBee CRM — Free
+              Start with MessBee CRM
             </button>
           </div>
         </div>
@@ -566,12 +566,10 @@ const CrmPage = () => {
             customer relationships from one powerful platform.
           </p>
           <div style={{ display:"flex", gap:12, justifyContent:"center", flexWrap:"wrap" }}>
-            <button id="crm-cta-final" className="cp" style={{ fontSize:13, padding:"10px 20px" }} onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started Free</button>
-            <button id="crm-cta-sales" style={{ background:"#fff", color:D2, border:`1.5px solid ${GB}`, borderRadius:40, padding:"10px 20px", fontSize:13, fontWeight:600, cursor:"pointer", transition:"all .2s" }} onClick={() => navigate("/contact")} onMouseOver={(e) => { e.currentTarget.style.borderColor=G; e.currentTarget.style.color=G; }} onMouseOut={(e) => { e.currentTarget.style.borderColor=GB; e.currentTarget.style.color=D2; }}>Talk to Sales</button>
+            <button id="crm-cta-final" className="cp" style={{ fontSize:13, padding:"10px 20px" }} onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started</button>
+            <button id="crm-cta-sales" style={{ background:"#fff", color:D2, border:`1.5px solid ${GB}`, borderRadius:40, padding:"10px 20px", fontSize:13, fontWeight:600, cursor:"pointer", transition:"all .2s" }} onClick={() => navigate("/contact#contact-form-section")} onMouseOver={(e) => { e.currentTarget.style.borderColor=G; e.currentTarget.style.color=G; }} onMouseOut={(e) => { e.currentTarget.style.borderColor=GB; e.currentTarget.style.color=D2; }}>Contact Support</button>
           </div>
-          <p style={{ fontSize:11, color:MU, marginTop:20 }}>
-            No credit card required &middot; Free forever plan available
-          </p>
+
         </div>
       </section>
 

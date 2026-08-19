@@ -428,7 +428,7 @@ const AboutPage = () => {
                 onMouseEnter={e => e.currentTarget.style.transform = "scale(1.04)"}
                 onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
               >
-                Start Free Trial
+                Start Trial
               </button>
               <button
                 onClick={() => navigate("/business")}
@@ -523,7 +523,7 @@ const AboutPage = () => {
               }}
               onMouseEnter={e => { e.currentTarget.style.transform = "scale(1.04)"; e.currentTarget.style.boxShadow = "0 6px 28px rgba(22,163,74,0.45)"; }}
               onMouseLeave={e => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.boxShadow = "0 4px 20px rgba(22,163,74,0.35)"; }}>
-              Get Started Free →
+              Get Started →
             </button>
           </div>
 

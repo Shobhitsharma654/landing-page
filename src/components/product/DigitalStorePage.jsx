@@ -201,34 +201,37 @@ const DigitalStorePage = () => {
       {/* ── HERO ── */}
       <section style={{ background:"#fff", padding:"100px 6% 60px" }}>
         <div style={{ maxWidth:1200, margin:"0 auto" }}>
-          <div style={{ display:"flex", flexWrap:"wrap", alignItems:"center", gap:48 }}>
+          <div style={{ display:"flex", flexWrap:"wrap", alignItems:"flex-start", gap:48 }}>
             <div style={{ flex:"1 1 420px", minWidth:280 }}>
-              <div style={{ display:"inline-flex", alignItems:"center", gap:8, background:GL, border:`1px solid ${GB}`, borderRadius:40, padding:"4px 14px", marginBottom:18 }}>
-                <svg width="8" height="8" viewBox="0 0 10 10" fill={G}><circle cx="5" cy="5" r="5"/></svg>
-                <span style={{ fontSize:12, fontWeight:600, color:G }}>MessBee Digital Store</span>
+              <div style={{ display:"inline-flex", alignItems:"center", gap:8, background:GL, border:`1px solid ${GB}`, borderRadius:40, padding:"6px 18px", marginBottom:28 }}>
+                <svg width="10" height="10" viewBox="0 0 10 10" fill={G}><circle cx="5" cy="5" r="5"/></svg>
+                <span style={{ fontSize:13, fontWeight:600, color:G }}>MessBee Digital Store</span>
               </div>
-              <h1 style={{ fontSize:"clamp(24px,3.5vw,44px)", fontWeight:900, color:D2, letterSpacing:"-1.5px", lineHeight:1.1, marginBottom:16 }}>
+              <h1 style={{ fontSize:"clamp(28px,3.5vw,46px)", fontWeight:900, color:D2, letterSpacing:"-1.5px", lineHeight:1.1, marginBottom:16 }}>
                 Build Your Digital<br/>
                 <span style={{ color:G }}>Storefront</span>
               </h1>
-              <p style={{ fontSize:15, color:MU, lineHeight:1.75, maxWidth:480, marginBottom:10 }}>
-                Sell, Manage & Grow From One Place.
-              </p>
-              <p style={{ fontSize:13, color:MU, lineHeight:1.75, maxWidth:500, marginBottom:32 }}>
+
+              <p style={{ fontSize:15, color:MU, lineHeight:1.75, maxWidth:500, marginBottom:32 }}>
                 MessBee Digital Store helps businesses create and manage their digital presence for products and services, showcase their offerings, connect with customers and manage commerce workflows from one connected platform.
               </p>
-              <div style={{ display:"flex", gap:12, flexWrap:"wrap", marginBottom:24 }}>
-                <button id="ds-hero-start" className="dsp" onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started</button>
-                <button id="ds-hero-explore" className="dsd" onClick={() => document.getElementById("ds-features")?.scrollIntoView({behavior:"smooth"})}>Explore Digital Store</button>
+              <div style={{ display:"flex", flexWrap:"wrap", gap:8, marginBottom:36 }}>
+                {["Showcase.","Sell.","Connect.","Grow."].map(t => (
+                  <span key={t} style={{ background:BS, border:"1px solid #E5E7EB", color:MU, borderRadius:40, padding:"4px 12px", fontSize:12, fontWeight:600 }}>{t}</span>
+                ))}
               </div>
-              <p style={{ fontSize:12, color:MU }}>
-                <span style={{ color:G, fontWeight:600 }}>Showcase. Sell. Connect. Grow.</span>
-              </p>
+
+              <div style={{ display:"flex", gap:14, flexWrap:"wrap" }}>
+                <button id="ds-hero-start" className="dsp" onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started</button>
+                <button id="ds-hero-explore" style={{ background:"#fff", color:D2, border:`1.5px solid ${GB}`, borderRadius:40, padding:"10px 24px", fontSize:12, fontWeight:600, cursor:"pointer", transition:"all .2s" }} onMouseOver={(e) => { e.currentTarget.style.borderColor=G; e.currentTarget.style.color=G; }} onMouseOut={(e) => { e.currentTarget.style.borderColor=GB; e.currentTarget.style.color=D2; }} onClick={() => document.getElementById("ds-features")?.scrollIntoView({behavior:"smooth"})}>
+                  Explore Digital Store →
+                </button>
+              </div>
             </div>
 
             {/* Storefront mockup */}
-            <div style={{ flex:"1 1 340px", minWidth:280, display:"flex", justifyContent:"center" }}>
-              <div style={{ background:"linear-gradient(135deg,#14532d 0%,#052e16 60%,#022c22 100%)", borderRadius:16, padding:"18px 20px", boxShadow:"0 20px 50px rgba(2,44,34,.4),0 0 0 1px rgba(52,211,153,.15)", border:"1.5px solid rgba(52,211,153,.2)", width:"100%", maxWidth:320 }}>
+            <div style={{ flex:"1 1 340px", minWidth:280, display:"flex", justifyContent:"center", marginTop:60 }}>
+              <div style={{ background:"linear-gradient(135deg,#14532d 0%,#052e16 60%,#022c22 100%)", borderRadius:16, padding:"18px 20px", boxShadow:"0 20px 50px rgba(2,44,34,.4),0 0 0 1px rgba(52,211,153,.15)", border:"1.5px solid rgba(52,211,153,.2)", width:"100%", maxWidth:290, marginLeft:40 }}>
                 <div style={{ marginBottom:12, paddingBottom:10, borderBottom:"1px solid rgba(255,255,255,.1)" }}>
                   <div style={{ fontSize:11, fontWeight:700, color:"#fff", marginBottom:1 }}>MessBee Digital Store</div>
                   <div style={{ fontSize:9, color:"rgba(255,255,255,.5)" }}>Your Business · Online</div>
@@ -348,7 +351,7 @@ const DigitalStorePage = () => {
                     <button id={"ds-cap-"+activeStep} className="dsp" style={{ fontSize:12, padding:"9px 20px" }} onClick={() => window.open(adminUrl+"/signup","_blank")}>Create Your Digital Store</button>
                   </div>
                   <div>
-                    <div style={{ background:D, borderRadius:14, padding:18, border:"1px solid rgba(22,163,74,.2)", boxShadow:"0 16px 40px rgba(0,0,0,.16)" }}>
+                    <div style={{ background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)", borderRadius:14, padding:18, border:"1px solid rgba(22,163,74,.2)", boxShadow:"0 16px 40px rgba(0,0,0,.16)" }}>
                       <div style={{ fontSize:10, color:"rgba(255,255,255,.35)", letterSpacing:1.2, textTransform:"uppercase", marginBottom:12 }}>Store Preview</div>
                       <div style={{ background:"rgba(255,255,255,.05)", borderRadius:8, padding:"10px 12px", marginBottom:8, border:"1px solid rgba(255,255,255,.07)" }}>
                         <div style={{ fontSize:9, color:"rgba(255,255,255,.4)", marginBottom:4 }}>Your Business Name</div>
@@ -519,9 +522,9 @@ const DigitalStorePage = () => {
             <button id="ds-cta-final" className="dsp" style={{ fontSize:13, padding:"11px 26px" }} onClick={() => window.open(adminUrl+"/signup","_blank")}>
               Create Your Digital Store
             </button>
-            <button id="ds-cta-sales" className="dsd" style={{ fontSize:13, padding:"11px 26px" }} onClick={() => navigate("/contact")}>Talk to Sales</button>
+            <button id="ds-cta-sales" className="dsd" style={{ fontSize:13, padding:"11px 26px" }} onClick={() => navigate("/contact#contact-form-section")}>Contact Support</button>
           </div>
-          <p style={{ fontSize:12, color:MU, marginTop:18 }}>No credit card required · Free forever plan available</p>
+
         </div>
       </section>
 

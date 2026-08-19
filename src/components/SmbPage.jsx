@@ -980,7 +980,7 @@ const SmbPage = () => {
                   marginBottom: 16,
                 }}
               >
-                <span style={{ fontSize: 14 }}>🇮🇳</span>
+                <svg width="16" height="12" viewBox="0 0 90 60" style={{ borderRadius: 2, flexShrink: 0 }}><rect width="90" height="20" fill="#FF9933"/><rect y="20" width="90" height="20" fill="#FFFFFF"/><rect y="40" width="90" height="20" fill="#138808"/><circle cx="45" cy="30" r="8" fill="#000080" /><circle cx="45" cy="30" r="6" fill="#FFFFFF" /><circle cx="45" cy="30" r="2" fill="#000080" /></svg>
                 <span style={{ fontSize: 10.5, fontWeight: 800, color: "#4ADE80" }}>Indian Businesses</span>
               </div>
 
