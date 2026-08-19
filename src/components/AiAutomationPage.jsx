@@ -457,7 +457,7 @@ const AiPage = () => {
                       ))}
                     </ul>
                     <div style={{display:"flex",gap:10,flexWrap:"wrap"}}>
-                      <button className="gbtn" id={"ai-cap-start-"+activeStep} onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started Free</button>
+                      <button className="gbtn" id={"ai-cap-start-"+activeStep} onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started</button>
                     </div>
                   </div>
 
@@ -618,7 +618,7 @@ const AiPage = () => {
             ))}
           </div>
           <button id="ai-india-start" className="gbtn" style={{fontSize:13,padding:"10px 20px"}} onClick={() => window.open(adminUrl+"/signup","_blank")}>
-            Start With AI & Automation — Free
+            Start With AI & Automation
           </button>
         </div>
       </section>
@@ -712,9 +712,9 @@ const AiPage = () => {
             <button id="ai-cta-final" className="gbtn" style={{fontSize:13,padding:"11px 26px"}} onClick={() => window.open(adminUrl+"/signup","_blank")}>
               Start With AI & Automation
             </button>
-            <button id="ai-cta-sales" className="dbtn" style={{fontSize:13,padding:"11px 26px"}} onClick={() => navigate("/contact")}>Talk to Sales</button>
+            <button id="ai-cta-sales" className="dbtn" style={{fontSize:13,padding:"11px 26px"}} onClick={() => navigate("/contact#contact-form-section")}>Contact Support</button>
           </div>
-          <p style={{fontSize:12,color:MU,marginTop:18}}>No credit card required · Free forever plan available</p>
+
         </div>
       </section>
 

@@ -240,7 +240,7 @@ const WaPage = () => {
 
               <div className="wa-ctr">
                 <button id="wa-hero-start" className="wbp" onClick={() => window.open(adminUrl+"/signup","_blank")}>
-                  Get Started Free
+                  Get Started
                 </button>
                 <button id="wa-hero-explore" style={{ background:"#fff", color:D2, border:`1.5px solid ${GB}`, borderRadius:40, padding:"10px 24px", fontSize:12, fontWeight:600, cursor:"pointer", transition:"all .2s" }} onMouseOver={(e) => { e.currentTarget.style.borderColor=G; e.currentTarget.style.color=G; }} onMouseOut={(e) => { e.currentTarget.style.borderColor=GB; e.currentTarget.style.color=D2; }} onClick={() => document.getElementById("wa-features")?.scrollIntoView({behavior:"smooth"})}>
                   Explore Features →
@@ -347,7 +347,7 @@ const WaPage = () => {
                   ))}
                 </ul>
                 <div className="wa-ctr">
-                  <button className="wbp" id={"wa-cap-start-"+i} onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started Free</button>
+                  <button className="wbp" id={"wa-cap-start-"+i} onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started</button>
                 </div>
               </div>
 
@@ -448,13 +448,13 @@ const WaPage = () => {
           </div>
           <br/>
           <button id="wa-india-start" className="wbp" onClick={() => window.open(adminUrl+"/signup","_blank")}>
-            Start with MessBee — Free
+            Start with MessBee
           </button>
         </div>
       </section>
 
       {/* ══ COMPLIANCE ══ */}
-      <section style={{ background:"#fff", padding:"64px 6%" }}>
+      <section style={{ background:"#fff", padding:"64px 6% 16px" }}>
         <div style={{ maxWidth:820, margin:"0 auto" }}>
           <div style={{ background:"#F8FAFC", border:"1px solid #E5E7EB", borderRadius:16, padding:"24px 28px" }}>
             <div style={{ display:"flex", alignItems:"flex-start", gap:14, marginBottom:16 }}>
@@ -476,7 +476,7 @@ const WaPage = () => {
       </section>
 
       {/* ══ FAQ ══ */}
-      <section style={{ background:"#F7FFF7", padding:"90px 6%", borderTop:"1px solid #D1FAE5" }}>
+      <section style={{ background:"#FFF", padding:"16px 6% 90px" }}>
         <div style={{ maxWidth:760, margin:"0 auto" }}>
           <div style={{ textAlign:"center", marginBottom:52 }}>
             <div style={{ display:"inline-block", background:WAL, border:"1px solid #A7F3D0", color:WAD, fontSize:11, fontWeight:700, textTransform:"uppercase", letterSpacing:"1.5px", padding:"5px 14px", borderRadius:20, marginBottom:14 }}>FAQ</div>
@@ -517,11 +517,9 @@ const WaPage = () => {
           </p>
           <div style={{ display:"flex", gap:12, justifyContent:"center", flexWrap:"wrap" }}>
             <button id="wa-cta-final" className="wbp" style={{ fontSize:13, padding:"10px 20px" }} onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started with MessBee</button>
-            <button id="wa-cta-sales" style={{ background:"#fff", color:D2, border:`1.5px solid ${GB}`, borderRadius:40, padding:"10px 20px", fontSize:13, fontWeight:600, cursor:"pointer", transition:"all .2s" }} onClick={() => navigate("/contact")} onMouseOver={(e) => { e.currentTarget.style.borderColor=WA; e.currentTarget.style.color=WA; }} onMouseOut={(e) => { e.currentTarget.style.borderColor=GB; e.currentTarget.style.color=D2; }}>Talk to Sales</button>
+            <button id="wa-cta-sales" style={{ background:"#fff", color:D2, border:`1.5px solid ${GB}`, borderRadius:40, padding:"10px 20px", fontSize:13, fontWeight:600, cursor:"pointer", transition:"all .2s" }} onClick={() => navigate("/contact#contact-form-section")} onMouseOver={(e) => { e.currentTarget.style.borderColor=WA; e.currentTarget.style.color=WA; }} onMouseOut={(e) => { e.currentTarget.style.borderColor=GB; e.currentTarget.style.color=D2; }}>Contact Support</button>
           </div>
-          <p style={{ fontSize:11, color:MU, marginTop:20 }}>
-            No credit card required &middot; Free forever plan available
-          </p>
+
         </div>
       </section>
 

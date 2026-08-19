@@ -438,7 +438,7 @@ const MarketingPage = () => {
                           </li>
                         ))}
                       </ul>
-                      <button className="gbtn" id={"mkt-cap-"+i} onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started Free</button>
+                      <button className="gbtn" id={"mkt-cap-"+i} onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started</button>
                     </div>
                     <div>
                       {cap.visual
@@ -579,7 +579,7 @@ const MarketingPage = () => {
             ))}
           </div><br/>
           <button id="mkt-india-start" className="gbtn" onClick={() => window.open(adminUrl+"/signup","_blank")}>
-            Start Automating Your Marketing — Free
+            Start Automating Your Marketing
           </button>
         </div>
       </section>
@@ -655,9 +655,9 @@ const MarketingPage = () => {
           </p>
           <div style={{display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap"}}>
             <button id="mkt-cta-final" className="gbtn" style={{fontSize:13,padding:"10px 20px"}} onClick={() => window.open(adminUrl+"/signup","_blank")}>Start Automating Your Marketing</button>
-            <button id="mkt-cta-sales" style={{background:"#fff",color:D2,border:`1.5px solid ${GB}`,borderRadius:40,padding:"10px 20px",fontSize:13,fontWeight:600,cursor:"pointer",transition:"all .2s"}} onClick={() => navigate("/contact")} onMouseOver={(e) => { e.currentTarget.style.borderColor=G; e.currentTarget.style.color=G; }} onMouseOut={(e) => { e.currentTarget.style.borderColor=GB; e.currentTarget.style.color=D2; }}>Talk to Sales</button>
+            <button id="mkt-cta-sales" style={{background:"#fff",color:D2,border:`1.5px solid ${GB}`,borderRadius:40,padding:"10px 20px",fontSize:13,fontWeight:600,cursor:"pointer",transition:"all .2s"}} onClick={() => navigate("/contact#contact-form-section")} onMouseOver={(e) => { e.currentTarget.style.borderColor=G; e.currentTarget.style.color=G; }} onMouseOut={(e) => { e.currentTarget.style.borderColor=GB; e.currentTarget.style.color=D2; }}>Contact Support</button>
           </div>
-          <p style={{fontSize:11,color:MU,marginTop:20}}>No credit card required · Free forever plan available</p>
+
         </div>
       </section>
 

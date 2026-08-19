@@ -519,9 +519,9 @@ const DigitalStorePage = () => {
             <button id="ds-cta-final" className="dsp" style={{ fontSize:13, padding:"11px 26px" }} onClick={() => window.open(adminUrl+"/signup","_blank")}>
               Create Your Digital Store
             </button>
-            <button id="ds-cta-sales" className="dsd" style={{ fontSize:13, padding:"11px 26px" }} onClick={() => navigate("/contact")}>Talk to Sales</button>
+            <button id="ds-cta-sales" className="dsd" style={{ fontSize:13, padding:"11px 26px" }} onClick={() => navigate("/contact#contact-form-section")}>Contact Support</button>
           </div>
-          <p style={{ fontSize:12, color:MU, marginTop:18 }}>No credit card required · Free forever plan available</p>
+
         </div>
       </section>
 

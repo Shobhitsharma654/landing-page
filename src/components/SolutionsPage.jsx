@@ -1704,7 +1704,7 @@ const SolutionsPage = () => {
               borderRadius: 40, fontSize: 16, fontWeight: 800, cursor: "pointer",
               boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)"
             }}>
-              Start Free
+              Get Started
             </button>
             <button 
               onClick={() => window.location.href = (import.meta.env.VITE_ADMIN_URL || "http://localhost:5173") + "/login"}
@@ -1716,13 +1716,13 @@ const SolutionsPage = () => {
               Book a Demo
             </button>
             <button 
-              onClick={() => navigate("/contact")}
+              onClick={() => navigate("/contact#contact-form-section")}
               style={{
               background: "transparent", color: "#FFF", border: "1px solid rgba(255, 255, 255, 0.5)", padding: "14px 32px",
               borderRadius: 40, fontSize: 16, fontWeight: 800, cursor: "pointer",
               transition: "all 0.2s"
             }} onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'} onMouseOut={e => e.currentTarget.style.background = 'transparent'}>
-              Talk to Sales
+              Contact Support
             </button>
           </div>
 
@@ -1834,7 +1834,7 @@ const SolutionsPage = () => {
                 }}
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                Start Free Trial
+                Start Trial
               </button>
               <button 
                 onClick={() => setActiveSolutionModal(null)}

@@ -75,7 +75,7 @@ const Navbar = () => {
     { label: "Help Center", path: "/resources/help-center" },
     { label: "Blog", path: "/resources/blog" },
     { label: "FAQs", path: "/resources/faqs" },
-    { label: "Contact Support", path: "/resources/contact-support" },
+    { label: "Contact Support", path: "/contact#contact-form-section" },
   ];
 
   const companyLinks = [

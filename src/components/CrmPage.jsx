@@ -271,7 +271,7 @@ const CrmPage = () => {
                 ))}
               </div>
               <div className="ctr">
-                <button id="crm-hero-start" className="cp" onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started Free</button>
+                <button id="crm-hero-start" className="cp" onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started</button>
                 <button id="crm-hero-explore" className="cd" onClick={() => document.getElementById("crm-overview")?.scrollIntoView({behavior:"smooth"})}>
                   Explore CRM <Arrow/>
                 </button>
@@ -518,7 +518,7 @@ const CrmPage = () => {
           </div>
           <div style={{ marginTop:36 }}>
             <button className="cp" id="crm-india-start" onClick={() => window.open(adminUrl+"/signup","_blank")}>
-              Start with MessBee CRM — Free
+              Start with MessBee CRM
             </button>
           </div>
         </div>
@@ -566,12 +566,10 @@ const CrmPage = () => {
             customer relationships from one powerful platform.
           </p>
           <div style={{ display:"flex", gap:12, justifyContent:"center", flexWrap:"wrap" }}>
-            <button id="crm-cta-final" className="cp" style={{ fontSize:13, padding:"10px 20px" }} onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started Free</button>
-            <button id="crm-cta-sales" style={{ background:"#fff", color:D2, border:`1.5px solid ${GB}`, borderRadius:40, padding:"10px 20px", fontSize:13, fontWeight:600, cursor:"pointer", transition:"all .2s" }} onClick={() => navigate("/contact")} onMouseOver={(e) => { e.currentTarget.style.borderColor=G; e.currentTarget.style.color=G; }} onMouseOut={(e) => { e.currentTarget.style.borderColor=GB; e.currentTarget.style.color=D2; }}>Talk to Sales</button>
+            <button id="crm-cta-final" className="cp" style={{ fontSize:13, padding:"10px 20px" }} onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started</button>
+            <button id="crm-cta-sales" style={{ background:"#fff", color:D2, border:`1.5px solid ${GB}`, borderRadius:40, padding:"10px 20px", fontSize:13, fontWeight:600, cursor:"pointer", transition:"all .2s" }} onClick={() => navigate("/contact#contact-form-section")} onMouseOver={(e) => { e.currentTarget.style.borderColor=G; e.currentTarget.style.color=G; }} onMouseOut={(e) => { e.currentTarget.style.borderColor=GB; e.currentTarget.style.color=D2; }}>Contact Support</button>
           </div>
-          <p style={{ fontSize:11, color:MU, marginTop:20 }}>
-            No credit card required &middot; Free forever plan available
-          </p>
+
         </div>
       </section>
 
