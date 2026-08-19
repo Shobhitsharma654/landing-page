@@ -136,7 +136,7 @@ const CSS = `
   .acc-hd:hover { background:#FAFAFA; }
   .acc-body { padding:0 16px 20px;background:#fff; }
   /* Layout */
-  .m-hg  { display:flex;flex-wrap:wrap;align-items:center;gap:56px; }
+  .m-hg  { display:flex;flex-wrap:wrap;align-items:flex-start;gap:56px; }
   .m-hl  { flex:1 1 440px;min-width:280px; }
   .m-hr  { flex:1 1 360px;min-width:280px;display:flex;justify-content:center; }
   .m-fg  { display:grid;grid-template-columns:repeat(4,1fr);gap:16px; }
@@ -251,9 +251,9 @@ const MarketingPage = () => {
           <div className="m-hg">
             {/* Left */}
             <div className="m-hl">
-              <div style={{display:"inline-flex",alignItems:"center",gap:8,background:GL,border:`1px solid ${GB}`,borderRadius:40,padding:"6px 18px",marginBottom:28}}>
-                <div style={{width:8,height:8,borderRadius:"50%",background:G}}/>
-                <span style={{fontSize:13,fontWeight:600,color:G}}>MessBee Marketing Automation</span>
+              <div style={{display:"inline-flex",alignItems:"center",gap:6,background:GL,border:`1px solid ${GB}`,borderRadius:40,padding:"5px 14px",marginBottom:28}}>
+                <div style={{width:6,height:6,borderRadius:"50%",background:G}}/>
+                <span style={{fontSize:12,fontWeight:600,color:G}}>MessBee Marketing Automation</span>
               </div>
 
               <h1 style={{fontSize:"clamp(26px,3.5vw,44px)",fontWeight:900,color:D2,lineHeight:1.08,letterSpacing:"-1.5px",marginBottom:16}}>
@@ -261,17 +261,17 @@ const MarketingPage = () => {
                 <span style={{color:G}}>Customer Journeys</span>
               </h1>
 
-              <p style={{fontSize:16,color:MU,lineHeight:1.75,marginBottom:10,maxWidth:520}}>
+              <p style={{fontSize:14,color:MU,lineHeight:1.75,marginBottom:10,maxWidth:520}}>
                 Plan, execute and manage customer marketing workflows from one connected platform.
                 Instead of manually managing every campaign, follow-up and interaction — automate it.
               </p>
-              <p style={{fontSize:14,color:MU,lineHeight:1.7,marginBottom:36,maxWidth:480}}>
+              <p style={{fontSize:13,color:MU,lineHeight:1.7,marginBottom:36,maxWidth:480}}>
                 Deliver the right communication at the right stage of the customer lifecycle.
               </p>
 
               <div style={{display:"flex",flexWrap:"wrap",gap:8,marginBottom:40}}>
                 {["Plan.","Automate.","Engage.","Measure.","Grow."].map(t => (
-                  <span key={t} style={{background:"#F8FAFC",border:"1px solid #E5E7EB",color:MU,borderRadius:40,padding:"5px 14px",fontSize:13,fontWeight:600}}>{t}</span>
+                  <span key={t} style={{ background:"#F1F5F9", border:"1px solid #E5E7EB", color:MU, borderRadius:40, padding:"4px 12px", fontSize:12, fontWeight:600 }}>{t}</span>
                 ))}
               </div>
 
@@ -285,7 +285,7 @@ const MarketingPage = () => {
 
             {/* Right — marketing funnel panel */}
             <div className="m-hr">
-              <div style={{background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)",borderRadius:20,padding:24,boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)",border:"1px solid rgba(34,197,94,.3)",width:"100%",maxWidth:420,transform:"scale(0.75)",transformOrigin:"top right"}}>
+              <div style={{background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)",borderRadius:20,padding:24,boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)",border:"1px solid rgba(34,197,94,.3)",width:"100%",maxWidth:420,transform:"scale(0.75)",transformOrigin:"top right",marginTop:"60px",marginBottom:"-120px"}}>
                 <div style={{marginBottom:18,paddingBottom:14,borderBottom:"1px solid rgba(255,255,255,.07)"}}>
                   <div style={{fontSize:13,fontWeight:700,color:"rgba(255,255,255,.85)",marginBottom:3}}>Marketing Automation Hub</div>
                   <div style={{fontSize:11,color:"rgba(255,255,255,.3)"}}>MessBee · Campaigns + Journeys + Analytics</div>
