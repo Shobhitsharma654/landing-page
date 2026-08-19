@@ -297,7 +297,7 @@ const WaPage = () => {
 
 
       {/* ══ FEATURE OVERVIEW GRID ══ */}
-      <section id="wa-features" style={{ background:"#fff", padding:"40px 6% 40px" }}>
+      <section id="wa-features" style={{ background:"#fff", padding:"20px 6% 40px" }}>
         <div style={{ maxWidth:1160, margin:"0 auto" }}>
           <div style={{ textAlign:"center", marginBottom:56 }}>
             <div style={{ display:"inline-block", background:WAL, border:"1px solid #A7F3D0", color:WAD, fontSize:11, fontWeight:700, textTransform:"uppercase", letterSpacing:"1.5px", padding:"5px 14px", borderRadius:20, marginBottom:14 }}>Platform Capabilities</div>

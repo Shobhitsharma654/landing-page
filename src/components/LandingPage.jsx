@@ -761,7 +761,10 @@ const LandingPage = () => {
             position: "relative",
             margin: "0 auto",
             width: "100%",
-            maxWidth: 1080
+            maxWidth: 1080,
+            transform: "scale(0.85)",
+            transformOrigin: "top center",
+            marginBottom: -80
           }}>
             <div style={{
               background: "#FFFFFF",

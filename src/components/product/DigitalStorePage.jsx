@@ -291,7 +291,7 @@ const DigitalStorePage = () => {
       </section>
 
       {/* ── FEATURES GRID ── */}
-      <section id="ds-features" style={{ background:"#fff", padding:"60px 6%", borderTop:`1px solid ${BS}` }}>
+      <section id="ds-features" style={{ background:"#fff", padding:"20px 6%", borderTop:`1px solid ${BS}` }}>
         <div style={{ maxWidth:1160, margin:"0 auto" }}>
           <div style={{ textAlign:"center", marginBottom:40 }}>
             <Pill>Platform Capabilities</Pill>

@@ -382,7 +382,7 @@ const AiPage = () => {
 
 
       {/* ══ FEATURES GRID — soft bg ══ */}
-      <section id="ai-features" style={{background:BA,padding:"90px 6%"}}>
+      <section id="ai-features" style={{background:BA,padding:"20px 6%"}}>
         <div style={{maxWidth:1160,margin:"0 auto"}}>
           <div style={{textAlign:"center",marginBottom:40}}>
             <Pill>Platform Capabilities</Pill>

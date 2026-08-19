@@ -173,7 +173,7 @@ const Footer = () => {
         .footer-bottom-link:hover { color: #4ADE80; }
 
         .footer-logo-text {
-          font-size: 22px;
+          font-size: 20px;
           font-weight: 900;
           letter-spacing: -0.6px;
           font-family: 'Inter', sans-serif;
@@ -222,7 +222,7 @@ const Footer = () => {
         <div className="footer-top-strip" style={{ maxWidth: 1280, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 20 }}>
           {/* Logo + brand */}
           <div style={{ display: "flex", alignItems: "center", gap: 10, cursor: "pointer" }} onClick={() => { navigate("/"); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-            <div style={{ width: 32, height: 32, borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)", flexShrink: 0 }}>
+            <div style={{ width: 28, height: 28, borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)", flexShrink: 0 }}>
               <img src={defaultLogo} alt="MessBee" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
             </div>
             <span className="footer-logo-text">
