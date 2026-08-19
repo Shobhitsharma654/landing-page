@@ -3166,7 +3166,7 @@ const AboutPage = () => {
               return (
                 <div key={idx} className={`about-faq-card ${isOpen ? "open-card" : ""}`}>
                   <button className="about-faq-trigger" onClick={() => setAboutFaqOpenIdx(isOpen ? null : idx)}>
-                    <h3 className="about-faq-question" style={{ fontFamily: "'Inter', sans-serif" }}>{faq.q}</h3>
+                    <h3 className="about-faq-question" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500 }}>{faq.q}</h3>
                     <div className="faq-icon-holder">
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={isOpen ? "#FFFFFF" : "#64748B"} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                         <polyline points="6 9 12 15 18 9" />

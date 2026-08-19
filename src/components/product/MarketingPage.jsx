@@ -361,7 +361,7 @@ const MarketingPage = () => {
 
 
       {/* ══ FEATURES GRID — white ══ */}
-      <section id="mkt-features" style={{background:"#fff",padding:"72px 6% 48px"}}>
+      <section id="mkt-features" style={{background:"#fff",padding:"20px 6% 48px"}}>
         <div style={{maxWidth:1140,margin:"0 auto"}}>
           <div style={{textAlign:"center",marginBottom:56}}>
             <Pill>Platform Capabilities</Pill>

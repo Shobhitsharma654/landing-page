@@ -331,7 +331,7 @@ const CrmPage = () => {
 
 
       {/* ── OVERVIEW FEATURES GRID ── */}
-      <section id="crm-overview" style={{ background:"#fff", padding:"90px 6% 40px" }}>
+      <section id="crm-overview" style={{ background:"#fff", padding:"20px 6% 40px" }}>
         <div style={{ maxWidth:1160, margin:"0 auto" }}>
           <div style={{ textAlign:"center", marginBottom:32 }}>
             <Pill>What You Can Do</Pill>
