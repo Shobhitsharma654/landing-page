@@ -504,7 +504,7 @@ const FaqPage = () => {
          ═══════════════════════════════════════════════════════════════════ */}
       <section
         style={{
-          marginTop: 70,
+          marginTop: 40,
           padding: "56px 6% 64px",
           position: "relative",
           background: "linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)",
@@ -597,17 +597,19 @@ const FaqPage = () => {
           </div>
 
           {/* Right Column: Visual FAQ Graphic Node Box with Official MessBee Logo */}
-          <div style={{ flex: 0.9, minWidth: 320, position: "relative" }}>
+          <div style={{ flex: 0.85, minWidth: 320, position: "relative", marginTop: 60 }}>
             <div
               style={{
                 background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
                 borderRadius: 24,
-                padding: "28px 24px",
+                padding: "24px 20px",
                 boxShadow: "0 20px 50px rgba(2, 44, 34, 0.4)",
                 border: "1px solid rgba(52, 211, 153, 0.25)",
                 color: "#FFFFFF",
                 position: "relative",
                 overflow: "hidden",
+                transform: "scale(0.88)",
+                transformOrigin: "top right",
               }}
             >
               {/* Outer Pulse aura background */}

@@ -453,7 +453,7 @@ const BlogPage = () => {
          ═══════════════════════════════════════════════════════════════════ */}
       <section
         style={{
-          marginTop: 70,
+          marginTop: 40,
           padding: "56px 6% 64px",
           position: "relative",
           background: "linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)",
@@ -516,16 +516,8 @@ const BlogPage = () => {
                 Practical Ideas, Guides &amp; Insights for Growing Businesses
               </p>
 
-              <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 12 }}>
-                Running a business means dealing with customers, leads, marketing, technology and everyday operations. As your business grows, choosing the right tools and processes becomes increasingly important.
-              </p>
-
-              <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 12 }}>
-                The MessBee Blog brings together practical business advice, technology insights, how-to guides and product-related information to help business owners and teams make better decisions.
-              </p>
-
               <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 20 }}>
-                From CRM and WhatsApp Business to marketing automation, AI, digital commerce and customer engagement, explore ideas that can help you build a more organized and connected business.
+                The MessBee Blog covers practical insights on CRM, WhatsApp Business, marketing, AI and digital commerce — helping business owners and teams make smarter decisions as they grow.
               </p>
 
               <div style={{ fontSize: 16, fontWeight: 900, color: "#15803D", marginBottom: 24, letterSpacing: "-0.3px" }}>
@@ -544,17 +536,19 @@ const BlogPage = () => {
             </div>
 
             {/* Right Column: Hero Graphic Box with Dark Forest Green Gradient */}
-            <div style={{ flex: 0.85, minWidth: 320, position: "relative" }}>
+            <div style={{ flex: 0.85, minWidth: 320, position: "relative", marginTop: 60 }}>
               <div
                 style={{
                   background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
                   borderRadius: 24,
-                  padding: "28px 24px",
+                  padding: "24px 20px",
                   boxShadow: "0 20px 50px rgba(2, 44, 34, 0.4)",
                   border: "1px solid rgba(52, 211, 153, 0.25)",
                   color: "#FFFFFF",
                   position: "relative",
                   overflow: "hidden",
+                  transform: "scale(0.88)",
+                  transformOrigin: "top right",
                 }}
               >
                 <div

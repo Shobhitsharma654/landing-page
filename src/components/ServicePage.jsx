@@ -586,12 +586,12 @@ const ServicePage = () => {
 
             {/* Provided Paragraph 1 */}
             <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 12, maxWidth: 540 }}>
-              For a service business, the customer relationship often starts before the first booking and continues long after the service is completed. Enquiries, appointments, follow-ups, payments and customer communication all need to stay organized.
+              Client relationships extend far beyond a single booking, requiring flawless organization of enquiries and appointments.
             </p>
 
             {/* Provided Paragraph 2 */}
             <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 22, maxWidth: 540 }}>
-              MessBee helps service businesses manage customer relationships, communication, marketing and routine workflows from one connected platform.
+              MessBee unifies CRM, communication, and marketing workflows—empowering you to focus purely on delivering exceptional service.
             </p>
 
             {/* Provided Tagline Badge */}
@@ -647,6 +647,8 @@ const ServicePage = () => {
                 color: "#FFFFFF",
                 position: "relative",
                 overflow: "hidden",
+                transform: "scale(0.8)",
+                transformOrigin: "center right",
               }}
             >
               {/* Outer Pulse aura background */}

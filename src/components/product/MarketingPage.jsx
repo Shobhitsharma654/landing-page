@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
+import defaultLogo from "../../assets/logo.jpeg";
 
 /* ── Project brand palette (same as CRM & WA pages) ── */
 const G   = "#16A34A";   // primary brand green
@@ -256,7 +257,7 @@ const MarketingPage = () => {
                 <span style={{fontSize:12,fontWeight:600,color:G}}>MessBee Marketing Automation</span>
               </div>
 
-              <h1 style={{fontSize:"clamp(26px,3.5vw,44px)",fontWeight:900,color:D2,lineHeight:1.08,letterSpacing:"-1.5px",marginBottom:16}}>
+              <h1 style={{fontSize:"clamp(22px,2.5vw,34px)",fontWeight:900,color:D2,lineHeight:1.08,letterSpacing:"-1px",marginBottom:16}}>
                 Turn Marketing Activities<br/>Into Automated<br/>
                 <span style={{color:G}}>Customer Journeys</span>
               </h1>
@@ -285,55 +286,45 @@ const MarketingPage = () => {
 
             {/* Right — marketing funnel panel */}
             <div className="m-hr">
-              <div style={{background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)",borderRadius:20,padding:24,boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)",border:"1px solid rgba(34,197,94,.3)",width:"100%",maxWidth:420,transform:"scale(0.75)",transformOrigin:"top right",marginTop:"60px",marginBottom:"-120px"}}>
-                <div style={{marginBottom:18,paddingBottom:14,borderBottom:"1px solid rgba(255,255,255,.07)"}}>
-                  <div style={{fontSize:13,fontWeight:700,color:"rgba(255,255,255,.85)",marginBottom:3}}>Marketing Automation Hub</div>
-                  <div style={{fontSize:11,color:"rgba(255,255,255,.3)"}}>MessBee · Campaigns + Journeys + Analytics</div>
+              <div style={{background:"#0F3826",borderRadius:24,padding:28,boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)",border:"1px solid rgba(34,197,94,.2)",width:"100%",maxWidth:460,transform:"scale(0.75)",transformOrigin:"top right",marginTop:"76px",marginBottom:"-120px",overflow:"hidden"}}>
+                {/* Header */}
+                <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:28 }}>
+                  <div style={{ display:"flex", alignItems:"center", gap:12 }}>
+                    <div style={{ width:40, height:40, borderRadius:10, background:"#fff", display:"flex", alignItems:"center", justifyContent:"center", overflow:"hidden", padding:4 }}>
+                      <img src={defaultLogo} alt="MessBee" style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius:6 }} />
+                    </div>
+                    <div>
+                      <div style={{ fontSize:17, fontWeight:800, color:"#fff", letterSpacing:"-0.3px" }}>Marketing Automation</div>
+                      <div style={{ fontSize:11, fontWeight:700, color:"#34D399" }}>Campaigns & Journeys</div>
+                    </div>
+                  </div>
+                  <div style={{ background:"rgba(16,185,129,0.15)", border:"1px solid rgba(16,185,129,0.4)", borderRadius:20, padding:"6px 12px", color:"#34D399", fontSize:11, fontWeight:700 }}>
+                    Active System
+                  </div>
                 </div>
 
-                {/* Channels */}
-                <div style={{fontSize:10,color:"rgba(255,255,255,.3)",letterSpacing:1.2,textTransform:"uppercase",marginBottom:10}}>Active Channels</div>
-                <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:8,marginBottom:20}}>
-                  {[{l:"WhatsApp",v:"1,240",c:"#4ADE80"},{l:"Email",v:"3,800",c:"#60A5FA"},{l:"SMS",v:"890",c:"#FCD34D"}].map(ch => (
-                    <div key={ch.l} style={{background:"rgba(255,255,255,.04)",borderRadius:10,padding:"10px 8px",border:"1px solid rgba(255,255,255,.06)",textAlign:"center"}}>
-                      <div style={{fontSize:16,fontWeight:800,color:ch.c}}>{ch.v}</div>
-                      <div style={{fontSize:10,color:"rgba(255,255,255,.4)",marginTop:2}}>{ch.l}</div>
+                {/* Grid */}
+                <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:14, marginBottom:24 }}>
+                  {[
+                    { icon: "🎯", title: "Audience Segments", sub: "Smart Targeting" },
+                    { icon: "📧", title: "Multi-Channel", sub: "Email & WhatsApp" },
+                    { icon: "📈", title: "Live Analytics", sub: "Performance Metrics" },
+                    { icon: "⚡", title: "Journey Builder", sub: "Visual Workflows" }
+                  ].map(card => (
+                    <div key={card.title} style={{ background:"rgba(16,185,129,0.09)", border:"1px solid rgba(16,185,129,0.25)", borderRadius:14, padding:"14px 16px" }}>
+                      <div style={{ display:"flex", alignItems:"center", gap:8, marginBottom:8 }}>
+                        <span style={{ fontSize:16 }}>{card.icon}</span>
+                        <span style={{ fontSize:13, fontWeight:800, color:"#fff", letterSpacing:"-0.2px" }}>{card.title}</span>
+                      </div>
+                      <div style={{ fontSize:11, fontWeight:700, color:"#34D399" }}>{card.sub}</div>
                     </div>
                   ))}
                 </div>
 
-                {/* Funnel */}
-                <div style={{fontSize:10,color:"rgba(255,255,255,.3)",letterSpacing:1.2,textTransform:"uppercase",marginBottom:12}}>Marketing Funnel</div>
-                {[
-                  {stage:"Awareness",   val:5200, pct:100, c:"#4ADE80"},
-                  {stage:"Engaged",     val:2800, pct:54,  c:"#34D399"},
-                  {stage:"Nurtured",    val:1400, pct:27,  c:"#2DD4BF"},
-                  {stage:"Opportunity", val:560,  pct:11,  c:"#60A5FA"},
-                  {stage:"Converted",   val:210,  pct:4,   c:"#FCD34D"},
-                ].map(row => (
-                  <div key={row.stage} style={{marginBottom:8}}>
-                    <div style={{display:"flex",justifyContent:"space-between",marginBottom:3}}>
-                      <span style={{fontSize:11,color:"rgba(255,255,255,.6)"}}>{row.stage}</span>
-                      <span style={{fontSize:11,color:"rgba(255,255,255,.35)"}}>{row.val.toLocaleString()}</span>
-                    </div>
-                    <div style={{background:"rgba(255,255,255,.06)",borderRadius:4,height:6}}>
-                      <div style={{width:row.pct+"%",height:"100%",borderRadius:4,background:row.c}}/>
-                    </div>
-                  </div>
-                ))}
-
-                <div style={{fontSize:10,color:"rgba(255,255,255,.3)",margin:"16px 0 10px",letterSpacing:1.2,textTransform:"uppercase"}}>Running Journeys</div>
-                {[
-                  {name:"Welcome Series",  stat:"Running", c:"#4ADE80"},
-                  {name:"Diwali Campaign", stat:"Live",    c:"#FCD34D"},
-                  {name:"Re-engage Q4",    stat:"Active",  c:"#60A5FA"},
-                ].map((j,i) => (
-                  <div key={j.name} style={{display:"flex",alignItems:"center",gap:10,padding:"7px 0",borderBottom: i<2?"1px solid rgba(255,255,255,.04)":"none"}}>
-                    <div style={{width:6,height:6,borderRadius:"50%",background:j.c,flexShrink:0}}/>
-                    <div style={{flex:1,fontSize:12,color:"rgba(255,255,255,.7)",fontWeight:600}}>{j.name}</div>
-                    <div style={{background:j.c+"20",color:j.c,fontSize:10,fontWeight:700,padding:"2px 8px",borderRadius:40}}>{j.stat}</div>
-                  </div>
-                ))}
+                {/* Bottom Banner */}
+                <div style={{ background:"rgba(16,185,129,0.09)", border:"1px solid rgba(16,185,129,0.25)", borderRadius:12, padding:"14px", textAlign:"center" }}>
+                  <div style={{ fontSize:12, fontWeight:800, color:"#34D399" }}>Plan Better. Automate Faster. Convert More.</div>
+                </div>
               </div>
             </div>
           </div>

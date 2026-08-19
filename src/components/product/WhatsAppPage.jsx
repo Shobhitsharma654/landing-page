@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
+import defaultLogo from "../../assets/logo.jpeg";
 
 /* ── WhatsApp page has its own distinct design language ── */
 const WA   = "#25D366";    // WhatsApp brand green
@@ -218,7 +219,7 @@ const WaPage = () => {
                 <span style={{ fontSize:12, fontWeight:600, color:G }}>MessBee WhatsApp Business</span>
               </div>
 
-              <h1 style={{ fontSize:"clamp(28px,4vw,44px)", fontWeight:900, color:D2, lineHeight:1.08, letterSpacing:"-1.5px", marginBottom:16 }}>
+              <h1 style={{ fontSize:"clamp(22px,2.5vw,34px)", fontWeight:900, color:D2, lineHeight:1.08, letterSpacing:"-1px", marginBottom:16 }}>
                 Connect With Customers<br/>
                 on <span style={{ color:G }}>WhatsApp</span><br/>
                 The Smarter Way
@@ -248,27 +249,44 @@ const WaPage = () => {
             </div>
 
             <div className="wa-hr" style={{ alignItems:"flex-start" }}>
-              <div style={{ width:"100%", maxWidth:260, marginTop:60, marginLeft:40, boxShadow:"0 20px 60px rgba(0,0,0,.3)", borderRadius:12, overflow:"hidden" }}>
-                {/* phone-style status bar */}
-                <div style={{ background:"#075E54", padding:"4px 8px", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
-                  <span style={{ fontSize:9, fontWeight:700, color:"#fff" }}>MessBee Business</span>
-                  <div style={{ display:"flex", gap:4 }}>
-                    {["🔍","📞","⋮"].map(i => <span key={i} style={{ fontSize:10, color:"rgba(255,255,255,.8)" }}>{i}</span>)}
+              <div style={{ background:"#0F3826", borderRadius:24, padding:28, boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)", border:"1px solid rgba(34,197,94,.2)", width:"100%", maxWidth:460, transform:"scale(0.75)", transformOrigin:"top right", marginTop:76, marginLeft:40, overflow:"hidden" }}>
+                {/* Header */}
+                <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:28 }}>
+                  <div style={{ display:"flex", alignItems:"center", gap:12 }}>
+                    <div style={{ width:40, height:40, borderRadius:10, background:"#fff", display:"flex", alignItems:"center", justifyContent:"center", overflow:"hidden", padding:4 }}>
+                      <img src={defaultLogo} alt="MessBee" style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius:6 }} />
+                    </div>
+                    <div>
+                      <div style={{ fontSize:17, fontWeight:800, color:"#fff", letterSpacing:"-0.3px" }}>WhatsApp Business</div>
+                      <div style={{ fontSize:11, fontWeight:700, color:"#34D399" }}>Conversational Commerce</div>
+                    </div>
+                  </div>
+                  <div style={{ background:"rgba(16,185,129,0.15)", border:"1px solid rgba(16,185,129,0.4)", borderRadius:20, padding:"6px 12px", color:"#34D399", fontSize:11, fontWeight:700 }}>
+                    Official API
                   </div>
                 </div>
-                <ChatMock messages={[
-                  {from:"customer",msg:"Hi! I saw your Diwali sale. What's the discount?",time:"10:31 AM"},
-                  {from:"agent",   msg:"Hi Priya! 👋 We're offering 20% off on all products till midnight tonight.",time:"10:32 AM"},
-                  {from:"agent",   msg:"Here's your personalized link: messbee.in/priya-diwali 🪔",time:"10:32 AM"},
-                  {from:"customer",msg:"Amazing! I'll order right now. Thank you! 🙏",time:"10:33 AM"},
-                  {from:"system",  msg:"✅ Lead converted · Order placed · CRM Updated",time:""},
-                ]}/>
-                {/* type bar */}
-                <div style={{ background:"#F0F0F0", padding:"4px 8px", display:"flex", alignItems:"center", gap:6 }}>
-                  <div style={{ flex:1, background:"#fff", borderRadius:40, padding:"4px 8px", fontSize:9, color:"#94A3B8" }}>Type a message...</div>
-                  <div style={{ width:20, height:20, borderRadius:"50%", background:WA, display:"flex", alignItems:"center", justifyContent:"center" }}>
-                    <span style={{ color:"#fff", fontSize:8 }}>➤</span>
-                  </div>
+
+                {/* Grid */}
+                <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:14, marginBottom:24 }}>
+                  {[
+                    { icon: "💬", title: "Chat Automations", sub: "Smart Replies" },
+                    { icon: "📢", title: "Broadcasts", sub: "Bulk Messaging" },
+                    { icon: "📥", title: "Shared Inbox", sub: "Team Collaboration" },
+                    { icon: "📊", title: "Analytics", sub: "Performance Tracking" }
+                  ].map(card => (
+                    <div key={card.title} style={{ background:"rgba(16,185,129,0.09)", border:"1px solid rgba(16,185,129,0.25)", borderRadius:14, padding:"14px 16px" }}>
+                      <div style={{ display:"flex", alignItems:"center", gap:8, marginBottom:8 }}>
+                        <span style={{ fontSize:16 }}>{card.icon}</span>
+                        <span style={{ fontSize:13, fontWeight:800, color:"#fff", letterSpacing:"-0.2px" }}>{card.title}</span>
+                      </div>
+                      <div style={{ fontSize:11, fontWeight:700, color:"#34D399" }}>{card.sub}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Bottom Banner */}
+                <div style={{ background:"rgba(16,185,129,0.09)", border:"1px solid rgba(16,185,129,0.25)", borderRadius:12, padding:"14px", textAlign:"center" }}>
+                  <div style={{ fontSize:12, fontWeight:800, color:"#34D399" }}>Engage Customers. Drive Sales. Scale Support.</div>
                 </div>
               </div>
             </div>

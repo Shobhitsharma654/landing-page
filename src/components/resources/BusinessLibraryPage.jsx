@@ -311,8 +311,8 @@ const BusinessLibraryPage = () => {
          ═══════════════════════════════════════════════════════════════════ */}
       <section
         style={{
-          marginTop: 70,
-          padding: "56px 6% 64px",
+          marginTop: 0,
+          padding: "80px 6% 64px",
           position: "relative",
           background: "linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)",
           overflow: "hidden",
@@ -374,12 +374,8 @@ const BusinessLibraryPage = () => {
                 Practical Resources to Help You Run and Grow Your Business
               </p>
 
-              <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 12 }}>
-                Running a business comes with questions at every stage — how to attract customers, manage leads, improve communication, automate routine work and build a stronger digital presence.
-              </p>
-
               <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 20 }}>
-                MessBee Business Library brings useful guides, practical insights and business resources together in one place, so you can find relevant information without searching across multiple sources.
+                Every business has questions — on growth, communication, leads and operations. MessBee Business Library puts the right answers in one place, so your team can move faster and work smarter.
               </p>
 
               <div style={{ fontSize: 16, fontWeight: 900, color: "#15803D", marginBottom: 24, letterSpacing: "-0.3px" }}>
@@ -398,17 +394,19 @@ const BusinessLibraryPage = () => {
             </div>
 
             {/* Right Column: Hero Graphic Box with Dark Forest Green Gradient */}
-            <div style={{ flex: 0.85, minWidth: 320, position: "relative" }}>
+            <div style={{ flex: 0.85, minWidth: 320, position: "relative", marginTop: 60 }}>
               <div
                 style={{
                   background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
                   borderRadius: 24,
-                  padding: "28px 24px",
+                  padding: "24px 20px",
                   boxShadow: "0 20px 50px rgba(2, 44, 34, 0.4)",
                   border: "1px solid rgba(52, 211, 153, 0.25)",
                   color: "#FFFFFF",
                   position: "relative",
                   overflow: "hidden",
+                  transform: "scale(0.88)",
+                  transformOrigin: "top right",
                 }}
               >
                 <div
