@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
+import defaultLogo from "../../assets/logo.jpeg";
 
 /* ── Brand tokens ── */
 const G  = "#16A34A";
@@ -207,7 +208,7 @@ const DigitalStorePage = () => {
                 <svg width="10" height="10" viewBox="0 0 10 10" fill={G}><circle cx="5" cy="5" r="5"/></svg>
                 <span style={{ fontSize:13, fontWeight:600, color:G }}>MessBee Digital Store</span>
               </div>
-              <h1 style={{ fontSize:"clamp(28px,3.5vw,46px)", fontWeight:900, color:D2, letterSpacing:"-1.5px", lineHeight:1.1, marginBottom:16 }}>
+              <h1 style={{ fontSize:"clamp(22px,2.5vw,34px)", fontWeight:900, color:D2, letterSpacing:"-1px", lineHeight:1.1, marginBottom:16 }}>
                 Build Your Digital<br/>
                 <span style={{ color:G }}>Storefront</span>
               </h1>
@@ -230,33 +231,45 @@ const DigitalStorePage = () => {
             </div>
 
             {/* Storefront mockup */}
-            <div style={{ flex:"1 1 340px", minWidth:280, display:"flex", justifyContent:"center", marginTop:60 }}>
-              <div style={{ background:"linear-gradient(135deg,#14532d 0%,#052e16 60%,#022c22 100%)", borderRadius:16, padding:"18px 20px", boxShadow:"0 20px 50px rgba(2,44,34,.4),0 0 0 1px rgba(52,211,153,.15)", border:"1.5px solid rgba(52,211,153,.2)", width:"100%", maxWidth:290, marginLeft:40 }}>
-                <div style={{ marginBottom:12, paddingBottom:10, borderBottom:"1px solid rgba(255,255,255,.1)" }}>
-                  <div style={{ fontSize:11, fontWeight:700, color:"#fff", marginBottom:1 }}>MessBee Digital Store</div>
-                  <div style={{ fontSize:9, color:"rgba(255,255,255,.5)" }}>Your Business · Online</div>
+            <div style={{ flex:"1 1 340px", minWidth:280, display:"flex", justifyContent:"center", marginTop:76 }}>
+              <div style={{ background:"#0F3826", borderRadius:24, padding:28, boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)", border:"1px solid rgba(34,197,94,.2)", width:"100%", maxWidth:460, transform:"scale(0.75)", transformOrigin:"top right", marginLeft:40, overflow:"hidden" }}>
+                {/* Header */}
+                <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:28 }}>
+                  <div style={{ display:"flex", alignItems:"center", gap:12 }}>
+                    <div style={{ width:40, height:40, borderRadius:10, background:"#fff", display:"flex", alignItems:"center", justifyContent:"center", overflow:"hidden", padding:4 }}>
+                      <img src={defaultLogo} alt="MessBee" style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius:6 }} />
+                    </div>
+                    <div>
+                      <div style={{ fontSize:17, fontWeight:800, color:"#fff", letterSpacing:"-0.3px" }}>MessBee Digital Store</div>
+                      <div style={{ fontSize:11, fontWeight:700, color:"#34D399" }}>Online Commerce</div>
+                    </div>
+                  </div>
+                  <div style={{ background:"rgba(16,185,129,0.15)", border:"1px solid rgba(16,185,129,0.4)", borderRadius:20, padding:"6px 12px", color:"#34D399", fontSize:11, fontWeight:700 }}>
+                    Live Store
+                  </div>
                 </div>
-                <div style={{ fontSize:8, color:"rgba(255,255,255,.45)", letterSpacing:1, textTransform:"uppercase", marginBottom:6 }}>Featured Products</div>
-                <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:6, marginBottom:12 }}>
-                  {[{n:"Product A",p:"₹499",tag:"In Stock"},{n:"Service B",p:"₹1,299",tag:"Available"},{n:"Product C",p:"₹799",tag:"In Stock"},{n:"Package D",p:"₹2,499",tag:"Popular"}].map(p => (
-                    <div key={p.n} style={{ background:"rgba(255,255,255,.07)", borderRadius:6, padding:"7px 8px", border:"1px solid rgba(255,255,255,.1)" }}>
-                      <div style={{ width:"100%", height:28, borderRadius:4, background:"rgba(255,255,255,.06)", marginBottom:5 }}/>
-                      <div style={{ fontSize:9, fontWeight:700, color:"rgba(255,255,255,.85)", marginBottom:2 }}>{p.n}</div>
-                      <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center" }}>
-                        <span style={{ fontSize:10, fontWeight:800, color:"#4ADE80" }}>{p.p}</span>
-                        <span style={{ fontSize:8, color:"rgba(255,255,255,.4)" }}>{p.tag}</span>
+
+                {/* Grid */}
+                <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:14, marginBottom:24 }}>
+                  {[
+                    { icon: "🛍️", title: "Product Catalog", sub: "Inventory Sync" },
+                    { icon: "💳", title: "Secure Payments", sub: "Multiple Options" },
+                    { icon: "📦", title: "Order Tracking", sub: "Live Updates" },
+                    { icon: "📱", title: "Mobile First", sub: "Optimized Buying" }
+                  ].map(card => (
+                    <div key={card.title} style={{ background:"rgba(16,185,129,0.09)", border:"1px solid rgba(16,185,129,0.25)", borderRadius:14, padding:"14px 16px" }}>
+                      <div style={{ display:"flex", alignItems:"center", gap:8, marginBottom:8 }}>
+                        <span style={{ fontSize:16 }}>{card.icon}</span>
+                        <span style={{ fontSize:13, fontWeight:800, color:"#fff", letterSpacing:"-0.2px" }}>{card.title}</span>
                       </div>
+                      <div style={{ fontSize:11, fontWeight:700, color:"#34D399" }}>{card.sub}</div>
                     </div>
                   ))}
                 </div>
-                <div style={{ fontSize:8, color:"rgba(255,255,255,.45)", letterSpacing:1, textTransform:"uppercase", marginBottom:6 }}>Store Activity</div>
-                <div style={{ display:"flex", flexDirection:"column", gap:4 }}>
-                  {[{l:"New Enquiry",v:"Product A",c:"#4ADE80"},{l:"Order Placed",v:"Service B",c:"#60A5FA"},{l:"Payment Received",v:"₹1,299",c:"#FCD34D"}].map(a => (
-                    <div key={a.l} style={{ display:"flex", justifyContent:"space-between", alignItems:"center", padding:"5px 8px", background:"rgba(255,255,255,.06)", borderRadius:5, border:"1px solid rgba(255,255,255,.08)" }}>
-                      <span style={{ fontSize:9, color:"rgba(255,255,255,.6)" }}>{a.l}</span>
-                      <span style={{ fontSize:9, fontWeight:700, color:a.c }}>{a.v}</span>
-                    </div>
-                  ))}
+
+                {/* Bottom Banner */}
+                <div style={{ background:"rgba(16,185,129,0.09)", border:"1px solid rgba(16,185,129,0.25)", borderRadius:12, padding:"14px", textAlign:"center" }}>
+                  <div style={{ fontSize:12, fontWeight:800, color:"#34D399" }}>Showcase Beautifully. Sell Seamlessly. Grow Fast.</div>
                 </div>
               </div>
             </div>

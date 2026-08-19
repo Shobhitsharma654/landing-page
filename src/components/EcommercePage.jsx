@@ -591,12 +591,12 @@ const EcommercePage = () => {
 
             {/* Provided Paragraph 1 */}
             <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 12, maxWidth: 540 }}>
-              Running an e-commerce business means managing much more than products and orders. You also need to attract visitors, answer customer questions, follow up with prospects, promote products and keep existing customers engaged.
+              E-commerce success requires more than fulfilling orders; it demands engaging visitors and nurturing long-term loyalty.
             </p>
 
             {/* Provided Paragraph 2 */}
             <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 22, maxWidth: 540 }}>
-              MessBee helps e-commerce businesses bring customer management, communication, marketing and automation into one connected workflow.
+              MessBee unifies customer management, marketing, and automated communication into one seamless workflow to accelerate your growth.
             </p>
 
             {/* Provided Tagline Badge */}
@@ -652,6 +652,8 @@ const EcommercePage = () => {
                 color: "#FFFFFF",
                 position: "relative",
                 overflow: "hidden",
+                transform: "scale(0.8)",
+                transformOrigin: "center right",
               }}
             >
               {/* Outer Pulse aura background */}

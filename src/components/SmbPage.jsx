@@ -500,12 +500,12 @@ const SmbPage = () => {
 
             {/* Provided Paragraph 1 */}
             <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 12, maxWidth: 540 }}>
-              Growing a business means managing customers, enquiries, follow-ups, marketing and day-to-day communication at the same time. As the business grows, handling all of this through separate apps and spreadsheets can become difficult.
+              Scaling a business shouldn't mean juggling scattered apps and spreadsheets.
             </p>
 
             {/* Provided Paragraph 2 */}
             <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 22, maxWidth: 540 }}>
-              MessBee brings essential business tools together in one place, helping small and medium businesses manage customer relationships, communication, marketing and automation more efficiently.
+              MessBee unifies CRM, marketing, and communication into a single platform—making it effortless to manage relationships and accelerate growth.
             </p>
 
             {/* Provided Tagline Badge */}
@@ -561,6 +561,8 @@ const SmbPage = () => {
                 color: "#FFFFFF",
                 position: "relative",
                 overflow: "hidden",
+                transform: "scale(0.8)",
+                transformOrigin: "center right",
               }}
             >
               {/* Outer Pulse aura background */}

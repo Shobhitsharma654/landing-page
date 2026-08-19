@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
+import defaultLogo from "../../assets/logo.jpeg";
 
 /* ── Brand tokens ── */
 const G  = "#16A34A";
@@ -255,7 +256,7 @@ const CrmPage = () => {
                 <svg width="10" height="10" viewBox="0 0 10 10" fill={G}><circle cx="5" cy="5" r="5"/></svg>
                 <span style={{ fontSize:13, fontWeight:600, color:G }}>MessBee CRM</span>
               </div>
-              <h1 style={{ fontSize:"clamp(26px,3.5vw,44px)", fontWeight:900, color:D2, lineHeight:1.08, letterSpacing:"-1.5px", marginBottom:16 }}>
+              <h1 style={{ fontSize:"clamp(22px,2.5vw,34px)", fontWeight:900, color:D2, lineHeight:1.08, letterSpacing:"-1px", marginBottom:16 }}>
                 Turn Customer Data Into<br />
                 <span style={{ color:G }}>Meaningful Business</span><br />
                 Relationships
@@ -279,44 +280,48 @@ const CrmPage = () => {
 
             </div>
 
-            <div className="hr" style={{ paddingTop: "54px", marginBottom: "-140px" }}>
-              <div style={{ background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)", borderRadius:20, padding:24, boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)", border:"1px solid rgba(34,197,94,.3)", width:"100%", maxWidth:420, transform:"scale(0.68)", transformOrigin:"top right" }}>
-                <div style={{ display:"flex", alignItems:"center", gap:6, marginBottom:18 }}>
-                  {["#EF4444","#F59E0B","#10B981"].map(c => <div key={c} style={{width:10,height:10,borderRadius:"50%",background:c}}/>)}
-                  <div style={{ flex:1, background:"rgba(255,255,255,.05)", borderRadius:5, height:16, marginLeft:8 }}/>
+            <div className="hr" style={{ paddingTop: "70px", marginBottom: "-140px" }}>
+              <div style={{ background:"#0F3826", borderRadius:24, padding:28, boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)", border:"1px solid rgba(34,197,94,.2)", width:"100%", maxWidth:460, transform:"scale(0.75)", transformOrigin:"top right" }}>
+                
+                {/* Header */}
+                <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:28 }}>
+                  <div style={{ display:"flex", alignItems:"center", gap:12 }}>
+                    <div style={{ width:40, height:40, borderRadius:10, background:"#fff", display:"flex", alignItems:"center", justifyContent:"center", overflow:"hidden", padding:4 }}>
+                      <img src={defaultLogo} alt="MessBee" style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius:6 }} />
+                    </div>
+                    <div>
+                      <div style={{ fontSize:17, fontWeight:800, color:"#fff", letterSpacing:"-0.3px" }}>MessBee Resource Vault</div>
+                      <div style={{ fontSize:11, fontWeight:700, color:"#34D399" }}>Curated Business Library</div>
+                    </div>
+                  </div>
+                  <div style={{ background:"rgba(16,185,129,0.15)", border:"1px solid rgba(16,185,129,0.4)", borderRadius:20, padding:"6px 12px", color:"#34D399", fontSize:11, fontWeight:700 }}>
+                    Verified Guides
+                  </div>
                 </div>
-                <div style={{ marginBottom:16, paddingBottom:14, borderBottom:"1px solid rgba(255,255,255,.07)" }}>
-                  <div style={{ fontSize:13, fontWeight:700, color:"rgba(255,255,255,.88)", marginBottom:3 }}>CRM Dashboard</div>
-                  <div style={{ fontSize:11, color:"rgba(255,255,255,.3)" }}>Customer Relationship Management</div>
-                </div>
-                <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:10, marginBottom:16 }}>
-                  {[{l:"Contacts",v:"4,821",c:"#3B82F6"},{l:"Leads",v:"342",c:G},{l:"Closed",v:"89",c:"#F59E0B"}].map(s => (
-                    <div key={s.l} style={{ background:"rgba(255,255,255,.04)", borderRadius:10, padding:"10px 8px", border:"1px solid rgba(255,255,255,.06)", textAlign:"center" }}>
-                      <div style={{ fontSize:17, fontWeight:800, color:s.c }}>{s.v}</div>
-                      <div style={{ fontSize:10, color:"rgba(255,255,255,.4)", marginTop:2 }}>{s.l}</div>
+
+                {/* Grid */}
+                <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:14, marginBottom:24 }}>
+                  {[
+                    { icon: "📖", title: "Business Guides" },
+                    { icon: "💬", title: "WhatsApp Guides" },
+                    { icon: "📢", title: "Marketing & Growth" },
+                    { icon: "📊", title: "CRM & Customers" }
+                  ].map(card => (
+                    <div key={card.title} style={{ background:"rgba(16,185,129,0.09)", border:"1px solid rgba(16,185,129,0.25)", borderRadius:14, padding:"14px 16px" }}>
+                      <div style={{ display:"flex", alignItems:"center", gap:8, marginBottom:8 }}>
+                        <span style={{ fontSize:16 }}>{card.icon}</span>
+                        <span style={{ fontSize:13, fontWeight:800, color:"#fff", letterSpacing:"-0.2px" }}>{card.title}</span>
+                      </div>
+                      <div style={{ fontSize:11, fontWeight:700, color:"#34D399" }}>Practical Insights</div>
                     </div>
                   ))}
                 </div>
-                <div style={{ fontSize:10, color:"rgba(255,255,255,.3)", marginBottom:10, letterSpacing:1.2, textTransform:"uppercase" }}>Sales Pipeline</div>
-                {[{s:"New Enquiry",n:124,p:72,c:"#3B82F6"},{s:"Qualified",n:87,p:50,c:G},{s:"Proposal",n:43,p:25,c:"#F59E0B"},{s:"Converted",n:21,p:12,c:G}].map(r => (
-                  <div key={r.s} style={{ marginBottom:8 }}>
-                    <div style={{ display:"flex", justifyContent:"space-between", marginBottom:3 }}>
-                      <span style={{ fontSize:11, color:"rgba(255,255,255,.6)" }}>{r.s}</span>
-                      <span style={{ fontSize:11, color:"rgba(255,255,255,.3)" }}>{r.n}</span>
-                    </div>
-                    <div style={{ background:"rgba(255,255,255,.06)", borderRadius:4, height:5 }}>
-                      <div style={{ width:r.p+"%", height:"100%", borderRadius:4, background:r.c }}/>
-                    </div>
-                  </div>
-                ))}
-                <div style={{ fontSize:10, color:"rgba(255,255,255,.3)", margin:"14px 0 10px", letterSpacing:1.2, textTransform:"uppercase" }}>Recent Contacts</div>
-                {[{n:"Priya Sharma",t:"Lead",c:"#3B82F6"},{n:"Rahul Mehra",t:"Customer",c:G},{n:"Anjali Singh",t:"Prospect",c:"#F59E0B"}].map(c => (
-                  <div key={c.n} style={{ display:"flex", alignItems:"center", gap:10, padding:"8px 0", borderBottom:"1px solid rgba(255,255,255,.04)" }}>
-                    <div style={{ width:26, height:26, borderRadius:"50%", background:c.c+"25", color:c.c, display:"flex", alignItems:"center", justifyContent:"center", fontSize:11, fontWeight:700, flexShrink:0 }}>{c.n[0]}</div>
-                    <div style={{ flex:1, fontSize:12, color:"rgba(255,255,255,.8)", fontWeight:600 }}>{c.n}</div>
-                    <div style={{ background:c.c+"20", color:c.c, fontSize:10, fontWeight:700, padding:"2px 8px", borderRadius:40 }}>{c.t}</div>
-                  </div>
-                ))}
+
+                {/* Bottom Banner */}
+                <div style={{ background:"rgba(16,185,129,0.09)", border:"1px solid rgba(16,185,129,0.25)", borderRadius:12, padding:"14px", textAlign:"center" }}>
+                  <div style={{ fontSize:12, fontWeight:800, color:"#34D399" }}>Learn Better. Work Smarter. Grow With Confidence.</div>
+                </div>
+
               </div>
             </div>
           </div>

@@ -544,12 +544,12 @@ const RetailPage = () => {
 
             {/* Provided Paragraph 1 */}
             <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 12, maxWidth: 540 }}>
-              A local business grows through relationships. Whether you run a retail shop, showroom, salon, café, service centre or another neighbourhood business, staying connected with customers can be just as important as attracting new ones.
+              Local businesses thrive on lasting relationships, and retaining loyal customers is critical to your success.
             </p>
 
             {/* Provided Paragraph 2 */}
             <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 22, maxWidth: 540 }}>
-              MessBee helps retail and local businesses manage customers, communicate with them, promote their business and build a stronger digital presence from one connected platform.
+              MessBee empowers you to seamlessly manage operations, engage shoppers, and grow your digital presence from one unified platform.
             </p>
 
             {/* Provided Tagline Badge */}
@@ -605,6 +605,8 @@ const RetailPage = () => {
                 color: "#FFFFFF",
                 position: "relative",
                 overflow: "hidden",
+                transform: "scale(0.8)",
+                transformOrigin: "center right",
               }}
             >
               {/* Outer Pulse aura background */}

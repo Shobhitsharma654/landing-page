@@ -446,7 +446,7 @@ const ContactUsPage = () => {
             {/* Recommended H1 */}
             <h1
               style={{
-                fontSize: "clamp(32px, 3.2vw, 48px)",
+                fontSize: "clamp(26px, 2.6vw, 38px)",
                 fontWeight: 900,
                 lineHeight: 1.1,
                 color: "#0F172A",
@@ -486,18 +486,20 @@ const ContactUsPage = () => {
           </div>
 
           {/* Right Column: Visual Support Hub Node Graphic */}
-          <div className="contact-hero-right">
+          <div className="contact-hero-right" style={{ marginTop: 60 }}>
             <div
               style={{
                 width: "100%",
                 background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
                 borderRadius: 24,
-                padding: "36px 32px",
+                padding: "24px 20px",
                 boxShadow: "0 20px 50px rgba(2, 44, 34, 0.35)",
                 border: "1px solid rgba(52, 211, 153, 0.2)",
                 color: "#FFFFFF",
                 position: "relative",
                 overflow: "hidden",
+                transform: "scale(0.88)",
+                transformOrigin: "top right",
               }}
             >
               {/* Outer Pulse aura background */}

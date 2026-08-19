@@ -342,7 +342,7 @@ const HelpCenterPage = () => {
          ═══════════════════════════════════════════════════════════════════ */}
       <section
         style={{
-          marginTop: 70,
+          marginTop: 40,
           padding: "56px 6% 64px",
           position: "relative",
           background: "linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)",
@@ -405,12 +405,8 @@ const HelpCenterPage = () => {
                 Get the Help You Need, When You Need It
               </p>
 
-              <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 12 }}>
-                Have a question about MessBee? The MessBee Help Center brings product information, setup instructions, how-to guides and troubleshooting resources together in one place.
-              </p>
-
               <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 20 }}>
-                Whether you're setting up your account, connecting a business channel or learning how to use a MessBee feature, you'll find practical guidance to help you get started.
+                The MessBee Help Center gives you instant access to setup guides, how-to articles and troubleshooting resources — everything you need to get started and make the most of the platform.
               </p>
 
               <div style={{ fontSize: 16, fontWeight: 900, color: "#15803D", marginBottom: 24, letterSpacing: "-0.3px" }}>
@@ -432,17 +428,19 @@ const HelpCenterPage = () => {
             </div>
 
             {/* Right Column: Hero Graphic Box with Dark Forest Green Gradient */}
-            <div style={{ flex: 0.85, minWidth: 320, position: "relative" }}>
+            <div style={{ flex: 0.85, minWidth: 320, position: "relative", marginTop: 60 }}>
               <div
                 style={{
                   background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
                   borderRadius: 24,
-                  padding: "28px 24px",
+                  padding: "24px 20px",
                   boxShadow: "0 20px 50px rgba(2, 44, 34, 0.4)",
                   border: "1px solid rgba(52, 211, 153, 0.25)",
                   color: "#FFFFFF",
                   position: "relative",
                   overflow: "hidden",
+                  transform: "scale(0.88)",
+                  transformOrigin: "top right",
                 }}
               >
                 <div

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
+import defaultLogo from "../../assets/logo.jpeg";
 
 /* ── Project palette ── */
 const G   = "#16A34A";
@@ -281,7 +282,7 @@ const AiPage = () => {
                 <span style={{fontSize:12,fontWeight:600,color:G}}>MessBee AI & Automation</span>
               </div>
 
-              <h1 style={{fontSize:"clamp(26px,3.5vw,44px)",fontWeight:900,color:D2,lineHeight:1.08,letterSpacing:"-1.5px",marginBottom:20}}>
+              <h1 style={{fontSize:"clamp(22px,2.5vw,34px)",fontWeight:900,color:D2,lineHeight:1.08,letterSpacing:"-1px",marginBottom:20}}>
                 Make Your Business<br/>Smarter With<br/>
                 <span style={{color:G}}>AI-Powered Automation</span>
               </h1>
@@ -309,52 +310,44 @@ const AiPage = () => {
 
             {/* Right — AI workflow visualization */}
             <div className="a-hr">
-              <div style={{background:"linear-gradient(135deg,#14532d 0%,#052e16 60%,#022c22 100%)",borderRadius:14,padding:"14px 16px",boxShadow:"0 20px 50px rgba(2,44,34,.5),0 0 0 1px rgba(52,211,153,.15)",border:"1.5px solid rgba(52,211,153,.2)",width:"100%",maxWidth:320,transform:"scale(0.88)",transformOrigin:"top right",marginTop:"56px"}}>
-                <div style={{marginBottom:10,paddingBottom:8,borderBottom:"1px solid rgba(255,255,255,.1)"}}>
-                  <div style={{fontSize:11,fontWeight:700,color:"#fff",marginBottom:1}}>AI & Automation Hub</div>
-                  <div style={{fontSize:9,color:"rgba(255,255,255,.5)"}}>MessBee · AI + Automation + CRM</div>
+              <div style={{background:"#0F3826",borderRadius:24,padding:28,boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)",border:"1px solid rgba(34,197,94,.2)",width:"100%",maxWidth:460,transform:"scale(0.75)",transformOrigin:"top right",marginTop:"72px",overflow:"hidden"}}>
+                {/* Header */}
+                <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:28 }}>
+                  <div style={{ display:"flex", alignItems:"center", gap:12 }}>
+                    <div style={{ width:40, height:40, borderRadius:10, background:"#fff", display:"flex", alignItems:"center", justifyContent:"center", overflow:"hidden", padding:4 }}>
+                      <img src={defaultLogo} alt="MessBee" style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius:6 }} />
+                    </div>
+                    <div>
+                      <div style={{ fontSize:17, fontWeight:800, color:"#fff", letterSpacing:"-0.3px" }}>AI & Automation Hub</div>
+                      <div style={{ fontSize:11, fontWeight:700, color:"#34D399" }}>Intelligent Workflows</div>
+                    </div>
+                  </div>
+                  <div style={{ background:"rgba(16,185,129,0.15)", border:"1px solid rgba(16,185,129,0.4)", borderRadius:20, padding:"6px 12px", color:"#34D399", fontSize:11, fontWeight:700 }}>
+                    AI Active
+                  </div>
                 </div>
 
-                {/* Active AI modules */}
-                <div style={{fontSize:8,color:"rgba(255,255,255,.45)",letterSpacing:1,textTransform:"uppercase",marginBottom:6}}>Active AI Modules</div>
-                <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:5,marginBottom:12}}>
-                  {[{l:"AI Chatbot",v:"Online",c:"#4ADE80"},{l:"Lead Assist",v:"Active",c:"#60A5FA"},{l:"Smart Reply",v:"Active",c:"#FCD34D"},{l:"Workflow",v:"Running",c:"#2DD4BF"}].map(m => (
-                    <div key={m.l} style={{background:"rgba(255,255,255,.07)",borderRadius:6,padding:"6px 8px",border:"1px solid rgba(255,255,255,.1)"}}>
-                      <div style={{display:"flex",alignItems:"center",gap:3,marginBottom:2}}>
-                        <div style={{width:4,height:4,borderRadius:"50%",background:m.c}}/>
-                        <span style={{fontSize:9,fontWeight:700,color:m.c}}>{m.v}</span>
+                {/* Grid */}
+                <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:14, marginBottom:24 }}>
+                  {[
+                    { icon: "🤖", title: "AI Chatbots", sub: "24/7 Support" },
+                    { icon: "⚡", title: "Smart Replies", sub: "Instant Responses" },
+                    { icon: "🔄", title: "Auto-Routing", sub: "Smart Handoffs" },
+                    { icon: "📊", title: "AI Insights", sub: "Customer Sentiment" }
+                  ].map(card => (
+                    <div key={card.title} style={{ background:"rgba(16,185,129,0.09)", border:"1px solid rgba(16,185,129,0.25)", borderRadius:14, padding:"14px 16px" }}>
+                      <div style={{ display:"flex", alignItems:"center", gap:8, marginBottom:8 }}>
+                        <span style={{ fontSize:16 }}>{card.icon}</span>
+                        <span style={{ fontSize:13, fontWeight:800, color:"#fff", letterSpacing:"-0.2px" }}>{card.title}</span>
                       </div>
-                      <div style={{fontSize:10,fontWeight:600,color:"rgba(255,255,255,.85)"}}>{m.l}</div>
+                      <div style={{ fontSize:11, fontWeight:700, color:"#34D399" }}>{card.sub}</div>
                     </div>
                   ))}
                 </div>
 
-                {/* Live AI conversation */}
-                <div style={{fontSize:8,color:"rgba(255,255,255,.45)",letterSpacing:1,textTransform:"uppercase",marginBottom:6}}>Live AI Interaction</div>
-                <div style={{display:"flex",flexDirection:"column",gap:5}}>
-                  <div style={{background:"rgba(255,255,255,.08)",borderRadius:"8px 8px 8px 2px",padding:"6px 10px",border:"1px solid rgba(255,255,255,.1)"}}>
-                    <div style={{fontSize:9,color:"rgba(255,255,255,.5)",marginBottom:1,fontWeight:600}}>Customer</div>
-                    <div style={{fontSize:11,color:"rgba(255,255,255,.85)"}}>What is your return policy?</div>
-                  </div>
-                  <div style={{background:"rgba(20,83,45,.6)",borderRadius:"8px 8px 2px 8px",padding:"6px 10px",border:"1px solid rgba(52,211,153,.25)"}}>
-                    <div style={{fontSize:9,color:"#4ADE80",marginBottom:1,fontWeight:600,display:"flex",alignItems:"center",gap:3}}>
-                      <span>🤖</span> AI Assistant
-                    </div>
-                    <div style={{fontSize:11,color:"rgba(255,255,255,.85)"}}>We offer a 7-day hassle-free return. Would you like to initiate a return for your recent order?</div>
-                  </div>
-                  <div style={{background:"rgba(255,255,255,.08)",borderRadius:"8px 8px 8px 2px",padding:"6px 10px",border:"1px solid rgba(255,255,255,.1)"}}>
-                    <div style={{fontSize:9,color:"rgba(255,255,255,.5)",marginBottom:1,fontWeight:600}}>Customer</div>
-                    <div style={{fontSize:11,color:"rgba(255,255,255,.85)"}}>Yes, order #3921 please.</div>
-                  </div>
-                  <div style={{background:"rgba(20,83,45,.6)",borderRadius:"8px 8px 2px 8px",padding:"6px 10px",border:"1px solid rgba(52,211,153,.25)"}}>
-                    <div style={{fontSize:9,color:"#4ADE80",marginBottom:1,fontWeight:600,display:"flex",alignItems:"center",gap:3}}>
-                      <span>🤖</span> AI Assistant
-                    </div>
-                    <div style={{fontSize:11,color:"rgba(255,255,255,.85)"}}>Return initiated for #3921. Pickup confirmation within 24 hours. 🙏</div>
-                  </div>
-                  <div style={{background:"rgba(52,211,153,.15)",borderRadius:5,padding:"5px 8px",border:"1px solid rgba(52,211,153,.3)",textAlign:"center"}}>
-                    <span style={{fontSize:9,color:"#4ADE80",fontWeight:700}}>✅ CRM Updated · Return Created · Customer Notified</span>
-                  </div>
+                {/* Bottom Banner */}
+                <div style={{ background:"rgba(16,185,129,0.09)", border:"1px solid rgba(16,185,129,0.25)", borderRadius:12, padding:"14px", textAlign:"center" }}>
+                  <div style={{ fontSize:12, fontWeight:800, color:"#34D399" }}>Save Time. Reduce Effort. Scale Smarter.</div>
                 </div>
               </div>
             </div>
