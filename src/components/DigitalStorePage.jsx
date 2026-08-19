@@ -348,7 +348,7 @@ const DigitalStorePage = () => {
                     <button id={"ds-cap-"+activeStep} className="dsp" style={{ fontSize:12, padding:"9px 20px" }} onClick={() => window.open(adminUrl+"/signup","_blank")}>Create Your Digital Store</button>
                   </div>
                   <div>
-                    <div style={{ background:D, borderRadius:14, padding:18, border:"1px solid rgba(22,163,74,.2)", boxShadow:"0 16px 40px rgba(0,0,0,.16)" }}>
+                    <div style={{ background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)", borderRadius:14, padding:18, border:"1px solid rgba(22,163,74,.2)", boxShadow:"0 16px 40px rgba(0,0,0,.16)" }}>
                       <div style={{ fontSize:10, color:"rgba(255,255,255,.35)", letterSpacing:1.2, textTransform:"uppercase", marginBottom:12 }}>Store Preview</div>
                       <div style={{ background:"rgba(255,255,255,.05)", borderRadius:8, padding:"10px 12px", marginBottom:8, border:"1px solid rgba(255,255,255,.07)" }}>
                         <div style={{ fontSize:9, color:"rgba(255,255,255,.4)", marginBottom:4 }}>Your Business Name</div>
