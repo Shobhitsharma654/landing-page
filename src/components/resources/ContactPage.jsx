@@ -941,12 +941,19 @@ const ContactPage = () => {
                     </div>
                   ))}
                 </div>
-              </div>
 
-              <div style={{ background: "#FEF2F2", border: "1px solid #FCA5A5", borderRadius: 12, padding: 14 }}>
-                <p style={{ fontSize: 12, color: "#991B1B", lineHeight: 1.55, fontWeight: 600 }}>
-                  ⚠️ Please avoid sharing passwords, authentication codes, payment card details or other sensitive credentials in your support request.
-                </p>
+                <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid #E2E8F0" }}>
+                  <div style={{ fontSize: 12, fontWeight: 800, color: "#16A34A", textTransform: "uppercase", letterSpacing: "0.5px", marginBottom: 8, display: "flex", alignItems: "center", gap: 6 }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
+                    Corporate Office Address
+                  </div>
+                  <p style={{ fontSize: 13, fontWeight: 700, color: "#0F172A", margin: 0, lineHeight: 1.55 }}>
+                    MessBee, Devika Tower, 510A, Chander Nagar, Surya Nagar, Ghaziabad, Uttar Pradesh 201011
+                  </p>
+                  <div style={{ fontSize: 12, color: "#64748B", marginTop: 6 }}>
+                    Ph: 0120-2611111 / +91-9217742081
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -1048,6 +1055,109 @@ const ContactPage = () => {
                   </button>
                 </form>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          FULL-WIDTH CORPORATE OFFICE ADDRESS SECTION
+         ═══════════════════════════════════════════════════════════════════ */}
+      <section className="contact-section" style={{ background: "#F8FAFC", padding: "36px 5%", borderTop: "1px solid #E2E8F0", borderBottom: "1px solid #E2E8F0" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto", width: "100%" }}>
+          <div style={{
+            background: "#FFFFFF",
+            border: "1.5px solid #BBF7D0",
+            borderRadius: 24,
+            padding: "28px 32px",
+            boxShadow: "0 10px 30px rgba(22, 163, 74, 0.05)",
+            display: "flex",
+            flexDirection: "column",
+            gap: 20,
+            width: "100%",
+            boxSizing: "border-box"
+          }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#F0FDF4", border: "1px solid #BBF7D0", borderRadius: 30, padding: "6px 16px" }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
+                <span style={{ fontSize: 12, fontWeight: 800, color: "#16A34A", letterSpacing: "0.5px", textTransform: "uppercase" }}>Corporate Office Location</span>
+              </div>
+              <a
+                href="https://www.google.com/maps/dir//MessBee,+Devika+Tower,+510,+Chander+Nagar,+Surya+Nagar,+Ghaziabad,+Uttar+Pradesh+201011/@28.6805919,77.4587233,14z/data=!4m8!4m7!1m0!1m5!1m1!1s0x390cfb2702bd3435:0x5174d17b09289b6b!2m2!1d77.3308721!2d28.6686012?entry=ttu&g_ep=EgoyMDI2MDgxNy4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noreferrer"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 8,
+                  background: "#16A34A",
+                  color: "#FFFFFF",
+                  padding: "8px 18px",
+                  borderRadius: 30,
+                  fontSize: 13,
+                  fontWeight: 700,
+                  textDecoration: "none",
+                  transition: "all 0.2s ease"
+                }}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polygon points="3 11 22 2 13 21 11 13 3 11" /></svg>
+                Get Directions on Google Maps
+              </a>
+            </div>
+
+            <div style={{ borderTop: "1px solid #F1F5F9", paddingTop: 16, display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 20 }}>
+              <div style={{ flex: "1 1 500px" }}>
+                <h3 style={{ fontSize: 17, fontWeight: 900, color: "#0F172A", marginBottom: 6, display: "flex", alignItems: "center", gap: 8 }}>
+                  MessBee Corporate Office
+                </h3>
+                <p style={{ fontSize: 15, fontWeight: 700, color: "#1E293B", margin: 0, lineHeight: 1.6, fontFamily: "'Inter', sans-serif" }}>
+                  MessBee, Devika Tower, 510A, Chander Nagar, Surya Nagar, Ghaziabad, Uttar Pradesh 201011
+                </p>
+              </div>
+
+              <div style={{ display: "flex", gap: 24, flexWrap: "wrap", alignItems: "center" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <div style={{ width: 36, height: 36, borderRadius: "50%", background: "#F0FDF4", border: "1px solid #BBF7D0", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", textTransform: "uppercase" }}>Phone</div>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: "#0F172A" }}>0120-2611111 / +91-9217742081</div>
+                  </div>
+                </div>
+
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <div style={{ width: 36, height: 36, borderRadius: "50%", background: "#F0FDF4", border: "1px solid #BBF7D0", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: "#64748B", textTransform: "uppercase" }}>Email</div>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: "#0F172A" }}>support@messbee.com</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Embedded Google Maps iFrame */}
+            <div style={{
+              width: "100%",
+              height: "400px",
+              borderRadius: "16px",
+              overflow: "hidden",
+              border: "1px solid #E2E8F0",
+              boxShadow: "0 4px 16px rgba(0,0,0,0.04)",
+              marginTop: 10
+            }}>
+              <iframe
+                title="MessBee Corporate Office Location Map"
+                src="https://maps.google.com/maps?q=MessBee,+Devika+Tower,+510,+Chander+Nagar,+Surya+Nagar,+Ghaziabad,+Uttar+Pradesh+201011&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
           </div>
         </div>
