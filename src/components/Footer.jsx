@@ -180,11 +180,11 @@ const Footer = () => {
       }}>
         <div style={{ maxWidth: 1280, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 20 }}>
           {/* Logo + brand */}
-          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <div style={{ width: 36, height: 36, borderRadius: 10, overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)", flexShrink: 0 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <div style={{ width: 28, height: 28, borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)", flexShrink: 0 }}>
               <img src={defaultLogo} alt="MessBee" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
             </div>
-            <img src={messbeeText} alt="MessBee Text" style={{ height: 22, objectFit: "contain", filter: "brightness(0) invert(1)" }} />
+            <img src={messbeeText} alt="MessBee Text" style={{ height: 16, objectFit: "contain", filter: "brightness(0) invert(1)" }} />
           </div>
 
           {/* Tagline badge */}
@@ -316,7 +316,7 @@ const Footer = () => {
             border: "1px solid rgba(255,255,255,0.07)",
             borderRadius: 8, padding: "6px 12px",
           }}>
-            <span style={{ fontSize: 15 }}>🇮🇳</span>
+            <svg width="18" height="14" viewBox="0 0 90 60" style={{ borderRadius: 2, flexShrink: 0 }}><rect width="90" height="20" fill="#FF9933"/><rect y="20" width="90" height="20" fill="#FFFFFF"/><rect y="40" width="90" height="20" fill="#138808"/><circle cx="45" cy="30" r="8" fill="#000080" /><circle cx="45" cy="30" r="6" fill="#FFFFFF" /><circle cx="45" cy="30" r="2" fill="#000080" /></svg>
             <span style={{ fontSize: 11, color: "#64748B", fontWeight: 600 }}>Made in India</span>
           </div>
         </div>
