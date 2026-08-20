@@ -173,7 +173,7 @@ const Footer = () => {
         .footer-bottom-link:hover { color: #4ADE80; }
 
         .footer-logo-text {
-          font-size: 22px;
+          font-size: 24px;
           font-weight: 900;
           letter-spacing: -0.6px;
           font-family: 'Inter', sans-serif;
@@ -184,12 +184,12 @@ const Footer = () => {
         /* Responsive scaling for laptop and mobile */
         @media (max-width: 1366px) {
           .footer-logo-text {
-            font-size: 22px;
+            font-size: 24px;
           }
         }
         @media (max-width: 1299px) {
           .footer-logo-text {
-            font-size: 20px;
+            font-size: 22px;
           }
         }
         @media (max-width: 1024px) {
@@ -209,7 +209,7 @@ const Footer = () => {
             gap: 12px !important;
           }
           .footer-logo-text {
-            font-size: 18px;
+            font-size: 20px;
           }
         }
       `}</style>
