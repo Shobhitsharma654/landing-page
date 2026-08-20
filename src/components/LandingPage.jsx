@@ -63,7 +63,7 @@ const VideoBanner = () => {
     <div style={{ position: "relative", borderRadius: 24, overflow: "hidden", boxShadow: "0 16px 36px rgba(0,0,0,0.08)", marginBottom: 32, background: "#000", cursor: isPlaying ? "default" : "pointer" }} onClick={!isPlaying ? handlePlay : undefined}>
       <video 
         ref={videoRef}
-        src="/testimonial_video.mp4" 
+        src="/MESSBEEVIDEO.mp4" 
         controls={isPlaying}
         style={{ width: "100%", height: 360, objectFit: "cover", display: "block" }}
         poster="/videomess.png"
