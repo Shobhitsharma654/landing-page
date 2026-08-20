@@ -940,7 +940,7 @@ const LandingPage = () => {
             boxSizing: "border-box"
           }}>
             <img
-              src="/robotimg.png"
+              src="/messrobo.png"
               alt="AI Assistant Robot"
               style={{
                 width: "100%",
