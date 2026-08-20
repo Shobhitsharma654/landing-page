@@ -200,15 +200,15 @@ const DigitalStorePage = () => {
       <Navbar />
 
       {/* ── HERO ── */}
-      <section style={{ background:"#fff", padding:"100px 6% 60px" }}>
+      <section style={{ background:"#fff", padding:"118px 6% 60px" }}>
         <div style={{ maxWidth:1200, margin:"0 auto" }}>
           <div style={{ display:"flex", flexWrap:"wrap", alignItems:"flex-start", gap:48 }}>
             <div style={{ flex:"1 1 420px", minWidth:280 }}>
-              <div style={{ display:"inline-flex", alignItems:"center", gap:8, background:GL, border:`1px solid ${GB}`, borderRadius:40, padding:"6px 18px", marginBottom:28 }}>
-                <svg width="10" height="10" viewBox="0 0 10 10" fill={G}><circle cx="5" cy="5" r="5"/></svg>
-                <span style={{ fontSize:13, fontWeight:600, color:G }}>MessBee Digital Store</span>
+              <div style={{ display:"inline-flex", alignItems:"center", gap:6, background:GL, border:`1px solid ${GB}`, borderRadius:40, padding:"5px 14px", marginBottom:28 }}>
+                <div style={{ width:6, height:6, borderRadius:"50%", background:G }}/>
+                <span style={{ fontSize:11.5, fontWeight:600, color:G }}>MessBee Digital Store</span>
               </div>
-              <h1 style={{ fontSize:"clamp(22px,2.5vw,34px)", fontWeight:900, color:D2, letterSpacing:"-1px", lineHeight:1.1, marginBottom:16 }}>
+              <h1 style={{ fontSize:"clamp(28px,3vw,42px)", fontWeight:900, color:D2, letterSpacing:"-1px", lineHeight:1.1, marginBottom:16 }}>
                 Build Your Digital<br/>
                 <span style={{ color:G }}>Storefront</span>
               </h1>
@@ -291,7 +291,7 @@ const DigitalStorePage = () => {
       </section>
 
       {/* ── FEATURES GRID ── */}
-      <section id="ds-features" style={{ background:"#fff", padding:"60px 6%", borderTop:`1px solid ${BS}` }}>
+      <section id="ds-features" style={{ background:"#fff", padding:"20px 6%", borderTop:`1px solid ${BS}` }}>
         <div style={{ maxWidth:1160, margin:"0 auto" }}>
           <div style={{ textAlign:"center", marginBottom:40 }}>
             <Pill>Platform Capabilities</Pill>

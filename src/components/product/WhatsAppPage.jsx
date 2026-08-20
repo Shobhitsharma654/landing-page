@@ -209,7 +209,7 @@ const WaPage = () => {
       <Navbar />
 
       {/* ══ HERO — Plain White ══ */}
-      <section style={{ background:"#fff", padding:"110px 6% 40px", position:"relative", overflow:"hidden" }}>
+      <section style={{ background:"#fff", padding:"118px 6% 40px", position:"relative", overflow:"hidden" }}>
         <div style={{ maxWidth:1200, margin:"0 auto", position:"relative", zIndex:1 }}>
           <div className="wa-hg">
             {/* Left */}
@@ -219,7 +219,7 @@ const WaPage = () => {
                 <span style={{ fontSize:12, fontWeight:600, color:G }}>MessBee WhatsApp Business</span>
               </div>
 
-              <h1 style={{ fontSize:"clamp(22px,2.5vw,34px)", fontWeight:900, color:D2, lineHeight:1.08, letterSpacing:"-1px", marginBottom:16 }}>
+              <h1 style={{ fontSize:"clamp(28px,3vw,42px)", fontWeight:900, color:D2, lineHeight:1.08, letterSpacing:"-1px", marginBottom:16 }}>
                 Connect With Customers<br/>
                 on <span style={{ color:G }}>WhatsApp</span><br/>
                 The Smarter Way
@@ -297,7 +297,7 @@ const WaPage = () => {
 
 
       {/* ══ FEATURE OVERVIEW GRID ══ */}
-      <section id="wa-features" style={{ background:"#fff", padding:"40px 6% 40px" }}>
+      <section id="wa-features" style={{ background:"#fff", padding:"20px 6% 40px" }}>
         <div style={{ maxWidth:1160, margin:"0 auto" }}>
           <div style={{ textAlign:"center", marginBottom:56 }}>
             <div style={{ display:"inline-block", background:WAL, border:"1px solid #A7F3D0", color:WAD, fontSize:11, fontWeight:700, textTransform:"uppercase", letterSpacing:"1.5px", padding:"5px 14px", borderRadius:20, marginBottom:14 }}>Platform Capabilities</div>

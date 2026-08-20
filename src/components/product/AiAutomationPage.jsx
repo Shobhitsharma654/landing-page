@@ -270,7 +270,7 @@ const AiPage = () => {
       <Navbar/>
 
       {/* ══ HERO ══ */}
-      <section style={{background:"#fff",padding:"110px 6% 60px",position:"relative",overflow:"hidden"}}>
+      <section style={{background:"#fff",padding:"118px 6% 20px",position:"relative",overflow:"hidden"}}>
 
 
         <div style={{maxWidth:1200,margin:"0 auto",position:"relative",zIndex:1}}>
@@ -282,16 +282,13 @@ const AiPage = () => {
                 <span style={{fontSize:12,fontWeight:600,color:G}}>MessBee AI & Automation</span>
               </div>
 
-              <h1 style={{fontSize:"clamp(22px,2.5vw,34px)",fontWeight:900,color:D2,lineHeight:1.08,letterSpacing:"-1px",marginBottom:20}}>
+              <h1 style={{fontSize:"clamp(28px,3vw,42px)",fontWeight:900,color:D2,lineHeight:1.08,letterSpacing:"-1px",marginBottom:20}}>
                 Make Your Business<br/>Smarter With<br/>
                 <span style={{color:G}}>AI-Powered Automation</span>
               </h1>
 
               <p style={{fontSize:14,color:MU,lineHeight:1.75,marginBottom:10,maxWidth:520}}>
                 Automate repetitive tasks, assist customer interactions and create smarter business workflows using AI and configurable automation — all in one connected environment.
-              </p>
-              <p style={{fontSize:13,color:"#94A3B8",lineHeight:1.7,marginBottom:36,maxWidth:480}}>
-                From answering common customer questions to assisting with leads, follow-ups and business processes.
               </p>
 
               <div style={{display:"flex",flexWrap:"wrap",gap:8,marginBottom:40}}>
@@ -356,7 +353,7 @@ const AiPage = () => {
       </section>
 
       {/* ══ INTRO BAND — white ══ */}
-      <section style={{background:"#fff",padding:"64px 6%",borderBottom:"1px solid "+BS}}>
+      <section style={{background:"#fff",padding:"24px 6%",borderBottom:"1px solid "+BS}}>
         <div style={{maxWidth:1100,margin:"0 auto"}}>
           <div className="a-intro" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:48,alignItems:"start"}}>
             <div>
@@ -382,7 +379,7 @@ const AiPage = () => {
 
 
       {/* ══ FEATURES GRID — soft bg ══ */}
-      <section id="ai-features" style={{background:BA,padding:"90px 6%"}}>
+      <section id="ai-features" style={{background:BA,padding:"20px 6%"}}>
         <div style={{maxWidth:1160,margin:"0 auto"}}>
           <div style={{textAlign:"center",marginBottom:40}}>
             <Pill>Platform Capabilities</Pill>

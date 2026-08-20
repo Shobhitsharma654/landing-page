@@ -777,7 +777,7 @@ Where material changes are made, MessBee may provide appropriate notice through 
     content: `MessBee Privacy & Grievance Team
 MessBee 
 Email: support@MessBee.com
-Address: 510, Devika Tower, Chander Nagar, Ghaziabad, Uttar Pradesh – 201011, India
+Address: 510A, Devika Tower, Chander Nagar, Ghaziabad, Uttar Pradesh – 201011, India
 
 For privacy-related requests, please mention:
 Subject: Privacy Request – MessBee

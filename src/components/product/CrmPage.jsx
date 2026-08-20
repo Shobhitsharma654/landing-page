@@ -248,15 +248,15 @@ const CrmPage = () => {
       <Navbar />
 
       {/* ── HERO ── */}
-      <section style={{ background:"#fff", padding:"100px 6% 60px" }}>
+      <section style={{ background:"#fff", padding:"118px 6% 60px" }}>
         <div style={{ maxWidth:1200, margin:"0 auto" }}>
           <div className="hg" style={{ alignItems:"flex-start" }}>
             <div className="hl">
-              <div style={{ display:"inline-flex", alignItems:"center", gap:8, background:GL, border:`1px solid ${GB}`, borderRadius:40, padding:"6px 18px", marginBottom:28 }}>
-                <svg width="10" height="10" viewBox="0 0 10 10" fill={G}><circle cx="5" cy="5" r="5"/></svg>
-                <span style={{ fontSize:13, fontWeight:600, color:G }}>MessBee CRM</span>
+              <div style={{ display:"inline-flex", alignItems:"center", gap:6, background:GL, border:`1px solid ${GB}`, borderRadius:40, padding:"5px 14px", marginBottom:28 }}>
+                <div style={{ width:6, height:6, borderRadius:"50%", background:G }}/>
+                <span style={{ fontSize:11.5, fontWeight:600, color:G }}>MessBee CRM</span>
               </div>
-              <h1 style={{ fontSize:"clamp(22px,2.5vw,34px)", fontWeight:900, color:D2, lineHeight:1.08, letterSpacing:"-1px", marginBottom:16 }}>
+              <h1 style={{ fontSize:"clamp(28px,3vw,42px)", fontWeight:900, color:D2, lineHeight:1.08, letterSpacing:"-1px", marginBottom:16 }}>
                 Turn Customer Data Into<br />
                 <span style={{ color:G }}>Meaningful Business</span><br />
                 Relationships
@@ -290,36 +290,36 @@ const CrmPage = () => {
                       <img src={defaultLogo} alt="MessBee" style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius:6 }} />
                     </div>
                     <div>
-                      <div style={{ fontSize:17, fontWeight:800, color:"#fff", letterSpacing:"-0.3px" }}>MessBee Resource Vault</div>
-                      <div style={{ fontSize:11, fontWeight:700, color:"#34D399" }}>Curated Business Library</div>
+                      <div style={{ fontSize:17, fontWeight:800, color:"#fff", letterSpacing:"-0.3px" }}>MessBee CRM Hub</div>
+                      <div style={{ fontSize:11, fontWeight:700, color:"#34D399" }}>Connected Customer Workspace</div>
                     </div>
                   </div>
                   <div style={{ background:"rgba(16,185,129,0.15)", border:"1px solid rgba(16,185,129,0.4)", borderRadius:20, padding:"6px 12px", color:"#34D399", fontSize:11, fontWeight:700 }}>
-                    Verified Guides
+                    Live Pipeline
                   </div>
                 </div>
 
                 {/* Grid */}
                 <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:14, marginBottom:24 }}>
                   {[
-                    { icon: "📖", title: "Business Guides" },
-                    { icon: "💬", title: "WhatsApp Guides" },
-                    { icon: "📢", title: "Marketing & Growth" },
-                    { icon: "📊", title: "CRM & Customers" }
+                    { icon: "👥", title: "Lead Tracking", sub: "Active Follow-ups" },
+                    { icon: "📇", title: "Customer 360°", sub: "Unified Profiles" },
+                    { icon: "📊", title: "Sales Pipeline", sub: "Conversion Funnel" },
+                    { icon: "🎯", title: "Smart Segments", sub: "Targeted Outreach" }
                   ].map(card => (
                     <div key={card.title} style={{ background:"rgba(16,185,129,0.09)", border:"1px solid rgba(16,185,129,0.25)", borderRadius:14, padding:"14px 16px" }}>
                       <div style={{ display:"flex", alignItems:"center", gap:8, marginBottom:8 }}>
                         <span style={{ fontSize:16 }}>{card.icon}</span>
                         <span style={{ fontSize:13, fontWeight:800, color:"#fff", letterSpacing:"-0.2px" }}>{card.title}</span>
                       </div>
-                      <div style={{ fontSize:11, fontWeight:700, color:"#34D399" }}>Practical Insights</div>
+                      <div style={{ fontSize:11, fontWeight:700, color:"#34D399" }}>{card.sub}</div>
                     </div>
                   ))}
                 </div>
 
                 {/* Bottom Banner */}
                 <div style={{ background:"rgba(16,185,129,0.09)", border:"1px solid rgba(16,185,129,0.25)", borderRadius:12, padding:"14px", textAlign:"center" }}>
-                  <div style={{ fontSize:12, fontWeight:800, color:"#34D399" }}>Learn Better. Work Smarter. Grow With Confidence.</div>
+                  <div style={{ fontSize:12, fontWeight:800, color:"#34D399" }}>Organize Data. Track Leads. Build Relationships.</div>
                 </div>
 
               </div>
@@ -331,7 +331,7 @@ const CrmPage = () => {
 
 
       {/* ── OVERVIEW FEATURES GRID ── */}
-      <section id="crm-overview" style={{ background:"#fff", padding:"90px 6% 40px" }}>
+      <section id="crm-overview" style={{ background:"#fff", padding:"20px 6% 40px" }}>
         <div style={{ maxWidth:1160, margin:"0 auto" }}>
           <div style={{ textAlign:"center", marginBottom:32 }}>
             <Pill>What You Can Do</Pill>

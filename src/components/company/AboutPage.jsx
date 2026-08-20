@@ -169,9 +169,9 @@ const AboutPage = () => {
         .capabilities-grid-cols {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: 14px 20px;
+          gap: 14px 25px;
           flex: 1 1 380px;
-          margin-top: 24px;
+          margin-top: clamp(24px, 3.2vw, 45px);
           align-content: flex-start;
         }
 
@@ -180,10 +180,15 @@ const AboutPage = () => {
         }
 
         /* Responsive scaling for pill chips grid & margin-top */
+        @media (max-width: 1440px) {
+          .capabilities-grid-cols {
+            margin-top: 38px !important;
+          }
+        }
         @media (max-width: 1366px) {
           .capabilities-grid-cols {
             gap: 12px 18px;
-            margin-top: 22px;
+            margin-top: 32px !important;
           }
           .capability-pill-badge {
             font-size: 14px !important;
@@ -193,7 +198,7 @@ const AboutPage = () => {
         @media (max-width: 1299px) {
           .capabilities-grid-cols {
             gap: 10px 14px;
-            margin-top: 20px;
+            margin-top: 26px !important;
           }
           .capability-pill-badge {
             font-size: 13px !important;
@@ -204,7 +209,7 @@ const AboutPage = () => {
           .capabilities-grid-cols {
             grid-template-columns: repeat(2, 1fr) !important;
             gap: 10px 12px !important;
-            margin-top: 24px !important;
+            margin-top: 20px !important;
           }
           .capability-pill-badge {
             font-size: 13px !important;
@@ -577,7 +582,7 @@ const AboutPage = () => {
             {/* Objective callout */}
             <div style={{
               background: "linear-gradient(135deg,#f0fdf4,#dcfce7)", border: "1px solid #bbf7d0",
-              borderRadius: 16, padding: "20px 24px", marginBottom: 36,
+              borderRadius: 16, padding: "20px 24px", marginTop: 20, marginBottom: 28,
             }}>
               <div style={{ fontSize: 12, fontWeight: 700, color: "#15803D", textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 10 }}>The Objective is Simple</div>
               <div style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
@@ -2420,23 +2425,23 @@ const AboutPage = () => {
             background: #F8FAFC;
             border: 1px solid #F1F5F9;
             border-radius: 12px;
-            padding: 16px 20px;
+            padding: 12px 14px;
             display: flex;
             align-items: center;
             gap: 12px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             text-align: left;
             cursor: default;
           }
           .security-item:hover {
             background: #FFFFFF;
             border-color: #16A34A;
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(22, 163, 74, 0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(22, 163, 74, 0.08);
           }
           .security-icon-box {
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             border-radius: 8px;
             background: rgba(22, 163, 74, 0.08);
             color: #16A34A;
@@ -2444,12 +2449,26 @@ const AboutPage = () => {
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
           }
           .security-item:hover .security-icon-box {
-            transform: scale(1.15) rotate(10deg);
+            transform: scale(1.1) rotate(6deg);
             background: #16A34A;
             color: #FFFFFF;
+          }
+          @media (max-width: 576px) {
+            .security-grid {
+              grid-template-columns: repeat(auto-fit, minmax(135px, 1fr)) !important;
+              gap: 10px !important;
+            }
+            .security-item {
+              padding: 10px 11px !important;
+              gap: 8px !important;
+            }
+            .security-icon-box {
+              width: 28px !important;
+              height: 28px !important;
+            }
           }
         `}</style>
 
@@ -2461,28 +2480,28 @@ const AboutPage = () => {
               <div style={{
                 display: "inline-flex", alignItems: "center", gap: 8,
                 background: "rgba(22,163,74,0.08)", border: "1px solid rgba(22,163,74,0.22)",
-                borderRadius: 40, padding: "5px 16px", marginBottom: 20,
+                borderRadius: 40, padding: "5px 16px", marginBottom: 16,
               }}>
                 <FiShield style={{ color: "#16A34A", width: 12, height: 12 }} />
                 <span style={{ color: "#16A34A", fontSize: 12, fontWeight: 700, letterSpacing: 0.8, textTransform: "uppercase" }}>Trust & Safety</span>
               </div>
 
-              <h2 style={{ fontSize: "clamp(26px,3vw,38px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.18, marginBottom: 24, fontFamily: "'Inter', sans-serif" }}>
+              <h2 style={{ fontSize: "clamp(26px,3vw,38px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.18, marginBottom: 20, fontFamily: "'Inter', sans-serif" }}>
                 Security, Privacy &<br />
                 <span style={{ color: "#16A34A" }}>Responsible Technology</span>
               </h2>
 
-              <p style={{ fontSize: 16, color: "#475569", lineHeight: 1.9, marginBottom: 20, fontFamily: "'Inter', sans-serif" }}>
+              <p style={{ fontSize: 16, color: "#475569", lineHeight: 1.8, marginBottom: 18, fontFamily: "'Inter', sans-serif" }}>
                 MessBee is being developed with security, responsible data handling and compliance-oriented technology practices as important considerations.
               </p>
 
               <div style={{
                 borderLeft: "3px solid #16A34A",
                 paddingLeft: 16,
-                marginTop: 24,
-                marginBottom: 24,
+                marginTop: 20,
+                marginBottom: 20,
               }}>
-                <p style={{ fontSize: 16, fontWeight: 700, color: "#0F172A", lineHeight: 1.6, margin: 0, fontFamily: "'Inter', sans-serif" }}>
+                <p style={{ fontSize: 16, fontWeight: 700, color: "#0F172A", lineHeight: 1.5, margin: 0, fontFamily: "'Inter', sans-serif" }}>
                   Businesses operate with valuable customer and operational information. Responsible technology therefore requires more than simply adding features.
                 </p>
               </div>
@@ -2494,29 +2513,29 @@ const AboutPage = () => {
 
             {/* Right Column: 2x4 Grid Points */}
             <div className="security-right" style={{ flex: "1 1 450px" }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 20, textAlign: "left" }}>
+              <div style={{ fontSize: 12.5, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 14, textAlign: "left" }}>
                 MessBee&apos;s approach focuses on:
               </div>
-              <div style={{
+              <div className="security-grid" style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-                gap: 16
+                gap: 12
               }}>
                 {[
-                  { label: "Responsible communication", icon: <FiMessageSquare style={{ width: 16, height: 16 }} /> },
-                  { label: "Data protection", icon: <FiLock style={{ width: 16, height: 16 }} /> },
-                  { label: "Access control", icon: <FiKey style={{ width: 16, height: 16 }} /> },
-                  { label: "User permissions", icon: <FiUsers style={{ width: 16, height: 16 }} /> },
-                  { label: "Secure technology practices", icon: <FiShield style={{ width: 16, height: 16 }} /> },
-                  { label: "Applicable legal requirements", icon: <FiFileText style={{ width: 16, height: 16 }} /> },
-                  { label: "Platform policies", icon: <FiClipboard style={{ width: 16, height: 16 }} /> },
-                  { label: "Responsible use of AI & automation", icon: <FiCpu style={{ width: 16, height: 16 }} /> }
+                  { label: "Responsible communication", icon: <FiMessageSquare style={{ width: 15, height: 15 }} /> },
+                  { label: "Data protection", icon: <FiLock style={{ width: 15, height: 15 }} /> },
+                  { label: "Access control", icon: <FiKey style={{ width: 15, height: 15 }} /> },
+                  { label: "User permissions", icon: <FiUsers style={{ width: 15, height: 15 }} /> },
+                  { label: "Secure technology practices", icon: <FiShield style={{ width: 15, height: 15 }} /> },
+                  { label: "Applicable legal requirements", icon: <FiFileText style={{ width: 15, height: 15 }} /> },
+                  { label: "Platform policies", icon: <FiClipboard style={{ width: 15, height: 15 }} /> },
+                  { label: "Responsible use of AI & automation", icon: <FiCpu style={{ width: 15, height: 15 }} /> }
                 ].map((item, idx) => (
                   <div key={idx} className="security-item">
                     <div className="security-icon-box">
                       {item.icon}
                     </div>
-                    <span style={{ fontSize: 13, fontWeight: 700, color: "#334155", fontFamily: "'Inter', sans-serif" }}>
+                    <span style={{ fontSize: 13, fontWeight: 700, color: "#334155", lineHeight: 1.35, fontFamily: "'Inter', sans-serif" }}>
                       {item.label}
                     </span>
                   </div>
@@ -2529,7 +2548,7 @@ const AboutPage = () => {
       </section>
 
       {/* ── MISSION ── */}
-      <section style={{ padding: "100px 6%" }}>
+      <section style={{ padding: "70px 6%" }}>
         <style>{`
           .aim-pill {
             background: #F9FAFB;
@@ -2554,10 +2573,10 @@ const AboutPage = () => {
         `}</style>
 
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <div style={{ display: "flex", gap: "80px", alignItems: "center", flexWrap: "wrap" }}>
+          <div style={{ display: "flex", gap: "90px", alignItems: "center", flexWrap: "wrap" }}>
 
             {/* Left Column: Text description */}
-            <div style={{ flex: "1 1 450px", textAlign: "left" }}>
+            <div style={{ flex: "1 1 500px", textAlign: "left" }}>
               <div style={{
                 display: "inline-flex", alignItems: "center", gap: 8,
                 background: "rgba(22,163,74,0.08)", border: "1px solid rgba(22,163,74,0.22)",
@@ -2656,8 +2675,8 @@ const AboutPage = () => {
             box-shadow: 0 12px 30px rgba(22, 163, 74, 0.05);
           }
           .vision-card-title {
-            font-size: 14.5px;
-            font-weight: 800;
+            font-size: 14px;
+            font-weight: 700;
             color: #0F172A;
             margin: 0;
             font-family: 'Inter', sans-serif;
@@ -2823,7 +2842,8 @@ const AboutPage = () => {
                   justifyContent: "center",
                   fontSize: "15px",
                   border: "1px solid rgba(22, 163, 74, 0.12)",
-                  flexShrink: 0
+                  flexShrink: 0,
+                  
                 }}>
                   {pillar.icon}
                 </div>
@@ -3166,7 +3186,7 @@ const AboutPage = () => {
               return (
                 <div key={idx} className={`about-faq-card ${isOpen ? "open-card" : ""}`}>
                   <button className="about-faq-trigger" onClick={() => setAboutFaqOpenIdx(isOpen ? null : idx)}>
-                    <h3 className="about-faq-question" style={{ fontFamily: "'Inter', sans-serif" }}>{faq.q}</h3>
+                    <h3 className="about-faq-question" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 500 }}>{faq.q}</h3>
                     <div className="faq-icon-holder">
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={isOpen ? "#FFFFFF" : "#64748B"} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                         <polyline points="6 9 12 15 18 9" />

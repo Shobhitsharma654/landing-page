@@ -1341,7 +1341,7 @@ Nothing in this clause prevents a party from seeking urgent or legally available
 
 MessBee Support & Grievance Team
 Email: support@messbee.com
-Address: 510, Devika Tower, Chander Nagar, Ghaziabad, Uttar Pradesh – 201011, India
+Address: 510A, Devika Tower, Chander Nagar, Ghaziabad, Uttar Pradesh – 201011, India
 
 For legal or compliance matters, please mention:
 Subject: Legal / Compliance Request – MessBee`,

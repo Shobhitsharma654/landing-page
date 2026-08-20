@@ -3,10 +3,9 @@ import React, { useState, useEffect, useRef } from "react";
 import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
 import defaultLogo from "../assets/logo.jpeg";
-import heroDashboard from "../assets/hero-dashboard.png";
-import aiRobot from "../assets/ai_robot_new.png";
+import heroDashboard from "../assets/hero-messscale.png";
 import howItWorksPerson from "../assets/how_it_works_person.jpg";
-import chooseUsWoman from "../assets/choose_us_woman_nobg.png";
+import chooseUsWoman from "../assets/messgirl.png";
 import messbeeText from "../assets/messbee_text.png";
 import reviewerRajesh from "../assets/reviewer_rajesh.png";
 import reviewerPriya from "../assets/reviewer_priya.png";
@@ -67,7 +66,7 @@ const VideoBanner = () => {
         src="/testimonial_video.mp4" 
         controls={isPlaying}
         style={{ width: "100%", height: 360, objectFit: "cover", display: "block" }}
-        poster="/video_poster.jpg"
+        poster="/videomess.png"
         onEnded={() => setIsPlaying(false)}
         onPause={() => setIsPlaying(false)}
         onPlay={() => setIsPlaying(true)}
@@ -743,7 +742,7 @@ const LandingPage = () => {
       </section>
 
       {/* ═══════════════ PLATFORM PREVIEW & DASHBOARD SECTION ═══════════════ */}
-      <section style={{ background: "#FFFFFF", padding: "40px 6% 90px", textAlign: "center" }}>
+      <section style={{ background: "#FFFFFF", padding: "40px 6% 24px", textAlign: "center" }}>
         <div style={{ maxWidth: 1180, margin: "0 auto", position: "relative" }}>
           
           <div style={{ color: "#16A34A", fontSize: 13, fontWeight: 800, marginBottom: 10, letterSpacing: "0.5px" }}>
@@ -756,331 +755,34 @@ const LandingPage = () => {
             Everything your business needs to connect, engage and grow at scale.
           </p>
 
-          {/* Desktop Dashboard Window Container */}
+          {/* Desktop Dashboard Image */}
           <div style={{
             position: "relative",
             margin: "0 auto",
             width: "100%",
-            maxWidth: 1080
+            maxWidth: 740,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
           }}>
-            <div style={{
-              background: "#FFFFFF",
-              borderRadius: 16,
-              border: "1px solid #E2E8F0",
-              boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0,0,0,0.03)",
-              display: "flex",
-              overflow: "hidden",
-              minHeight: 520,
-              width: "100%",
-              textAlign: "left"
-            }}>
-              
-              {/* Dark Left Sidebar */}
-              <div style={{
-                width: 170,
-                background: "#0F172A",
-                padding: "18px 10px",
-                display: "flex",
-                flexDirection: "column",
-                flexShrink: 0,
-                color: "#94A3B8",
-                fontSize: 11
-              }}>
-                {/* Logo inside sidebar */}
-                <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "0 8px 16px 8px", borderBottom: "1px solid #1E293B", marginBottom: 12 }}>
-                  <div style={{ width: 22, height: 22, background: "#16A34A", borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFF"><path d="M12 2C6.48 2 2 6.48 2 12c0 2.17.7 4.17 1.88 5.8L2.8 21.6l3.92-.88C8.36 21.56 10.12 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg>
-                  </div>
-                  <span style={{ fontSize: 15, fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.3px" }}>MessBee</span>
-                </div>
-
-                {/* Sidebar Navigation Items */}
-                <div style={{ display: "flex", flexDirection: "column", gap: 2, flex: 1, overflowY: "auto" }}>
-                  {[
-                    { label: "Home", active: true, icon: <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/> },
-                    { label: "Chats", icon: <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/> },
-                    { label: "Contacts", icon: <><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></> },
-                    { label: "Broadcast", icon: <path d="m3 11 18-5v12L3 13v-2z"/> },
-                    { label: "Campaigns", icon: <><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></> },
-                    { label: "Automation", icon: <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/> },
-                    { label: "CRM", icon: <rect x="3" y="4" width="18" height="16" rx="2"/> },
-                    { label: "Orders", icon: <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/> },
-                    { label: "Payments", icon: <rect x="2" y="5" width="20" height="14" rx="2"/> },
-                    { label: "Analytics", icon: <><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></> },
-                    { label: "Templates", icon: <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/> },
-                    { label: "Integrations", icon: <rect x="3" y="3" width="7" height="7"/> },
-                    { label: "Settings", icon: <circle cx="12" cy="12" r="3"/> }
-                  ].map((item, i) => (
-                    <div
-                      key={i}
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 10,
-                        padding: "7px 12px",
-                        borderRadius: 6,
-                        background: item.active ? "#16A34A" : "transparent",
-                        color: item.active ? "#FFFFFF" : "#94A3B8",
-                        fontWeight: item.active ? 700 : 500,
-                        cursor: "pointer"
-                      }}
-                    >
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        {item.icon}
-                      </svg>
-                      <span>{item.label}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Bottom logout */}
-                <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "12px 10px 0 10px", borderTop: "1px solid #1E293B", color: "#EF4444", cursor: "pointer" }}>
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-                  <span style={{ fontWeight: 600 }}>Logout</span>
-                </div>
-              </div>
-
-              {/* Main Content Area */}
-              <div style={{ flex: 1, background: "#F8FAFC", display: "flex", flexDirection: "column", minWidth: 0 }}>
-                
-                {/* Dashboard Header Bar */}
-                <div style={{ background: "#FFFFFF", padding: "12px 20px", borderBottom: "1px solid #E2E8F0", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 12, flex: 1, maxWidth: 360 }}>
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#64748B" strokeWidth="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-                    <div style={{ background: "#F1F5F9", borderRadius: 8, padding: "6px 12px", display: "flex", alignItems: "center", gap: 8, flex: 1 }}>
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                      <span style={{ fontSize: 11, color: "#94A3B8" }}>Search contacts, conversations and more...</span>
-                    </div>
-                  </div>
-
-                  <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-                    <div style={{ fontSize: 11, color: "#475569", fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                      Need Help? ▾
-                    </div>
-                    <div style={{ width: 28, height: 28, borderRadius: "50%", background: "#E2E8F0", color: "#334155", fontSize: 10.5, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      AA
-                    </div>
-                  </div>
-                </div>
-
-                {/* Dashboard Body Canvas */}
-                <div style={{ padding: "18px", overflowY: "auto", display: "flex", flexDirection: "column", gap: 14 }}>
-                  
-                  {/* Greeting */}
-                  <div>
-                    <div style={{ fontSize: 17, fontWeight: 800, color: "#0F172A" }}>Welcome to MessBee!</div>
-                    <div style={{ fontSize: 11.5, color: "#64748B" }}>Let's build stronger connections and grow your business.</div>
-                  </div>
-
-                  {/* 3-Column Top Grid */}
-                  <div style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr 1fr", gap: 12 }}>
-                    
-                    {/* Getting Started */}
-                    <div style={{ background: "#FFFFFF", borderRadius: 10, border: "1px solid #E2E8F0", padding: "14px", display: "flex", flexDirection: "column", gap: 10 }}>
-                      <div>
-                        <div style={{ fontSize: 12, fontWeight: 700, color: "#0F172A" }}>Getting Started</div>
-                        <div style={{ fontSize: 9.5, color: "#94A3B8" }}>Complete these steps to get the most out of MessBee</div>
-                      </div>
-
-                      {[
-                        { icon: "💬", title: "Connect WhatsApp Business API" },
-                        { icon: "👥", title: "Add your contacts" },
-                        { icon: "📢", title: "Create your first campaign" },
-                        { icon: "⚡", title: "Set up automation" }
-                      ].map((step, idx) => (
-                        <div key={idx} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "5px 0", borderBottom: idx < 3 ? "1px solid #F1F5F9" : "none" }}>
-                          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                            <span style={{ fontSize: 13 }}>{step.icon}</span>
-                            <span style={{ fontSize: 10.5, fontWeight: 600, color: "#334155" }}>{step.title}</span>
-                          </div>
-                          <span style={{ fontSize: 9.5, fontWeight: 700, color: "#16A34A", background: "#ECFDF5", padding: "2px 8px", borderRadius: 4, border: "1px solid #A7F3D0" }}>Start</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Account Overview */}
-                    <div style={{ background: "#FFFFFF", borderRadius: 10, border: "1px solid #E2E8F0", padding: "14px", display: "flex", flexDirection: "column", gap: 8 }}>
-                      <div style={{ fontSize: 12, fontWeight: 700, color: "#0F172A" }}>Account Overview</div>
-                      
-                      <div style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 10.5 }}>
-                        <div style={{ display: "flex", justifyContent: "space-between" }}>
-                          <span style={{ color: "#64748B" }}>Plan</span>
-                          <span style={{ fontWeight: 700, color: "#16A34A", background: "#ECFDF5", padding: "1px 6px", borderRadius: 3 }}>Free Trial</span>
-                        </div>
-                        <div style={{ display: "flex", justifyContent: "space-between" }}>
-                          <span style={{ color: "#64748B" }}>Status</span>
-                          <span style={{ fontWeight: 700, color: "#F59E0B" }}>Not Connected</span>
-                        </div>
-                        <div style={{ display: "flex", justifyContent: "space-between" }}>
-                          <span style={{ color: "#64748B" }}>WhatsApp API</span>
-                          <span style={{ fontWeight: 700, color: "#F59E0B" }}>Not Connected</span>
-                        </div>
-                        <div style={{ display: "flex", justifyContent: "space-between" }}>
-                          <span style={{ color: "#64748B" }}>Contacts</span>
-                          <span style={{ fontWeight: 700, color: "#0F172A" }}>0</span>
-                        </div>
-                        <div style={{ display: "flex", justifyContent: "space-between" }}>
-                          <span style={{ color: "#64748B" }}>Campaigns</span>
-                          <span style={{ fontWeight: 700, color: "#0F172A" }}>0</span>
-                        </div>
-                        <div style={{ display: "flex", justifyContent: "space-between" }}>
-                          <span style={{ color: "#64748B" }}>Orders</span>
-                          <span style={{ fontWeight: 700, color: "#0F172A" }}>0</span>
-                        </div>
-                        <div style={{ display: "flex", justifyContent: "space-between" }}>
-                          <span style={{ color: "#64748B" }}>Revenue</span>
-                          <span style={{ fontWeight: 700, color: "#0F172A" }}>₹0</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* AI Assistant Box */}
-                    <div style={{ background: "#FFFFFF", borderRadius: 10, border: "1px solid #E2E8F0", padding: "14px", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", gap: 8, position: "relative" }}>
-                      <div style={{ display: "flex", justifyContent: "space-between", width: "100%", alignItems: "center" }}>
-                        <span style={{ fontSize: 12, fontWeight: 700, color: "#0F172A" }}>AI Assistant</span>
-                        <span style={{ fontSize: 8.5, fontWeight: 800, color: "#7C3AED", background: "#F5F3FF", padding: "2px 6px", borderRadius: 4, border: "1px solid #DDD6FE" }}>BETA</span>
-                      </div>
-
-                      <div style={{ width: 40, height: 40, borderRadius: "50%", background: "#DCFCE7", display: "flex", alignItems: "center", justifyContent: "center", margin: "2px 0" }}>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#16A34A">
-                          <path d="M12 2C6.48 2 2 6.48 2 12c0 2.17.7 4.17 1.88 5.8L2.8 21.6l3.92-.88C8.36 21.56 10.12 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"/>
-                        </svg>
-                      </div>
-
-                      <div style={{ fontSize: 9.5, color: "#475569", lineHeight: 1.3 }}>
-                        Hi! I'm your AI Business Assistant. I'm here to help you grow.
-                      </div>
-
-                      <div style={{ textAlign: "left", width: "100%", fontSize: 9, color: "#64748B", display: "flex", flexDirection: "column", gap: 3 }}>
-                        <div>✔ Customer conversations</div>
-                        <div>✔ Product recommendations</div>
-                        <div>✔ Order management</div>
-                        <div>✔ Campaign ideas</div>
-                      </div>
-
-                      <button style={{ width: "100%", background: "#16A34A", color: "#FFF", border: "none", borderRadius: 6, padding: "7px", fontSize: 10, fontWeight: 700, cursor: "pointer", marginTop: "auto" }}>
-                        Ask Me Anything
-                      </button>
-                    </div>
-
-                  </div>
-
-                  {/* 2-Column Bottom Grid */}
-                  <div style={{ display: "grid", gridTemplateColumns: "1.1fr 1.9fr", gap: 12 }}>
-                    
-                    {/* Channel Status */}
-                    <div style={{ background: "#FFFFFF", borderRadius: 10, border: "1px solid #E2E8F0", padding: "14px", display: "flex", flexDirection: "column", gap: 8 }}>
-                      <div style={{ fontSize: 11.5, fontWeight: 700, color: "#0F172A" }}>Channel Status</div>
-                      <div style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: 10 }}>
-                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                          <span style={{ display: "flex", alignItems: "center", gap: 6, color: "#334155" }}>
-                            <span style={{ color: "#25D366" }}>●</span> WhatsApp Business API
-                          </span>
-                          <span style={{ color: "#94A3B8" }}>Not Connected</span>
-                        </div>
-                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                          <span style={{ display: "flex", alignItems: "center", gap: 6, color: "#334155" }}>
-                            <span style={{ color: "#3B82F6" }}>●</span> Email (SMTP)
-                          </span>
-                          <span style={{ color: "#94A3B8" }}>Not Configured</span>
-                        </div>
-                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                          <span style={{ display: "flex", alignItems: "center", gap: 6, color: "#334155" }}>
-                            <span style={{ color: "#60A5FA" }}>●</span> SMS
-                          </span>
-                          <span style={{ color: "#94A3B8" }}>Not Configured</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Resources & Demo */}
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
-                      <div style={{ background: "#FFFFFF", borderRadius: 10, border: "1px solid #E2E8F0", padding: "12px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-                        <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 11, fontWeight: 700, color: "#0F172A" }}>
-                          🎓 New to MessBee?
-                        </div>
-                        <div style={{ fontSize: 9.5, color: "#64748B", margin: "6px 0" }}>Explore guides, tutorials and best practices to grow faster.</div>
-                        <span style={{ fontSize: 9.5, fontWeight: 700, color: "#16A34A", cursor: "pointer" }}>View Resources →</span>
-                      </div>
-
-                      <div style={{ background: "#FFFFFF", borderRadius: 10, border: "1px solid #E2E8F0", padding: "12px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-                        <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 11, fontWeight: 700, color: "#0F172A" }}>
-                          ▶ Watch Demo
-                        </div>
-                        <div style={{ fontSize: 9.5, color: "#64748B", margin: "6px 0" }}>See how MessBee helps you engage, automate and grow.</div>
-                        <span style={{ fontSize: 9.5, fontWeight: 700, color: "#16A34A", cursor: "pointer" }}>Watch Now →</span>
-                      </div>
-                    </div>
-
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            {/* Floating Mobile Phone Preview */}
-            <div style={{
-              position: "absolute",
-              right: -30,
-              bottom: -30,
-              width: 220,
-              background: "#FFFFFF",
-              borderRadius: 30,
-              border: "5px solid #0F172A",
-              boxShadow: "0 25px 50px rgba(0,0,0,0.3)",
-              overflow: "hidden",
-              zIndex: 10,
-              display: "flex",
-              flexDirection: "column",
-              textAlign: "left"
-            }}>
-              {/* Dynamic Island Notch */}
-              <div style={{ background: "#0F172A", padding: "6px 0 3px 0", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                <div style={{ width: 55, height: 10, background: "#000", borderRadius: 10 }} />
-              </div>
-
-              {/* Mobile Chat Header */}
-              <div style={{ background: "#F8FAFC", padding: "8px 10px", borderBottom: "1px solid #E2E8F0", display: "flex", alignItems: "center", gap: 8 }}>
-                <div style={{ width: 22, height: 22, borderRadius: "50%", background: "#16A34A", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#FFF"><path d="M12 2C6.48 2 2 6.48 2 12c0 2.17.7 4.17 1.88 5.8L2.8 21.6l3.92-.88C8.36 21.56 10.12 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg>
-                </div>
-                <div>
-                  <div style={{ fontSize: 10.5, fontWeight: 800, color: "#0F172A" }}>MessBee AI</div>
-                  <div style={{ fontSize: 8, color: "#16A34A", fontWeight: 700 }}>● Online</div>
-                </div>
-              </div>
-
-              {/* Chat Canvas */}
-              <div style={{ background: "#FFFFFF", padding: "10px 8px", display: "flex", flexDirection: "column", gap: 8 }}>
-                <div style={{ background: "#F1F5F9", borderRadius: 8, padding: "8px 10px", fontSize: 9.5, color: "#334155", lineHeight: 1.4 }}>
-                  Hello! I'm your AI Business Assistant. How can I help you today?
-                </div>
-
-                <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                  {["Show today's summary", "Suggest a campaign", "Check order updates", "Help with automation"].map((chip, i) => (
-                    <div key={i} style={{ background: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: 6, padding: "4px 8px", fontSize: 8.5, color: "#475569", fontWeight: 600 }}>
-                      {chip}
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Message Input Bar */}
-              <div style={{ background: "#F8FAFC", padding: "6px 8px", borderTop: "1px solid #E2E8F0", display: "flex", alignItems: "center", gap: 6 }}>
-                <div style={{ fontSize: 9, color: "#94A3B8", flex: 1 }}>Type a message...</div>
-                <div style={{ width: 18, height: 18, borderRadius: "50%", background: "#16A34A", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="#FFF"><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-                </div>
-              </div>
-            </div>
-
+            <img
+              src={heroDashboard}
+              alt="MessBee WhatsApp API Platform"
+              style={{
+                width: "100%",
+                maxWidth: 740,
+                height: "auto",
+                borderRadius: 16,
+                boxShadow: "0 20px 40px -10px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0,0,0,0.03)",
+                display: "block"
+              }}
+            />
           </div>
         </div>
       </section>
 
       {/* ═══════════════ MARKETPLACE VS MESSBEE SECTION ═══════════════ */}
-      <section style={{ padding: "60px 6% 80px", background: "#FFFFFF", textAlign: "center" }}>
+      <section style={{ padding: "20px 6% 80px", background: "#FFFFFF", textAlign: "center" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
 
           {/* VS Title */}
@@ -1237,7 +939,7 @@ const LandingPage = () => {
             boxSizing: "border-box"
           }}>
             <img
-              src="/robotimg.png"
+              src="/messrobo.png"
               alt="AI Assistant Robot"
               style={{
                 width: "100%",
@@ -1496,15 +1198,30 @@ const LandingPage = () => {
           </div>
 
           {/* Right - Woman Image */}
-          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "flex-end", overflow: "visible" }}>
+          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "flex-end", overflow: "visible", position: "relative" }}>
+            {/* Soft Warm / Yellow Ambient Glow */}
+            <div style={{
+              position: "absolute",
+              width: "480px",
+              height: "480px",
+              borderRadius: "50%",
+              background: "radial-gradient(circle, rgba(245, 158, 11, 0.36) 0%, rgba(217, 119, 6, 0.20) 42%, rgba(180, 83, 9, 0.08) 62%, rgba(0, 0, 0, 0) 78%)",
+              top: "5%",
+              right: "-5%",
+              filter: "blur(60px)",
+              pointerEvents: "none",
+              zIndex: 0
+            }} />
+
             <img src={chooseUsWoman} alt="Professional woman with laptop" style={{
-              width: "85%",
+              width: "95%",
               height: "auto",
               display: "block",
               objectFit: "contain",
-              transform: "translateX(40px)",
-              mixBlendMode: "screen",
-              filter: "brightness(1.1) contrast(1.05)"
+              transform: "translateX(20px)",
+              filter: "brightness(1.18) contrast(1.05) drop-shadow(0 14px 40px rgba(0,0,0,0.6))",
+              position: "relative",
+              zIndex: 1
             }} />
           </div>
 
@@ -1801,18 +1518,25 @@ const LandingPage = () => {
 
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
           <h2 style={{ fontSize: 30, fontWeight: 800, color: "#FFFFFF", marginBottom: 16 }}>
-            Subscribe To Your <span style={{ color: "#16A34A" }}>Newsletter</span>
+            Subscribe To Our <span style={{ color: "#16A34A" }}>Newsletter</span>
           </h2>
           <p style={{ fontSize: 13, color: "rgba(255,255,255,0.7)", lineHeight: 1.6, marginBottom: 40, padding: "0 20px" }}>
-            Subscribe to our newsletter and stay ahead with the latest Business projects, expert tips, and exclusive platform updates. Join thousands of businesses today and get opportunities delivered straight to your inbox every week!
+            Subscribe to our newsletter and stay ahead with the latest business insights, expert tips, and exclusive platform updates. Join thousands of businesses today and get opportunities delivered straight to your inbox every week!
           </p>
 
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 16 }}>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleNewsletterSubmit();
+            }}
+            style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 16 }}
+          >
             <input
               type="email"
-              placeholder="Enter Your email"
+              placeholder="Enter your email address"
               value={newsletterEmail}
               onChange={(e) => setNewsletterEmail(e.target.value)}
+              required
               style={{ width: "100%", maxWidth: 460, padding: "12px 20px", borderRadius: 8, border: "none", outline: "none", fontSize: 14 }}
             />
             {newsletterStatus && (
@@ -1820,10 +1544,15 @@ const LandingPage = () => {
                 {newsletterStatus.message}
               </div>
             )}
-            <button onClick={handleNewsletterSubmit} style={{ background: "#16A34A", color: "#FFFFFF", border: "none", borderRadius: 8, padding: "12px 36px", fontSize: 14, fontWeight: 600, cursor: "pointer", transition: "background 0.3s" }} onMouseEnter={e => e.currentTarget.style.background = "#00A844"} onMouseLeave={e => e.currentTarget.style.background = "#16A34A"}>
+            <button
+              type="submit"
+              style={{ background: "#16A34A", color: "#FFFFFF", border: "none", borderRadius: 8, padding: "12px 36px", fontSize: 14, fontWeight: 600, cursor: "pointer", transition: "background 0.3s" }}
+              onMouseEnter={e => e.currentTarget.style.background = "#00A844"}
+              onMouseLeave={e => e.currentTarget.style.background = "#16A34A"}
+            >
               Subscribe
             </button>
-          </div>
+          </form>
         </div>
       </section>
 
