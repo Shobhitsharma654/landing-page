@@ -4,9 +4,8 @@ import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
 import defaultLogo from "../assets/logo.jpeg";
 import heroDashboard from "../assets/hero-messscale.png";
-import aiRobot from "../assets/ai_robot_new.png";
 import howItWorksPerson from "../assets/how_it_works_person.jpg";
-import chooseUsWoman from "../assets/choose_us_woman_nobg.png";
+import chooseUsWoman from "../assets/messgirl.png";
 import messbeeText from "../assets/messbee_text.png";
 import reviewerRajesh from "../assets/reviewer_rajesh.png";
 import reviewerPriya from "../assets/reviewer_priya.png";
@@ -67,7 +66,7 @@ const VideoBanner = () => {
         src="/testimonial_video.mp4" 
         controls={isPlaying}
         style={{ width: "100%", height: 360, objectFit: "cover", display: "block" }}
-        poster="/video_poster.jpg"
+        poster="/videomess.png"
         onEnded={() => setIsPlaying(false)}
         onPause={() => setIsPlaying(false)}
         onPlay={() => setIsPlaying(true)}
@@ -743,7 +742,7 @@ const LandingPage = () => {
       </section>
 
       {/* ═══════════════ PLATFORM PREVIEW & DASHBOARD SECTION ═══════════════ */}
-      <section style={{ background: "#FFFFFF", padding: "40px 6% 90px", textAlign: "center" }}>
+      <section style={{ background: "#FFFFFF", padding: "40px 6% 24px", textAlign: "center" }}>
         <div style={{ maxWidth: 1180, margin: "0 auto", position: "relative" }}>
           
           <div style={{ color: "#16A34A", fontSize: 13, fontWeight: 800, marginBottom: 10, letterSpacing: "0.5px" }}>
@@ -761,7 +760,7 @@ const LandingPage = () => {
             position: "relative",
             margin: "0 auto",
             width: "100%",
-            maxWidth: 840,
+            maxWidth: 740,
             display: "flex",
             justifyContent: "center",
             alignItems: "center"
@@ -771,7 +770,7 @@ const LandingPage = () => {
               alt="MessBee WhatsApp API Platform"
               style={{
                 width: "100%",
-                maxWidth: 840,
+                maxWidth: 740,
                 height: "auto",
                 borderRadius: 16,
                 boxShadow: "0 20px 40px -10px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0,0,0,0.03)",
@@ -783,7 +782,7 @@ const LandingPage = () => {
       </section>
 
       {/* ═══════════════ MARKETPLACE VS MESSBEE SECTION ═══════════════ */}
-      <section style={{ padding: "60px 6% 80px", background: "#FFFFFF", textAlign: "center" }}>
+      <section style={{ padding: "20px 6% 80px", background: "#FFFFFF", textAlign: "center" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
 
           {/* VS Title */}
@@ -940,7 +939,7 @@ const LandingPage = () => {
             boxSizing: "border-box"
           }}>
             <img
-              src="/robotimg.png"
+              src="/messrobo.png"
               alt="AI Assistant Robot"
               style={{
                 width: "100%",
@@ -1199,15 +1198,30 @@ const LandingPage = () => {
           </div>
 
           {/* Right - Woman Image */}
-          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "flex-end", overflow: "visible" }}>
+          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "flex-end", overflow: "visible", position: "relative" }}>
+            {/* Soft Warm / Yellow Ambient Glow */}
+            <div style={{
+              position: "absolute",
+              width: "480px",
+              height: "480px",
+              borderRadius: "50%",
+              background: "radial-gradient(circle, rgba(245, 158, 11, 0.36) 0%, rgba(217, 119, 6, 0.20) 42%, rgba(180, 83, 9, 0.08) 62%, rgba(0, 0, 0, 0) 78%)",
+              top: "5%",
+              right: "-5%",
+              filter: "blur(60px)",
+              pointerEvents: "none",
+              zIndex: 0
+            }} />
+
             <img src={chooseUsWoman} alt="Professional woman with laptop" style={{
-              width: "85%",
+              width: "95%",
               height: "auto",
               display: "block",
               objectFit: "contain",
-              transform: "translateX(40px)",
-              mixBlendMode: "screen",
-              filter: "brightness(1.1) contrast(1.05)"
+              transform: "translateX(20px)",
+              filter: "brightness(1.18) contrast(1.05) drop-shadow(0 14px 40px rgba(0,0,0,0.6))",
+              position: "relative",
+              zIndex: 1
             }} />
           </div>
 
