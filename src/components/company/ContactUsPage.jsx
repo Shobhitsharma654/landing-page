@@ -15,11 +15,11 @@ const FaqItem = ({ q, a }) => {
   return (
     <div
       style={{
-        border: open ? "1.5px solid #BBF7D0" : "1.5px solid #E2E8F0",
+        border: open ? "1.5px solid #CBD5E1" : "1.5px solid #E2E8F0",
         borderRadius: "14px",
-        marginBottom: "12px",
-        background: open ? "#F0FDF4" : "#FFFFFF",
-        boxShadow: open ? "0 4px 12px rgba(22, 163, 74, 0.04)" : "0 2px 6px rgba(0, 0, 0, 0.01)",
+        marginBottom: "10px",
+        background: "#FFFFFF",
+        boxShadow: open ? "0 4px 12px rgba(0, 0, 0, 0.03)" : "0 2px 6px rgba(0, 0, 0, 0.01)",
         transition: "all 0.25s ease-in-out",
         overflow: "hidden",
       }}
@@ -30,7 +30,7 @@ const FaqItem = ({ q, a }) => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          padding: "18px 20px",
+          padding: open ? "14px 20px 8px 20px" : "16px 20px",
           cursor: "pointer",
           userSelect: "none",
         }}
@@ -43,7 +43,7 @@ const FaqItem = ({ q, a }) => {
             width: 28,
             height: 28,
             borderRadius: 8,
-            background: open ? "#FFFFFF" : "#F8FAFC",
+            background: open ? "#F0FDF4" : "#F8FAFC",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -71,10 +71,10 @@ const FaqItem = ({ q, a }) => {
           maxHeight: open ? "300px" : "0px",
           opacity: open ? 1 : 0,
           transition: "max-height 0.3s ease-in-out, opacity 0.2s ease-in-out",
-          padding: open ? "0px 20px 20px 20px" : "0px 20px",
+          padding: open ? "0px 20px 14px 20px" : "0px 20px",
         }}
       >
-        <div style={{ fontSize: 13.5, color: MU, lineHeight: 1.75, borderTop: open ? "1px solid rgba(22, 163, 74, 0.12)" : "none", paddingTop: open ? "14px" : "0px" }}>
+        <div style={{ fontSize: 13.5, color: D2, lineHeight: 1.6, borderTop: open ? "1px solid #F1F5F9" : "none", paddingTop: open ? "8px" : "0px" }}>
           {a}
         </div>
       </div>
@@ -876,9 +876,9 @@ const ContactUsPage = () => {
 
           <div className="contact-hero-row" style={{ alignItems: "stretch" }}>
             {/* Left Box: Visit Us & Connect with MessBee */}
-            <div className="contact-form-info-box" style={{ flex: 1, background: "linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%)", border: "1px solid #E2E8F0", borderRadius: 24, padding: "32px", display: "flex", flexDirection: "column", justifyContent: "space-between", gap: 32, boxShadow: "0 4px 20px rgba(0,0,0,0.01)" }}>
-              {/* Visit Us Info */}
-              <div>
+            <div className="contact-form-info-box" style={{ flex: 1, display: "flex", flexDirection: "column", gap: 20, justifyContent: "space-between" }}>
+              {/* Box 1: Visit Us */}
+              <div style={{ background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 24, padding: "28px", boxShadow: "0 4px 16px rgba(15, 23, 42, 0.02)" }}>
                 <h3 style={{ fontSize: 18, fontWeight: 900, color: "#0F172A", marginBottom: 20, display: "flex", alignItems: "center", gap: 8, borderBottom: "1.5px solid #E2E8F0", paddingBottom: 12 }}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.5"><circle cx="12" cy="10" r="3" /><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z" /></svg>
                   Visit Us
@@ -900,14 +900,11 @@ const ContactUsPage = () => {
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2.5" style={{ marginTop: 2, flexShrink: 0 }}><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
                     <span><strong>Email:</strong> support@messbee.com</span>
                   </div>
-
-
-
                 </div>
               </div>
 
-              {/* Connect with MessBee Info */}
-              <div>
+              {/* Box 2: Connect with MessBee */}
+              <div style={{ background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 24, padding: "28px", boxShadow: "0 4px 16px rgba(15, 23, 42, 0.02)" }}>
                 <h3 style={{ fontSize: 18, fontWeight: 900, color: "#0F172A", marginBottom: 14, display: "flex", alignItems: "center", gap: 8, borderBottom: "1.5px solid #E2E8F0", paddingBottom: 12 }}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.5"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" /><path d="M13.73 21a2 2 0 0 1-3.46 0" /></svg>
                   Connect With MessBee
@@ -1268,7 +1265,7 @@ const ContactUsPage = () => {
             />
             <FaqItem
               q="Where is MessBee based?"
-              a="MessBee is operated by ATRI Admission Anytime Pvt. Ltd. in India."
+              a="MessBee is based in India."
             />
             <FaqItem
               q="How long does it take to receive a response?"
