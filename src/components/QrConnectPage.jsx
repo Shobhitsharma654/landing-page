@@ -120,8 +120,8 @@ const QrConnectPage = () => {
       `}</style>
 
       {/* ═══════ HERO SECTION ═══════ */}
-      <section style={{ paddingTop: 80, paddingBottom: 28, background: "#FFFFFF", paddingLeft: "3%", paddingRight: "3%", overflow: "hidden" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 20 }}>
+      <section style={{ paddingTop: 100, paddingBottom: 28, background: "#FFFFFF", paddingLeft: "3%", paddingRight: "3%", overflow: "hidden" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", flexWrap: "wrap", alignItems: "flex-start", justifyContent: "space-between", gap: 20 }}>
           
           {/* Left Column */}
           <div style={{ flex: "1 1 380px", maxWidth: 460 }}>
@@ -134,8 +134,11 @@ const QrConnectPage = () => {
               <span style={{ color: "#16A34A" }}>A New Customer.</span>
             </h1>
 
+            <p style={{ fontSize: 12.5, color: "#475569", lineHeight: 1.5, marginBottom: 10, maxWidth: 420 }}>
+              MessBee QR & Connect helps you create powerful QR codes and smart links to start WhatsApp conversations, promote offers, and showcase products.
+            </p>
             <p style={{ fontSize: 12.5, color: "#475569", lineHeight: 1.5, marginBottom: 20, maxWidth: 420 }}>
-              MessBee QR & Connect helps you create powerful QR codes and smart links to start WhatsApp conversations, promote offers, showcase products, run campaigns and track every interaction – all from one simple platform.
+              Run campaigns and track every interaction – all from one simple platform.
             </p>
 
             <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 10, marginBottom: 0 }}>
@@ -150,8 +153,8 @@ const QrConnectPage = () => {
           </div>
 
           {/* Right Column: Phone + Cards + Dotted Lines */}
-          <div className="hvc">
-            <div style={{ width: "100%", maxWidth: 640, display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
+          <div className="hvc" style={{ marginTop: -45, marginLeft: 120 }}>
+            <div style={{ width: "100%", maxWidth: 560, display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
               
               {/* SVG Dotted Lines */}
               <svg className="hsv" style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", pointerEvents: "none", zIndex: 1 }} viewBox="0 0 640 400">
@@ -184,11 +187,11 @@ const QrConnectPage = () => {
 
               {/* Central Phone */}
               <div style={{ zIndex: 2, margin: "0 16px" }}>
-                <div style={{ width: 200, height: 400, background: "#FFF", borderRadius: 32, border: "6px solid #0B132B", boxShadow: "0 16px 40px -8px rgba(11,19,43,.18)", position: "relative", display: "flex", flexDirection: "column", alignItems: "center", padding: "10px 6px 14px", overflow: "hidden" }}>
+                <div style={{ width: 170, height: 340, background: "#FFF", borderRadius: 28, border: "6px solid #0B132B", boxShadow: "0 16px 40px -8px rgba(11,19,43,.18)", position: "relative", display: "flex", flexDirection: "column", alignItems: "center", padding: "10px 6px 14px", overflow: "hidden" }}>
                   <div style={{ width: 44, height: 10, background: "#0B132B", borderRadius: "0 0 7px 7px", marginBottom: 20, marginTop: -10 }} />
                   <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", flex: 1, width: "100%" }}>
                     <div style={{ position: "relative", background: "#FFF", padding: 6, borderRadius: 12, boxShadow: "0 4px 14px rgba(0,0,0,.04)", border: "1px solid #F1F5F9", marginBottom: 16 }}>
-                      <QRCodeSVG value="https://messbee.in/whatsapp-qr-generator" size={110} level="Q" fgColor="#0F172A" />
+                      <QRCodeSVG value="https://messbee.in/whatsapp-qr-generator" size={90} level="Q" fgColor="#0F172A" />
                       <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 24, height: 24, background: "#25D366", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", border: "2px solid #FFF" }}>
                         <svg width="13" height="13" viewBox="0 0 24 24" fill="#FFF"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
                       </div>
@@ -325,7 +328,7 @@ const QrConnectPage = () => {
                 <div style={{ width: 34, height: 34, borderRadius: 9, background: "#ECFDF5", border: "1px solid #A7F3D0", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, marginBottom: 10 }}>{item.icon}</div>
                 <h3 style={{ fontSize: 12, fontWeight: 800, color: "#0F172A", marginBottom: 4, lineHeight: 1.3 }}>{item.title}</h3>
                 <p style={{ fontSize: 10, color: "#64748B", lineHeight: 1.45, flex: 1, marginBottom: 10 }}>{item.desc}</p>
-                <div onClick={() => navigate("/whatsapp-qr-generator")} style={{ fontSize: 10.5, fontWeight: 700, color: "#16A34A", cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 3 }}>Learn More →</div>
+                <div onClick={() => window.open((import.meta.env.VITE_ADMIN_URL || "http://localhost:5174") + "/signup", "_blank")} style={{ fontSize: 10.5, fontWeight: 700, color: "#16A34A", cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 3 }}>Create Now →</div>
               </div>
             ))}
           </div>
