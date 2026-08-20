@@ -9,11 +9,9 @@ const Navbar = () => {
   const [productDropdownOpen, setProductDropdownOpen] = useState(false);
   const [solutionsDropdownOpen, setSolutionsDropdownOpen] = useState(false);
   const [resourcesDropdownOpen, setResourcesDropdownOpen] = useState(false);
-  const [companyDropdownOpen, setCompanyDropdownOpen] = useState(false);
   const productDropdownRef = useRef(null);
   const solutionsDropdownRef = useRef(null);
   const resourcesDropdownRef = useRef(null);
-  const companyDropdownRef = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -25,9 +23,6 @@ const Navbar = () => {
       }
       if (resourcesDropdownRef.current && !resourcesDropdownRef.current.contains(event.target)) {
         setResourcesDropdownOpen(false);
-      }
-      if (companyDropdownRef.current && !companyDropdownRef.current.contains(event.target)) {
-        setCompanyDropdownOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -52,7 +47,6 @@ const Navbar = () => {
     { label: "Solutions" },
     { label: "Pricing", path: "/pricing" },
     { label: "Resources" },
-    { label: "Company" },
   ];
 
   const productLinks = [
@@ -76,17 +70,6 @@ const Navbar = () => {
     { label: "Blog", path: "/resources/blog" },
     { label: "FAQs", path: "/resources/faqs" },
     { label: "Contact Support", path: "/contact-support" },
-  ];
-
-  const companyLinks = [
-    { label: "About MessBee",       path: "/about" },
-    { label: "Careers",             path: "/careers" },
-    { label: "Contact Us",          path: "/contact" },
-    { label: "Privacy Policy",      path: "/privacy" },
-    { label: "Terms & Conditions",  path: "/terms" },
-    { label: "Refund & Cancellation", path: "/refundpolicy" },
-    { label: "DPA",                 path: "/dpa" },
-    { label: "Cookie Policy",       path: "/cookies" },
   ];
 
   return (
@@ -134,23 +117,22 @@ const Navbar = () => {
           {navLinks.map((link) => {
             const isActive = location.pathname === link.path || (link.path === "/#features" && location.pathname === "/" && location.hash === "#features");
             
-            if (link.label === "Products" || link.label === "Solutions" || link.label === "Resources" || link.label === "Company") {
+            if (link.label === "Products" || link.label === "Solutions" || link.label === "Resources") {
               const isProduct = link.label === "Products";
               const isSolutions = link.label === "Solutions";
               const isResources = link.label === "Resources";
-              const isOpen = isProduct ? productDropdownOpen : isSolutions ? solutionsDropdownOpen : isResources ? resourcesDropdownOpen : companyDropdownOpen;
-              const setOpen = isProduct ? setProductDropdownOpen : isSolutions ? setSolutionsDropdownOpen : isResources ? setResourcesDropdownOpen : setCompanyDropdownOpen;
-              const linksList = isProduct ? productLinks : isSolutions ? solutionsLinks : isResources ? resourcesLinks : companyLinks;
-              const dropdownRef = isProduct ? productDropdownRef : isSolutions ? solutionsDropdownRef : isResources ? resourcesDropdownRef : companyDropdownRef;
+              const isOpen = isProduct ? productDropdownOpen : isSolutions ? solutionsDropdownOpen : resourcesDropdownOpen;
+              const setOpen = isProduct ? setProductDropdownOpen : isSolutions ? setSolutionsDropdownOpen : setResourcesDropdownOpen;
+              const linksList = isProduct ? productLinks : isSolutions ? solutionsLinks : resourcesLinks;
+              const dropdownRef = isProduct ? productDropdownRef : isSolutions ? solutionsDropdownRef : resourcesDropdownRef;
 
               return (
                 <div key={link.label} style={{ position: "relative" }} ref={dropdownRef}>
                   <span style={{ display: "flex", alignItems: "center", gap: 4, color: isOpen ? "#16A34A" : "#4B5563", fontSize: 12, fontWeight: 600, cursor: "pointer", transition: "color 0.2s" }}
                     onClick={() => {
-                      if (isProduct) { setSolutionsDropdownOpen(false); setResourcesDropdownOpen(false); setCompanyDropdownOpen(false); } 
-                      else if (isSolutions) { setProductDropdownOpen(false); setResourcesDropdownOpen(false); setCompanyDropdownOpen(false); }
-                      else if (isResources) { setProductDropdownOpen(false); setSolutionsDropdownOpen(false); setCompanyDropdownOpen(false); }
-                      else { setProductDropdownOpen(false); setSolutionsDropdownOpen(false); setResourcesDropdownOpen(false); }
+                      if (isProduct) { setSolutionsDropdownOpen(false); setResourcesDropdownOpen(false); } 
+                      else if (isSolutions) { setProductDropdownOpen(false); setResourcesDropdownOpen(false); }
+                      else if (isResources) { setProductDropdownOpen(false); setSolutionsDropdownOpen(false); }
                       setOpen(!isOpen);
                     }}
                     onMouseEnter={e => { if (!isOpen) e.currentTarget.style.color = "#111827"; }}
