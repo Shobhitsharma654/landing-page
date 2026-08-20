@@ -23,6 +23,7 @@ const RefundPage     = lazy(() => import("./components/company/RefundPage"));
 const CareersPage         = lazy(() => import("./components/company/CareersPage"));
 const BlogPage            = lazy(() => import("./components/resources/BlogPage"));
 const HelpCenterPage      = lazy(() => import("./components/resources/HelpCenterPage"));
+const WhatsappRedirect    = lazy(() => import("./components/resources/WhatsappRedirect"));
 const BusinessLibraryPage = lazy(() => import("./components/resources/BusinessLibraryPage"));
 const DpaPage             = lazy(() => import("./components/company/DpaPage"));
 const CrmPage             = lazy(() => import("./components/product/CrmPage"));
@@ -30,6 +31,9 @@ const WaPage              = lazy(() => import("./components/product/WhatsAppPage
 const MarketingPage       = lazy(() => import("./components/product/MarketingPage"));
 const AiPage              = lazy(() => import("./components/product/AiAutomationPage"));
 const DigitalStorePage    = lazy(() => import("./components/product/DigitalStorePage"));
+const BookDemoPage        = lazy(() => import("./components/BookDemoPage"));
+const WhatsappQrGenerator = lazy(() => import("./components/resources/WhatsappQrGenerator"));
+const QrConnectPage         = lazy(() => import("./components/QrConnectPage"));
 
 const ScrollToTop = () => {
   const { pathname, hash } = useLocation();
@@ -105,6 +109,7 @@ function App() {
         <Route path="/cookies"      element={<CookiesPage />} />
         <Route path="/license"      element={<LicensePage />} />
         <Route path="/refundpolicy" element={<RefundPage />} />
+        <Route path="/wa/:phone" element={<WhatsappRedirect />} />
         <Route path="/careers"      element={<CareersPage />} />
         <Route path="/dpa"          element={<DpaPage />} />
         <Route path="/crm"                element={<CrmPage />} />
@@ -112,6 +117,13 @@ function App() {
         <Route path="/marketing-automation" element={<MarketingPage />} />
         <Route path="/ai-automation"         element={<AiPage />} />
         <Route path="/digital-store"          element={<DigitalStorePage />} />
+        <Route path="/book-demo"              element={<BookDemoPage />} />
+        <Route path="/schedule-demo"          element={<BookDemoPage />} />
+        <Route path="/demo"                   element={<BookDemoPage />} />
+        <Route path="/whatsapp-qr-generator"  element={<WhatsappQrGenerator />} />
+        <Route path="/qr-connect"             element={<QrConnectPage />} />
+        <Route path="/qr-and-connect"         element={<QrConnectPage />} />
+        <Route path="/whatsapp-qr-connect"    element={<QrConnectPage />} />
         <Route path="*"             element={<Navigate to="/" replace />} />
       </Routes>
     </Suspense>

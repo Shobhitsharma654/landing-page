@@ -45,6 +45,7 @@ const Navbar = () => {
   const navLinks = [
     { label: "Products" },
     { label: "Solutions" },
+    { label: "QR & Connect", path: "/qr-connect" },
     { label: "Pricing", path: "/pricing" },
     { label: "Resources" },
   ];
@@ -65,6 +66,8 @@ const Navbar = () => {
   ];
 
   const resourcesLinks = [
+    { label: "QR & Connect", path: "/qr-connect" },
+    { label: "WhatsApp QR Generator", path: "/whatsapp-qr-generator" },
     { label: "Business Library", path: "/resources/business-library" },
     { label: "Help Center", path: "/resources/help-center" },
     { label: "Blog", path: "/resources/blog" },

@@ -38,7 +38,7 @@ const Pill = ({ children }) => (
 const PricingPage = () => {
   const navigate = useNavigate();
   const [currency, setCurrency] = useState("INR"); // "INR" | "USD"
-  const [billingCycle, setBillingCycle] = useState("annual"); // "monthly" | "quarterly" | "annual"
+  const [billingCycle, setBillingCycle] = useState("monthly"); // "monthly" | "quarterly" | "annual"
   const [expandedCards, setExpandedCards] = useState({});
 
   useEffect(() => {
@@ -1168,11 +1168,13 @@ const PricingPage = () => {
             borderRadius: 14,
             border: "1.5px solid #E2E8F0",
             overflow: "hidden",
+            overflowX: "auto",
             boxShadow: "0 2px 8px rgba(0,0,0,0.02)",
           }}>
             <div style={{
               display: "grid",
-              gridTemplateColumns: "1.4fr 1fr 1fr 1fr",
+              gridTemplateColumns: "1.2fr 1fr 1fr 1fr",
+              minWidth: 540,
               background: "#F8FAFC",
               borderBottom: "1.5px solid #E2E8F0",
               padding: "12px 20px",
@@ -1181,6 +1183,7 @@ const PricingPage = () => {
               color: "#0F172A",
               textTransform: "uppercase",
               letterSpacing: "0.5px",
+              textAlign: "center",
             }}>
               <div>Plan</div>
               <div>Monthly</div>
@@ -1199,12 +1202,14 @@ const PricingPage = () => {
                   key={row.plan}
                   style={{
                     display: "grid",
-                    gridTemplateColumns: "1.4fr 1fr 1fr 1fr",
+                    gridTemplateColumns: "1.2fr 1fr 1fr 1fr",
+                    minWidth: 540,
                     padding: "13px 20px",
                     background: isEven ? "#FFFFFF" : "#FAFAFA",
                     borderBottom: idx < summaryTableData.length - 1 ? "1px solid #F1F5F9" : "none",
                     alignItems: "center",
                     fontSize: 13,
+                    textAlign: "center",
                   }}
                 >
                   <div style={{ fontWeight: 800, color: "#0F172A" }}>{row.plan}</div>
@@ -1344,7 +1349,7 @@ const PricingPage = () => {
               color: "#B45309",
               lineHeight: 1.5,
             }}>
-              Platform Subscription + WhatsApp/Meta Messaging Charges + Optional Add-ons + Setup/Integration Charges
+              Platform Subscription + WhatsApp/Meta Messaging Charges + Optional Add-ons + Setup/Integration Charges + GST
             </div>
           </div>
         </div>
