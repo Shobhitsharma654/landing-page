@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Navbar from "../Navbar";
+import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
 import defaultLogo from "../assets/logo.jpeg";
 
@@ -16,68 +16,105 @@ const Pill = ({ children }) => (
   </div>
 );
 /* ═══════════════════════════════════════════════════════════════════════
-   MessBee — Small & Medium Business Solutions Page
-   Distinct SMB Hero Graphic with MessBee Logo.
-   Compact, sleek typography & clean layout.
+   MessBee — Retail & Local Businesses Solutions Page
+   Strictly adheres ONLY to the text provided in the user prompt.
+   Distinct Retail & Local Hero Graphic with official MessBee Logo.
+   Compact, sleek typography & clean layout matching Ecommerce, SMB & Service pages.
    ═══════════════════════════════════════════════════════════════════════ */
 
-// 1. With MessBee, you can (8 items from prompt)
+// 1. With MessBee, You Can (8 items from prompt)
 const WITH_MESSBEE_YOU_CAN = [
-  { text: "Manage customers and leads", icon: "👥" },
   { text: "Keep customer information organized", icon: "📁" },
-  { text: "Connect supported WhatsApp Business services", icon: "💬" },
-  { text: "Run marketing campaigns", icon: "📢" },
-  { text: "Automate routine follow-ups", icon: "🔄" },
-  { text: "Create a digital storefront", icon: "🛍️" },
-  { text: "Manage customer communication", icon: "💬" },
-  { text: "Track business activity and performance", icon: "📊" },
+  { text: "Manage leads and enquiries", icon: "👥" },
+  { text: "Communicate through supported WhatsApp Business services", icon: "💬" },
+  { text: "Share offers and business updates", icon: "📢" },
+  { text: "Follow up with customers", icon: "🔄" },
+  { text: "Automate routine communication", icon: "⚡" },
+  { text: "Showcase products and services through a Digital Store", icon: "🛍️" },
+  { text: "Understand customer and campaign activity", icon: "📊" },
 ];
 
-// 2. What MessBee Can Help You With (6 items from prompt)
-const WHAT_MESSBEE_HELP_WITH = [
+// 2. Turn First-Time Visitors Into Returning Customers (5 steps from prompt)
+const RETAIL_JOURNEY_STEPS = [
   {
-    title: "Manage Customers",
-    desc: "Keep customer and lead information organized in one place. Give your team the context they need before contacting a customer or following up on an enquiry.",
+    step: "Discover",
+    desc: "Help customers find your products, services and business information online.",
+    color: "#3B82F6",
+    bg: "#EFF6FF",
+    border: "#BFDBFE",
+    icon: "🔍",
+  },
+  {
+    step: "Enquire",
+    desc: "Make it easier for customers to ask questions and start a conversation.",
+    color: "#8B5CF6",
+    bg: "#F5F3FF",
+    border: "#DDD6FE",
+    icon: "💬",
+  },
+  {
+    step: "Purchase",
+    desc: "Support your sales and commerce workflows through available MessBee features.",
+    color: "#16A34A",
+    bg: "#F0FDF4",
+    border: "#BBF7D0",
+    icon: "🛒",
+  },
+  {
+    step: "Follow Up",
+    desc: "Stay connected with customers after an enquiry or purchase.",
+    color: "#F59E0B",
+    bg: "#FEF3C7",
+    border: "#FDE68A",
+    icon: "📦",
+  },
+  {
+    step: "Return",
+    desc: "Build ongoing relationships with customers through relevant communication.",
+    color: "#EC4899",
+    bg: "#FCE7F3",
+    border: "#FBCFE8",
+    icon: "❤️",
+  },
+];
+
+// 3. Practical Tools for Local Businesses (5 items from prompt)
+const PRACTICAL_TOOLS = [
+  {
+    title: "Customer Management",
+    desc: "Keep customer and contact information organized instead of relying only on phone contacts, notebooks or scattered spreadsheets.",
     color: "#3B82F6",
     bg: "#EFF6FF",
     border: "#BFDBFE",
     icon: "👤",
   },
   {
-    title: "Communicate on WhatsApp",
-    desc: "Use supported WhatsApp Business capabilities to handle customer conversations, notifications and eligible business communication.",
+    title: "WhatsApp Business",
+    desc: "Use supported WhatsApp Business capabilities for customer enquiries, updates, notifications and eligible promotional communication.",
     color: "#16A34A",
     bg: "#F0FDF4",
     border: "#BBF7D0",
     icon: "💬",
   },
   {
-    title: "Automate Follow-Ups",
-    desc: "Create workflows for repetitive tasks such as lead follow-ups, reminders and customer engagement.",
-    color: "#F59E0B",
-    bg: "#FEF3C7",
-    border: "#FDE68A",
-    icon: "⚡",
-  },
-  {
-    title: "Market Your Business",
-    desc: "Plan and manage campaigns across supported channels, including WhatsApp, SMS and email, according to your plan and applicable requirements.",
+    title: "Marketing Automation",
+    desc: "Create campaigns and follow-up workflows for offers, announcements, customer engagement and re-engagement.",
     color: "#8B5CF6",
     bg: "#F5F3FF",
     border: "#DDD6FE",
     icon: "📢",
   },
   {
-    title: "Build Your Digital Store",
-    desc: "Showcase your products or services through a digital storefront and make it easier for customers to discover and contact your business.",
-    color: "#06B6D4",
-    bg: "#CFFAFE",
-    border: "#A5F3FC",
+    title: "Digital Store",
+    desc: "Give customers a convenient way to discover your products or services through a digital storefront.",
+    color: "#F59E0B",
+    bg: "#FEF3C7",
+    border: "#FDE68A",
     icon: "🛍️",
   },
   {
-    title: "Use AI Where It Helps",
-    desc: "Use supported AI features to assist with customer enquiries, responses and routine business workflows while keeping your team in control.",
+    title: "AI & Automation",
+    desc: "Use supported AI-assisted tools and automation to reduce repetitive work and help your team respond more efficiently.",
     color: "#EC4899",
     bg: "#FCE7F3",
     border: "#FBCFE8",
@@ -85,118 +122,125 @@ const WHAT_MESSBEE_HELP_WITH = [
   },
 ];
 
-// 3. Made for Different Types of Businesses (5 items from prompt)
-const BUSINESS_TYPES = [
+// 4. Useful for Different Local Businesses (6 items from prompt)
+const LOCAL_BUSINESS_TYPES = [
   {
-    type: "Retail & Local Businesses",
-    desc: "Keep customer records organized, promote your products and stay connected with regular customers.",
+    type: "Retail Stores",
+    desc: "Keep customers informed about new products, offers and business updates while maintaining organized customer records.",
     color: "#16A34A",
     bg: "#F0FDF4",
     border: "#BBF7D0",
   },
   {
-    type: "Service Businesses",
-    desc: "Manage enquiries, customer information and follow-ups without relying on multiple disconnected tools.",
+    type: "Showrooms",
+    desc: "Manage enquiries, customer information and follow-ups throughout the buying journey.",
     color: "#3B82F6",
     bg: "#EFF6FF",
     border: "#BFDBFE",
   },
   {
-    type: "E-commerce Businesses",
-    desc: "Bring customer communication, marketing and supported commerce activities into a more connected workflow.",
+    type: "Salons & Beauty Businesses",
+    desc: "Stay connected with customers through appointment-related communication, offers and follow-ups where supported.",
     color: "#8B5CF6",
     bg: "#F5F3FF",
     border: "#DDD6FE",
   },
   {
-    type: "Professional Businesses",
-    desc: "Manage leads, client information, communication and follow-ups from a centralized platform.",
+    type: "Cafés & Restaurants",
+    desc: "Engage customers with updates, offers and relevant business communication while building repeat customer relationships.",
     color: "#F59E0B",
     bg: "#FEF3C7",
     border: "#FDE68A",
   },
   {
-    type: "Growing Businesses",
-    desc: "Build a digital business setup that can expand as your customer base and daily operations increase.",
+    type: "Service Centres",
+    desc: "Manage customer enquiries, service-related communication and follow-ups in a more organized way.",
     color: "#EC4899",
     bg: "#FCE7F3",
     border: "#FBCFE8",
   },
+  {
+    type: "Local Professional Services",
+    desc: "Keep track of enquiries, clients and ongoing customer relationships from one place.",
+    color: "#06B6D4",
+    bg: "#CFFAFE",
+    border: "#A5F3FC",
+  },
 ];
 
-// 4. Flow Nodes (6 nodes from prompt)
-const WORKFLOW_FLOW_NODES = [
+// 5. Connected Flow Nodes (6 nodes from prompt)
+const RETAIL_FLOW_NODES = [
   "Customer",
   "CRM",
-  "Communication",
+  "WhatsApp",
   "Marketing",
   "Automation",
-  "Growth",
+  "Digital Store",
 ];
 
-// 5. Why Businesses Choose MessBee (6 items from prompt)
+// 6. Why Retail & Local Businesses Choose MessBee (6 items from prompt)
 const WHY_CHOOSE_MESSBEE = [
   {
-    title: "Everything in One Place",
-    desc: "Manage important customer and business activities through a connected platform.",
-    icon: "📌",
+    title: "Know Your Customers",
+    desc: "Keep useful customer information organized and accessible to authorized team members.",
+    icon: "📂",
   },
   {
-    title: "Easier Customer Management",
-    desc: "Keep customer information, leads and interactions organized.",
-    icon: "👥",
-  },
-  {
-    title: "Save Time on Routine Work",
-    desc: "Automate repetitive tasks and follow-ups where appropriate.",
-    icon: "⚡",
-  },
-  {
-    title: "Stay Connected With Customers",
-    desc: "Use supported communication channels to engage customers throughout their journey.",
+    title: "Stay in Touch",
+    desc: "Maintain customer communication through supported channels.",
     icon: "💬",
   },
   {
-    title: "Build Direct Customer Relationships",
-    desc: "Create a digital presence and communicate directly with the people who matter to your business.",
-    icon: "❤️",
+    title: "Promote Your Business",
+    desc: "Share relevant offers, products, services and updates with appropriate customers.",
+    icon: "📢",
   },
   {
-    title: "Grow at Your Own Pace",
-    desc: "Start with what your business needs and expand your use of MessBee over time.",
-    icon: "📈",
+    title: "Encourage Repeat Business",
+    desc: "Use customer engagement and follow-up workflows to stay connected after a sale.",
+    icon: "🔄",
+  },
+  {
+    title: "Save Time",
+    desc: "Automate routine communication and repetitive tasks where appropriate.",
+    icon: "⚡",
+  },
+  {
+    title: "Build Your Digital Presence",
+    desc: "Use MessBee Digital Store to showcase your products or services online.",
+    icon: "🌐",
   },
 ];
 
-// 6. Frequently Asked Questions (7 items from prompt)
-const SMB_FAQS = [
+// 7. Frequently Asked Questions (7 items from prompt)
+const RETAIL_FAQS = [
   {
-    q: "What is MessBee for small and medium businesses?",
-    a: "MessBee is a business platform that helps small and medium businesses manage customers, leads, communication, marketing, automation and supported digital commerce activities.",
+    q: "What can MessBee do for a retail business?",
+    a: "MessBee can help retail businesses manage customer information, leads, communication, marketing campaigns, follow-ups and supported digital commerce activities.",
   },
   {
-    q: "Is MessBee suitable for a small business?",
-    a: "Yes. MessBee is designed for businesses that want to organize their customer and business processes and gradually expand their digital operations.",
+    q: "Can a local shop use MessBee?",
+    a: "Yes. MessBee is suitable for local shops and other businesses that want to organize customer relationships and build a stronger digital presence.",
   },
   {
-    q: "What can I manage with MessBee?",
-    a: "Depending on your plan and configuration, you can use MessBee for CRM, WhatsApp Business communication, marketing automation, AI-assisted workflows and digital storefront capabilities.",
+    q: "Can I communicate with my customers on WhatsApp?",
+    a: "MessBee may support WhatsApp Business Platform capabilities, subject to Meta/WhatsApp requirements, account eligibility, permissions and configuration.",
   },
   {
-    q: "Can I manage leads with MessBee?",
-    a: "Yes. MessBee CRM can help you organize leads, track their progress and manage follow-up activities.",
+    q: "Can I send offers to existing customers?",
+    a: "Eligible promotional communication can be sent where the business has the required permission or other lawful basis and complies with applicable messaging policies and laws.",
   },
   {
-    q: "Can MessBee automate business tasks?",
-    a: "Yes. Supported automation features can be used to create workflows for repetitive customer and business activities.",
+    q: "Can I manage repeat customers?",
+    a: "Yes. Customer records, segmentation and supported marketing workflows can help businesses organize and engage their existing customers.",
   },
   {
-    q: "Can I connect WhatsApp Business?",
-    a: "MessBee may support WhatsApp Business Platform capabilities subject to Meta/WhatsApp requirements, account eligibility, permissions and configuration.",
+    q: "Can I create a digital store for my local business?",
+    a: "Yes. MessBee Digital Store can help businesses showcase products or services online and connect customers with their business.",
   },
   {
-    q: "Can I use MessBee for a local business?",
-    a: "Yes. Local retailers, service providers and other businesses can use MessBee to organize customer relationships and build a stronger digital presence.",
+    q: "Does MessBee guarantee more sales?",
+    a: "No. MessBee provides tools for customer management, communication and business growth. Sales and business results depend on factors including your products, pricing, service, market and business practices.",
   },
 ];
 
@@ -250,9 +294,9 @@ const FaqItem = ({ q, a }) => {
 };
 
 /* ═══════════════════════════════════════════════════════════════════
-   MAIN SMALL & MEDIUM BUSINESSES PAGE COMPONENT
+   MAIN RETAIL & LOCAL BUSINESSES PAGE COMPONENT
    ═══════════════════════════════════════════════════════════════════ */
-const SmbPage = () => {
+const RetailPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -270,7 +314,7 @@ const SmbPage = () => {
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         /* ── BUTTONS ── */
-        .smb-btn-primary {
+        .retail-btn-primary {
           background: #16A34A;
           color: #FFFFFF;
           border: none;
@@ -288,13 +332,13 @@ const SmbPage = () => {
           user-select: none;
           text-decoration: none;
         }
-        .smb-btn-primary:hover {
+        .retail-btn-primary:hover {
           background: #15803D;
           transform: translateY(-2px);
           box-shadow: 0 12px 24px rgba(22, 163, 74, 0.32);
         }
 
-        .smb-btn-secondary {
+        .retail-btn-secondary {
           background: #FFFFFF;
           color: #0F172A;
           border: 1.5px solid #E2E8F0;
@@ -312,7 +356,7 @@ const SmbPage = () => {
           user-select: none;
           text-decoration: none;
         }
-        .smb-btn-secondary:hover {
+        .retail-btn-secondary:hover {
           border-color: #16A34A;
           color: #16A34A;
           background: #F0FDF4;
@@ -330,29 +374,29 @@ const SmbPage = () => {
             transform: translateY(0);
           }
         }
-        .smb-glass-card {
+        .retail-glass-card {
           background: #FFFFFF;
           border: 1px solid #E2E8F0;
           border-radius: 16px;
           transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
           animation: fadeInUp 0.5s ease-out both;
         }
-        .smb-glass-card:hover {
+        .retail-glass-card:hover {
           transform: translateY(-6px) scale(1.02);
           box-shadow: 0 14px 30px rgba(22, 163, 74, 0.08), 0 4px 12px rgba(0, 0, 0, 0.02);
           border-color: #BBF7D0 !important;
         }
 
-        .smb-dark-card {
+        .retail-dark-card {
           transition: all 0.25s ease;
         }
-        .smb-dark-card:hover {
+        .retail-dark-card:hover {
           transform: translateY(-3px);
           border-color: rgba(74, 222, 128, 0.4) !important;
         }
 
         /* ── LAPTOP & DESKTOP RESPONSIVE GRID SYSTEM ── */
-        .smb-hero-row {
+        .retail-hero-row {
           display: flex;
           align-items: center;
           gap: 48px;
@@ -381,7 +425,7 @@ const SmbPage = () => {
 
         /* Large Laptops / Desktops (1440px +) */
         @media (min-width: 1440px) {
-          .smb-hero-row { gap: 60px; }
+          .retail-hero-row { gap: 60px; }
           .grid-col-3 { gap: 22px; }
         }
 
@@ -396,12 +440,12 @@ const SmbPage = () => {
           .grid-col-5 { grid-template-columns: repeat(3, 1fr); }
           .grid-col-4 { grid-template-columns: repeat(2, 1fr); }
           .grid-col-3 { grid-template-columns: repeat(2, 1fr); }
-          .smb-hero-row { gap: 32px; }
+          .retail-hero-row { gap: 32px; }
         }
 
         /* Compact Laptop / Tablet-Laptop (under 1024px) */
         @media (max-width: 1023px) {
-          .smb-hero-row { flex-direction: column !important; }
+          .retail-hero-row { flex-direction: column !important; }
           .grid-col-5 { grid-template-columns: repeat(2, 1fr); }
           .grid-col-4 { grid-template-columns: repeat(2, 1fr); }
           .grid-col-3 { grid-template-columns: repeat(1, 1fr); }
@@ -418,17 +462,17 @@ const SmbPage = () => {
         }
       `}</style>
 
-      {/* SEO Document Title & Description */}
-      <title>Small &amp; Medium Business Solutions | MessBee</title>
+      {/* SEO Document Title & Meta Description */}
+      <title>Retail &amp; Local Business Solutions | Customer Engagement | MessBee</title>
       <meta
         name="description"
-        content="MessBee helps small and medium businesses manage customers, WhatsApp Business, marketing, automation and digital commerce from one connected platform."
+        content="MessBee helps retail and local businesses manage customers, WhatsApp communication, marketing, follow-ups and digital storefronts from one connected platform."
       />
 
       <Navbar />
 
       {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 1: HERO (SMB Specific Graphic Layout & Compact Typography)
+          SECTION 1: HERO (Retail & Local Specific Graphic Layout with MessBee Logo)
          ═══════════════════════════════════════════════════════════════════ */}
       <section
         style={{
@@ -454,10 +498,10 @@ const SmbPage = () => {
           }}
         />
 
-        <div className="smb-hero-row" style={{ maxWidth: 1280, margin: "0 auto", position: "relative", zIndex: 1 }}>
+        <div className="retail-hero-row" style={{ maxWidth: 1280, margin: "0 auto", position: "relative", zIndex: 1 }}>
           {/* Left Text Column */}
           <div style={{ flex: 1.1, minWidth: 320 }}>
-            {/* Provided Badge: Small & Medium Businesses */}
+            {/* Provided Badge: Retail & Local Businesses */}
             <div
               style={{
                 display: "inline-flex",
@@ -475,7 +519,7 @@ const SmbPage = () => {
               }}
             >
               <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#16A34A", boxShadow: "0 0 6px #16A34A" }} />
-              Small &amp; Medium Businesses
+              Retail &amp; Local Businesses
             </div>
 
             {/* Recommended H1 */}
@@ -489,18 +533,23 @@ const SmbPage = () => {
                 letterSpacing: "-1px",
               }}
             >
-              Small &amp; Medium Business Solutions That Help You{" "}
-              <span style={{ color: "#16A34A" }}>Manage, Connect &amp; Grow</span>
+              Retail &amp; Local Business Solutions to Connect With{" "}
+              <span style={{ color: "#16A34A" }}>Customers and Grow</span>
             </h1>
 
             {/* Provided Sub-headline */}
             <p style={{ fontSize: "clamp(15px, 1.4vw, 18px)", fontWeight: 800, color: "#16A34A", marginBottom: 14, letterSpacing: "-0.3px" }}>
-              Run Your Business From One Connected Platform
+              Bring Your Local Business Closer to Your Customers
             </p>
 
-            {/* Description */}
-            <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.65, marginBottom: 22, maxWidth: 540 }}>
-              MessBee unifies CRM, marketing, and communication into one connected platform—eliminating scattered tools so you can manage relationships and scale effortlessly.
+            {/* Provided Paragraph 1 */}
+            <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 12, maxWidth: 540 }}>
+              Local businesses thrive on lasting relationships, and retaining loyal customers is critical to your success.
+            </p>
+
+            {/* Provided Paragraph 2 */}
+            <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 22, maxWidth: 540 }}>
+              MessBee empowers you to seamlessly manage operations, engage shoppers, and grow your digital presence from one unified platform.
             </p>
 
             {/* Provided Tagline Badge */}
@@ -522,12 +571,12 @@ const SmbPage = () => {
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
-              Manage your customers. Simplify your work. Grow your business.
+              Know Your Customers. Stay Connected. Grow Locally.
             </div>
 
             {/* CTAs from Prompt */}
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <button className="smb-btn-primary" onClick={handleStart}>
+              <button className="retail-btn-primary" onClick={handleStart}>
                 Get Started with MessBee
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12" />
@@ -536,15 +585,15 @@ const SmbPage = () => {
               </button>
 
               <button
-                className="smb-btn-secondary"
-                onClick={() => document.getElementById("built-for-growing-businesses")?.scrollIntoView({ behavior: "smooth" })}
+                className="retail-btn-secondary"
+                onClick={() => document.getElementById("built-around-everyday")?.scrollIntoView({ behavior: "smooth" })}
               >
                 Explore MessBee
               </button>
             </div>
           </div>
 
-          {/* Right Column: Unique SMB Graphic Layout featuring Official MessBee Logo & SMB Operations Pipeline */}
+          {/* Right Column: Unique Retail & Local Graphic Layout with Official MessBee Logo */}
           <div style={{ flex: 0.9, minWidth: 320, position: "relative" }}>
             <div
               style={{
@@ -575,48 +624,59 @@ const SmbPage = () => {
                 }}
               />
 
-              {/* Unique SMB Graphic Header featuring Official MessBee Logo */}
+              {/* Graphic Title Header featuring Official MessBee Logo */}
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20, borderBottom: "1px solid rgba(255,255,255,0.1)", paddingBottom: 14 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                   <div style={{ width: 34, height: 34, borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.2)", flexShrink: 0, background: "#FFFFFF", padding: 2 }}>
                     <img src={defaultLogo} alt="MessBee" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
                   </div>
                   <div>
-                    <div style={{ fontSize: 13, fontWeight: 900, color: "#FFFFFF" }}>MessBee for SMBs</div>
-                    <div style={{ fontSize: 10, color: "#4ADE80", fontWeight: 700 }}>One Connected Business Platform</div>
+                    <div style={{ fontSize: 13, fontWeight: 900, color: "#FFFFFF" }}>MessBee Local Hub</div>
+                    <div style={{ fontSize: 10, color: "#4ADE80", fontWeight: 700 }}>Shop &amp; Storefront Digital Operations</div>
                   </div>
                 </div>
                 <span style={{ fontSize: 10, background: "rgba(22,163,74,0.2)", color: "#4ADE80", padding: "3px 10px", borderRadius: 20, fontWeight: 700, border: "1px solid rgba(22,163,74,0.3)" }}>
-                  SME Ready
+                  Local CRM
                 </span>
               </div>
 
-              {/* SMB Multi-Channel Connected Flow Bar (Unique to SMB page) */}
-              <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 16, padding: 14, marginBottom: 16 }}>
-                <div style={{ fontSize: 10, fontWeight: 800, color: "#94A3B8", textTransform: "uppercase", letterSpacing: "0.5px", marginBottom: 10 }}>
-                  Connected Operations Pipeline
-                </div>
-                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                  {[
-                    { step: "Enquiries & Leads", detail: "Centralized Records", icon: "📥", color: "#38BDF8" },
-                    { step: "WhatsApp & Comms", detail: "Active Conversation", icon: "💬", color: "#4ADE80" },
-                    { step: "Automation & Growth", detail: "Automated Follow-ups", icon: "📈", color: "#F472B6" },
-                  ].map((pipe, i) => (
-                    <div key={i} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", background: "rgba(255,255,255,0.05)", borderRadius: 10, padding: "8px 12px" }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                        <span style={{ fontSize: 14 }}>{pipe.icon}</span>
-                        <span style={{ fontSize: 11.5, fontWeight: 800, color: "#FFFFFF" }}>{pipe.step}</span>
+              {/* Local Business Digital Hub Graphic Cards */}
+              <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 16 }}>
+                {[
+                  { title: "In-Store & Digital Visitors", desc: "Customer Records & CRM", status: "Connected", icon: "🏪", color: "#38BDF8" },
+                  { title: "WhatsApp Offer Broadcast", desc: "Local Promotions & Updates", status: "Sent", icon: "📢", color: "#4ADE80" },
+                  { title: "Digital Storefront Catalog", desc: "Product & Service Showcase", status: "Live", icon: "🛍️", color: "#FBBF24" },
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      background: "rgba(255,255,255,0.05)",
+                      border: "1px solid rgba(255,255,255,0.08)",
+                      borderRadius: 12,
+                      padding: "10px 14px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                      <span style={{ fontSize: 16 }}>{item.icon}</span>
+                      <div>
+                        <div style={{ fontSize: 12, fontWeight: 800, color: "#FFFFFF" }}>{item.title}</div>
+                        <div style={{ fontSize: 10, color: "#94A3B8" }}>{item.desc}</div>
                       </div>
-                      <span style={{ fontSize: 10, color: pipe.color, fontWeight: 700 }}>{pipe.detail}</span>
                     </div>
-                  ))}
-                </div>
+                    <span style={{ fontSize: 10, fontWeight: 800, color: item.color, background: "rgba(255,255,255,0.08)", padding: "2px 8px", borderRadius: 12 }}>
+                      {item.status}
+                    </span>
+                  </div>
+                ))}
               </div>
 
-              {/* Bottom Connector Badge */}
+              {/* Bottom Connector Bar */}
               <div style={{ background: "rgba(22,163,74,0.15)", border: "1px solid rgba(22,163,74,0.3)", borderRadius: 12, padding: 10, textAlign: "center" }}>
                 <span style={{ fontSize: 11.5, fontWeight: 800, color: "#4ADE80" }}>
-                  Manage. Connect. Grow.
+                  Connect Your Business. Grow Locally.
                 </span>
               </div>
             </div>
@@ -625,9 +685,9 @@ const SmbPage = () => {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 2: BUILT FOR GROWING BUSINESSES
+          SECTION 2: BUILT AROUND YOUR EVERYDAY BUSINESS
          ═══════════════════════════════════════════════════════════════════ */}
-      <section id="built-for-growing-businesses" style={{ padding: "64px 6%", background: "#FAFAFA" }}>
+      <section id="built-around-everyday" style={{ padding: "64px 6%", background: "#FAFAFA" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           {/* Section Headings from Prompt */}
           <div style={{ textAlign: "center", marginBottom: 44 }}>
@@ -645,14 +705,17 @@ const SmbPage = () => {
                 textTransform: "uppercase",
               }}
             >
-              Organized Workflow
+              Everyday Business
             </div>
             <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
-              Built for <span style={{ color: "#16A34A" }}>Growing Businesses</span>
+              Built Around Your <span style={{ color: "#16A34A" }}>Everyday Business</span>
             </h2>
 
-            <p style={{ fontSize: 13.5, color: "#64748B", maxWidth: 640, margin: "0 auto 20px", lineHeight: 1.68 }}>
-              MessBee is designed for businesses that want to move beyond scattered tools and build a more organized digital workflow.
+            <p style={{ fontSize: 13.5, color: "#64748B", maxWidth: 640, margin: "0 auto 8px", lineHeight: 1.68 }}>
+              Running a local business involves more than making a sale. You may need to answer enquiries, follow up with customers, announce offers, manage repeat customers and keep your business visible online.
+            </p>
+            <p style={{ fontSize: 13.5, fontWeight: 800, color: "#0F172A", maxWidth: 560, margin: "0 auto 24px" }}>
+              MessBee brings these activities together so your team can spend less time switching between different tools.
             </p>
 
             <div
@@ -667,16 +730,16 @@ const SmbPage = () => {
                 letterSpacing: "-0.2px",
               }}
             >
-              With MessBee, you can:
+              With MessBee, You Can
             </div>
           </div>
 
           {/* 8 List Items Grid */}
-          <div className="grid-col-4" style={{ marginBottom: 28 }}>
+          <div className="grid-col-4">
             {WITH_MESSBEE_YOU_CAN.map((item, idx) => (
               <div
                 key={idx}
-                className="smb-glass-card"
+                className="retail-glass-card"
                 style={{
                   padding: 18,
                   display: "flex",
@@ -708,15 +771,11 @@ const SmbPage = () => {
               </div>
             ))}
           </div>
-
-          <p style={{ fontSize: 13.5, color: "#475569", textAlign: "center", fontWeight: 700 }}>
-            You can start with the tools you need today and add more as your business grows.
-          </p>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 3: WHAT MESSBEE CAN HELP YOU WITH
+          SECTION 3: TURN FIRST-TIME VISITORS INTO RETURNING CUSTOMERS
          ═══════════════════════════════════════════════════════════════════ */}
       <section style={{ padding: "64px 6%", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
@@ -736,48 +795,59 @@ const SmbPage = () => {
                 textTransform: "uppercase",
               }}
             >
-              Key Capabilities
+              Repeat Business
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
-              What MessBee <span style={{ color: "#16A34A" }}>Can Help You With</span>
+            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+              Turn First-Time Visitors Into <span style={{ color: "#16A34A" }}>Returning Customers</span>
             </h2>
+
+            <p style={{ fontSize: 13.5, color: "#64748B", maxWidth: 640, margin: "0 auto 6px", lineHeight: 1.68 }}>
+              For local businesses, a customer's relationship with your business often continues after the first purchase.
+            </p>
+            <p style={{ fontSize: 13.5, fontWeight: 800, color: "#16A34A", maxWidth: 560, margin: "0 auto" }}>
+              MessBee helps you stay connected throughout that journey.
+            </p>
           </div>
 
-          {/* 6 Feature Tool Cards from Prompt */}
-          <div className="grid-col-3">
-            {WHAT_MESSBEE_HELP_WITH.map((t, idx) => (
+          {/* 5 Step Visual Pipeline */}
+          <div className="grid-col-5">
+            {RETAIL_JOURNEY_STEPS.map((s, i) => (
               <div
-                key={idx}
-                className="smb-glass-card"
+                key={s.step}
+                className="retail-glass-card"
                 style={{
-                  padding: 22,
-                  border: `1px solid ${t.border}`,
-                  animationDelay: `${idx * 50}ms`,
+                  padding: 18,
+                  border: `1px solid ${s.border}`,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  animationDelay: `${i * 50}ms`,
                 }}
               >
-                <div
-                  style={{
-                    width: 42,
-                    height: 42,
-                    borderRadius: 12,
-                    background: t.bg,
-                    color: t.color,
-                    border: `1px solid ${t.border}`,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: 22,
-                    marginBottom: 14,
-                  }}
-                >
-                  {t.icon}
+                <div>
+                  <div
+                    style={{
+                      width: 36,
+                      height: 36,
+                      borderRadius: 10,
+                      background: s.bg,
+                      color: s.color,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: 20,
+                      marginBottom: 12,
+                    }}
+                  >
+                    {s.icon}
+                  </div>
+                  <h3 style={{ fontSize: 14.5, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>
+                    {s.step}
+                  </h3>
+                  <p style={{ fontSize: 12, color: "#64748B", lineHeight: 1.55 }}>
+                    {s.desc}
+                  </p>
                 </div>
-                <h3 style={{ fontSize: 15, fontWeight: 900, color: "#0F172A", marginBottom: 8 }}>
-                  {t.title}
-                </h3>
-                <p style={{ fontSize: 12.5, color: "#64748B", lineHeight: 1.6 }}>
-                  {t.desc}
-                </p>
               </div>
             ))}
           </div>
@@ -785,7 +855,7 @@ const SmbPage = () => {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 4: MADE FOR DIFFERENT TYPES OF BUSINESSES
+          SECTION 4: PRACTICAL TOOLS FOR LOCAL BUSINESSES
          ═══════════════════════════════════════════════════════════════════ */}
       <section style={{ padding: "64px 6%", background: "#FAFAFA" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
@@ -805,22 +875,22 @@ const SmbPage = () => {
                 textTransform: "uppercase",
               }}
             >
-              Versatile Support
+              Practical Tools
             </div>
             <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
-              Made for <span style={{ color: "#16A34A" }}>Different Types of Businesses</span>
+              Practical Tools for <span style={{ color: "#16A34A" }}>Local Businesses</span>
             </h2>
           </div>
 
-          {/* 5 Business Type Cards from Prompt */}
+          {/* 5 Feature Tool Cards from Prompt */}
           <div className="grid-col-5">
-            {BUSINESS_TYPES.map((b, idx) => (
+            {PRACTICAL_TOOLS.map((t, idx) => (
               <div
                 key={idx}
-                className="smb-glass-card"
+                className="retail-glass-card"
                 style={{
-                  padding: 18,
-                  border: `1px solid ${b.border}`,
+                  padding: 20,
+                  border: `1px solid ${t.border}`,
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
@@ -830,15 +900,27 @@ const SmbPage = () => {
                 <div>
                   <div
                     style={{
-                      width: 9,
-                      height: 9,
-                      borderRadius: "50%",
-                      background: b.color,
-                      marginBottom: 12,
+                      width: 40,
+                      height: 40,
+                      borderRadius: 10,
+                      background: t.bg,
+                      color: t.color,
+                      border: `1px solid ${t.border}`,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: 22,
+                      marginBottom: 14,
                     }}
-                  />
-                  <h3 style={{ fontSize: 14.5, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>{b.type}</h3>
-                  <p style={{ fontSize: 12, color: "#64748B", lineHeight: 1.55 }}>{b.desc}</p>
+                  >
+                    {t.icon}
+                  </div>
+                  <h3 style={{ fontSize: 14.5, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>
+                    {t.title}
+                  </h3>
+                  <p style={{ fontSize: 12, color: "#64748B", lineHeight: 1.55 }}>
+                    {t.desc}
+                  </p>
                 </div>
               </div>
             ))}
@@ -847,25 +929,71 @@ const SmbPage = () => {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 5: LESS SWITCHING. MORE GETTING THINGS DONE.
+          SECTION 5: USEFUL FOR DIFFERENT LOCAL BUSINESSES
+         ═══════════════════════════════════════════════════════════════════ */}
+      <section style={{ padding: "64px 6%", background: "#FFFFFF" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+          {/* Headings from Prompt */}
+          <div style={{ textAlign: "center", marginBottom: 44 }}>
+            <div
+              style={{
+                display: "inline-block",
+                background: "#D1FAE5",
+                color: "#059669",
+                padding: "4px 12px",
+                borderRadius: 40,
+                fontSize: 10.5,
+                fontWeight: 800,
+                letterSpacing: "1px",
+                marginBottom: 12,
+                textTransform: "uppercase",
+              }}
+            >
+              Business Types
+            </div>
+            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+              Useful for <span style={{ color: "#16A34A" }}>Different Local Businesses</span>
+            </h2>
+          </div>
+
+          {/* 6 Business Type Cards from Prompt */}
+          <div className="grid-col-3">
+            {LOCAL_BUSINESS_TYPES.map((b, idx) => (
+              <div
+                key={idx}
+                className="retail-glass-card"
+                style={{
+                  padding: 20,
+                  border: `1px solid ${b.border}`,
+                  animationDelay: `${idx * 50}ms`,
+                }}
+              >
+                <div style={{ width: 9, height: 9, borderRadius: "50%", background: b.color, marginBottom: 12 }} />
+                <h3 style={{ fontSize: 15, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>{b.type}</h3>
+                <p style={{ fontSize: 12.5, color: "#64748B", lineHeight: 1.6 }}>{b.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 6: KEEP YOUR CUSTOMERS CONNECTED TO YOUR BUSINESS
          ═══════════════════════════════════════════════════════════════════ */}
       <section style={{ padding: "60px 6%", background: GL, borderTop: `1px solid ${GB}`, borderBottom: `1px solid ${GB}` }}>
         <div style={{ maxWidth: 1060, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 36 }}>
-            <Pill>Efficiency</Pill>
+            <Pill>Unified Experience</Pill>
             <h2 style={{ fontSize: "clamp(18px, 2.5vw, 30px)", fontWeight: 900, color: D2, letterSpacing: "-1px", marginBottom: 12 }}>
-              Less Switching. <span style={{ color: G }}>More Getting Things Done.</span>
+              Keep Your Customers <span style={{ color: G }}>Connected to Your Business</span>
             </h2>
-            <p style={{ fontSize: 13, color: MU, maxWidth: 660, margin: "0 auto 8px", lineHeight: 1.68 }}>
-              Small businesses often use one tool for customer contacts, another for WhatsApp, another for marketing and spreadsheets for tracking leads.
-            </p>
-            <p style={{ fontSize: 13, fontWeight: 700, color: G, maxWidth: 560, margin: "0 auto" }}>
-              MessBee brings these activities closer together.
+            <p style={{ fontSize: 13, color: MU, maxWidth: 680, margin: "0 auto", lineHeight: 1.68 }}>
+              Customers may discover your business through different channels, but your relationship with them should not have to remain scattered.
             </p>
           </div>
 
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: 0, marginBottom: 26 }}>
-            {WORKFLOW_FLOW_NODES.map((node, i, arr) => (
+            {RETAIL_FLOW_NODES.map((node, i, arr) => (
               <React.Fragment key={node}>
                 <span style={{ background: "#fff", border: `1.5px solid ${GB}`, color: G, borderRadius: 6, padding: "8px 16px", fontSize: 12, fontWeight: 700 }}>
                   {node}
@@ -878,13 +1006,13 @@ const SmbPage = () => {
           </div>
 
           <p style={{ fontSize: 13, fontWeight: 700, color: MU, textAlign: "center", letterSpacing: "0.2px" }}>
-            Your team gets a clearer picture of customer activity, while customers get a more consistent experience.
+            This gives your business a more organized way to manage customer relationships and day-to-day communication.
           </p>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 6: WHY BUSINESSES CHOOSE MESSBEE
+          SECTION 7: WHY RETAIL & LOCAL BUSINESSES CHOOSE MESSBEE
          ═══════════════════════════════════════════════════════════════════ */}
       <section style={{ padding: "64px 6%", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
@@ -907,7 +1035,7 @@ const SmbPage = () => {
               Why MessBee
             </div>
             <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
-              Why Businesses <span style={{ color: "#16A34A" }}>Choose MessBee</span>
+              Why Retail &amp; Local Businesses <span style={{ color: "#16A34A" }}>Choose MessBee</span>
             </h2>
           </div>
 
@@ -916,7 +1044,7 @@ const SmbPage = () => {
             {WHY_CHOOSE_MESSBEE.map((r, idx) => (
               <div
                 key={idx}
-                className="smb-glass-card"
+                className="retail-glass-card"
                 style={{
                   padding: 22,
                   animationDelay: `${idx * 50}ms`,
@@ -948,7 +1076,7 @@ const SmbPage = () => {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 7: BUILT WITH INDIAN BUSINESSES IN MIND
+          SECTION 8: MADE FOR THE WAY LOCAL BUSINESSES GROW
          ═══════════════════════════════════════════════════════════════════ */}
       <section style={{ padding: "64px 6%", background: "#FAFAFA" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
@@ -977,83 +1105,77 @@ const SmbPage = () => {
                   marginBottom: 16,
                 }}
               >
-                <svg width="16" height="12" viewBox="0 0 90 60" style={{ borderRadius: 2, flexShrink: 0 }}><rect width="90" height="20" fill="#FF9933"/><rect y="20" width="90" height="20" fill="#FFFFFF"/><rect y="40" width="90" height="20" fill="#138808"/><circle cx="45" cy="30" r="8" fill="#000080" /><circle cx="45" cy="30" r="6" fill="#FFFFFF" /><circle cx="45" cy="30" r="2" fill="#000080" /></svg>
-                <span style={{ fontSize: 10.5, fontWeight: 800, color: "#4ADE80" }}>Indian Businesses</span>
+                <span style={{ fontSize: 14 }}>📍</span>
+                <span style={{ fontSize: 10.5, fontWeight: 800, color: "#4ADE80" }}>Local Growth</span>
               </div>
 
               {/* Title from Prompt */}
               <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, marginBottom: 14, letterSpacing: "-1px" }}>
-                Built With Indian Businesses in Mind
+                Made for the Way Local Businesses Grow
               </h2>
 
               {/* Paragraphs from Prompt */}
               <p style={{ fontSize: 13.5, color: "#94A3B8", lineHeight: 1.7, marginBottom: 12 }}>
-                Small and medium businesses across India work differently. A local retailer, a service provider and an online seller may have very different day-to-day needs.
+                You don't need to transform your entire business overnight.
               </p>
-              <p style={{ fontSize: 13.5, color: "#94A3B8", lineHeight: 1.7, marginBottom: 14 }}>
-                MessBee is built to support these different business models while giving them access to connected tools for customer management, communication, marketing, automation and digital commerce.
+              <p style={{ fontSize: 13.5, color: "#94A3B8", lineHeight: 1.7, marginBottom: 24 }}>
+                Start with the tools that solve your immediate needs—such as customer management or WhatsApp communication—and add marketing, automation and digital commerce capabilities as your business grows.
               </p>
-              <p style={{ fontSize: 13.5, color: "#4ADE80", fontWeight: 700, lineHeight: 1.7 }}>
-                Whether you are taking your first steps online or looking to organize an existing digital operation, MessBee can grow with your business.
-              </p>
+
+              {/* Headline Callout from Prompt */}
+              <div
+                style={{
+                  display: "inline-block",
+                  background: "#16A34A",
+                  color: "#FFFFFF",
+                  padding: "11px 22px",
+                  borderRadius: 40,
+                  fontSize: 13.5,
+                  fontWeight: 900,
+                  letterSpacing: "0.2px",
+                }}
+              >
+                Start local. Build stronger customer relationships. Grow with MessBee.
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 8: YOUR CUSTOMERS ARE YOUR BUSINESS (FINAL CTA)
+          SECTION 9: FINAL CTA
          ═══════════════════════════════════════════════════════════════════ */}
       <section style={{ background: GL, padding: "72px 6%", textAlign: "center", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 500, height: 500, background: "rgba(22,163,74,.08)", borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none" }} />
         <div style={{ position: "relative", zIndex: 2, maxWidth: 760, margin: "0 auto" }}>
-          <Pill>Your Customers Are Your Business</Pill>
+          <Pill>Start Local. Grow With MessBee.</Pill>
           <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 900, color: D2, letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 16 }}>
-            The tools you use should make it easier to<br />
-            <span style={{ color: G }}>build and maintain those relationships.</span>
+            Bring your retail shop or local business<br />
+            <span style={{ color: G }}>closer to your customers.</span>
           </h2>
-          <p style={{ fontSize: 14, color: MU, lineHeight: 1.7, maxWidth: 660, margin: "0 auto 24px" }}>
-            MessBee helps bring customer information, communication and business workflows together so your team can spend less time managing disconnected systems and more time serving customers.
-          </p>
-          <div style={{ fontSize: 15, fontWeight: 800, color: G, marginBottom: 26 }}>
-            Start with MessBee and build your business your way.
-          </div>
-          <button className="smb-btn-primary" onClick={handleStart} style={{ fontSize: 13, padding: "11px 26px" }}>
+          <button className="retail-btn-primary" onClick={handleStart} style={{ fontSize: 13, padding: "11px 26px", marginTop: 10 }}>
             Get Started with MessBee
           </button>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 9: FREQUENTLY ASKED QUESTIONS
+          SECTION 10: FREQUENTLY ASKED QUESTIONS
          ═══════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: "64px 6%", background: "#FAFAFA" }}>
-        <div style={{ maxWidth: 820, margin: "0 auto" }}>
+      <section style={{ padding: "64px 6%", background: "#FFFFFF" }}>
+        <div style={{ maxWidth: 760, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 36 }}>
-            <div
-              style={{
-                display: "inline-block",
-                background: "#D1FAE5",
-                color: "#059669",
-                padding: "4px 12px",
-                borderRadius: 40,
-                fontSize: 10.5,
-                fontWeight: 800,
-                letterSpacing: "1px",
-                marginBottom: 12,
-                textTransform: "uppercase",
-              }}
-            >
-              FAQ
-            </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
-              Frequently Asked <span style={{ color: "#16A34A" }}>Questions</span>
+            <Pill>FAQ</Pill>
+            <h2 style={{ fontSize: "clamp(18px, 2.5vw, 30px)", fontWeight: 900, color: D2, letterSpacing: "-1px" }}>
+              Frequently Asked Questions
             </h2>
           </div>
 
-          {GRID_FAQS || SMB_FAQS.map((faq, idx) => (
-            <FaqItem key={idx} {...faq} />
-          ))}
+          <div style={{ borderTop: "1px solid #F1F5F9" }}>
+            {RETAIL_FAQS.map((faq, idx) => (
+              <FaqItem key={idx} {...faq} />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -1062,6 +1184,4 @@ const SmbPage = () => {
   );
 };
 
-const GRID_FAQS = null; // internal mapping variable
-
-export default SmbPage;
+export default RetailPage;
