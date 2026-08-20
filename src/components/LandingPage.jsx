@@ -1518,18 +1518,25 @@ const LandingPage = () => {
 
         <div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center", position: "relative", zIndex: 1 }}>
           <h2 style={{ fontSize: 30, fontWeight: 800, color: "#FFFFFF", marginBottom: 16 }}>
-            Subscribe To Your <span style={{ color: "#16A34A" }}>Newsletter</span>
+            Subscribe To Our <span style={{ color: "#16A34A" }}>Newsletter</span>
           </h2>
           <p style={{ fontSize: 13, color: "rgba(255,255,255,0.7)", lineHeight: 1.6, marginBottom: 40, padding: "0 20px" }}>
-            Subscribe to our newsletter and stay ahead with the latest Business projects, expert tips, and exclusive platform updates. Join thousands of businesses today and get opportunities delivered straight to your inbox every week!
+            Subscribe to our newsletter and stay ahead with the latest business insights, expert tips, and exclusive platform updates. Join thousands of businesses today and get opportunities delivered straight to your inbox every week!
           </p>
 
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 16 }}>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleNewsletterSubmit();
+            }}
+            style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 16 }}
+          >
             <input
               type="email"
-              placeholder="Enter Your email"
+              placeholder="Enter your email address"
               value={newsletterEmail}
               onChange={(e) => setNewsletterEmail(e.target.value)}
+              required
               style={{ width: "100%", maxWidth: 460, padding: "12px 20px", borderRadius: 8, border: "none", outline: "none", fontSize: 14 }}
             />
             {newsletterStatus && (
@@ -1537,10 +1544,15 @@ const LandingPage = () => {
                 {newsletterStatus.message}
               </div>
             )}
-            <button onClick={handleNewsletterSubmit} style={{ background: "#16A34A", color: "#FFFFFF", border: "none", borderRadius: 8, padding: "12px 36px", fontSize: 14, fontWeight: 600, cursor: "pointer", transition: "background 0.3s" }} onMouseEnter={e => e.currentTarget.style.background = "#00A844"} onMouseLeave={e => e.currentTarget.style.background = "#16A34A"}>
+            <button
+              type="submit"
+              style={{ background: "#16A34A", color: "#FFFFFF", border: "none", borderRadius: 8, padding: "12px 36px", fontSize: 14, fontWeight: 600, cursor: "pointer", transition: "background 0.3s" }}
+              onMouseEnter={e => e.currentTarget.style.background = "#00A844"}
+              onMouseLeave={e => e.currentTarget.style.background = "#16A34A"}
+            >
               Subscribe
             </button>
-          </div>
+          </form>
         </div>
       </section>
 
