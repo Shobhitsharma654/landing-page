@@ -6,7 +6,7 @@ import defaultLogo from "../assets/logo.jpeg";
 import heroDashboard from "../assets/hero-messscale.png";
 import aiRobot from "../assets/ai_robot_new.png";
 import howItWorksPerson from "../assets/how_it_works_person.jpg";
-import chooseUsWoman from "../assets/choose_us_woman_nobg.png";
+import chooseUsWoman from "../assets/girlmess.png";
 import messbeeText from "../assets/messbee_text.png";
 import reviewerRajesh from "../assets/reviewer_rajesh.png";
 import reviewerPriya from "../assets/reviewer_priya.png";
@@ -1201,13 +1201,12 @@ const LandingPage = () => {
           {/* Right - Woman Image */}
           <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "flex-end", overflow: "visible" }}>
             <img src={chooseUsWoman} alt="Professional woman with laptop" style={{
-              width: "85%",
+              width: "105%",
+              maxWidth: "none",
               height: "auto",
               display: "block",
               objectFit: "contain",
-              transform: "translateX(40px)",
-              mixBlendMode: "screen",
-              filter: "brightness(1.1) contrast(1.05)"
+              transform: "translateX(25px)"
             }} />
           </div>
 
