@@ -742,7 +742,7 @@ const LandingPage = () => {
       </section>
 
       {/* ═══════════════ PLATFORM PREVIEW & DASHBOARD SECTION ═══════════════ */}
-      <section style={{ background: "#FFFFFF", padding: "40px 6% 90px", textAlign: "center" }}>
+      <section style={{ background: "#FFFFFF", padding: "40px 6% 24px", textAlign: "center" }}>
         <div style={{ maxWidth: 1180, margin: "0 auto", position: "relative" }}>
           
           <div style={{ color: "#16A34A", fontSize: 13, fontWeight: 800, marginBottom: 10, letterSpacing: "0.5px" }}>
@@ -760,7 +760,7 @@ const LandingPage = () => {
             position: "relative",
             margin: "0 auto",
             width: "100%",
-            maxWidth: 840,
+            maxWidth: 740,
             display: "flex",
             justifyContent: "center",
             alignItems: "center"
@@ -770,7 +770,7 @@ const LandingPage = () => {
               alt="MessBee WhatsApp API Platform"
               style={{
                 width: "100%",
-                maxWidth: 840,
+                maxWidth: 740,
                 height: "auto",
                 borderRadius: 16,
                 boxShadow: "0 20px 40px -10px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0,0,0,0.03)",
@@ -782,7 +782,7 @@ const LandingPage = () => {
       </section>
 
       {/* ═══════════════ MARKETPLACE VS MESSBEE SECTION ═══════════════ */}
-      <section style={{ padding: "60px 6% 80px", background: "#FFFFFF", textAlign: "center" }}>
+      <section style={{ padding: "20px 6% 80px", background: "#FFFFFF", textAlign: "center" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
 
           {/* VS Title */}

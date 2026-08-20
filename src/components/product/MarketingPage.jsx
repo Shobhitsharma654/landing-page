@@ -246,7 +246,7 @@ const MarketingPage = () => {
       <Navbar />
 
       {/* ══ HERO — clean white like CRM ══ */}
-      <section style={{background:"#fff",padding:"110px 6% 80px",position:"relative",overflow:"hidden"}}>
+      <section style={{background:"#fff",padding:"118px 6% 80px",position:"relative",overflow:"hidden"}}>
 
         <div style={{maxWidth:1200,margin:"0 auto",position:"relative",zIndex:1}}>
           <div className="m-hg">
@@ -257,7 +257,7 @@ const MarketingPage = () => {
                 <span style={{fontSize:12,fontWeight:600,color:G}}>MessBee Marketing Automation</span>
               </div>
 
-              <h1 style={{fontSize:"clamp(22px,2.5vw,34px)",fontWeight:900,color:D2,lineHeight:1.08,letterSpacing:"-1px",marginBottom:16}}>
+              <h1 style={{fontSize:"clamp(28px,3vw,42px)",fontWeight:900,color:D2,lineHeight:1.08,letterSpacing:"-1px",marginBottom:16}}>
                 Turn Marketing Activities<br/>Into Automated<br/>
                 <span style={{color:G}}>Customer Journeys</span>
               </h1>
@@ -265,9 +265,6 @@ const MarketingPage = () => {
               <p style={{fontSize:14,color:MU,lineHeight:1.75,marginBottom:10,maxWidth:520}}>
                 Plan, execute and manage customer marketing workflows from one connected platform.
                 Instead of manually managing every campaign, follow-up and interaction — automate it.
-              </p>
-              <p style={{fontSize:13,color:MU,lineHeight:1.7,marginBottom:36,maxWidth:480}}>
-                Deliver the right communication at the right stage of the customer lifecycle.
               </p>
 
               <div style={{display:"flex",flexWrap:"wrap",gap:8,marginBottom:40}}>

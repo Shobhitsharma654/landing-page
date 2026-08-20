@@ -209,7 +209,7 @@ const WaPage = () => {
       <Navbar />
 
       {/* ══ HERO — Plain White ══ */}
-      <section style={{ background:"#fff", padding:"110px 6% 40px", position:"relative", overflow:"hidden" }}>
+      <section style={{ background:"#fff", padding:"118px 6% 40px", position:"relative", overflow:"hidden" }}>
         <div style={{ maxWidth:1200, margin:"0 auto", position:"relative", zIndex:1 }}>
           <div className="wa-hg">
             {/* Left */}
@@ -219,7 +219,7 @@ const WaPage = () => {
                 <span style={{ fontSize:12, fontWeight:600, color:G }}>MessBee WhatsApp Business</span>
               </div>
 
-              <h1 style={{ fontSize:"clamp(22px,2.5vw,34px)", fontWeight:900, color:D2, lineHeight:1.08, letterSpacing:"-1px", marginBottom:16 }}>
+              <h1 style={{ fontSize:"clamp(28px,3vw,42px)", fontWeight:900, color:D2, lineHeight:1.08, letterSpacing:"-1px", marginBottom:16 }}>
                 Connect With Customers<br/>
                 on <span style={{ color:G }}>WhatsApp</span><br/>
                 The Smarter Way
