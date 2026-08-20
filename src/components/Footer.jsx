@@ -20,7 +20,9 @@ const SOLUTIONS_LINKS = [
 ];
 
 const RESOURCES_LINKS = [
+  { label: "QR & Connect",       path: "/qr-connect" },
   { label: "Business Library",  path: "/resources/business-library" },
+  { label: "WhatsApp QR Generator", path: "/whatsapp-qr-generator" },
   { label: "Help Center",       path: "/resources/help-center" },
   { label: "Blog",              path: "/resources/blog" },
   { label: "FAQs",              path: "/resources/faqs" },

@@ -1707,13 +1707,13 @@ const SolutionsPage = () => {
               Get Started
             </button>
             <button 
-              onClick={() => window.location.href = (import.meta.env.VITE_ADMIN_URL || "http://localhost:5173") + "/login"}
+              onClick={() => navigate("/contact")}
               style={{
               background: "transparent", color: "#FFF", border: "1px solid rgba(255, 255, 255, 0.5)", padding: "14px 32px",
               borderRadius: 40, fontSize: 16, fontWeight: 800, cursor: "pointer",
               transition: "all 0.2s"
             }} onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'} onMouseOut={e => e.currentTarget.style.background = 'transparent'}>
-              Book a Demo
+              Talk to Sales
             </button>
             <button 
               onClick={() => navigate("/contact#contact-form-section")}
