@@ -498,14 +498,9 @@ const SmbPage = () => {
               Run Your Business From One Connected Platform
             </p>
 
-            {/* Provided Paragraph 1 */}
-            <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 12, maxWidth: 540 }}>
-              Scaling a business shouldn't mean juggling scattered apps and spreadsheets.
-            </p>
-
-            {/* Provided Paragraph 2 */}
-            <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 22, maxWidth: 540 }}>
-              MessBee unifies CRM, marketing, and communication into a single platform—making it effortless to manage relationships and accelerate growth.
+            {/* Description */}
+            <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.65, marginBottom: 22, maxWidth: 540 }}>
+              MessBee unifies CRM, marketing, and communication into one connected platform—eliminating scattered tools so you can manage relationships and scale effortlessly.
             </p>
 
             {/* Provided Tagline Badge */}
