@@ -161,10 +161,11 @@ const CSS = `
     .wa-ctr  { display:flex!important; flex-direction:row!important; align-items:center!important; gap:10px!important; flex-wrap:wrap!important; }
     .wbp,.wbo,.wbd { width:auto!important; padding:10px 18px!important; font-size:12px!important; text-align:center!important; justify-content:center!important; }
     .wa-hr   { width:100%!important; justify-content:center!important; padding-top:24px!important; margin-bottom:0!important; }
-    .wa-hr > div { transform:none!important; transform-origin:top center!important; margin:0 auto!important; max-width:340px!important; }
+    .wa-hr > div { transform:none!important; transform-origin:top center!important; margin:0 auto!important; width:100%!important; max-width:100%!important; padding:20px 14px!important; box-sizing:border-box!important; }
     .wa-stat { grid-template-columns:repeat(2,1fr)!important; }
   }
   @media(max-width:480px){
+    .wa-hr > div { padding:18px 12px!important; border-radius:18px!important; }
     .wa-stat { grid-template-columns:1fr!important; }
     .wa-fg   { grid-template-columns:1fr!important; }
     .wa-why  { grid-template-columns:1fr!important; }
