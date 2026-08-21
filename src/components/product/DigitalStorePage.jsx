@@ -175,16 +175,42 @@ const CSS = `
     .ds-nav { width:100%!important; padding-right:0!important; margin-bottom:16px!important; }
     .ds-why { grid-template-columns:repeat(2,1fr)!important; }
     .ds-in { grid-template-columns:1fr!important; gap:24px!important; }
-    .ds-vis-card { max-width:340px!important; margin:0 auto!important; }
+    .ds-vis-card { max-width:440px!important; margin:0 auto!important; }
+  }
+  @media(max-width:768px){
+    .ds-hero-section {
+      padding-top: 84px !important;
+      padding-bottom: 28px !important;
+      padding-left: 16px !important;
+      padding-right: 16px !important;
+    }
+    .ds-hr {
+      width: 100% !important;
+      justify-content: center !important;
+      padding-top: 14px !important;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+    }
+    .ds-hr > div {
+      transform: none !important;
+      transform-origin: top center !important;
+      margin: 0 auto !important;
+      max-width: 100% !important;
+      padding: 24px 16px !important;
+      margin-top: 0 !important;
+    }
+    .ds-vis-card {
+      max-width: 100% !important;
+    }
   }
   @media(max-width:640px){
+    .ds-ctr { display:flex!important; flex-direction:row!important; align-items:center!important; gap:10px!important; flex-wrap:wrap!important; }
+    .dsp { padding:10px 18px!important; font-size:12px!important; }
+  }
+  @media(max-width:480px){
     .ds-fg { grid-template-columns:1fr!important; }
     .ds-why { grid-template-columns:1fr!important; }
     .ds-eco { grid-template-columns:repeat(2,1fr)!important; }
-    .ds-ctr { display:flex!important; flex-direction:row!important; align-items:center!important; gap:10px!important; flex-wrap:wrap!important; }
-    .dsp { padding:10px 18px!important; font-size:12px!important; }
-    .ds-hr { width:100%!important; justify-content:center!important; margin-top:24px!important; }
-    .ds-hr > div { transform:none!important; transform-origin:top center!important; margin:0 auto!important; max-width:340px!important; }
   }
   @media(hover:none){
     .dsf:hover,.why-card:hover { transform:none!important; }
@@ -208,7 +234,7 @@ const DigitalStorePage = () => {
       <Navbar />
 
       {/* ── HERO ── */}
-      <section style={{ background:"#fff", padding:"118px 6% 60px" }}>
+      <section className="ds-hero-section" style={{ background:"#fff", padding:"118px 6% 60px" }}>
         <div style={{ maxWidth:1200, margin:"0 auto" }}>
           <div style={{ display:"flex", flexWrap:"wrap", alignItems:"flex-start", gap:48 }}>
             <div style={{ flex:"1 1 420px", minWidth:280 }}>
@@ -423,7 +449,7 @@ const DigitalStorePage = () => {
               </div>
             ))}
           </div>
-          <div style={{ marginTop:24, display:"flex", alignItems:"center", justifyContent:"center", flexWrap:"wrap", gap:0 }}>
+          <div style={{ marginTop:24, display:"flex", alignItems:"center", justifyContent:"center", flexWrap:"wrap", gap:"10px 6px" }}>
             {["Store","Customer","CRM","Communication","Order","Payment","Follow-Up"].map((item,i,arr) => (
               <React.Fragment key={item}>
                 <span style={{ background:"#fff", border:`1.5px solid ${GB}`, color:G, borderRadius:6, padding:"4px 10px", fontSize:11, fontWeight:700 }}>{item}</span>
