@@ -188,7 +188,8 @@ const CSS = `
   .fq { display:flex;justify-content:space-between;align-items:center;padding:14px 0;cursor:pointer;gap:16px; }
   .fq:hover .fqt { color:#16A34A; }
   .fqt { font-size:13px;font-weight:600;transition:color .2s;line-height:1.5; }
-  .sec-grid { display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start; }
+  .sec-grid { display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;min-width:0;width:100%; }
+  .sec-grid > * { min-width:0;max-width:100%;word-break:break-word;overflow-wrap:break-word; }
   .sec-grid.rev { direction:rtl; }
   .sec-grid.rev > * { direction:ltr; }
   .hg { display:flex;flex-wrap:wrap;align-items:center;gap:48px; }
@@ -201,17 +202,20 @@ const CSS = `
   .ctr { display:flex;gap:14px;flex-wrap:wrap; }
   .sc { background:#FAFAFA;border:1.5px solid #F1F5F9;border-radius:16px;padding:28px 20px;text-align:center; transition:all .2s; }
   .sc:hover { border-color:#BBF7D0; transform:translateY(-2px); box-shadow:0 12px 32px rgba(22,163,74,.05); }
-  .flow-strip { display:flex;align-items:center;flex-wrap:nowrap;gap:2px;margin-bottom:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px; }
-  .flow-item { background:#F0FDF4;border:1px solid #BBF7D0;color:#16A34A;border-radius:6px;padding:4px 8px;font-size:11px;font-weight:700;white-space:nowrap;flex-shrink:0; }
-  .flow-arr { color:#94A3B8;font-size:11px;padding:0 2px;display:inline-flex;align-items:center;flex-shrink:0; }
+  .flow-strip { display:flex;align-items:center;flex-wrap:wrap;gap:8px 4px;margin-bottom:16px;width:100%;max-width:100%; }
+  .flow-item { background:#F0FDF4;border:1px solid #BBF7D0;color:#16A34A;border-radius:6px;padding:4px 8px;font-size:11px;font-weight:700;display:inline-block; }
+  .flow-arr { color:#94A3B8;font-size:11px;padding:0 2px;display:inline-flex;align-items:center; }
   .connect-strip { display:flex;align-items:center;flex-wrap:wrap;gap:0;justify-content:center; }
   .connect-item { color:#fff;padding:8px 12px;font-size:14px;font-weight:700; }
   .connect-arr { color:rgba(255,255,255,.6);font-size:18px;padding:0 6px;font-weight:700; }
+  * { box-sizing: border-box; }
+  .crm-sec-card { background:linear-gradient(135deg, #14532d 0%, #022c22 100%); border-radius:16px; padding:18px; border:1px solid rgba(34,197,94,.3); box-shadow:0 24px 56px rgba(0,0,0,.18); max-width:400px; margin:110px auto 0; width:100%; box-sizing:border-box; overflow:hidden; }
   @media(max-width:1100px){
     .fg { grid-template-columns:repeat(2,1fr)!important; }
     .sec-grid { grid-template-columns:1fr!important; }
     .sec-grid.rev { direction:ltr; }
     .wg { grid-template-columns:repeat(2,1fr)!important; }
+    .crm-sec-card { margin-top:24px!important; max-width:100%!important; }
   }
   @media(max-width:860px){
     .ig { grid-template-columns:1fr!important; }
@@ -224,7 +228,7 @@ const CSS = `
     .cp, .cd { padding:10px 18px!important; font-size:12px!important; }
     .hr  { width:100%!important; justify-content:center!important; padding-top:24px!important; margin-bottom:0!important; }
     .hr > div { transform:none!important; transform-origin:top center!important; margin:0 auto!important; max-width:340px!important; }
-    .crm-sec-card { margin-top:24px!important; }
+    .crm-sec-card { margin-top:20px!important; max-width:100%!important; width:100%!important; padding:16px 12px!important; box-sizing:border-box!important; }
     .sg  { grid-template-columns:1fr 1fr!important; }
     .ig  { grid-template-columns:1fr!important; }
     .sec-grid { grid-template-columns:1fr!important; }
@@ -400,7 +404,7 @@ const CrmPage = () => {
                 </div>
 
                 {/* Visual side */}
-                <div className="crm-sec-card" style={{ background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)", borderRadius:16, padding:18, border:`1px solid rgba(34,197,94,.3)`, boxShadow:"0 24px 56px rgba(0,0,0,.18)", maxWidth:400, margin:"110px auto 0", width:"100%" }}>
+                <div className="crm-sec-card">
                   <div style={{ marginBottom:14, display:"flex", alignItems:"center", gap:8 }}>
                     <div style={{ width:32, height:32, borderRadius:8, background:sec.bg, display:"flex", alignItems:"center", justifyContent:"center", fontSize:16 }}>{OVERVIEW[idx]?.icon}</div>
                     <div>
