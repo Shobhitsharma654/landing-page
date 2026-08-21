@@ -132,34 +132,34 @@ const QrConnectPage = () => {
         }
         @media(max-width:768px) {
           .hvc {
-            transform: scale(0.7) !important;
+            transform: scale(0.8) !important;
             transform-origin: top center !important;
-            margin: 0 auto -80px !important;
-            min-height: 320px !important;
+            margin: 0 auto -50px !important;
+            min-height: 360px !important;
           }
         }
         @media(max-width:540px) {
           .hvc {
-            transform: scale(0.58) !important;
+            transform: scale(0.7) !important;
             transform-origin: top center !important;
-            margin: -10px auto -130px !important;
-            min-height: 280px !important;
+            margin: -10px auto -100px !important;
+            min-height: 310px !important;
           }
         }
         @media(max-width:420px) {
           .hvc {
-            transform: scale(0.48) !important;
+            transform: scale(0.58) !important;
             transform-origin: top center !important;
-            margin: -20px auto -170px !important;
-            min-height: 240px !important;
+            margin: -20px auto -140px !important;
+            min-height: 260px !important;
           }
         }
         @media(max-width:360px) {
           .hvc {
-            transform: scale(0.42) !important;
+            transform: scale(0.5) !important;
             transform-origin: top center !important;
-            margin: -25px auto -190px !important;
-            min-height: 210px !important;
+            margin: -25px auto -160px !important;
+            min-height: 230px !important;
           }
         }
 
@@ -210,7 +210,7 @@ const QrConnectPage = () => {
             gap: 14px !important;
           }
           .wg {
-            grid-template-columns: 1fr !important;
+            grid-template-columns: repeat(2, 1fr) !important;
             gap: 12px !important;
           }
           .sg {
@@ -238,6 +238,74 @@ const QrConnectPage = () => {
           box-shadow: 0 8px 24px rgba(22, 163, 74, 0.08) !important;
           transform: translateY(-3px);
         }
+        .step-connector-arrow {
+          display: none;
+        }
+
+        @media (max-width: 768px) {
+          .qr-section {
+            padding: 28px 16px !important;
+          }
+          .qr-hero-section {
+            margin-top: 0px !important;
+            padding-top: 84px !important;
+            padding-bottom: 28px !important;
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+          }
+          .qr-hero-row {
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 20px !important;
+          }
+          .qr-hero-left {
+            min-width: 100% !important;
+            max-width: 100% !important;
+          }
+          .hvc {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            width: 100% !important;
+          }
+          .btn-green-primary, .btn-outline-demo {
+            width: 100% !important;
+            justify-content: center !important;
+          }
+          .fg {
+            grid-template-columns: 1fr !important;
+            gap: 14px !important;
+          }
+          .wg {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 12px !important;
+          }
+          .sg {
+            grid-template-columns: 1fr !important;
+            gap: 4px !important;
+          }
+          .wq-highlights {
+            grid-template-columns: 1fr !important;
+            gap: 12px !important;
+          }
+          .scl {
+            display: none !important;
+          }
+          .step-item-card {
+            max-width: 290px !important;
+            margin: 0 auto !important;
+          }
+          .step-connector-arrow {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            margin: 4px auto !important;
+            color: #16A34A !important;
+          }
+        }
 
         @media (max-width: 480px) {
           .qr-section {
@@ -255,19 +323,33 @@ const QrConnectPage = () => {
             gap: 12px !important;
           }
           .wg {
-            grid-template-columns: 1fr !important;
-            gap: 12px !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
           }
           .wg > div {
-            padding: 14px 16px !important;
+            padding: 12px 10px !important;
           }
           .sg {
             grid-template-columns: 1fr !important;
-            gap: 12px !important;
+            gap: 4px !important;
           }
           .wq-highlights {
             grid-template-columns: 1fr !important;
             gap: 12px !important;
+          }
+          .scl {
+            display: none !important;
+          }
+          .step-item-card {
+            max-width: 290px !important;
+            margin: 0 auto !important;
+          }
+          .step-connector-arrow {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            margin: 4px auto !important;
+            color: #16A34A !important;
           }
         }
       `}</style>
@@ -566,33 +648,41 @@ const QrConnectPage = () => {
                 { n: 4, title: "Start Conversation", desc: "WhatsApp opens instantly and the customer starts the conversation." },
                 { n: 5, title: "Track & Grow", desc: "Track scans, chats, leads and conversions. Improve and grow your business." }
               ].map((s, i, arr) => (
-                <div key={i} className="step-item-card" style={{
-                  textAlign: "center",
-                  position: "relative",
-                  zIndex: 1,
-                  background: "#FFFFFF",
-                  border: "1.5px solid #E2E8F0",
-                  borderRadius: 14,
-                  padding: "16px 12px",
-                  boxShadow: "0 2px 8px rgba(15,23,42,0.03)",
-                  transition: "all 0.25s ease"
-                }}>
-                  {/* Step Badge with Arrow */}
-                  <div style={{ display: "inline-flex", alignItems: "center", gap: 4, background: "#F0FDF4", border: "1px solid #BBF7D0", color: "#16A34A", fontSize: 10, fontWeight: 900, textTransform: "uppercase", padding: "3px 10px", borderRadius: 20, marginBottom: 10 }}>
-                    <span>Step {s.n}</span>
-                    {i < arr.length - 1 && (
-                      <span className="step-arrow" style={{ fontSize: 11, fontWeight: 900, color: "#16A34A", marginLeft: 2 }}>→</span>
-                    )}
+                <React.Fragment key={i}>
+                  <div className="step-item-card" style={{
+                    textAlign: "center",
+                    position: "relative",
+                    zIndex: 1,
+                    background: "#FFFFFF",
+                    border: "1.5px solid #E2E8F0",
+                    borderRadius: 14,
+                    padding: "16px 12px",
+                    boxShadow: "0 2px 8px rgba(15,23,42,0.03)",
+                    transition: "all 0.25s ease"
+                  }}>
+                    {/* Step Badge */}
+                    <div style={{ display: "inline-flex", alignItems: "center", background: "#F0FDF4", border: "1px solid #BBF7D0", color: "#16A34A", fontSize: 10, fontWeight: 900, textTransform: "uppercase", padding: "3px 10px", borderRadius: 20, marginBottom: 10 }}>
+                      <span>Step {s.n}</span>
+                    </div>
+
+                    {/* Green Number Circle */}
+                    <div style={{ width: 36, height: 36, borderRadius: "50%", background: "linear-gradient(135deg, #16A34A 0%, #15803D 100%)", color: "#FFF", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 900, margin: "0 auto 10px", boxShadow: "0 4px 12px rgba(22,163,74,0.25)" }}>
+                      {s.n}
+                    </div>
+
+                    <h3 style={{ fontSize: 12.5, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>{s.title}</h3>
+                    <p style={{ fontSize: 9.8, color: "#64748B", lineHeight: 1.45, margin: 0 }}>{s.desc}</p>
                   </div>
 
-                  {/* Green Number Circle */}
-                  <div style={{ width: 36, height: 36, borderRadius: "50%", background: "linear-gradient(135deg, #16A34A 0%, #15803D 100%)", color: "#FFF", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 900, margin: "0 auto 10px", boxShadow: "0 4px 12px rgba(22,163,74,0.25)" }}>
-                    {s.n}
-                  </div>
-
-                  <h3 style={{ fontSize: 12.5, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>{s.title}</h3>
-                  <p style={{ fontSize: 9.8, color: "#64748B", lineHeight: 1.45, margin: 0 }}>{s.desc}</p>
-                </div>
+                  {i < arr.length - 1 && (
+                    <div className="step-connector-arrow">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <polyline points="19 12 12 19 5 12"></polyline>
+                      </svg>
+                    </div>
+                  )}
+                </React.Fragment>
               ))}
             </div>
           </div>

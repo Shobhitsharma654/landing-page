@@ -466,8 +466,12 @@ const BlogPage = () => {
             padding: 18px 16px !important;
             border-radius: 14px !important;
           }
-          .topics-auto-grid, .flex-auto-grid, .action-auto-grid {
+          .topics-auto-grid {
             grid-template-columns: 1fr !important;
+            gap: 14px !important;
+          }
+          .flex-auto-grid, .action-auto-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
             gap: 14px !important;
           }
         }
@@ -488,6 +492,14 @@ const BlogPage = () => {
           }
           .blog-glass-card {
             padding: 16px 14px !important;
+          }
+          .topics-auto-grid {
+            grid-template-columns: 1fr !important;
+            gap: 12px !important;
+          }
+          .flex-auto-grid, .action-auto-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
           }
         }
 
