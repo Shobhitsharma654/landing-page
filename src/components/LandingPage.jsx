@@ -250,7 +250,6 @@ const LandingPage = () => {
           .lp-hero-row { flex-direction: column; gap: 24px; }
           .lp-hero-left { flex: 1 1 100%; min-width: unset; }
           .lp-hero-right { flex: 1 1 100%; min-width: unset; }
-          .lp-hero-badge { display: none !important; }
           .lp-ai-grid { grid-template-columns: 1fr !important; }
           .lp-compare-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
           .lp-hiw-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
@@ -264,8 +263,26 @@ const LandingPage = () => {
         }
 
         @media (max-width: 768px) {
-          .lp-hero-section { padding: 80px 5% 32px !important; }
-          .lp-hero-right { display: none !important; }
+          .lp-hero-section { padding: 80px 4% 32px !important; }
+          .lp-hero-right { display: flex !important; width: 100% !important; margin-top: 18px !important; align-items: center !important; justify-content: center !important; padding: 0 8px !important; }
+          .lp-hero-mockup-wrap { width: 100% !important; max-width: 520px !important; transform: none !important; margin-bottom: 0 !important; }
+          .lp-hero-viewport { min-height: auto !important; }
+          .lp-hero-sidebar { width: 34px !important; padding: 6px 2px !important; gap: 6px !important; }
+          .lp-hero-canvas { padding: 6px 8px !important; gap: 5px !important; }
+          .lp-hero-top-row { gap: 6px !important; }
+          .lp-hero-top-row > div { padding: 4px 6px !important; }
+          .lp-hero-mid-row { padding: 4px 8px !important; }
+          .lp-hero-chart { height: 22px !important; }
+          .lp-hero-bottom-row { gap: 6px !important; }
+          .lp-hero-bottom-row > div { padding: 4px 8px !important; }
+          .lp-hero-badge { display: flex !important; padding: 3px 6px !important; font-size: 9px !important; z-index: 12 !important; box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important; }
+          .lp-hero-badge span { font-size: 8.5px !important; }
+          .lp-badge-wa   { left: -14px !important; top: 18px !important; }
+          .lp-badge-api  { left: -18px !important; top: 85px !important; }
+          .lp-badge-rzp  { left: -14px !important; bottom: 50px !important; }
+          .lp-badge-ship { right: -14px !important; top: 20px !important; }
+          .lp-badge-goog { right: -12px !important; top: 90px !important; }
+          .lp-badge-ondc { right: -12px !important; bottom: 55px !important; }
           .lp-compare-card-pad { padding: 24px 20px !important; }
           .lp-newsletter-section { padding: 60px 5% !important; }
           .lp-choose-inner { grid-template-columns: 1fr !important; gap: 12px !important; }
@@ -277,7 +294,15 @@ const LandingPage = () => {
         }
 
         @media (max-width: 480px) {
-          .lp-hero-section { padding: 70px 4% 24px !important; }
+          .lp-hero-section { padding: 70px 3% 24px !important; }
+          .lp-hero-mockup-wrap { max-width: 100% !important; }
+          .lp-hero-top-row > div { padding: 3px 4px !important; }
+          .lp-badge-wa   { left: -8px !important; top: 14px !important; }
+          .lp-badge-api  { left: -12px !important; top: 75px !important; }
+          .lp-badge-rzp  { left: -8px !important; bottom: 40px !important; }
+          .lp-badge-ship { right: -8px !important; top: 16px !important; }
+          .lp-badge-goog { right: -6px !important; top: 80px !important; }
+          .lp-badge-ondc { right: -6px !important; bottom: 45px !important; }
           .lp-industry-item { width: 100% !important; height: 130px !important; }
           .lp-testimonial-grid { gap: 0 !important; }
           .lp-newsletter-section { padding: 40px 4% !important; }
@@ -350,40 +375,40 @@ const LandingPage = () => {
             </div>
 
             {/* Dashboard Container with Floating Integration Badges */}
-            <div style={{ position: "relative", width: "100%", maxWidth: 480 }}>
+            <div className="lp-hero-mockup-wrap" style={{ position: "relative", width: "100%", maxWidth: 480 }}>
               
               {/* Floating Badge: WhatsApp */}
-              <div className="lp-hero-badge" style={{ left: -48, top: 32 }}>
+              <div className="lp-hero-badge lp-badge-wa" style={{ left: -48, top: 32 }}>
                 <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#10B981" }} />
                 <span style={{ fontSize: 10.5, fontWeight: 700, color: "#64748B" }}>WhatsApp</span>
               </div>
 
               {/* Floating Badge: API Ready */}
-              <div className="lp-hero-badge" style={{ left: -54, top: 125 }}>
+              <div className="lp-hero-badge lp-badge-api" style={{ left: -54, top: 125 }}>
                 <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#EC4899" }} />
                 <span style={{ fontSize: 10.5, fontWeight: 700, color: "#64748B" }}>API Ready</span>
               </div>
 
               {/* Floating Badge: Razorpay */}
-              <div className="lp-hero-badge" style={{ left: -50, bottom: 95 }}>
+              <div className="lp-hero-badge lp-badge-rzp" style={{ left: -50, bottom: 95 }}>
                 <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#2563EB" }} />
                 <span style={{ fontSize: 10.5, fontWeight: 700, color: "#64748B" }}>Razorpay</span>
               </div>
 
               {/* Floating Badge: Shiprocket */}
-              <div className="lp-hero-badge" style={{ right: -48, top: 35 }}>
+              <div className="lp-hero-badge lp-badge-ship" style={{ right: -48, top: 35 }}>
                 <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#F97316" }} />
                 <span style={{ fontSize: 10.5, fontWeight: 700, color: "#64748B" }}>Shiprocket</span>
               </div>
 
               {/* Floating Badge: Google */}
-              <div className="lp-hero-badge" style={{ right: -42, top: 130 }}>
+              <div className="lp-hero-badge lp-badge-goog" style={{ right: -42, top: 130 }}>
                 <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#F59E0B" }} />
                 <span style={{ fontSize: 10.5, fontWeight: 700, color: "#64748B" }}>Google</span>
               </div>
 
               {/* Floating Badge: ONDC */}
-              <div className="lp-hero-badge" style={{ right: -42, bottom: 100 }}>
+              <div className="lp-hero-badge lp-badge-ondc" style={{ right: -42, bottom: 100 }}>
                 <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#6366F1" }} />
                 <span style={{ fontSize: 10.5, fontWeight: 700, color: "#64748B" }}>ONDC</span>
               </div>
@@ -436,10 +461,10 @@ const LandingPage = () => {
                 </div>
 
                 {/* Dashboard Main Viewport */}
-                <div style={{ display: "flex", background: "#F8FAFC", minHeight: 330 }}>
+                <div className="lp-hero-viewport" style={{ display: "flex", background: "#F8FAFC", minHeight: 330 }}>
                   
                   {/* Left Dark Sidebar */}
-                  <div style={{
+                  <div className="lp-hero-sidebar" style={{
                     width: 42,
                     background: "#0F172A",
                     padding: "10px 4px",
@@ -474,10 +499,10 @@ const LandingPage = () => {
                   </div>
 
                   {/* Dashboard Content Canvas */}
-                  <div style={{ flex: 1, padding: "10px", display: "flex", flexDirection: "column", gap: 8 }}>
+                  <div className="lp-hero-canvas" style={{ flex: 1, padding: "10px", display: "flex", flexDirection: "column", gap: 8 }}>
                     
                     {/* Top Row: 3 Business Value Cards */}
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 }}>
+                    <div className="lp-hero-top-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 }}>
                       <div style={{ background: "#FFFFFF", borderRadius: 10, border: "1px solid #E2E8F0", padding: "8px 10px" }}>
                         <div style={{ fontSize: 9, color: "#64748B", fontWeight: 600 }}>Lead Generation</div>
                         <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", margin: "1px 0" }}>Create Campaign</div>
@@ -498,14 +523,14 @@ const LandingPage = () => {
                     </div>
 
                     {/* Middle Row: Business Growth Funnel */}
-                    <div style={{ background: "#FFFFFF", borderRadius: 10, border: "1px solid #E2E8F0", padding: "8px 12px", display: "flex", flexDirection: "column" }}>
+                    <div className="lp-hero-mid-row" style={{ background: "#FFFFFF", borderRadius: 10, border: "1px solid #E2E8F0", padding: "8px 12px", display: "flex", flexDirection: "column" }}>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
                         <span style={{ fontSize: 10, fontWeight: 700, color: "#334155" }}>Business Growth & Lead Funnel</span>
                         <span style={{ fontSize: 8, fontWeight: 700, color: "#16A34A", background: "#ECFDF5", padding: "1px 6px", borderRadius: 10, border: "1px solid #A7F3D0" }}>⚡ Active System</span>
                       </div>
 
                       {/* Vector SVG Trend Curve */}
-                      <div style={{ width: "100%", height: 36, position: "relative" }}>
+                      <div className="lp-hero-chart" style={{ width: "100%", height: 36, position: "relative" }}>
                         <svg viewBox="0 0 400 60" preserveAspectRatio="none" style={{ width: "100%", height: "100%", overflow: "visible" }}>
                           <defs>
                             <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
@@ -529,7 +554,7 @@ const LandingPage = () => {
                     </div>
 
                     {/* Bottom Row: Live Leads & AI Assistant */}
-                    <div style={{ display: "grid", gridTemplateColumns: "1.1fr 1.3fr", gap: 8 }}>
+                    <div className="lp-hero-bottom-row" style={{ display: "grid", gridTemplateColumns: "1.1fr 1.3fr", gap: 8 }}>
                       
                       {/* Live Leads & Inquiries */}
                       <div style={{ background: "#FFFFFF", borderRadius: 10, border: "1px solid #E2E8F0", padding: "8px 10px", display: "flex", flexDirection: "column", gap: 5 }}>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
-import defaultLogo from "../assets/logo.jpeg";
+import defaultLogo from "../../assets/logo.jpeg";
 
 const G  = "#16A34A";
 const GL = "#F0FDF4";
@@ -485,13 +485,29 @@ const ServicePage = () => {
           .service-hero-row { gap: 32px; }
         }
 
+        .service-hero-right-col { flex: 0.9; min-width: 320px; position: relative; display: flex; justify-content: center; }
+        .service-hero-right-card { transform: scale(0.8); transform-origin: center right; width: 100%; max-width: 480px; }
+
         /* Compact Laptop / Tablet-Laptop (under 1024px) */
         @media (max-width: 1023px) {
           .service-hero-row { flex-direction: column !important; }
+          .service-hero-right-col { width: 100% !important; min-width: unset !important; justify-content: center !important; margin-top: 24px !important; }
+          .service-hero-right-card { transform: none !important; transform-origin: center center !important; max-width: 340px !important; margin: 0 auto !important; }
           .grid-col-6 { grid-template-columns: repeat(2, 1fr); }
           .grid-col-4 { grid-template-columns: repeat(2, 1fr); }
           .grid-col-3 { grid-template-columns: repeat(1, 1fr); }
           .grid-col-2 { grid-template-columns: repeat(1, 1fr); }
+        }
+
+        /* Mobile Phones & Tablets (under 768px) */
+        @media (max-width: 768px) {
+          .grid-col-6, .grid-col-4, .grid-col-3, .grid-col-2 {
+            grid-template-columns: 1fr !important;
+            gap: 12px !important;
+          }
+          .service-glass-card {
+            padding: 14px 16px !important;
+          }
         }
 
         /* Glowing Pulse Animation */
@@ -618,8 +634,8 @@ const ServicePage = () => {
 
             {/* CTAs from Prompt */}
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <button className="service-btn-primary" onClick={handleStart}>
-                Get Started with MessBee
+              <button className="service-btn-primary" onClick={handleStart} style={{ fontSize: 13, padding: "11px 26px" }}>
+                Get Started
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12" />
                   <polyline points="12 5 19 12 12 19" />
@@ -636,8 +652,9 @@ const ServicePage = () => {
           </div>
 
           {/* Right Column: Unique Service Business Hero Graphic with Official MessBee Logo */}
-          <div style={{ flex: 0.9, minWidth: 320, position: "relative" }}>
+          <div className="service-hero-right-col">
             <div
+              className="service-hero-right-card"
               style={{
                 background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
                 borderRadius: 24,
@@ -647,8 +664,6 @@ const ServicePage = () => {
                 color: "#FFFFFF",
                 position: "relative",
                 overflow: "hidden",
-                transform: "scale(0.8)",
-                transformOrigin: "center right",
               }}
             >
               {/* Outer Pulse aura background */}
@@ -1313,7 +1328,7 @@ const ServicePage = () => {
             Your customers should not have to repeat their requirements every time they contact your business. MessBee helps your team keep customer information, conversations and follow-ups organized so you can focus on what matters most — delivering a good service experience.
           </p>
           <button className="service-btn-primary" onClick={handleStart} style={{ fontSize: 13, padding: "11px 26px" }}>
-            Get Started with MessBee
+            Get Started
           </button>
         </div>
       </section>

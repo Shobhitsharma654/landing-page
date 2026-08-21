@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
-import defaultLogo from "../assets/logo.jpeg";
+import defaultLogo from "../../assets/logo.jpeg";
 
 const G  = "#16A34A";
 const GL = "#F0FDF4";
@@ -443,13 +443,29 @@ const RetailPage = () => {
           .retail-hero-row { gap: 32px; }
         }
 
+        .retail-hero-right-col { flex: 0.9; min-width: 320px; position: relative; display: flex; justify-content: center; }
+        .retail-hero-right-card { transform: scale(0.8); transform-origin: center right; width: 100%; max-width: 480px; }
+
         /* Compact Laptop / Tablet-Laptop (under 1024px) */
         @media (max-width: 1023px) {
           .retail-hero-row { flex-direction: column !important; }
+          .retail-hero-right-col { width: 100% !important; min-width: unset !important; justify-content: center !important; margin-top: 24px !important; }
+          .retail-hero-right-card { transform: none !important; transform-origin: center center !important; max-width: 340px !important; margin: 0 auto !important; }
           .grid-col-5 { grid-template-columns: repeat(2, 1fr); }
           .grid-col-4 { grid-template-columns: repeat(2, 1fr); }
           .grid-col-3 { grid-template-columns: repeat(1, 1fr); }
           .grid-col-2 { grid-template-columns: repeat(1, 1fr); }
+        }
+
+        /* Mobile Phones & Tablets (under 768px) */
+        @media (max-width: 768px) {
+          .grid-col-5, .grid-col-4, .grid-col-3, .grid-col-2 {
+            grid-template-columns: 1fr !important;
+            gap: 12px !important;
+          }
+          .retail-glass-card {
+            padding: 14px 16px !important;
+          }
         }
 
         /* Glowing Pulse Animation */
@@ -576,8 +592,8 @@ const RetailPage = () => {
 
             {/* CTAs from Prompt */}
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <button className="retail-btn-primary" onClick={handleStart}>
-                Get Started with MessBee
+              <button className="retail-btn-primary" onClick={handleStart} style={{ fontSize: 13, padding: "11px 26px" }}>
+                Get Started
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12" />
                   <polyline points="12 5 19 12 12 19" />
@@ -594,8 +610,9 @@ const RetailPage = () => {
           </div>
 
           {/* Right Column: Unique Retail & Local Graphic Layout with Official MessBee Logo */}
-          <div style={{ flex: 0.9, minWidth: 320, position: "relative" }}>
+          <div className="retail-hero-right-col">
             <div
+              className="retail-hero-right-card"
               style={{
                 background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
                 borderRadius: 24,
@@ -605,8 +622,6 @@ const RetailPage = () => {
                 color: "#FFFFFF",
                 position: "relative",
                 overflow: "hidden",
-                transform: "scale(0.8)",
-                transformOrigin: "center right",
               }}
             >
               {/* Outer Pulse aura background */}
@@ -1154,7 +1169,7 @@ const RetailPage = () => {
             <span style={{ color: G }}>closer to your customers.</span>
           </h2>
           <button className="retail-btn-primary" onClick={handleStart} style={{ fontSize: 13, padding: "11px 26px", marginTop: 10 }}>
-            Get Started with MessBee
+            Get Started
           </button>
         </div>
       </section>
