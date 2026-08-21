@@ -1,5 +1,5 @@
 import Navbar from "../Navbar";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
 
@@ -462,23 +462,51 @@ const RELATED_POLICIES = [
 const DpaPage = () => {
   const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState("purpose");
-  const [scrolled, setScrolled] = useState(false);
+  const [isMobileTocOpen, setIsMobileTocOpen] = useState(false);
+  const mobileTocRef = useRef(null);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    const handleClickOutside = (e) => {
+      if (mobileTocRef.current && !mobileTocRef.current.contains(e.target)) {
+        setIsMobileTocOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
   }, []);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 200;
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i].id);
+        if (el && el.offsetTop <= scrollPosition) {
+          setActiveSection(sections[i].id);
+          break;
+        }
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (id) => {
     setActiveSection(id);
-    document
-      .getElementById(id)
-      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    const element = document.getElementById(id);
+    if (element) {
+      const mobileTocEl = document.querySelector(".mobile-toc-wrapper");
+      const isMobileTocVisible = mobileTocEl && window.getComputedStyle(mobileTocEl).display !== "none";
+      const offset = isMobileTocVisible ? 485 : 95;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: elementPosition - offset,
+        behavior: "smooth"
+      });
+    }
   };
 
   return (
@@ -495,41 +523,33 @@ const DpaPage = () => {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
         * { box-sizing: border-box; }
-        .dpa-toc-link {
-          display: flex; align-items: flex-start; gap: 8px;
-          padding: 6px 10px; border-radius: 8px; cursor: pointer;
-          font-size: 12.5px; font-weight: 500; color: #64748B;
-          line-height: 1.45; transition: background 0.15s, color 0.15s;
-          border: 1px solid transparent; margin-bottom: 2px;
-        }
-        .dpa-toc-link:hover { background: #F1F5F9; color: #0F172A; }
-        .dpa-toc-link.active {
-          background: #F0FDF4; color: #16A34A; font-weight: 700;
-          border-color: #BBF7D0;
-        }
-        .dpa-section-card {
-          background: #FFFFFF; border: 1px solid #E2E8F0;
-          border-radius: 16px; padding: 32px; margin-bottom: 20px;
-          box-shadow: 0 4px 12px rgba(15,23,42,0.01);
-          scroll-margin-top: 100px;
-          transition: border-color 0.2s, box-shadow 0.2s;
-        }
-        .dpa-section-card:hover { border-color: #BBF7D0; box-shadow: 0 4px 20px rgba(22,163,74,0.06); }
-        .dpa-container { display: flex; gap: 48px; align-items: flex-start; }
+        .no-scrollbar::-webkit-scrollbar { display: none !important; }
+        .no-scrollbar { -ms-overflow-style: none !important; scrollbar-width: none !important; }
+        .dpa-container { display: flex; gap: 60px; align-items: flex-start; }
         .dpa-sidebar {
-          width: 300px;
-          flex-shrink: 0;
-          position: sticky;
-          top: 90px;
-          max-height: calc(100vh - 110px);
-          overflow-y: auto;
-          scrollbar-width: none;
-          -ms-overflow-style: none;
+          width: 320px; flex-shrink: 0;
+          position: sticky; top: 95px; z-index: 10;
+          background: #F8FAFC; border: 1px solid #E5E7EB;
+          border-radius: 16px; padding: 20px;
+          max-height: calc(100vh - 130px); overflow-y: auto;
         }
-        .dpa-sidebar::-webkit-scrollbar {
-          display: none;
+        .toc-item {
+          font-size: 13px; font-weight: 500; color: #475569;
+          cursor: pointer; transition: all 0.2s ease-in-out;
+          display: block; padding: 6px 12px; line-height: 1.4;
+          border-left: 3px solid transparent;
+          border-radius: 0 6px 6px 0; margin-bottom: 2px; text-align: left;
         }
-        .dpa-article { flex: 1; min-width: 0; }
+        .toc-item:hover {
+          color: #16A34A; background: rgba(22,163,74,0.04);
+          border-left-color: rgba(22,163,74,0.4); padding-left: 14px;
+        }
+        .toc-item.active {
+          font-weight: 700; color: #16A34A;
+          background: #F0FDF4;
+          border-left-color: #16A34A; padding-left: 14px;
+        }
+        .mobile-toc-wrapper { display: none !important; }
         
         .policy-hero {
           padding-top: 130px; padding-bottom: 48px;
@@ -601,13 +621,42 @@ const DpaPage = () => {
           }
         }
         @media (max-width: 768px) {
-          .policy-hero { padding-top: 110px; padding-bottom: 24px; }
+          .policy-hero { padding-top: 100px !important; padding-bottom: 20px !important; }
+          .policy-content { padding-top: 20px !important; padding-bottom: 30px !important; }
+          .mobile-toc-wrapper {
+            display: block !important;
+            position: sticky;
+            top: 70px;
+            z-index: 25;
+            margin-bottom: 16px !important;
+            width: calc(100% + 32px) !important;
+            margin-left: -16px !important;
+            margin-right: -16px !important;
+          }
+          .mobile-toc-wrapper > div {
+            border: 1px solid #E2E8F0 !important;
+            border-left: none !important;
+            border-right: none !important;
+            border-radius: 0 !important;
+          }
+          .dpa-page-wrapper article > div:first-child {
+            margin-bottom: 16px !important;
+          }
+          .dpa-page-wrapper article > div[id] {
+            scroll-margin-top: 485px !important;
+            padding: 20px 16px !important;
+            margin-bottom: 14px !important;
+          }
           .dpa-page-wrapper section {
             padding-left: 16px !important;
             padding-right: 16px !important;
           }
           .dpa-page-wrapper h1 {
-            font-size: clamp(20px, 2.4vw, 28px) !important;
+            font-size: clamp(24px, 6vw, 36px) !important;
+            letter-spacing: -0.5px !important;
+            line-height: 1.25 !important;
+            word-spacing: 2px !important;
+            margin-bottom: 12px !important;
           }
           .dpa-page-wrapper h2 {
             font-size: clamp(17px, 2vw, 22px) !important;
@@ -757,112 +806,49 @@ const DpaPage = () => {
           className="dpa-container"
           style={{ maxWidth: 1380, margin: "0 auto" }}
         >
-          {/* ── Sidebar TOC ── */}
-          <aside className="dpa-sidebar">
-            <div
-              style={{
-                background: "#F8FAFC",
-                border: "1px solid #E2E8F0",
-                borderRadius: 16,
-                padding: "20px 16px",
-              }}
-            >
-              <div
-                style={{
-                  fontSize: 11,
-                  fontWeight: 800,
-                  color: "#16A34A",
-                  textTransform: "uppercase",
-                  letterSpacing: "1.2px",
-                  marginBottom: 14,
-                  paddingLeft: 4,
-                }}
-              >
-                Table of Contents
-              </div>
-              <nav>
-                {sections.map((s) => (
-                  <div
-                    key={s.id}
-                    className={`dpa-toc-link${activeSection === s.id ? " active" : ""}`}
-                    onClick={() => scrollToSection(s.id)}
-                  >
-                    <span
-                      style={{
-                        flexShrink: 0,
-                        width: 5,
-                        height: 5,
-                        borderRadius: "50%",
-                        background:
-                          activeSection === s.id ? "#16A34A" : "#CBD5E1",
-                        marginTop: 5,
-                      }}
-                    />
-                    {s.title}
-                  </div>
-                ))}
-              </nav>
+          {/* ── Sticky Table of Contents ── */}
+          <aside className="dpa-sidebar no-scrollbar">
+            <div style={{
+              position: "sticky",
+              top: -20,
+              marginTop: -20,
+              marginLeft: -20,
+              marginRight: -20,
+              padding: "16px 20px 12px 20px",
+              background: "#F8FAFC",
+              borderBottom: "1px solid #E2E8F0",
+              borderTopLeftRadius: 15,
+              borderTopRightRadius: 15,
+              zIndex: 10,
+              fontSize: 11,
+              fontWeight: 800,
+              color: "#16A34A",
+              textTransform: "uppercase",
+              letterSpacing: "1px",
+              marginBottom: 10,
+            }}>
+              Table of Contents
+            </div>
+            <nav style={{ display: "flex", flexDirection: "column" }}>
+              {sections.map((s) => (
+                <span key={s.id}
+                  className={`toc-item${activeSection === s.id ? " active" : ""}`}
+                  onClick={() => scrollToSection(s.id)}>
+                  {s.title}
+                </span>
+              ))}
+            </nav>
 
-              {/* Related Policies */}
-              <div
-                style={{
-                  marginTop: 20,
-                  paddingTop: 16,
-                  borderTop: "1px solid #E2E8F0",
-                }}
-              >
-                <div
-                  style={{
-                    fontSize: 11,
-                    fontWeight: 800,
-                    color: "#64748B",
-                    textTransform: "uppercase",
-                    letterSpacing: "1px",
-                    marginBottom: 10,
-                    paddingLeft: 4,
-                  }}
-                >
-                  Related Policies
+            {/* Compliance info badge */}
+            <div style={{ marginTop: 24, paddingTop: 20, borderTop: "1px solid #E5E7EB" }}>
+              <div style={{ background: "linear-gradient(135deg, #F0FDF4, #ECFDF5)", border: "1px solid #D1FAE5", borderRadius: 10, padding: "14px" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="#16A34A"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+                  <span style={{ fontSize: 12, fontWeight: 700, color: "#065F46" }}>DPA &amp; Compliance</span>
                 </div>
-                {RELATED_POLICIES.map((p) => (
-                  <div
-                    key={p.path}
-                    onClick={() => navigate(p.path)}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 8,
-                      padding: "8px 10px",
-                      borderRadius: 8,
-                      cursor: "pointer",
-                      fontSize: 12.5,
-                      fontWeight: 600,
-                      color: "#16A34A",
-                      transition: "background 0.15s",
-                      marginBottom: 2,
-                    }}
-                    onMouseEnter={(e) =>
-                      (e.currentTarget.style.background = "#F0FDF4")
-                    }
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.background = "transparent")
-                    }
-                  >
-                    <svg
-                      width="12"
-                      height="12"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="#16A34A"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <polyline points="9 18 15 12 9 6" />
-                    </svg>
-                    {p.label}
-                  </div>
-                ))}
+                <p style={{ fontSize: 11, color: "#047857", lineHeight: 1.5, margin: 0 }}>
+                  Processor-Controller Terms · GDPR &amp; DPDP Act compliant
+                </p>
               </div>
             </div>
           </aside>
@@ -897,50 +883,199 @@ const DpaPage = () => {
               </p>
             </div>
 
+            {/* ── Mobile Table of Contents Menu (Custom Responsive Selector) ── */}
+            <div className="mobile-toc-wrapper" ref={mobileTocRef}>
+              <div style={{
+                background: "#FFFFFF",
+                border: "1px solid #E2E8F0",
+                borderRadius: 16,
+                padding: "12px 16px",
+                boxShadow: "0 4px 18px rgba(15, 23, 42, 0.06)",
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+                transition: "none",
+              }}>
+                {/* Header / Current selection row */}
+                <div
+                  onClick={() => setIsMobileTocOpen(!isMobileTocOpen)}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    cursor: "pointer",
+                    userSelect: "none",
+                  }}
+                >
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, minWidth: 0, flex: 1 }}>
+                    <div style={{
+                      width: 32,
+                      height: 32,
+                      borderRadius: 10,
+                      background: "rgba(22, 163, 74, 0.12)",
+                      color: "#16A34A",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      flexShrink: 0
+                    }}>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="8" y1="6" x2="21" y2="6" /><line x1="8" y1="12" x2="21" y2="12" /><line x1="8" y1="18" x2="21" y2="18" /><line x1="3" y1="6" x2="3.01" y2="6" /><line x1="3" y1="12" x2="3.01" y2="12" /><line x1="3" y1="18" x2="3.01" y2="18" />
+                      </svg>
+                    </div>
+                    <div style={{ display: "flex", flexDirection: "column", minWidth: 0, flex: 1 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                        <span style={{ fontSize: 10, fontWeight: 800, color: "#16A34A", textTransform: "uppercase", letterSpacing: "0.8px" }}>
+                          Table of Contents
+                        </span>
+                        <span style={{ fontSize: 10, fontWeight: 700, color: "#15803D", background: "#DCFCE7", padding: "1px 7px", borderRadius: 10 }}>
+                          {sections.findIndex(s => s.id === activeSection) + 1} of {sections.length}
+                        </span>
+                      </div>
+                      <span style={{
+                        fontSize: 14,
+                        fontWeight: 700,
+                        color: "#0F172A",
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        marginTop: 1,
+                        fontFamily: "'Inter', sans-serif"
+                      }}>
+                        {sections.find(s => s.id === activeSection)?.title || sections[0].title}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div style={{
+                    width: 30,
+                    height: 30,
+                    borderRadius: 8,
+                    background: isMobileTocOpen ? "#F0FDF4" : "#F1F5F9",
+                    color: isMobileTocOpen ? "#16A34A" : "#64748B",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexShrink: 0,
+                    marginLeft: 8,
+                    transition: "transform 0.25s ease, background 0.2s ease",
+                    transform: isMobileTocOpen ? "rotate(180deg)" : "rotate(0deg)"
+                  }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Dropdown Options List */}
+                {isMobileTocOpen && (
+                  <div style={{
+                    marginTop: 12,
+                    paddingTop: 12,
+                    borderTop: "1px solid #E2E8F0",
+                    maxHeight: "340px",
+                    overflowY: "auto",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 3,
+                  }}
+                  className="no-scrollbar"
+                  >
+                    {sections.map((s, idx) => {
+                      const isActive = activeSection === s.id;
+                      return (
+                        <div
+                          key={s.id}
+                          onClick={() => {
+                            scrollToSection(s.id);
+                            setIsMobileTocOpen(false);
+                          }}
+                          style={{
+                            padding: "8px 12px",
+                            borderRadius: 8,
+                            background: isActive ? "#F0FDF4" : "transparent",
+                            color: isActive ? "#16A34A" : "#334155",
+                            fontWeight: isActive ? 700 : 500,
+                            fontSize: 13,
+                            cursor: "pointer",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+                            transition: "all 0.15s ease",
+                          }}
+                        >
+                          <span style={{
+                            display: "inline-block",
+                            width: 22,
+                            fontSize: 11,
+                            fontWeight: 700,
+                            color: isActive ? "#16A34A" : "#94A3B8",
+                            flexShrink: 0
+                          }}>
+                            {idx + 1}.
+                          </span>
+                          <span style={{ flex: 1, lineHeight: 1.35 }}>
+                            {s.title.replace(/^\d+\.\s*/, '')}
+                          </span>
+                          {isActive && (
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                              <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            </div>
+
             {/* Sections */}
             {sections.map((s) => (
               <div
                 key={s.id}
                 id={s.id}
                 className="dpa-section-card"
+                style={{
+                  background: "#FFFFFF",
+                  border: "1px solid #E2E8F0",
+                  borderRadius: 16,
+                  padding: 32,
+                  marginBottom: 26,
+                  boxShadow: "0 4px 12px rgba(15, 23, 42, 0.01)",
+                  textAlign: "left",
+                  scrollMarginTop: "95px",
+                }}
                 onMouseEnter={() => setActiveSection(s.id)}
               >
-                {/* Icon + title */}
+                {/* Icon Badge */}
                 <div
                   style={{
+                    width: 40,
+                    height: 40,
+                    borderRadius: 10,
+                    background: "rgba(22, 163, 74, 0.08)",
+                    color: "#16A34A",
                     display: "flex",
                     alignItems: "center",
-                    gap: 14,
+                    justifyContent: "center",
                     marginBottom: 20,
                   }}
                 >
-                  <div
-                    style={{
-                      width: 40,
-                      height: 40,
-                      borderRadius: 10,
-                      background: "rgba(22,163,74,0.08)",
-                      color: "#16A34A",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      flexShrink: 0,
-                    }}
-                  >
-                    {s.icon}
-                  </div>
-                  <h2
-                    style={{
-                      fontSize: 18,
-                      fontWeight: 800,
-                      color: "#0F172A",
-                      letterSpacing: "-0.3px",
-                      margin: 0,
-                    }}
-                  >
-                    {s.title}
-                  </h2>
+                  {s.icon}
                 </div>
+                {/* Title */}
+                <h2
+                  style={{
+                    fontSize: 20,
+                    fontWeight: 800,
+                    color: "#111827",
+                    marginBottom: 16,
+                    letterSpacing: "-0.3px",
+                    fontFamily: "'Inter', sans-serif",
+                  }}
+                >
+                  {s.title}
+                </h2>
 
                 {/* Content Rendering based on type */}
                 {s.definitions ? (
