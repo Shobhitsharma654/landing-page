@@ -35,8 +35,8 @@ const STEPS = [
     points:["Answering common questions","Finding relevant business information","Assisting with customer enquiries","Drafting responses","Summarizing information","Supporting internal workflows"],
     visual:[
       {q:"What are your store hours?",   a:"Our store is open Mon-Sat 10am to 8pm and Sunday 11am to 6pm."},
-      {q:"Do you offer bulk discounts?", a:"Yes! Orders above 50 units get 15% off. I can connect you with our sales team."},
-      {q:"Where is my order #4821?",     a:"Your order shipped on Aug 17. Expected delivery: Aug 19. Track here: track.in/4821"},
+      {q:"Do you offer bulk discounts?", a:"Yes! We offer bulk purchase options. I can connect you with our sales team."},
+      {q:"How can I check my order status?", a:"Your order status and real-time delivery tracking link are sent directly on WhatsApp."},
     ],
   },
   {
@@ -65,10 +65,10 @@ const STEPS = [
     desc:"AI-assisted workflows that help businesses organize and understand incoming leads. AI outputs should be reviewed where business decisions require human judgment.",
     points:["Lead information and context","Initial customer enquiries","Lead qualification workflows","Follow-up suggestions","Customer intent signals","Lead prioritization"],
     visual:[
-      {name:"Rahul Mehra",    score:92, tag:"Hot Lead",   c:"#22C55E"},
-      {name:"Priya Sharma",   score:78, tag:"Warm",       c:"#F59E0B"},
-      {name:"Amit Patel",     score:61, tag:"Nurture",    c:"#3B82F6"},
-      {name:"Sneha Gupta",    score:44, tag:"Cold",       c:MU},
+      {name:"Rahul Mehra",    tag:"Hot Lead",   c:"#22C55E"},
+      {name:"Priya Sharma",   tag:"Warm",       c:"#F59E0B"},
+      {name:"Amit Patel",     tag:"Nurture",    c:"#3B82F6"},
+      {name:"Sneha Gupta",    tag:"New Lead",   c:"#14B8A6"},
     ],
   },
   {
@@ -88,8 +88,8 @@ const STEPS = [
     desc:"AI can help generate or suggest responses based on available business context. Users should review AI-generated responses before sending them when accuracy or business impact is important.",
     points:["Draft customer replies","Answer common questions","Improve response consistency","Reduce repetitive writing","Assist customer-support teams"],
     visual:[
-      {label:"Original enquiry",  text:"Hi, I want to know the refund process for my order #5520"},
-      {label:"AI Suggested Reply", text:"Hi! For order #5520, our refund process takes 3-5 business days once approved. Would you like me to initiate the refund request now?"},
+      {label:"Original enquiry",  text:"Hi, I want to know the return policy for my order"},
+      {label:"AI Suggested Reply", text:"Hello! Items can be returned or exchanged within 7 days of delivery. Would you like me to initiate the return process for you?"},
     ],
   },
   {
@@ -188,9 +188,12 @@ const CSS = `
   @media(max-width:640px){
     .a-fg    { grid-template-columns:1fr!important; }
     .a-why   { grid-template-columns:1fr!important; }
-    .a-ctr   { flex-direction:column!important;align-items:stretch!important; }
-    .gbtn,.dbtn,.gbtn2 { width:100%!important;text-align:center!important;justify-content:center!important; }
-    .a-hr    { display:none!important; }
+    .a-ctr   { display:flex!important; flex-direction:row!important; align-items:center!important; gap:10px!important; flex-wrap:wrap!important; }
+    .gbtn,.dbtn,.gbtn2 { width:auto!important; padding:10px 18px!important; font-size:12px!important; text-align:center!important; justify-content:center!important; }
+    .a-hr    { width:100%!important; justify-content:center!important; padding-top:24px!important; margin-bottom:0!important; }
+    .a-hr > div { transform:none!important; transform-origin:top center!important; margin:0 auto!important; max-width:340px!important; margin-top:0!important; }
+    .ai-vis-wrap { margin-bottom:0!important; margin-top:20px!important; width:100%!important; }
+    .ai-vis-card { transform:none!important; transform-origin:top center!important; height:auto!important; width:100%!important; max-width:100%!important; margin:0 auto!important; box-sizing:border-box!important; }
     .eco-g   { grid-template-columns:1fr!important; }
     .step-nav{ flex-direction:column!important; }
     .step-btn{ min-width:100%!important; }
@@ -299,15 +302,15 @@ const AiPage = () => {
 
               <div className="a-ctr">
                 <button id="ai-hero-start" className="gbtn" onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started</button>
-                <button id="ai-hero-explore" className="dbtn" onClick={() => document.getElementById("ai-features")?.scrollIntoView({behavior:"smooth"})}>
-                  Explore AI & Automation →
+                <button id="ai-hero-explore" style={{ background:"#fff", color:D2, border:`1.5px solid ${GB}`, borderRadius:40, padding:"10px 24px", fontSize:12, fontWeight:600, cursor:"pointer", transition:"all .2s" }} onMouseOver={(e) => { e.currentTarget.style.borderColor=G; e.currentTarget.style.color=G; }} onMouseOut={(e) => { e.currentTarget.style.borderColor=GB; e.currentTarget.style.color=D2; }} onClick={() => document.getElementById("ai-features")?.scrollIntoView({behavior:"smooth"})}>
+                  Explore More →
                 </button>
               </div>
             </div>
 
             {/* Right — AI workflow visualization */}
             <div className="a-hr">
-              <div style={{background:"#0F3826",borderRadius:24,padding:28,boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)",border:"1px solid rgba(34,197,94,.2)",width:"100%",maxWidth:460,transform:"scale(0.75)",transformOrigin:"top right",marginTop:"72px",overflow:"hidden"}}>
+              <div style={{background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)",borderRadius:24,padding:28,boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)",border:"1px solid rgba(34,197,94,.2)",width:"100%",maxWidth:460,transform:"scale(0.75)",transformOrigin:"top center",marginTop:"72px",overflow:"hidden"}}>
                 {/* Header */}
                 <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:28 }}>
                   <div style={{ display:"flex", alignItems:"center", gap:12 }}>
@@ -452,10 +455,10 @@ const AiPage = () => {
                   </div>
 
                   {/* Visual panel varies by step type */}
-                  <div style={{ marginBottom: -74 }}>
+                  <div className="ai-vis-wrap" style={{ marginBottom: -74 }}>
                     {step.visual && step.visual[0]?.q && (
                       /* AI chat Q&A visual */
-                      <div style={{background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)",borderRadius:16,padding:22,border:"1px solid rgba(34,197,94,.3)",boxShadow:"0 20px 48px rgba(0,0,0,.25)",transform:"scale(0.82)",transformOrigin:"top right",height:410,display:"flex",flexDirection:"column"}}>
+                      <div className="ai-vis-card" style={{background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)",borderRadius:16,padding:22,border:"1px solid rgba(34,197,94,.3)",boxShadow:"0 20px 48px rgba(0,0,0,.25)",transform:"scale(0.82)",transformOrigin:"top right",height:410,display:"flex",flexDirection:"column"}}>
                         <div style={{fontSize:11,color:"rgba(255,255,255,.35)",letterSpacing:1.2,textTransform:"uppercase",marginBottom:14}}>Live AI Responses</div>
                         {step.visual.map((item,i) => (
                           <div key={i} style={{marginBottom:14}}>
@@ -468,29 +471,27 @@ const AiPage = () => {
                         </div>
                       </div>
                     )}
-                    {step.visual && step.visual[0]?.score && (
+                    {step.visual && step.visual[0]?.tag && (
                       /* Lead scoring visual */
-                      <div style={{background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)",borderRadius:16,padding:22,border:"1px solid rgba(34,197,94,.3)",boxShadow:"0 20px 48px rgba(0,0,0,.25)",transform:"scale(0.82)",transformOrigin:"top right",height:410,display:"flex",flexDirection:"column"}}>
-                        <div style={{fontSize:11,color:"rgba(255,255,255,.35)",letterSpacing:1.2,textTransform:"uppercase",marginBottom:14}}>AI Lead Scoring</div>
+                      <div className="ai-vis-card" style={{background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)",borderRadius:16,padding:22,border:"1px solid rgba(34,197,94,.3)",boxShadow:"0 20px 48px rgba(0,0,0,.25)",transform:"scale(0.82)",transformOrigin:"top right",height:410,display:"flex",flexDirection:"column"}}>
+                        <div style={{fontSize:11,color:"rgba(255,255,255,.35)",letterSpacing:1.2,textTransform:"uppercase",marginBottom:14}}>AI Lead Categorization</div>
                         {step.visual.map((lead,i) => (
-                          <div key={i} style={{display:"flex",alignItems:"center",gap:10,padding:"10px 0",borderBottom: i<step.visual.length-1?"1px solid rgba(255,255,255,.05)":"none"}}>
-                            <div style={{width:32,height:32,borderRadius:"50%",background:lead.c+"25",color:lead.c,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:700,flexShrink:0}}>{lead.name[0]}</div>
-                            <div style={{flex:1,fontSize:13,color:"rgba(255,255,255,.8)",fontWeight:600}}>{lead.name}</div>
-                            <div style={{width:40,height:6,background:"rgba(255,255,255,.06)",borderRadius:3,overflow:"hidden"}}>
-                              <div style={{width:lead.score+"%",height:"100%",background:lead.c,borderRadius:3}}/>
+                          <div key={i} style={{display:"flex",alignItems:"center",justifyContent:"space-between",padding:"12px 0",borderBottom: i<step.visual.length-1?"1px solid rgba(255,255,255,.05)":"none"}}>
+                            <div style={{display:"flex",alignItems:"center",gap:10}}>
+                              <div style={{width:32,height:32,borderRadius:"50%",background:lead.c+"25",color:lead.c,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:700,flexShrink:0}}>{lead.name[0]}</div>
+                              <div style={{fontSize:13,color:"rgba(255,255,255,.9)",fontWeight:600}}>{lead.name}</div>
                             </div>
-                            <div style={{fontSize:12,color:lead.c,fontWeight:700,minWidth:24,textAlign:"right"}}>{lead.score}</div>
-                            <div style={{background:lead.c+"20",color:lead.c,fontSize:10,fontWeight:700,padding:"2px 8px",borderRadius:40}}>{lead.tag}</div>
+                            <div style={{background:lead.c+"20",color:lead.c,fontSize:11,fontWeight:700,padding:"3px 12px",borderRadius:40}}>{lead.tag}</div>
                           </div>
                         ))}
                         <div style={{marginTop:"auto",padding:"10px 12px",background:"rgba(22,163,74,.08)",border:"1px solid rgba(22,163,74,.2)",borderRadius:8}}>
-                          <div style={{fontSize:11,color:"rgba(255,255,255,.4)"}}>AI updates scores in real-time · Review before action</div>
+                          <div style={{fontSize:11,color:"rgba(255,255,255,.4)"}}>Categorized by intent & context · Review before action</div>
                         </div>
                       </div>
                     )}
                     {step.visual && step.visual[0]?.label && (
                       /* Smart response visual */
-                      <div style={{background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)",borderRadius:16,padding:22,border:"1px solid rgba(34,197,94,.3)",boxShadow:"0 20px 48px rgba(0,0,0,.25)",transform:"scale(0.82)",transformOrigin:"top right",height:410,display:"flex",flexDirection:"column"}}>
+                      <div className="ai-vis-card" style={{background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)",borderRadius:16,padding:22,border:"1px solid rgba(34,197,94,.3)",boxShadow:"0 20px 48px rgba(0,0,0,.25)",transform:"scale(0.82)",transformOrigin:"top right",height:410,display:"flex",flexDirection:"column"}}>
                         <div style={{fontSize:11,color:"rgba(255,255,255,.35)",letterSpacing:1.2,textTransform:"uppercase",marginBottom:14}}>Smart Response Draft</div>
                         {step.visual.map((item,i) => (
                           <div key={i} style={{marginBottom:14}}>
@@ -508,7 +509,7 @@ const AiPage = () => {
                     )}
                     {!step.visual && step.flow && (
                       /* Flow journey visual */
-                      <div style={{background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)",borderRadius:16,padding:22,border:"1px solid rgba(34,197,94,.3)",boxShadow:"0 20px 48px rgba(0,0,0,.25)",transform:"scale(0.82)",transformOrigin:"top right",height:410,display:"flex",flexDirection:"column"}}>
+                      <div className="ai-vis-card" style={{background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)",borderRadius:16,padding:22,border:"1px solid rgba(34,197,94,.3)",boxShadow:"0 20px 48px rgba(0,0,0,.25)",transform:"scale(0.82)",transformOrigin:"top right",height:410,display:"flex",flexDirection:"column"}}>
                         <div style={{fontSize:11,color:"rgba(255,255,255,.35)",letterSpacing:1.2,textTransform:"uppercase",marginBottom:16}}>Automation Flow</div>
                         {step.flow.map((s,si) => (
                           <div key={s} style={{display:"flex",alignItems:"flex-start",gap:12}}>
@@ -599,16 +600,16 @@ const AiPage = () => {
           <p style={{fontSize:13,color:MU,lineHeight:1.7,maxWidth:580,margin:"0 auto 28px"}}>
             Indian businesses manage customer enquiries, follow-ups, orders, marketing and support across multiple channels. MessBee AI & Automation helps bring these into a more connected, efficient digital workflow.
           </p>
-          <div style={{display:"flex",alignItems:"center",justifyContent:"center",flexWrap:"wrap",gap:0,marginBottom:28}}>
+          <div style={{display:"flex",alignItems:"center",justifyContent:"center",flexWrap:"wrap",gap:"8px 10px",marginBottom:28}}>
             {["Understand","Assist","Automate","Engage","Improve"].map((step,i,arr) => (
-              <React.Fragment key={step}>
+              <div key={step} style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
                 <span style={{background:"#fff",border:"1.5px solid "+GB,color:G,borderRadius:6,padding:"4px 10px",fontSize:11,fontWeight:700}}>{step}</span>
                 {i<arr.length-1 && <span style={{color:"#94A3B8",fontSize:13,padding:"0 3px"}}>→</span>}
-              </React.Fragment>
+              </div>
             ))}
           </div>
           <button id="ai-india-start" className="gbtn" style={{fontSize:13,padding:"10px 20px"}} onClick={() => window.open(adminUrl+"/signup","_blank")}>
-            Start With AI & Automation
+            Get Started
           </button>
         </div>
       </section>
@@ -700,7 +701,7 @@ const AiPage = () => {
           </p>
           <div style={{display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap"}}>
             <button id="ai-cta-final" className="gbtn" style={{fontSize:13,padding:"11px 26px"}} onClick={() => window.open(adminUrl+"/signup","_blank")}>
-              Start With AI & Automation
+              Get Started
             </button>
             <button id="ai-cta-sales" className="dbtn" style={{fontSize:13,padding:"11px 26px"}} onClick={() => navigate("/contact#contact-form-section")}>Contact Support</button>
           </div>

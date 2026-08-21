@@ -512,11 +512,81 @@ const ContactUsPage = () => {
           .contact-section {
             padding: 24px 16px !important;
           }
+          .contact-hero-section {
+            margin-top: 60px !important;
+            padding-top: 24px !important;
+            padding-bottom: 28px !important;
+          }
+          .contact-hero-section h1 {
+            font-size: clamp(24px, 6.2vw, 36px) !important;
+            letter-spacing: -0.5px !important;
+            line-height: 1.25 !important;
+            margin-bottom: 14px !important;
+          }
+          .contact-hero-right {
+            margin-top: 10px !important;
+            width: 100% !important;
+          }
+          .contact-hero-right > div {
+            transform: none !important;
+            margin: 0 !important;
+            width: 100% !important;
+            border-radius: 18px !important;
+            padding: 20px 16px !important;
+          }
           .grid-col-3 {
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
           }
           .grid-col-2 {
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+          }
+          .grid-col-5 {
+            grid-template-columns: 1fr !important;
+            gap: 14px !important;
+          }
+          .category-card {
+            padding: 20px 16px !important;
+            border-radius: 16px !important;
+          }
+          .contact-form-info-box > div, .contact-form-box {
+            padding: 20px 16px !important;
+            border-radius: 18px !important;
+          }
+          .contact-btn-primary, .contact-btn-secondary {
+            width: 100% !important;
+            justify-content: center !important;
+          }
+          .corporate-office-card {
+            padding: 20px 16px !important;
+            border-radius: 18px !important;
+          }
+          .corporate-office-header {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 12px !important;
+          }
+          .corporate-office-link {
+            width: 100% !important;
+            justify-content: center !important;
+          }
+          .corporate-office-details {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 14px !important;
+          }
+          .corporate-office-details > div {
+            flex: none !important;
+            width: 100% !important;
+          }
+          .corporate-office-contacts {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 12px !important;
+          }
+          .corporate-office-map {
+            height: 280px !important;
           }
         }
 
@@ -526,17 +596,17 @@ const ContactUsPage = () => {
             padding: 20px 14px !important;
           }
           .grid-col-5 {
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr !important;
           }
           .contact-btn-primary, .contact-btn-secondary {
-            width: 100%;
-            justify-content: center;
+            width: 100% !important;
+            justify-content: center !important;
           }
           .contact-hero-row {
-            gap: 24px;
+            gap: 24px !important;
           }
           .contact-form-info-box, .contact-form-box {
-            padding: 20px 16px !important;
+            padding: 18px 14px !important;
           }
         }
 
@@ -1072,7 +1142,7 @@ const ContactUsPage = () => {
          ═══════════════════════════════════════════════════════════════════ */}
       <section className="contact-section" style={{ background: "#F8FAFC", padding: "36px 5%", borderTop: "1px solid #E2E8F0", borderBottom: "1px solid #E2E8F0" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto", width: "100%" }}>
-          <div style={{
+          <div className="corporate-office-card" style={{
             background: "#FFFFFF",
             border: "1.5px solid #BBF7D0",
             borderRadius: 24,
@@ -1084,15 +1154,16 @@ const ContactUsPage = () => {
             width: "100%",
             boxSizing: "border-box"
           }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
+            <div className="corporate-office-header" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
               <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#F0FDF4", border: "1px solid #BBF7D0", borderRadius: 30, padding: "6px 16px" }}>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
                 <span style={{ fontSize: 12, fontWeight: 800, color: "#16A34A", letterSpacing: "0.5px", textTransform: "uppercase" }}>Corporate Office Location</span>
               </div>
               <a
-                href="https://www.google.com/maps/dir//MessBee,+Devika+Tower,+510,+Chander+Nagar,+Surya+Nagar,+Ghaziabad,+Uttar+Pradesh+201011/@28.6805919,77.4587233,14z/data=!4m8!4m7!1m0!1m5!1m1!1s0x390cfb2702bd3435:0x5174d17b09289b6b!2m2!1d77.3308721!2d28.6686012?entry=ttu&g_ep=EgoyMDI2MDgxNy4wIKXMDSoASAFQAw%3D%3D"
+                href="https://www.google.com/maps/dir//MessBee,+510A,+Chander+Nagar,+Surya+Nagar,+Ghaziabad,+Uttar+Pradesh+201011/@28.6686012,77.3308721,16z"
                 target="_blank"
                 rel="noreferrer"
+                className="corporate-office-link"
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
@@ -1112,7 +1183,7 @@ const ContactUsPage = () => {
               </a>
             </div>
 
-            <div style={{ borderTop: "1px solid #F1F5F9", paddingTop: 16, display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 20 }}>
+            <div className="corporate-office-details" style={{ borderTop: "1px solid #F1F5F9", paddingTop: 16, display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 20 }}>
               <div style={{ flex: "1 1 500px" }}>
                 <h3 style={{ fontSize: 17, fontWeight: 900, color: "#0F172A", marginBottom: 6, display: "flex", alignItems: "center", gap: 8 }}>
                   MessBee Corporate Office
@@ -1122,7 +1193,7 @@ const ContactUsPage = () => {
                 </p>
               </div>
 
-              <div style={{ display: "flex", gap: 24, flexWrap: "wrap", alignItems: "center" }}>
+              <div className="corporate-office-contacts" style={{ display: "flex", gap: 24, flexWrap: "wrap", alignItems: "center" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                   <div style={{ width: 36, height: 36, borderRadius: "50%", background: "#F0FDF4", border: "1px solid #BBF7D0", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
@@ -1146,7 +1217,7 @@ const ContactUsPage = () => {
             </div>
 
             {/* Embedded Google Maps iFrame */}
-            <div style={{
+            <div className="corporate-office-map" style={{
               width: "100%",
               height: "400px",
               borderRadius: "16px",
@@ -1157,7 +1228,7 @@ const ContactUsPage = () => {
             }}>
               <iframe
                 title="MessBee Corporate Office Location Map"
-                src="https://maps.google.com/maps?q=MessBee,+Devika+Tower,+510,+Chander+Nagar,+Surya+Nagar,+Ghaziabad,+Uttar+Pradesh+201011&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=MessBee,+510A,+Chander+Nagar,+Surya+Nagar,+Ghaziabad,+Uttar+Pradesh+201011&t=&z=16&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

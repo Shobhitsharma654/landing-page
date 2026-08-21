@@ -3,10 +3,10 @@ import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 
 const LandingPage    = lazy(() => import("./components/LandingPage"));
 const SolutionsPage  = lazy(() => import("./components/SolutionsPage"));
-const EcommercePage  = lazy(() => import("./components/EcommercePage"));
-const SmbPage        = lazy(() => import("./components/SmbPage"));
-const ServicePage    = lazy(() => import("./components/ServicePage"));
-const RetailPage     = lazy(() => import("./components/RetailPage"));
+const EcommercePage  = lazy(() => import("./components/solutions/EcommercePage"));
+const SmbPage        = lazy(() => import("./components/solutions/SmbPage"));
+const ServicePage    = lazy(() => import("./components/solutions/ServicePage"));
+const RetailPage     = lazy(() => import("./components/solutions/RetailPage"));
 const PricingPage    = lazy(() => import("./components/PricingPage"));
 const ResourcesPage  = lazy(() => import("./components/ResourcesPage"));
 const AboutPage      = lazy(() => import("./components/company/AboutPage"));

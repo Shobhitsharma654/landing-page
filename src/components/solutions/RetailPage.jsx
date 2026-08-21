@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Navbar from "../Navbar";
+import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
-import defaultLogo from "../assets/logo.jpeg";
+import defaultLogo from "../../assets/logo.jpeg";
 
 const G  = "#16A34A";
 const GL = "#F0FDF4";
@@ -16,88 +16,73 @@ const Pill = ({ children }) => (
   </div>
 );
 /* ═══════════════════════════════════════════════════════════════════════
-   MessBee — E-commerce Solutions Page
-   Official MessBee logo in Hero graphic.
+   MessBee — Retail & Local Businesses Solutions Page
    Strictly adheres ONLY to the text provided in the user prompt.
-   Compact, sleek typography & clean layout.
+   Distinct Retail & Local Hero Graphic with official MessBee Logo.
+   Compact, sleek typography & clean layout matching Ecommerce, SMB & Service pages.
    ═══════════════════════════════════════════════════════════════════════ */
 
-// 1. With MessBee, You Can (9 items from prompt)
+// 1. With MessBee, You Can (8 items from prompt)
 const WITH_MESSBEE_YOU_CAN = [
-  { text: "Manage customers and leads", icon: "👥" },
-  { text: "Organize customer information", icon: "📁" },
-  { text: "Connect supported WhatsApp Business communication", icon: "💬" },
-  { text: "Promote products through eligible campaigns", icon: "📢" },
-  { text: "Automate customer follow-ups", icon: "🔄" },
-  { text: "Segment customers for relevant communication", icon: "🎯" },
-  { text: "Create a digital storefront", icon: "🛍️" },
-  { text: "Manage supported order and payment workflows", icon: "💳" },
-  { text: "Track available campaign and customer activity", icon: "📊" },
+  { text: "Keep customer information organized", icon: "📁" },
+  { text: "Manage leads and enquiries", icon: "👥" },
+  { text: "Communicate through supported WhatsApp Business services", icon: "💬" },
+  { text: "Share offers and business updates", icon: "📢" },
+  { text: "Follow up with customers", icon: "🔄" },
+  { text: "Automate routine communication", icon: "⚡" },
+  { text: "Showcase products and services through a Digital Store", icon: "🛍️" },
+  { text: "Understand customer and campaign activity", icon: "📊" },
 ];
 
-// 2. Connected Customer Journey (6 steps from prompt)
-const JOURNEY_STEPS = [
+// 2. Turn First-Time Visitors Into Returning Customers (5 steps from prompt)
+const RETAIL_JOURNEY_STEPS = [
   {
-    num: "01",
-    name: "Discover",
-    desc: "Customers find your products or services through your digital presence and marketing activities.",
+    step: "Discover",
+    desc: "Help customers find your products, services and business information online.",
     color: "#3B82F6",
     bg: "#EFF6FF",
     border: "#BFDBFE",
     icon: "🔍",
   },
   {
-    num: "02",
-    name: "Enquire",
-    desc: "Customers can ask questions and communicate with your business through supported channels.",
+    step: "Enquire",
+    desc: "Make it easier for customers to ask questions and start a conversation.",
     color: "#8B5CF6",
     bg: "#F5F3FF",
     border: "#DDD6FE",
     icon: "💬",
   },
   {
-    num: "03",
-    name: "Purchase",
-    desc: "Connect supported commerce and payment workflows with the customer journey.",
+    step: "Purchase",
+    desc: "Support your sales and commerce workflows through available MessBee features.",
     color: "#16A34A",
     bg: "#F0FDF4",
     border: "#BBF7D0",
     icon: "🛒",
   },
   {
-    num: "04",
-    name: "Follow Up",
-    desc: "Keep customers informed about relevant order or service-related updates.",
+    step: "Follow Up",
+    desc: "Stay connected with customers after an enquiry or purchase.",
     color: "#F59E0B",
     bg: "#FEF3C7",
     border: "#FDE68A",
     icon: "📦",
   },
   {
-    num: "05",
-    name: "Re-Engage",
-    desc: "Create appropriate campaigns and follow-up workflows for existing customers.",
+    step: "Return",
+    desc: "Build ongoing relationships with customers through relevant communication.",
     color: "#EC4899",
     bg: "#FCE7F3",
     border: "#FBCFE8",
-    icon: "🚀",
-  },
-  {
-    num: "06",
-    name: "Retain",
-    desc: "Build long-term relationships through relevant customer communication.",
-    color: "#10B981",
-    bg: "#D1FAE5",
-    border: "#A7F3D0",
-    icon: "⭐",
+    icon: "❤️",
   },
 ];
 
-// 3. Tools for Your E-commerce Workflow (6 items from prompt)
-const WORKFLOW_TOOLS = [
+// 3. Practical Tools for Local Businesses (5 items from prompt)
+const PRACTICAL_TOOLS = [
   {
-    title: "Customer & Lead Management",
-    desc: "Keep customer information, enquiries and leads organized so your team can understand each customer's relationship with your business.",
+    title: "Customer Management",
+    desc: "Keep customer and contact information organized instead of relying only on phone contacts, notebooks or scattered spreadsheets.",
     color: "#3B82F6",
     bg: "#EFF6FF",
     border: "#BFDBFE",
@@ -105,7 +90,7 @@ const WORKFLOW_TOOLS = [
   },
   {
     title: "WhatsApp Business",
-    desc: "Use supported WhatsApp Business capabilities for customer conversations, updates, enquiries and eligible marketing communication.",
+    desc: "Use supported WhatsApp Business capabilities for customer enquiries, updates, notifications and eligible promotional communication.",
     color: "#16A34A",
     bg: "#F0FDF4",
     border: "#BBF7D0",
@@ -113,15 +98,15 @@ const WORKFLOW_TOOLS = [
   },
   {
     title: "Marketing Automation",
-    desc: "Create campaigns, customer journeys and follow-up workflows across supported channels.",
+    desc: "Create campaigns and follow-up workflows for offers, announcements, customer engagement and re-engagement.",
     color: "#8B5CF6",
     bg: "#F5F3FF",
     border: "#DDD6FE",
-    icon: "⚡",
+    icon: "📢",
   },
   {
     title: "Digital Store",
-    desc: "Showcase products and services through a digital storefront and give customers a direct way to discover your offerings.",
+    desc: "Give customers a convenient way to discover your products or services through a digital storefront.",
     color: "#F59E0B",
     bg: "#FEF3C7",
     border: "#FDE68A",
@@ -129,165 +114,133 @@ const WORKFLOW_TOOLS = [
   },
   {
     title: "AI & Automation",
-    desc: "Use supported AI-assisted features and automation to help with customer enquiries, responses and repetitive workflows.",
+    desc: "Use supported AI-assisted tools and automation to reduce repetitive work and help your team respond more efficiently.",
     color: "#EC4899",
     bg: "#FCE7F3",
     border: "#FBCFE8",
     icon: "🤖",
   },
-  {
-    title: "Analytics & Insights",
-    desc: "Use available campaign and customer activity data to understand what is working and where your team may need to improve.",
-    color: "#06B6D4",
-    bg: "#CFFAFE",
-    border: "#A5F3FC",
-    icon: "📈",
-  },
 ];
 
-// 4. Product Communication Flow (6 nodes from prompt)
-const STORE_FLOW_NODES = [
-  "Product",
-  "Customer",
-  "Conversation",
-  "Order",
-  "Follow-Up",
-  "Relationship",
-];
-
-// 5. Customer Segments (7 items from prompt)
-const CUSTOMER_SEGMENTS = [
-  "New customers",
-  "Returning customers",
-  "Interested prospects",
-  "Recent buyers",
-  "Inactive customers",
-  "Product or category interests",
-  "Customer lifecycle stages",
-];
-
-// 6. Automation Workflows (7 items from prompt)
-const AUTOMATION_WORKFLOWS = [
-  "Lead follow-ups",
-  "Customer notifications",
-  "Order-related communication",
-  "Marketing journeys",
-  "Customer re-engagement",
-  "Internal notifications",
-  "Routine business tasks",
-];
-
-// 7. Why E-commerce Businesses Choose MessBee (7 items from prompt)
-const WHY_CHOOSE_MESSBEE = [
+// 4. Useful for Different Local Businesses (6 items from prompt)
+const LOCAL_BUSINESS_TYPES = [
   {
-    title: "Keep Customer Data Organized",
-    desc: "Manage relevant customer and lead information from a centralized environment.",
-    icon: "📂",
-  },
-  {
-    title: "Connect With Customers",
-    desc: "Bring supported communication channels into your customer workflow.",
-    icon: "💬",
-  },
-  {
-    title: "Market More Effectively",
-    desc: "Create campaigns based on customer segments and business goals.",
-    icon: "🎯",
-  },
-  {
-    title: "Automate Routine Tasks",
-    desc: "Reduce repetitive follow-ups and customer communication work.",
-    icon: "⚡",
-  },
-  {
-    title: "Encourage Repeat Business",
-    desc: "Stay connected with existing customers through relevant engagement.",
-    icon: "🔄",
-  },
-  {
-    title: "Build a Direct Customer Relationship",
-    desc: "Create a stronger connection between your business and the people who buy from you.",
-    icon: "❤️",
-  },
-  {
-    title: "Grow With Your Business",
-    desc: "Expand your use of CRM, communication, marketing and automation as your e-commerce operations grow.",
-    icon: "📈",
-  },
-];
-
-// 8. For Different E-commerce Businesses (5 items from prompt)
-const BUSINESS_TYPES = [
-  {
-    type: "D2C Brands",
-    desc: "Build direct relationships with customers beyond the initial purchase.",
+    type: "Retail Stores",
+    desc: "Keep customers informed about new products, offers and business updates while maintaining organized customer records.",
     color: "#16A34A",
     bg: "#F0FDF4",
     border: "#BBF7D0",
   },
   {
-    type: "Online Retailers",
-    desc: "Manage customer communication, product promotions and follow-ups.",
+    type: "Showrooms",
+    desc: "Manage enquiries, customer information and follow-ups throughout the buying journey.",
     color: "#3B82F6",
     bg: "#EFF6FF",
     border: "#BFDBFE",
   },
   {
-    type: "Product-Based Businesses",
-    desc: "Connect product discovery, customer enquiries and marketing workflows.",
+    type: "Salons & Beauty Businesses",
+    desc: "Stay connected with customers through appointment-related communication, offers and follow-ups where supported.",
     color: "#8B5CF6",
     bg: "#F5F3FF",
     border: "#DDD6FE",
   },
   {
-    type: "Growing Online Stores",
-    desc: "Organize customer operations as order volume and customer numbers increase.",
+    type: "Cafés & Restaurants",
+    desc: "Engage customers with updates, offers and relevant business communication while building repeat customer relationships.",
     color: "#F59E0B",
     bg: "#FEF3C7",
     border: "#FDE68A",
   },
   {
-    type: "Multi-Channel Sellers",
-    desc: "Bring supported customer communication and marketing activities into a more connected workflow.",
+    type: "Service Centres",
+    desc: "Manage customer enquiries, service-related communication and follow-ups in a more organized way.",
     color: "#EC4899",
     bg: "#FCE7F3",
     border: "#FBCFE8",
   },
+  {
+    type: "Local Professional Services",
+    desc: "Keep track of enquiries, clients and ongoing customer relationships from one place.",
+    color: "#06B6D4",
+    bg: "#CFFAFE",
+    border: "#A5F3FC",
+  },
 ];
 
-// 9. Frequently Asked Questions (8 items from prompt)
-const ECOM_FAQS = [
+// 5. Connected Flow Nodes (6 nodes from prompt)
+const RETAIL_FLOW_NODES = [
+  "Customer",
+  "CRM",
+  "WhatsApp",
+  "Marketing",
+  "Automation",
+  "Digital Store",
+];
+
+// 6. Why Retail & Local Businesses Choose MessBee (6 items from prompt)
+const WHY_CHOOSE_MESSBEE = [
   {
-    q: "What is MessBee for e-commerce businesses?",
-    a: "MessBee helps e-commerce businesses manage customer relationships, communication, marketing, automation and supported commerce workflows from one connected platform.",
+    title: "Know Your Customers",
+    desc: "Keep useful customer information organized and accessible to authorized team members.",
+    icon: "📂",
   },
   {
-    q: "Can I manage e-commerce customers with MessBee?",
-    a: "Yes. MessBee CRM can help businesses organize customer and lead information and manage relevant customer interactions.",
+    title: "Stay in Touch",
+    desc: "Maintain customer communication through supported channels.",
+    icon: "💬",
   },
   {
-    q: "Can I use WhatsApp for my e-commerce business?",
-    a: "MessBee may support WhatsApp Business Platform capabilities for eligible customer communication, subject to Meta/WhatsApp requirements, account eligibility and configuration.",
+    title: "Promote Your Business",
+    desc: "Share relevant offers, products, services and updates with appropriate customers.",
+    icon: "📢",
   },
   {
-    q: "Can I send product promotions through WhatsApp?",
-    a: "Eligible promotional communication may be supported where the business meets applicable Meta/WhatsApp requirements and has the appropriate customer permission or other lawful basis.",
+    title: "Encourage Repeat Business",
+    desc: "Use customer engagement and follow-up workflows to stay connected after a sale.",
+    icon: "🔄",
   },
   {
-    q: "Can MessBee help with customer re-engagement?",
-    a: "Yes. Supported segmentation and marketing automation features can help businesses create relevant re-engagement workflows.",
+    title: "Save Time",
+    desc: "Automate routine communication and repetitive tasks where appropriate.",
+    icon: "⚡",
   },
   {
-    q: "Can I connect my Digital Store with CRM?",
-    a: "Supported MessBee configurations can connect digital-store activity with relevant customer and CRM workflows.",
+    title: "Build Your Digital Presence",
+    desc: "Use MessBee Digital Store to showcase your products or services online.",
+    icon: "🌐",
+  },
+];
+
+// 7. Frequently Asked Questions (7 items from prompt)
+const RETAIL_FAQS = [
+  {
+    q: "What can MessBee do for a retail business?",
+    a: "MessBee can help retail businesses manage customer information, leads, communication, marketing campaigns, follow-ups and supported digital commerce activities.",
   },
   {
-    q: "Can I automate customer communication?",
-    a: "Yes. Supported automation can help businesses create workflows for eligible customer communication, follow-ups and other repetitive activities.",
+    q: "Can a local shop use MessBee?",
+    a: "Yes. MessBee is suitable for local shops and other businesses that want to organize customer relationships and build a stronger digital presence.",
   },
   {
-    q: "Does MessBee provide an e-commerce marketplace?",
-    a: "No. MessBee is designed to help businesses manage their own digital presence, customer relationships and supported commerce workflows rather than operate as a consumer marketplace.",
+    q: "Can I communicate with my customers on WhatsApp?",
+    a: "MessBee may support WhatsApp Business Platform capabilities, subject to Meta/WhatsApp requirements, account eligibility, permissions and configuration.",
+  },
+  {
+    q: "Can I send offers to existing customers?",
+    a: "Eligible promotional communication can be sent where the business has the required permission or other lawful basis and complies with applicable messaging policies and laws.",
+  },
+  {
+    q: "Can I manage repeat customers?",
+    a: "Yes. Customer records, segmentation and supported marketing workflows can help businesses organize and engage their existing customers.",
+  },
+  {
+    q: "Can I create a digital store for my local business?",
+    a: "Yes. MessBee Digital Store can help businesses showcase products or services online and connect customers with their business.",
+  },
+  {
+    q: "Does MessBee guarantee more sales?",
+    a: "No. MessBee provides tools for customer management, communication and business growth. Sales and business results depend on factors including your products, pricing, service, market and business practices.",
   },
 ];
 
@@ -341,9 +294,9 @@ const FaqItem = ({ q, a }) => {
 };
 
 /* ═══════════════════════════════════════════════════════════════════
-   MAIN E-COMMERCE PAGE COMPONENT
+   MAIN RETAIL & LOCAL BUSINESSES PAGE COMPONENT
    ═══════════════════════════════════════════════════════════════════ */
-const EcommercePage = () => {
+const RetailPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -361,7 +314,7 @@ const EcommercePage = () => {
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         /* ── BUTTONS ── */
-        .ecom-btn-primary {
+        .retail-btn-primary {
           background: #16A34A;
           color: #FFFFFF;
           border: none;
@@ -379,13 +332,13 @@ const EcommercePage = () => {
           user-select: none;
           text-decoration: none;
         }
-        .ecom-btn-primary:hover {
+        .retail-btn-primary:hover {
           background: #15803D;
           transform: translateY(-2px);
           box-shadow: 0 12px 24px rgba(22, 163, 74, 0.32);
         }
 
-        .ecom-btn-secondary {
+        .retail-btn-secondary {
           background: #FFFFFF;
           color: #0F172A;
           border: 1.5px solid #E2E8F0;
@@ -403,7 +356,7 @@ const EcommercePage = () => {
           user-select: none;
           text-decoration: none;
         }
-        .ecom-btn-secondary:hover {
+        .retail-btn-secondary:hover {
           border-color: #16A34A;
           color: #16A34A;
           background: #F0FDF4;
@@ -421,29 +374,29 @@ const EcommercePage = () => {
             transform: translateY(0);
           }
         }
-        .ecom-glass-card {
+        .retail-glass-card {
           background: #FFFFFF;
           border: 1px solid #E2E8F0;
           border-radius: 16px;
           transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
           animation: fadeInUp 0.5s ease-out both;
         }
-        .ecom-glass-card:hover {
+        .retail-glass-card:hover {
           transform: translateY(-6px) scale(1.02);
           box-shadow: 0 14px 30px rgba(22, 163, 74, 0.08), 0 4px 12px rgba(0, 0, 0, 0.02);
           border-color: #BBF7D0 !important;
         }
 
-        .ecom-dark-card {
+        .retail-dark-card {
           transition: all 0.25s ease;
         }
-        .ecom-dark-card:hover {
+        .retail-dark-card:hover {
           transform: translateY(-3px);
           border-color: rgba(74, 222, 128, 0.4) !important;
         }
 
         /* ── LAPTOP & DESKTOP RESPONSIVE GRID SYSTEM ── */
-        .ecom-hero-row {
+        .retail-hero-row {
           display: flex;
           align-items: center;
           gap: 48px;
@@ -472,7 +425,7 @@ const EcommercePage = () => {
 
         /* Large Laptops / Desktops (1440px +) */
         @media (min-width: 1440px) {
-          .ecom-hero-row { gap: 60px; }
+          .retail-hero-row { gap: 60px; }
           .grid-col-3 { gap: 22px; }
         }
 
@@ -487,17 +440,17 @@ const EcommercePage = () => {
           .grid-col-5 { grid-template-columns: repeat(3, 1fr); }
           .grid-col-4 { grid-template-columns: repeat(2, 1fr); }
           .grid-col-3 { grid-template-columns: repeat(2, 1fr); }
-          .ecom-hero-row { gap: 32px; }
+          .retail-hero-row { gap: 32px; }
         }
 
-        .ecom-hero-right-col { flex: 0.9; min-width: 320px; position: relative; display: flex; justify-content: center; }
-        .ecom-hero-right-card { transform: scale(0.8); transform-origin: center right; width: 100%; max-width: 480px; }
+        .retail-hero-right-col { flex: 0.9; min-width: 320px; position: relative; display: flex; justify-content: center; }
+        .retail-hero-right-card { transform: scale(0.8); transform-origin: center right; width: 100%; max-width: 480px; }
 
         /* Compact Laptop / Tablet-Laptop (under 1024px) */
         @media (max-width: 1023px) {
-          .ecom-hero-row { flex-direction: column !important; }
-          .ecom-hero-right-col { width: 100% !important; min-width: unset !important; justify-content: center !important; margin-top: 24px !important; }
-          .ecom-hero-right-card { transform: none !important; transform-origin: center center !important; max-width: 340px !important; margin: 0 auto !important; }
+          .retail-hero-row { flex-direction: column !important; }
+          .retail-hero-right-col { width: 100% !important; min-width: unset !important; justify-content: center !important; margin-top: 24px !important; }
+          .retail-hero-right-card { transform: none !important; transform-origin: center center !important; max-width: 340px !important; margin: 0 auto !important; }
           .grid-col-5 { grid-template-columns: repeat(2, 1fr); }
           .grid-col-4 { grid-template-columns: repeat(2, 1fr); }
           .grid-col-3 { grid-template-columns: repeat(1, 1fr); }
@@ -510,7 +463,7 @@ const EcommercePage = () => {
             grid-template-columns: 1fr !important;
             gap: 12px !important;
           }
-          .ecom-glass-card {
+          .retail-glass-card {
             padding: 14px 16px !important;
           }
         }
@@ -526,16 +479,16 @@ const EcommercePage = () => {
       `}</style>
 
       {/* SEO Document Title & Meta Description */}
-      <title>E-commerce Business Solutions | CRM, Marketing &amp; Automation | MessBee</title>
+      <title>Retail &amp; Local Business Solutions | Customer Engagement | MessBee</title>
       <meta
         name="description"
-        content="MessBee helps e-commerce businesses manage customers, WhatsApp communication, marketing, automation and digital commerce through one connected business platform."
+        content="MessBee helps retail and local businesses manage customers, WhatsApp communication, marketing, follow-ups and digital storefronts from one connected platform."
       />
 
       <Navbar />
 
       {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 1: HERO (Strictly Provided Copy)
+          SECTION 1: HERO (Retail & Local Specific Graphic Layout with MessBee Logo)
          ═══════════════════════════════════════════════════════════════════ */}
       <section
         style={{
@@ -561,10 +514,10 @@ const EcommercePage = () => {
           }}
         />
 
-        <div className="ecom-hero-row" style={{ maxWidth: 1280, margin: "0 auto", position: "relative", zIndex: 1 }}>
+        <div className="retail-hero-row" style={{ maxWidth: 1280, margin: "0 auto", position: "relative", zIndex: 1 }}>
           {/* Left Text Column */}
           <div style={{ flex: 1.1, minWidth: 320 }}>
-            {/* Provided Badge: E-commerce */}
+            {/* Provided Badge: Retail & Local Businesses */}
             <div
               style={{
                 display: "inline-flex",
@@ -582,7 +535,7 @@ const EcommercePage = () => {
               }}
             >
               <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#16A34A", boxShadow: "0 0 6px #16A34A" }} />
-              E-commerce
+              Retail &amp; Local Businesses
             </div>
 
             {/* Recommended H1 */}
@@ -596,23 +549,23 @@ const EcommercePage = () => {
                 letterSpacing: "-1px",
               }}
             >
-              E-commerce Solutions to Manage Customers,{" "}
-              <span style={{ color: "#16A34A" }}>Marketing &amp; Growth</span>
+              Retail &amp; Local Business Solutions to Connect With{" "}
+              <span style={{ color: "#16A34A" }}>Customers and Grow</span>
             </h1>
 
             {/* Provided Sub-headline */}
             <p style={{ fontSize: "clamp(15px, 1.4vw, 18px)", fontWeight: 800, color: "#16A34A", marginBottom: 14, letterSpacing: "-0.3px" }}>
-              Bring Your Store, Customers &amp; Marketing Together
+              Bring Your Local Business Closer to Your Customers
             </p>
 
             {/* Provided Paragraph 1 */}
             <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 12, maxWidth: 540 }}>
-              E-commerce success requires more than fulfilling orders; it demands engaging visitors and nurturing long-term loyalty.
+              Local businesses thrive on lasting relationships, and retaining loyal customers is critical to your success.
             </p>
 
             {/* Provided Paragraph 2 */}
             <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 22, maxWidth: 540 }}>
-              MessBee unifies customer management, marketing, and automated communication into one seamless workflow to accelerate your growth.
+              MessBee empowers you to seamlessly manage operations, engage shoppers, and grow your digital presence from one unified platform.
             </p>
 
             {/* Provided Tagline Badge */}
@@ -634,12 +587,12 @@ const EcommercePage = () => {
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
-              Sell Better. Stay Connected. Build Customer Relationships.
+              Know Your Customers. Stay Connected. Grow Locally.
             </div>
 
             {/* CTAs from Prompt */}
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <button className="ecom-btn-primary" onClick={handleStart} style={{ fontSize: 13, padding: "11px 26px" }}>
+              <button className="retail-btn-primary" onClick={handleStart} style={{ fontSize: 13, padding: "11px 26px" }}>
                 Get Started
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12" />
@@ -648,18 +601,18 @@ const EcommercePage = () => {
               </button>
 
               <button
-                className="ecom-btn-secondary"
-                onClick={() => document.getElementById("built-for-ecommerce")?.scrollIntoView({ behavior: "smooth" })}
+                className="retail-btn-secondary"
+                onClick={() => document.getElementById("built-around-everyday")?.scrollIntoView({ behavior: "smooth" })}
               >
                 Explore MessBee
               </button>
             </div>
           </div>
 
-          {/* Right Column: Visual Architecture Node Canvas with Official MessBee Logo */}
-          <div className="ecom-hero-right-col">
+          {/* Right Column: Unique Retail & Local Graphic Layout with Official MessBee Logo */}
+          <div className="retail-hero-right-col">
             <div
-              className="ecom-hero-right-card"
+              className="retail-hero-right-card"
               style={{
                 background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
                 borderRadius: 24,
@@ -676,12 +629,12 @@ const EcommercePage = () => {
                 className="pulse-aura"
                 style={{
                   position: "absolute",
-                  top: "20%",
-                  left: "25%",
-                  width: 240,
-                  height: 240,
+                  top: "15%",
+                  left: "20%",
+                  width: 250,
+                  height: 250,
                   borderRadius: "50%",
-                  background: "radial-gradient(circle, rgba(22,163,74,0.25) 0%, rgba(22,163,74,0) 70%)",
+                  background: "radial-gradient(circle, rgba(22,163,74,0.28) 0%, rgba(22,163,74,0) 70%)",
                   pointerEvents: "none",
                 }}
               />
@@ -693,45 +646,52 @@ const EcommercePage = () => {
                     <img src={defaultLogo} alt="MessBee" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
                   </div>
                   <div>
-                    <div style={{ fontSize: 13, fontWeight: 900, color: "#FFFFFF" }}>MessBee E-commerce</div>
-                    <div style={{ fontSize: 10, color: "#4ADE80", fontWeight: 700 }}>Connected Customer Workflow</div>
+                    <div style={{ fontSize: 13, fontWeight: 900, color: "#FFFFFF" }}>MessBee Local Hub</div>
+                    <div style={{ fontSize: 10, color: "#4ADE80", fontWeight: 700 }}>Shop &amp; Storefront Digital Operations</div>
                   </div>
                 </div>
                 <span style={{ fontSize: 10, background: "rgba(22,163,74,0.2)", color: "#4ADE80", padding: "3px 10px", borderRadius: 20, fontWeight: 700, border: "1px solid rgba(22,163,74,0.3)" }}>
-                  Integrated
+                  Local CRM
                 </span>
               </div>
 
-              {/* 4 Connected Nodes Grid */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 16 }}>
+              {/* Local Business Digital Hub Graphic Cards */}
+              <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 16 }}>
                 {[
-                  { title: "Customer Management", icon: "👤", color: "#38BDF8" },
-                  { title: "WhatsApp Business", icon: "💬", color: "#4ADE80" },
-                  { title: "Marketing Automation", icon: "🚀", color: "#F472B6" },
-                  { title: "Digital Storefront", icon: "🛍️", color: "#FBBF24" },
-                ].map((node, i) => (
+                  { title: "In-Store & Digital Visitors", desc: "Customer Records & CRM", status: "Connected", icon: "🏪", color: "#38BDF8" },
+                  { title: "WhatsApp Offer Broadcast", desc: "Local Promotions & Updates", status: "Sent", icon: "📢", color: "#4ADE80" },
+                  { title: "Digital Storefront Catalog", desc: "Product & Service Showcase", status: "Live", icon: "🛍️", color: "#FBBF24" },
+                ].map((item, i) => (
                   <div
                     key={i}
                     style={{
                       background: "rgba(255,255,255,0.05)",
                       border: "1px solid rgba(255,255,255,0.08)",
-                      borderRadius: 14,
-                      padding: 14,
+                      borderRadius: 12,
+                      padding: "10px 14px",
                       display: "flex",
-                      flexDirection: "column",
-                      gap: 6,
+                      alignItems: "center",
+                      justifyContent: "space-between",
                     }}
                   >
-                    <span style={{ fontSize: 18 }}>{node.icon}</span>
-                    <span style={{ fontSize: 12, fontWeight: 800, color: node.color }}>{node.title}</span>
+                    <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                      <span style={{ fontSize: 16 }}>{item.icon}</span>
+                      <div>
+                        <div style={{ fontSize: 12, fontWeight: 800, color: "#FFFFFF" }}>{item.title}</div>
+                        <div style={{ fontSize: 10, color: "#94A3B8" }}>{item.desc}</div>
+                      </div>
+                    </div>
+                    <span style={{ fontSize: 10, fontWeight: 800, color: item.color, background: "rgba(255,255,255,0.08)", padding: "2px 8px", borderRadius: 12 }}>
+                      {item.status}
+                    </span>
                   </div>
                 ))}
               </div>
 
               {/* Bottom Connector Bar */}
-              <div style={{ background: "rgba(22,163,74,0.15)", border: "1px solid rgba(22,163,74,0.3)", borderRadius: 12, padding: 12, textAlign: "center" }}>
+              <div style={{ background: "rgba(22,163,74,0.15)", border: "1px solid rgba(22,163,74,0.3)", borderRadius: 12, padding: 10, textAlign: "center" }}>
                 <span style={{ fontSize: 11.5, fontWeight: 800, color: "#4ADE80" }}>
-                  One Connected Workflow
+                  Connect Your Business. Grow Locally.
                 </span>
               </div>
             </div>
@@ -740,9 +700,9 @@ const EcommercePage = () => {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 2: BUILT FOR GROWING E-COMMERCE BUSINESSES
+          SECTION 2: BUILT AROUND YOUR EVERYDAY BUSINESS
          ═══════════════════════════════════════════════════════════════════ */}
-      <section id="built-for-ecommerce" style={{ padding: "64px 6%", background: "#FAFAFA" }}>
+      <section id="built-around-everyday" style={{ padding: "64px 6%", background: "#FAFAFA" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           {/* Section Headings from Prompt */}
           <div style={{ textAlign: "center", marginBottom: 44 }}>
@@ -760,17 +720,17 @@ const EcommercePage = () => {
                 textTransform: "uppercase",
               }}
             >
-              Overview
+              Everyday Business
             </div>
             <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
-              Built for Growing <span style={{ color: "#16A34A" }}>E-commerce Businesses</span>
+              Built Around Your <span style={{ color: "#16A34A" }}>Everyday Business</span>
             </h2>
 
             <p style={{ fontSize: 13.5, color: "#64748B", maxWidth: 640, margin: "0 auto 8px", lineHeight: 1.68 }}>
-              As your online business grows, customer conversations and marketing activities can quickly spread across different platforms.
+              Running a local business involves more than making a sale. You may need to answer enquiries, follow up with customers, announce offers, manage repeat customers and keep your business visible online.
             </p>
             <p style={{ fontSize: 13.5, fontWeight: 800, color: "#0F172A", maxWidth: 560, margin: "0 auto 24px" }}>
-              MessBee helps bring important customer-facing activities closer together.
+              MessBee brings these activities together so your team can spend less time switching between different tools.
             </p>
 
             <div
@@ -789,12 +749,12 @@ const EcommercePage = () => {
             </div>
           </div>
 
-          {/* 9 List Items Grid */}
-          <div className="grid-col-3">
+          {/* 8 List Items Grid */}
+          <div className="grid-col-4">
             {WITH_MESSBEE_YOU_CAN.map((item, idx) => (
               <div
                 key={idx}
-                className="ecom-glass-card"
+                className="retail-glass-card"
                 style={{
                   padding: 18,
                   display: "flex",
@@ -830,7 +790,7 @@ const EcommercePage = () => {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 3: FROM PRODUCT DISCOVERY TO REPEAT CUSTOMER
+          SECTION 3: TURN FIRST-TIME VISITORS INTO RETURNING CUSTOMERS
          ═══════════════════════════════════════════════════════════════════ */}
       <section style={{ padding: "64px 6%", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
@@ -850,38 +810,40 @@ const EcommercePage = () => {
                 textTransform: "uppercase",
               }}
             >
-              Customer Journey
+              Repeat Business
             </div>
             <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
-              From Product Discovery to <span style={{ color: "#16A34A" }}>Repeat Customer</span>
+              Turn First-Time Visitors Into <span style={{ color: "#16A34A" }}>Returning Customers</span>
             </h2>
 
             <p style={{ fontSize: 13.5, color: "#64748B", maxWidth: 640, margin: "0 auto 6px", lineHeight: 1.68 }}>
-              An online sale is not the end of the customer journey. Good customer relationships can continue long after an order is completed.
+              For local businesses, a customer's relationship with your business often continues after the first purchase.
             </p>
             <p style={{ fontSize: 13.5, fontWeight: 800, color: "#16A34A", maxWidth: 560, margin: "0 auto" }}>
-              MessBee helps businesses create a connected customer journey:
+              MessBee helps you stay connected throughout that journey.
             </p>
           </div>
 
-          {/* 6 Step Visual Pipeline */}
-          <div className="grid-col-3">
-            {JOURNEY_STEPS.map((s, i) => (
+          {/* 5 Step Visual Pipeline */}
+          <div className="grid-col-5">
+            {RETAIL_JOURNEY_STEPS.map((s, i) => (
               <div
-                key={s.name}
-                className="ecom-glass-card"
+                key={s.step}
+                className="retail-glass-card"
                 style={{
-                  padding: 20,
+                  padding: 18,
                   border: `1px solid ${s.border}`,
-                  position: "relative",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
                   animationDelay: `${i * 50}ms`,
                 }}
               >
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
+                <div>
                   <div
                     style={{
-                      width: 38,
-                      height: 38,
+                      width: 36,
+                      height: 36,
                       borderRadius: 10,
                       background: s.bg,
                       color: s.color,
@@ -889,31 +851,18 @@ const EcommercePage = () => {
                       alignItems: "center",
                       justifyContent: "center",
                       fontSize: 20,
+                      marginBottom: 12,
                     }}
                   >
                     {s.icon}
                   </div>
-                  <span
-                    style={{
-                      fontSize: 10.5,
-                      fontWeight: 900,
-                      color: s.color,
-                      background: s.bg,
-                      padding: "3px 8px",
-                      borderRadius: 20,
-                      border: `1px solid ${s.border}`,
-                    }}
-                  >
-                    Step {s.num}
-                  </span>
+                  <h3 style={{ fontSize: 14.5, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>
+                    {s.step}
+                  </h3>
+                  <p style={{ fontSize: 12, color: "#64748B", lineHeight: 1.55 }}>
+                    {s.desc}
+                  </p>
                 </div>
-
-                <h3 style={{ fontSize: 15.5, fontWeight: 900, color: "#0F172A", marginBottom: 8, letterSpacing: "-0.3px" }}>
-                  {s.name}
-                </h3>
-                <p style={{ fontSize: 12.5, color: "#475569", lineHeight: 1.6 }}>
-                  {s.desc}
-                </p>
               </div>
             ))}
           </div>
@@ -921,7 +870,7 @@ const EcommercePage = () => {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 4: TOOLS FOR YOUR E-COMMERCE WORKFLOW
+          SECTION 4: PRACTICAL TOOLS FOR LOCAL BUSINESSES
          ═══════════════════════════════════════════════════════════════════ */}
       <section style={{ padding: "64px 6%", background: "#FAFAFA" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
@@ -941,47 +890,53 @@ const EcommercePage = () => {
                 textTransform: "uppercase",
               }}
             >
-              Capabilities
+              Practical Tools
             </div>
             <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
-              Tools for Your <span style={{ color: "#16A34A" }}>E-commerce Workflow</span>
+              Practical Tools for <span style={{ color: "#16A34A" }}>Local Businesses</span>
             </h2>
           </div>
 
-          {/* 6 Feature Tool Cards from Prompt */}
-          <div className="grid-col-3">
-            {WORKFLOW_TOOLS.map((t, idx) => (
+          {/* 5 Feature Tool Cards from Prompt */}
+          <div className="grid-col-5">
+            {PRACTICAL_TOOLS.map((t, idx) => (
               <div
                 key={idx}
-                className="ecom-glass-card"
+                className="retail-glass-card"
                 style={{
-                  padding: 22,
+                  padding: 20,
                   border: `1px solid ${t.border}`,
-                  animationDelay: `${idx * 60}ms`,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  animationDelay: `${idx * 50}ms`,
                 }}
               >
-                <div
-                  style={{
-                    width: 40,
-                    height: 40,
-                    borderRadius: 12,
-                    background: t.bg,
-                    color: t.color,
-                    border: `1px solid ${t.border}`,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    marginBottom: 14,
-                  }}
-                >
-                  {t.icon}
+                <div>
+                  <div
+                    style={{
+                      width: 40,
+                      height: 40,
+                      borderRadius: 10,
+                      background: t.bg,
+                      color: t.color,
+                      border: `1px solid ${t.border}`,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: 22,
+                      marginBottom: 14,
+                    }}
+                  >
+                    {t.icon}
+                  </div>
+                  <h3 style={{ fontSize: 14.5, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>
+                    {t.title}
+                  </h3>
+                  <p style={{ fontSize: 12, color: "#64748B", lineHeight: 1.55 }}>
+                    {t.desc}
+                  </p>
                 </div>
-                <h3 style={{ fontSize: 15, fontWeight: 900, color: "#0F172A", marginBottom: 8 }}>
-                  {t.title}
-                </h3>
-                <p style={{ fontSize: 12.5, color: "#64748B", lineHeight: 1.6 }}>
-                  {t.desc}
-                </p>
               </div>
             ))}
           </div>
@@ -989,22 +944,71 @@ const EcommercePage = () => {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 5: MAKE CUSTOMER COMMUNICATION PART OF YOUR STORE
+          SECTION 5: USEFUL FOR DIFFERENT LOCAL BUSINESSES
+         ═══════════════════════════════════════════════════════════════════ */}
+      <section style={{ padding: "64px 6%", background: "#FFFFFF" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+          {/* Headings from Prompt */}
+          <div style={{ textAlign: "center", marginBottom: 44 }}>
+            <div
+              style={{
+                display: "inline-block",
+                background: "#D1FAE5",
+                color: "#059669",
+                padding: "4px 12px",
+                borderRadius: 40,
+                fontSize: 10.5,
+                fontWeight: 800,
+                letterSpacing: "1px",
+                marginBottom: 12,
+                textTransform: "uppercase",
+              }}
+            >
+              Business Types
+            </div>
+            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+              Useful for <span style={{ color: "#16A34A" }}>Different Local Businesses</span>
+            </h2>
+          </div>
+
+          {/* 6 Business Type Cards from Prompt */}
+          <div className="grid-col-3">
+            {LOCAL_BUSINESS_TYPES.map((b, idx) => (
+              <div
+                key={idx}
+                className="retail-glass-card"
+                style={{
+                  padding: 20,
+                  border: `1px solid ${b.border}`,
+                  animationDelay: `${idx * 50}ms`,
+                }}
+              >
+                <div style={{ width: 9, height: 9, borderRadius: "50%", background: b.color, marginBottom: 12 }} />
+                <h3 style={{ fontSize: 15, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>{b.type}</h3>
+                <p style={{ fontSize: 12.5, color: "#64748B", lineHeight: 1.6 }}>{b.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECTION 6: KEEP YOUR CUSTOMERS CONNECTED TO YOUR BUSINESS
          ═══════════════════════════════════════════════════════════════════ */}
       <section style={{ padding: "60px 6%", background: GL, borderTop: `1px solid ${GB}`, borderBottom: `1px solid ${GB}` }}>
         <div style={{ maxWidth: 1060, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 36 }}>
-            <Pill>Workflow Synergy</Pill>
+            <Pill>Unified Experience</Pill>
             <h2 style={{ fontSize: "clamp(18px, 2.5vw, 30px)", fontWeight: 900, color: D2, letterSpacing: "-1px", marginBottom: 12 }}>
-              Make Customer Communication <span style={{ color: G }}>Part of Your Store</span>
+              Keep Your Customers <span style={{ color: G }}>Connected to Your Business</span>
             </h2>
-            <p style={{ fontSize: 13, color: MU, maxWidth: 660, margin: "0 auto", lineHeight: 1.68 }}>
-              Customers may have questions before they buy, during the order process or after receiving a product. MessBee helps connect customer communication with your broader business workflow.
+            <p style={{ fontSize: 13, color: MU, maxWidth: 680, margin: "0 auto", lineHeight: 1.68 }}>
+              Customers may discover your business through different channels, but your relationship with them should not have to remain scattered.
             </p>
           </div>
 
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: 0, marginBottom: 26 }}>
-            {STORE_FLOW_NODES.map((node, i, arr) => (
+            {RETAIL_FLOW_NODES.map((node, i, arr) => (
               <React.Fragment key={node}>
                 <span style={{ background: "#fff", border: `1.5px solid ${GB}`, color: G, borderRadius: 6, padding: "8px 16px", fontSize: 12, fontWeight: 700 }}>
                   {node}
@@ -1017,146 +1021,13 @@ const EcommercePage = () => {
           </div>
 
           <p style={{ fontSize: 13, fontWeight: 700, color: MU, textAlign: "center", letterSpacing: "0.2px" }}>
-            This gives your team more context when communicating with customers.
+            This gives your business a more organized way to manage customer relationships and day-to-day communication.
           </p>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 6: RE-ENGAGE CUSTOMERS WITHOUT STARTING FROM ZERO
-         ═══════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: "64px 6%", background: "#FFFFFF" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          {/* Headings from Prompt */}
-          <div style={{ textAlign: "center", marginBottom: 36 }}>
-            <div
-              style={{
-                display: "inline-block",
-                background: "#D1FAE5",
-                color: "#059669",
-                padding: "4px 12px",
-                borderRadius: 40,
-                fontSize: 10.5,
-                fontWeight: 800,
-                letterSpacing: "1px",
-                marginBottom: 12,
-                textTransform: "uppercase",
-              }}
-            >
-              Segmentation
-            </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
-              Re-Engage Customers <span style={{ color: "#16A34A" }}>Without Starting From Zero</span>
-            </h2>
-            <p style={{ fontSize: 13.5, color: "#64748B", maxWidth: 640, margin: "0 auto 6px", lineHeight: 1.68 }}>
-              Existing customers are an important part of an e-commerce business.
-            </p>
-            <p style={{ fontSize: 13, color: "#475569", maxWidth: 640, margin: "0 auto" }}>
-              With appropriate customer information and permissions, businesses can create segments and communication workflows around groups such as:
-            </p>
-          </div>
-
-          {/* 7 Groups List Grid */}
-          <div className="grid-col-4" style={{ marginBottom: 28 }}>
-            {CUSTOMER_SEGMENTS.map((seg, idx) => (
-              <div
-                key={idx}
-                className="ecom-glass-card"
-                style={{
-                  padding: 16,
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 10,
-                  animationDelay: `${idx * 45}ms`,
-                }}
-              >
-                <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#16A34A", flexShrink: 0 }} />
-                <span style={{ fontSize: 13, fontWeight: 800, color: "#0F172A" }}>{seg}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Goal Callout Box from Prompt */}
-          <div
-            style={{
-              background: "linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%)",
-              border: "1px solid #BBF7D0",
-              borderRadius: 16,
-              padding: "20px 26px",
-              textAlign: "center",
-              maxWidth: 760,
-              margin: "0 auto",
-            }}
-          >
-            <p style={{ fontSize: 14.5, fontWeight: 800, color: "#15803D", lineHeight: 1.6 }}>
-              The goal is simple: send relevant communication to the right customers instead of sending the same message to everyone.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 7: REDUCE MANUAL WORK
-         ═══════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: "64px 6%", background: "#FAFAFA" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          {/* Headings from Prompt */}
-          <div style={{ textAlign: "center", marginBottom: 36 }}>
-            <div
-              style={{
-                display: "inline-block",
-                background: "#D1FAE5",
-                color: "#059669",
-                padding: "4px 12px",
-                borderRadius: 40,
-                fontSize: 10.5,
-                fontWeight: 800,
-                letterSpacing: "1px",
-                marginBottom: 12,
-                textTransform: "uppercase",
-              }}
-            >
-              Automation
-            </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
-              Reduce <span style={{ color: "#16A34A" }}>Manual Work</span>
-            </h2>
-            <p style={{ fontSize: 13.5, color: "#64748B", maxWidth: 640, margin: "0 auto", lineHeight: 1.68 }}>
-              E-commerce teams often repeat the same tasks every day. MessBee automation can help with supported workflows such as:
-            </p>
-          </div>
-
-          {/* 7 Workflows Grid from Prompt */}
-          <div className="grid-col-4" style={{ marginBottom: 28 }}>
-            {AUTOMATION_WORKFLOWS.map((auto, idx) => (
-              <div
-                key={idx}
-                className="ecom-glass-card"
-                style={{
-                  padding: 16,
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 10,
-                  animationDelay: `${idx * 45}ms`,
-                }}
-              >
-                <div style={{ width: 26, height: 26, borderRadius: 8, background: "#F0FDF4", border: "1px solid #BBF7D0", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, color: "#16A34A" }}>
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12" /></svg>
-                </div>
-                <span style={{ fontSize: 13, fontWeight: 800, color: "#0F172A" }}>{auto}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Closing Paragraph from Prompt */}
-          <p style={{ fontSize: 13.5, color: "#475569", textAlign: "center", fontWeight: 700 }}>
-            Automation can save time while keeping your team in control of important customer interactions.
-          </p>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 8: WHY E-COMMERCE BUSINESSES CHOOSE MESSBEE
+          SECTION 7: WHY RETAIL & LOCAL BUSINESSES CHOOSE MESSBEE
          ═══════════════════════════════════════════════════════════════════ */}
       <section style={{ padding: "64px 6%", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
@@ -1179,16 +1050,16 @@ const EcommercePage = () => {
               Why MessBee
             </div>
             <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
-              Why E-commerce Businesses <span style={{ color: "#16A34A" }}>Choose MessBee</span>
+              Why Retail &amp; Local Businesses <span style={{ color: "#16A34A" }}>Choose MessBee</span>
             </h2>
           </div>
 
-          {/* 7 Reason Cards from Prompt */}
+          {/* 6 Reason Cards from Prompt */}
           <div className="grid-col-3">
             {WHY_CHOOSE_MESSBEE.map((r, idx) => (
               <div
                 key={idx}
-                className="ecom-glass-card"
+                className="retail-glass-card"
                 style={{
                   padding: 22,
                   animationDelay: `${idx * 50}ms`,
@@ -1220,74 +1091,9 @@ const EcommercePage = () => {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 9: FOR DIFFERENT E-COMMERCE BUSINESSES
+          SECTION 8: MADE FOR THE WAY LOCAL BUSINESSES GROW
          ═══════════════════════════════════════════════════════════════════ */}
       <section style={{ padding: "64px 6%", background: "#FAFAFA" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          {/* Headings from Prompt */}
-          <div style={{ textAlign: "center", marginBottom: 44 }}>
-            <div
-              style={{
-                display: "inline-block",
-                background: "#D1FAE5",
-                color: "#059669",
-                padding: "4px 12px",
-                borderRadius: 40,
-                fontSize: 10.5,
-                fontWeight: 800,
-                letterSpacing: "1px",
-                marginBottom: 12,
-                textTransform: "uppercase",
-              }}
-            >
-              Business Models
-            </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
-              For Different <span style={{ color: "#16A34A" }}>E-commerce Businesses</span>
-            </h2>
-            <p style={{ fontSize: 13.5, color: "#64748B", maxWidth: 500, margin: "0 auto" }}>
-              MessBee can support different types of online businesses, including:
-            </p>
-          </div>
-
-          {/* 5 Business Type Cards from Prompt */}
-          <div className="grid-col-5">
-            {BUSINESS_TYPES.map((b, idx) => (
-              <div
-                key={idx}
-                className="ecom-glass-card"
-                style={{
-                  padding: 18,
-                  border: `1px solid ${b.border}`,
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                  animationDelay: `${idx * 50}ms`,
-                }}
-              >
-                <div>
-                  <div
-                    style={{
-                      width: 9,
-                      height: 9,
-                      borderRadius: "50%",
-                      background: b.color,
-                      marginBottom: 12,
-                    }}
-                  />
-                  <h3 style={{ fontSize: 14.5, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>{b.type}</h3>
-                  <p style={{ fontSize: 12, color: "#64748B", lineHeight: 1.55 }}>{b.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 10: BUILT FOR E-COMMERCE BUSINESSES IN INDIA
-         ═══════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: "64px 6%", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <div
             style={{
@@ -1314,21 +1120,21 @@ const EcommercePage = () => {
                   marginBottom: 16,
                 }}
               >
-                <svg width="16" height="12" viewBox="0 0 90 60" style={{ borderRadius: 2, flexShrink: 0 }}><rect width="90" height="20" fill="#FF9933"/><rect y="20" width="90" height="20" fill="#FFFFFF"/><rect y="40" width="90" height="20" fill="#138808"/><circle cx="45" cy="30" r="8" fill="#000080" /><circle cx="45" cy="30" r="6" fill="#FFFFFF" /><circle cx="45" cy="30" r="2" fill="#000080" /></svg>
-                <span style={{ fontSize: 10.5, fontWeight: 800, color: "#4ADE80" }}>Indian E-commerce</span>
+                <span style={{ fontSize: 14 }}>📍</span>
+                <span style={{ fontSize: 10.5, fontWeight: 800, color: "#4ADE80" }}>Local Growth</span>
               </div>
 
               {/* Title from Prompt */}
               <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, marginBottom: 14, letterSpacing: "-1px" }}>
-                Built for E-commerce Businesses in India
+                Made for the Way Local Businesses Grow
               </h2>
 
               {/* Paragraphs from Prompt */}
               <p style={{ fontSize: 13.5, color: "#94A3B8", lineHeight: 1.7, marginBottom: 12 }}>
-                Indian e-commerce customers often discover products through multiple channels and expect quick, convenient communication.
+                You don't need to transform your entire business overnight.
               </p>
               <p style={{ fontSize: 13.5, color: "#94A3B8", lineHeight: 1.7, marginBottom: 24 }}>
-                MessBee helps businesses create a more organized customer experience across supported touchpoints while keeping customer relationships at the centre of the business.
+                Start with the tools that solve your immediate needs—such as customer management or WhatsApp communication—and add marketing, automation and digital commerce capabilities as your business grows.
               </p>
 
               {/* Headline Callout from Prompt */}
@@ -1344,7 +1150,7 @@ const EcommercePage = () => {
                   letterSpacing: "0.2px",
                 }}
               >
-                Attract Customers. Serve Them Better. Bring Them Back.
+                Start local. Build stronger customer relationships. Grow with MessBee.
               </div>
             </div>
           </div>
@@ -1352,30 +1158,24 @@ const EcommercePage = () => {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 11: YOUR STORE IS MORE THAN A CATALOGUE (FINAL CTA)
+          SECTION 9: FINAL CTA
          ═══════════════════════════════════════════════════════════════════ */}
       <section style={{ background: GL, padding: "72px 6%", textAlign: "center", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 500, height: 500, background: "rgba(22,163,74,.08)", borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none" }} />
-        <div style={{ position: "relative", zIndex: 2, maxWidth: 860, margin: "0 auto" }}>
-          <Pill>Your Store Is More Than a Catalogue</Pill>
+        <div style={{ position: "relative", zIndex: 2, maxWidth: 760, margin: "0 auto" }}>
+          <Pill>Start Local. Grow With MessBee.</Pill>
           <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 900, color: D2, letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 16 }}>
-            Products bring customers to your store.<br />
-            <span style={{ color: G }}>Relationships bring them back.</span>
+            Bring your retail shop or local business<br />
+            <span style={{ color: G }}>closer to your customers.</span>
           </h2>
-          <p style={{ fontSize: 13.5, color: MU, lineHeight: 1.68, marginBottom: 20, maxWidth: 700, margin: "0 auto 20px" }}>
-            MessBee helps connect the systems around your store so customer information, communication, marketing and automation can work together.
-          </p>
-          <div style={{ fontSize: 16.5, fontWeight: 900, color: G, marginBottom: 26, letterSpacing: "-0.3px" }}>
-            Build a Store. Build Relationships. Build a Business.
-          </div>
-          <button className="ecom-btn-primary" onClick={handleStart} style={{ fontSize: 13, padding: "11px 26px" }}>
+          <button className="retail-btn-primary" onClick={handleStart} style={{ fontSize: 13, padding: "11px 26px", marginTop: 10 }}>
             Get Started
           </button>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          SECTION 12: FREQUENTLY ASKED QUESTIONS
+          SECTION 10: FREQUENTLY ASKED QUESTIONS
          ═══════════════════════════════════════════════════════════════════ */}
       <section style={{ padding: "64px 6%", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 760, margin: "0 auto" }}>
@@ -1387,7 +1187,7 @@ const EcommercePage = () => {
           </div>
 
           <div style={{ borderTop: "1px solid #F1F5F9" }}>
-            {ECOM_FAQS.map((faq, idx) => (
+            {RETAIL_FAQS.map((faq, idx) => (
               <FaqItem key={idx} {...faq} />
             ))}
           </div>
@@ -1399,4 +1199,4 @@ const EcommercePage = () => {
   );
 };
 
-export default EcommercePage;
+export default RetailPage;

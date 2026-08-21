@@ -466,57 +466,58 @@ const ContactPage = () => {
         /* Under 768px (Mobile Portrait/Landscape) */
         @media (max-width: 768px) {
           .contact-section {
-            padding: 40px 4% !important;
+            padding: 24px 16px !important;
           }
-          .grid-col-3 {
-            grid-template-columns: 1fr;
-          }
-          .grid-col-2 {
-            grid-template-columns: 1fr;
+          .contact-hero-section {
+            margin-top: 60px !important;
+            padding-top: 24px !important;
+            padding-bottom: 28px !important;
           }
           .contact-hero-section h1 {
-            font-size: clamp(20px, 2.8vw, 30px) !important;
+            font-size: clamp(24px, 6.2vw, 36px) !important;
+            letter-spacing: -0.5px !important;
+            line-height: 1.25 !important;
+            margin-bottom: 14px !important;
           }
-          .contact-section h2 {
-            font-size: clamp(17px, 2.2vw, 22px) !important;
+          .grid-col-3 {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
           }
-          .contact-section h3 {
-            font-size: 13.5px !important;
+          .grid-col-2 {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
           }
-          .contact-section p {
-            font-size: 12.5px !important;
+          .grid-col-5 {
+            grid-template-columns: 1fr !important;
+            gap: 14px !important;
+          }
+          .contact-form-info-box, .contact-form-box {
+            padding: 20px 16px !important;
+            border-radius: 18px !important;
+          }
+          .contact-btn-primary, .contact-btn-secondary {
+            width: 100% !important;
+            justify-content: center !important;
           }
         }
 
         /* Under 576px (Small Mobile) */
         @media (max-width: 576px) {
           .contact-section {
-            padding: 32px 16px !important;
+            padding: 20px 14px !important;
           }
           .grid-col-5 {
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr !important;
           }
           .contact-btn-primary, .contact-btn-secondary {
-            width: 100%;
-            justify-content: center;
+            width: 100% !important;
+            justify-content: center !important;
           }
           .contact-hero-row {
-            gap: 28px;
+            gap: 24px !important;
           }
           .contact-form-info-box, .contact-form-box {
-            padding: 20px 16px !important;
-          }
-          .contact-hero-section h1 {
-            font-size: clamp(18px, 2.6vw, 26px) !important;
-          }
-          .contact-section h2 {
-            font-size: clamp(16px, 2vw, 20px) !important;
-          }
-          .contact-section h3 {
-            font-size: 13px !important;
-          }
-          .contact-section p {
-            font-size: 12px !important;
+            padding: 18px 14px !important;
           }
         }
 
@@ -1083,7 +1084,7 @@ const ContactPage = () => {
                 <span style={{ fontSize: 12, fontWeight: 800, color: "#16A34A", letterSpacing: "0.5px", textTransform: "uppercase" }}>Corporate Office Location</span>
               </div>
               <a
-                href="https://www.google.com/maps/dir//MessBee,+Devika+Tower,+510,+Chander+Nagar,+Surya+Nagar,+Ghaziabad,+Uttar+Pradesh+201011/@28.6805919,77.4587233,14z/data=!4m8!4m7!1m0!1m5!1m1!1s0x390cfb2702bd3435:0x5174d17b09289b6b!2m2!1d77.3308721!2d28.6686012?entry=ttu&g_ep=EgoyMDI2MDgxNy4wIKXMDSoASAFQAw%3D%3D"
+                href="https://www.google.com/maps/dir//MessBee,+510A,+Chander+Nagar,+Surya+Nagar,+Ghaziabad,+Uttar+Pradesh+201011/@28.6686012,77.3308721,16z"
                 target="_blank"
                 rel="noreferrer"
                 style={{
@@ -1150,7 +1151,7 @@ const ContactPage = () => {
             }}>
               <iframe
                 title="MessBee Corporate Office Location Map"
-                src="https://maps.google.com/maps?q=MessBee,+Devika+Tower,+510,+Chander+Nagar,+Surya+Nagar,+Ghaziabad,+Uttar+Pradesh+201011&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=MessBee,+510A,+Chander+Nagar,+Surya+Nagar,+Ghaziabad,+Uttar+Pradesh+201011&t=&z=16&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
