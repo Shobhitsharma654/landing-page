@@ -199,10 +199,14 @@ const Footer = () => {
             gap: 24px !important;
           }
         }
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
           .footer-grid-container {
-            grid-template-columns: 1fr !important;
-            gap: 20px !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 28px 16px !important;
+          }
+          .footer-brand-col {
+            grid-column: 1 / -1 !important;
+            margin-bottom: 8px !important;
           }
           .footer-top-strip {
             flex-direction: column !important;
@@ -211,6 +215,12 @@ const Footer = () => {
           }
           .footer-logo-text {
             font-size: 20px;
+          }
+        }
+        @media (max-width: 480px) {
+          .footer-grid-container {
+            grid-template-columns: 1fr 1fr !important;
+            gap: 24px 12px !important;
           }
         }
       `}</style>
@@ -257,7 +267,7 @@ const Footer = () => {
         }}>
 
           {/* ── Brand column ── */}
-          <div>
+          <div className="footer-brand-col">
             <p style={{ fontSize: 13, color: "#64748B", lineHeight: 1.7, marginBottom: 40, maxWidth: 300 }}>
               MessBee empowers businesses with smarter communication, automation, and commerce — all in one platform.
             </p>
