@@ -129,6 +129,31 @@ const AboutPage = () => {
   const [aboutFaqOpenIdx, setAboutFaqOpenIdx] = useState(null);
   const [hoveredCap, setHoveredCap] = useState(null);
   const [hoveredLeaderCap, setHoveredLeaderCap] = useState(null);
+  const [touchStartX, setTouchStartX] = useState(0);
+  const [touchEndX, setTouchEndX] = useState(0);
+
+  const handleCarouselTouchStart = (e) => {
+    setTouchStartX(e.targetTouches[0].clientX);
+    setTouchEndX(e.targetTouches[0].clientX);
+  };
+
+  const handleCarouselTouchMove = (e) => {
+    setTouchEndX(e.targetTouches[0].clientX);
+  };
+
+  const handleCarouselTouchEnd = () => {
+    if (!touchStartX || !touchEndX) return;
+    const distance = touchStartX - touchEndX;
+    if (distance > 40) {
+      // Swiped Left -> Next Card
+      setActiveFeature(prev => (prev < 11 ? prev + 1 : 0));
+    } else if (distance < -40) {
+      // Swiped Right -> Previous Card
+      setActiveFeature(prev => (prev > 0 ? prev - 1 : 11));
+    }
+    setTouchStartX(0);
+    setTouchEndX(0);
+  };
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
   useEffect(() => {
@@ -424,39 +449,84 @@ const AboutPage = () => {
         /* ── Tablets / Large Phones (768px) ── */
         @media (max-width: 768px) {
           .about-section {
-            padding: 36px 4% !important;
+            padding: 32px 16px !important;
           }
           .about-hero-section {
-            padding: 90px 4% 28px !important;
+            padding: 95px 16px 32px !important;
+          }
+          .hero-flex-container,
+          .capabilities-container,
+          .connectivity-container,
+          .security-container {
+            gap: 24px !important;
           }
 
-          /* Text size reductions for tablets/large phones */
+          /* Mobile Typography Scaling */
           .about-page-wrapper .about-hero-section h1,
-          .about-page-wrapper .about-section h1 {
-            font-size: clamp(20px, 2.2vw, 28px) !important;
+          .about-page-wrapper .about-section h1,
+          .about-page-wrapper h1 {
+            font-size: clamp(24px, 6.2vw, 36px) !important;
+            letter-spacing: -0.5px !important;
+            line-height: 1.25 !important;
+            margin-bottom: 14px !important;
           }
           .about-page-wrapper .about-section h2,
           .about-page-wrapper section h2,
           .about-page-wrapper h2 {
-            font-size: clamp(16px, 1.8vw, 21px) !important;
+            font-size: clamp(20px, 4.8vw, 26px) !important;
+            letter-spacing: -0.4px !important;
+            margin-bottom: 12px !important;
           }
           .about-page-wrapper .about-section h3,
           .about-page-wrapper section h3,
           .about-page-wrapper h3 {
-            font-size: clamp(14px, 1.4vw, 17px) !important;
+            font-size: 15px !important;
           }
           .about-page-wrapper .about-hero-section p,
           .about-page-wrapper .about-section p,
           .about-page-wrapper section p,
           .about-page-wrapper p {
-            font-size: 12.5px !important;
-            line-height: 1.55 !important;
+            font-size: 13.5px !important;
+            line-height: 1.65 !important;
           }
           .about-page-wrapper .hero-left-col p:first-of-type {
-            font-size: 13.5px !important;
+            font-size: 14.5px !important;
           }
           .about-page-wrapper .capabilities-left p:first-of-type {
+            font-size: 13.5px !important;
+          }
+          .capability-pill-badge span {
+            white-space: normal !important;
+          }
+        }
+
+        /* ── Small Mobile (576px) ── */
+        @media (max-width: 576px) {
+          .about-section {
+            padding: 24px 14px !important;
+          }
+          .about-hero-section {
+            padding: 90px 14px 28px !important;
+          }
+          .hero-flex-container > div:first-child > div:last-child {
+            flex-direction: column !important;
+            gap: 10px !important;
+          }
+          .about-page-wrapper button {
+            width: 100% !important;
+            justify-content: center !important;
+            padding: 12px 20px !important;
+            font-size: 13.5px !important;
+          }
+          .capabilities-grid-cols {
+            grid-template-columns: 1fr !important;
+            gap: 8px !important;
+            margin-top: 16px !important;
+          }
+          .capability-pill-badge {
             font-size: 12.5px !important;
+            padding: 8px 14px !important;
+            width: 100% !important;
           }
         }
       `}</style>
@@ -475,7 +545,7 @@ const AboutPage = () => {
               <span style={{ color: "#16A34A", fontSize: 13, fontWeight: 600 }}>Our Story</span>
             </div>
             <h1 style={{ fontSize: "clamp(20px,4vw,45px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.1, marginBottom: 20, textAlign: "left" }}>
-              India&apos;s Digital Business<br />
+              India&apos;s Digital Business {" "} <br />
               <span style={{ color: "#16A34A" }}>Operating System</span>
             </h1>
             <p style={{ fontSize: 17, color: "#475569", lineHeight: 1.7, marginBottom: 20, textAlign: "left" }}>
@@ -795,11 +865,36 @@ const AboutPage = () => {
             color: #64748B;
             line-height: 1.45;
           }
+          .growth-timeline-col {
+            margin-top: 140px;
+          }
+          .indian-market-flex-row {
+            display: flex;
+            gap: 100px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+          }
+          @media (max-width: 1024px) {
+            .indian-market-flex-row {
+              gap: 24px !important;
+            }
+            .growth-timeline-col {
+              margin-top: 0px !important;
+            }
+          }
+          @media (max-width: 768px) {
+            .indian-market-flex-row {
+              gap: 12px !important;
+            }
+            .growth-timeline-col {
+              margin-top: 0px !important;
+            }
+          }
         `}</style>
 
         <div style={{ maxWidth: 1200, margin: "0 auto", textAlign: "left" }}>
 
-          <div style={{ display: "flex", gap: "100px", alignItems: "flex-start", flexWrap: "wrap" }}>
+          <div className="indian-market-flex-row">
 
             {/* Left Column: All Text Content */}
             <div style={{ flex: "1 1 480px" }}>
@@ -876,8 +971,8 @@ const AboutPage = () => {
             </div>
 
             {/* Right Column: Timeline Cards */}
-            <div style={{ flex: "1 1 480px" ,marginTop:140 }}>
-              <div className="growth-timeline-vertical" style={{ margin: 0, padding: "10px 0" }}>
+            <div className="growth-timeline-col" style={{ flex: "1 1 480px" }}>
+              <div className="growth-timeline-vertical" style={{ margin: 0, padding: 0 }}>
                 {[
                   { title: "Customer Communication", color: "#10B981", bg: "#F0FDF4", badge: "01", tag: "CONNECT" },
                   { title: "CRM", color: "#10B981", bg: "#F0FDF4", badge: "02", tag: "CONNECT" },
@@ -962,6 +1057,39 @@ const AboutPage = () => {
           .carousel-card-hover {
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
           }
+          .carousel-mobile-nav-btn {
+            display: none;
+            background: #FFFFFF;
+            border: 1.5px solid #BBF7D0;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            min-height: 40px;
+            flex-shrink: 0;
+            align-items: center;
+            justify-content: center;
+            color: #16A34A;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(22, 163, 74, 0.12);
+            transition: all 0.2s ease;
+          }
+          .carousel-mobile-nav-btn:active {
+            transform: scale(0.92);
+            background: #F0FDF4;
+          }
+          @media (max-width: 768px) {
+            .carousel-arrow {
+              display: none !important;
+            }
+            .carousel-mobile-nav-btn {
+              display: inline-flex !important;
+            }
+            .carousel-card-item {
+              width: calc(100vw - 32px) !important;
+              max-width: 340px !important;
+            }
+          }
         `}</style>
 
         <div style={{ maxWidth: 1140, margin: "0 auto", textAlign: "center" }}>
@@ -1014,7 +1142,16 @@ const AboutPage = () => {
             </button>
 
             {/* Cards Frame */}
-            <div style={{ position: "relative", width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <div
+              onTouchStart={handleCarouselTouchStart}
+              onTouchMove={handleCarouselTouchMove}
+              onTouchEnd={handleCarouselTouchEnd}
+              style={{
+                position: "relative", width: "100%", height: "100%",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                touchAction: "pan-y", userSelect: "none"
+              }}
+            >
               {[
                 {
                   title: "CRM & Customer Management",
@@ -1182,7 +1319,7 @@ const AboutPage = () => {
                 return (
                   <div
                     key={idx}
-                    className="carousel-card-hover carousel-card-shadow"
+                    className="carousel-card-item carousel-card-hover carousel-card-shadow"
                     style={{
                       position: "absolute",
                       width: "360px",
@@ -1286,14 +1423,34 @@ const AboutPage = () => {
           </div>
 
           {/* Dots Indicator Progress */}
-          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: 24 }}>
-            {Array.from({ length: 12 }).map((_, i) => (
-              <span
-                key={i}
-                className={`carousel-dot ${i === activeFeature ? "active" : ""}`}
-                onClick={() => setActiveFeature(i)}
-              />
-            ))}
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 12, marginTop: 24 }}>
+            <button
+              className="carousel-mobile-nav-btn"
+              onClick={() => setActiveFeature(prev => (prev > 0 ? prev - 1 : 11))}
+              aria-label="Previous capability"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              {Array.from({ length: 12 }).map((_, i) => (
+                <span
+                  key={i}
+                  className={`carousel-dot ${i === activeFeature ? "active" : ""}`}
+                  onClick={() => setActiveFeature(i)}
+                />
+              ))}
+            </div>
+            <button
+              className="carousel-mobile-nav-btn"
+              onClick={() => setActiveFeature(prev => (prev < 11 ? prev + 1 : 0))}
+              aria-label="Next capability"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
           </div>
 
           {/* Navigation position counter details */}
@@ -1368,6 +1525,37 @@ const AboutPage = () => {
           }
           .visualizer-node:hover .node-tooltip {
             opacity: 1;
+          }
+          @media (max-width: 768px) {
+            .connectivity-right {
+              width: 100% !important;
+              overflow: hidden !important;
+              margin-top: 10px !important;
+            }
+            .visualizer-container {
+              transform: scale(0.82);
+              transform-origin: center center;
+              margin: -15px auto !important;
+            }
+            .node-tooltip {
+              opacity: 0.9 !important;
+              bottom: -22px !important;
+              font-size: 8.5px !important;
+              padding: 2px 6px !important;
+            }
+          }
+          @media (max-width: 480px) {
+            .visualizer-container {
+              transform: scale(0.72);
+              transform-origin: center center;
+              margin: -32px auto !important;
+            }
+            .node-tooltip {
+              opacity: 0.95 !important;
+              bottom: -20px !important;
+              font-size: 8px !important;
+              padding: 2px 5px !important;
+            }
           }
         `}</style>
 
@@ -1930,6 +2118,41 @@ const AboutPage = () => {
             align-items: center;
             justify-content: center;
           }
+          .ecosystem-flow-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr auto 1fr;
+            align-items: center;
+            gap: 16px 8px;
+            width: 100%;
+            max-width: 540px;
+          }
+          @media (max-width: 768px) {
+            .ecosystem-flow-grid {
+              grid-template-columns: repeat(3, 1fr) !important;
+              gap: 10px 8px !important;
+              max-width: 100% !important;
+            }
+            .flow-arrow-icon {
+              display: none !important;
+            }
+            .flow-step-pill {
+              padding: 8px 6px !important;
+              font-size: 11.5px !important;
+              gap: 5px !important;
+              border-radius: 10px !important;
+            }
+          }
+          @media (max-width: 576px) {
+            .ecosystem-flow-grid {
+              grid-template-columns: repeat(2, 1fr) !important;
+              gap: 8px !important;
+            }
+            .flow-step-pill {
+              padding: 10px 10px !important;
+              font-size: 12px !important;
+              justify-content: flex-start !important;
+            }
+          }
         `}</style>
 
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -1973,15 +2196,8 @@ const AboutPage = () => {
             </div>
 
             {/* Right Column: Visual Connected Flow */}
-            <div style={{ flex: "1 1 480px", display: "flex", justifyContent: "center" }}>
-              <div style={{
-                display: "grid",
-                gridTemplateColumns: "1fr auto 1fr auto 1fr",
-                alignItems: "center",
-                gap: "20px 8px",
-                width: "100%",
-                maxWidth: "540px"
-              }}>
+            <div style={{ flex: "1 1 480px", display: "flex", justifyContent: "center", width: "100%" }}>
+              <div className="ecosystem-flow-grid">
                 {[
                   { label: "Communication", icon: <FiMessageSquare style={{ color: "#16A34A", width: 15, height: 15 }} /> },
                   { type: "arrow" },
@@ -2570,10 +2786,46 @@ const AboutPage = () => {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(22, 163, 74, 0.06);
           }
+          .our-mission-flex-row {
+            display: flex;
+            gap: 80px;
+            align-items: center;
+            flex-wrap: wrap;
+          }
+          .our-mission-aims-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+          }
+          @media (max-width: 768px) {
+            .our-mission-flex-row {
+              gap: 20px !important;
+            }
+            .our-mission-aims-grid {
+              grid-template-columns: repeat(2, 1fr) !important;
+              gap: 8px !important;
+            }
+            .aim-pill {
+              padding: 10px 10px !important;
+              font-size: 12px !important;
+              gap: 8px !important;
+              border-radius: 10px !important;
+            }
+          }
+          @media (max-width: 480px) {
+            .our-mission-aims-grid {
+              grid-template-columns: repeat(2, 1fr) !important;
+              gap: 6px !important;
+            }
+            .aim-pill {
+              padding: 8px 8px !important;
+              font-size: 11.5px !important;
+            }
+          }
         `}</style>
 
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-          <div style={{ display: "flex", gap: "90px", alignItems: "center", flexWrap: "wrap" }}>
+          <div className="our-mission-flex-row">
 
             {/* Left Column: Text description */}
             <div style={{ flex: "1 1 500px", textAlign: "left" }}>
@@ -2605,11 +2857,7 @@ const AboutPage = () => {
               <div style={{ fontSize: 13, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 20, textAlign: "left" }}>
                 MessBee aims to help businesses:
               </div>
-              <div style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-                gap: 12
-              }}>
+              <div className="our-mission-aims-grid">
                 {[
                   { label: "Build direct customer relationships", icon: <FiUsers style={{ width: 14, height: 14, color: "#16A34A" }} /> },
                   { label: "Reduce repetitive manual work", icon: <FiSettings style={{ width: 14, height: 14, color: "#16A34A" }} /> },
@@ -3004,7 +3252,7 @@ const AboutPage = () => {
             background: #FFFFFF;
             border: 1px solid #E2E8F0;
             border-radius: 16px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(15, 23, 42, 0.01);
             transition: all 0.3s ease;
@@ -3015,10 +3263,11 @@ const AboutPage = () => {
           }
           .about-faq-trigger {
             width: 100%;
-            padding: 14px 24px;
+            padding: 18px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 16px;
             background: transparent;
             border: none;
             cursor: pointer;
@@ -3027,9 +3276,12 @@ const AboutPage = () => {
           }
           .about-faq-question {
             font-size: 15px;
-            font-weight: 800;
+            font-weight: 700;
             color: #0F172A;
             margin: 0;
+            text-align: left;
+            flex: 1 1 auto;
+            line-height: 1.45;
             transition: color 0.25s ease;
           }
           .about-faq-card:hover .about-faq-question {
@@ -3041,16 +3293,20 @@ const AboutPage = () => {
             overflow: hidden;
             transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
             padding: 0 24px;
-            font-size: 13.5px;
+            font-size: 14px;
+            color: #475569;
+            line-height: 1.7;
           }
           .about-faq-answer.open {
-            max-height: 250px;
+            max-height: 350px;
             opacity: 1;
-            padding-bottom: 18px;
+            padding-bottom: 20px;
           }
           .faq-icon-holder {
             width: 32px;
             height: 32px;
+            min-width: 32px;
+            min-height: 32px;
             border-radius: 50%;
             background: #F1F5F9;
             display: flex;
@@ -3064,59 +3320,67 @@ const AboutPage = () => {
             transform: rotate(180deg);
           }
 
-          /* Small Laptops & Compact Notebooks (max-width: 1299px / 1366px) */
-          @media (max-width: 1330px) {
+          /* Responsive Scaling for Tablets & Laptops */
+          @media (max-width: 1024px) {
             .about-faq-trigger {
-              padding: 9px 18px;
+              padding: 16px 20px !important;
             }
             .about-faq-question {
-              font-size: 10.5px;
+              font-size: 14.5px !important;
             }
             .about-faq-answer {
-              padding: 0 18px;
-              font-size: 11.5px;
+              padding: 0 20px !important;
+              font-size: 13.5px !important;
             }
             .about-faq-answer.open {
-              padding-bottom: 14px;
+              padding-bottom: 16px !important;
             }
           }
-          @media (max-width: 1299px) {
-            .about-faq-trigger {
-              padding: 8px 14px;
-            }
-            .about-faq-question {
-              font-size: 10.5px !important;
-            }
-            .about-faq-answer {
-              padding: 0 14px;
-              font-size: 10.5px !important;
-            }
-            .about-faq-answer.open {
-              padding-bottom: 12px;
-            }
-            .faq-icon-holder {
-              width: 24px;
-              height: 24px;
-            }
-          }
+
           /* Mobile Smartphones (max-width: 768px) */
           @media (max-width: 768px) {
+            .about-faq-card {
+              border-radius: 14px !important;
+              margin-bottom: 10px !important;
+            }
             .about-faq-trigger {
-              padding: 6px 12px;
+              padding: 14px 16px !important;
+              gap: 12px !important;
             }
             .about-faq-question {
-              font-size: 10px !important;
+              font-size: 13.5px !important;
+              font-weight: 700 !important;
+              line-height: 1.45 !important;
+              text-align: left !important;
             }
             .about-faq-answer {
-              padding: 0 12px;
-              font-size: 10px !important;
+              padding: 0 16px !important;
+              font-size: 13px !important;
+              line-height: 1.65 !important;
             }
             .about-faq-answer.open {
-              padding-bottom: 10px;
+              padding-bottom: 14px !important;
             }
             .faq-icon-holder {
-              width: 22px;
-              height: 22px;
+              width: 28px !important;
+              height: 28px !important;
+              min-width: 28px !important;
+              min-height: 28px !important;
+            }
+          }
+
+          /* Extra Small Mobile (max-width: 480px) */
+          @media (max-width: 480px) {
+            .about-faq-trigger {
+              padding: 12px 14px !important;
+              gap: 10px !important;
+            }
+            .about-faq-question {
+              font-size: 13px !important;
+            }
+            .about-faq-answer {
+              padding: 0 14px !important;
+              font-size: 12.5px !important;
             }
           }
         `}</style>
@@ -3243,9 +3507,33 @@ const AboutPage = () => {
           .promise-verb-light-card:hover .promise-verb-text {
             color: #FFFFFF !important;
           }
-          @media (max-width: 640px) {
+          @media (max-width: 768px) {
             .promise-container {
-              padding: 24px 16px;
+              padding: 32px 18px !important;
+              border-radius: 20px !important;
+            }
+            .promise-verbs-row {
+              display: grid !important;
+              grid-template-columns: repeat(2, 1fr) !important;
+              gap: 8px !important;
+              width: 100% !important;
+            }
+            .promise-verb-light-card {
+              flex: none !important;
+              max-width: 100% !important;
+              width: 100% !important;
+              padding: 10px 12px !important;
+              font-size: 13px !important;
+              border-radius: 12px !important;
+            }
+          }
+          @media (max-width: 480px) {
+            .promise-container {
+              padding: 24px 14px !important;
+            }
+            .promise-verbs-row {
+              grid-template-columns: repeat(2, 1fr) !important;
+              gap: 8px !important;
             }
           }
         `}</style>
@@ -3280,7 +3568,7 @@ const AboutPage = () => {
           {/* Verbs Flex Rows (4 Upper, 4 Lower - Centered) */}
           <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 24, alignItems: "center" }}>
             {/* Row 1 */}
-            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 12, width: "100%" }}>
+            <div className="promise-verbs-row" style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 12, width: "100%" }}>
               {[
                 { name: "Communicate", icon: <FiMessageSquare style={{ width: 14, height: 14, color: "currentColor" }} /> },
                 { name: "Engage", icon: <FiHeart style={{ width: 14, height: 14, color: "currentColor" }} /> },
@@ -3299,7 +3587,7 @@ const AboutPage = () => {
             </div>
 
             {/* Row 2 */}
-            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 12, width: "100%" }}>
+            <div className="promise-verbs-row" style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 12, width: "100%" }}>
               {[
                 { name: "Manage", icon: <FiBriefcase style={{ width: 14, height: 14, color: "currentColor" }} /> },
                 { name: "Understand", icon: <FiBarChart2 style={{ width: 14, height: 14, color: "currentColor" }} /> },

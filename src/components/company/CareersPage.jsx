@@ -10,47 +10,42 @@ import { useNavigate } from "react-router-dom";
 
 const WHY_ITEMS = [
   {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="3" width="20" height="14" rx="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" />
-      </svg>
-    ),
+    color: "#16A34A",
+    bg: "#F0FDF4",
+    border: "#BBF7D0",
+    icon: "💻",
     title: "Work on a Real Product",
     desc: "Build and improve technology that is designed for real businesses and their everyday needs.",
   },
   {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-      </svg>
-    ),
+    color: "#7C3AED",
+    bg: "#F5F3FF",
+    border: "#DDD6FE",
+    icon: "📈",
     title: "Learn & Grow",
     desc: "Work across modern technologies, product development and business use cases while continuing to develop your skills.",
   },
   {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" /><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" /><line x1="12" y1="17" x2="12.01" y2="17" />
-      </svg>
-    ),
+    color: "#0284C7",
+    bg: "#F0F9FF",
+    border: "#BAE6FD",
+    icon: "🎯",
     title: "Solve Meaningful Problems",
     desc: "From customer management to automation and digital commerce, you'll work on problems that directly affect how businesses operate.",
   },
   {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
-      </svg>
-    ),
+    color: "#D97706",
+    bg: "#FFFBEB",
+    border: "#FDE68A",
+    icon: "👥",
     title: "Work With a Growing Team",
     desc: "Join a team where ideas, ownership and practical problem-solving are valued.",
   },
   {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-      </svg>
-    ),
+    color: "#0D9488",
+    bg: "#F0FDFA",
+    border: "#99F6E4",
+    icon: "🌐",
     title: "Build for a Diverse Market",
     desc: "Work on products designed for businesses across different industries, sizes and locations.",
   },
@@ -62,11 +57,7 @@ const TEAMS = [
     color: "#16A34A",
     bg: "#F0FDF4",
     border: "#BBF7D0",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" />
-      </svg>
-    ),
+    icon: "💻",
     roles: ["Frontend Development", "Backend Development", "Full-Stack Development", "Mobile App Development", "API & Integrations", "QA & Testing", "DevOps"],
   },
   {
@@ -74,11 +65,7 @@ const TEAMS = [
     color: "#7C3AED",
     bg: "#F5F3FF",
     border: "#DDD6FE",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" /><polygon points="12 8 8 12 12 16 16 12 12 8" />
-      </svg>
-    ),
+    icon: "🎨",
     roles: ["Product Management", "UI/UX Design", "Product Design", "User Research"],
   },
   {
@@ -86,11 +73,7 @@ const TEAMS = [
     color: "#0284C7",
     bg: "#F0F9FF",
     border: "#BAE6FD",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" />
-      </svg>
-    ),
+    icon: "📊",
     roles: ["Sales", "Business Development", "Marketing", "Customer Success", "Partnerships"],
   },
   {
@@ -98,11 +81,7 @@ const TEAMS = [
     color: "#D97706",
     bg: "#FFFBEB",
     border: "#FDE68A",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="3" /><path d="M19.07 4.93l-1.42 1.42M4.93 4.93l1.42 1.42M19.07 19.07l-1.42-1.42M4.93 19.07l1.42-1.42M12 2v2M12 20v2M2 12h2M20 12h2" />
-      </svg>
-    ),
+    icon: "⚙️",
     roles: ["Customer Support", "Business Operations", "Administration"],
   },
 ];
@@ -251,24 +230,28 @@ const CareersPage = () => {
           color: #FFFFFF !important;
           box-shadow: 0 0 12px rgba(34, 197, 94, 0.5);
         }
-        .hiring-step-card:hover h3 {
-          color: #4ADE80 !important;
-        }
-        
         .hiring-step-card.active {
-          background: rgba(34, 197, 94, 0.08) !important;
+          background: rgba(34, 197, 94, 0.12) !important;
           border-color: #4ADE80 !important;
-          box-shadow: 0 12px 30px -10px rgba(34, 197, 94, 0.3) !important;
+          box-shadow: 0 12px 30px -10px rgba(34, 197, 94, 0.35) !important;
           transform: translateY(-6px);
         }
         .hiring-step-card.active .step-badge {
           background: #22C55E !important;
           border-color: #22C55E !important;
-          color: #FFFFFF !important;
           box-shadow: 0 0 12px rgba(34, 197, 94, 0.5);
         }
+        .hiring-step-card:hover h3,
         .hiring-step-card.active h3 {
           color: #4ADE80 !important;
+        }
+        .hiring-step-card:hover p,
+        .hiring-step-card.active p {
+          color: #FFFFFF !important;
+        }
+        .hiring-step-card:hover .step-badge span,
+        .hiring-step-card.active .step-badge span {
+          color: #FFFFFF !important;
         }
 
         .step-connection-line {
@@ -386,42 +369,104 @@ const CareersPage = () => {
         /* ── Mobile Smartphones (768px) ── */
         @media (max-width: 768px) {
           .careers-page-wrapper section {
-            padding-top: 24px !important;
-            padding-bottom: 24px !important;
+            padding-top: 32px !important;
+            padding-bottom: 32px !important;
             padding-left: 16px !important;
             padding-right: 16px !important;
           }
           .careers-page-wrapper section:first-of-type {
-            padding-top: 80px !important;
-            padding-bottom: 24px !important;
+            padding-top: 100px !important;
+            padding-bottom: 32px !important;
           }
           .careers-cta-section {
-            padding: 20px 16px !important;
+            padding: 24px 16px !important;
           }
           .careers-page-wrapper h1 {
-            font-size: clamp(20px, 2.4vw, 28px) !important;
+            font-size: clamp(24px, 6.2vw, 36px) !important;
+            letter-spacing: -0.5px !important;
+            line-height: 1.25 !important;
+            margin-bottom: 14px !important;
           }
           .careers-page-wrapper h2 {
-            font-size: clamp(17px, 2vw, 22px) !important;
+            font-size: clamp(20px, 4.8vw, 26px) !important;
+            letter-spacing: -0.4px !important;
+            margin-bottom: 12px !important;
           }
           .careers-page-wrapper h3 {
-            font-size: 13.5px !important;
+            font-size: 15px !important;
           }
           .careers-page-wrapper p {
-            font-size: 12.5px !important;
+            font-size: 13.5px !important;
+            line-height: 1.65 !important;
           }
-          .careers-hero-btns { flex-direction: column; }
+          .careers-hero-btns { flex-direction: column; gap: 10px !important; }
           .careers-btn-primary, .careers-btn-secondary {
             width: 100% !important;
             justify-content: center !important;
-            padding: 10px 16px !important;
-            font-size: 12.5px !important;
+            padding: 12px 20px !important;
+            font-size: 13.5px !important;
           }
-          .teams-grid { grid-template-columns: 1fr !important; }
-          .steps-grid { grid-template-columns: 1fr 1fr !important; }
-          .tech-grid { grid-template-columns: 1fr !important; }
-          .why-grid { grid-template-columns: 1fr !important; }
+          .teams-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+          .steps-grid { grid-template-columns: 1fr 1fr !important; gap: 14px !important; }
+          .tech-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+          .why-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+          .why-card { padding: 20px 16px !important; border-radius: 16px !important; }
           .step-connection-line { display: none !important; }
+          .tech-row-card {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 10px !important;
+            padding: 18px 16px !important;
+            border-radius: 14px !important;
+          }
+          .tech-row-card > div:first-child {
+            width: 100% !important;
+          }
+          .trait-pill {
+            padding: 10px 16px !important;
+            font-size: 13px !important;
+          }
+          .open-positions-grid {
+            grid-template-columns: 1fr !important;
+            gap: 20px !important;
+          }
+          .open-positions-grid > div {
+            padding: 24px 20px !important;
+            border-radius: 18px !important;
+          }
+          .students-card {
+            padding: 24px 20px !important;
+            gap: 24px !important;
+            border-radius: 18px !important;
+          }
+          .equal-opportunity-card {
+            padding: 20px 16px !important;
+            gap: 14px !important;
+            flex-direction: column !important;
+            border-radius: 16px !important;
+          }
+        }
+
+        /* ── Small Mobile (576px) ── */
+        @media (max-width: 576px) {
+          .careers-page-wrapper section {
+            padding-top: 28px !important;
+            padding-bottom: 28px !important;
+            padding-left: 14px !important;
+            padding-right: 14px !important;
+          }
+          .careers-page-wrapper section:first-of-type {
+            padding-top: 95px !important;
+            padding-bottom: 28px !important;
+          }
+          .steps-grid { grid-template-columns: 1fr !important; gap: 14px !important; }
+          .hiring-step-card { padding: 20px 16px !important; }
+          .open-positions-grid > div {
+            padding: 20px 16px !important;
+          }
+          .students-card {
+            padding: 20px 16px !important;
+          }
         }
       `}</style>
 
@@ -457,7 +502,8 @@ const CareersPage = () => {
           </div>
 
           <h1 style={{ fontSize: "clamp(35px, 2.9vw, 62px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1.5px", lineHeight: 1.05, marginBottom: 20, maxWidth: 740 }}>
-            Careers at <span style={{ color: "#16A34A" }}>MessBee</span>
+            Careers at {" "}
+            <span style={{ color: "#16A34A" }}>MessBee</span>
           </h1>
           <p style={{ fontSize: 16, fontWeight: 700, color: "#334155", marginBottom: 16, letterSpacing: "-0.3px" }}>
             Build the Future of Digital Business With Us
@@ -506,9 +552,12 @@ const CareersPage = () => {
                 padding: "32px 28px", transition: "transform 0.25s, box-shadow 0.25s",
               }}>
                 <div style={{
-                  width: 48, height: 48, borderRadius: 14, background: "#F0FDF4",
-                  border: "1px solid #BBF7D0", color: "#16A34A",
+                  width: 56, height: 56, borderRadius: 16,
+                  background: item.bg || "#F0FDF4",
+                  border: `1px solid ${item.border || "#BBF7D0"}`,
+                  color: item.color || "#16A34A",
                   display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20,
+                  fontSize: 28
                 }}>
                   {item.icon}
                 </div>
@@ -642,10 +691,10 @@ const CareersPage = () => {
                 transition: "transform 0.25s, box-shadow 0.25s",
               }}>
                 <div style={{
-                  width: 44, height: 44, borderRadius: 12,
+                  width: 52, height: 52, borderRadius: 14,
                   background: team.bg, border: `1px solid ${team.border}`,
                   color: team.color, display: "flex", alignItems: "center", justifyContent: "center",
-                  marginBottom: 16,
+                  marginBottom: 16, fontSize: 26
                 }}>
                   {team.icon}
                 </div>
@@ -665,9 +714,9 @@ const CareersPage = () => {
       </section>
 
       {/* ═══ STUDENTS ═══ */}
-      <section style={{ padding: "80px 6%", background: "#FFFFFF" }}>
+      <section className="careers-students-section" style={{ padding: "80px 6%", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <div style={{
+          <div className="students-card" style={{
             background: "linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 100%)",
             border: "1px solid #BBF7D0", borderRadius: 24, padding: "52px 56px",
             display: "flex", gap: 60, alignItems: "flex-start", flexWrap: "wrap",
@@ -704,7 +753,7 @@ const CareersPage = () => {
       </section>
 
       {/* ═══ HIRING PROCESS ═══ */}
-      <section style={{ padding: "80px 6%", background: "#0F172A" }}>
+      <section className="careers-hiring-process-section" style={{ padding: "80px 6%", background: "#0F172A" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 56 }}>
             <p style={{ fontSize: 12, fontWeight: 700, color: "#4ADE80", textTransform: "uppercase", letterSpacing: "1.5px", marginBottom: 12 }}>Hiring Process</p>
@@ -746,12 +795,12 @@ const CareersPage = () => {
       </section>
 
       {/* ═══ OPEN POSITIONS / NO OPENING ═══ */}
-      <section id="open-positions" style={{ padding: "60px 6%", background: "#FAFAFA" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, alignItems: "stretch" }}>
+      <section id="open-positions" className="careers-positions-section" style={{ padding: "60px 6%", background: "#FAFAFA" }}>
+        <div className="open-positions-grid" style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 32, alignItems: "stretch" }}>
           {/* Open Positions */}
           <div style={{ background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 24, padding: "44px 40px" }}>
-            <div style={{ width: 48, height: 48, borderRadius: 14, background: "#F0FDF4", border: "1px solid #BBF7D0", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20 }}>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <div style={{ width: 54, height: 54, borderRadius: 16, background: "#F0FDF4", border: "1px solid #BBF7D0", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20 }}>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="2" y="7" width="20" height="14" rx="2" /><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
               </svg>
             </div>
@@ -767,8 +816,8 @@ const CareersPage = () => {
 
           {/* No Suitable Opening */}
           <div style={{ background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 24, padding: "44px 40px" }}>
-            <div style={{ width: 48, height: 48, borderRadius: 14, background: "#F0FDF4", border: "1px solid #BBF7D0", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20 }}>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <div style={{ width: 54, height: 54, borderRadius: 16, background: "#F0F9FF", border: "1px solid #BAE6FD", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20 }}>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0284C7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" />
               </svg>
             </div>
@@ -784,21 +833,21 @@ const CareersPage = () => {
               Send Your Resume
             </button>
             <p style={{ fontSize: 12, color: "#94A3B8", marginTop: 16 }}>
-              📧 <a href="mailto:careers@messbee.com" style={{ color: "#16A34A", textDecoration: "none", fontWeight: 600 }}>careers@messbee.com</a>
+              <a href="mailto:careers@messbee.com" style={{ color: "#16A34A", textDecoration: "none", fontWeight: 600 }}>careers@messbee.com</a>
             </p>
           </div>
         </div>
       </section>
 
       {/* ═══ EQUAL OPPORTUNITY ═══ */}
-      <section style={{ padding: "48px 6%", background: "#FFFFFF", borderTop: "1px solid #F1F5F9", borderBottom: "1px solid #F1F5F9" }}>
+      <section className="careers-equal-opportunity-section" style={{ padding: "48px 6%", background: "#FFFFFF", borderTop: "1px solid #F1F5F9", borderBottom: "1px solid #F1F5F9" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <div style={{
+          <div className="equal-opportunity-card" style={{
             background: "linear-gradient(135deg, #F8FAFC, #F1F5F9)", border: "1px solid #E2E8F0",
             borderRadius: 18, padding: "32px 36px", display: "flex", alignItems: "flex-start", gap: 20,
           }}>
-            <div style={{ width: 40, height: 40, borderRadius: 10, background: "#F0FDF4", border: "1px solid #BBF7D0", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <div style={{ width: 46, height: 46, borderRadius: 12, background: "#F0FDF4", border: "1px solid #BBF7D0", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M18 8h1a4 4 0 0 1 0 8h-1" /><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" /><line x1="6" y1="1" x2="6" y2="4" /><line x1="10" y1="1" x2="10" y2="4" /><line x1="14" y1="1" x2="14" y2="4" />
               </svg>
             </div>

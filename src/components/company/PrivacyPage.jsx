@@ -1,5 +1,5 @@
 import Navbar from "../Navbar";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
 
@@ -844,20 +844,55 @@ const PrivacyPage = () => {
   const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState("introduction");
   const [scrolled, setScrolled] = useState(false);
+  const [isMobileTocOpen, setIsMobileTocOpen] = useState(false);
+  const mobileTocRef = useRef(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    const handleClickOutside = (e) => {
+      if (mobileTocRef.current && !mobileTocRef.current.contains(e.target)) {
+        setIsMobileTocOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 200;
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i].id);
+        if (el && el.offsetTop <= scrollPosition) {
+          setActiveSection(sections[i].id);
+          break;
+        }
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (id) => {
     setActiveSection(id);
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    const element = document.getElementById(id);
+    if (element) {
+      const mobileTocEl = document.querySelector(".mobile-toc-wrapper");
+      const isMobileTocVisible = mobileTocEl && window.getComputedStyle(mobileTocEl).display !== "none";
+      const offset = isMobileTocVisible ? 485 : 95;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: elementPosition - offset,
+        behavior: "smooth"
+      });
+    }
   };
 
   return (
@@ -915,6 +950,9 @@ const PrivacyPage = () => {
           border-left-color: #16A34A;
           padding-left: 16px;
         }
+        .mobile-toc-wrapper {
+          display: none !important;
+        }
         /* ── STANDARDIZED RESPONSIVE TYPOGRAPHY & PADDING ── */
         @media (max-width: 1366px) {
           .privacy-container {
@@ -962,21 +1000,55 @@ const PrivacyPage = () => {
             line-height: 1.6 !important;
           }
         }
-        @media (max-width: 1024px) {
+        @media (max-width: 768px) {
+          .privacy-page-wrapper section:first-of-type {
+            padding-top: 100px !important;
+            padding-bottom: 20px !important;
+          }
+          .privacy-page-wrapper section:nth-of-type(2) {
+            padding-top: 20px !important;
+            padding-bottom: 30px !important;
+          }
           .privacy-sidebar {
             display: none !important;
           }
           .privacy-container {
             gap: 0 !important;
           }
-        }
-        @media (max-width: 768px) {
+          .mobile-toc-wrapper {
+            display: block !important;
+            position: sticky;
+            top: 70px;
+            z-index: 25;
+            margin-bottom: 16px !important;
+            width: calc(100% + 32px) !important;
+            margin-left: -16px !important;
+            margin-right: -16px !important;
+          }
+          .mobile-toc-wrapper > div {
+            border: 1px solid #E2E8F0 !important;
+            border-left: none !important;
+            border-right: none !important;
+            border-radius: 0 !important;
+          }
+          .privacy-page-wrapper article > div:first-child {
+            margin-bottom: 16px !important;
+          }
+          .privacy-page-wrapper article > div[id] {
+            scroll-margin-top: 165px !important;
+            padding: 20px 16px !important;
+            margin-bottom: 14px !important;
+          }
           .privacy-page-wrapper section {
             padding-left: 16px !important;
             padding-right: 16px !important;
           }
           .privacy-page-wrapper h1 {
-            font-size: clamp(20px, 2.4vw, 28px) !important;
+            font-size: clamp(24px, 6vw, 36px) !important;
+            letter-spacing: -0.5px !important;
+            line-height: 1.25 !important;
+            word-spacing: 2px !important;
+            margin-bottom: 12px !important;
           }
           .privacy-page-wrapper h2 {
             font-size: clamp(17px, 2vw, 22px) !important;
@@ -1046,7 +1118,25 @@ const PrivacyPage = () => {
 
           {/* ── Sticky Table of Contents ── */}
           <aside className="privacy-sidebar no-scrollbar">
-            <div style={{ fontSize: 11, fontWeight: 700, color: "#16A34A", textTransform: "uppercase", letterSpacing: "1px", marginBottom: 16 }}>
+            <div style={{
+              position: "sticky",
+              top: -20,
+              marginTop: -20,
+              marginLeft: -20,
+              marginRight: -20,
+              padding: "16px 20px 12px 20px",
+              background: "#F8FAFC",
+              borderBottom: "1px solid #E2E8F0",
+              borderTopLeftRadius: 15,
+              borderTopRightRadius: 15,
+              zIndex: 10,
+              fontSize: 11,
+              fontWeight: 800,
+              color: "#16A34A",
+              textTransform: "uppercase",
+              letterSpacing: "1px",
+              marginBottom: 10,
+            }}>
               Table of Contents
             </div>
             <nav style={{ display: "flex", flexDirection: "column" }}>
@@ -1089,6 +1179,153 @@ const PrivacyPage = () => {
               </p>
             </div>
 
+            {/* ── Mobile Table of Contents Menu (Custom Responsive Selector) ── */}
+            <div className="mobile-toc-wrapper" ref={mobileTocRef}>
+              <div style={{
+                background: "#FFFFFF",
+                border: "1px solid #E2E8F0",
+                borderRadius: 16,
+                padding: "12px 16px",
+                boxShadow: "0 4px 18px rgba(15, 23, 42, 0.06)",
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+                transition: "none",
+              }}>
+                {/* Header / Current selection row */}
+                <div
+                  onClick={() => setIsMobileTocOpen(!isMobileTocOpen)}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    cursor: "pointer",
+                    userSelect: "none",
+                  }}
+                >
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, minWidth: 0, flex: 1 }}>
+                    <div style={{
+                      width: 32,
+                      height: 32,
+                      borderRadius: 10,
+                      background: "rgba(22, 163, 74, 0.12)",
+                      color: "#16A34A",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      flexShrink: 0
+                    }}>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="8" y1="6" x2="21" y2="6" /><line x1="8" y1="12" x2="21" y2="12" /><line x1="8" y1="18" x2="21" y2="18" /><line x1="3" y1="6" x2="3.01" y2="6" /><line x1="3" y1="12" x2="3.01" y2="12" /><line x1="3" y1="18" x2="3.01" y2="18" />
+                      </svg>
+                    </div>
+                    <div style={{ display: "flex", flexDirection: "column", minWidth: 0, flex: 1 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                        <span style={{ fontSize: 10, fontWeight: 800, color: "#16A34A", textTransform: "uppercase", letterSpacing: "0.8px" }}>
+                          Table of Contents
+                        </span>
+                        <span style={{ fontSize: 10, fontWeight: 700, color: "#15803D", background: "#DCFCE7", padding: "1px 7px", borderRadius: 10 }}>
+                          {sections.findIndex(s => s.id === activeSection) + 1} of {sections.length}
+                        </span>
+                      </div>
+                      <span style={{
+                        fontSize: 14,
+                        fontWeight: 700,
+                        color: "#0F172A",
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        marginTop: 1,
+                        fontFamily: "'Inter', sans-serif"
+                      }}>
+                        {sections.find(s => s.id === activeSection)?.title || sections[0].title}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div style={{
+                    width: 30,
+                    height: 30,
+                    borderRadius: 8,
+                    background: isMobileTocOpen ? "#F0FDF4" : "#F1F5F9",
+                    color: isMobileTocOpen ? "#16A34A" : "#64748B",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexShrink: 0,
+                    marginLeft: 8,
+                    transition: "transform 0.25s ease, background 0.2s ease",
+                    transform: isMobileTocOpen ? "rotate(180deg)" : "rotate(0deg)"
+                  }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Dropdown Options List */}
+                {isMobileTocOpen && (
+                  <div style={{
+                    marginTop: 12,
+                    paddingTop: 12,
+                    borderTop: "1px solid #E2E8F0",
+                    maxHeight: "340px",
+                    overflowY: "auto",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 3,
+                  }}
+                  className="no-scrollbar"
+                  >
+                    {sections.map((s, idx) => {
+                      const isActive = activeSection === s.id;
+                      return (
+                        <div
+                          key={s.id}
+                          onClick={() => {
+                            scrollToSection(s.id);
+                            setIsMobileTocOpen(false);
+                          }}
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 10,
+                            padding: "10px 12px",
+                            borderRadius: 10,
+                            background: isActive ? "rgba(22, 163, 74, 0.1)" : "transparent",
+                            color: isActive ? "#16A34A" : "#334155",
+                            fontWeight: isActive ? 700 : 500,
+                            fontSize: 13.5,
+                            cursor: "pointer",
+                            transition: "all 0.15s ease",
+                            borderLeft: isActive ? "3px solid #16A34A" : "3px solid transparent"
+                          }}
+                        >
+                          <span style={{
+                            fontSize: 11,
+                            fontWeight: 700,
+                            color: isActive ? "#16A34A" : "#94A3B8",
+                            width: 22,
+                            textAlign: "right",
+                            flexShrink: 0
+                          }}>
+                            {idx + 1}.
+                          </span>
+                          <span style={{ flex: 1, lineHeight: 1.35 }}>
+                            {s.title.replace(/^\d+\.\s*/, '')}
+                          </span>
+                          {isActive && (
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                              <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            </div>
+
             {sections.map((s, i) => (
               <div
                 key={s.id}
@@ -1098,10 +1335,10 @@ const PrivacyPage = () => {
                   border: "1px solid #E2E8F0",
                   borderRadius: 16,
                   padding: 32,
-                  marginBottom: 22,
+                  marginBottom: 26,
                   boxShadow: "0 4px 12px rgba(15, 23, 42, 0.01)",
                   textAlign: "left",
-                  scrollMarginTop: "100px"
+                  scrollMarginTop: "95px"
                 }}
                 onMouseEnter={() => setActiveSection(s.id)}>
                 <div style={{
