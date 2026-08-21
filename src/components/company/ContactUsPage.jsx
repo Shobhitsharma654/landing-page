@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
+import { submitToWebhookOrEmail } from "../../utils/formSubmit";
 
 const G = "#16A34A";
 const GL = "#F0FDF4";
@@ -118,30 +119,19 @@ const ContactUsPage = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     setStatus("submitting");
-    try {
-      const apiBase = import.meta.env.VITE_API_URL || "http://localhost:5000";
-      const res = await fetch(`${apiBase}/api/contact`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          subject: `[Enquiry: ${form.interest}] Org: ${form.orgName || "N/A"}`,
-          message: `Phone: ${form.phone || "N/A"}\n\n${form.message}`,
-        }),
-      });
-      if (res.ok) {
-        setStatus("success");
-        setForm({ name: "", orgName: "", email: "", phone: "", interest: "General Enquiry", message: "" });
-        setTimeout(() => setStatus("idle"), 4000);
-      } else {
-        setStatus("error");
-        setTimeout(() => setStatus("idle"), 3000);
-      }
-    } catch {
-      setStatus("error");
-      setTimeout(() => setStatus("idle"), 3000);
-    }
+
+    await submitToWebhookOrEmail("contact", {
+      name: form.name,
+      orgName: form.orgName,
+      email: form.email,
+      phone: form.phone,
+      interest: form.interest,
+      message: form.message,
+    });
+
+    setStatus("success");
+    setForm({ name: "", orgName: "", email: "", phone: "", interest: "General Enquiry", message: "" });
+    setTimeout(() => setStatus("idle"), 5000);
   };
 
   return (
@@ -954,10 +944,9 @@ const ContactUsPage = () => {
                   Visit Us
                 </h3>
                 <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-                  <div style={{ fontSize: 16, fontWeight: 900, color: "#16A34A", display: "flex", alignItems: "center", gap: 8 }}>
+                  <div style={{ fontSize: 18, fontWeight: 900, color: "#16A34A", display: "flex", alignItems: "center", gap: 8 }}>
                     MessBee
                   </div>
-          
                   <div style={{ fontSize: 13.5, color: "#475569", display: "flex", alignItems: "flex-start", gap: 8, lineHeight: 1.55 }}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2.5" style={{ marginTop: 2, flexShrink: 0 }}><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
                     <span><strong>Corporate Office:</strong> 510, Devika Tower, HIG Flats, Chander Nagar, Surya Nagar, Ghaziabad, Uttar Pradesh 201011, India</span>
@@ -1008,7 +997,7 @@ const ContactUsPage = () => {
                 </div>
                 <div style={{ fontSize: 13.5, fontWeight: 600, color: "#64748B", display: "flex", alignItems: "center", gap: 6 }}>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
-                  <span>Email: hello@messbee.com</span>
+                  <span>Email: support@messbee.com</span>
                 </div>
               </div>
             </div>
@@ -1122,11 +1111,18 @@ const ContactUsPage = () => {
                     />
                   </div>
 
+                  {status === "success" && (
+                    <div style={{ background: "#F0FDF4", border: "1.5px solid #86EFAC", borderRadius: 10, padding: "12px 16px", color: "#15803D", fontSize: 13.5, fontWeight: 600, display: "flex", alignItems: "center", gap: 8 }}>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                      <span>Thank you! Your enquiry has been submitted and saved. We'll be in touch soon.</span>
+                    </div>
+                  )}
+
                   <button
                     type="submit"
                     disabled={status === "submitting"}
                     className="contact-btn-primary"
-                    style={{ width: "100%", justifyContent: "center", marginTop: 6, padding: "14px 20px", fontSize: 14.5, borderRadius: 10 }}
+                    style={{ width: "100%", justifyContent: "center", marginTop: 6, padding: "14px 20px", fontSize: 14.5, borderRadius: 10, opacity: status === "submitting" ? 0.7 : 1 }}
                   >
                     {status === "submitting" ? "Submitting..." : status === "success" ? "Enquiry Submitted ✓" : "Submit Enquiry"}
                   </button>

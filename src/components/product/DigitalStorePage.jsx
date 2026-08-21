@@ -352,10 +352,10 @@ const DigitalStorePage = () => {
                     {step.flow && (
                       <div style={{ marginBottom:14 }}>
                         <div style={{ fontSize:11, color:MU, fontWeight:600, marginBottom:6, textTransform:"uppercase", letterSpacing:1 }}>Workflow</div>
-                        <div style={{ display:"flex", alignItems:"center", flexWrap:"wrap", gap:0 }}>
+                        <div style={{ display:"flex", alignItems:"center", flexWrap:"wrap", gap:"8px 3px" }}>
                           {step.flow.map((f,i) => (
                             <React.Fragment key={f}>
-                              <span style={{ background:GL, border:`1.5px solid ${GB}`, color:G, borderRadius:6, padding:"4px 10px", fontSize:11, fontWeight:700 }}>{f}</span>
+                              <span style={{ background:GL, border:`1.5px solid ${GB}`, color:G, borderRadius:6, padding:"4px 10px", fontSize:11, fontWeight:700, display:"inline-block" }}>{f}</span>
                               {i<step.flow.length-1 && <span style={{ color:"#94A3B8", fontSize:13, padding:"0 3px" }}>→</span>}
                             </React.Fragment>
                           ))}

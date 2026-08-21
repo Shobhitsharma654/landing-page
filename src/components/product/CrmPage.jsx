@@ -201,9 +201,9 @@ const CSS = `
   .ctr { display:flex;gap:14px;flex-wrap:wrap; }
   .sc { background:#FAFAFA;border:1.5px solid #F1F5F9;border-radius:16px;padding:28px 20px;text-align:center; transition:all .2s; }
   .sc:hover { border-color:#BBF7D0; transform:translateY(-2px); box-shadow:0 12px 32px rgba(22,163,74,.05); }
-  .flow-strip { display:flex;align-items:center;flex-wrap:wrap;gap:0; }
-  .flow-item { background:#F0FDF4;border:1.5px solid #BBF7D0;color:#16A34A;border-radius:8px;padding:8px 16px;font-size:13px;font-weight:700; }
-  .flow-arr { color:#94A3B8;font-size:18px;padding:0 6px; }
+  .flow-strip { display:flex;align-items:center;flex-wrap:nowrap;gap:2px;margin-bottom:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px; }
+  .flow-item { background:#F0FDF4;border:1px solid #BBF7D0;color:#16A34A;border-radius:6px;padding:4px 8px;font-size:11px;font-weight:700;white-space:nowrap;flex-shrink:0; }
+  .flow-arr { color:#94A3B8;font-size:11px;padding:0 2px;display:inline-flex;align-items:center;flex-shrink:0; }
   .connect-strip { display:flex;align-items:center;flex-wrap:wrap;gap:0;justify-content:center; }
   .connect-item { color:#fff;padding:8px 12px;font-size:14px;font-weight:700; }
   .connect-arr { color:rgba(255,255,255,.6);font-size:18px;padding:0 6px;font-weight:700; }

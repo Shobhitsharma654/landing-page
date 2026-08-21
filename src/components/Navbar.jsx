@@ -86,8 +86,6 @@ const Navbar = () => {
   ];
 
   const resourcesLinks = [
-    { label: "QR & Connect", path: "/qr-connect" },
-    { label: "WhatsApp QR Generator", path: "/whatsapp-qr-generator" },
     { label: "Business Library", path: "/resources/business-library" },
     { label: "Help Center", path: "/resources/help-center" },
     { label: "Blog", path: "/resources/blog" },

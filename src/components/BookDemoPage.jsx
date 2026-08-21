@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import defaultLogo from "../assets/logo.jpeg";
+import { submitToWebhookOrEmail } from "../utils/formSubmit";
 
 /* ── Reusable Pill Tag (Aligned with Solutions & Resources design) ── */
 const Pill = ({ children }) => (
@@ -161,20 +162,7 @@ const BookDemoPage = () => {
     };
 
     try {
-      const apiBase = import.meta.env.VITE_API_URL || "http://localhost:5000";
-      let res = await fetch(`${apiBase}/api/book-demo`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      }).catch(() => null);
-
-      if (!res || !res.ok) {
-        await fetch(`${apiBase}/api/contact`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        }).catch(() => null);
-      }
+      await submitToWebhookOrEmail("book-demo", payload);
       setStatus("success");
     } catch {
       setStatus("success");
