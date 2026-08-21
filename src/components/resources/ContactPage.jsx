@@ -466,57 +466,58 @@ const ContactPage = () => {
         /* Under 768px (Mobile Portrait/Landscape) */
         @media (max-width: 768px) {
           .contact-section {
-            padding: 40px 4% !important;
+            padding: 24px 16px !important;
           }
-          .grid-col-3 {
-            grid-template-columns: 1fr;
-          }
-          .grid-col-2 {
-            grid-template-columns: 1fr;
+          .contact-hero-section {
+            margin-top: 60px !important;
+            padding-top: 24px !important;
+            padding-bottom: 28px !important;
           }
           .contact-hero-section h1 {
-            font-size: clamp(20px, 2.8vw, 30px) !important;
+            font-size: clamp(24px, 6.2vw, 36px) !important;
+            letter-spacing: -0.5px !important;
+            line-height: 1.25 !important;
+            margin-bottom: 14px !important;
           }
-          .contact-section h2 {
-            font-size: clamp(17px, 2.2vw, 22px) !important;
+          .grid-col-3 {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
           }
-          .contact-section h3 {
-            font-size: 13.5px !important;
+          .grid-col-2 {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
           }
-          .contact-section p {
-            font-size: 12.5px !important;
+          .grid-col-5 {
+            grid-template-columns: 1fr !important;
+            gap: 14px !important;
+          }
+          .contact-form-info-box, .contact-form-box {
+            padding: 20px 16px !important;
+            border-radius: 18px !important;
+          }
+          .contact-btn-primary, .contact-btn-secondary {
+            width: 100% !important;
+            justify-content: center !important;
           }
         }
 
         /* Under 576px (Small Mobile) */
         @media (max-width: 576px) {
           .contact-section {
-            padding: 32px 16px !important;
+            padding: 20px 14px !important;
           }
           .grid-col-5 {
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr !important;
           }
           .contact-btn-primary, .contact-btn-secondary {
-            width: 100%;
-            justify-content: center;
+            width: 100% !important;
+            justify-content: center !important;
           }
           .contact-hero-row {
-            gap: 28px;
+            gap: 24px !important;
           }
           .contact-form-info-box, .contact-form-box {
-            padding: 20px 16px !important;
-          }
-          .contact-hero-section h1 {
-            font-size: clamp(18px, 2.6vw, 26px) !important;
-          }
-          .contact-section h2 {
-            font-size: clamp(16px, 2vw, 20px) !important;
-          }
-          .contact-section h3 {
-            font-size: 13px !important;
-          }
-          .contact-section p {
-            font-size: 12px !important;
+            padding: 18px 14px !important;
           }
         }
 
