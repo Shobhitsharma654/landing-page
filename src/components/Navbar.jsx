@@ -171,10 +171,14 @@ const Navbar = () => {
           .nav-desktop-auth { display: none !important; }
           .mobile-menu-btn { display: flex !important; }
         }
+        @media (max-width: 600px) {
+          .nav-container-box { padding: 0 12px !important; }
+          .nav-btn-register { display: none !important; }
+          .nav-btn-login { padding: 6px 12px !important; font-size: 12px !important; }
+        }
       `}</style>
-
       {/* Main Fixed Navbar */}
-      <nav style={{
+      <nav className="nav-container-box" style={{
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000,
         background: "#FFFFFF",
         borderBottom: "none",
