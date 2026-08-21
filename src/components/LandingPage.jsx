@@ -767,7 +767,7 @@ const LandingPage = () => {
             position: "relative",
             margin: "0 auto",
             width: "100%",
-            maxWidth: 740,
+            maxWidth: 1040,
             display: "flex",
             justifyContent: "center",
             alignItems: "center"
@@ -777,10 +777,10 @@ const LandingPage = () => {
               alt="MessBee WhatsApp API Platform"
               style={{
                 width: "100%",
-                maxWidth: 740,
+                maxWidth: 1040,
                 height: "auto",
                 borderRadius: 16,
-                boxShadow: "0 20px 40px -10px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0,0,0,0.03)",
+                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.04)",
                 display: "block"
               }}
             />
