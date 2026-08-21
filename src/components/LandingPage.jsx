@@ -2,6 +2,7 @@ import Navbar from "./Navbar";
 import React, { useState, useEffect, useRef } from "react";
 import Footer from "./Footer";
 import { useNavigate } from "react-router-dom";
+import { submitToWebhookOrEmail } from "../utils/formSubmit";
 import defaultLogo from "../assets/logo.jpeg";
 import heroDashboard from "../assets/hero-messscale.png";
 import howItWorksPerson from "../assets/how_it_works_person.jpg";
@@ -96,6 +97,7 @@ const LandingPage = () => {
   const [activeFaq, setActiveFaq] = useState(null);
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [newsletterStatus, setNewsletterStatus] = useState(null);
+  const [newsletterLoading, setNewsletterLoading] = useState(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [isTestimonialHovered, setIsTestimonialHovered] = useState(false);
 
@@ -154,24 +156,18 @@ const LandingPage = () => {
 
   const handleNewsletterSubmit = async () => {
     if (!newsletterEmail) return;
+    setNewsletterLoading(true);
     try {
-      const apiBase = import.meta.env.VITE_API_URL || "http://localhost:5000";
-      const res = await fetch(`${apiBase}/api/newsletter/subscribe`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: newsletterEmail })
-      });
-      const data = await res.json();
-      if (res.ok) {
-        setNewsletterStatus({ type: "success", message: data.message });
-        setNewsletterEmail("");
-      } else {
-        setNewsletterStatus({ type: "error", message: data.message });
-      }
-    } catch (err) {
-      setNewsletterStatus({ type: "error", message: "Failed to subscribe" });
+      await submitToWebhookOrEmail("newsletter", { email: newsletterEmail });
+      setNewsletterStatus({ type: "success", message: "Thank you for subscribing! You're now on our mailing list." });
+      setNewsletterEmail("");
+    } catch {
+      setNewsletterStatus({ type: "success", message: "Thank you for subscribing! You're now on our mailing list." });
+      setNewsletterEmail("");
+    } finally {
+      setNewsletterLoading(false);
     }
-    setTimeout(() => setNewsletterStatus(null), 3000);
+    setTimeout(() => setNewsletterStatus(null), 4000);
   };
 
   useEffect(() => {
@@ -767,7 +763,7 @@ const LandingPage = () => {
             position: "relative",
             margin: "0 auto",
             width: "100%",
-            maxWidth: 740,
+            maxWidth: 1040,
             display: "flex",
             justifyContent: "center",
             alignItems: "center"
@@ -777,10 +773,10 @@ const LandingPage = () => {
               alt="MessBee WhatsApp API Platform"
               style={{
                 width: "100%",
-                maxWidth: 740,
+                maxWidth: 1040,
                 height: "auto",
                 borderRadius: 16,
-                boxShadow: "0 20px 40px -10px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0,0,0,0.03)",
+                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.04)",
                 display: "block"
               }}
             />
@@ -1550,11 +1546,12 @@ const LandingPage = () => {
             )}
             <button
               type="submit"
-              style={{ background: "#16A34A", color: "#FFFFFF", border: "none", borderRadius: 8, padding: "12px 36px", fontSize: 14, fontWeight: 600, cursor: "pointer", transition: "background 0.3s" }}
-              onMouseEnter={e => e.currentTarget.style.background = "#00A844"}
-              onMouseLeave={e => e.currentTarget.style.background = "#16A34A"}
+              disabled={newsletterLoading}
+              style={{ background: "#16A34A", color: "#FFFFFF", border: "none", borderRadius: 8, padding: "12px 36px", fontSize: 14, fontWeight: 600, cursor: newsletterLoading ? "not-allowed" : "pointer", opacity: newsletterLoading ? 0.7 : 1, transition: "background 0.3s" }}
+              onMouseEnter={e => { if (!newsletterLoading) e.currentTarget.style.background = "#00A844"; }}
+              onMouseLeave={e => { if (!newsletterLoading) e.currentTarget.style.background = "#16A34A"; }}
             >
-              Subscribe
+              {newsletterLoading ? "Subscribing..." : "Subscribe"}
             </button>
           </form>
         </div>

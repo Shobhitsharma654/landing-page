@@ -464,6 +464,21 @@ const ServicePage = () => {
           grid-template-columns: repeat(6, 1fr);
           gap: 12px;
         }
+        .service-journey-grid {
+          display: grid;
+          grid-template-columns: repeat(6, 1fr);
+          gap: 12px;
+        }
+        .service-why-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 18px;
+        }
+        .service-after-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 14px;
+        }
 
         /* Large Laptops / Desktops (1440px +) */
         @media (min-width: 1440px) {
@@ -492,21 +507,62 @@ const ServicePage = () => {
         @media (max-width: 1023px) {
           .service-hero-row { flex-direction: column !important; }
           .service-hero-right-col { width: 100% !important; min-width: unset !important; justify-content: center !important; margin-top: 24px !important; }
-          .service-hero-right-card { transform: none !important; transform-origin: center center !important; max-width: 340px !important; margin: 0 auto !important; }
-          .grid-col-6 { grid-template-columns: repeat(2, 1fr); }
-          .grid-col-4 { grid-template-columns: repeat(2, 1fr); }
-          .grid-col-3 { grid-template-columns: repeat(1, 1fr); }
+          .service-hero-right-card { transform: none !important; transform-origin: center center !important; max-width: 440px !important; margin: 0 auto !important; }
+          .grid-col-6, .service-journey-grid { grid-template-columns: repeat(2, 1fr); }
+          .grid-col-4, .service-after-grid { grid-template-columns: repeat(2, 1fr); }
+          .grid-col-3, .service-why-grid { grid-template-columns: repeat(1, 1fr); }
           .grid-col-2 { grid-template-columns: repeat(1, 1fr); }
         }
 
         /* Mobile Phones & Tablets (under 768px) */
         @media (max-width: 768px) {
-          .grid-col-6, .grid-col-4, .grid-col-3, .grid-col-2 {
+          .service-hero-section {
+            margin-top: 0px !important;
+            padding-top: 84px !important;
+            padding-bottom: 28px !important;
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+          }
+          .service-hero-right-card {
+            transform: none !important;
+            max-width: 100% !important;
+            margin: 0 auto !important;
+            padding: 24px 16px !important;
+          }
+          .grid-col-4, .service-journey-grid, .service-why-grid, .service-after-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 12px !important;
+          }
+          .service-after-grid > div:last-child {
+            grid-column: span 2 !important;
+            justify-self: center !important;
+            width: calc(50% - 6px) !important;
+          }
+          .grid-col-6, .grid-col-3, .grid-col-2 {
             grid-template-columns: 1fr !important;
             gap: 12px !important;
           }
           .service-glass-card {
             padding: 14px 16px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .service-hero-right-card {
+            padding: 18px 12px !important;
+          }
+          .grid-col-4, .service-journey-grid, .service-why-grid, .service-after-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
+          }
+          .service-after-grid > div:last-child {
+            grid-column: span 2 !important;
+            justify-self: center !important;
+            width: calc(50% - 5px) !important;
+          }
+          .grid-col-6, .grid-col-3, .grid-col-2 {
+            grid-template-columns: 1fr !important;
+            gap: 10px !important;
           }
         }
 
@@ -533,6 +589,7 @@ const ServicePage = () => {
           SECTION 1: HERO (Service Business Specific Graphic with MessBee Logo)
          ═══════════════════════════════════════════════════════════════════ */}
       <section
+        className="service-hero-section"
         style={{
           marginTop: 70,
           padding: "56px 6% 64px",
@@ -864,7 +921,7 @@ const ServicePage = () => {
           </div>
 
           {/* 6 Step Visual Pipeline */}
-          <div className="grid-col-6">
+          <div className="service-journey-grid">
             {SERVICE_JOURNEY_STEPS.map((s, i) => (
               <div
                 key={s.step}
@@ -1054,7 +1111,7 @@ const ServicePage = () => {
             </p>
           </div>
 
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: 0, marginBottom: 26 }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: "12px 6px", marginBottom: 26 }}>
             {CONVERSATION_NODES.map((node, i, arr) => (
               <React.Fragment key={node}>
                 <span style={{ background: "#fff", border: `1.5px solid ${GB}`, color: G, borderRadius: 6, padding: "8px 16px", fontSize: 12, fontWeight: 700 }}>
@@ -1108,7 +1165,7 @@ const ServicePage = () => {
           </div>
 
           {/* 7 Workflows Grid from Prompt */}
-          <div className="grid-col-4" style={{ marginBottom: 28 }}>
+          <div className="service-after-grid" style={{ marginBottom: 28 }}>
             {AFTER_SERVICE_WORKFLOWS.map((as, idx) => (
               <div
                 key={idx}
@@ -1162,7 +1219,7 @@ const ServicePage = () => {
           </div>
 
           {/* 6 Business Type Cards from Prompt */}
-          <div className="grid-col-3">
+          <div className="service-why-grid">
             {SERVICE_BUSINESS_TYPES.map((b, idx) => (
               <div
                 key={idx}
@@ -1211,7 +1268,7 @@ const ServicePage = () => {
           </div>
 
           {/* 7 Reason Cards from Prompt */}
-          <div className="grid-col-3">
+          <div className="service-why-grid">
             {WHY_CHOOSE_MESSBEE.map((r, idx) => (
               <div
                 key={idx}

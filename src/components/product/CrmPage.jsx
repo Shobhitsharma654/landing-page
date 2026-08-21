@@ -188,7 +188,8 @@ const CSS = `
   .fq { display:flex;justify-content:space-between;align-items:center;padding:14px 0;cursor:pointer;gap:16px; }
   .fq:hover .fqt { color:#16A34A; }
   .fqt { font-size:13px;font-weight:600;transition:color .2s;line-height:1.5; }
-  .sec-grid { display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start; }
+  .sec-grid { display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;min-width:0;width:100%; }
+  .sec-grid > * { min-width:0;max-width:100%;word-break:break-word;overflow-wrap:break-word; }
   .sec-grid.rev { direction:rtl; }
   .sec-grid.rev > * { direction:ltr; }
   .hg { display:flex;flex-wrap:wrap;align-items:center;gap:48px; }
@@ -201,21 +202,79 @@ const CSS = `
   .ctr { display:flex;gap:14px;flex-wrap:wrap; }
   .sc { background:#FAFAFA;border:1.5px solid #F1F5F9;border-radius:16px;padding:28px 20px;text-align:center; transition:all .2s; }
   .sc:hover { border-color:#BBF7D0; transform:translateY(-2px); box-shadow:0 12px 32px rgba(22,163,74,.05); }
-  .flow-strip { display:flex;align-items:center;flex-wrap:wrap;gap:0; }
-  .flow-item { background:#F0FDF4;border:1.5px solid #BBF7D0;color:#16A34A;border-radius:8px;padding:8px 16px;font-size:13px;font-weight:700; }
-  .flow-arr { color:#94A3B8;font-size:18px;padding:0 6px; }
+  .flow-strip { display:flex;align-items:center;flex-wrap:wrap;gap:8px 4px;margin-bottom:16px;width:100%;max-width:100%; }
+  .flow-item { background:#F0FDF4;border:1px solid #BBF7D0;color:#16A34A;border-radius:6px;padding:4px 8px;font-size:11px;font-weight:700;display:inline-block; }
+  .flow-arr { color:#94A3B8;font-size:11px;padding:0 2px;display:inline-flex;align-items:center; }
   .connect-strip { display:flex;align-items:center;flex-wrap:wrap;gap:0;justify-content:center; }
   .connect-item { color:#fff;padding:8px 12px;font-size:14px;font-weight:700; }
   .connect-arr { color:rgba(255,255,255,.6);font-size:18px;padding:0 6px;font-weight:700; }
+  .crm-steps-grid { display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 10px; }
+  .crm-step-item { display:inline-flex;align-items:center;gap:8px; }
+  .crm-step-pill { background:#F0FDF4;border:1.5px solid #BBF7D0;color:#16A34A;border-radius:8px;padding:5px 12px;font-size:12px;font-weight:700;display:inline-block; }
+  .crm-step-arrow { color:#94A3B8;font-size:15px; }
+  * { box-sizing: border-box; }
+  .crm-sec-card { background:linear-gradient(135deg, #14532d 0%, #022c22 100%); border-radius:16px; padding:18px; border:1px solid rgba(34,197,94,.3); box-shadow:0 24px 56px rgba(0,0,0,.18); max-width:400px; margin:110px auto 0; width:100%; box-sizing:border-box; overflow:hidden; }
   @media(max-width:1100px){
     .fg { grid-template-columns:repeat(2,1fr)!important; }
     .sec-grid { grid-template-columns:1fr!important; }
     .sec-grid.rev { direction:ltr; }
     .wg { grid-template-columns:repeat(2,1fr)!important; }
+    .crm-sec-card { margin-top:24px!important; max-width:100%!important; }
   }
   @media(max-width:860px){
     .ig { grid-template-columns:1fr!important; }
     .sg { grid-template-columns:1fr 1fr!important; }
+  }
+  @media(max-width:768px){
+    .crm-hero-section {
+      padding-top: 84px !important;
+      padding-bottom: 28px !important;
+      padding-left: 16px !important;
+      padding-right: 16px !important;
+    }
+    .hr {
+      width: 100% !important;
+      justify-content: center !important;
+      padding-top: 24px !important;
+      margin-bottom: 0 !important;
+    }
+    .hr > div {
+      transform: none !important;
+      transform-origin: top center !important;
+      margin: 0 auto !important;
+      max-width: 100% !important;
+      padding: 24px 16px !important;
+    }
+    .crm-sec-card {
+      margin-top: 20px !important;
+      max-width: 100% !important;
+      width: 100% !important;
+      padding: 18px 14px !important;
+      box-sizing: border-box !important;
+    }
+    .crm-india-section {
+      padding: 40px 16px !important;
+    }
+    .crm-steps-box {
+      padding: 12px 8px !important;
+      max-width: 310px !important;
+    }
+    .crm-steps-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 10px !important;
+    }
+    .crm-step-item {
+      display: block !important;
+    }
+    .crm-step-pill {
+      display: block !important;
+      text-align: center !important;
+      width: 100% !important;
+    }
+    .crm-step-arrow {
+      display: none !important;
+    }
   }
   @media(max-width:640px){
     .fg  { grid-template-columns:1fr!important; }
@@ -223,15 +282,17 @@ const CSS = `
     .ctr { display:flex!important; flex-direction:row!important; align-items:center!important; gap:10px!important; flex-wrap:wrap!important; }
     .cp, .cd { padding:10px 18px!important; font-size:12px!important; }
     .hr  { width:100%!important; justify-content:center!important; padding-top:24px!important; margin-bottom:0!important; }
-    .hr > div { transform:none!important; transform-origin:top center!important; margin:0 auto!important; max-width:340px!important; }
-    .crm-sec-card { margin-top:24px!important; }
+    .hr > div { transform:none!important; transform-origin:top center!important; margin:0 auto!important; width:100%!important; max-width:100%!important; padding:22px 16px!important; box-sizing:border-box!important; }
+    .crm-sec-card { margin-top:20px!important; max-width:100%!important; width:100%!important; padding:16px 12px!important; box-sizing:border-box!important; }
     .sg  { grid-template-columns:1fr 1fr!important; }
     .ig  { grid-template-columns:1fr!important; }
     .sec-grid { grid-template-columns:1fr!important; }
   }
   @media(max-width:480px){
+    .hr > div { padding:18px 12px!important; border-radius:18px!important; }
     .sg  { grid-template-columns:1fr!important; }
     .sc  { padding:20px 14px!important; }
+    .crm-sec-card { padding: 16px 12px !important; }
   }
 `;
 
@@ -251,7 +312,7 @@ const CrmPage = () => {
       <Navbar />
 
       {/* ── HERO ── */}
-      <section style={{ background:"#fff", padding:"118px 6% 60px" }}>
+      <section className="crm-hero-section" style={{ background:"#fff", padding:"118px 6% 60px" }}>
         <div style={{ maxWidth:1200, margin:"0 auto" }}>
           <div className="hg" style={{ alignItems:"flex-start" }}>
             <div className="hl">
@@ -400,7 +461,7 @@ const CrmPage = () => {
                 </div>
 
                 {/* Visual side */}
-                <div className="crm-sec-card" style={{ background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)", borderRadius:16, padding:18, border:`1px solid rgba(34,197,94,.3)`, boxShadow:"0 24px 56px rgba(0,0,0,.18)", maxWidth:400, margin:"110px auto 0", width:"100%" }}>
+                <div className="crm-sec-card">
                   <div style={{ marginBottom:14, display:"flex", alignItems:"center", gap:8 }}>
                     <div style={{ width:32, height:32, borderRadius:8, background:sec.bg, display:"flex", alignItems:"center", justifyContent:"center", fontSize:16 }}>{OVERVIEW[idx]?.icon}</div>
                     <div>
@@ -499,7 +560,7 @@ const CrmPage = () => {
       </section>
 
       {/* ── BUILT FOR INDIA ── */}
-      <section style={{ background:GL, padding:"80px 6%", borderTop:`1px solid ${GB}`, borderBottom:`1px solid ${GB}` }}>
+      <section className="crm-india-section" style={{ background:GL, padding:"80px 6%", borderTop:`1px solid ${GB}`, borderBottom:`1px solid ${GB}` }}>
         <div style={{ maxWidth:1000, margin:"0 auto", textAlign:"center" }}>
           <Pill>Built for Indian Businesses</Pill>
           <h2 style={{ fontSize:"clamp(20px,2.5vw,32px)", fontWeight:900, color:D2, letterSpacing:"-1px", marginBottom:14 }}>
@@ -513,13 +574,15 @@ const CrmPage = () => {
             MessBee CRM is designed to help businesses move from scattered customer information to a more
             organized digital customer-management workflow.
           </p>
-          <div style={{ background:"#fff", border:`1.5px solid ${GB}`, borderRadius:16, padding:"12px 32px", display:"inline-block", maxWidth:720 }}>
+          <div className="crm-steps-box" style={{ background:"#fff", border:`1.5px solid ${GB}`, borderRadius:16, padding:"12px 32px", display:"inline-block", maxWidth:720, width: "100%" }}>
             <p style={{ fontSize:11, color:MU, fontWeight:600, marginBottom:8, textTransform:"uppercase", letterSpacing:1 }}>From First Enquiry to Long-Term Customer</p>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: "8px 10px" }}>
+            <div className="crm-steps-grid">
               {["Capture","Organize","Communicate","Follow Up","Convert","Retain"].map((step,i,arr) => (
-                <div key={step} style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
-                  <span style={{ background:GL, border:`1.5px solid ${GB}`, color:G, borderRadius:8, padding:"5px 12px", fontSize:12, fontWeight:700 }}>{step}</span>
-                  {i < arr.length-1 && <span style={{ color:"#94A3B8", fontSize:15 }}>→</span>}
+                <div key={step} className="crm-step-item">
+                  <span className="crm-step-pill">
+                    {i + 1}. {step}
+                  </span>
+                  {i < arr.length-1 && <span className="crm-step-arrow">→</span>}
                 </div>
               ))}
             </div>

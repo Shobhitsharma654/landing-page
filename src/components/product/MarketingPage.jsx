@@ -161,7 +161,7 @@ const CSS = `
     .m-ctr { display:flex!important; flex-direction:row!important; align-items:center!important; gap:10px!important; flex-wrap:wrap!important; }
     .gbtn,.dbtn,.gbtn2 { width:auto!important; padding:10px 18px!important; font-size:12px!important; }
     .m-hr  { width:100%!important; justify-content:center!important; padding-top:24px!important; margin-bottom:0!important; }
-    .m-hr > div { transform:none!important; transform-origin:top center!important; margin:0 auto!important; max-width:340px!important; margin-top:0!important; margin-bottom:0!important; }
+    .m-hr > div { transform:none!important; transform-origin:top center!important; margin:0 auto!important; width:100%!important; max-width:100%!important; padding:20px 14px!important; box-sizing:border-box!important; margin-top:0!important; margin-bottom:0!important; }
     .ch-grid { grid-template-columns:1fr!important; }
   }
 
@@ -206,10 +206,10 @@ const Pill = ({ children }) => (
 );
 
 const FlowStrip = ({ steps }) => (
-  <div style={{display:"flex",alignItems:"center",flexWrap:"wrap",gap:0,marginTop:12}}>
+  <div style={{display:"flex",alignItems:"center",flexWrap:"wrap",gap:"10px 4px",marginTop:12}}>
     {steps.map((s,i) => (
       <React.Fragment key={s}>
-        <span style={{background:GL,border:"1.5px solid "+GB,color:G,borderRadius:8,padding:"7px 14px",fontSize:13,fontWeight:700}}>{s}</span>
+        <span style={{background:GL,border:"1.5px solid "+GB,color:G,borderRadius:8,padding:"7px 14px",fontSize:13,fontWeight:700,display:"inline-block"}}>{s}</span>
         {i < steps.length-1 && <span style={{color:"#94A3B8",fontSize:18,padding:"0 4px"}}>→</span>}
       </React.Fragment>
     ))}

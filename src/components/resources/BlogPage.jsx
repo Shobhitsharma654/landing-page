@@ -429,6 +429,80 @@ const BlogPage = () => {
           .topics-auto-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
         }
 
+        /* Mobile Breakpoints (768px and under) */
+        @media (max-width: 768px) {
+          .blog-section {
+            padding: 28px 16px !important;
+          }
+          .blog-hero-section {
+            margin-top: 0px !important;
+            padding-top: 84px !important;
+            padding-bottom: 28px !important;
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+          }
+          .blog-hero-row {
+            flex-direction: column !important;
+            gap: 20px !important;
+          }
+          .blog-hero-left {
+            min-width: 100% !important;
+          }
+          .blog-hero-graphic-box {
+            margin-top: 10px !important;
+            min-width: 100% !important;
+            width: 100% !important;
+          }
+          .blog-hero-graphic-card {
+            transform: none !important;
+            border-radius: 18px !important;
+            padding: 20px 16px !important;
+          }
+          .blog-btn-primary, .blog-btn-secondary {
+            width: 100% !important;
+            justify-content: center !important;
+          }
+          .blog-glass-card {
+            padding: 18px 16px !important;
+            border-radius: 14px !important;
+          }
+          .topics-auto-grid {
+            grid-template-columns: 1fr !important;
+            gap: 14px !important;
+          }
+          .flex-auto-grid, .action-auto-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 14px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .blog-section {
+            padding: 20px 14px !important;
+          }
+          .blog-hero-section {
+            margin-top: 0px !important;
+            padding-top: 78px !important;
+            padding-bottom: 24px !important;
+            padding-left: 14px !important;
+            padding-right: 14px !important;
+          }
+          .blog-hero-row {
+            gap: 16px !important;
+          }
+          .blog-glass-card {
+            padding: 16px 14px !important;
+          }
+          .topics-auto-grid {
+            grid-template-columns: 1fr !important;
+            gap: 12px !important;
+          }
+          .flex-auto-grid, .action-auto-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
+          }
+        }
+
         @keyframes auraPulse {
           0%, 100% { transform: scale(1); opacity: 0.4; }
           50% { transform: scale(1.08); opacity: 0.8; }
@@ -452,6 +526,7 @@ const BlogPage = () => {
           SECTION 1: HERO (Uniform Dark Forest Green Branding)
          ═══════════════════════════════════════════════════════════════════ */}
       <section
+        className="blog-hero-section"
         style={{
           marginTop: 40,
           padding: "56px 6% 64px",
@@ -477,7 +552,7 @@ const BlogPage = () => {
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <div className="blog-hero-row">
             {/* Left Column: Text Copy */}
-            <div style={{ flex: 1.15 }}>
+            <div className="blog-hero-left" style={{ flex: 1.15 }}>
               <div
                 style={{
                   display: "inline-flex",
@@ -536,8 +611,9 @@ const BlogPage = () => {
             </div>
 
             {/* Right Column: Hero Graphic Box with Dark Forest Green Gradient */}
-            <div style={{ flex: 0.85, minWidth: 320, position: "relative", marginTop: 60 }}>
+            <div className="blog-hero-graphic-box" style={{ flex: 0.85, minWidth: 320, position: "relative", marginTop: 60 }}>
               <div
+                className="blog-hero-graphic-card"
                 style={{
                   background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
                   borderRadius: 24,
@@ -624,7 +700,7 @@ const BlogPage = () => {
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 2: EXPLORE BUSINESS TOPICS (Organized Balanced Grid & Unified Emerald System)
          ═══════════════════════════════════════════════════════════════════ */}
-      <section id="explore-topics" style={{ padding: "64px 6%", background: "#FFFFFF" }}>
+      <section id="explore-topics" className="blog-section" style={{ padding: "64px 6%", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 44 }}>
             <div

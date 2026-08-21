@@ -166,46 +166,84 @@ const HELP_FAQS = [
 const FaqItem = ({ q, a }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div style={{ borderBottom: `1px solid #F1F5F9` }}>
+    <div
+      className={`faq-card-item ${open ? "open-card" : ""}`}
+      style={{
+        background: "#FFFFFF",
+        border: `1.5px solid ${open ? "#16A34A" : "#E2E8F0"}`,
+        borderRadius: 14,
+        marginBottom: 12,
+        overflow: "hidden",
+        boxShadow: open ? "0 8px 24px rgba(22, 163, 74, 0.08)" : "0 2px 6px rgba(15, 23, 42, 0.02)",
+        transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+      }}
+    >
       <div
+        className="faq-card-trigger"
         onClick={() => setOpen(!open)}
         style={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          padding: "20px 0",
+          gap: 12,
+          padding: "16px 20px",
           cursor: "pointer",
+          userSelect: "none",
         }}
       >
-        <span style={{ fontSize: 14, fontWeight: 700, color: open ? G : D2, transition: "color .2s" }}>{q}</span>
-        <div
+        <span
+          className="faq-card-question"
           style={{
-            width: 28,
-            height: 28,
-            borderRadius: 8,
-            background: open ? GL : "#F8FAFC",
+            fontSize: 14.5,
+            fontWeight: 700,
+            color: open ? "#16A34A" : "#0F172A",
+            textAlign: "left",
+            lineHeight: 1.45,
+            flex: "1 1 auto",
+            transition: "color 0.25s ease"
+          }}
+        >
+          {q}
+        </span>
+        <div
+          className="faq-icon-holder"
+          style={{
+            width: 30,
+            height: 30,
+            minWidth: 30,
+            minHeight: 30,
+            borderRadius: "50%",
+            background: open ? "#16A34A" : "#F1F5F9",
+            color: open ? "#FFFFFF" : "#64748B",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             flexShrink: 0,
-            transition: "all .2s",
-            color: open ? G : MU,
-            border: open ? `1px solid ${GB}` : "1px solid transparent",
+            transition: "all 0.3s ease",
+            transform: open ? "rotate(180deg)" : "rotate(0deg)",
           }}
         >
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path
-              d={open ? "M3 9l4-4 4 4" : "M3 5l4 4 4-4"}
-              stroke="currentColor"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="6 9 12 15 18 9" />
           </svg>
         </div>
       </div>
       {open && (
-        <div style={{ fontSize: 13, color: MU, lineHeight: 1.8, paddingBottom: 16 }}>{a}</div>
+        <div
+          className="faq-card-answer"
+          style={{
+            fontSize: 13.5,
+            color: "#475569",
+            lineHeight: 1.7,
+            padding: "0 20px 18px 20px",
+            textAlign: "left",
+            borderTop: "1px solid #F1F5F9",
+            paddingTop: 12,
+            marginTop: 0
+          }}
+        >
+          {a}
+        </div>
       )}
     </div>
   );
@@ -318,6 +356,68 @@ const HelpCenterPage = () => {
           .categories-auto-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
         }
 
+        /* Mobile Breakpoints (768px and under) */
+        @media (max-width: 768px) {
+          .help-section {
+            padding: 28px 16px !important;
+          }
+          .help-hero-section {
+            margin-top: 0px !important;
+            padding-top: 84px !important;
+            padding-bottom: 28px !important;
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+          }
+          .help-hero-row {
+            flex-direction: column !important;
+            gap: 20px !important;
+          }
+          .help-hero-left {
+            min-width: 100% !important;
+          }
+          .help-hero-graphic-box {
+            margin-top: 10px !important;
+            min-width: 100% !important;
+            width: 100% !important;
+          }
+          .help-hero-graphic-card {
+            transform: none !important;
+            border-radius: 18px !important;
+            padding: 20px 16px !important;
+          }
+          .help-btn-primary, .help-btn-secondary {
+            width: 100% !important;
+            justify-content: center !important;
+          }
+          .help-glass-card {
+            padding: 18px 16px !important;
+            border-radius: 14px !important;
+          }
+          .categories-auto-grid, .quick-answers-grid {
+            grid-template-columns: 1fr !important;
+            gap: 14px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .help-section {
+            padding: 20px 14px !important;
+          }
+          .help-hero-section {
+            margin-top: 0px !important;
+            padding-top: 78px !important;
+            padding-bottom: 24px !important;
+            padding-left: 14px !important;
+            padding-right: 14px !important;
+          }
+          .help-hero-row {
+            gap: 16px !important;
+          }
+          .help-glass-card {
+            padding: 16px 14px !important;
+          }
+        }
+
         @keyframes auraPulse {
           0%, 100% { transform: scale(1); opacity: 0.4; }
           50% { transform: scale(1.08); opacity: 0.8; }
@@ -341,6 +441,7 @@ const HelpCenterPage = () => {
           SECTION 1: HERO
          ═══════════════════════════════════════════════════════════════════ */}
       <section
+        className="help-hero-section"
         style={{
           marginTop: 40,
           padding: "56px 6% 64px",
@@ -366,7 +467,7 @@ const HelpCenterPage = () => {
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <div className="help-hero-row">
             {/* Left Column: Text Copy */}
-            <div style={{ flex: 1.15 }}>
+            <div className="help-hero-left" style={{ flex: 1.15 }}>
               <div
                 style={{
                   display: "inline-flex",
@@ -428,8 +529,9 @@ const HelpCenterPage = () => {
             </div>
 
             {/* Right Column: Hero Graphic Box with Dark Forest Green Gradient */}
-            <div style={{ flex: 0.85, minWidth: 320, position: "relative", marginTop: 60 }}>
+            <div className="help-hero-graphic-box" style={{ flex: 0.85, minWidth: 320, position: "relative", marginTop: 60 }}>
               <div
+                className="help-hero-graphic-card"
                 style={{
                   background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
                   borderRadius: 24,
@@ -516,7 +618,7 @@ const HelpCenterPage = () => {
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 2: HOW CAN WE HELP? (6 Help Categories, 100% Uniform Sizing)
          ═══════════════════════════════════════════════════════════════════ */}
-      <section id="how-can-we-help" style={{ padding: "64px 6%", background: "#FFFFFF" }}>
+      <section id="how-can-we-help" className="help-section" style={{ padding: "64px 6%", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 44 }}>
             <div
@@ -703,7 +805,7 @@ const HelpCenterPage = () => {
             Our troubleshooting guides can help you identify and resolve common issues related to:
           </p>
 
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: 0, marginBottom: 26 }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: "12px 6px", marginBottom: 26 }}>
             {TROUBLESHOOTING_NODES.map((node, i, arr) => (
               <React.Fragment key={node}>
                 <span style={{ background: "#fff", border: `1.5px solid ${GB}`, color: G, borderRadius: 6, padding: "8px 16px", fontSize: 12, fontWeight: 700 }}>
@@ -856,7 +958,7 @@ const HelpCenterPage = () => {
             </h2>
           </div>
 
-          <div style={{ borderTop: "1px solid #F1F5F9" }}>
+          <div>
             {HELP_FAQS.map((faq, idx) => (
               <FaqItem key={idx} q={faq.q} a={faq.a} />
             ))}

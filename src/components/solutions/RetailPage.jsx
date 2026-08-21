@@ -422,6 +422,11 @@ const RetailPage = () => {
           grid-template-columns: repeat(5, 1fr);
           gap: 14px;
         }
+        .retail-why-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 18px;
+        }
 
         /* Large Laptops / Desktops (1440px +) */
         @media (min-width: 1440px) {
@@ -450,21 +455,53 @@ const RetailPage = () => {
         @media (max-width: 1023px) {
           .retail-hero-row { flex-direction: column !important; }
           .retail-hero-right-col { width: 100% !important; min-width: unset !important; justify-content: center !important; margin-top: 24px !important; }
-          .retail-hero-right-card { transform: none !important; transform-origin: center center !important; max-width: 340px !important; margin: 0 auto !important; }
+          .retail-hero-right-card { transform: none !important; transform-origin: center center !important; max-width: 440px !important; margin: 0 auto !important; }
           .grid-col-5 { grid-template-columns: repeat(2, 1fr); }
           .grid-col-4 { grid-template-columns: repeat(2, 1fr); }
           .grid-col-3 { grid-template-columns: repeat(1, 1fr); }
           .grid-col-2 { grid-template-columns: repeat(1, 1fr); }
+          .retail-why-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
 
         /* Mobile Phones & Tablets (under 768px) */
         @media (max-width: 768px) {
-          .grid-col-5, .grid-col-4, .grid-col-3, .grid-col-2 {
+          .retail-hero-section {
+            margin-top: 0px !important;
+            padding-top: 84px !important;
+            padding-bottom: 28px !important;
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+          }
+          .retail-hero-right-card {
+            transform: none !important;
+            max-width: 100% !important;
+            margin: 0 auto !important;
+            padding: 24px 16px !important;
+          }
+          .grid-col-4, .retail-why-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 12px !important;
+          }
+          .grid-col-5, .grid-col-3, .grid-col-2 {
             grid-template-columns: 1fr !important;
             gap: 12px !important;
           }
           .retail-glass-card {
             padding: 14px 16px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .retail-hero-right-card {
+            padding: 18px 12px !important;
+          }
+          .grid-col-4, .retail-why-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
+          }
+          .grid-col-5, .grid-col-3, .grid-col-2 {
+            grid-template-columns: 1fr !important;
+            gap: 10px !important;
           }
         }
 
@@ -491,6 +528,7 @@ const RetailPage = () => {
           SECTION 1: HERO (Retail & Local Specific Graphic Layout with MessBee Logo)
          ═══════════════════════════════════════════════════════════════════ */}
       <section
+        className="retail-hero-section"
         style={{
           marginTop: 70,
           padding: "56px 6% 64px",
@@ -1007,7 +1045,7 @@ const RetailPage = () => {
             </p>
           </div>
 
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: 0, marginBottom: 26 }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", rowGap: 12, marginBottom: 26 }}>
             {RETAIL_FLOW_NODES.map((node, i, arr) => (
               <React.Fragment key={node}>
                 <span style={{ background: "#fff", border: `1.5px solid ${GB}`, color: G, borderRadius: 6, padding: "8px 16px", fontSize: 12, fontWeight: 700 }}>
@@ -1055,7 +1093,7 @@ const RetailPage = () => {
           </div>
 
           {/* 6 Reason Cards from Prompt */}
-          <div className="grid-col-3">
+          <div className="retail-why-grid">
             {WHY_CHOOSE_MESSBEE.map((r, idx) => (
               <div
                 key={idx}
