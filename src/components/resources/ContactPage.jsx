@@ -3,6 +3,7 @@ import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
 import defaultLogo from "../../assets/logo.jpeg";
+import { submitToWebhookOrEmail } from "../../utils/formSubmit";
 
 const G  = "#16A34A";
 const GL = "#F0FDF4";
@@ -279,30 +280,18 @@ const ContactPage = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     setStatus("submitting");
-    try {
-      const apiBase = import.meta.env.VITE_API_URL || "http://localhost:5000";
-      const res = await fetch(`${apiBase}/api/contact`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          subject: `[${form.product}] Account: ${form.accountName || "N/A"}`,
-          message: form.message,
-        }),
-      });
-      if (res.ok) {
-        setStatus("success");
-        setForm({ name: "", email: "", accountName: "", product: "CRM", message: "" });
-        setTimeout(() => setStatus("idle"), 4000);
-      } else {
-        setStatus("error");
-        setTimeout(() => setStatus("idle"), 3000);
-      }
-    } catch {
-      setStatus("error");
-      setTimeout(() => setStatus("idle"), 3000);
-    }
+
+    await submitToWebhookOrEmail("support", {
+      name: form.name,
+      email: form.email,
+      accountName: form.accountName,
+      product: form.product,
+      message: form.message,
+    });
+
+    setStatus("success");
+    setForm({ name: "", email: "", accountName: "", product: "CRM", message: "" });
+    setTimeout(() => setStatus("idle"), 5000);
   };
 
   return (
@@ -987,7 +976,7 @@ const ContactPage = () => {
                     Corporate Office Address
                   </div>
                   <p style={{ fontSize: 13, fontWeight: 700, color: "#0F172A", margin: 0, lineHeight: 1.55 }}>
-                    MessBee, Devika Tower, 510A, Chander Nagar, Surya Nagar, Ghaziabad, Uttar Pradesh 201011
+                    510A, Devika Tower, Chander Nagar, Surya Nagar, Ghaziabad, Uttar Pradesh 201011
                   </p>
                   <div style={{ fontSize: 12, color: "#64748B", marginTop: 6 }}>
                     Ph: 0120-2611111 / +91-9217742081
@@ -1150,7 +1139,7 @@ const ContactPage = () => {
                   MessBee Corporate Office
                 </h3>
                 <p style={{ fontSize: 15, fontWeight: 700, color: "#1E293B", margin: 0, lineHeight: 1.6, fontFamily: "'Inter', sans-serif" }}>
-                  MessBee, Devika Tower, 510A, Chander Nagar, Surya Nagar, Ghaziabad, Uttar Pradesh 201011
+                  510A, Devika Tower, Chander Nagar, Surya Nagar, Ghaziabad, Uttar Pradesh 201011
                 </p>
               </div>
 
