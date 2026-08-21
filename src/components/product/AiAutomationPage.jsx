@@ -248,10 +248,10 @@ const Pill = ({children,color=G,bg=GL,border=GB}) => (
 );
 
 const FlowStrip = ({steps,color=G,bg=GL,border=GB}) => (
-  <div style={{display:"flex",alignItems:"center",flexWrap:"wrap",gap:0,marginTop:8}}>
+  <div style={{display:"flex",alignItems:"center",flexWrap:"wrap",gap:"8px 3px",marginTop:8}}>
     {steps.map((s,i) => (
       <React.Fragment key={s}>
-        <span style={{background:bg,border:"1.5px solid "+border,color,borderRadius:6,padding:"4px 10px",fontSize:11,fontWeight:700}}>{s}</span>
+        <span style={{background:bg,border:"1.5px solid "+border,color,borderRadius:6,padding:"4px 10px",fontSize:11,fontWeight:700,display:"inline-block"}}>{s}</span>
         {i<steps.length-1 && <span style={{color:"#94A3B8",fontSize:13,padding:"0 3px"}}>→</span>}
       </React.Fragment>
     ))}
