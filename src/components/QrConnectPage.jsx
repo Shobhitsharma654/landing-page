@@ -102,12 +102,65 @@ const QrConnectPage = () => {
           position: relative;
           min-height: 400px;
           transform-origin: center center;
+          margin-top: -45px;
+          margin-left: 120px;
         }
-        @media(max-width:1280px) { .hvc { transform:scale(.88); } }
-        @media(max-width:1100px) { .hvc { transform:scale(.78); } }
+        @media(max-width:1280px) {
+          .hvc {
+            transform: scale(.88);
+            margin-left: 0px !important;
+            margin-top: 0px !important;
+          }
+        }
+        @media(max-width:1100px) {
+          .hvc {
+            transform: scale(.78);
+            margin-left: 0px !important;
+            margin-top: 0px !important;
+          }
+        }
         @media(max-width:960px) {
-          .hsc,.hsv { display:none !important; }
-          .hvc { transform:scale(1) !important; min-height:360px !important; flex:1 1 100% !important; }
+          .hvc {
+            transform: scale(0.85) !important;
+            transform-origin: top center !important;
+            margin: 10px auto -40px !important;
+            flex: 1 1 100% !important;
+            min-height: 380px !important;
+          }
+          .hsc { display: flex !important; }
+          .hsv { display: block !important; }
+        }
+        @media(max-width:768px) {
+          .hvc {
+            transform: scale(0.7) !important;
+            transform-origin: top center !important;
+            margin: 0 auto -80px !important;
+            min-height: 320px !important;
+          }
+        }
+        @media(max-width:540px) {
+          .hvc {
+            transform: scale(0.58) !important;
+            transform-origin: top center !important;
+            margin: -10px auto -130px !important;
+            min-height: 280px !important;
+          }
+        }
+        @media(max-width:420px) {
+          .hvc {
+            transform: scale(0.48) !important;
+            transform-origin: top center !important;
+            margin: -20px auto -170px !important;
+            min-height: 240px !important;
+          }
+        }
+        @media(max-width:360px) {
+          .hvc {
+            transform: scale(0.42) !important;
+            transform-origin: top center !important;
+            margin: -25px auto -190px !important;
+            min-height: 210px !important;
+          }
         }
 
         /* Checklist responsive */
@@ -115,16 +168,116 @@ const QrConnectPage = () => {
         @media(max-width:899px) { .hcr { flex-wrap:wrap !important; justify-content:center !important; gap:12px 20px !important; } }
 
         /* What is QR responsive */
-        @media(max-width:1100px) { .wql { gap:20px !important; } .wqg { max-width:300px !important; flex:1 1 260px !important; } .wqc { flex:1 1 380px !important; } }
+        @media(max-width:1100px) { .wql { gap:20px !important; } .wqg { max-width:300px !important; flex:1 1 260px !important; } .wqc { flex:1 1 500px !important; } }
         @media(max-width:768px) { .wqg { max-width:100% !important; flex:1 1 100% !important; } .wqc { flex:1 1 100% !important; } }
+
+        /* Mobile Breakpoints (768px and under) */
+        @media (max-width: 768px) {
+          .qr-section {
+            padding: 28px 16px !important;
+          }
+          .qr-hero-section {
+            margin-top: 0px !important;
+            padding-top: 84px !important;
+            padding-bottom: 28px !important;
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+          }
+          .qr-hero-row {
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 20px !important;
+          }
+          .qr-hero-left {
+            min-width: 100% !important;
+            max-width: 100% !important;
+          }
+          .hvc {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            width: 100% !important;
+          }
+          .btn-green-primary, .btn-outline-demo {
+            width: 100% !important;
+            justify-content: center !important;
+          }
+          .fg {
+            grid-template-columns: 1fr !important;
+            gap: 14px !important;
+          }
+          .wg {
+            grid-template-columns: 1fr !important;
+            gap: 12px !important;
+          }
+          .sg {
+            grid-template-columns: 1fr !important;
+            gap: 14px !important;
+          }
+          .wq-highlights {
+            grid-template-columns: 1fr !important;
+            gap: 12px !important;
+          }
+        }
+
+        .wq-highlights {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 12px;
+        }
+        .wq-card:hover {
+          border-color: #16A34A !important;
+          box-shadow: 0 8px 20px rgba(22, 163, 74, 0.08) !important;
+          transform: translateY(-2px);
+        }
+        .step-item-card:hover {
+          border-color: #16A34A !important;
+          box-shadow: 0 8px 24px rgba(22, 163, 74, 0.08) !important;
+          transform: translateY(-3px);
+        }
+
+        @media (max-width: 480px) {
+          .qr-section {
+            padding: 20px 14px !important;
+          }
+          .qr-hero-section {
+            margin-top: 0px !important;
+            padding-top: 78px !important;
+            padding-bottom: 24px !important;
+            padding-left: 14px !important;
+            padding-right: 14px !important;
+          }
+          .fg {
+            grid-template-columns: 1fr !important;
+            gap: 12px !important;
+          }
+          .wg {
+            grid-template-columns: 1fr !important;
+            gap: 12px !important;
+          }
+          .wg > div {
+            padding: 14px 16px !important;
+          }
+          .sg {
+            grid-template-columns: 1fr !important;
+            gap: 12px !important;
+          }
+          .wq-highlights {
+            grid-template-columns: 1fr !important;
+            gap: 12px !important;
+          }
+        }
       `}</style>
 
       {/* ═══════ HERO SECTION ═══════ */}
-      <section style={{ paddingTop: 100, paddingBottom: 28, background: "#FFFFFF", paddingLeft: "3%", paddingRight: "3%", overflow: "hidden" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", flexWrap: "wrap", alignItems: "flex-start", justifyContent: "space-between", gap: 20 }}>
+      <section className="qr-hero-section" style={{ paddingTop: 100, paddingBottom: 28, background: "#FFFFFF", paddingLeft: "3%", paddingRight: "3%", overflow: "hidden" }}>
+        <div className="qr-hero-row" style={{ maxWidth: 1200, margin: "0 auto", display: "flex", flexWrap: "wrap", alignItems: "flex-start", justifyContent: "space-between", gap: 20 }}>
           
           {/* Left Column */}
-          <div style={{ flex: "1 1 380px", maxWidth: 460 }}>
+          <div className="qr-hero-left" style={{ flex: "1 1 380px", maxWidth: 460 }}>
             <div style={{ display: "inline-flex", alignItems: "center", background: "#E8F5E9", padding: "3px 10px", borderRadius: 5, marginBottom: 14 }}>
               <span style={{ fontSize: 9.5, fontWeight: 800, color: "#16A34A", letterSpacing: "0.5px", textTransform: "uppercase" }}>QR & CONNECT</span>
             </div>
@@ -153,8 +306,8 @@ const QrConnectPage = () => {
           </div>
 
           {/* Right Column: Phone + Cards + Dotted Lines */}
-          <div className="hvc" style={{ marginTop: -45, marginLeft: 120 }}>
-            <div style={{ width: "100%", maxWidth: 560, display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
+          <div className="hvc">
+            <div style={{ width: "100%", maxWidth: 560, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
               
               {/* SVG Dotted Lines */}
               <svg className="hsv" style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", pointerEvents: "none", zIndex: 1 }} viewBox="0 0 640 400">
@@ -266,7 +419,7 @@ const QrConnectPage = () => {
 
 
       {/* ═══════ WHAT IS QR & CONNECT ═══════ */}
-      <section style={{ padding: "40px 3%", background: "#FFFFFF" }}>
+      <section className="qr-section" style={{ padding: "40px 3%", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 1140, margin: "0 auto" }}>
           <div className="wql" style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 32 }}>
             
@@ -309,18 +462,28 @@ const QrConnectPage = () => {
               <p style={{ fontSize: 12, color: "#475569", lineHeight: 1.5, marginBottom: 8 }}>Share your QR codes and smart links anywhere: on shop counters, visiting cards, packaging, brochures, posters, websites, social media or even in WhatsApp status.</p>
               <p style={{ fontSize: 12, color: "#475569", lineHeight: 1.5, marginBottom: 16 }}>Every scan, every click and every conversation is tracked in real-time so you can understand what works best and grow your business smarter.</p>
 
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10 }}>
+              <div className="wq-highlights" style={{ marginTop: 24 }}>
                 {[
                   { title: "Easy to Create", desc: "Create any QR code in less than 2 minutes.", icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> },
                   { title: "Instant Connection", desc: "Customers connect instantly on WhatsApp.", icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> },
                   { title: "Track & Measure", desc: "Real-time analytics to track performance.", icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg> },
                   { title: "More Conversions", desc: "Turn more scans into conversations and sales.", icon: <span style={{ fontSize: 13, fontWeight: 900, color: "#16A34A" }}>₹</span> }
                 ].map((h, i) => (
-                  <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 6 }}>
-                    <div style={{ width: 24, height: 24, borderRadius: "50%", background: "#ECFDF5", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 1 }}>{h.icon}</div>
+                  <div key={i} className="wq-card" style={{
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: 10,
+                    background: "#FFFFFF",
+                    border: "1.5px solid #E2E8F0",
+                    borderRadius: 12,
+                    padding: "12px 14px",
+                    boxShadow: "0 2px 6px rgba(15,23,42,0.03)",
+                    transition: "all 0.25s ease"
+                  }}>
+                    <div style={{ width: 28, height: 28, borderRadius: "50%", background: "#ECFDF5", border: "1px solid #A7F3D0", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 1 }}>{h.icon}</div>
                     <div>
-                      <div style={{ fontWeight: 800, color: "#0F172A", fontSize: 10.5, marginBottom: 1 }}>{h.title}</div>
-                      <div style={{ fontSize: 9, color: "#64748B", lineHeight: 1.3 }}>{h.desc}</div>
+                      <div style={{ fontWeight: 800, color: "#0F172A", fontSize: 11.5, marginBottom: 2 }}>{h.title}</div>
+                      <div style={{ fontSize: 9.5, color: "#64748B", lineHeight: 1.4 }}>{h.desc}</div>
                     </div>
                   </div>
                 ))}
@@ -402,11 +565,33 @@ const QrConnectPage = () => {
                 { n: 3, title: "Customer Scans", desc: "Customers scan the QR code or click the link from any device." },
                 { n: 4, title: "Start Conversation", desc: "WhatsApp opens instantly and the customer starts the conversation." },
                 { n: 5, title: "Track & Grow", desc: "Track scans, chats, leads and conversions. Improve and grow your business." }
-              ].map((s, i) => (
-                <div key={i} style={{ textAlign: "center", position: "relative", zIndex: 1 }}>
-                  <div style={{ width: 36, height: 36, borderRadius: "50%", background: "#16A34A", color: "#FFF", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 800, margin: "0 auto 10px", boxShadow: "0 4px 10px rgba(22,163,74,.2)" }}>{s.n}</div>
-                  <h3 style={{ fontSize: 11.5, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>{s.title}</h3>
-                  <p style={{ fontSize: 9.5, color: "#64748B", lineHeight: 1.35, margin: 0, maxWidth: 150, marginLeft: "auto", marginRight: "auto" }}>{s.desc}</p>
+              ].map((s, i, arr) => (
+                <div key={i} className="step-item-card" style={{
+                  textAlign: "center",
+                  position: "relative",
+                  zIndex: 1,
+                  background: "#FFFFFF",
+                  border: "1.5px solid #E2E8F0",
+                  borderRadius: 14,
+                  padding: "16px 12px",
+                  boxShadow: "0 2px 8px rgba(15,23,42,0.03)",
+                  transition: "all 0.25s ease"
+                }}>
+                  {/* Step Badge with Arrow */}
+                  <div style={{ display: "inline-flex", alignItems: "center", gap: 4, background: "#F0FDF4", border: "1px solid #BBF7D0", color: "#16A34A", fontSize: 10, fontWeight: 900, textTransform: "uppercase", padding: "3px 10px", borderRadius: 20, marginBottom: 10 }}>
+                    <span>Step {s.n}</span>
+                    {i < arr.length - 1 && (
+                      <span className="step-arrow" style={{ fontSize: 11, fontWeight: 900, color: "#16A34A", marginLeft: 2 }}>→</span>
+                    )}
+                  </div>
+
+                  {/* Green Number Circle */}
+                  <div style={{ width: 36, height: 36, borderRadius: "50%", background: "linear-gradient(135deg, #16A34A 0%, #15803D 100%)", color: "#FFF", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 900, margin: "0 auto 10px", boxShadow: "0 4px 12px rgba(22,163,74,0.25)" }}>
+                    {s.n}
+                  </div>
+
+                  <h3 style={{ fontSize: 12.5, fontWeight: 800, color: "#0F172A", marginBottom: 4 }}>{s.title}</h3>
+                  <p style={{ fontSize: 9.8, color: "#64748B", lineHeight: 1.45, margin: 0 }}>{s.desc}</p>
                 </div>
               ))}
             </div>

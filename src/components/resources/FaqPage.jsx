@@ -278,47 +278,51 @@ const FaqCard = ({ item, index }) => {
 
   return (
     <div
-      className="faq-glass-card"
+      className={`faq-glass-card ${open ? "open-card" : ""}`}
       onClick={() => setOpen(!open)}
       style={{
         background: "#FFFFFF",
-        border: `1px solid ${open ? "#BBF7D0" : "#E2E8F0"}`,
+        border: `1.5px solid ${open ? "#16A34A" : "#E2E8F0"}`,
         borderRadius: 14,
         padding: "16px 20px",
         cursor: "pointer",
-        transition: "all 0.25s ease",
-        boxShadow: open ? "0 8px 24px rgba(22, 163, 74, 0.08)" : "0 2px 4px rgba(0,0,0,0.01)",
+        transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+        boxShadow: open ? "0 8px 24px rgba(22, 163, 74, 0.08)" : "0 2px 6px rgba(15, 23, 42, 0.02)",
         marginBottom: 12,
         animationDelay: `${(index % 10) * 45}ms`,
       }}
     >
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 14 }}>
-        <span style={{ fontSize: 13.5, fontWeight: 800, color: open ? "#16A34A" : "#0F172A", lineHeight: 1.4 }}>
+      <div className="faq-card-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12 }}>
+        <span className="faq-card-question" style={{ fontSize: 14, fontWeight: 700, color: open ? "#16A34A" : "#0F172A", lineHeight: 1.45, flex: "1 1 auto", textAlign: "left", transition: "color 0.25s ease" }}>
           {item.q}
         </span>
         <span
+          className="faq-card-icon"
           style={{
-            width: 28,
-            height: 28,
+            width: 30,
+            height: 30,
+            minWidth: 30,
+            minHeight: 30,
             borderRadius: "50%",
             background: open ? "#16A34A" : "#F1F5F9",
+            color: open ? "#FFFFFF" : "#64748B",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             flexShrink: 0,
-            transition: "all 0.25s ease",
+            transition: "all 0.3s ease",
             transform: open ? "rotate(180deg)" : "rotate(0deg)",
           }}
         >
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={open ? "#FFFFFF" : "#64748B"} strokeWidth="2.5" strokeLinecap="round">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
             <polyline points="6 9 12 15 18 9" />
           </svg>
         </span>
       </div>
 
       {open && (
-        <div style={{ marginTop: 12, borderTop: "1px solid #F1F5F9", paddingTop: 12 }}>
-          <p style={{ fontSize: 13, color: "#475569", lineHeight: 1.68 }}>{item.a}</p>
+        <div className="faq-card-body" style={{ marginTop: 12, borderTop: "1px solid #F1F5F9", paddingTop: 12, textAlign: "left" }}>
+          <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.7 }}>{item.a}</p>
 
           {item.bullets && (
             <div style={{ marginTop: 10, display: "flex", flexDirection: "column", gap: 6 }}>
@@ -480,6 +484,85 @@ const FaqPage = () => {
           .faq-hero-row { flex-direction: column !important; gap: 32px; }
         }
 
+        /* Mobile Breakpoints (768px and under) */
+        @media (max-width: 768px) {
+          .faq-section {
+            padding: 28px 16px !important;
+          }
+          .faq-hero-section {
+            margin-top: 0px !important;
+            padding-top: 84px !important;
+            padding-bottom: 28px !important;
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+          }
+          .faq-hero-row {
+            flex-direction: column !important;
+            gap: 20px !important;
+          }
+          .faq-hero-left {
+            min-width: 100% !important;
+          }
+          .faq-hero-graphic-box {
+            margin-top: 10px !important;
+            min-width: 100% !important;
+            width: 100% !important;
+          }
+          .faq-hero-graphic-card {
+            transform: none !important;
+            border-radius: 18px !important;
+            padding: 20px 16px !important;
+          }
+          .faq-btn-primary, .faq-btn-secondary {
+            width: 100% !important;
+            justify-content: center !important;
+          }
+          .faq-glass-card {
+            padding: 14px 16px !important;
+            border-radius: 12px !important;
+            margin-bottom: 10px !important;
+          }
+          .faq-card-question {
+            font-size: 13.5px !important;
+          }
+          .faq-card-body p {
+            font-size: 13px !important;
+            line-height: 1.65 !important;
+          }
+          .category-pills-wrapper {
+            padding: 24px 14px 16px !important;
+          }
+          .category-pill-btn {
+            padding: 6px 12px !important;
+            font-size: 11.5px !important;
+          }
+          .faq-list-section {
+            padding: 24px 16px 36px !important;
+          }
+          .faq-callout-section {
+            padding: 32px 16px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .faq-hero-section {
+            margin-top: 0px !important;
+            padding-top: 78px !important;
+            padding-bottom: 24px !important;
+            padding-left: 14px !important;
+            padding-right: 14px !important;
+          }
+          .faq-glass-card {
+            padding: 12px 14px !important;
+          }
+          .faq-card-question {
+            font-size: 13px !important;
+          }
+          .faq-card-body p {
+            font-size: 12.5px !important;
+          }
+        }
+
         /* Glowing Pulse Animation */
         @keyframes auraPulse {
           0%, 100% { transform: scale(1); opacity: 0.4; }
@@ -503,6 +586,7 @@ const FaqPage = () => {
           SECTION 1: HERO (Strictly Provided Copy & Recommended H1)
          ═══════════════════════════════════════════════════════════════════ */}
       <section
+        className="faq-hero-section"
         style={{
           marginTop: 40,
           padding: "56px 6% 64px",
@@ -528,7 +612,7 @@ const FaqPage = () => {
 
         <div className="faq-hero-row" style={{ maxWidth: 1280, margin: "0 auto", position: "relative", zIndex: 1 }}>
           {/* Left Text Column */}
-          <div style={{ flex: 1.1, minWidth: 320 }}>
+          <div className="faq-hero-left" style={{ flex: 1.1, minWidth: 320 }}>
             {/* Provided Badge: FAQs */}
             <div
               style={{
@@ -597,8 +681,9 @@ const FaqPage = () => {
           </div>
 
           {/* Right Column: Visual FAQ Graphic Node Box with Official MessBee Logo */}
-          <div style={{ flex: 0.85, minWidth: 320, position: "relative", marginTop: 60 }}>
+          <div className="faq-hero-graphic-box" style={{ flex: 0.85, minWidth: 320, position: "relative", marginTop: 60 }}>
             <div
+              className="faq-hero-graphic-card"
               style={{
                 background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
                 borderRadius: 24,
@@ -715,7 +800,7 @@ const FaqPage = () => {
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 2: CATEGORY FILTER TABS & SEARCH
          ═══════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: "40px 6% 20px", background: "#FAFAFA", borderBottom: "1px solid #F1F5F9" }}>
+      <section className="category-pills-wrapper" style={{ padding: "40px 6% 20px", background: "#FAFAFA", borderBottom: "1px solid #F1F5F9" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           {/* Category Pills */}
           <div
@@ -732,6 +817,7 @@ const FaqPage = () => {
               return (
                 <button
                   key={cat}
+                  className="category-pill-btn"
                   onClick={() => setSelectedCategory(cat)}
                   style={{
                     background: active ? "#16A34A" : "#FFFFFF",
@@ -757,7 +843,7 @@ const FaqPage = () => {
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 3: ACCORDION LIST OF FAQS (FILTERED & CATEGORIZED)
          ═══════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: "48px 6% 64px", background: "#FFFFFF" }}>
+      <section className="faq-list-section" style={{ padding: "48px 6% 64px", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 860, margin: "0 auto" }}>
           {filteredFaqs.length === 0 ? (
             <div style={{ textAlign: "center", padding: "40px 20px" }}>
@@ -784,6 +870,7 @@ const FaqPage = () => {
           SECTION 4: STILL HAVE QUESTIONS? (CALLOUT SECTION)
          ═══════════════════════════════════════════════════════════════════ */}
       <section
+        className="faq-callout-section"
         style={{
           padding: "68px 6%",
           background: "linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%)",

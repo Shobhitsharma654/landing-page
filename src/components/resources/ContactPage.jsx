@@ -176,46 +176,84 @@ const SUPPORT_FAQS = [
 const FaqItem = ({ q, a }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div style={{ borderBottom: `1px solid #F1F5F9` }}>
+    <div
+      className={`faq-card-item ${open ? "open-card" : ""}`}
+      style={{
+        background: "#FFFFFF",
+        border: `1.5px solid ${open ? "#16A34A" : "#E2E8F0"}`,
+        borderRadius: 14,
+        marginBottom: 12,
+        overflow: "hidden",
+        boxShadow: open ? "0 8px 24px rgba(22, 163, 74, 0.08)" : "0 2px 8px rgba(15, 23, 42, 0.02)",
+        transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+      }}
+    >
       <div
+        className="faq-card-trigger"
         onClick={() => setOpen(!open)}
         style={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          padding: "20px 0",
+          gap: 12,
+          padding: "16px 20px",
           cursor: "pointer",
+          userSelect: "none",
         }}
       >
-        <span style={{ fontSize: 14, fontWeight: 700, color: open ? G : D2, transition: "color .2s" }}>{q}</span>
-        <div
+        <span
+          className="faq-card-question"
           style={{
-            width: 28,
-            height: 28,
-            borderRadius: 8,
-            background: open ? GL : "#F8FAFC",
+            fontSize: 14.5,
+            fontWeight: 700,
+            color: open ? "#16A34A" : "#0F172A",
+            textAlign: "left",
+            lineHeight: 1.45,
+            flex: "1 1 auto",
+            transition: "color 0.25s ease"
+          }}
+        >
+          {q}
+        </span>
+        <div
+          className="faq-icon-holder"
+          style={{
+            width: 30,
+            height: 30,
+            minWidth: 30,
+            minHeight: 30,
+            borderRadius: "50%",
+            background: open ? "#16A34A" : "#F1F5F9",
+            color: open ? "#FFFFFF" : "#64748B",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             flexShrink: 0,
-            transition: "all .2s",
-            color: open ? G : MU,
-            border: open ? `1px solid ${GB}` : "1px solid transparent",
+            transition: "all 0.3s ease",
+            transform: open ? "rotate(180deg)" : "rotate(0deg)",
           }}
         >
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path
-              d={open ? "M3 9l4-4 4 4" : "M3 5l4 4 4-4"}
-              stroke="currentColor"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="6 9 12 15 18 9" />
           </svg>
         </div>
       </div>
       {open && (
-        <div style={{ fontSize: 13, color: MU, lineHeight: 1.8, paddingBottom: 16 }}>{a}</div>
+        <div
+          className="faq-card-answer"
+          style={{
+            fontSize: 13.5,
+            color: "#475569",
+            lineHeight: 1.7,
+            padding: "0 20px 18px 20px",
+            textAlign: "left",
+            borderTop: "1px solid #F1F5F9",
+            paddingTop: 12,
+            marginTop: 0
+          }}
+        >
+          {a}
+        </div>
       )}
     </div>
   );
@@ -1282,7 +1320,7 @@ const ContactPage = () => {
             </h2>
           </div>
 
-          <div style={{ borderTop: "1px solid #F1F5F9" }}>
+          <div>
             {SUPPORT_FAQS.map((faq, idx) => (
               <FaqItem key={idx} {...faq} />
             ))}
