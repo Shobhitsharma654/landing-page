@@ -169,6 +169,8 @@ const CSS = `
   .a-stat{ display:grid;grid-template-columns:repeat(4,1fr);gap:16px; }
   .a-in  { display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start; }
   .eco-g { display:grid;grid-template-columns:repeat(5,1fr);gap:12px; }
+  .a-resp { display:grid;grid-template-columns:1fr 1fr;gap:16px; }
+  .a-intro { display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start; }
   @media(max-width:1100px){
     .a-fg    { grid-template-columns:repeat(2,1fr)!important; }
     .step-wrap{ flex-direction:column!important; }
@@ -185,16 +187,58 @@ const CSS = `
     .step-card{ padding:24px 18px!important; }
     .a-fg    { grid-template-columns:repeat(2,1fr)!important; }
   }
+  @media(max-width:768px){
+    .ai-hero-section {
+      padding-top: 84px !important;
+      padding-bottom: 28px !important;
+      padding-left: 16px !important;
+      padding-right: 16px !important;
+    }
+    .a-hr {
+      width: 100% !important;
+      justify-content: center !important;
+      padding-top: 14px !important;
+      margin-bottom: 0 !important;
+    }
+    .a-hr > div {
+      transform: none !important;
+      transform-origin: top center !important;
+      margin: 0 auto !important;
+      max-width: 100% !important;
+      padding: 24px 16px !important;
+      margin-top: 0 !important;
+    }
+    .a-resp {
+      grid-template-columns: 1fr !important;
+    }
+    .a-intro {
+      grid-template-columns: 1fr !important;
+      gap: 24px !important;
+    }
+    .ai-vis-wrap {
+      margin-bottom: 0 !important;
+      margin-top: 20px !important;
+      width: 100% !important;
+    }
+    .ai-vis-card {
+      transform: none !important;
+      transform-origin: top center !important;
+      height: auto !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 auto !important;
+      box-sizing: border-box !important;
+    }
+  }
   @media(max-width:640px){
     .a-fg    { grid-template-columns:1fr!important; }
     .a-why   { grid-template-columns:1fr!important; }
     .a-ctr   { display:flex!important; flex-direction:row!important; align-items:center!important; gap:10px!important; flex-wrap:wrap!important; }
-    .gbtn,.dbtn,.gbtn2 { width:auto!important; padding:10px 18px!important; font-size:12px!important; text-align:center!important; justify-content:center!important; }
     .a-hr    { width:100%!important; justify-content:center!important; padding-top:24px!important; margin-bottom:0!important; }
     .a-hr > div { transform:none!important; transform-origin:top center!important; margin:0 auto!important; width:100%!important; max-width:100%!important; padding:20px 14px!important; box-sizing:border-box!important; margin-top:0!important; }
     .ai-vis-wrap { margin-bottom:0!important; margin-top:20px!important; width:100%!important; }
     .ai-vis-card { transform:none!important; transform-origin:top center!important; height:auto!important; width:100%!important; max-width:100%!important; margin:0 auto!important; box-sizing:border-box!important; }
-    .eco-g   { grid-template-columns:1fr!important; }
+    .eco-g   { grid-template-columns:repeat(2,1fr)!important; gap:10px!important; }
     .step-nav{ flex-direction:column!important; }
     .step-btn{ min-width:100%!important; }
     .step-card{ padding:20px 14px!important; }
@@ -202,9 +246,12 @@ const CSS = `
   }
   @media(max-width:480px){
     .a-stat  { grid-template-columns:1fr!important; }
-    .eco-g   { grid-template-columns:1fr!important; }
+    .eco-g   { grid-template-columns:repeat(2,1fr)!important; gap:10px!important; }
     .a-why   { grid-template-columns:1fr!important; }
     .a-fg    { grid-template-columns:1fr!important; }
+    .a-hr > div {
+      padding: 16px 10px !important;
+    }
   }
 
   /* ── Global responsive section overrides ── */
@@ -273,7 +320,7 @@ const AiPage = () => {
       <Navbar/>
 
       {/* ══ HERO ══ */}
-      <section style={{background:"#fff",padding:"118px 6% 20px",position:"relative",overflow:"hidden"}}>
+      <section className="ai-hero-section" style={{background:"#fff",padding:"118px 6% 20px",position:"relative",overflow:"hidden"}}>
 
 
         <div style={{maxWidth:1200,margin:"0 auto",position:"relative",zIndex:1}}>
@@ -358,7 +405,7 @@ const AiPage = () => {
       {/* ══ INTRO BAND — white ══ */}
       <section style={{background:"#fff",padding:"24px 6%",borderBottom:"1px solid "+BS}}>
         <div style={{maxWidth:1100,margin:"0 auto"}}>
-          <div className="a-intro" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:48,alignItems:"start"}}>
+          <div className="a-intro">
             <div>
               <Pill>AI That Works With Your Business</Pill>
               <h2 style={{fontSize:"clamp(20px,2.5vw,32px)",fontWeight:900,color:D2,letterSpacing:"-1px",lineHeight:1.2,marginBottom:14}}>
@@ -555,7 +602,7 @@ const AiPage = () => {
               </div>
             ))}
           </div>
-          <div style={{marginTop:24,display:"flex",alignItems:"center",justifyContent:"center",flexWrap:"wrap",gap:0}}>
+          <div style={{marginTop:24,display:"flex",alignItems:"center",justifyContent:"center",flexWrap:"wrap",gap:"10px 6px"}}>
             {["Customer Data","AI Assistance","Communication","Automation","Analytics"].map((item,i,arr) => (
               <React.Fragment key={item}>
                 <span style={{background:"#fff",border:"1.5px solid "+GB,color:GD,borderRadius:6,padding:"4px 10px",fontSize:11,fontWeight:700}}>{item}</span>
@@ -618,7 +665,7 @@ const AiPage = () => {
       {/* ══ RESPONSIBLE AI — soft bg ══ */}
       <section style={{background:BA,padding:"44px 6%"}}>
         <div style={{maxWidth:820,margin:"0 auto"}}>
-          <div className="a-resp" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:16}}>
+          <div className="a-resp">
             <div style={{background:"#fff",border:"1.5px solid "+BS,borderRadius:14,padding:"18px 20px"}}>
               <div style={{display:"flex",alignItems:"flex-start",gap:10,marginBottom:12}}>
                 <div style={{fontSize:18}}>🧠</div>

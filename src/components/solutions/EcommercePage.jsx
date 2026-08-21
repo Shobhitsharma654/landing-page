@@ -497,7 +497,7 @@ const EcommercePage = () => {
         @media (max-width: 1023px) {
           .ecom-hero-row { flex-direction: column !important; }
           .ecom-hero-right-col { width: 100% !important; min-width: unset !important; justify-content: center !important; margin-top: 24px !important; }
-          .ecom-hero-right-card { transform: none !important; transform-origin: center center !important; max-width: 340px !important; margin: 0 auto !important; }
+          .ecom-hero-right-card { transform: none !important; transform-origin: center center !important; max-width: 440px !important; margin: 0 auto !important; }
           .grid-col-5 { grid-template-columns: repeat(2, 1fr); }
           .grid-col-4 { grid-template-columns: repeat(2, 1fr); }
           .grid-col-3 { grid-template-columns: repeat(1, 1fr); }
@@ -506,12 +506,35 @@ const EcommercePage = () => {
 
         /* Mobile Phones & Tablets (under 768px) */
         @media (max-width: 768px) {
+          .ecom-hero-section {
+            margin-top: 0px !important;
+            padding-top: 84px !important;
+            padding-bottom: 28px !important;
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+          }
+          .ecom-hero-right-card {
+            transform: none !important;
+            max-width: 100% !important;
+            margin: 0 auto !important;
+            padding: 24px 16px !important;
+          }
           .grid-col-5, .grid-col-4, .grid-col-3, .grid-col-2 {
             grid-template-columns: 1fr !important;
             gap: 12px !important;
           }
           .ecom-glass-card {
             padding: 14px 16px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .ecom-hero-right-card {
+            padding: 18px 12px !important;
+          }
+          .grid-col-5, .grid-col-4, .grid-col-3, .grid-col-2 {
+            grid-template-columns: 1fr !important;
+            gap: 10px !important;
           }
         }
 
@@ -538,6 +561,7 @@ const EcommercePage = () => {
           SECTION 1: HERO (Strictly Provided Copy)
          ═══════════════════════════════════════════════════════════════════ */}
       <section
+        className="ecom-hero-section"
         style={{
           marginTop: 70,
           padding: "56px 6% 64px",
@@ -1003,7 +1027,7 @@ const EcommercePage = () => {
             </p>
           </div>
 
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: 0, marginBottom: 26 }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", rowGap: 12, marginBottom: 26 }}>
             {STORE_FLOW_NODES.map((node, i, arr) => (
               <React.Fragment key={node}>
                 <span style={{ background: "#fff", border: `1.5px solid ${GB}`, color: G, borderRadius: 6, padding: "8px 16px", fontSize: 12, fontWeight: 700 }}>

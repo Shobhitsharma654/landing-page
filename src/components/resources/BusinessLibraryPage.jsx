@@ -362,8 +362,12 @@ const BusinessLibraryPage = () => {
             padding: 18px 16px !important;
             border-radius: 14px !important;
           }
-          .resources-auto-grid, .topics-auto-grid, .four-auto-grid {
+          .resources-auto-grid {
             grid-template-columns: 1fr !important;
+            gap: 14px !important;
+          }
+          .topics-auto-grid, .four-auto-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
             gap: 14px !important;
           }
         }
@@ -384,6 +388,14 @@ const BusinessLibraryPage = () => {
           }
           .library-glass-card {
             padding: 16px 14px !important;
+          }
+          .resources-auto-grid {
+            grid-template-columns: 1fr !important;
+            gap: 12px !important;
+          }
+          .topics-auto-grid, .four-auto-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
           }
         }
 

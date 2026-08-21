@@ -992,9 +992,23 @@ const ContactPage = () => {
                     <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.6.75zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633z"/></svg>
                   </a>
                 </div>
+
                 <div style={{ fontSize: 13.5, fontWeight: 600, color: "#64748B", display: "flex", alignItems: "center", gap: 6 }}>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
                   <span>Email: support@messbee.com</span>
+                </div>
+
+                <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid #E2E8F0" }}>
+                  <div style={{ fontSize: 12, fontWeight: 800, color: "#16A34A", textTransform: "uppercase", letterSpacing: "0.5px", marginBottom: 8, display: "flex", alignItems: "center", gap: 6 }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
+                    Corporate Office Address
+                  </div>
+                  <p style={{ fontSize: 13, fontWeight: 700, color: "#0F172A", margin: 0, lineHeight: 1.55 }}>
+                    Corporate Office: 510, Devika Tower, HIG Flats, Chander Nagar, Surya Nagar, Ghaziabad, Uttar Pradesh 201011, India
+                  </p>
+                  <div style={{ fontSize: 12, color: "#64748B", marginTop: 6 }}>
+                    Ph: 0120-2611111 / +91-9217742081
+                  </div>
                 </div>
               </div>
             </div>
@@ -1125,7 +1139,7 @@ const ContactPage = () => {
                 <span style={{ fontSize: 12, fontWeight: 800, color: "#16A34A", letterSpacing: "0.5px", textTransform: "uppercase" }}>Corporate Office Location</span>
               </div>
               <a
-                href="https://www.google.com/maps/dir//MessBee,+510A,+Chander+Nagar,+Surya+Nagar,+Ghaziabad,+Uttar+Pradesh+201011/@28.6686012,77.3308721,16z"
+                href="https://www.google.com/maps/dir//MessBee,+510,+Devika+Tower,+HIG+Flats,+Chander+Nagar,+Surya+Nagar,+Ghaziabad,+Uttar+Pradesh+201011,+India/@28.6686012,77.3308721,16z"
                 target="_blank"
                 rel="noreferrer"
                 style={{
@@ -1149,15 +1163,15 @@ const ContactPage = () => {
 
             <div style={{ borderTop: "1px solid #F1F5F9", paddingTop: 16, display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 20 }}>
               <div style={{ flex: "1 1 500px" }}>
-                <div style={{ fontSize: 18, fontWeight: 900, color: "#16A34A", marginBottom: 2 }}>
+                <h3 style={{ fontSize: 18, fontWeight: 900, color: "#16A34A", marginBottom: 10, fontFamily: "'Inter', sans-serif" }}>
                   MessBee
-                </div>
-                <h3 style={{ fontSize: 16, fontWeight: 800, color: "#0F172A", marginBottom: 6, display: "flex", alignItems: "center", gap: 8 }}>
-                  Corporate Office
                 </h3>
-                <p style={{ fontSize: 14.5, fontWeight: 600, color: "#475569", margin: 0, lineHeight: 1.6, fontFamily: "'Inter', sans-serif" }}>
-                  510A, Devika Tower, Chander Nagar, Surya Nagar, Ghaziabad, Uttar Pradesh 201011
-                </p>
+                <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2.5" style={{ flexShrink: 0, marginTop: 4 }}><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
+                  <p style={{ fontSize: 14, fontWeight: 500, color: "#475569", margin: 0, lineHeight: 1.6, fontFamily: "'Inter', sans-serif" }}>
+                    <strong style={{ color: "#1E293B" }}>Corporate Office:</strong> 510, Devika Tower, HIG Flats, Chander Nagar, Surya Nagar, Ghaziabad, Uttar Pradesh 201011, India
+                  </p>
+                </div>
               </div>
 
               <div style={{ display: "flex", gap: 24, flexWrap: "wrap", alignItems: "center" }}>
@@ -1195,7 +1209,7 @@ const ContactPage = () => {
             }}>
               <iframe
                 title="MessBee Corporate Office Location Map"
-                src="https://maps.google.com/maps?q=MessBee,+510A,+Chander+Nagar,+Surya+Nagar,+Ghaziabad,+Uttar+Pradesh+201011&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=MessBee,+510,+Devika+Tower,+HIG+Flats,+Chander+Nagar,+Surya+Nagar,+Ghaziabad,+Uttar+Pradesh+201011,+India&t=&z=16&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
