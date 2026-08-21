@@ -202,15 +202,21 @@ const CSS = `
     .ds-vis-card {
       max-width: 100% !important;
     }
-  }
   @media(max-width:640px){
+    .ds-fg { grid-template-columns:1fr!important; }
+    .ds-why { grid-template-columns:1fr!important; }
+    .ds-eco { grid-template-columns:repeat(2,1fr)!important; }
     .ds-ctr { display:flex!important; flex-direction:row!important; align-items:center!important; gap:10px!important; flex-wrap:wrap!important; }
     .dsp { padding:10px 18px!important; font-size:12px!important; }
+    .ds-hr { width:100%!important; justify-content:center!important; margin-top:24px!important; }
+    .ds-hr > div { transform:none!important; transform-origin:top center!important; margin:0 auto!important; width:100%!important; max-width:100%!important; padding:20px 14px!important; box-sizing:border-box!important; }
+    .ds-vis-card { max-width:100%!important; width:100%!important; box-sizing:border-box!important; }
   }
   @media(max-width:480px){
     .ds-fg { grid-template-columns:1fr!important; }
     .ds-why { grid-template-columns:1fr!important; }
     .ds-eco { grid-template-columns:repeat(2,1fr)!important; }
+    .ds-hr > div { padding:18px 12px!important; border-radius:18px!important; }
   }
   @media(hover:none){
     .dsf:hover,.why-card:hover { transform:none!important; }

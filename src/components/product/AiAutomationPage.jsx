@@ -234,7 +234,10 @@ const CSS = `
     .a-fg    { grid-template-columns:1fr!important; }
     .a-why   { grid-template-columns:1fr!important; }
     .a-ctr   { display:flex!important; flex-direction:row!important; align-items:center!important; gap:10px!important; flex-wrap:wrap!important; }
-    .gbtn,.dbtn,.gbtn2 { width:auto!important; padding:10px 18px!important; font-size:12px!important; text-align:center!important; justify-content:center!important; }
+    .a-hr    { width:100%!important; justify-content:center!important; padding-top:24px!important; margin-bottom:0!important; }
+    .a-hr > div { transform:none!important; transform-origin:top center!important; margin:0 auto!important; width:100%!important; max-width:100%!important; padding:20px 14px!important; box-sizing:border-box!important; margin-top:0!important; }
+    .ai-vis-wrap { margin-bottom:0!important; margin-top:20px!important; width:100%!important; }
+    .ai-vis-card { transform:none!important; transform-origin:top center!important; height:auto!important; width:100%!important; max-width:100%!important; margin:0 auto!important; box-sizing:border-box!important; }
     .eco-g   { grid-template-columns:repeat(2,1fr)!important; gap:10px!important; }
     .step-nav{ flex-direction:column!important; }
     .step-btn{ min-width:100%!important; }

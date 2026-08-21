@@ -281,19 +281,18 @@ const CSS = `
     .wg  { grid-template-columns:1fr!important; }
     .ctr { display:flex!important; flex-direction:row!important; align-items:center!important; gap:10px!important; flex-wrap:wrap!important; }
     .cp, .cd { padding:10px 18px!important; font-size:12px!important; }
+    .hr  { width:100%!important; justify-content:center!important; padding-top:24px!important; margin-bottom:0!important; }
+    .hr > div { transform:none!important; transform-origin:top center!important; margin:0 auto!important; width:100%!important; max-width:100%!important; padding:22px 16px!important; box-sizing:border-box!important; }
+    .crm-sec-card { margin-top:20px!important; max-width:100%!important; width:100%!important; padding:16px 12px!important; box-sizing:border-box!important; }
     .sg  { grid-template-columns:1fr 1fr!important; }
     .ig  { grid-template-columns:1fr!important; }
     .sec-grid { grid-template-columns:1fr!important; }
   }
   @media(max-width:480px){
+    .hr > div { padding:18px 12px!important; border-radius:18px!important; }
     .sg  { grid-template-columns:1fr!important; }
     .sc  { padding:20px 14px!important; }
-    .hr > div {
-      padding: 16px 10px !important;
-    }
-    .crm-sec-card {
-      padding: 16px 12px !important;
-    }
+    .crm-sec-card { padding: 16px 12px !important; }
   }
 `;
 
