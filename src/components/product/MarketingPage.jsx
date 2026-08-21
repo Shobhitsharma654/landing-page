@@ -34,10 +34,10 @@ const CAPABILITIES = [
     desc:"Create structured marketing campaigns for every business goal — from product launches to seasonal promotions to customer retention campaigns. Manage all campaign information and performance from a centralized workspace.",
     points:["Product launches and special offers","Seasonal promotions","Customer re-engagement","Lead follow-up campaigns","Events and announcements","Customer retention campaigns"],
     visual:[
-      {name:"Diwali Sale 2024",     status:"Live",    val:"2,400", rate:"78%", c:"#22C55E"},
-      {name:"New Customer Welcome", status:"Running", val:"890",   rate:"65%", c:"#3B82F6"},
-      {name:"Re-engagement Nov",    status:"Draft",   val:"1,200", rate:"—",   c:"#F59E0B"},
-      {name:"Product Launch",       status:"Paused",  val:"500",   rate:"42%", c:G},
+      {name:"Festive Promotion",      status:"Active",    c:"#22C55E"},
+      {name:"New Customer Welcome",   status:"Running",   c:"#3B82F6"},
+      {name:"Re-engagement Sequence", status:"Configured",c:"#F59E0B"},
+      {name:"Product Announcement",   status:"Scheduled", c:G},
     ],
     visualLabel:"Active Campaigns",
   },
@@ -56,10 +56,10 @@ const CAPABILITIES = [
     desc:"Manual follow-ups break down as your customer base grows. Configured automation helps your team stay consistent — delivering the right message at the right time, every time.",
     points:["New lead follow-up sequences","Enquiry and appointment reminders","Post-purchase communication","Customer re-engagement workflows","Service follow-up messages","Retention sequences"],
     visual:[
-      {name:"New Lead Day 1",    status:"Active", val:"1,240", rate:"72%", c:G},
-      {name:"Enquiry Reminder",  status:"Active", val:"890",   rate:"61%", c:"#3B82F6"},
-      {name:"Post-Purchase D+3", status:"Active", val:"567",   rate:"58%", c:"#F59E0B"},
-      {name:"Re-engagement 30d", status:"Active", val:"340",   rate:"44%", c:"#14B8A6"},
+      {name:"New Lead Day 1",    status:"Active", c:G},
+      {name:"Enquiry Reminder",  status:"Active", c:"#3B82F6"},
+      {name:"Post-Purchase D+3", status:"Active", c:"#F59E0B"},
+      {name:"Re-engagement 30d", status:"Active", c:"#14B8A6"},
     ],
     visualLabel:"Automation Sequences",
   },
@@ -78,10 +78,10 @@ const CAPABILITIES = [
     desc:"Different customers have different needs and readiness levels. Segmentation lets you send the right message to the right group — rather than the same message to everyone.",
     points:["Customer type and category","Location and region","Interests and product preferences","Lead stage and lifecycle","Previous interactions and purchase activity","Engagement level and recency"],
     visual:[
-      {name:"High-Value Customers", status:"Active",  val:"2,140", rate:"High",    c:G},
-      {name:"Warm Leads",           status:"Active",  val:"890",   rate:"Medium",  c:"#3B82F6"},
-      {name:"Re-engage Window",     status:"Active",  val:"1,200", rate:"Medium",  c:"#F59E0B"},
-      {name:"New Subscribers",      status:"Growing", val:"340",   rate:"Building",c:"#14B8A6"},
+      {name:"High-Value Customers", status:"Active",  c:G},
+      {name:"Warm Leads",           status:"Active",  c:"#3B82F6"},
+      {name:"Re-engage Window",     status:"Active",  c:"#F59E0B"},
+      {name:"New Subscribers",      status:"Active",  c:"#14B8A6"},
     ],
     visualLabel:"Audience Segments",
   },
@@ -220,12 +220,12 @@ const VisualPanel = ({ label, items }) => (
   <div style={{background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)",borderRadius:16,padding:20,border:"1px solid rgba(22,163,74,.2)",boxShadow:"0 20px 48px rgba(0,0,0,.2)",maxWidth:380,width:"100%",margin:"0 auto"}}>
     <div style={{fontSize:11,color:"rgba(255,255,255,.35)",letterSpacing:1.2,textTransform:"uppercase",marginBottom:14}}>{label}</div>
     {items.map((item,i) => (
-      <div key={i} style={{display:"flex",alignItems:"center",gap:10,padding:"10px 0",borderBottom: i<items.length-1?"1px solid rgba(255,255,255,.05)":"none"}}>
-        <div style={{width:8,height:8,borderRadius:"50%",background:item.c,flexShrink:0}}/>
-        <div style={{flex:1,fontSize:13,color:"rgba(255,255,255,.8)",fontWeight:600}}>{item.name}</div>
-        <div style={{background:item.c+"20",color:item.c,fontSize:11,fontWeight:700,padding:"2px 10px",borderRadius:40}}>{item.status}</div>
-        <div style={{fontSize:12,color:"rgba(255,255,255,.4)",minWidth:36,textAlign:"right"}}>{item.val}</div>
-        <div style={{fontSize:12,color:"rgba(255,255,255,.6)",fontWeight:600,minWidth:32,textAlign:"right"}}>{item.rate}</div>
+      <div key={i} style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:12,padding:"10px 0",borderBottom: i<items.length-1?"1px solid rgba(255,255,255,.05)":"none"}}>
+        <div style={{display:"flex",alignItems:"center",gap:10,flex:1}}>
+          <div style={{width:8,height:8,borderRadius:"50%",background:item.c,flexShrink:0}}/>
+          <div style={{fontSize:13,color:"rgba(255,255,255,.9)",fontWeight:600}}>{item.name}</div>
+        </div>
+        <div style={{background:item.c+"20",color:item.c,fontSize:11,fontWeight:700,padding:"3px 12px",borderRadius:40,flexShrink:0}}>{item.status}</div>
       </div>
     ))}
     <div style={{marginTop:16,padding:"12px 14px",background:"rgba(22,163,74,.1)",border:"1px solid rgba(22,163,74,.2)",borderRadius:10}}>
