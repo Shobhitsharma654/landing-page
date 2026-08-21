@@ -34,10 +34,10 @@ const CAPABILITIES = [
     desc:"Create structured marketing campaigns for every business goal — from product launches to seasonal promotions to customer retention campaigns. Manage all campaign information and performance from a centralized workspace.",
     points:["Product launches and special offers","Seasonal promotions","Customer re-engagement","Lead follow-up campaigns","Events and announcements","Customer retention campaigns"],
     visual:[
-      {name:"Diwali Sale 2024",     status:"Live",    val:"2,400", rate:"78%", c:"#22C55E"},
-      {name:"New Customer Welcome", status:"Running", val:"890",   rate:"65%", c:"#3B82F6"},
-      {name:"Re-engagement Nov",    status:"Draft",   val:"1,200", rate:"—",   c:"#F59E0B"},
-      {name:"Product Launch",       status:"Paused",  val:"500",   rate:"42%", c:G},
+      {name:"Festive Promotion",      status:"Active",    c:"#22C55E"},
+      {name:"New Customer Welcome",   status:"Running",   c:"#3B82F6"},
+      {name:"Re-engagement Sequence", status:"Configured",c:"#F59E0B"},
+      {name:"Product Announcement",   status:"Scheduled", c:G},
     ],
     visualLabel:"Active Campaigns",
   },
@@ -56,10 +56,10 @@ const CAPABILITIES = [
     desc:"Manual follow-ups break down as your customer base grows. Configured automation helps your team stay consistent — delivering the right message at the right time, every time.",
     points:["New lead follow-up sequences","Enquiry and appointment reminders","Post-purchase communication","Customer re-engagement workflows","Service follow-up messages","Retention sequences"],
     visual:[
-      {name:"New Lead Day 1",    status:"Active", val:"1,240", rate:"72%", c:G},
-      {name:"Enquiry Reminder",  status:"Active", val:"890",   rate:"61%", c:"#3B82F6"},
-      {name:"Post-Purchase D+3", status:"Active", val:"567",   rate:"58%", c:"#F59E0B"},
-      {name:"Re-engagement 30d", status:"Active", val:"340",   rate:"44%", c:"#14B8A6"},
+      {name:"New Lead Day 1",    status:"Active", c:G},
+      {name:"Enquiry Reminder",  status:"Active", c:"#3B82F6"},
+      {name:"Post-Purchase D+3", status:"Active", c:"#F59E0B"},
+      {name:"Re-engagement 30d", status:"Active", c:"#14B8A6"},
     ],
     visualLabel:"Automation Sequences",
   },
@@ -78,10 +78,10 @@ const CAPABILITIES = [
     desc:"Different customers have different needs and readiness levels. Segmentation lets you send the right message to the right group — rather than the same message to everyone.",
     points:["Customer type and category","Location and region","Interests and product preferences","Lead stage and lifecycle","Previous interactions and purchase activity","Engagement level and recency"],
     visual:[
-      {name:"High-Value Customers", status:"Active",  val:"2,140", rate:"High",    c:G},
-      {name:"Warm Leads",           status:"Active",  val:"890",   rate:"Medium",  c:"#3B82F6"},
-      {name:"Re-engage Window",     status:"Active",  val:"1,200", rate:"Medium",  c:"#F59E0B"},
-      {name:"New Subscribers",      status:"Growing", val:"340",   rate:"Building",c:"#14B8A6"},
+      {name:"High-Value Customers", status:"Active",  c:G},
+      {name:"Warm Leads",           status:"Active",  c:"#3B82F6"},
+      {name:"Re-engage Window",     status:"Active",  c:"#F59E0B"},
+      {name:"New Subscribers",      status:"Active",  c:"#14B8A6"},
     ],
     visualLabel:"Audience Segments",
   },
@@ -158,8 +158,10 @@ const CSS = `
   @media(max-width:640px){
     .m-fg  { grid-template-columns:1fr!important; }
     .m-why { grid-template-columns:1fr!important; }
-    .m-ctr { flex-direction:column!important;align-items:flex-start!important; }
-    .m-hr  { display:none!important; }
+    .m-ctr { display:flex!important; flex-direction:row!important; align-items:center!important; gap:10px!important; flex-wrap:wrap!important; }
+    .gbtn,.dbtn,.gbtn2 { width:auto!important; padding:10px 18px!important; font-size:12px!important; }
+    .m-hr  { width:100%!important; justify-content:center!important; padding-top:24px!important; margin-bottom:0!important; }
+    .m-hr > div { transform:none!important; transform-origin:top center!important; margin:0 auto!important; max-width:340px!important; margin-top:0!important; margin-bottom:0!important; }
     .ch-grid { grid-template-columns:1fr!important; }
   }
 
@@ -215,15 +217,15 @@ const FlowStrip = ({ steps }) => (
 );
 
 const VisualPanel = ({ label, items }) => (
-  <div style={{background:D,borderRadius:16,padding:22,border:"1px solid rgba(22,163,74,.2)",boxShadow:"0 20px 48px rgba(0,0,0,.2)"}}>
+  <div style={{background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)",borderRadius:16,padding:20,border:"1px solid rgba(22,163,74,.2)",boxShadow:"0 20px 48px rgba(0,0,0,.2)",maxWidth:380,width:"100%",margin:"0 auto"}}>
     <div style={{fontSize:11,color:"rgba(255,255,255,.35)",letterSpacing:1.2,textTransform:"uppercase",marginBottom:14}}>{label}</div>
     {items.map((item,i) => (
-      <div key={i} style={{display:"flex",alignItems:"center",gap:10,padding:"10px 0",borderBottom: i<items.length-1?"1px solid rgba(255,255,255,.05)":"none"}}>
-        <div style={{width:8,height:8,borderRadius:"50%",background:item.c,flexShrink:0}}/>
-        <div style={{flex:1,fontSize:13,color:"rgba(255,255,255,.8)",fontWeight:600}}>{item.name}</div>
-        <div style={{background:item.c+"20",color:item.c,fontSize:11,fontWeight:700,padding:"2px 10px",borderRadius:40}}>{item.status}</div>
-        <div style={{fontSize:12,color:"rgba(255,255,255,.4)",minWidth:36,textAlign:"right"}}>{item.val}</div>
-        <div style={{fontSize:12,color:"rgba(255,255,255,.6)",fontWeight:600,minWidth:32,textAlign:"right"}}>{item.rate}</div>
+      <div key={i} style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:12,padding:"10px 0",borderBottom: i<items.length-1?"1px solid rgba(255,255,255,.05)":"none"}}>
+        <div style={{display:"flex",alignItems:"center",gap:10,flex:1}}>
+          <div style={{width:8,height:8,borderRadius:"50%",background:item.c,flexShrink:0}}/>
+          <div style={{fontSize:13,color:"rgba(255,255,255,.9)",fontWeight:600}}>{item.name}</div>
+        </div>
+        <div style={{background:item.c+"20",color:item.c,fontSize:11,fontWeight:700,padding:"3px 12px",borderRadius:40,flexShrink:0}}>{item.status}</div>
       </div>
     ))}
     <div style={{marginTop:16,padding:"12px 14px",background:"rgba(22,163,74,.1)",border:"1px solid rgba(22,163,74,.2)",borderRadius:10}}>
@@ -275,15 +277,15 @@ const MarketingPage = () => {
 
               <div className="m-ctr">
                 <button id="mkt-hero-start" className="gbtn" onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started</button>
-                <button id="mkt-hero-explore" style={{background:"#fff",border:"1.5px solid #E5E7EB",color:D2,borderRadius:40,padding:"12px 28px",fontSize:13,fontWeight:600,cursor:"pointer",transition:"all .2s"}} onClick={() => document.getElementById("mkt-features")?.scrollIntoView({behavior:"smooth"})}>
-                  Explore Marketing Automation →
+                <button id="mkt-hero-explore" style={{ background:"#fff", color:D2, border:`1.5px solid ${GB}`, borderRadius:40, padding:"10px 24px", fontSize:12, fontWeight:600, cursor:"pointer", transition:"all .2s" }} onMouseOver={(e) => { e.currentTarget.style.borderColor=G; e.currentTarget.style.color=G; }} onMouseOut={(e) => { e.currentTarget.style.borderColor=GB; e.currentTarget.style.color=D2; }} onClick={() => document.getElementById("mkt-features")?.scrollIntoView({behavior:"smooth"})}>
+                  Explore More →
                 </button>
               </div>
             </div>
 
             {/* Right — marketing funnel panel */}
             <div className="m-hr">
-              <div style={{background:"#0F3826",borderRadius:24,padding:28,boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)",border:"1px solid rgba(34,197,94,.2)",width:"100%",maxWidth:460,transform:"scale(0.75)",transformOrigin:"top right",marginTop:"76px",marginBottom:"-120px",overflow:"hidden"}}>
+              <div style={{background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)",borderRadius:24,padding:28,boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)",border:"1px solid rgba(34,197,94,.2)",width:"100%",maxWidth:460,transform:"scale(0.75)",transformOrigin:"top right",marginTop:"76px",marginBottom:"-120px",overflow:"hidden"}}>
                 {/* Header */}
                 <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:28 }}>
                   <div style={{ display:"flex", alignItems:"center", gap:12 }}>
@@ -428,25 +430,21 @@ const MarketingPage = () => {
                       </ul>
                       <button className="gbtn" id={"mkt-cap-"+i} onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started</button>
                     </div>
-                    <div>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }}>
                       {cap.visual
                         ? <VisualPanel label={cap.visualLabel} items={cap.visual}/>
                         : (
-                          <div style={{background:D,borderRadius:16,padding:24,border:"1px solid rgba(22,163,74,.2)",boxShadow:"0 20px 48px rgba(0,0,0,.2)"}}>
-                            <div style={{fontSize:11,color:"rgba(255,255,255,.35)",letterSpacing:1.2,textTransform:"uppercase",marginBottom:16}}>Journey Steps</div>
+                          <div style={{background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)",borderRadius:16,padding:20,border:"1px solid rgba(22,163,74,.2)",boxShadow:"0 20px 48px rgba(0,0,0,.2)",maxWidth:380,width:"100%",margin:"0 auto"}}>
+                            <div style={{fontSize:11,color:"rgba(255,255,255,.35)",letterSpacing:1.2,textTransform:"uppercase",marginBottom:14}}>Journey Steps</div>
                             {cap.flow && cap.flow.map((step,si) => (
-                              <div key={step} style={{display:"flex",alignItems:"flex-start",gap:12,marginBottom: si<cap.flow.length-1?0:0}}>
-                                <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:0,flexShrink:0}}>
-                                  <div style={{width:32,height:32,borderRadius:"50%",background:"rgba(22,163,74,.2)",border:"1.5px solid rgba(22,163,74,.4)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:800,color:"#4ADE80"}}>{si+1}</div>
-                                  {si<cap.flow.length-1 && <div style={{width:2,height:20,background:"rgba(255,255,255,.06)",margin:"2px 0"}}/>}
-                                </div>
-                                <div style={{flex:1,paddingBottom: si<cap.flow.length-1?18:0}}>
-                                  <div style={{fontSize:14,fontWeight:700,color:"rgba(255,255,255,.85)"}}>{step}</div>
-                                  <div style={{fontSize:11,color:"rgba(255,255,255,.35)",marginTop:2}}>Automated step {si+1}</div>
-                                </div>
+                              <div key={step} style={{display:"flex",alignItems:"center",gap:10,padding:"7px 0",borderBottom: si<cap.flow.length-1?"1px solid rgba(255,255,255,.05)":"none"}}>
+                                <div style={{width:8,height:8,borderRadius:"50%",background:"#22C55E",flexShrink:0}}/>
+                                <div style={{flex:1,fontSize:13,color:"rgba(255,255,255,.8)",fontWeight:600}}>{step}</div>
+                                <div style={{background:"rgba(34,197,94,.15)",color:"#4ADE80",fontSize:11,fontWeight:700,padding:"2px 10px",borderRadius:40}}>Step {si+1}</div>
+                                <div style={{fontSize:12,color:"rgba(255,255,255,.4)",minWidth:50,textAlign:"right"}}>Active</div>
                               </div>
                             ))}
-                            <div style={{marginTop:20,padding:"12px 14px",background:"rgba(22,163,74,.1)",border:"1px solid rgba(22,163,74,.25)",borderRadius:10}}>
+                            <div style={{marginTop:16,padding:"12px 14px",background:"rgba(22,163,74,.1)",border:"1px solid rgba(22,163,74,.2)",borderRadius:10}}>
                               <div style={{fontSize:11,color:"rgba(255,255,255,.5)"}}>Connected to CRM · Channels · Analytics</div>
                             </div>
                           </div>
@@ -514,12 +512,12 @@ const MarketingPage = () => {
               <p style={{ fontSize: 15, color: "rgba(255,255,255,.5)", lineHeight: 1.75, maxWidth: 560, margin: "0 auto 40px" }}>
                 Marketing automation becomes more powerful when connected with CRM, segmentation and analytics — not managed separately.
               </p>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: 0 }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: "10px 12px" }}>
                 {["CRM", "Segmentation", "Campaign", "Automation", "Engagement", "Analytics"].map((item, i, arr) => (
-                  <React.Fragment key={item}>
-                    <div style={{ background: "rgba(255,255,255,.06)", border: "1px solid rgba(255,255,255,.1)", borderRadius: 10, padding: "10px 18px", fontSize: 14, fontWeight: 700, color: "#fff" }}>{item}</div>
-                    {i < arr.length - 1 && <div style={{ color: G, fontSize: 20, padding: "0 6px", fontWeight: 900 }}>→</div>}
-                  </React.Fragment>
+                  <div key={item} style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
+                    <div style={{ background: "rgba(255,255,255,.08)", border: "1px solid rgba(255,255,255,.15)", borderRadius: 10, padding: "8px 16px", fontSize: 13, fontWeight: 700, color: "#fff" }}>{item}</div>
+                    {i < arr.length - 1 && <span style={{ color: "#4ADE80", fontSize: 18, fontWeight: 900 }}>→</span>}
+                  </div>
                 ))}
               </div>
             </div>
@@ -567,7 +565,7 @@ const MarketingPage = () => {
             ))}
           </div><br/>
           <button id="mkt-india-start" className="gbtn" onClick={() => window.open(adminUrl+"/signup","_blank")}>
-            Start Automating Your Marketing
+            Get Started
           </button>
         </div>
       </section>
@@ -642,7 +640,7 @@ const MarketingPage = () => {
             Join thousands of businesses using MessBee to plan, launch and automate marketing campaigns across WhatsApp and email.
           </p>
           <div style={{display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap"}}>
-            <button id="mkt-cta-final" className="gbtn" style={{fontSize:13,padding:"10px 20px"}} onClick={() => window.open(adminUrl+"/signup","_blank")}>Start Automating Your Marketing</button>
+            <button id="mkt-cta-final" className="gbtn" style={{fontSize:13,padding:"10px 20px"}} onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started</button>
             <button id="mkt-cta-sales" style={{background:"#fff",color:D2,border:`1.5px solid ${GB}`,borderRadius:40,padding:"10px 20px",fontSize:13,fontWeight:600,cursor:"pointer",transition:"all .2s"}} onClick={() => navigate("/contact#contact-form-section")} onMouseOver={(e) => { e.currentTarget.style.borderColor=G; e.currentTarget.style.color=G; }} onMouseOut={(e) => { e.currentTarget.style.borderColor=GB; e.currentTarget.style.color=D2; }}>Contact Support</button>
           </div>
 
