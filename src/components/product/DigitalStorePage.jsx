@@ -165,11 +165,12 @@ const CSS = `
   .ds-btn:hover { background:#F0FDF4; }
   .ds-btn.act { background:#F0FDF4;border:1px solid #BBF7D0; }
   .ds-card { background:#fff;border:1.5px solid #F1F5F9;border-radius:16px;padding:24px 22px; }
-  .ds-in { display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start; }
+  .ds-ctr { display:flex;gap:14px;flex-wrap:wrap; }
   @media(max-width:1100px){
     .ds-fg { grid-template-columns:repeat(2,1fr)!important; }
     .ds-eco { grid-template-columns:repeat(3,1fr)!important; }
     .ds-wrap { flex-direction:column!important; }
+    .ds-nav { width:100%!important; padding-right:0!important; margin-bottom:16px!important; }
     .ds-why { grid-template-columns:repeat(2,1fr)!important; }
     .ds-in { grid-template-columns:1fr!important; }
   }
@@ -177,6 +178,10 @@ const CSS = `
     .ds-fg { grid-template-columns:1fr!important; }
     .ds-why { grid-template-columns:1fr!important; }
     .ds-eco { grid-template-columns:repeat(2,1fr)!important; }
+    .ds-ctr { display:flex!important; flex-direction:row!important; align-items:center!important; gap:10px!important; flex-wrap:wrap!important; }
+    .dsp { padding:10px 18px!important; font-size:12px!important; }
+    .ds-hr { width:100%!important; justify-content:center!important; margin-top:24px!important; }
+    .ds-hr > div { transform:none!important; transform-origin:top center!important; margin:0 auto!important; max-width:340px!important; }
   }
   @media(hover:none){
     .dsf:hover,.why-card:hover { transform:none!important; }
@@ -222,17 +227,17 @@ const DigitalStorePage = () => {
                 ))}
               </div>
 
-              <div style={{ display:"flex", gap:14, flexWrap:"wrap" }}>
+              <div className="ds-ctr">
                 <button id="ds-hero-start" className="dsp" onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started</button>
                 <button id="ds-hero-explore" style={{ background:"#fff", color:D2, border:`1.5px solid ${GB}`, borderRadius:40, padding:"10px 24px", fontSize:12, fontWeight:600, cursor:"pointer", transition:"all .2s" }} onMouseOver={(e) => { e.currentTarget.style.borderColor=G; e.currentTarget.style.color=G; }} onMouseOut={(e) => { e.currentTarget.style.borderColor=GB; e.currentTarget.style.color=D2; }} onClick={() => document.getElementById("ds-features")?.scrollIntoView({behavior:"smooth"})}>
-                  Explore Digital Store →
+                  Explore More →
                 </button>
               </div>
             </div>
 
             {/* Storefront mockup */}
-            <div style={{ flex:"1 1 340px", minWidth:280, display:"flex", justifyContent:"center", marginTop:76 }}>
-              <div style={{ background:"#0F3826", borderRadius:24, padding:28, boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)", border:"1px solid rgba(34,197,94,.2)", width:"100%", maxWidth:460, transform:"scale(0.75)", transformOrigin:"top right", marginLeft:40, overflow:"hidden" }}>
+            <div className="ds-hr" style={{ flex:"1 1 340px", minWidth:280, display:"flex", justifyContent:"center", marginTop:76 }}>
+              <div style={{ background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)", borderRadius:24, padding:28, boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)", border:"1px solid rgba(34,197,94,.2)", width:"100%", maxWidth:460, transform:"scale(0.75)", transformOrigin:"top center", overflow:"hidden" }}>
                 {/* Header */}
                 <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:28 }}>
                   <div style={{ display:"flex", alignItems:"center", gap:12 }}>
@@ -361,7 +366,7 @@ const DigitalStorePage = () => {
                         </li>
                       ))}
                     </ul>
-                    <button id={"ds-cap-"+activeStep} className="dsp" style={{ fontSize:12, padding:"9px 20px" }} onClick={() => window.open(adminUrl+"/signup","_blank")}>Create Your Digital Store</button>
+                    <button id={"ds-cap-"+activeStep} className="dsp" style={{ fontSize:12, padding:"9px 20px" }} onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started</button>
                   </div>
                   <div>
                     <div style={{ background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)", borderRadius:14, padding:18, border:"1px solid rgba(22,163,74,.2)", boxShadow:"0 16px 40px rgba(0,0,0,.16)" }}>
@@ -461,16 +466,16 @@ const DigitalStorePage = () => {
           <p style={{ fontSize:13, color:MU, lineHeight:1.7, maxWidth:580, margin:"0 auto 20px" }}>
             Customers increasingly discover businesses digitally before making an enquiry or purchase. MessBee Digital Store helps businesses establish a more direct digital presence and connect storefront activity with their broader customer and business operations.
           </p>
-          <div style={{ display:"flex", alignItems:"center", justifyContent:"center", flexWrap:"wrap", gap:0, marginBottom:28 }}>
+          <div style={{ display:"flex", alignItems:"center", justifyContent:"center", flexWrap:"wrap", gap:"8px 10px", marginBottom:28 }}>
             {["Discover","Explore","Enquire","Purchase","Support","Retain"].map((s,i,arr) => (
-              <React.Fragment key={s}>
+              <div key={s} style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
                 <span style={{ background:"#fff", border:`1.5px solid ${GB}`, color:G, borderRadius:6, padding:"4px 10px", fontSize:11, fontWeight:700 }}>{s}</span>
                 {i<arr.length-1 && <span style={{ color:"#94A3B8", fontSize:13, padding:"0 3px" }}>→</span>}
-              </React.Fragment>
+              </div>
             ))}
           </div>
           <button id="ds-india-start" className="dsp" style={{ fontSize:13, padding:"10px 20px" }} onClick={() => window.open(adminUrl+"/signup","_blank")}>
-            Create Your Digital Store
+            Get Started
           </button>
         </div>
       </section>
@@ -533,7 +538,7 @@ const DigitalStorePage = () => {
           </p>
           <div style={{ display:"flex", gap:12, justifyContent:"center", flexWrap:"wrap" }}>
             <button id="ds-cta-final" className="dsp" style={{ fontSize:13, padding:"11px 26px" }} onClick={() => window.open(adminUrl+"/signup","_blank")}>
-              Create Your Digital Store
+              Get Started
             </button>
             <button id="ds-cta-sales" className="dsd" style={{ fontSize:13, padding:"11px 26px" }} onClick={() => navigate("/contact#contact-form-section")}>Contact Support</button>
           </div>

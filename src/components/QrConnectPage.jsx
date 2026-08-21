@@ -224,19 +224,46 @@ const QrConnectPage = () => {
 
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Checklist Row */}
-          <div className="hcr" style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 14, marginTop: 28, paddingTop: 20, borderTop: "1px solid #F1F5F9" }}>
-            {["2 Minute Setup", "100% WhatsApp Ready", "No Coding Required", "Track Real Results", "Free to Get Started"].map((t, i) => (
-              <div key={i} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, fontWeight: 700, color: "#1E293B", whiteSpace: "nowrap" }}>
-                <div style={{ width: 18, height: 18, borderRadius: "50%", border: "1.5px solid #16A34A", color: "#16A34A", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, fontWeight: 900, flexShrink: 0 }}>✓</div>
-                {t}
+      {/* ═══════ GREEN TRUST BANNER ═══════ */}
+      <section style={{ background: "linear-gradient(135deg, #16A34A 0%, #15803D 100%)", padding: "28px 3%" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <h2 style={{ textAlign: "center", fontSize: "clamp(16px, 2vw, 22px)", fontWeight: 800, color: "#FFFFFF", marginBottom: 18, letterSpacing: "-0.3px" }}>
+            Everything You Need to Run and Grow Your Business
+          </h2>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "center" }}>
+            {[
+              { icon: "⚡", title: "2 Minute Setup", desc: "Get started instantly" },
+              { icon: "✅", title: "100% WhatsApp Ready", desc: "Meta API powered" },
+              { icon: "🧩", title: "No Coding Required", desc: "Drag & drop builder" },
+              { icon: "📊", title: "Track Real Results", desc: "Live analytics dash" },
+              { icon: "🎁", title: "Free to Get Started", desc: "No credit card needed" },
+            ].map((item, i) => (
+              <div key={i} style={{
+                background: "#FFFFFF",
+                borderRadius: 12,
+                padding: "10px 16px",
+                display: "flex",
+                alignItems: "center",
+                gap: 10,
+                minWidth: 160,
+                flex: "1 1 160px",
+                maxWidth: 210,
+                boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
+              }}>
+                <span style={{ fontSize: 20, flexShrink: 0 }}>{item.icon}</span>
+                <div>
+                  <div style={{ fontSize: 12, fontWeight: 800, color: "#0F172A", lineHeight: 1.2 }}>{item.title}</div>
+                  <div style={{ fontSize: 10.5, color: "#64748B", marginTop: 1 }}>{item.desc}</div>
+                </div>
               </div>
             ))}
           </div>
-
         </div>
       </section>
+
 
       {/* ═══════ WHAT IS QR & CONNECT ═══════ */}
       <section style={{ padding: "40px 3%", background: "#FFFFFF" }}>
