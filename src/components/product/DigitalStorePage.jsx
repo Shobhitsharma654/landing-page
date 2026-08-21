@@ -165,6 +165,8 @@ const CSS = `
   .ds-btn:hover { background:#F0FDF4; }
   .ds-btn.act { background:#F0FDF4;border:1px solid #BBF7D0; }
   .ds-card { background:#fff;border:1.5px solid #F1F5F9;border-radius:16px;padding:24px 22px; }
+  .ds-in { display:grid; grid-template-columns:1fr 340px; gap:32px; align-items:center; }
+  .ds-vis-card { background:linear-gradient(135deg, #14532d 0%, #022c22 100%); border-radius:16px; padding:20px; border:1px solid rgba(22,163,74,.2); box-shadow:0 16px 40px rgba(0,0,0,.16); max-width:340px; width:100%; margin:0 auto; }
   .ds-ctr { display:flex;gap:14px;flex-wrap:wrap; }
   @media(max-width:1100px){
     .ds-fg { grid-template-columns:repeat(2,1fr)!important; }
@@ -172,7 +174,8 @@ const CSS = `
     .ds-wrap { flex-direction:column!important; }
     .ds-nav { width:100%!important; padding-right:0!important; margin-bottom:16px!important; }
     .ds-why { grid-template-columns:repeat(2,1fr)!important; }
-    .ds-in { grid-template-columns:1fr!important; }
+    .ds-in { grid-template-columns:1fr!important; gap:24px!important; }
+    .ds-vis-card { max-width:340px!important; margin:0 auto!important; }
   }
   @media(max-width:640px){
     .ds-fg { grid-template-columns:1fr!important; }
@@ -369,23 +372,22 @@ const DigitalStorePage = () => {
                     <button id={"ds-cap-"+activeStep} className="dsp" style={{ fontSize:12, padding:"9px 20px" }} onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started</button>
                   </div>
                   <div>
-                    <div style={{ background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)", borderRadius:14, padding:18, border:"1px solid rgba(22,163,74,.2)", boxShadow:"0 16px 40px rgba(0,0,0,.16)" }}>
+                    <div className="ds-vis-card">
                       <div style={{ fontSize:10, color:"rgba(255,255,255,.35)", letterSpacing:1.2, textTransform:"uppercase", marginBottom:12 }}>Store Preview</div>
-                      <div style={{ background:"rgba(255,255,255,.05)", borderRadius:8, padding:"10px 12px", marginBottom:8, border:"1px solid rgba(255,255,255,.07)" }}>
+                      <div style={{ background:"rgba(255,255,255,.05)", borderRadius:8, padding:"10px 12px", marginBottom:10, border:"1px solid rgba(255,255,255,.07)" }}>
                         <div style={{ fontSize:9, color:"rgba(255,255,255,.4)", marginBottom:4 }}>Your Business Name</div>
                         <div style={{ fontSize:11, fontWeight:700, color:"rgba(255,255,255,.85)" }}>{step.title}</div>
                       </div>
-                      {[1,2,3].map(n => (
-                        <div key={n} style={{ display:"flex", alignItems:"center", gap:8, padding:"7px 0", borderBottom:n<3?"1px solid rgba(255,255,255,.05)":"none" }}>
-                          <div style={{ width:28, height:28, borderRadius:6, background:"rgba(22,163,74,.12)", flexShrink:0 }}/>
-                          <div style={{ flex:1 }}>
-                            <div style={{ height:6, background:"rgba(255,255,255,.1)", borderRadius:3, marginBottom:4, width:"70%" }}/>
-                            <div style={{ height:5, background:"rgba(255,255,255,.06)", borderRadius:3, width:"50%" }}/>
+                      {["Featured Product", "Popular Catalogue Item", "New Arrival Item"].map((name, i) => (
+                        <div key={name} style={{ display:"flex", alignItems:"center", justifyContent:"space-between", gap:10, padding:"8px 0", borderBottom: i<2 ? "1px solid rgba(255,255,255,.05)" : "none" }}>
+                          <div style={{ display:"flex", alignItems:"center", gap:8 }}>
+                            <div style={{ width:24, height:24, borderRadius:6, background:"rgba(22,163,74,.15)", border:"1px solid rgba(34,197,94,.3)", display:"flex", alignItems:"center", justifyContent:"center", fontSize:11 }}>📦</div>
+                            <div style={{ fontSize:12, color:"rgba(255,255,255,.85)", fontWeight:600 }}>{name}</div>
                           </div>
-                          <div style={{ fontSize:9, fontWeight:700, color:"#4ADE80" }}>₹{(n*499).toLocaleString()}</div>
+                          <div style={{ background:"rgba(22,163,74,.2)", color:"#4ADE80", fontSize:10, fontWeight:700, padding:"2px 8px", borderRadius:20 }}>Active</div>
                         </div>
                       ))}
-                      <div style={{ marginTop:10, padding:"8px 10px", background:"rgba(22,163,74,.08)", border:"1px solid rgba(22,163,74,.2)", borderRadius:7 }}>
+                      <div style={{ marginTop:12, padding:"8px 10px", background:"rgba(22,163,74,.08)", border:"1px solid rgba(22,163,74,.2)", borderRadius:7 }}>
                         <div style={{ fontSize:10, color:"rgba(255,255,255,.4)" }}>Connected to CRM · WhatsApp · Payments</div>
                       </div>
                     </div>
