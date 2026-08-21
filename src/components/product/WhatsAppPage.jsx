@@ -158,9 +158,10 @@ const CSS = `
   @media(max-width:640px){
     .wa-fg   { grid-template-columns:1fr!important; }
     .wa-why  { grid-template-columns:1fr!important; }
-    .wa-ctr  { flex-direction:column!important;align-items:stretch!important; }
-    .wbp,.wbo,.wbd { width:100%!important;text-align:center!important;justify-content:center!important; }
-    .wa-hr   { display:none!important; }
+    .wa-ctr  { display:flex!important; flex-direction:row!important; align-items:center!important; gap:10px!important; flex-wrap:wrap!important; }
+    .wbp,.wbo,.wbd { width:auto!important; padding:10px 18px!important; font-size:12px!important; text-align:center!important; justify-content:center!important; }
+    .wa-hr   { width:100%!important; justify-content:center!important; padding-top:24px!important; margin-bottom:0!important; }
+    .wa-hr > div { transform:none!important; transform-origin:top center!important; margin:0 auto!important; max-width:340px!important; }
     .wa-stat { grid-template-columns:repeat(2,1fr)!important; }
   }
   @media(max-width:480px){
@@ -241,7 +242,7 @@ const WaPage = () => {
                   Get Started
                 </button>
                 <button id="wa-hero-explore" style={{ background:"#fff", color:D2, border:`1.5px solid ${GB}`, borderRadius:40, padding:"10px 24px", fontSize:12, fontWeight:600, cursor:"pointer", transition:"all .2s" }} onMouseOver={(e) => { e.currentTarget.style.borderColor=G; e.currentTarget.style.color=G; }} onMouseOut={(e) => { e.currentTarget.style.borderColor=GB; e.currentTarget.style.color=D2; }} onClick={() => document.getElementById("wa-features")?.scrollIntoView({behavior:"smooth"})}>
-                  Explore Features →
+                  Explore More →
                 </button>
               </div>
 
@@ -249,7 +250,7 @@ const WaPage = () => {
             </div>
 
             <div className="wa-hr" style={{ alignItems:"flex-start" }}>
-              <div style={{ background:"#0F3826", borderRadius:24, padding:28, boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)", border:"1px solid rgba(34,197,94,.2)", width:"100%", maxWidth:460, transform:"scale(0.75)", transformOrigin:"top right", marginTop:76, marginLeft:40, overflow:"hidden" }}>
+              <div style={{ background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)", borderRadius:24, padding:28, boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)", border:"1px solid rgba(34,197,94,.2)", width:"100%", maxWidth:460, transform:"scale(0.75)", transformOrigin:"top center", marginTop:76, marginLeft:40, overflow:"hidden" }}>
                 {/* Header */}
                 <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:28 }}>
                   <div style={{ display:"flex", alignItems:"center", gap:12 }}>
@@ -408,12 +409,12 @@ const WaPage = () => {
               <p style={{ fontSize: 15, color: "rgba(255,255,255,.55)", lineHeight: 1.75, maxWidth: 560, margin: "0 auto 40px" }}>
                 WhatsApp is most powerful when it's connected to your customer data and business workflows — not siloed as a standalone messaging app.
               </p>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: 0 }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: "10px 12px" }}>
                 {["WhatsApp", "CRM", "Automation", "Marketing", "Commerce", "Analytics"].map((item, i, arr) => (
-                  <React.Fragment key={item}>
-                    <div style={{ background: "rgba(255,255,255,.08)", border: "1px solid rgba(255,255,255,.15)", borderRadius: 10, padding: "10px 18px", fontSize: 14, fontWeight: 700, color: "#fff" }}>{item}</div>
-                    {i < arr.length - 1 && <div style={{ color: WA, fontSize: 20, padding: "0 6px", fontWeight: 900 }}>→</div>}
-                  </React.Fragment>
+                  <div key={item} style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
+                    <div style={{ background: "rgba(255,255,255,.08)", border: "1px solid rgba(255,255,255,.15)", borderRadius: 10, padding: "8px 16px", fontSize: 13, fontWeight: 700, color: "#fff" }}>{item}</div>
+                    {i < arr.length - 1 && <span style={{ color: WA, fontSize: 18, fontWeight: 900 }}>→</span>}
+                  </div>
                 ))}
               </div>
             </div>
@@ -531,7 +532,7 @@ const WaPage = () => {
             Join 35,000+ Indian businesses using MessBee to manage WhatsApp conversations, run campaigns and automate customer communication.
           </p>
           <div style={{ display:"flex", gap:12, justifyContent:"center", flexWrap:"wrap" }}>
-            <button id="wa-cta-final" className="wbp" style={{ fontSize:13, padding:"10px 20px" }} onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started with MessBee</button>
+            <button id="wa-cta-final" className="wbp" style={{ fontSize:13, padding:"10px 20px" }} onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started</button>
             <button id="wa-cta-sales" style={{ background:"#fff", color:D2, border:`1.5px solid ${GB}`, borderRadius:40, padding:"10px 20px", fontSize:13, fontWeight:600, cursor:"pointer", transition:"all .2s" }} onClick={() => navigate("/contact#contact-form-section")} onMouseOver={(e) => { e.currentTarget.style.borderColor=WA; e.currentTarget.style.color=WA; }} onMouseOut={(e) => { e.currentTarget.style.borderColor=GB; e.currentTarget.style.color=D2; }}>Contact Support</button>
           </div>
 

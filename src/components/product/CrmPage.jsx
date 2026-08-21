@@ -220,8 +220,11 @@ const CSS = `
   @media(max-width:640px){
     .fg  { grid-template-columns:1fr!important; }
     .wg  { grid-template-columns:1fr!important; }
-    .ctr { flex-direction:column!important;align-items:flex-start!important; }
-    .hr  { display:none!important; }
+    .ctr { display:flex!important; flex-direction:row!important; align-items:center!important; gap:10px!important; flex-wrap:wrap!important; }
+    .cp, .cd { padding:10px 18px!important; font-size:12px!important; }
+    .hr  { width:100%!important; justify-content:center!important; padding-top:24px!important; margin-bottom:0!important; }
+    .hr > div { transform:none!important; transform-origin:top center!important; margin:0 auto!important; max-width:340px!important; }
+    .crm-sec-card { margin-top:24px!important; }
     .sg  { grid-template-columns:1fr 1fr!important; }
     .ig  { grid-template-columns:1fr!important; }
     .sec-grid { grid-template-columns:1fr!important; }
@@ -274,14 +277,14 @@ const CrmPage = () => {
               <div className="ctr">
                 <button id="crm-hero-start" className="cp" onClick={() => window.open(adminUrl+"/signup","_blank")}>Get Started</button>
                 <button id="crm-hero-explore" style={{ background:"#fff", color:D2, border:`1.5px solid ${GB}`, borderRadius:40, padding:"10px 24px", fontSize:12, fontWeight:600, cursor:"pointer", transition:"all .2s" }} onMouseOver={(e) => { e.currentTarget.style.borderColor=G; e.currentTarget.style.color=G; }} onMouseOut={(e) => { e.currentTarget.style.borderColor=GB; e.currentTarget.style.color=D2; }} onClick={() => document.getElementById("crm-overview")?.scrollIntoView({behavior:"smooth"})}>
-                  Explore CRM →
+                  Explore More →
                 </button>
               </div>
 
             </div>
 
             <div className="hr" style={{ paddingTop: "70px", marginBottom: "-140px" }}>
-              <div style={{ background:"#0F3826", borderRadius:24, padding:28, boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)", border:"1px solid rgba(34,197,94,.2)", width:"100%", maxWidth:460, transform:"scale(0.75)", transformOrigin:"top right" }}>
+              <div style={{ background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)", borderRadius:24, padding:28, boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)", border:"1px solid rgba(34,197,94,.2)", width:"100%", maxWidth:460, transform:"scale(0.75)", transformOrigin:"top center" }}>
                 
                 {/* Header */}
                 <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:28 }}>
@@ -397,7 +400,7 @@ const CrmPage = () => {
                 </div>
 
                 {/* Visual side */}
-                <div style={{ background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)", borderRadius:16, padding:18, border:`1px solid rgba(34,197,94,.3)`, boxShadow:"0 24px 56px rgba(0,0,0,.18)", maxWidth:400, margin:"110px auto 0", width:"100%" }}>
+                <div className="crm-sec-card" style={{ background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)", borderRadius:16, padding:18, border:`1px solid rgba(34,197,94,.3)`, boxShadow:"0 24px 56px rgba(0,0,0,.18)", maxWidth:400, margin:"110px auto 0", width:"100%" }}>
                   <div style={{ marginBottom:14, display:"flex", alignItems:"center", gap:8 }}>
                     <div style={{ width:32, height:32, borderRadius:8, background:sec.bg, display:"flex", alignItems:"center", justifyContent:"center", fontSize:16 }}>{OVERVIEW[idx]?.icon}</div>
                     <div>
@@ -458,12 +461,12 @@ const CrmPage = () => {
               <p style={{ fontSize: 14, color: "rgba(255,255,255,.55)", lineHeight: 1.75, maxWidth: 580, margin: "0 auto 16px" }}>
                 MessBee CRM is designed to work alongside your broader business operations — not in isolation.
               </p>
-              <div className="connect-strip">
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: "10px 12px" }}>
                 {["CRM", "Communication", "Marketing", "Automation", "Commerce", "Analytics"].map((item, i, arr) => (
-                  <React.Fragment key={item}>
+                  <div key={item} style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
                     <span className="connect-item">{item}</span>
-                    {i < arr.length - 1 && <span className="connect-arr">&#8594;</span>}
-                  </React.Fragment>
+                    {i < arr.length - 1 && <span style={{ color: "rgba(255,255,255,.6)", fontSize: 18, fontWeight: 700 }}>→</span>}
+                  </div>
                 ))}
               </div>
               <p style={{ fontSize: 13, color: "rgba(255,255,255,.35)", marginTop: 16, marginBottom: 0 }}>
@@ -512,18 +515,18 @@ const CrmPage = () => {
           </p>
           <div style={{ background:"#fff", border:`1.5px solid ${GB}`, borderRadius:16, padding:"12px 32px", display:"inline-block", maxWidth:720 }}>
             <p style={{ fontSize:11, color:MU, fontWeight:600, marginBottom:8, textTransform:"uppercase", letterSpacing:1 }}>From First Enquiry to Long-Term Customer</p>
-            <div className="connect-strip" style={{ justifyContent:"center" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: "8px 10px" }}>
               {["Capture","Organize","Communicate","Follow Up","Convert","Retain"].map((step,i,arr) => (
-                <React.Fragment key={step}>
+                <div key={step} style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
                   <span style={{ background:GL, border:`1.5px solid ${GB}`, color:G, borderRadius:8, padding:"5px 12px", fontSize:12, fontWeight:700 }}>{step}</span>
-                  {i < arr.length-1 && <span style={{ color:"#94A3B8", fontSize:16, padding:"0 4px" }}>&#8594;</span>}
-                </React.Fragment>
+                  {i < arr.length-1 && <span style={{ color:"#94A3B8", fontSize:15 }}>→</span>}
+                </div>
               ))}
             </div>
           </div>
           <div style={{ marginTop:36 }}>
             <button className="cp" id="crm-india-start" onClick={() => window.open(adminUrl+"/signup","_blank")}>
-              Start with MessBee CRM
+              Get Started
             </button>
           </div>
         </div>
