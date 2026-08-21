@@ -280,7 +280,7 @@ END:VCALENDAR`;
         .demo-hero-row {
           display: flex;
           align-items: flex-start;
-          gap: 48px;
+          gap: 28px;
         }
 
         .demo-input {
@@ -366,19 +366,29 @@ END:VCALENDAR`;
         }
 
         /* ── Responsive adjustments ── */
+        .demo-form-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 8px; margin-bottom: 8px; }
+        .demo-form-grid-even { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 6px; }
+
         @media (max-width: 992px) {
           .demo-hero-row {
             flex-direction: column !important;
+            align-items: stretch !important;
             gap: 36px;
           }
           .demo-section-pad {
             padding: 40px 5% 50px !important;
           }
         }
+        @media (max-width: 768px) {
+          .demo-sec-pad { padding: 50px 5% !important; }
+          .demo-form-grid { grid-template-columns: 1fr !important; gap: 6px !important; }
+          .demo-form-grid-even { grid-template-columns: 1fr !important; gap: 6px !important; }
+        }
         @media (max-width: 600px) {
           .demo-section-pad {
             padding: 30px 4% 40px !important;
           }
+          .demo-sec-pad { padding: 40px 4% !important; }
         }
       `}</style>
 
@@ -389,7 +399,7 @@ END:VCALENDAR`;
         className="demo-section-pad"
         style={{
           marginTop: 70,
-          padding: "54px 5% 64px",
+          padding: "40px 5% 40px",
           background: "#FFFFFF",
           position: "relative",
           overflow: "hidden",
@@ -428,24 +438,24 @@ END:VCALENDAR`;
             {/* ═══════════════════════════════════════════════════════════════
                 LEFT COLUMN: VALUE PROPOSITION & HOST INFO
                ═══════════════════════════════════════════════════════════════ */}
-            <div style={{ flex: 1, minWidth: 300 }}>
+            <div style={{ flex: 1, minWidth: 280 }}>
               <Pill>LIVE 1-ON-1 DEMO</Pill>
 
               <h1
                 style={{
-                  fontSize: "clamp(26px, 3vw, 40px)",
+                  fontSize: "clamp(24px, 2.8vw, 34px)",
                   fontWeight: 900,
                   color: "#0F172A",
                   lineHeight: 1.18,
                   letterSpacing: "-1px",
-                  marginBottom: 14,
+                  marginBottom: 10,
                 }}
               >
                 Experience MessBee in Action — <br />
                 <span style={{ color: "#10B981" }}>Schedule Live Demo</span>
               </h1>
 
-              <p style={{ fontSize: 14.5, color: "#475569", lineHeight: 1.55, marginBottom: 22, maxWidth: 480, fontWeight: 400 }}>
+              <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.55, marginBottom: 16, maxWidth: 480, fontWeight: 400 }}>
                 Get a customized walkthrough with our product specialists. We’ll show you how to automate WhatsApp communication, organize incoming chats with CRM, and build AI workflows tailored to your goals.
               </p>
 
@@ -455,12 +465,12 @@ END:VCALENDAR`;
                   background: "#FFFFFF",
                   border: "1.5px solid #F1F5F9",
                   borderRadius: 12,
-                  padding: "8px 14px",
+                  padding: "6px 12px",
                   display: "flex",
                   alignItems: "center",
-                  gap: 12,
+                  gap: 10,
                   flexWrap: "wrap",
-                  marginBottom: 20,
+                  marginBottom: 16,
                   boxShadow: "0 3px 10px rgba(0,0,0,0.02)",
                 }}
               >
@@ -478,22 +488,22 @@ END:VCALENDAR`;
               </div>
 
               {/* What You'll See Checklist */}
-              <div style={{ marginBottom: 20 }}>
-                <div style={{ fontSize: 11.5, fontWeight: 800, color: "#0F172A", textTransform: "uppercase", letterSpacing: "0.6px", marginBottom: 12 }}>
+              <div style={{ marginBottom: 16 }}>
+                <div style={{ fontSize: 11.5, fontWeight: 800, color: "#0F172A", textTransform: "uppercase", letterSpacing: "0.6px", marginBottom: 10 }}>
                   What You’ll Discover:
                 </div>
-                <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                   {[
                     { title: "WhatsApp Cloud API Setup", desc: "Green tick verification & high-volume broadcasts." },
                     { title: "Smart AI Chatbot Builder", desc: "Drag-and-drop lead qualification & auto-routing." },
                     { title: "Multi-Agent CRM Inbox", desc: "Tagging, live chat assignment & contact profiles." },
                     { title: "Custom Integration & ROI", desc: "Webhooks, REST APIs and tailored cost roadmap." },
                   ].map((item, i) => (
-                    <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
+                    <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
                       <CheckIcon size={16} color="#10B981" />
                       <div>
-                        <div style={{ fontSize: 13.5, fontWeight: 800, color: "#0F172A", lineHeight: 1.25 }}>{item.title}</div>
-                        <div style={{ fontSize: 12, color: "#64748B", marginTop: 1, lineHeight: 1.35 }}>{item.desc}</div>
+                        <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", lineHeight: 1.25 }}>{item.title}</div>
+                        <div style={{ fontSize: 11.5, color: "#64748B", marginTop: 1, lineHeight: 1.35 }}>{item.desc}</div>
                       </div>
                     </div>
                   ))}
@@ -504,15 +514,15 @@ END:VCALENDAR`;
               <div
                 style={{
                   background: "linear-gradient(135deg, #0F172A 0%, #1E293B 100%)",
-                  borderRadius: 14,
-                  padding: "12px 16px",
+                  borderRadius: 12,
+                  padding: "10px 14px",
                   color: "#FFFFFF",
                   display: "flex",
                   alignItems: "center",
                   gap: 12,
                   border: "1px solid rgba(255, 255, 255, 0.1)",
                   boxShadow: "0 6px 18px rgba(15, 23, 42, 0.1)",
-                  maxWidth: 440,
+                  maxWidth: 420,
                 }}
               >
                 <div style={{ width: 36, height: 36, borderRadius: 10, background: "#FFFFFF", padding: 3, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -528,13 +538,13 @@ END:VCALENDAR`;
             {/* ═══════════════════════════════════════════════════════════════
                 RIGHT COLUMN: INTERACTIVE BOOKING WIZARD CARD
                ═══════════════════════════════════════════════════════════════ */}
-            <div style={{ flex: 1, width: "100%", maxWidth: 480, margin: "0 auto" }}>
+            <div style={{ flex: 1, width: "100%", maxWidth: 440, margin: "0 auto" }}>
               <div
                 style={{
                   background: "#FFFFFF",
-                  borderRadius: 20,
+                  borderRadius: 18,
                   border: "1.5px solid #F1F5F9",
-                  padding: "22px 22px",
+                  padding: "18px 20px",
                   boxShadow: "0 18px 45px -10px rgba(15, 23, 42, 0.07)",
                   position: "relative",
                 }}
@@ -672,7 +682,7 @@ END:VCALENDAR`;
                     </div>
 
                     {/* Step 1 & 2: Dynamic Native Date & Time Selection */}
-                    <div style={{ display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gap: 10, marginBottom: 10 }}>
+                    <div className="demo-form-grid">
                       <div>
                         <label style={{ display: "block", fontSize: 10.5, fontWeight: 800, color: "#334155", textTransform: "uppercase", letterSpacing: "0.5px", marginBottom: 3 }}>
                           Select Date *
@@ -733,7 +743,7 @@ END:VCALENDAR`;
                         Contact Details
                       </label>
 
-                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 8 }}>
+                      <div className="demo-form-grid-even">
                         <div>
                           <label style={{ display: "block", fontSize: 10.5, fontWeight: 700, color: "#475569", marginBottom: 2 }}>
                             Full Name *
@@ -765,7 +775,7 @@ END:VCALENDAR`;
                         </div>
                       </div>
 
-                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 8 }}>
+                      <div className="demo-form-grid-even">
                         <div>
                           <label style={{ display: "block", fontSize: 10.5, fontWeight: 700, color: "#475569", marginBottom: 2 }}>
                             WhatsApp / Mobile *
@@ -895,16 +905,16 @@ END:VCALENDAR`;
       {/* ═══════════════════════════════════════════════════════════════════
           WHY BOOK A DEMO - FEATURE GRID (Matching Solutions & Resources)
          ═══════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: "80px 6%", background: "#F8FAFC", borderTop: "1px solid #F1F5F9" }}>
+      <section className="demo-sec-pad" style={{ padding: "80px 6%", background: "#F8FAFC", borderTop: "1px solid #F1F5F9" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto", textAlign: "center" }}>
           
           <Pill>WHY BOOK A DEMO</Pill>
           
-          <h2 style={{ fontSize: "clamp(28px, 3vw, 40px)", fontWeight: 900, color: "#0F172A", marginBottom: 16, letterSpacing: "-1px" }}>
+          <h2 style={{ fontSize: "clamp(24px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", marginBottom: 16, letterSpacing: "-1px" }}>
             Tailored 1-on-1 Insights for Your Business
           </h2>
 
-          <p style={{ fontSize: 16, color: "#64748B", maxWidth: 640, margin: "0 auto 54px", lineHeight: 1.6 }}>
+          <p style={{ fontSize: 14, color: "#64748B", maxWidth: 640, margin: "0 auto 54px", lineHeight: 1.6 }}>
             Our demo isn't a pre-recorded video. It's a live interactive session with solutions experts focused on solving your specific communication bottlenecks.
           </p>
 
@@ -939,11 +949,11 @@ END:VCALENDAR`;
                   {feat.icon}
                 </div>
 
-                <h3 style={{ fontSize: 18, fontWeight: 800, color: "#0F172A", margin: 0, letterSpacing: "-0.4px" }}>
+                <h3 style={{ fontSize: 15, fontWeight: 800, color: "#0F172A", margin: 0, letterSpacing: "-0.4px" }}>
                   {feat.title}
                 </h3>
 
-                <p style={{ fontSize: 14, color: "#64748B", lineHeight: 1.6, margin: 0 }}>
+                <p style={{ fontSize: 12.5, color: "#64748B", lineHeight: 1.6, margin: 0 }}>
                   {feat.desc}
                 </p>
               </div>
@@ -956,12 +966,12 @@ END:VCALENDAR`;
       {/* ═══════════════════════════════════════════════════════════════════
           3-STEP SIMPLE DEMO PROCESS ROADMAP
          ═══════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: "80px 6%", background: "#FFFFFF" }}>
+      <section className="demo-sec-pad" style={{ padding: "80px 6%", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", textAlign: "center" }}>
           
           <Pill>HOW IT WORKS</Pill>
           
-          <h2 style={{ fontSize: "clamp(28px, 3vw, 40px)", fontWeight: 900, color: "#0F172A", marginBottom: 48, letterSpacing: "-1px" }}>
+          <h2 style={{ fontSize: "clamp(24px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", marginBottom: 48, letterSpacing: "-1px" }}>
             3 Simple Steps to Your Live Walkthrough
           </h2>
 
@@ -981,13 +991,13 @@ END:VCALENDAR`;
                   position: "relative",
                 }}
               >
-                <div style={{ fontSize: 14, fontWeight: 900, color: "#10B981", background: "#E6F9EE", display: "inline-block", padding: "4px 12px", borderRadius: 20, marginBottom: 16 }}>
+                <div style={{ fontSize: 12, fontWeight: 900, color: "#10B981", background: "#E6F9EE", display: "inline-block", padding: "4px 12px", borderRadius: 20, marginBottom: 16 }}>
                   STEP {st.step}
                 </div>
-                <h3 style={{ fontSize: 19, fontWeight: 800, color: "#0F172A", marginBottom: 8, letterSpacing: "-0.3px" }}>
+                <h3 style={{ fontSize: 16, fontWeight: 800, color: "#0F172A", marginBottom: 8, letterSpacing: "-0.3px" }}>
                   {st.title}
                 </h3>
-                <p style={{ fontSize: 14, color: "#64748B", lineHeight: 1.6 }}>
+                <p style={{ fontSize: 12.5, color: "#64748B", lineHeight: 1.6 }}>
                   {st.desc}
                 </p>
               </div>
@@ -1000,15 +1010,15 @@ END:VCALENDAR`;
       {/* ═══════════════════════════════════════════════════════════════════
           DEMO FAQ ACCORDION SECTION (Matching Solutions Page)
          ═══════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: "80px 6%", background: "#F8FAFC", borderTop: "1px solid #F1F5F9" }}>
+      <section className="demo-sec-pad" style={{ padding: "80px 6%", background: "#F8FAFC", borderTop: "1px solid #F1F5F9" }}>
         <div style={{ maxWidth: 840, margin: "0 auto" }}>
           
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             <Pill>DEMO FAQS</Pill>
-            <h2 style={{ fontSize: "clamp(28px, 3vw, 40px)", fontWeight: 900, color: "#0F172A", marginBottom: 12, letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(24px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", marginBottom: 12, letterSpacing: "-1px" }}>
               Frequently Asked Questions
             </h2>
-            <p style={{ fontSize: 15, color: "#64748B" }}>
+            <p style={{ fontSize: 13.5, color: "#64748B" }}>
               Everything you need to know about scheduling and attending your live demo.
             </p>
           </div>
@@ -1036,7 +1046,7 @@ END:VCALENDAR`;
                     alignItems: "center",
                     justifyContent: "space-between",
                     textAlign: "left",
-                    fontSize: 16,
+                    fontSize: 14,
                     fontWeight: 700,
                     color: "#0F172A",
                     cursor: "pointer",
@@ -1059,7 +1069,7 @@ END:VCALENDAR`;
                 </button>
 
                 {openFaq === idx && (
-                  <div style={{ padding: "0 24px 20px", fontSize: 14, color: "#475569", lineHeight: 1.65, borderTop: "1px solid #F1F5F9", paddingTop: 14 }}>
+                  <div style={{ padding: "0 24px 20px", fontSize: 12.5, color: "#475569", lineHeight: 1.65, borderTop: "1px solid #F1F5F9", paddingTop: 14 }}>
                     {faq.a}
                   </div>
                 )}
