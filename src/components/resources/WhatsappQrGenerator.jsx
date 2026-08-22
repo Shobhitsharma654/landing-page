@@ -665,20 +665,54 @@ const WhatsappQrGenerator = () => {
                       )}
                     </div>
 
-                    {/* Business Name */}
+                    {/* Business Name & Dynamic Font Scaling for Website Preview */}
                     <div style={{ position: "relative", zIndex: 2, textAlign: "center" }}>
-                      <h2 style={{ fontSize: 14.5, fontWeight: 900, color: "#001A36", textTransform: "uppercase", letterSpacing: "0.5px", margin: "3px 0 2px 0", lineHeight: 1.1 }}>
-                        {businessName || "AAS TECH"}
-                      </h2>
+                      {(() => {
+                        const nameStr = (businessName || "AAS TECH").toUpperCase();
+                        const len = nameStr.length;
+                        const fontSize = len > 60 ? 8 : len > 40 ? 9.5 : len > 25 ? 11.5 : 14.5;
+                        return (
+                          <h2 style={{ 
+                            fontSize: fontSize, 
+                            fontWeight: 900, 
+                            color: "#001A36", 
+                            textTransform: "uppercase", 
+                            letterSpacing: "0.5px", 
+                            margin: "3px 0 2px 0", 
+                            lineHeight: 1.15,
+                            wordBreak: "break-word",
+                            overflowWrap: "anywhere",
+                            padding: "0 6px"
+                          }}>
+                            {nameStr}
+                          </h2>
+                        );
+                      })()}
                       
                       {/* Tagline with Dynamic Alternating Navy & Green Word Colors */}
-                      <p style={{ fontSize: 8.5, fontWeight: 600, margin: 0, textAlign: "center" }}>
-                        {(tagline || "We Build. We Innovate. We Deliver.").split(" ").map((word, i) => (
-                          <span key={i} style={{ color: i % 2 === 0 ? "#001A36" : "#16A34A" }}>
-                            {word}{i < (tagline || "We Build. We Innovate. We Deliver.").split(" ").length - 1 ? " " : ""}
-                          </span>
-                        ))}
-                      </p>
+                      {(() => {
+                        const tagStr = tagline || "We Build. We Innovate. We Deliver.";
+                        const tagLen = tagStr.length;
+                        const tagFontSize = tagLen > 60 ? 6.5 : tagLen > 40 ? 7.5 : 8.5;
+                        const words = tagStr.split(" ");
+                        return (
+                          <p style={{ 
+                            fontSize: tagFontSize, 
+                            fontWeight: 600, 
+                            margin: 0, 
+                            textAlign: "center",
+                            wordBreak: "break-word",
+                            overflowWrap: "anywhere",
+                            padding: "0 6px"
+                          }}>
+                            {words.map((word, i) => (
+                              <span key={i} style={{ color: i % 2 === 0 ? "#001A36" : "#16A34A" }}>
+                                {word}{i < words.length - 1 ? " " : ""}
+                              </span>
+                            ))}
+                          </p>
+                        );
+                      })()}
 
                       {/* Green Dot Divider Line */}
                       <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 4, margin: "5px 0 6px 0" }}>
