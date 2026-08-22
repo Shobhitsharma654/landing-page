@@ -604,7 +604,7 @@ const QrConnectPage = () => {
                 <div style={{ width: 34, height: 34, borderRadius: 9, background: "#ECFDF5", border: "1px solid #A7F3D0", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, marginBottom: 10 }}>{item.icon}</div>
                 <h3 style={{ fontSize: 12, fontWeight: 800, color: "#0F172A", marginBottom: 4, lineHeight: 1.3 }}>{item.title}</h3>
                 <p style={{ fontSize: 10, color: "#64748B", lineHeight: 1.45, flex: 1, marginBottom: 10 }}>{item.desc}</p>
-                <div onClick={() => window.open((import.meta.env.VITE_ADMIN_URL || "http://localhost:5174") + "/signup", "_blank")} style={{ fontSize: 10.5, fontWeight: 700, color: "#16A34A", cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 3 }}>Create Now →</div>
+                <div onClick={() => navigate("/book-demo")} style={{ fontSize: 10.5, fontWeight: 700, color: "#16A34A", cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 3 }}>Create Now →</div>
               </div>
             ))}
           </div>
