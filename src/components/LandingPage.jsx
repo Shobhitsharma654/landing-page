@@ -267,8 +267,8 @@ const LandingPage = () => {
           .lp-hero-h1 { font-size: 28px !important; line-height: 1.15 !important; margin-bottom: 10px !important; }
           .lp-hero-tagline { font-size: 14px !important; margin-bottom: 16px !important; }
           .lp-hero-desc { font-size: 11.5px !important; line-height: 1.55 !important; margin-bottom: 24px !important; max-width: 100% !important; }
-          .lp-hero-right { display: flex !important; width: 100% !important; margin-top: 24px !important; align-items: center !important; justify-content: center !important; padding: 0 68px !important; box-sizing: border-box !important; overflow: visible !important; }
-          .lp-hero-mockup-wrap { width: 100% !important; max-width: 380px !important; transform: none !important; margin: 0 auto !important; }
+          .lp-hero-right { display: flex !important; width: 100% !important; margin-top: 24px !important; align-items: center !important; justify-content: center !important; padding: 0 8px !important; box-sizing: border-box !important; overflow: visible !important; }
+          .lp-hero-mockup-wrap { width: 100% !important; max-width: 100% !important; transform: none !important; margin: 0 auto !important; }
           .lp-hero-viewport { min-height: auto !important; }
           .lp-hero-sidebar { width: 32px !important; padding: 6px 2px !important; gap: 6px !important; }
           .lp-hero-canvas { padding: 6px 8px !important; gap: 5px !important; }
@@ -278,14 +278,11 @@ const LandingPage = () => {
           .lp-hero-chart { height: 22px !important; }
           .lp-hero-bottom-row { gap: 5px !important; }
           .lp-hero-bottom-row > div { padding: 4px 8px !important; }
-          .lp-hero-badge { display: flex !important; padding: 3px 8px !important; font-size: 8.5px !important; border-radius: 20px !important; z-index: 12 !important; box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important; white-space: nowrap !important; }
-          .lp-hero-badge span { font-size: 8px !important; }
-          .lp-badge-wa   { left: -65px !important; top: 18px !important; }
-          .lp-badge-api  { left: -70px !important; top: 85px !important; }
-          .lp-badge-rzp  { left: -65px !important; bottom: 50px !important; }
-          .lp-badge-ship { right: -65px !important; top: 20px !important; }
-          .lp-badge-goog { right: -60px !important; top: 90px !important; }
-          .lp-badge-ondc { right: -60px !important; bottom: 55px !important; }
+          .lp-hero-badge { display: none !important; }
+          .lp-meta-box { padding: 6px 12px !important; gap: 8px !important; }
+          .lp-meta-box span { font-size: 11px !important; }
+          .lp-meta-box svg { width: 18px !important; height: 18px !important; }
+          .lp-meta-box div { width: 16px !important; height: 16px !important; }
           
           .lp-features-strip { padding: 28px 16px !important; }
           .lp-features-heading { font-size: 20px !important; margin-bottom: 18px !important; }
@@ -351,11 +348,13 @@ const LandingPage = () => {
 
         @media (max-width: 480px) {
           .lp-hero-section { padding: 80px 3% 20px !important; }
-          .lp-meta-box { padding: 6px 14px !important; gap: 6px !important; }
-          .lp-meta-box span { font-size: 11px !important; }
+          .lp-meta-box { padding: 5px 10px !important; gap: 6px !important; }
+          .lp-meta-box span { font-size: 10px !important; }
+          .lp-meta-box svg { width: 15px !important; height: 15px !important; }
+          .lp-meta-box div { width: 14px !important; height: 14px !important; }
           .lp-hero-h1 { font-size: 24px !important; line-height: 1.18 !important; }
-          .lp-hero-right { padding: 0 56px !important; overflow: visible !important; }
-          .lp-hero-mockup-wrap { max-width: 310px !important; }
+          .lp-hero-right { padding: 0 4px !important; overflow: visible !important; }
+          .lp-hero-mockup-wrap { max-width: 100% !important; }
           .lp-hero-top-row > div { padding: 3px 3px !important; }
           .lp-hero-bottom-row { grid-template-columns: 1fr !important; gap: 6px !important; }
           .lp-hero-badge { padding: 2.5px 6px !important; font-size: 7.5px !important; white-space: nowrap !important; }
@@ -412,14 +411,8 @@ const LandingPage = () => {
         }
 
         @media (max-width: 360px) {
-          .lp-hero-right { padding: 0 46px !important; overflow: visible !important; }
-          .lp-hero-mockup-wrap { max-width: 270px !important; }
-          .lp-badge-wa   { left: -48px !important; top: 12px !important; }
-          .lp-badge-api  { left: -52px !important; top: 68px !important; }
-          .lp-badge-rzp  { left: -48px !important; bottom: 35px !important; }
-          .lp-badge-ship { right: -48px !important; top: 14px !important; }
-          .lp-badge-goog { right: -45px !important; top: 72px !important; }
-          .lp-badge-ondc { right: -45px !important; bottom: 38px !important; }
+          .lp-hero-right { padding: 0 !important; overflow: visible !important; }
+          .lp-hero-mockup-wrap { max-width: 100% !important; }
           .lp-compare-item-text { font-size: 10.5px !important; }
           .lp-compare-card-title { font-size: 14px !important; }
           .lp-features-grid { grid-template-columns: 1fr !important; }
