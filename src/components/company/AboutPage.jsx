@@ -1179,7 +1179,7 @@ const AboutPage = () => {
                   tag: "AI ASSISTANT",
                   gradient: "linear-gradient(135deg, #8B5CF6, #7C3AED)",
                   icon: <FiCpu style={{ width: 64, height: 64, color: "#FFFFFF" }} />,
-                  desc: "Intelligent Assistance for Everyday Customer Interactions. Customers often ask the same questions repeatedly: Product availability, pricing, services, business hours, appointment details, order queries, and general FAQs. MessBee&apos;s AI-powered capabilities automate customer interactions 24/7.",
+                  desc: "MessBee's AI-powered assistant handles repetitive customer queries — pricing, availability, business hours, appointments & FAQs — automatically, 24/7.",
                   points: [
                     "Answering frequently asked FAQs",
                     "Sharing product/service details",
@@ -1192,7 +1192,7 @@ const AboutPage = () => {
                   tag: "AUTOMATION",
                   gradient: "linear-gradient(135deg, #EC4899, #D946EF)",
                   icon: <FiZap style={{ width: 64, height: 64, color: "#FFFFFF" }} />,
-                  desc: "Reach the Right Customer at the Right Stage. Marketing becomes more effective when communication is connected to customer activity. MessBee helps businesses create structured campaigns, follow-ups, reminders and customer engagement workflows across supported communication channels.",
+                  desc: "MessBee helps businesses run targeted campaigns, follow-ups, reminders & engagement workflows — connecting marketing activity directly to the customer journey.",
                   points: [
                     "Lead follow-ups",
                     "Customer re-engagement",
@@ -1813,7 +1813,7 @@ const AboutPage = () => {
                 icon: <FiCoffee style={{ color: "#16A34A", width: 15, height: 15 }} />,
                 category: "commerce",
                 image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&auto=format&fit=crop&q=60",
-                desc: "Share menus, handle customer enquiries, promote offers and support ordering and customer communication workflows."
+                desc: "Share menus, promote offers & manage customer ordering and enquiries effortlessly."
               },
               {
                 title: "Boutique & Fashion",
@@ -1834,7 +1834,7 @@ const AboutPage = () => {
                 icon: <FiPlusSquare style={{ color: "#16A34A", width: 15, height: 15 }} />,
                 category: "services",
                 image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&auto=format&fit=crop&q=60",
-                desc: "Support appropriate customer communication, reminders, notifications and service-related workflows while following guidelines."
+                desc: "Manage patient communication, reminders & service workflows with compliance in mind."
               },
               {
                 title: "Gyms & Fitness Centers",
@@ -3469,21 +3469,24 @@ const AboutPage = () => {
       </section>
 
       {/* ── THE MESSBEE PROMISE SECTION ── */}
-      <section style={{ padding: "40px 6%", background: "#FFFFFF" }}>
+      <section style={{ padding: "40px 6%", background: "#FAFAFA" }}>
         <style>{`
           .promise-container {
-            background: #0B0F19;
-            border: 1.5px solid #16A34A;
-            border-radius: 20px;
-            padding: 36px 32px;
+            background: linear-gradient(135deg, #14532D 0%, #022C22 100%);
+            border: 1px solid rgba(52, 211, 153, 0.25);
+            border-radius: 22px;
+            padding: 44px 36px;
             max-width: 1100px;
             margin: 0 auto;
             text-align: center;
-            box-shadow: 0 0 30px rgba(22, 163, 74, 0.25), inset 0 0 20px rgba(22, 163, 74, 0.15);
+            box-shadow: 0 20px 50px rgba(2, 44, 34, 0.35);
+            color: #FFFFFF;
+            position: relative;
+            overflow: hidden;
           }
           .promise-verb-light-card {
-            background: #111827;
-            border: 1.5px solid rgba(74, 222, 128, 0.35);
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(52, 211, 153, 0.3);
             border-radius: 12px;
             padding: 10px 16px;
             font-size: 13.5px;
@@ -3493,13 +3496,13 @@ const AboutPage = () => {
             text-align: center;
             transition: all 0.25s ease;
             cursor: default;
-            box-shadow: 0 0 12px rgba(74, 222, 128, 0.08);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
           }
           .promise-verb-light-card:hover {
-            background: #16A34A !important;
+            background: rgba(74, 222, 128, 0.22) !important;
             border-color: #4ADE80 !important;
             transform: translateY(-2px);
-            box-shadow: 0 0 20px rgba(74, 222, 128, 0.45) !important;
+            box-shadow: 0 6px 20px rgba(74, 222, 128, 0.3) !important;
           }
           .promise-verb-light-card:hover .promise-verb-icon {
             color: #FFFFFF !important;
@@ -3541,12 +3544,12 @@ const AboutPage = () => {
         <div className="promise-container">
 
           {/* Heading */}
-          <h2 style={{ fontSize: "clamp(26px, 3vw, 36px)", fontWeight: 900, color: "#FFFFFF", textShadow: "0 0 10px rgba(22, 163, 74, 0.4)", lineHeight: 1.18, marginBottom: 12 }}>
+          <h2 style={{ fontSize: "clamp(26px, 3vw, 36px)", fontWeight: 900, color: "#FFFFFF", lineHeight: 1.18, marginBottom: 12 }}>
             The MessBee Promise
           </h2>
 
           {/* Negation Text Paragraphs */}
-          <div style={{ fontSize: 15.5, color: "#94A3B8", lineHeight: 1.7, marginBottom: 14 }}>
+          <div style={{ fontSize: 15.5, color: "rgba(255, 255, 255, 0.75)", lineHeight: 1.7, marginBottom: 14 }}>
             <p style={{ margin: "0 0 4px 0", fontFamily: "'Inter', sans-serif" }}>
               MessBee is not intended to be just another messaging tool.
             </p>
@@ -3556,12 +3559,12 @@ const AboutPage = () => {
           </div>
 
           {/* Connection Text Header Highlight */}
-          <p style={{ fontSize: "clamp(18px, 2.5vw, 22px)", fontWeight: 900, color: "#4ADE80", textShadow: "0 0 8px rgba(74, 222, 128, 0.3)", lineHeight: 1.35, margin: "0 auto 16px auto", fontFamily: "'Inter', sans-serif" }}>
+          <p style={{ fontSize: "clamp(18px, 2.5vw, 22px)", fontWeight: 900, color: "#4ADE80", lineHeight: 1.35, margin: "0 auto 16px auto", fontFamily: "'Inter', sans-serif" }}>
             MessBee brings these capabilities together into one connected business ecosystem.
           </p>
 
           {/* Verbs Heading */}
-          <div style={{ fontSize: 12, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 12 }}>
+          <div style={{ fontSize: 12, fontWeight: 700, color: "rgba(255, 255, 255, 0.65)", textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 12 }}>
             A platform where businesses can:
           </div>
 
@@ -3608,52 +3611,73 @@ const AboutPage = () => {
 
           {/* Big Editorial Quote */}
           <div style={{ position: "relative", padding: "12px 0", marginBottom: 20 }}>
-            <span style={{ position: "absolute", top: -5, left: "5%", fontSize: 70, color: "rgba(74, 222, 128, 0.15)", lineHeight: 0, fontFamily: "serif" }}>&ldquo;</span>
-            <p style={{ fontSize: "17.5px", fontWeight: 800, color: "#E2E8F0", lineHeight: 1.5, maxWidth: 820, margin: "0 auto", fontFamily: "'Inter', sans-serif" }}>
+            <span style={{ position: "absolute", top: -5, left: "5%", fontSize: 70, color: "rgba(74, 222, 128, 0.2)", lineHeight: 0, fontFamily: "serif" }}>&ldquo;</span>
+            <p style={{ fontSize: "17.5px", fontWeight: 800, color: "#FFFFFF", lineHeight: 1.5, maxWidth: 820, margin: "0 auto", fontFamily: "'Inter', sans-serif" }}>
               Because your business deserves technology that works around your business&mdash;not the other way around.
             </p>
-            <span style={{ position: "absolute", bottom: -25, right: "5%", fontSize: 70, color: "rgba(74, 222, 128, 0.15)", lineHeight: 0, fontFamily: "serif" }}>&rdquo;</span>
+            <span style={{ position: "absolute", bottom: -25, right: "5%", fontSize: 70, color: "rgba(74, 222, 128, 0.2)", lineHeight: 0, fontFamily: "serif" }}>&rdquo;</span>
           </div>
 
           {/* Digital OS Footer Text Details */}
           <div style={{
-            borderTop: "1px solid rgba(74, 222, 128, 0.2)",
+            borderTop: "1px solid rgba(52, 211, 153, 0.2)",
             paddingTop: 24,
             marginTop: 24
           }}>
             <h3 style={{ fontSize: "18px", fontWeight: 900, color: "#FFFFFF", marginBottom: 6, fontFamily: "'Inter', sans-serif" }}>
-              <span style={{ color: "#4ADE80", textShadow: "0 0 6px rgba(74, 222, 128, 0.2)" }}>MessBee</span> &mdash; India&apos;s Digital Business Operating System
+              <span style={{ color: "#4ADE80" }}>MessBee</span> &mdash; India&apos;s Digital Business Operating System
             </h3>
 
             <p style={{ fontSize: "14.5px", fontWeight: 800, color: "#4ADE80", letterSpacing: 0.5, margin: 0, fontFamily: "'Inter', sans-serif" }}>
-              Own Your Business <span style={{ color: "#475569" }}>&bull;</span> Own Your Customers <span style={{ color: "#475569" }}>&bull;</span> Own Your Growth
+              Own Your Business <span style={{ color: "rgba(255,255,255,0.4)" }}>&bull;</span> Own Your Customers <span style={{ color: "rgba(255,255,255,0.4)" }}>&bull;</span> Own Your Growth
             </p>
           </div>
 
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <section style={{ padding: "50px 6%", background: "#1F2937", borderTop: "none", textAlign: "center" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto" }}>
-          <h2 style={{ fontSize: "clamp(22px,2.5vw,36px)", fontWeight: 900, color: "#FFFFFF", marginBottom: 12, lineHeight: 1.2 }}>
-            MessBee: One Business. <span style={{ color: "#16A34A" }}>One Connected Digital Ecosystem.</span>
+      {/* ── BOTTOM CTA ── */}
+      <section style={{ background: "#F0FDF4", padding: "100px 6%", textAlign: "center", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 700, height: 700, background: "rgba(22,163,74,.09)", borderRadius: "50%", filter: "blur(100px)", pointerEvents: "none" }} />
+        <div style={{ position: "relative", zIndex: 2, maxWidth: 980, margin: "0 auto" }}>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 9, background: "#FFFFFF", border: "1px solid #BBF7D0", borderRadius: 40, padding: "8px 22px", marginBottom: 24, boxShadow: "0 2px 8px rgba(0,0,0,0.03)" }}>
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="#16A34A"><circle cx="5" cy="5" r="5" /></svg>
+            <span style={{ fontSize: 14.5, fontWeight: 700, color: "#16A34A" }}>Get Started Today</span>
+          </div>
+          <h2 style={{ fontSize: "clamp(36px, 5.2vw, 60px)", fontWeight: 900, color: "#111827", letterSpacing: "-1.5px", lineHeight: 1.12, marginBottom: 20 }}>
+            MessBee: One Business.<br />
+            <span style={{ color: "#16A34A" }}>One Connected Digital Ecosystem.</span>
           </h2>
-          <p style={{ fontSize: 15, color: "#9CA3AF", marginBottom: 24, lineHeight: 1.6 }}>
-            Your Business. Your Brand. Your Customers. Your Control. &nbsp;
-            <strong style={{ color: "#FFFFFF" }}><span style={{ color: "#22C55E" }}>MessBee</span> &mdash; India&apos;s Digital Business Operating System</strong>
+          <p style={{ fontSize: 17.5, color: "#64748B", lineHeight: 1.7, maxWidth: 660, margin: "0 auto 38px" }}>
+            Your Business. Your Brand. Your Customers. Your Control.<br />
+            <strong style={{ color: "#0F172A" }}>MessBee &mdash; India&apos;s Digital Business Operating System</strong>
           </p>
-          <button
-            onClick={() => window.open((import.meta.env.VITE_ADMIN_URL || "http://localhost:5174") + "/signup", "_blank")}
-            style={{
-              background: "#16A34A", color: "#FFFFFF", border: "none", borderRadius: 40,
-              padding: "12px 36px", fontSize: 15, fontWeight: 800, cursor: "pointer",
-              boxShadow: "0 4px 28px rgba(0,200,83,0.45)", transition: "all 0.2s",
-            }}
-            onMouseEnter={e => e.currentTarget.style.transform = "scale(1.04)"}
-            onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}>
-            Start for free →
-          </button>
+          <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+            <button
+              onClick={() => window.open((import.meta.env.VITE_ADMIN_URL || "http://localhost:5174") + "/signup", "_blank")}
+              style={{
+                background: "#16A34A", color: "#FFFFFF", border: "none", borderRadius: 40,
+                padding: "10px 24px", fontSize: 13.5, fontWeight: 700, cursor: "pointer",
+                boxShadow: "0 4px 14px rgba(22,163,74,0.35)", transition: "all 0.2s",
+              }}
+              onMouseEnter={e => { e.currentTarget.style.transform = "scale(1.03)"; e.currentTarget.style.background = "#15803D"; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.background = "#16A34A"; }}
+            >
+              Get Started
+            </button>
+            <button
+              onClick={() => navigate("/contact#contact-form-section")}
+              style={{
+                background: "#FFFFFF", color: "#111827", border: "1.5px solid #BBF7D0",
+                borderRadius: 40, padding: "10px 24px", fontSize: 13.5, fontWeight: 600,
+                cursor: "pointer", transition: "all 0.2s", boxShadow: "0 2px 8px rgba(0,0,0,0.02)",
+              }}
+              onMouseOver={(e) => { e.currentTarget.style.borderColor = "#16A34A"; e.currentTarget.style.color = "#16A34A"; }}
+              onMouseOut={(e) => { e.currentTarget.style.borderColor = "#BBF7D0"; e.currentTarget.style.color = "#111827"; }}
+            >
+              Contact Support
+            </button>
+          </div>
         </div>
       </section>
 
