@@ -194,7 +194,7 @@ const AboutPage = () => {
         .capabilities-grid-cols {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: 14px 25px;
+          gap: 10px 16px;
           flex: 1 1 380px;
           margin-top: clamp(24px, 3.2vw, 45px);
           align-content: flex-start;
@@ -207,12 +207,13 @@ const AboutPage = () => {
         /* Responsive scaling for pill chips grid & margin-top */
         @media (max-width: 1440px) {
           .capabilities-grid-cols {
+            gap: 10px 14px;
             margin-top: 38px !important;
           }
         }
         @media (max-width: 1366px) {
           .capabilities-grid-cols {
-            gap: 12px 18px;
+            gap: 9px 14px;
             margin-top: 32px !important;
           }
           .capability-pill-badge {
@@ -222,7 +223,7 @@ const AboutPage = () => {
         }
         @media (max-width: 1299px) {
           .capabilities-grid-cols {
-            gap: 10px 14px;
+            gap: 9px 12px;
             margin-top: 26px !important;
           }
           .capability-pill-badge {
@@ -233,40 +234,48 @@ const AboutPage = () => {
         @media (max-width: 1024px) {
           .capabilities-grid-cols {
             grid-template-columns: repeat(2, 1fr) !important;
-            gap: 10px 12px !important;
+            gap: 9px 12px !important;
             margin-top: 20px !important;
           }
           .capability-pill-badge {
-            font-size: 13px !important;
-            padding: 6px 14px !important;
+            font-size: 10.5px !important;
+            padding: 5px 10px !important;
           }
         }
         @media (max-width: 768px) {
           .capabilities-grid-cols {
             grid-template-columns: repeat(2, 1fr) !important;
             gap: 8px 10px !important;
-            margin-top: 20px !important;
+            margin-top: 18px !important;
           }
           .capability-pill-badge {
-            font-size: 12.5px !important;
-            padding: 6px 12px !important;
+            font-size: 9.8px !important;
+            padding: 4px 8px !important;
           }
         }
         @media (max-width: 576px) {
           .capabilities-grid-cols {
-            grid-template-columns: 1fr !important;
-            gap: 8px !important;
-            margin-top: 16px !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 7px 8px !important;
+            margin-top: 14px !important;
           }
           .capability-pill-badge {
-            font-size: 12px !important;
-            padding: 6px 14px !important;
+            font-size: 9px !important;
+            padding: 4px 6px !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
           }
         }
 
         /* ── RESPONSIVE MEDIA QUERIES ── */
         .about-section {
           padding: 60px 6%;
+        }
+        .about-page-wrapper section.about-capabilities-section {
+          padding: 30px 6% 0px !important;
+        }
+        .about-page-wrapper section.about-indian-market-section {
+          padding: 10px 6% 40px !important;
         }
         .about-hero-section {
           padding: 100px 6% 70px;
@@ -520,14 +529,15 @@ const AboutPage = () => {
             font-size: 13.5px !important;
           }
           .capabilities-grid-cols {
-            grid-template-columns: 1fr !important;
-            gap: 8px !important;
-            margin-top: 16px !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 7px 7px !important;
+            margin-top: 14px !important;
           }
           .capability-pill-badge {
-            font-size: 12.5px !important;
-            padding: 8px 14px !important;
+            font-size: 8.5px !important;
+            padding: 4px 5px !important;
             width: 100% !important;
+            box-sizing: border-box !important;
           }
         }
       `}</style>
@@ -597,18 +607,19 @@ const AboutPage = () => {
           </div>
 
           {/* ── RIGHT 40% — image ── */}
-          <div className="hero-right-col" style={{ flex: "1 1 300px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div className="hero-right-col" style={{ flex: "1 1 320px", display: "flex", alignItems: "center", justifyContent: "center" }}>
             <div style={{
-              borderRadius: 24,
+              borderRadius: 20,
               overflow: "hidden",
-              boxShadow: "0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06)",
-              border: "1px solid rgba(22,163,74,0.25)",
+              boxShadow: "0 20px 50px rgba(22, 163, 74, 0.14), 0 4px 20px rgba(0,0,0,0.06)",
+              border: "1px solid rgba(22,163,74,0.22)",
               width: "100%",
-              maxWidth: 420,
+              maxWidth: 480,
+              background: "#FFFFFF"
             }}>
               <img
                 src={aboutHero}
-                alt="MessBee digital business platform dashboard"
+                alt="MessBee digital business platform team and operations"
                 style={{ width: "100%", height: "auto", display: "block" }}
               />
             </div>
@@ -618,7 +629,7 @@ const AboutPage = () => {
       </section>
 
       {/* ── WHAT IS MESSBEE ── */}
-      <section className="about-section" style={{ background: "#ffffff" }}>
+      <section className="about-section about-capabilities-section" style={{ background: "#ffffff", padding: "30px 6% 0px" }}>
         <div className="capabilities-container" style={{ maxWidth: 1200, margin: "0 auto", display: "flex", gap: 60, alignItems: "flex-start", flexWrap: "wrap" }}>
 
           {/* LEFT — text */}
@@ -773,15 +784,15 @@ const AboutPage = () => {
                   style={{
                     background: isHovered ? f.color : `${f.color}0a`,
                     borderRadius: "30px",
-                    padding: "8px 18px",
+                    padding: "5px 12px",
                     border: `1px solid ${isHovered ? f.color : `${f.color}25`}`,
                     transition: "all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1)",
                     cursor: "pointer",
                     display: "flex",
                     alignItems: "center",
-                    gap: 10,
-                    transform: isHovered ? "translateY(-3px)" : "translateY(0)",
-                    boxShadow: isHovered ? `0 6px 18px ${f.color}35` : "none",
+                    gap: 6,
+                    transform: isHovered ? "translateY(-2px)" : "translateY(0)",
+                    boxShadow: isHovered ? `0 4px 12px ${f.color}30` : "none",
                   }}
                   title={f.desc}
                 >
@@ -793,13 +804,13 @@ const AboutPage = () => {
                     transition: "color 0.25s ease",
                     flexShrink: 0
                   }}>
-                    <svg style={{ width: 15, height: 15 }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg style={{ width: 12, height: 12 }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                       {f.svg.props.children}
                     </svg>
                   </div>
                   <span style={{
-                    fontSize: 15,
-                    fontWeight: 700,
+                    fontSize: 11,
+                    fontWeight: 600,
                     color: isHovered ? "#FFFFFF" : "#0F172A",
                     transition: "color 0.25s ease",
                     fontFamily: "'Inter', sans-serif",
@@ -817,21 +828,22 @@ const AboutPage = () => {
 
 
       {/* ── INDIAN BUSINESSES OPERATING SYSTEM (PREMIUM DESIGN) ── */}
-      <section style={{ padding: "100px 6%", background: "linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)", borderTop: "1px solid #F1F5F9", borderBottom: "1px solid #F1F5F9", position: "relative" }}>
+      <section className="about-indian-market-section" style={{ padding: "10px 6% 40px", background: "linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)", borderBottom: "1px solid #F1F5F9", position: "relative" }}>
         <style>{`
           .growth-timeline-vertical {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 9px 14px;
             position: relative;
             max-width: 600px;
-            margin: 20px 0 0 0;
-            padding: 10px 0 10px 32px;
+            margin: 0;
+            padding: 0;
+            width: 100%;
           }
           .growth-step-item {
             display: flex;
-            align-items: flex-start;
-            margin-bottom: 12px;
+            align-items: stretch;
+            margin-bottom: 0;
             position: relative;
             z-index: 2;
             width: 100%;
@@ -843,22 +855,25 @@ const AboutPage = () => {
           .growth-step-card {
             background: #FFFFFF;
             border: 1.5px solid #E2E8F0;
-            border-radius: 12px;
-            padding: 10px 16px;
-            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.01);
+            border-radius: 30px;
+            padding: 6px 16px;
+            box-shadow: 0 3px 10px rgba(15, 23, 42, 0.01);
             flex-grow: 1;
             transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
           }
           .growth-step-item:hover .growth-step-card {
             border-color: #CBD5E1;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
             transform: translateY(-2px);
           }
           .growth-step-title {
-            font-size: 14.5px;
-            font-weight: 700;
+            font-size: 11px;
+            font-weight: 600;
             color: #0F172A;
-            margin-bottom: 3px;
+            margin-bottom: 2px;
             transition: color 0.2s ease;
           }
           .growth-step-desc {
@@ -867,11 +882,11 @@ const AboutPage = () => {
             line-height: 1.45;
           }
           .growth-timeline-col {
-            margin-top: 140px;
+            margin-top: 0px;
           }
           .indian-market-flex-row {
             display: flex;
-            gap: 100px;
+            gap: 60px;
             align-items: flex-start;
             flex-wrap: wrap;
           }
@@ -882,6 +897,10 @@ const AboutPage = () => {
             .growth-timeline-col {
               margin-top: 0px !important;
             }
+            .growth-timeline-vertical {
+              grid-template-columns: repeat(2, 1fr) !important;
+              gap: 9px 12px !important;
+            }
           }
           @media (max-width: 768px) {
             .indian-market-flex-row {
@@ -889,6 +908,28 @@ const AboutPage = () => {
             }
             .growth-timeline-col {
               margin-top: 0px !important;
+            }
+            .growth-timeline-vertical {
+              grid-template-columns: repeat(2, 1fr) !important;
+              gap: 8px 10px !important;
+            }
+            .growth-step-title {
+              font-size: 10px !important;
+            }
+            .growth-step-card {
+              padding: 5px 8px !important;
+            }
+          }
+          @media (max-width: 576px) {
+            .growth-timeline-vertical {
+              grid-template-columns: repeat(2, 1fr) !important;
+              gap: 7px 8px !important;
+            }
+            .growth-step-title {
+              font-size: 9.5px !important;
+            }
+            .growth-step-card {
+              padding: 4px 6px !important;
             }
           }
         `}</style>
@@ -991,10 +1032,10 @@ const AboutPage = () => {
                     <div className="growth-step-card">
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                         <div className="growth-step-title" style={{ margin: 0 }}>
-                          <span style={{ color: step.color, marginRight: 8, fontWeight: 800 }}>{step.badge}</span>
+                          <span style={{ color: step.color, marginRight: 7, fontWeight: 700, fontSize: 11 }}>{step.badge}</span>
                           {step.title}
                         </div>
-                        <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: 0.5, padding: "3px 8px", borderRadius: 4, background: step.bg, color: step.color }}>
+                        <span style={{ fontSize: 7.5, fontWeight: 700, letterSpacing: 0.5, padding: "2.5px 8px", borderRadius: 20, background: step.bg, color: step.color }}>
                           {step.tag}
                         </span>
                       </div>
