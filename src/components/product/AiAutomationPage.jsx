@@ -232,7 +232,8 @@ const CSS = `
   }
   @media(max-width:640px){
     .a-fg    { grid-template-columns:1fr!important; }
-    .a-why   { grid-template-columns:1fr!important; }
+    .a-why   { grid-template-columns:repeat(2,1fr)!important; gap:10px!important; }
+    .awc     { padding:12px 10px!important; border-radius:10px!important; }
     .a-ctr   { display:flex!important; flex-direction:row!important; align-items:center!important; gap:10px!important; flex-wrap:wrap!important; }
     .a-hr    { width:100%!important; justify-content:center!important; padding-top:24px!important; margin-bottom:0!important; }
     .a-hr > div { transform:none!important; transform-origin:top center!important; margin:0 auto!important; width:100%!important; max-width:100%!important; padding:20px 14px!important; box-sizing:border-box!important; margin-top:0!important; }
@@ -247,7 +248,8 @@ const CSS = `
   @media(max-width:480px){
     .a-stat  { grid-template-columns:1fr!important; }
     .eco-g   { grid-template-columns:repeat(2,1fr)!important; gap:10px!important; }
-    .a-why   { grid-template-columns:1fr!important; }
+    .a-why   { grid-template-columns:repeat(2,1fr)!important; gap:8px!important; }
+    .awc     { padding:10px 8px!important; border-radius:8px!important; }
     .a-fg    { grid-template-columns:1fr!important; }
     .a-hr > div {
       padding: 16px 10px !important;
@@ -647,12 +649,12 @@ const AiPage = () => {
           <p style={{fontSize:13,color:MU,lineHeight:1.7,maxWidth:580,margin:"0 auto 28px"}}>
             Indian businesses manage customer enquiries, follow-ups, orders, marketing and support across multiple channels. MessBee AI & Automation helps bring these into a more connected, efficient digital workflow.
           </p>
-          <div style={{display:"flex",alignItems:"center",justifyContent:"center",flexWrap:"wrap",gap:"8px 10px",marginBottom:28}}>
+          <div className="ai-journey-flow" style={{display:"flex",alignItems:"center",justifyContent:"center",flexWrap:"wrap",gap:"8px 4px",marginBottom:28}}>
             {["Understand","Assist","Automate","Engage","Improve"].map((step,i,arr) => (
-              <div key={step} style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
-                <span style={{background:"#fff",border:"1.5px solid "+GB,color:G,borderRadius:6,padding:"4px 10px",fontSize:11,fontWeight:700}}>{step}</span>
-                {i<arr.length-1 && <span style={{color:"#94A3B8",fontSize:13,padding:"0 3px"}}>→</span>}
-              </div>
+              <React.Fragment key={step}>
+                <span style={{background:"#fff",border:"1.5px solid "+GB,color:G,borderRadius:6,padding:"4px 10px",fontSize:11,fontWeight:700,display:"inline-block"}}>{step}</span>
+                {i<arr.length-1 && <span style={{color:"#94A3B8",fontSize:13,padding:"0 2px",fontWeight:700}}>→</span>}
+              </React.Fragment>
             ))}
           </div>
           <button id="ai-india-start" className="gbtn" style={{fontSize:13,padding:"10px 20px"}} onClick={() => window.open(adminUrl+"/signup","_blank")}>

@@ -523,8 +523,79 @@ const EcommercePage = () => {
             grid-template-columns: 1fr !important;
             gap: 12px !important;
           }
+          .ecom-built-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
+          }
+          .ecom-built-grid .ecom-glass-card {
+            padding: 16px 14px !important;
+            border-radius: 14px !important;
+            align-items: flex-start !important;
+            flex-direction: column !important;
+            gap: 8px !important;
+          }
+          .ecom-built-grid .ecom-glass-card-icon {
+            width: 36px !important;
+            height: 36px !important;
+            font-size: 18px !important;
+            border-radius: 10px !important;
+            margin-top: 0 !important;
+            margin-bottom: 10px !important;
+          }
+          .ecom-built-grid .ecom-glass-card-text {
+            font-size: 14px !important;
+            line-height: 1.3 !important;
+          }
+          .ecom-why-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
+          }
+          .ecom-why-grid .ecom-glass-card {
+            padding: 16px 14px !important;
+            border-radius: 14px !important;
+          }
+          .ecom-why-grid .ecom-glass-card-icon {
+            width: 36px !important;
+            height: 36px !important;
+            font-size: 18px !important;
+            border-radius: 10px !important;
+            margin-bottom: 10px !important;
+          }
+          .ecom-why-title {
+            font-size: 16px !important;
+            line-height: 1.3 !important;
+          }
+          .ecom-why-desc {
+            font-size: 13px !important;
+            line-height: 1.45 !important;
+          }
+          .ecom-models-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
+          }
+          .ecom-models-grid .ecom-glass-card {
+            padding: 16px 14px !important;
+            border-radius: 14px !important;
+          }
+          .ecom-model-bullet {
+            width: 8px !important;
+            height: 8px !important;
+            margin-bottom: 10px !important;
+          }
+          .ecom-model-title {
+            font-size: 16px !important;
+            margin-bottom: 6px !important;
+          }
+          .ecom-model-desc {
+            font-size: 13px !important;
+            line-height: 1.45 !important;
+          }
           .ecom-glass-card {
             padding: 14px 16px !important;
+          }
+          .ecom-segments-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
           }
         }
 
@@ -535,6 +606,93 @@ const EcommercePage = () => {
           .grid-col-5, .grid-col-4, .grid-col-3, .grid-col-2 {
             grid-template-columns: 1fr !important;
             gap: 10px !important;
+          }
+          .ecom-india-section {
+            padding: 32px 16px !important;
+          }
+          .ecom-india-card {
+            padding: 24px 18px !important;
+            border-radius: 18px !important;
+          }
+          .ecom-callout-pill {
+            display: block !important;
+            text-align: center !important;
+            padding: 10px 14px !important;
+            font-size: 12.5px !important;
+            line-height: 1.45 !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+          }
+          .ecom-built-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 8px !important;
+          }
+          .ecom-built-grid .ecom-glass-card {
+            padding: 14px 12px !important;
+            border-radius: 12px !important;
+            align-items: flex-start !important;
+            flex-direction: column !important;
+            gap: 6px !important;
+          }
+          .ecom-built-grid .ecom-glass-card-text {
+            font-size: 13px !important;
+          }
+          .ecom-why-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 8px !important;
+          }
+          .ecom-why-grid .ecom-glass-card {
+            padding: 14px 12px !important;
+            border-radius: 12px !important;
+          }
+          .ecom-why-title {
+            font-size: 15px !important;
+          }
+          .ecom-why-desc {
+            font-size: 12px !important;
+          }
+          .ecom-models-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 8px !important;
+          }
+          .ecom-models-grid .ecom-glass-card {
+            padding: 14px 12px !important;
+            border-radius: 12px !important;
+          }
+          .ecom-model-bullet {
+            width: 7px !important;
+            height: 7px !important;
+            margin-bottom: 8px !important;
+          }
+          .ecom-model-title {
+            font-size: 15px !important;
+          }
+          .ecom-model-desc {
+            font-size: 12px !important;
+          }
+          .ecom-segments-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 8px !important;
+          }
+          .ecom-segments-grid > div {
+            padding: 12px 10px !important;
+          }
+          .ecom-segments-grid > div span {
+            font-size: 11.5px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .ecom-india-section {
+            padding: 24px 12px !important;
+          }
+          .ecom-india-card {
+            padding: 20px 14px !important;
+            border-radius: 16px !important;
+          }
+          .ecom-callout-pill {
+            padding: 9px 12px !important;
+            font-size: 12px !important;
           }
         }
 
@@ -814,7 +972,7 @@ const EcommercePage = () => {
           </div>
 
           {/* 9 List Items Grid */}
-          <div className="grid-col-3">
+          <div className="grid-col-3 ecom-built-grid">
             {WITH_MESSBEE_YOU_CAN.map((item, idx) => (
               <div
                 key={idx}
@@ -828,6 +986,7 @@ const EcommercePage = () => {
                 }}
               >
                 <div
+                  className="ecom-glass-card-icon"
                   style={{
                     width: 38,
                     height: 38,
@@ -844,7 +1003,7 @@ const EcommercePage = () => {
                 >
                   {item.icon}
                 </div>
-                <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", lineHeight: 1.35 }}>
+                <div className="ecom-glass-card-text" style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", lineHeight: 1.35 }}>
                   {item.text}
                 </div>
               </div>
@@ -1081,7 +1240,7 @@ const EcommercePage = () => {
           </div>
 
           {/* 7 Groups List Grid */}
-          <div className="grid-col-4" style={{ marginBottom: 28 }}>
+          <div className="ecom-segments-grid grid-col-4" style={{ marginBottom: 28 }}>
             {CUSTOMER_SEGMENTS.map((seg, idx) => (
               <div
                 key={idx}
@@ -1151,7 +1310,7 @@ const EcommercePage = () => {
           </div>
 
           {/* 7 Workflows Grid from Prompt */}
-          <div className="grid-col-4" style={{ marginBottom: 28 }}>
+          <div className="ecom-segments-grid grid-col-4" style={{ marginBottom: 28 }}>
             {AUTOMATION_WORKFLOWS.map((auto, idx) => (
               <div
                 key={idx}
@@ -1208,7 +1367,7 @@ const EcommercePage = () => {
           </div>
 
           {/* 7 Reason Cards from Prompt */}
-          <div className="grid-col-3">
+          <div className="grid-col-3 ecom-why-grid">
             {WHY_CHOOSE_MESSBEE.map((r, idx) => (
               <div
                 key={idx}
@@ -1219,6 +1378,7 @@ const EcommercePage = () => {
                 }}
               >
                 <div
+                  className="ecom-glass-card-icon"
                   style={{
                     width: 38,
                     height: 38,
@@ -1235,8 +1395,8 @@ const EcommercePage = () => {
                 >
                   {r.icon}
                 </div>
-                <h3 style={{ fontSize: 14.5, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>{r.title}</h3>
-                <p style={{ fontSize: 12.5, color: "#64748B", lineHeight: 1.6 }}>{r.desc}</p>
+                <h3 className="ecom-why-title" style={{ fontSize: 14.5, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>{r.title}</h3>
+                <p className="ecom-why-desc" style={{ fontSize: 12.5, color: "#64748B", lineHeight: 1.6 }}>{r.desc}</p>
               </div>
             ))}
           </div>
@@ -1275,7 +1435,7 @@ const EcommercePage = () => {
           </div>
 
           {/* 5 Business Type Cards from Prompt */}
-          <div className="grid-col-5">
+          <div className="grid-col-5 ecom-models-grid">
             {BUSINESS_TYPES.map((b, idx) => (
               <div
                 key={idx}
@@ -1291,6 +1451,7 @@ const EcommercePage = () => {
               >
                 <div>
                   <div
+                    className="ecom-model-bullet"
                     style={{
                       width: 9,
                       height: 9,
@@ -1299,8 +1460,8 @@ const EcommercePage = () => {
                       marginBottom: 12,
                     }}
                   />
-                  <h3 style={{ fontSize: 14.5, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>{b.type}</h3>
-                  <p style={{ fontSize: 12, color: "#64748B", lineHeight: 1.55 }}>{b.desc}</p>
+                  <h3 className="ecom-model-title" style={{ fontSize: 14.5, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>{b.type}</h3>
+                  <p className="ecom-model-desc" style={{ fontSize: 12, color: "#64748B", lineHeight: 1.55 }}>{b.desc}</p>
                 </div>
               </div>
             ))}
@@ -1311,9 +1472,10 @@ const EcommercePage = () => {
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 10: BUILT FOR E-COMMERCE BUSINESSES IN INDIA
          ═══════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: "64px 6%", background: "#FFFFFF" }}>
+      <section className="ecom-india-section" style={{ padding: "64px 6%", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <div
+            className="ecom-india-card"
             style={{
               background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
               borderRadius: 22,
@@ -1357,6 +1519,7 @@ const EcommercePage = () => {
 
               {/* Headline Callout from Prompt */}
               <div
+                className="ecom-callout-pill"
                 style={{
                   display: "inline-block",
                   background: "#16A34A",

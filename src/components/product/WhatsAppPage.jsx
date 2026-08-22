@@ -157,7 +157,8 @@ const CSS = `
   }
   @media(max-width:640px){
     .wa-fg   { grid-template-columns:1fr!important; }
-    .wa-why  { grid-template-columns:1fr!important; }
+    .wa-why  { grid-template-columns:repeat(2,1fr)!important; gap:10px!important; }
+    .wyc     { padding:12px 10px!important; border-radius:10px!important; }
     .wa-ctr  { display:flex!important; flex-direction:row!important; align-items:center!important; gap:10px!important; flex-wrap:wrap!important; }
     .wbp,.wbo,.wbd { width:auto!important; padding:10px 18px!important; font-size:12px!important; text-align:center!important; justify-content:center!important; }
     .wa-hr   { width:100%!important; justify-content:center!important; padding-top:24px!important; margin-bottom:0!important; }
@@ -168,7 +169,87 @@ const CSS = `
     .wa-hr > div { padding:18px 12px!important; border-radius:18px!important; }
     .wa-stat { grid-template-columns:1fr!important; }
     .wa-fg   { grid-template-columns:1fr!important; }
-    .wa-why  { grid-template-columns:1fr!important; }
+    .wa-why  { grid-template-columns:repeat(2,1fr)!important; gap:8px!important; }
+    .wyc     { padding:10px 8px!important; border-radius:8px!important; }
+  }
+
+  /* Flow Grid Desktop & Mobile */
+  .wa-flow-grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px 6px;
+  }
+  .wa-flow-badge {
+    background: #FFFFFF;
+    border: 1.5px solid #BBF7D0;
+    color: #15803D;
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    display: inline-block;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .wa-flow-arrow {
+    color: #4ADE80;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 0 2px;
+  }
+
+  @media(max-width:860px){
+    .wa-connect-section {
+      padding: 28px 16px !important;
+    }
+    .wa-connect-card {
+      padding: 20px 14px !important;
+      border-radius: 18px !important;
+    }
+  }
+
+  @media(max-width:768px){
+    .wa-india-journey {
+      padding: 16px 12px !important;
+      gap: 8px !important;
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .wa-india-journey span:nth-child(even) {
+      display: none !important;
+    }
+    .wa-india-journey span:nth-child(odd) {
+      width: 100% !important;
+      text-align: center !important;
+      box-sizing: border-box !important;
+      padding: 8px 6px !important;
+      font-size: 12px !important;
+    }
+  }
+
+  @media(max-width:480px){
+    .wa-connect-section {
+      padding: 20px 10px !important;
+    }
+    .wa-connect-card {
+      padding: 16px 10px !important;
+      border-radius: 16px !important;
+    }
+    .wa-flow-grid {
+      gap: 8px 4px !important;
+    }
+    .wa-flow-badge {
+      padding: 4px 8px !important;
+      font-size: 10.5px !important;
+      border-radius: 6px !important;
+    }
+    .wa-flow-arrow {
+      font-size: 12px !important;
+      padding: 0 1px !important;
+    }
   }
 `;
 
@@ -387,9 +468,10 @@ const WaPage = () => {
       </section>
 
       {/* ══ CONNECT FLOW — darker green ══ */}
-      <section style={{ padding: "64px 6%", background: "#FAFAFA" }}>
+      <section className="wa-connect-section" style={{ padding: "64px 6%", background: "#FAFAFA" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <div
+            className="wa-connect-card"
             style={{
               background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
               borderRadius: 22,
@@ -410,12 +492,12 @@ const WaPage = () => {
               <p style={{ fontSize: 15, color: "rgba(255,255,255,.55)", lineHeight: 1.75, maxWidth: 560, margin: "0 auto 40px" }}>
                 WhatsApp is most powerful when it's connected to your customer data and business workflows — not siloed as a standalone messaging app.
               </p>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: "10px 12px" }}>
+              <div className="wa-flow-grid" style={{ marginTop: 24, display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: "10px 6px" }}>
                 {["WhatsApp", "CRM", "Automation", "Marketing", "Commerce", "Analytics"].map((item, i, arr) => (
-                  <div key={item} style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
-                    <div style={{ background: "rgba(255,255,255,.08)", border: "1px solid rgba(255,255,255,.15)", borderRadius: 10, padding: "8px 16px", fontSize: 13, fontWeight: 700, color: "#fff" }}>{item}</div>
-                    {i < arr.length - 1 && <span style={{ color: WA, fontSize: 18, fontWeight: 900 }}>→</span>}
-                  </div>
+                  <React.Fragment key={item}>
+                    <span className="wa-flow-badge">{item}</span>
+                    {i < arr.length - 1 && <span className="wa-flow-arrow">→</span>}
+                  </React.Fragment>
                 ))}
               </div>
             </div>
@@ -455,7 +537,7 @@ const WaPage = () => {
             WhatsApp is India's most used communication app. MessBee helps local retailers, service businesses, e-commerce stores and growing companies use WhatsApp as part of a professional, scalable digital business — not just a personal chat app.
           </p>
           {/* Journey */}
-          <div style={{ background:"#fff", border:"1.5px solid #A7F3D0", borderRadius:16, padding:"24px 28px", display:"inline-flex", flexWrap:"wrap", alignItems:"center", gap:4, justifyContent:"center", marginBottom:32 }}>
+          <div className="wa-india-journey" style={{ background:"#fff", border:"1.5px solid #A7F3D0", borderRadius:16, padding:"24px 28px", display:"inline-flex", flexWrap:"wrap", alignItems:"center", gap:4, justifyContent:"center", marginBottom:32 }}>
             {["Connect","Engage","Follow Up","Convert","Support","Retain"].map((step,i,arr) => (
               <React.Fragment key={step}>
                 <span style={{ background:WAL, border:"1.5px solid #A7F3D0", color:WAD, borderRadius:8, padding:"7px 16px", fontSize:13, fontWeight:700 }}>{step}</span>

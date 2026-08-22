@@ -3,6 +3,7 @@ import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
 import defaultLogo from "../../assets/logo.jpeg";
+import { MoveRight } from "lucide-react";
 
 const G  = "#16A34A";
 const GL = "#F0FDF4";
@@ -344,6 +345,37 @@ const HelpCenterPage = () => {
           gap: 14px;
         }
 
+        .help-trouble-flow {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          margin-bottom: 26px;
+        }
+        .help-flow-row-wrapper {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+        .help-flow-card {
+          background: #fff;
+          border: 1.5px solid #BBF7D0;
+          color: #16A34A;
+          border-radius: 6px;
+          padding: 8px 16px;
+          font-size: 12px;
+          font-weight: 700;
+        }
+        .help-flow-arrow {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0 6px;
+        }
+        .help-row-start-arrow {
+          display: none !important;
+        }
+
         /* Large Laptops / Desktops (1440px +) */
         @media (min-width: 1440px) {
           .help-hero-row { gap: 60px; }
@@ -397,6 +429,40 @@ const HelpCenterPage = () => {
             grid-template-columns: 1fr !important;
             gap: 14px !important;
           }
+          .help-trouble-flow {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 12px !important;
+            max-width: 100% !important;
+            margin-bottom: 26px !important;
+          }
+          .help-flow-row-wrapper {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 6px !important;
+            width: 100% !important;
+          }
+          .help-flow-card {
+            padding: 6px 14px !important;
+            font-size: 13px !important;
+            border-radius: 6px !important;
+            width: auto !important;
+            box-sizing: border-box !important;
+            text-align: center !important;
+          }
+          .help-flow-arrow {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 0 2px !important;
+          }
+          .help-row-end-arrow {
+            display: none !important;
+          }
+          .help-row-start-arrow {
+            display: inline-flex !important;
+          }
         }
 
         @media (max-width: 480px) {
@@ -415,6 +481,20 @@ const HelpCenterPage = () => {
           }
           .help-glass-card {
             padding: 16px 14px !important;
+          }
+          .help-trouble-flow {
+            gap: 8px !important;
+          }
+          .help-flow-row-wrapper {
+            gap: 4px !important;
+          }
+          .help-flow-card {
+            padding: 5px 10px !important;
+            font-size: 12px !important;
+          }
+          .help-flow-arrow svg {
+            width: 11px !important;
+            height: 11px !important;
           }
         }
 
@@ -805,17 +885,44 @@ const HelpCenterPage = () => {
             Our troubleshooting guides can help you identify and resolve common issues related to:
           </p>
 
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: "12px 6px", marginBottom: 26 }}>
-            {TROUBLESHOOTING_NODES.map((node, i, arr) => (
-              <React.Fragment key={node}>
-                <span style={{ background: "#fff", border: `1.5px solid ${GB}`, color: G, borderRadius: 6, padding: "8px 16px", fontSize: 12, fontWeight: 700 }}>
-                  {node}
-                </span>
-                {i < arr.length - 1 && (
-                  <span style={{ color: "#94A3B8", fontSize: 15, padding: "0 6px" }}>→</span>
-                )}
-              </React.Fragment>
-            ))}
+          <div className="help-trouble-flow">
+            <div className="help-flow-row-wrapper">
+              <span className="help-flow-card">Account</span>
+              <span className="help-flow-arrow">
+                <MoveRight size={14} color="#16A34A" strokeWidth={3} />
+              </span>
+              <span className="help-flow-card">Integrations</span>
+              <span className="help-flow-arrow help-row-end-arrow">
+                <MoveRight size={14} color="#16A34A" strokeWidth={3} />
+              </span>
+            </div>
+            <div className="help-flow-row-wrapper">
+              <span className="help-flow-arrow help-row-start-arrow">
+                <MoveRight size={14} color="#16A34A" strokeWidth={3} />
+              </span>
+              <span className="help-flow-card">Messaging</span>
+              <span className="help-flow-arrow">
+                <MoveRight size={14} color="#16A34A" strokeWidth={3} />
+              </span>
+              <span className="help-flow-card">Campaigns</span>
+              <span className="help-flow-arrow">
+                <MoveRight size={14} color="#16A34A" strokeWidth={3} />
+              </span>
+              <span className="help-flow-card">Automation</span>
+              <span className="help-flow-arrow help-row-end-arrow">
+                <MoveRight size={14} color="#16A34A" strokeWidth={3} />
+              </span>
+            </div>
+            <div className="help-flow-row-wrapper">
+              <span className="help-flow-arrow help-row-start-arrow">
+                <MoveRight size={14} color="#16A34A" strokeWidth={3} />
+              </span>
+              <span className="help-flow-card">Store</span>
+              <span className="help-flow-arrow">
+                <MoveRight size={14} color="#16A34A" strokeWidth={3} />
+              </span>
+              <span className="help-flow-card">Payments</span>
+            </div>
           </div>
 
           <p style={{ fontSize: 13, color: MU, marginBottom: 24, fontWeight: 700 }}>

@@ -415,12 +415,78 @@ const SmbPage = () => {
 
         /* Mobile Phones & Tablets (under 768px) */
         @media (max-width: 768px) {
-          .grid-col-5, .grid-col-4, .grid-col-3, .grid-col-2 {
+          .grid-col-4, .grid-col-3 {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
+          }
+          .smb-help-grid {
+            grid-template-columns: 1fr !important;
+            gap: 14px !important;
+          }
+          .grid-col-5, .grid-col-2 {
             grid-template-columns: 1fr !important;
             gap: 12px !important;
           }
           .smb-glass-card {
-            padding: 14px 16px !important;
+            padding: 12px 10px !important;
+            border-radius: 12px !important;
+          }
+          .smb-why-title {
+            font-size: 12.5px !important;
+            line-height: 1.3 !important;
+          }
+          .smb-why-desc {
+            font-size: 11px !important;
+            line-height: 1.5 !important;
+          }
+          .smb-glass-card-icon {
+            width: 30px !important;
+            height: 30px !important;
+            font-size: 15px !important;
+            border-radius: 8px !important;
+            margin-bottom: 8px !important;
+          }
+          .smb-glass-card-text {
+            font-size: 11.5px !important;
+            line-height: 1.3 !important;
+          }
+          .smb-india-section {
+            padding: 32px 16px !important;
+          }
+          .smb-india-card {
+            padding: 24px 18px !important;
+            border-radius: 18px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .grid-col-4, .grid-col-3 {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 8px !important;
+          }
+          .smb-help-grid {
+            grid-template-columns: 1fr !important;
+            gap: 12px !important;
+          }
+          .smb-glass-card {
+            padding: 10px 8px !important;
+            border-radius: 10px !important;
+          }
+          .smb-why-title {
+            font-size: 11.5px !important;
+          }
+          .smb-why-desc {
+            font-size: 10px !important;
+          }
+          .smb-glass-card-text {
+            font-size: 10.5px !important;
+          }
+          .smb-india-section {
+            padding: 24px 12px !important;
+          }
+          .smb-india-card {
+            padding: 20px 14px !important;
+            border-radius: 16px !important;
           }
         }
 
@@ -431,6 +497,78 @@ const SmbPage = () => {
         }
         .pulse-aura {
           animation: auraPulse 3.5s ease-in-out infinite;
+        }
+
+        /* Efficiency Flow Grid */
+        .smb-efficiency-grid {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 12px 6px;
+          margin: 24px auto;
+        }
+        .smb-eff-card {
+          background: #FFFFFF;
+          border: 1.5px solid #BBF7D0;
+          color: #16A34A;
+          border-radius: 8px;
+          padding: 8px 16px;
+          font-size: 13.5px;
+          font-weight: 700;
+          display: inline-block;
+          box-shadow: 0 2px 6px rgba(22, 163, 74, 0.05);
+        }
+        .smb-eff-arrow {
+          color: #94A3B8;
+          font-size: 16px;
+          font-weight: 700;
+          padding: 0 4px;
+          display: inline-flex;
+          align-items: center;
+        }
+
+        @media (max-width: 768px) {
+          .smb-efficiency-grid {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            flex-wrap: wrap !important;
+            gap: 10px 4px !important;
+            margin: 18px auto 22px !important;
+            width: 100% !important;
+          }
+          .smb-eff-card {
+            background: #FFFFFF !important;
+            border: 1.5px solid #BBF7D0 !important;
+            border-radius: 7px !important;
+            padding: 6px 12px !important;
+            font-size: 13.5px !important;
+            font-weight: 700 !important;
+            color: #16A34A !important;
+            text-align: center !important;
+            box-sizing: border-box !important;
+          }
+          .smb-eff-arrow {
+            color: #94A3B8 !important;
+            font-size: 14px !important;
+            font-weight: 700 !important;
+            padding: 0 2px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .smb-efficiency-grid {
+            gap: 8px 3px !important;
+          }
+          .smb-eff-card {
+            padding: 5px 10px !important;
+            font-size: 12.5px !important;
+            border-radius: 6px !important;
+          }
+          .smb-eff-arrow {
+            font-size: 13px !important;
+          }
         }
       `}</style>
 
@@ -701,6 +839,7 @@ const SmbPage = () => {
                 }}
               >
                 <div
+                  className="smb-glass-card-icon"
                   style={{
                     width: 38,
                     height: 38,
@@ -717,7 +856,7 @@ const SmbPage = () => {
                 >
                   {item.icon}
                 </div>
-                <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", lineHeight: 1.35 }}>
+                <div className="smb-glass-card-text" style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", lineHeight: 1.35 }}>
                   {item.text}
                 </div>
               </div>
@@ -759,7 +898,7 @@ const SmbPage = () => {
           </div>
 
           {/* 6 Feature Tool Cards from Prompt */}
-          <div className="grid-col-3">
+          <div className="grid-col-3 smb-help-grid">
             {WHAT_MESSBEE_HELP_WITH.map((t, idx) => (
               <div
                 key={idx}
@@ -879,14 +1018,12 @@ const SmbPage = () => {
             </p>
           </div>
 
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: "12px 6px", marginBottom: 26 }}>
-            {WORKFLOW_FLOW_NODES.map((node, i, arr) => (
+          <div className="smb-efficiency-grid">
+            {WORKFLOW_FLOW_NODES.map((node, i) => (
               <React.Fragment key={node}>
-                <span style={{ background: "#fff", border: `1.5px solid ${GB}`, color: G, borderRadius: 6, padding: "8px 16px", fontSize: 12, fontWeight: 700 }}>
-                  {node}
-                </span>
-                {i < arr.length - 1 && (
-                  <span style={{ color: "#94A3B8", fontSize: 15, padding: "0 6px" }}>→</span>
+                <div className="smb-eff-card">{node}</div>
+                {i < WORKFLOW_FLOW_NODES.length - 1 && (
+                  <span className="smb-eff-arrow">→</span>
                 )}
               </React.Fragment>
             ))}
@@ -938,6 +1075,7 @@ const SmbPage = () => {
                 }}
               >
                 <div
+                  className="smb-glass-card-icon"
                   style={{
                     width: 38,
                     height: 38,
@@ -954,8 +1092,8 @@ const SmbPage = () => {
                 >
                   {r.icon}
                 </div>
-                <h3 style={{ fontSize: 14.5, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>{r.title}</h3>
-                <p style={{ fontSize: 12.5, color: "#64748B", lineHeight: 1.6 }}>{r.desc}</p>
+                <h3 className="smb-why-title" style={{ fontSize: 14.5, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>{r.title}</h3>
+                <p className="smb-why-desc" style={{ fontSize: 12.5, color: "#64748B", lineHeight: 1.6 }}>{r.desc}</p>
               </div>
             ))}
           </div>
@@ -965,9 +1103,10 @@ const SmbPage = () => {
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 7: BUILT WITH INDIAN BUSINESSES IN MIND
          ═══════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: "64px 6%", background: "#FAFAFA" }}>
+      <section className="smb-india-section" style={{ padding: "64px 6%", background: "#FAFAFA" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <div
+            className="smb-india-card"
             style={{
               background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
               borderRadius: 22,

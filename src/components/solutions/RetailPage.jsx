@@ -478,16 +478,51 @@ const RetailPage = () => {
             margin: 0 auto !important;
             padding: 24px 16px !important;
           }
-          .grid-col-4, .retail-why-grid {
+          .grid-col-4, .retail-why-grid, .grid-col-5 {
             grid-template-columns: repeat(2, 1fr) !important;
             gap: 12px !important;
           }
-          .grid-col-5, .grid-col-3, .grid-col-2 {
+          .grid-col-3, .grid-col-2 {
             grid-template-columns: 1fr !important;
             gap: 12px !important;
           }
           .retail-glass-card {
-            padding: 14px 16px !important;
+            padding: 12px 10px !important;
+            border-radius: 12px !important;
+            align-items: flex-start !important;
+            flex-direction: column !important;
+            gap: 8px !important;
+          }
+          .retail-glass-card-icon {
+            width: 30px !important;
+            height: 30px !important;
+            font-size: 15px !important;
+            border-radius: 8px !important;
+            margin-top: 0 !important;
+            margin-bottom: 4px !important;
+          }
+          .retail-glass-card-text {
+            font-size: 13.5px !important;
+            line-height: 1.3 !important;
+          }
+          .retail-journey-card {
+            padding: 16px 14px !important;
+            border-radius: 14px !important;
+          }
+          .retail-journey-icon {
+            width: 36px !important;
+            height: 36px !important;
+            font-size: 18px !important;
+            border-radius: 10px !important;
+            margin-bottom: 10px !important;
+          }
+          .retail-journey-title {
+            font-size: 16px !important;
+            margin-bottom: 6px !important;
+          }
+          .retail-journey-desc {
+            font-size: 13px !important;
+            line-height: 1.45 !important;
           }
         }
 
@@ -495,13 +530,70 @@ const RetailPage = () => {
           .retail-hero-right-card {
             padding: 18px 12px !important;
           }
-          .grid-col-4, .retail-why-grid {
+          .grid-col-4, .retail-why-grid, .grid-col-5 {
             grid-template-columns: repeat(2, 1fr) !important;
-            gap: 10px !important;
+            gap: 8px !important;
           }
-          .grid-col-5, .grid-col-3, .grid-col-2 {
+          .grid-col-3, .grid-col-2 {
             grid-template-columns: 1fr !important;
             gap: 10px !important;
+          }
+          .retail-glass-card {
+            padding: 10px 8px !important;
+            border-radius: 10px !important;
+            align-items: flex-start !important;
+            flex-direction: column !important;
+            gap: 6px !important;
+          }
+          .retail-glass-card-text {
+            font-size: 12.5px !important;
+          }
+          .retail-journey-card {
+            padding: 14px 12px !important;
+            border-radius: 12px !important;
+          }
+          .retail-journey-icon {
+            width: 32px !important;
+            height: 32px !important;
+            font-size: 16px !important;
+            border-radius: 8px !important;
+            margin-bottom: 8px !important;
+          }
+          .retail-journey-title {
+            font-size: 15px !important;
+          }
+          .retail-journey-desc {
+            font-size: 12px !important;
+          }
+          .retail-local-section {
+            padding: 32px 16px !important;
+          }
+          .retail-local-card {
+            padding: 24px 18px !important;
+            border-radius: 18px !important;
+          }
+          .retail-callout-pill {
+            display: block !important;
+            text-align: center !important;
+            padding: 10px 14px !important;
+            font-size: 12.5px !important;
+            line-height: 1.45 !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .retail-local-section {
+            padding: 24px 12px !important;
+          }
+          .retail-local-card {
+            padding: 20px 14px !important;
+            border-radius: 16px !important;
+          }
+          .retail-callout-pill {
+            padding: 9px 12px !important;
+            font-size: 12px !important;
           }
         }
 
@@ -802,6 +894,7 @@ const RetailPage = () => {
                 }}
               >
                 <div
+                  className="retail-glass-card-icon"
                   style={{
                     width: 38,
                     height: 38,
@@ -818,7 +911,7 @@ const RetailPage = () => {
                 >
                   {item.icon}
                 </div>
-                <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", lineHeight: 1.35 }}>
+                <div className="retail-glass-card-text" style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", lineHeight: 1.35 }}>
                   {item.text}
                 </div>
               </div>
@@ -867,7 +960,7 @@ const RetailPage = () => {
             {RETAIL_JOURNEY_STEPS.map((s, i) => (
               <div
                 key={s.step}
-                className="retail-glass-card"
+                className="retail-glass-card retail-journey-card"
                 style={{
                   padding: 18,
                   border: `1px solid ${s.border}`,
@@ -879,6 +972,7 @@ const RetailPage = () => {
               >
                 <div>
                   <div
+                    className="retail-journey-icon"
                     style={{
                       width: 36,
                       height: 36,
@@ -894,10 +988,10 @@ const RetailPage = () => {
                   >
                     {s.icon}
                   </div>
-                  <h3 style={{ fontSize: 14.5, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>
+                  <h3 className="retail-journey-title" style={{ fontSize: 14.5, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>
                     {s.step}
                   </h3>
-                  <p style={{ fontSize: 12, color: "#64748B", lineHeight: 1.55 }}>
+                  <p className="retail-journey-desc" style={{ fontSize: 12, color: "#64748B", lineHeight: 1.55 }}>
                     {s.desc}
                   </p>
                 </div>
@@ -1131,9 +1225,10 @@ const RetailPage = () => {
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 8: MADE FOR THE WAY LOCAL BUSINESSES GROW
          ═══════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: "64px 6%", background: "#FAFAFA" }}>
+      <section className="retail-local-section" style={{ padding: "64px 6%", background: "#FAFAFA" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <div
+            className="retail-local-card"
             style={{
               background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
               borderRadius: 22,
@@ -1177,6 +1272,7 @@ const RetailPage = () => {
 
               {/* Headline Callout from Prompt */}
               <div
+                className="retail-callout-pill"
                 style={{
                   display: "inline-block",
                   background: "#16A34A",

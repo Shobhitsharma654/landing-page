@@ -202,12 +202,91 @@ const CSS = `
   .ctr { display:flex;gap:14px;flex-wrap:wrap; }
   .sc { background:#FAFAFA;border:1.5px solid #F1F5F9;border-radius:16px;padding:28px 20px;text-align:center; transition:all .2s; }
   .sc:hover { border-color:#BBF7D0; transform:translateY(-2px); box-shadow:0 12px 32px rgba(22,163,74,.05); }
-  .flow-strip { display:flex;align-items:center;flex-wrap:wrap;gap:8px 4px;margin-bottom:16px;width:100%;max-width:100%; }
-  .flow-item { background:#F0FDF4;border:1px solid #BBF7D0;color:#16A34A;border-radius:6px;padding:4px 8px;font-size:11px;font-weight:700;display:inline-block; }
-  .flow-arr { color:#94A3B8;font-size:11px;padding:0 2px;display:inline-flex;align-items:center; }
-  .connect-strip { display:flex;align-items:center;flex-wrap:wrap;gap:0;justify-content:center; }
-  .connect-item { color:#fff;padding:8px 12px;font-size:14px;font-weight:700; }
-  .connect-arr { color:rgba(255,255,255,.6);font-size:18px;padding:0 6px;font-weight:700; }
+  .flow-strip { display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 4px;margin-bottom:16px;width:100%;max-width:100%; }
+  .flow-item { background:#F0FDF4;border:1.5px solid #BBF7D0;color:#16A34A;border-radius:6px;padding:4px 8px;font-size:11px;font-weight:700;display:inline-block; }
+  .flow-arr { color:#94A3B8;font-size:13px;font-weight:700;padding:0 2px;display:inline-flex;align-items:center; }
+  @media(max-width:768px){
+    .flow-strip {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      flex-wrap: wrap !important;
+      gap: 10px 4px !important;
+      width: 100% !important;
+      margin: 0 auto 16px !important;
+    }
+    .flow-item { padding:4px 8px!important; font-size:10.5px!important; text-align:center!important; }
+    .flow-arr { font-size:12px!important; padding:0 2px!important; color:#94A3B8!important; }
+  }
+  /* Connected Business Grid Desktop & Mobile */
+  .crm-connect-grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px 6px;
+    margin: 20px auto;
+  }
+  .crm-connect-badge {
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #fff;
+    display: inline-block;
+    box-sizing: border-box;
+  }
+  .crm-connect-arrow {
+    color: #4ADE80;
+    font-size: 16px;
+    font-weight: 900;
+    padding: 0 2px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  @media(max-width:860px){
+    .crm-connect-grid {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      flex-wrap: wrap !important;
+      gap: 10px 4px !important;
+      margin: 16px auto !important;
+    }
+    .crm-connect-badge {
+      background: rgba(255,255,255,.08) !important;
+      border: 1px solid rgba(255,255,255,.15) !important;
+      border-radius: 6px !important;
+      padding: 5px 10px !important;
+      font-size: 11px !important;
+      font-weight: 700 !important;
+      color: #fff !important;
+      text-align: center !important;
+    }
+    .crm-connect-arrow {
+      color: #4ADE80 !important;
+      font-size: 13px !important;
+      font-weight: 900 !important;
+      padding: 0 1px !important;
+    }
+  }
+
+  @media(max-width:480px){
+    .crm-connect-grid {
+      gap: 8px 3px !important;
+    }
+    .crm-connect-badge {
+      padding: 4px 8px !important;
+      font-size: 10.5px !important;
+      border-radius: 6px !important;
+    }
+    .crm-connect-arrow {
+      font-size: 12px !important;
+    }
+  }
   .crm-steps-grid { display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 10px; }
   .crm-step-item { display:inline-flex;align-items:center;gap:8px; }
   .crm-step-pill { background:#F0FDF4;border:1.5px solid #BBF7D0;color:#16A34A;border-radius:8px;padding:5px 12px;font-size:12px;font-weight:700;display:inline-block; }
@@ -277,8 +356,11 @@ const CSS = `
     }
   }
   @media(max-width:640px){
-    .fg  { grid-template-columns:1fr!important; }
-    .wg  { grid-template-columns:1fr!important; }
+    .fg  { grid-template-columns:repeat(2, 1fr)!important; gap:10px!important; }
+    .cf  { padding:12px 10px!important; border-radius:12px!important; }
+    .crm-overview-section { padding-left:22px!important; padding-right:22px!important; }
+    .wg  { grid-template-columns:repeat(2, 1fr)!important; gap:10px!important; }
+    .why-card { padding:12px 10px!important; border-radius:10px!important; }
     .ctr { display:flex!important; flex-direction:row!important; align-items:center!important; gap:10px!important; flex-wrap:wrap!important; }
     .cp, .cd { padding:10px 18px!important; font-size:12px!important; }
     .hr  { width:100%!important; justify-content:center!important; padding-top:24px!important; margin-bottom:0!important; }
@@ -289,6 +371,9 @@ const CSS = `
     .sec-grid { grid-template-columns:1fr!important; }
   }
   @media(max-width:480px){
+    .fg  { grid-template-columns:repeat(2, 1fr)!important; gap:8px!important; }
+    .cf  { padding:10px 8px!important; border-radius:10px!important; }
+    .crm-overview-section { padding-left:20px!important; padding-right:20px!important; }
     .hr > div { padding:18px 12px!important; border-radius:18px!important; }
     .sg  { grid-template-columns:1fr!important; }
     .sc  { padding:20px 14px!important; }
@@ -395,7 +480,7 @@ const CrmPage = () => {
 
 
       {/* ── OVERVIEW FEATURES GRID ── */}
-      <section id="crm-overview" style={{ background:"#fff", padding:"20px 6% 40px" }}>
+      <section id="crm-overview" className="crm-overview-section" style={{ background:"#fff", padding:"20px 6% 40px" }}>
         <div style={{ maxWidth:1160, margin:"0 auto" }}>
           <div style={{ textAlign:"center", marginBottom:32 }}>
             <Pill>What You Can Do</Pill>
@@ -442,7 +527,7 @@ const CrmPage = () => {
                         {sec.flow.map((f,i) => (
                           <React.Fragment key={f}>
                             <span className="flow-item">{f}</span>
-                            {i < sec.flow.length-1 && <span className="flow-arr">&#8594;</span>}
+                            {i < sec.flow.length-1 && <span className="flow-arr">→</span>}
                           </React.Fragment>
                         ))}
                       </div>
@@ -500,13 +585,13 @@ const CrmPage = () => {
       })}
 
       {/* ── CRM CONNECTS GROWTH ── */}
-      <section style={{ padding: "64px 6%", background: "#FAFAFA" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+      <section style={{ padding: "60px 6%", background: "#FAFAFA" }}>
+        <div style={{ maxWidth: 1300, margin: "0 auto" }}>
           <div
             style={{
               background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
               borderRadius: 22,
-              padding: "48px 40px",
+              padding: "40px 40px",
               color: "#FFFFFF",
               position: "relative",
               overflow: "hidden",
@@ -522,12 +607,12 @@ const CrmPage = () => {
               <p style={{ fontSize: 14, color: "rgba(255,255,255,.55)", lineHeight: 1.75, maxWidth: 580, margin: "0 auto 16px" }}>
                 MessBee CRM is designed to work alongside your broader business operations — not in isolation.
               </p>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: "10px 12px" }}>
+              <div className="crm-connect-grid">
                 {["CRM", "Communication", "Marketing", "Automation", "Commerce", "Analytics"].map((item, i, arr) => (
-                  <div key={item} style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
-                    <span className="connect-item">{item}</span>
-                    {i < arr.length - 1 && <span style={{ color: "rgba(255,255,255,.6)", fontSize: 18, fontWeight: 700 }}>→</span>}
-                  </div>
+                  <React.Fragment key={item}>
+                    <div className="crm-connect-badge">{item}</div>
+                    {i < arr.length - 1 && <span className="crm-connect-arrow">→</span>}
+                  </React.Fragment>
                 ))}
               </div>
               <p style={{ fontSize: 13, color: "rgba(255,255,255,.35)", marginTop: 16, marginBottom: 0 }}>

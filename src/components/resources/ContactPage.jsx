@@ -961,7 +961,7 @@ const ContactPage = () => {
                   Visit Us
                 </h3>
                 <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-                  <div style={{ fontSize: 18, fontWeight: 900, color: "#16A34A", display: "flex", alignItems: "center", gap: 8 }}>
+                  <div style={{ fontSize: 17, fontWeight: 800, color: "#16A34A", display: "flex", alignItems: "center", gap: 8 }}>
                     MessBee
                   </div>
                   <div style={{ fontSize: 13.5, color: "#475569", display: "flex", alignItems: "flex-start", gap: 8, lineHeight: 1.55 }}>
@@ -1193,13 +1193,13 @@ const ContactPage = () => {
 
             <div style={{ borderTop: "1px solid #F1F5F9", paddingTop: 16, display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 20 }}>
               <div style={{ flex: "1 1 500px" }}>
-                <h3 style={{ fontSize: 18, fontWeight: 900, color: "#16A34A", marginBottom: 10, fontFamily: "'Inter', sans-serif" }}>
+                <h3 style={{ fontSize: 17, fontWeight: 800, color: "#16A34A", marginBottom: 10, fontFamily: "'Inter', sans-serif" }}>
                   MessBee
                 </h3>
                 <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2.5" style={{ flexShrink: 0, marginTop: 4 }}><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
                   <p style={{ fontSize: 14, fontWeight: 500, color: "#475569", margin: 0, lineHeight: 1.6, fontFamily: "'Inter', sans-serif" }}>
-                    <strong style={{ color: "#1E293B" }}>Corporate Office:</strong> 510, Devika Tower, HIG Flats, Chander Nagar, Surya Nagar, Ghaziabad, Uttar Pradesh 201011, India
+                    <strong style={{ color: "#1E293B" }}>Corporate Office:</strong> 510A, Devika Tower, Chander Nagar, Surya Nagar, Ghaziabad, Uttar Pradesh 201011
                   </p>
                 </div>
               </div>

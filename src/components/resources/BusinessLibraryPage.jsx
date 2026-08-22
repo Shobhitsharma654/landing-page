@@ -65,16 +65,16 @@ const LIBRARY_RESOURCES = [
 
 // 2. Learn What Matters to Your Business (10 Topic Items from prompt)
 const BUSINESS_TOPICS = [
-  "How to manage customer relationships",
-  "How to improve lead follow-ups",
-  "How WhatsApp Business works",
-  "How to plan customer communication",
-  "How marketing automation can save time",
-  "How AI can support everyday business tasks",
-  "How to build a digital presence",
-  "How to improve customer retention",
-  "How to organize business workflows",
-  "How to use data more effectively",
+  { text: "How to manage customer relationships", icon: "👥" },
+  { text: "How to improve lead follow-ups", icon: "💬" },
+  { text: "How WhatsApp Business works", icon: "📱" },
+  { text: "How to plan customer communication", icon: "📅" },
+  { text: "How marketing automation can save time", icon: "⚙️" },
+  { text: "How AI can support everyday business tasks", icon: "🤖" },
+  { text: "How to build a digital presence", icon: "🌐" },
+  { text: "How to improve customer retention", icon: "🎯" },
+  { text: "How to organize business workflows", icon: "📁" },
+  { text: "How to use data more effectively", icon: "📈" },
 ];
 
 // 3. Resources for Different Business Stages (4 Stage Cards from prompt)
@@ -370,6 +370,21 @@ const BusinessLibraryPage = () => {
             grid-template-columns: repeat(2, 1fr) !important;
             gap: 14px !important;
           }
+          .topics-auto-grid .library-glass-card {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 8px !important;
+            padding: 16px 14px !important;
+          }
+          .topics-auto-grid .library-glass-card span {
+            font-size: 13.5px !important;
+          }
+          .four-auto-grid .library-glass-card {
+            border-left: 1px solid #E2E8F0 !important;
+          }
+          .four-auto-grid .library-glass-card:hover {
+            border-left-color: #BBF7D0 !important;
+          }
         }
 
         @media (max-width: 480px) {
@@ -396,6 +411,13 @@ const BusinessLibraryPage = () => {
           .topics-auto-grid, .four-auto-grid {
             grid-template-columns: repeat(2, 1fr) !important;
             gap: 10px !important;
+          }
+          .topics-auto-grid .library-glass-card {
+            padding: 14px 12px !important;
+            gap: 6px !important;
+          }
+          .topics-auto-grid .library-glass-card span {
+            font-size: 12.5px !important;
           }
         }
 
@@ -742,15 +764,14 @@ const BusinessLibraryPage = () => {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    fontSize: 13,
-                    fontWeight: 900,
+                    fontSize: 14,
                     flexShrink: 0,
                   }}
                 >
-                  ✓
+                  {topic.icon}
                 </div>
                 <span style={{ fontSize: 13, fontWeight: 700, color: "#334155" }}>
-                  {topic}
+                  {topic.text}
                 </span>
               </div>
             ))}
