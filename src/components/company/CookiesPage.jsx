@@ -255,7 +255,7 @@ const CookiesPage = () => {
     if (element) {
       const mobileTocEl = document.querySelector(".mobile-toc-wrapper");
       const isMobileTocVisible = mobileTocEl && window.getComputedStyle(mobileTocEl).display !== "none";
-      const offset = isMobileTocVisible ? 485 : 95;
+      const offset = isMobileTocVisible ? 130 : 95;
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({
         top: elementPosition - offset,
@@ -393,7 +393,7 @@ const CookiesPage = () => {
             margin-bottom: 16px !important;
           }
           .cookies-page-wrapper article > div[id] {
-            scroll-margin-top: 485px !important;
+            scroll-margin-top: 130px !important;
             padding: 20px 16px !important;
             margin-bottom: 14px !important;
           }
