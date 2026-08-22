@@ -1855,7 +1855,7 @@ const AboutPage = () => {
                 icon: <FiBriefcase style={{ color: "#16A34A", width: 15, height: 15 }} />,
                 category: "services",
                 image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&auto=format&fit=crop&q=60",
-                desc: "Centralize leads, enquiries, appointments, follow-ups, customer communication and operational workflows."
+                desc: "Centralize leads, appointments, follow-ups & client communication in one place."
               },
               {
                 title: "Coaching & Education",
