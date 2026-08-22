@@ -615,7 +615,7 @@ const WhatsappQrGenerator = () => {
                       </div>
 
                       {/* QR Code Container with Green Border */}
-                      <div style={{ position: "relative", display: "inline-block", padding: 6, background: "#FFFFFF", border: "1.5px solid #16A34A", borderRadius: 12, marginBottom: 10 }}>
+                      <div style={{ position: "relative", display: "inline-block", padding: 6, background: "#FFFFFF", border: "1.5px solid #16A34A", borderRadius: 12, marginBottom: 14 }}>
                         <div ref={qrRef} style={{ display: "flex", justifyContent: "center" }}>
                           <QRCodeSVG 
                             value={generatedDeepLink} 
@@ -636,7 +636,7 @@ const WhatsappQrGenerator = () => {
                         </div>
 
                         {/* Bottom Attached Pill ("Scan & Chat on WhatsApp") */}
-                        <div style={{ position: "absolute", bottom: -9, left: "50%", transform: "translateX(-50%)", background: "#007A3E", color: "#FFFFFF", borderRadius: 16, padding: "2px 9px", fontSize: 7.5, fontWeight: 700, display: "flex", alignItems: "center", gap: 4, whiteSpace: "nowrap", boxShadow: "0 2px 4px rgba(0,0,0,0.2)" }}>
+                        <div style={{ position: "absolute", bottom: -12, left: "50%", transform: "translateX(-50%)", background: "#007A3E", color: "#FFFFFF", borderRadius: 16, padding: "2.5px 10px", fontSize: 7.5, fontWeight: 700, display: "flex", alignItems: "center", gap: 4, whiteSpace: "nowrap", boxShadow: "0 2px 4px rgba(0,0,0,0.2)" }}>
                           <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                             <rect x="5" y="2" width="14" height="20" rx="2" ry="2" fill="none" stroke="#FFFFFF" />
                             <path d="M12 18h.01" stroke="#FFFFFF" />
