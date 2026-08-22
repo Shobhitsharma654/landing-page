@@ -170,24 +170,25 @@ const Navbar = () => {
           .desktop-nav { display: none !important; }
           .nav-desktop-auth { display: none !important; }
           .mobile-menu-btn { display: flex !important; }
+          .nav-container-box { padding: 0 16px !important; }
         }
-        @media (max-width: 600px) {
+        @media (max-width: 480px) {
           .nav-container-box { padding: 0 12px !important; }
-          .nav-btn-register { display: none !important; }
-          .nav-btn-login { padding: 6px 12px !important; font-size: 12px !important; }
         }
       `}</style>
       {/* Main Fixed Navbar */}
       <nav className="nav-container-box" style={{
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000,
         background: "#FFFFFF",
-        borderBottom: "none",
-        boxShadow: "0 10px 40px -10px rgba(0,0,0,0.15)",
+        borderBottom: "1px solid #F1F5F9",
+        boxShadow: "0 2px 16px rgba(0,0,0,0.08)",
         padding: "0 6%",
-        height: 70,
+        height: 64,
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
+        boxSizing: "border-box",
+        width: "100%",
         transition: "all 0.3s"
       }}>
         {/* Logo */}

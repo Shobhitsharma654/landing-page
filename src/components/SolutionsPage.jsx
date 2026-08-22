@@ -378,8 +378,7 @@ const SolutionsPage = () => {
       {/* HERO SECTION */}
       <section style={{
         flex: 1,
-        marginTop: 70,
-        padding: "10px 6% 10px 6%",
+        padding: "92px 6% 48px",
         position: "relative",
         background: "#FFFFFF",
         overflow: "hidden"
@@ -410,28 +409,28 @@ const SolutionsPage = () => {
         <div style={{ maxWidth: 1280, margin: "0 auto", display: "flex", alignItems: "flex-start", gap: "4vw", position: "relative", zIndex: 1 }}>
 
           {/* Left Content */}
-          <div style={{ flex: 1, minWidth: 400, alignSelf: "flex-start", paddingTop: 20 }}>
+          <div style={{ flex: 1, minWidth: 400, alignSelf: "flex-start" }}>
             <div style={{
               display: "inline-block",
               background: "#D1FAE5",
               color: "#059669",
-              padding: "4px 10px",
+              padding: "4px 12px",
               borderRadius: 40,
-              fontSize: 10,
-              fontWeight: 700,
+              fontSize: 10.5,
+              fontWeight: 800,
               letterSpacing: "1px",
-              marginBottom: 24,
+              marginBottom: 16,
               textTransform: "uppercase"
             }}>
               Solutions
             </div>
 
-            <h1 style={{ fontSize: "52px", fontWeight: 900, lineHeight: 1.1, color: "#0F172A", marginBottom: 24, letterSpacing: "-1.5px" }}>
+            <h1 style={{ fontSize: "clamp(28px, 2.9vw, 42px)", fontWeight: 900, lineHeight: 1.12, color: "#0F172A", marginBottom: 16, letterSpacing: "-1px" }}>
               Solutions Built for<br />
               <span style={{ color: "#16A34A" }}>Every Industry</span>
             </h1>
 
-            <p style={{ fontSize: 17, color: "#64748B", lineHeight: 1.6, marginBottom: 40, maxWidth: 480, fontWeight: 400 }}>
+            <p style={{ fontSize: 16, color: "#64748B", lineHeight: 1.65, marginBottom: 28, maxWidth: 480, fontWeight: 400 }}>
               Purpose-built solutions designed for every industry. Digitize customer engagement, sales, operations, payments and business growth with MessBee.
             </p>
 

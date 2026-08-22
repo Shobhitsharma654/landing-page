@@ -219,8 +219,8 @@ const ResourcesPage = () => {
 
       {/* ═══════════════ HERO SECTION ═══════════════ */}
       <section style={{
-        marginTop: 70,
-        padding: "90px 6% 110px",
+        marginTop: 0,
+        padding: "92px 6% 48px",
         background: "#FFFFFF",
         position: "relative",
         overflow: "hidden"
@@ -261,12 +261,12 @@ const ResourcesPage = () => {
               display: "inline-block",
               background: "#E6F9EE",
               color: "#10B981",
-              padding: "6px 16px",
+              padding: "5px 14px",
               borderRadius: 30,
-              fontSize: 11,
-              fontWeight: 700,
+              fontSize: 10.5,
+              fontWeight: 800,
               letterSpacing: "1px",
-              marginBottom: 24,
+              marginBottom: 16,
               textTransform: "uppercase"
             }}>
               RESOURCES
@@ -279,7 +279,7 @@ const ResourcesPage = () => {
               lineHeight: 1.12,
               color: "#0F172A",
               letterSpacing: "-1px",
-              marginBottom: 24
+              marginBottom: 16
             }}>
               Everything You Need<br />
               to <span style={{ color: "#10B981" }}>Learn, Launch &</span><br />
@@ -291,7 +291,7 @@ const ResourcesPage = () => {
               fontSize: 16,
               color: "#475569",
               lineHeight: 1.6,
-              marginBottom: 36,
+              marginBottom: 24,
               maxWidth: 540,
               fontWeight: 400
             }}>
@@ -553,7 +553,7 @@ const ResourcesPage = () => {
           
           {/* Section Heading */}
           <div style={{ marginBottom: 36 }}>
-            <h2 style={{ fontSize: "clamp(30px, 4vw, 42px)", fontWeight: 800, color: "#0F172A", marginBottom: 12, letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", marginBottom: 12, letterSpacing: "-1px" }}>
               Find What You're Looking For
             </h2>
             <p style={{ fontSize: 16, color: "#64748B", fontWeight: 400, margin: 0, lineHeight: 1.5 }}>
@@ -801,8 +801,8 @@ const ResourcesPage = () => {
               CATEGORIES
             </div>
             <h2 style={{
-              fontSize: "clamp(32px, 4vw, 48px)",
-              fontWeight: 800,
+              fontSize: "clamp(20px, 2.5vw, 32px)",
+              fontWeight: 900,
               color: "#0F172A",
               letterSpacing: "-1px",
               marginBottom: 12
@@ -1369,8 +1369,8 @@ const ResourcesPage = () => {
                 FEATURED
               </div>
               <h2 style={{
-                fontSize: "clamp(28px, 3.5vw, 42px)",
-                fontWeight: 800,
+                fontSize: "clamp(20px, 2.5vw, 32px)",
+                fontWeight: 900,
                 color: "#0F172A",
                 letterSpacing: "-1px",
                 margin: 0
@@ -1853,8 +1853,8 @@ const ResourcesPage = () => {
                 VIDEO
               </div>
               <h2 style={{
-                fontSize: "clamp(28px, 3.5vw, 42px)",
-                fontWeight: 800,
+                fontSize: "clamp(20px, 2.5vw, 32px)",
+                fontWeight: 900,
                 color: "#0F172A",
                 letterSpacing: "-1px",
                 margin: 0
@@ -2459,8 +2459,8 @@ const ResourcesPage = () => {
               DOCS
             </div>
             <h2 style={{
-              fontSize: "clamp(32px, 4vw, 48px)",
-              fontWeight: 800,
+              fontSize: "clamp(20px, 2.5vw, 32px)",
+              fontWeight: 900,
               color: "#0F172A",
               letterSpacing: "-1px",
               marginBottom: 12
@@ -2782,8 +2782,8 @@ const ResourcesPage = () => {
               UPDATES
             </div>
             <h2 style={{
-              fontSize: "clamp(32px, 4vw, 48px)",
-              fontWeight: 800,
+              fontSize: "clamp(20px, 2.5vw, 32px)",
+              fontWeight: 900,
               color: "#0F172A",
               letterSpacing: "-1px",
               marginBottom: 12
@@ -3111,8 +3111,8 @@ const ResourcesPage = () => {
               SUCCESS STORIES
             </div>
             <h2 style={{
-              fontSize: "clamp(32px, 4vw, 48px)",
-              fontWeight: 800,
+              fontSize: "clamp(20px, 2.5vw, 32px)",
+              fontWeight: 900,
               color: "#0F172A",
               letterSpacing: "-1px",
               margin: 0
@@ -3405,8 +3405,8 @@ const ResourcesPage = () => {
               SUPPORT
             </div>
             <h2 style={{
-              fontSize: "clamp(32px, 4vw, 48px)",
-              fontWeight: 800,
+              fontSize: "clamp(20px, 2.5vw, 32px)",
+              fontWeight: 900,
               color: "#0F172A",
               letterSpacing: "-1px",
               marginBottom: 12

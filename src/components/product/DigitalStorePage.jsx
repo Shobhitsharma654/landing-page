@@ -240,23 +240,23 @@ const DigitalStorePage = () => {
       <Navbar />
 
       {/* ── HERO ── */}
-      <section className="ds-hero-section" style={{ background:"#fff", padding:"118px 6% 60px" }}>
+      <section className="ds-hero-section" style={{ background:"#fff", padding:"92px 6% 48px" }}>
         <div style={{ maxWidth:1200, margin:"0 auto" }}>
           <div style={{ display:"flex", flexWrap:"wrap", alignItems:"flex-start", gap:48 }}>
             <div style={{ flex:"1 1 420px", minWidth:280 }}>
-              <div style={{ display:"inline-flex", alignItems:"center", gap:6, background:GL, border:`1px solid ${GB}`, borderRadius:40, padding:"5px 14px", marginBottom:28 }}>
+              <div style={{ display:"inline-flex", alignItems:"center", gap:6, background:GL, border:`1px solid ${GB}`, borderRadius:40, padding:"5px 14px", marginBottom:16 }}>
                 <div style={{ width:6, height:6, borderRadius:"50%", background:G }}/>
                 <span style={{ fontSize:11.5, fontWeight:600, color:G }}>MessBee Digital Store</span>
               </div>
-              <h1 style={{ fontSize:"clamp(28px,3vw,42px)", fontWeight:900, color:D2, letterSpacing:"-1px", lineHeight:1.1, marginBottom:16 }}>
+              <h1 style={{ fontSize:"clamp(28px, 2.9vw, 42px)", fontWeight:900, color:D2, letterSpacing:"-1px", lineHeight:1.12, marginBottom:16 }}>
                 Build Your Digital<br/>
                 <span style={{ color:G }}>Storefront</span>
               </h1>
 
-              <p style={{ fontSize:15, color:MU, lineHeight:1.75, maxWidth:500, marginBottom:32 }}>
+              <p style={{ fontSize:15, color:MU, lineHeight:1.75, maxWidth:500, marginBottom:24 }}>
                 MessBee Digital Store helps businesses create and manage their digital presence for products and services, showcase their offerings, connect with customers and manage commerce workflows from one connected platform.
               </p>
-              <div style={{ display:"flex", flexWrap:"wrap", gap:8, marginBottom:36 }}>
+              <div style={{ display:"flex", flexWrap:"wrap", gap:8, marginBottom:32 }}>
                 {["Showcase.","Sell.","Connect.","Grow."].map(t => (
                   <span key={t} style={{ background:BS, border:"1px solid #E5E7EB", color:MU, borderRadius:40, padding:"4px 12px", fontSize:12, fontWeight:600 }}>{t}</span>
                 ))}
@@ -271,7 +271,7 @@ const DigitalStorePage = () => {
             </div>
 
             {/* Storefront mockup */}
-            <div className="ds-hr" style={{ flex:"1 1 340px", minWidth:280, display:"flex", justifyContent:"center", marginTop:76 }}>
+            <div className="ds-hr" style={{ flex:"1 1 340px", minWidth:280, display:"flex", justifyContent:"center", paddingTop: "70px", marginBottom: "-140px" }}>
               <div style={{ background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)", borderRadius:24, padding:28, boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)", border:"1px solid rgba(34,197,94,.2)", width:"100%", maxWidth:460, transform:"scale(0.75)", transformOrigin:"top center", overflow:"hidden" }}>
                 {/* Header */}
                 <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:28 }}>
@@ -321,7 +321,7 @@ const DigitalStorePage = () => {
       <section style={{ background:BA, padding:"48px 6%", borderTop:`1px solid ${BS}` }}>
         <div style={{ maxWidth:860, margin:"0 auto", textAlign:"center" }}>
           <Pill>Your Business, Online</Pill>
-          <h2 style={{ fontSize:"clamp(18px,2vw,28px)", fontWeight:900, color:D2, letterSpacing:"-1px", marginBottom:10 }}>
+          <h2 style={{ fontSize:"clamp(20px, 2.5vw, 32px)", fontWeight:900, color:D2, letterSpacing:"-1px", marginBottom:10 }}>
             A Digital Storefront for Every Business
           </h2>
           <p style={{ fontSize:13, color:MU, lineHeight:1.75, maxWidth:560, margin:"0 auto" }}>
@@ -335,7 +335,7 @@ const DigitalStorePage = () => {
         <div style={{ maxWidth:1160, margin:"0 auto" }}>
           <div style={{ textAlign:"center", marginBottom:40 }}>
             <Pill>Platform Capabilities</Pill>
-            <h2 style={{ fontSize:"clamp(18px,2.5vw,30px)", fontWeight:900, color:D2, letterSpacing:"-1px", marginBottom:10 }}>
+            <h2 style={{ fontSize:"clamp(20px, 2.5vw, 32px)", fontWeight:900, color:D2, letterSpacing:"-1px", marginBottom:10 }}>
               Manage Your Digital Store
             </h2>
           </div>
@@ -356,7 +356,7 @@ const DigitalStorePage = () => {
         <div style={{ maxWidth:1060, margin:"0 auto" }}>
           <div style={{ textAlign:"center", marginBottom:36 }}>
             <Pill>Deep Dive</Pill>
-            <h2 style={{ fontSize:"clamp(18px,2.5vw,30px)", fontWeight:900, color:D2, letterSpacing:"-1px" }}>
+            <h2 style={{ fontSize:"clamp(20px, 2.5vw, 32px)", fontWeight:900, color:D2, letterSpacing:"-1px" }}>
               Digital Store Capabilities
             </h2>
           </div>
@@ -440,7 +440,7 @@ const DigitalStorePage = () => {
       <section style={{ background:GL, padding:"48px 6%", borderTop:`1px solid ${GB}`, borderBottom:`1px solid ${GB}` }}>
         <div style={{ maxWidth:1060, margin:"0 auto", textAlign:"center" }}>
           <Pill>Connected Ecosystem</Pill>
-          <h2 style={{ fontSize:"clamp(18px,2.5vw,30px)", fontWeight:900, color:D2, letterSpacing:"-1px", marginBottom:10 }}>
+          <h2 style={{ fontSize:"clamp(20px, 2.5vw, 32px)", fontWeight:900, color:D2, letterSpacing:"-1px", marginBottom:10 }}>
             Connect Your Digital Store With MessBee
           </h2>
           <p style={{ fontSize:13, color:MU, lineHeight:1.7, maxWidth:480, margin:"0 auto 28px" }}>
@@ -471,7 +471,7 @@ const DigitalStorePage = () => {
         <div style={{ maxWidth:1100, margin:"0 auto" }}>
           <div style={{ textAlign:"center", marginBottom:36 }}>
             <Pill>Why MessBee</Pill>
-            <h2 style={{ fontSize:"clamp(18px,2.5vw,30px)", fontWeight:900, color:D2, letterSpacing:"-1px" }}>
+            <h2 style={{ fontSize:"clamp(20px, 2.5vw, 32px)", fontWeight:900, color:D2, letterSpacing:"-1px" }}>
               Why Businesses Choose MessBee Digital Store
             </h2>
           </div>
@@ -494,7 +494,7 @@ const DigitalStorePage = () => {
             <div style={{ width:7, height:7, borderRadius:"50%", background:G }}/>
             <span style={{ fontSize:12, fontWeight:600, color:G }}>Built for Indian Businesses</span>
           </div>
-          <h2 style={{ fontSize:"clamp(18px,2.5vw,30px)", fontWeight:900, color:D2, letterSpacing:"-1px", marginBottom:12 }}>
+          <h2 style={{ fontSize:"clamp(20px, 2.5vw, 32px)", fontWeight:900, color:D2, letterSpacing:"-1px", marginBottom:12 }}>
             From Local Retailers to Growing Online Businesses
           </h2>
           <p style={{ fontSize:13, color:MU, lineHeight:1.7, maxWidth:580, margin:"0 auto 20px" }}>
@@ -518,7 +518,7 @@ const DigitalStorePage = () => {
       <section style={{ background:"#fff", padding:"48px 6%", borderTop:`1px solid ${BS}` }}>
         <div style={{ maxWidth:760, margin:"0 auto", textAlign:"center" }}>
           <Pill>Your Customer Relationship</Pill>
-          <h2 style={{ fontSize:"clamp(18px,2.5vw,28px)", fontWeight:900, color:D2, letterSpacing:"-1px", marginBottom:12 }}>
+          <h2 style={{ fontSize:"clamp(20px, 2.5vw, 32px)", fontWeight:900, color:D2, letterSpacing:"-1px", marginBottom:12 }}>
             Your Digital Store. Your Customer Relationship.
           </h2>
           <p style={{ fontSize:13, color:MU, lineHeight:1.75, maxWidth:580, margin:"0 auto 16px" }}>
@@ -535,7 +535,7 @@ const DigitalStorePage = () => {
         <div style={{ maxWidth:760, margin:"0 auto" }}>
           <div style={{ textAlign:"center", marginBottom:36 }}>
             <Pill>FAQ</Pill>
-            <h2 style={{ fontSize:"clamp(18px,2.5vw,30px)", fontWeight:900, color:D2, letterSpacing:"-1px" }}>
+            <h2 style={{ fontSize:"clamp(20px, 2.5vw, 32px)", fontWeight:900, color:D2, letterSpacing:"-1px" }}>
               Frequently Asked Questions
             </h2>
           </div>

@@ -355,30 +355,34 @@ const QrConnectPage = () => {
       `}</style>
 
       {/* ═══════ HERO SECTION ═══════ */}
-      <section className="qr-hero-section" style={{ paddingTop: 100, paddingBottom: 28, background: "#FFFFFF", paddingLeft: "3%", paddingRight: "3%", overflow: "hidden" }}>
-        <div className="qr-hero-row" style={{ maxWidth: 1200, margin: "0 auto", display: "flex", flexWrap: "wrap", alignItems: "flex-start", justifyContent: "space-between", gap: 20 }}>
+      <section className="qr-hero-section" style={{ paddingTop: 92, paddingBottom: 48, background: "#FFFFFF", paddingLeft: "6%", paddingRight: "6%", overflow: "hidden" }}>
+        <div className="qr-hero-row" style={{ maxWidth: 1200, margin: "0 auto", display: "flex", flexWrap: "wrap", alignItems: "center", gap: 48 }}>
           
           {/* Left Column */}
-          <div className="qr-hero-left" style={{ flex: "1 1 380px", maxWidth: 460 }}>
-            <div style={{ display: "inline-flex", alignItems: "center", background: "#E8F5E9", padding: "3px 10px", borderRadius: 5, marginBottom: 14 }}>
-              <span style={{ fontSize: 9.5, fontWeight: 800, color: "#16A34A", letterSpacing: "0.5px", textTransform: "uppercase" }}>QR & CONNECT</span>
+          <div className="qr-hero-left" style={{ flex: "1 1 420px", minWidth: 280, maxWidth: 520 }}>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "#ECFDF5", border: "1px solid #A7F3D0", borderRadius: 40, padding: "5px 14px", marginBottom: 16 }}>
+              <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#16A34A" }} />
+              <span style={{ fontSize: 11.5, fontWeight: 600, color: "#16A34A" }}>MessBee QR &amp; Connect</span>
             </div>
 
-            <h1 style={{ fontSize: "clamp(28px, 3.2vw, 42px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.1, letterSpacing: "-1px", marginBottom: 12 }}>
+            <h1 style={{ fontSize: "clamp(28px, 2.9vw, 42px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.12, letterSpacing: "-1px", marginBottom: 16 }}>
               Every Scan.<br />
               <span style={{ color: "#16A34A" }}>A New Customer.</span>
             </h1>
 
-            <p style={{ fontSize: 12.5, color: "#475569", lineHeight: 1.5, marginBottom: 10, maxWidth: 420 }}>
-              MessBee QR & Connect helps you create powerful QR codes and smart links to start WhatsApp conversations, promote offers, and showcase products.
-            </p>
-            <p style={{ fontSize: 12.5, color: "#475569", lineHeight: 1.5, marginBottom: 20, maxWidth: 420 }}>
-              Run campaigns and track every interaction – all from one simple platform.
+            <p style={{ fontSize: 15, color: "#64748B", lineHeight: 1.75, marginBottom: 14, maxWidth: 520 }}>
+              MessBee QR &amp; Connect helps you create powerful QR codes and smart links to start WhatsApp conversations, promote offers, showcase products, and connect offline customers to your digital business.
             </p>
 
-            <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 10, marginBottom: 0 }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 32 }}>
+              {["Create Smart QR.", "Share Everywhere.", "Engage on WhatsApp.", "Track & Grow."].map(t => (
+                <span key={t} style={{ background: "#F8FAFC", border: "1px solid #E5E7EB", color: "#64748B", borderRadius: 40, padding: "4px 12px", fontSize: 12, fontWeight: 600 }}>{t}</span>
+              ))}
+            </div>
+
+            <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 12, marginBottom: 0 }}>
               <button className="btn-green-primary" onClick={handleCreateQr}>
-                Create Your First QR <span>→</span>
+                Get Started <span>→</span>
               </button>
               <button className="btn-outline-demo" onClick={handleWatchDemo}>
                 Watch Demo
@@ -388,7 +392,7 @@ const QrConnectPage = () => {
           </div>
 
           {/* Right Column: Phone + Cards + Dotted Lines */}
-          <div className="hvc">
+          <div className="hvc" style={{ flex: "1 1 340px", minWidth: 280, display: "flex", justifyContent: "center" }}>
             <div style={{ width: "100%", maxWidth: 560, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
               
               {/* SVG Dotted Lines */}
@@ -463,9 +467,9 @@ const QrConnectPage = () => {
       </section>
 
       {/* ═══════ GREEN TRUST BANNER ═══════ */}
-      <section style={{ background: "linear-gradient(135deg, #16A34A 0%, #15803D 100%)", padding: "28px 3%" }}>
+      <section style={{ background: "linear-gradient(135deg, #16A34A 0%, #15803D 100%)", padding: "36px 6%" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <h2 style={{ textAlign: "center", fontSize: "clamp(16px, 2vw, 22px)", fontWeight: 800, color: "#FFFFFF", marginBottom: 18, letterSpacing: "-0.3px" }}>
+          <h2 style={{ textAlign: "center", fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#FFFFFF", marginBottom: 18, letterSpacing: "-1px" }}>
             Everything You Need to Run and Grow Your Business
           </h2>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "center" }}>
@@ -501,7 +505,7 @@ const QrConnectPage = () => {
 
 
       {/* ═══════ WHAT IS QR & CONNECT ═══════ */}
-      <section className="qr-section" style={{ padding: "40px 3%", background: "#FFFFFF" }}>
+      <section className="qr-section" style={{ padding: "60px 6%", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 1140, margin: "0 auto" }}>
           <div className="wql" style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 32 }}>
             
@@ -538,7 +542,7 @@ const QrConnectPage = () => {
 
             {/* Right Content */}
             <div className="wqc" style={{ flex: "1 1 500px" }}>
-              <h2 style={{ fontSize: 22, fontWeight: 900, color: "#0F172A", marginBottom: 10, letterSpacing: "-.3px" }}>What is QR & Connect?</h2>
+              <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", marginBottom: 10, letterSpacing: "-1px" }}>What is QR & Connect?</h2>
               <p style={{ fontSize: 12, color: "#475569", lineHeight: 1.5, marginBottom: 8 }}>QR & Connect is a powerful suite of tools that helps you turn every scan into a valuable customer conversation on WhatsApp.</p>
               <p style={{ fontSize: 12, color: "#475569", lineHeight: 1.5, marginBottom: 8 }}>Whether you want to share your WhatsApp number, promote a special offer, showcase a product, book a service, run a marketing campaign or grow through referrals – you can do it all in just a few clicks.</p>
               <p style={{ fontSize: 12, color: "#475569", lineHeight: 1.5, marginBottom: 8 }}>Share your QR codes and smart links anywhere: on shop counters, visiting cards, packaging, brochures, posters, websites, social media or even in WhatsApp status.</p>
@@ -577,10 +581,10 @@ const QrConnectPage = () => {
       </section>
 
       {/* ═══════ ALL FEATURES ═══════ */}
-      <section style={{ padding: "40px 3%", background: "#F8FAFC", borderTop: "1px solid #E2E8F0", borderBottom: "1px solid #E2E8F0" }}>
+      <section style={{ padding: "60px 6%", background: "#F8FAFC", borderTop: "1px solid #E2E8F0", borderBottom: "1px solid #E2E8F0" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 28 }}>
-            <h2 style={{ fontSize: 24, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>All QR & Connect Features</h2>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", marginBottom: 6, letterSpacing: "-1px" }}>All QR & Connect Features</h2>
             <p style={{ fontSize: 12, color: "#64748B", maxWidth: 480, margin: "0 auto" }}>Everything you need to connect physical and digital touchpoints directly to WhatsApp.</p>
           </div>
           <div className="fg">
@@ -608,10 +612,10 @@ const QrConnectPage = () => {
       </section>
 
       {/* ═══════ WHY BUSINESSES LOVE ═══════ */}
-      <section style={{ padding: "40px 3%", background: "#FFFFFF" }}>
+      <section style={{ padding: "60px 6%", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 24 }}>
-            <h2 style={{ fontSize: 24, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>Why Businesses Love QR & Connect</h2>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", marginBottom: 6, letterSpacing: "-1px" }}>Why Businesses Love QR & Connect</h2>
           </div>
           <div className="wg">
             {[
@@ -633,10 +637,10 @@ const QrConnectPage = () => {
       </section>
 
       {/* ═══════ HOW IT WORKS ═══════ */}
-      <section style={{ padding: "40px 3%", background: "#F8FAFC", borderTop: "1px solid #E2E8F0" }}>
+      <section style={{ padding: "60px 6%", background: "#F8FAFC", borderTop: "1px solid #E2E8F0" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 32 }}>
-            <h2 style={{ fontSize: 24, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>How QR & Connect Works?</h2>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", marginBottom: 6, letterSpacing: "-1px" }}>How QR & Connect Works?</h2>
           </div>
           <div style={{ position: "relative" }}>
             <div className="scl" style={{ position: "absolute", top: 18, left: "10%", right: "10%", height: 0, borderTop: "2px dashed #CBD5E1", zIndex: 0 }} />
@@ -690,11 +694,11 @@ const QrConnectPage = () => {
       </section>
 
       {/* ═══════ CTA BANNER ═══════ */}
-      <section style={{ padding: "36px 3%", background: "#FFFFFF" }}>
+      <section style={{ padding: "60px 6%", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 1140, margin: "0 auto" }}>
           <div style={{ background: "linear-gradient(135deg, #15803D 0%, #16A34A 50%, #22C55E 100%)", borderRadius: 18, padding: "32px 30px", color: "#FFF", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 24 }}>
             <div style={{ flex: "1 1 400px" }}>
-              <h2 style={{ fontSize: "clamp(18px, 2.2vw, 26px)", fontWeight: 900, color: "#FFF", marginBottom: 6, lineHeight: 1.2 }}>
+              <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#FFF", marginBottom: 6, lineHeight: 1.2, letterSpacing: "-1px" }}>
                 Ready to turn every scan<br />into meaningful conversations?
               </h2>
               <p style={{ fontSize: 11, color: "rgba(255,255,255,.85)", lineHeight: 1.45, margin: 0, maxWidth: 420 }}>Create your first QR code in less than 2 minutes and start connecting with more customers on WhatsApp today.</p>

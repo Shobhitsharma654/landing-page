@@ -434,8 +434,12 @@ const ContactPage = () => {
         }
         .contact-hero-right {
           flex: 0.9;
-          min-width: 0;
+          min-width: 320px;
           position: relative;
+          display: flex;
+          justify-content: center;
+          padding-top: 20px;
+          margin-bottom: -120px;
         }
 
         .grid-col-3 {
@@ -487,6 +491,20 @@ const ContactPage = () => {
           .contact-hero-left, .contact-hero-right {
             width: 100% !important;
             flex: none !important;
+            padding-top: 24px !important;
+            margin-bottom: 0 !important;
+            min-width: 0 !important;
+            justify-content: center !important;
+          }
+          .contact-hero-right > div {
+            transform: none !important;
+            transform-origin: top center !important;
+            margin: 0 auto !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            border-radius: 20px !important;
+            padding: 22px 16px !important;
+            box-sizing: border-box !important;
           }
           .grid-col-5 {
             grid-template-columns: repeat(2, 1fr);
@@ -561,6 +579,10 @@ const ContactPage = () => {
           .contact-form-info-box, .contact-form-box {
             padding: 18px 14px !important;
           }
+          .contact-hero-right > div {
+            padding: 18px 12px !important;
+            border-radius: 18px !important;
+          }
         }
 
         /* Glowing Pulse Animation */
@@ -586,9 +608,10 @@ const ContactPage = () => {
           SECTION 1: HERO
          ═══════════════════════════════════════════════════════════════════ */}
       <section
-        className="contact-section contact-hero-section"
+        className="contact-hero-section"
         style={{
-          marginTop: 70,
+          marginTop: 0,
+          padding: "92px 6% 48px",
           position: "relative",
           background: "linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)",
           overflow: "hidden",
@@ -625,7 +648,7 @@ const ContactPage = () => {
                 fontSize: 10.5,
                 fontWeight: 800,
                 letterSpacing: "1px",
-                marginBottom: 18,
+                marginBottom: 16,
                 textTransform: "uppercase",
               }}
             >
@@ -685,11 +708,15 @@ const ContactPage = () => {
               style={{
                 background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
                 borderRadius: 24,
-                padding: "28px 24px",
-                boxShadow: "0 20px 50px rgba(2, 44, 34, 0.4)",
-                border: "1px solid rgba(52, 211, 153, 0.25)",
+                padding: 28,
+                boxShadow: "0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)",
+                border: "1px solid rgba(34,197,94,.2)",
                 color: "#FFFFFF",
                 position: "relative",
+                width: "100%",
+                maxWidth: 460,
+                transform: "scale(0.75)",
+                transformOrigin: "top center",
                 overflow: "hidden",
               }}
             >
@@ -787,7 +814,7 @@ const ContactPage = () => {
             >
               Support Scope
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               How Can <span style={{ color: "#16A34A" }}>We Help?</span>
             </h2>
           </div>
@@ -875,7 +902,7 @@ const ContactPage = () => {
             >
               Self-Service Help
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
               Before You <span style={{ color: "#16A34A" }}>Contact Support</span>
             </h2>
 
@@ -943,7 +970,7 @@ const ContactPage = () => {
             >
               Direct Message
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
               Contact Our <span style={{ color: "#16A34A" }}>Support Team</span>
             </h2>
             <p style={{ fontSize: 13.5, color: "#64748B", maxWidth: 620, margin: "0 auto", lineHeight: 1.68 }}>
@@ -1274,7 +1301,7 @@ const ContactPage = () => {
             >
               Investigation Details
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
               Technical <span style={{ color: "#16A34A" }}>Support</span>
             </h2>
 
@@ -1319,7 +1346,7 @@ const ContactPage = () => {
       <section className="contact-section" style={{ background: "#FFFFFF" }}>
         <div style={{ maxWidth: 860, margin: "0 auto", textAlign: "center" }}>
           <Pill>Partnerships</Pill>
-          <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 900, color: D2, letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 16 }}>
+          <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: D2, letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 16 }}>
             Business &amp; Partnership Enquiries
           </h2>
           <p style={{ fontSize: 13.5, color: MU, lineHeight: 1.68, marginBottom: 20, maxWidth: 720, margin: "0 auto 20px" }}>
@@ -1338,7 +1365,7 @@ const ContactPage = () => {
         <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 500, height: 500, background: "rgba(22,163,74,.08)", borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none" }} />
         <div style={{ position: "relative", zIndex: 2, maxWidth: 860, margin: "0 auto" }}>
           <Pill>A Better Support Experience</Pill>
-          <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 900, color: D2, letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 16 }}>
+          <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: D2, letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 16 }}>
             We want support conversations<br />
             <span style={{ color: G }}>to be straightforward.</span>
           </h2>
@@ -1365,7 +1392,7 @@ const ContactPage = () => {
         <div style={{ maxWidth: 760, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 36 }}>
             <Pill>FAQ</Pill>
-            <h2 style={{ fontSize: "clamp(18px, 2.5vw, 30px)", fontWeight: 900, color: D2, letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: D2, letterSpacing: "-1px" }}>
               Frequently Asked Questions
             </h2>
           </div>
