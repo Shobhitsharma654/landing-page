@@ -181,38 +181,42 @@ const WhatsappQrGenerator = () => {
       // 6. Business Name
       const nameText = (businessName || "AAS TECH").toUpperCase();
       let fontSize = 52;
-      ctx.font = `900 ${fontSize}px 'Inter', sans-serif`;
       const maxNameWidth = 720;
+      const maxNameHeight = 90; // Strictly constrain height to prevent overlapping Logo
       
-      const nameWords = nameText.split(" ");
       let nameLines = [];
-      let currentNameLine = nameWords[0] || "";
+      let nameLineHeight = fontSize * 1.1;
       
-      for (let i = 1; i < nameWords.length; i++) {
-        const word = nameWords[i];
-        const width = ctx.measureText(currentNameLine + " " + word).width;
-        if (width < maxNameWidth) {
-          currentNameLine += " " + word;
-        } else {
-          nameLines.push(currentNameLine);
-          currentNameLine = word;
+      while (fontSize > 14) {
+        ctx.font = `900 ${fontSize}px 'Inter', sans-serif`;
+        nameLineHeight = fontSize * 1.1;
+        const words = nameText.split(" ");
+        nameLines = [];
+        let currentLine = words[0] || "";
+        
+        for (let i = 1; i < words.length; i++) {
+          const word = words[i];
+          const width = ctx.measureText(currentLine + " " + word).width;
+          if (width < maxNameWidth) {
+            currentLine += " " + word;
+          } else {
+            nameLines.push(currentLine);
+            currentLine = word;
+          }
         }
-      }
-      if (currentNameLine) nameLines.push(currentNameLine);
-      
-      if (nameLines.length === 1) {
-        while (ctx.measureText(nameLines[0]).width > maxNameWidth && fontSize > 20) {
-          fontSize -= 2;
-          ctx.font = `900 ${fontSize}px 'Inter', sans-serif`;
+        if (currentLine) nameLines.push(currentLine);
+        
+        if (nameLines.length * nameLineHeight <= maxNameHeight) {
+          break; // Fits vertically!
         }
+        fontSize -= 2; // Shrink font until it fits
       }
 
       ctx.fillStyle = "#001A36";
       ctx.textAlign = "center";
       
-      let startY = 290;
-      const nameLineHeight = fontSize * 1.2;
-      startY = 290 - ((nameLines.length - 1) * nameLineHeight) / 2;
+      // Start slightly below the logo to prevent overlap
+      let startY = 245 + fontSize; 
       
       nameLines.forEach((line, index) => {
         ctx.fillText(line, 400, startY + (index * nameLineHeight));
@@ -221,35 +225,45 @@ const WhatsappQrGenerator = () => {
       const nameEndY = startY + (nameLines.length - 1) * nameLineHeight;
 
       // 7. Dynamic Two-Tone Tagline for ANY custom text input
-      let taglineY = Math.max(335, nameEndY + 45);
       const currentTagline = tagline || "We Build. We Innovate. We Deliver.";
       const taglineWords = currentTagline.split(" ");
       let tagFontSize = 24;
-      ctx.font = `600 ${tagFontSize}px 'Inter', sans-serif`;
       const maxTaglineWidth = 720;
-
-      let tagLines = [];
-      let curTagLine = [];
+      const maxTaglineHeight = 45; // Strictly constrain height
+      let tagLineHeight = tagFontSize * 1.2;
       
-      taglineWords.forEach((word, index) => {
-        const testLine = [...curTagLine, { word, index }];
-        const testWidth = testLine.map(item => ctx.measureText(item.word + " ").width).reduce((a, b) => a + b, 0);
+      let tagLines = [];
+      
+      while (tagFontSize > 12) {
+        ctx.font = `600 ${tagFontSize}px 'Inter', sans-serif`;
+        tagLineHeight = tagFontSize * 1.2;
+        tagLines = [];
+        let curTagLine = [];
         
-        if (testWidth < maxTaglineWidth || curTagLine.length === 0) {
-          curTagLine.push({ word, index });
-        } else {
+        taglineWords.forEach((word, index) => {
+          const testLine = [...curTagLine, { word, index }];
+          const testWidth = testLine.map(item => ctx.measureText(item.word + " ").width).reduce((a, b) => a + b, 0);
+          
+          if (testWidth < maxTaglineWidth || curTagLine.length === 0) {
+            curTagLine.push({ word, index });
+          } else {
+            tagLines.push(curTagLine);
+            curTagLine = [{ word, index }];
+          }
+        });
+        if (curTagLine.length > 0) {
           tagLines.push(curTagLine);
-          curTagLine = [{ word, index }];
         }
-      });
-      if (curTagLine.length > 0) {
-        tagLines.push(curTagLine);
+        
+        if (tagLines.length * tagLineHeight <= maxTaglineHeight) {
+          break; // Fits vertically!
+        }
+        tagFontSize -= 1.5;
       }
 
-      let currentTagY = taglineY;
-      const tagLineHeight = 34;
+      let currentTagY = nameEndY + 15 + tagFontSize; // Gap below business name
 
-      tagLines.forEach(lineItems => {
+      tagLines.forEach((lineItems, lineIndex) => {
         let lineWordWidths = lineItems.map(item => ctx.measureText(item.word + " ").width);
         let totalW = lineWordWidths.reduce((a, b) => a + b, 0);
         let startX = 400 - totalW / 2;
@@ -257,17 +271,18 @@ const WhatsappQrGenerator = () => {
         ctx.textAlign = "left";
         lineItems.forEach((item, i) => {
           ctx.fillStyle = item.index % 2 === 0 ? "#001A36" : "#16A34A";
-          ctx.fillText(item.word + " ", startX, currentTagY);
+          ctx.fillText(item.word + " ", startX, currentTagY + lineIndex * tagLineHeight);
           startX += lineWordWidths[i];
         });
-        currentTagY += tagLineHeight;
       });
 
-      const tagEndY = currentTagY - tagLineHeight;
-      let dy = Math.max(0, tagEndY - 335);
-
-      // Reduce dy if it pushes things too far down
-      if (dy > 80) dy = 80;
+      const tagEndY = currentTagY + (tagLines.length - 1) * tagLineHeight;
+      
+      // Calculate how much to shift the rest of the UI down.
+      // Only shift if the text extends past the original space.
+      let dy = Math.max(0, tagEndY - 345);
+      
+      if (dy > 65) dy = 65; // Safe cap to prevent pushing footer off canvas
 
       // 8. Green Dot Divider Line
       const dividerY = 365 + dy;
