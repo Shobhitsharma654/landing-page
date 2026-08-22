@@ -179,90 +179,163 @@ const WhatsappQrGenerator = () => {
       }
 
       // 6. Business Name
+      const nameText = (businessName || "AAS TECH").toUpperCase();
+      let fontSize = 52;
+      ctx.font = `900 ${fontSize}px 'Inter', sans-serif`;
+      const maxNameWidth = 720;
+      
+      const nameWords = nameText.split(" ");
+      let nameLines = [];
+      let currentNameLine = nameWords[0] || "";
+      
+      for (let i = 1; i < nameWords.length; i++) {
+        const word = nameWords[i];
+        const width = ctx.measureText(currentNameLine + " " + word).width;
+        if (width < maxNameWidth) {
+          currentNameLine += " " + word;
+        } else {
+          nameLines.push(currentNameLine);
+          currentNameLine = word;
+        }
+      }
+      if (currentNameLine) nameLines.push(currentNameLine);
+      
+      if (nameLines.length === 1) {
+        while (ctx.measureText(nameLines[0]).width > maxNameWidth && fontSize > 20) {
+          fontSize -= 2;
+          ctx.font = `900 ${fontSize}px 'Inter', sans-serif`;
+        }
+      }
+
       ctx.fillStyle = "#001A36";
-      ctx.font = "900 52px 'Inter', sans-serif";
       ctx.textAlign = "center";
-      ctx.fillText((businessName || "AAS TECH").toUpperCase(), 400, 290);
-
-      // 7. Dynamic Two-Tone Tagline for ANY custom text input
-      const currentTagline = tagline || "We Build. We Innovate. We Deliver.";
-      const taglineWords = currentTagline.split(" ");
-      ctx.font = "600 24px 'Inter', sans-serif";
-
-      const wordWidths = taglineWords.map(w => ctx.measureText(w + " ").width);
-      const totalW = wordWidths.reduce((a, b) => a + b, 0);
-      let startX = 400 - totalW / 2;
-
-      ctx.textAlign = "left";
-      taglineWords.forEach((word, i) => {
-        ctx.fillStyle = i % 2 === 0 ? "#001A36" : "#16A34A";
-        ctx.fillText(word + " ", startX, 335);
-        startX += wordWidths[i];
+      
+      let startY = 290;
+      const nameLineHeight = fontSize * 1.2;
+      startY = 290 - ((nameLines.length - 1) * nameLineHeight) / 2;
+      
+      nameLines.forEach((line, index) => {
+        ctx.fillText(line, 400, startY + (index * nameLineHeight));
       });
 
+      const nameEndY = startY + (nameLines.length - 1) * nameLineHeight;
+
+      // 7. Dynamic Two-Tone Tagline for ANY custom text input
+      let taglineY = Math.max(335, nameEndY + 45);
+      const currentTagline = tagline || "We Build. We Innovate. We Deliver.";
+      const taglineWords = currentTagline.split(" ");
+      let tagFontSize = 24;
+      ctx.font = `600 ${tagFontSize}px 'Inter', sans-serif`;
+      const maxTaglineWidth = 720;
+
+      let tagLines = [];
+      let curTagLine = [];
+      
+      taglineWords.forEach((word, index) => {
+        const testLine = [...curTagLine, { word, index }];
+        const testWidth = testLine.map(item => ctx.measureText(item.word + " ").width).reduce((a, b) => a + b, 0);
+        
+        if (testWidth < maxTaglineWidth || curTagLine.length === 0) {
+          curTagLine.push({ word, index });
+        } else {
+          tagLines.push(curTagLine);
+          curTagLine = [{ word, index }];
+        }
+      });
+      if (curTagLine.length > 0) {
+        tagLines.push(curTagLine);
+      }
+
+      let currentTagY = taglineY;
+      const tagLineHeight = 34;
+
+      tagLines.forEach(lineItems => {
+        let lineWordWidths = lineItems.map(item => ctx.measureText(item.word + " ").width);
+        let totalW = lineWordWidths.reduce((a, b) => a + b, 0);
+        let startX = 400 - totalW / 2;
+
+        ctx.textAlign = "left";
+        lineItems.forEach((item, i) => {
+          ctx.fillStyle = item.index % 2 === 0 ? "#001A36" : "#16A34A";
+          ctx.fillText(item.word + " ", startX, currentTagY);
+          startX += lineWordWidths[i];
+        });
+        currentTagY += tagLineHeight;
+      });
+
+      const tagEndY = currentTagY - tagLineHeight;
+      let dy = Math.max(0, tagEndY - 335);
+
+      // Reduce dy if it pushes things too far down
+      if (dy > 80) dy = 80;
+
       // 8. Green Dot Divider Line
+      const dividerY = 365 + dy;
       ctx.strokeStyle = "#16A34A";
       ctx.lineWidth = 3;
       ctx.beginPath();
-      ctx.moveTo(320, 365);
-      ctx.lineTo(385, 365);
+      ctx.moveTo(320, dividerY);
+      ctx.lineTo(385, dividerY);
       ctx.stroke();
 
       ctx.beginPath();
-      ctx.arc(400, 365, 6, 0, Math.PI * 2);
+      ctx.arc(400, dividerY, 6, 0, Math.PI * 2);
       ctx.fillStyle = "#16A34A";
       ctx.fill();
 
       ctx.beginPath();
-      ctx.moveTo(415, 365);
-      ctx.lineTo(480, 365);
+      ctx.moveTo(415, dividerY);
+      ctx.lineTo(480, dividerY);
       ctx.stroke();
 
       // 9. Phone Pill Box
+      const pillY = 395 + dy;
       ctx.fillStyle = "#FFFFFF";
       ctx.strokeStyle = "#E2E8F0";
       ctx.lineWidth = 2;
       ctx.beginPath();
-      ctx.roundRect(200, 395, 400, 64, 32);
+      ctx.roundRect(200, pillY, 400, 64, 32);
       ctx.fill();
       ctx.stroke();
 
       // Green WhatsApp circle inside pill
       ctx.fillStyle = "#16A34A";
       ctx.beginPath();
-      ctx.arc(245, 427, 20, 0, Math.PI * 2);
+      ctx.arc(245, pillY + 32, 20, 0, Math.PI * 2);
       ctx.fill();
 
       // Phone Handset Icon inside circle
       ctx.fillStyle = "#FFFFFF";
       ctx.font = "bold 18px 'Inter', sans-serif";
       ctx.textAlign = "center";
-      ctx.fillText("📞", 245, 433);
+      ctx.fillText("📞", 245, pillY + 38);
 
       // Phone Number Text
       const displayPhone = phoneNumber ? `+${countryCode} ${phoneNumber}` : "+91 6203459821";
       ctx.fillStyle = "#001A36";
       ctx.font = "900 36px 'Inter', sans-serif";
       ctx.textAlign = "center";
-      ctx.fillText(displayPhone, 420, 440);
+      ctx.fillText(displayPhone, 420, pillY + 45);
 
       // 10. Green Border Box around QR
+      const qrBoxY = 490 + dy;
       ctx.strokeStyle = "#16A34A";
       ctx.lineWidth = 4;
       ctx.beginPath();
-      ctx.roundRect(200, 490, 400, 400, 24);
+      ctx.roundRect(200, qrBoxY, 400, 400, 24);
       ctx.stroke();
 
       // 11. Draw QR Code Image
       const qrImg = new Image();
       qrImg.onload = () => {
         const qrSize = 360;
-        ctx.drawImage(qrImg, 400 - qrSize / 2, 690 - qrSize / 2, qrSize, qrSize);
+        const qrCenterY = qrBoxY + 200;
+        ctx.drawImage(qrImg, 400 - qrSize / 2, qrCenterY - qrSize / 2, qrSize, qrSize);
 
         // Center Official WhatsApp Badge on Canvas
         ctx.save();
         ctx.beginPath();
-        ctx.arc(400, 690, 42, 0, Math.PI * 2);
+        ctx.arc(400, qrCenterY, 42, 0, Math.PI * 2);
         ctx.fillStyle = "#FFFFFF";
         ctx.shadowColor = "rgba(0,0,0,0.15)";
         ctx.shadowBlur = 10;
@@ -271,34 +344,36 @@ const WhatsappQrGenerator = () => {
 
         const waSvgImg = new Image();
         waSvgImg.onload = () => {
-          ctx.drawImage(waSvgImg, 400 - 36, 690 - 36, 72, 72);
+          ctx.drawImage(waSvgImg, 400 - 36, qrCenterY - 36, 72, 72);
 
           // Bottom Standalone Pill ("Scan & Chat on WhatsApp")
+          const scanPillY = 905 + dy;
           ctx.fillStyle = "#007A3E";
           ctx.beginPath();
-          ctx.roundRect(240, 905, 320, 46, 23);
+          ctx.roundRect(240, scanPillY, 320, 46, 23);
           ctx.fill();
 
           // Smartphone Vector Icon on Pill
           ctx.strokeStyle = "#FFFFFF";
           ctx.lineWidth = 2.5;
           ctx.beginPath();
-          ctx.roundRect(268, 916, 16, 24, 3);
+          ctx.roundRect(268, scanPillY + 11, 16, 24, 3);
           ctx.stroke();
           ctx.fillStyle = "#16A34A";
-          ctx.fillRect(271, 919, 10, 15);
+          ctx.fillRect(271, scanPillY + 14, 10, 15);
           ctx.fillStyle = "#FFFFFF";
           ctx.beginPath();
-          ctx.arc(276, 936, 1.5, 0, Math.PI * 2);
+          ctx.arc(276, scanPillY + 31, 1.5, 0, Math.PI * 2);
           ctx.fill();
 
           // Text on Pill
           ctx.fillStyle = "#FFFFFF";
           ctx.font = "bold 20px 'Inter', sans-serif";
           ctx.textAlign = "left";
-          ctx.fillText("Scan & Chat on WhatsApp", 295, 936);
+          ctx.fillText("Scan & Chat on WhatsApp", 295, scanPillY + 31);
 
           // 12. 4 Feature Badges at Bottom
+          const badgesY = 990 + dy;
           const features = [
             { icon: "⚡", label1: "Instant", label2: "Connect" },
             { icon: "🛡️", label1: "Secure &", label2: "Reliable" },
@@ -308,7 +383,7 @@ const WhatsappQrGenerator = () => {
 
           features.forEach((feat, idx) => {
             const cx = 140 + idx * 173;
-            const cy = 990;
+            const cy = badgesY;
 
             // Icon circle
             ctx.beginPath();
@@ -337,31 +412,32 @@ const WhatsappQrGenerator = () => {
           });
 
           // 13. Footer Divider Lines & MessBee Logo
+          const footerY = 1110 + dy;
           ctx.strokeStyle = "#16A34A";
           ctx.lineWidth = 2;
           ctx.beginPath();
-          ctx.moveTo(180, 1110);
-          ctx.lineTo(260, 1110);
+          ctx.moveTo(180, footerY);
+          ctx.lineTo(260, footerY);
           ctx.stroke();
 
           ctx.beginPath();
-          ctx.moveTo(540, 1110);
-          ctx.lineTo(620, 1110);
+          ctx.moveTo(540, footerY);
+          ctx.lineTo(620, footerY);
           ctx.stroke();
 
           ctx.fillStyle = "#64748B";
           ctx.font = "600 20px 'Inter', sans-serif";
           ctx.textAlign = "right";
-          ctx.fillText("Powered By", 370, 1116);
+          ctx.fillText("Powered By", 370, footerY + 6);
 
           // MessBee Landing Page Brand Colors: Mess in #15803D, Bee in #4ADE80
           ctx.font = "900 24px 'Inter', sans-serif";
           ctx.textAlign = "left";
           ctx.fillStyle = "#15803D";
-          ctx.fillText("Mess", 385, 1117);
+          ctx.fillText("Mess", 385, footerY + 7);
           const wMess = ctx.measureText("Mess").width;
           ctx.fillStyle = "#4ADE80";
-          ctx.fillText("Bee", 385 + wMess, 1117);
+          ctx.fillText("Bee", 385 + wMess, footerY + 7);
 
           // 14. Trigger PNG Download
           const pngFile = canvas.toDataURL("image/png");
