@@ -525,8 +525,7 @@ const DpaPage = () => {
         * { box-sizing: border-box; }
         .no-scrollbar::-webkit-scrollbar { display: none !important; }
         .no-scrollbar { -ms-overflow-style: none !important; scrollbar-width: none !important; }
-        .dpa-container { display: flex; gap: 60px; align-items: flex-start; width: 100%; min-width: 0; }
-        .dpa-article { flex: 1; min-width: 0; width: 100%; text-align: left; }
+        .dpa-container { display: flex; gap: 60px; align-items: flex-start; }
         .dpa-sidebar {
           width: 320px; flex-shrink: 0;
           position: sticky; top: 95px; z-index: 10;
@@ -555,11 +554,9 @@ const DpaPage = () => {
         .policy-hero {
           padding-top: 130px; padding-bottom: 48px;
           padding-left: 6%; padding-right: 6%;
-          text-align: left;
         }
         .policy-content {
           padding: 48px 6%;
-          text-align: left;
         }
 
         /* ── STANDARDIZED RESPONSIVE TYPOGRAPHY & PADDING ── */
@@ -624,31 +621,8 @@ const DpaPage = () => {
           }
         }
         @media (max-width: 768px) {
-          .policy-hero {
-            padding-top: 84px !important;
-            padding-bottom: 24px !important;
-            padding-left: 16px !important;
-            padding-right: 16px !important;
-            text-align: left !important;
-          }
-          .policy-content {
-            padding-top: 16px !important;
-            padding-bottom: 30px !important;
-            padding-left: 16px !important;
-            padding-right: 16px !important;
-            width: 100% !important;
-            overflow: hidden !important;
-          }
-          .dpa-container {
-            width: 100% !important;
-            min-width: 0 !important;
-            gap: 0 !important;
-          }
-          .dpa-article {
-            width: 100% !important;
-            min-width: 0 !important;
-            text-align: left !important;
-          }
+          .policy-hero { padding-top: 100px !important; padding-bottom: 20px !important; }
+          .policy-content { padding-top: 20px !important; padding-bottom: 30px !important; }
           .mobile-toc-wrapper {
             display: block !important;
             position: sticky !important;
@@ -656,24 +630,24 @@ const DpaPage = () => {
             z-index: 100 !important;
             margin-top: 0 !important;
             margin-bottom: 16px !important;
-            width: 100% !important;
-            margin-left: 0 !important;
-            margin-right: 0 !important;
+            width: calc(100% + 32px) !important;
+            margin-left: -16px !important;
+            margin-right: -16px !important;
           }
           .mobile-toc-wrapper > div {
             border: 1px solid #E2E8F0 !important;
-            border-radius: 14px !important;
+            border-left: none !important;
+            border-right: none !important;
+            border-radius: 0 !important;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
-            padding: 10px 14px !important;
           }
           .dpa-page-wrapper article > div:first-child {
             margin-bottom: 16px !important;
           }
           .dpa-page-wrapper article > div[id] {
             scroll-margin-top: 485px !important;
-            padding: 18px 14px !important;
+            padding: 20px 16px !important;
             margin-bottom: 14px !important;
-            border-radius: 14px !important;
           }
           .dpa-page-wrapper section {
             padding-left: 16px !important;
@@ -683,28 +657,19 @@ const DpaPage = () => {
             font-size: clamp(24px, 6vw, 36px) !important;
             letter-spacing: -0.5px !important;
             line-height: 1.25 !important;
-            text-align: left !important;
+            word-spacing: 2px !important;
             margin-bottom: 12px !important;
           }
           .dpa-page-wrapper h2 {
-            font-size: 18px !important;
-            text-align: left !important;
+            font-size: clamp(17px, 2vw, 22px) !important;
           }
           .dpa-page-wrapper h3 {
             font-size: 13.5px !important;
-            text-align: left !important;
           }
           .dpa-page-wrapper p {
-            font-size: 13px !important;
-            line-height: 1.6 !important;
-            text-align: left !important;
+            font-size: 12.5px !important;
           }
-          .dpa-section-card {
-            padding: 18px 14px !important;
-            text-align: left !important;
-            word-break: break-word !important;
-            overflow-wrap: break-word !important;
-          }
+          .dpa-section-card { padding: 18px !important; }
         }
       `}</style>
 
@@ -891,7 +856,7 @@ const DpaPage = () => {
           </aside>
 
           {/* ── Article ── */}
-          <article className="dpa-article" style={{ flex: 1, minWidth: 0, width: "100%", textAlign: "left" }}>
+          <article className="dpa-article">
             {/* Plain language box */}
             <div
               style={{
