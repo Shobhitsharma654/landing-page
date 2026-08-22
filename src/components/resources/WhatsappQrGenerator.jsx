@@ -281,30 +281,30 @@ const WhatsappQrGenerator = () => {
         waSvgImg.onload = () => {
           ctx.drawImage(waSvgImg, 400 - 36, 690 - 36, 72, 72);
 
-          // Bottom Attached Pill ("Scan & Chat on WhatsApp")
+          // Bottom Standalone Pill ("Scan & Chat on WhatsApp")
           ctx.fillStyle = "#007A3E";
           ctx.beginPath();
-          ctx.roundRect(240, 866, 320, 48, 24);
+          ctx.roundRect(240, 905, 320, 46, 23);
           ctx.fill();
 
           // Smartphone Vector Icon on Pill
           ctx.strokeStyle = "#FFFFFF";
           ctx.lineWidth = 2.5;
           ctx.beginPath();
-          ctx.roundRect(268, 878, 16, 24, 3);
+          ctx.roundRect(268, 916, 16, 24, 3);
           ctx.stroke();
           ctx.fillStyle = "#16A34A";
-          ctx.fillRect(271, 881, 10, 15);
+          ctx.fillRect(271, 919, 10, 15);
           ctx.fillStyle = "#FFFFFF";
           ctx.beginPath();
-          ctx.arc(276, 898, 1.5, 0, Math.PI * 2);
+          ctx.arc(276, 936, 1.5, 0, Math.PI * 2);
           ctx.fill();
 
           // Text on Pill
           ctx.fillStyle = "#FFFFFF";
           ctx.font = "bold 20px 'Inter', sans-serif";
           ctx.textAlign = "left";
-          ctx.fillText("Scan & Chat on WhatsApp", 295, 898);
+          ctx.fillText("Scan & Chat on WhatsApp", 295, 936);
 
           // 12. 4 Feature Badges at Bottom
           const features = [
@@ -316,7 +316,7 @@ const WhatsappQrGenerator = () => {
 
           features.forEach((feat, idx) => {
             const cx = 140 + idx * 173;
-            const cy = 970;
+            const cy = 990;
 
             // Icon circle
             ctx.beginPath();
@@ -615,7 +615,7 @@ const WhatsappQrGenerator = () => {
                       </div>
 
                       {/* QR Code Container with Green Border */}
-                      <div style={{ position: "relative", display: "inline-block", padding: 6, background: "#FFFFFF", border: "1.5px solid #16A34A", borderRadius: 12, marginBottom: 10 }}>
+                      <div style={{ position: "relative", display: "inline-block", padding: 6, background: "#FFFFFF", border: "1.5px solid #16A34A", borderRadius: 12, marginBottom: 8 }}>
                         <div ref={qrRef} style={{ display: "flex", justifyContent: "center" }}>
                           <QRCodeSVG 
                             value={generatedDeepLink} 
@@ -634,10 +634,12 @@ const WhatsappQrGenerator = () => {
                             <path fill="#25D366" d="M9.01 7.61c-.2-.44-.41-.45-.6-.46h-.51c-.17 0-.46.07-.7.33-.24.26-.92.9-.92 2.2 0 1.3.95 2.56 1.08 2.74.13.17 1.87 2.85 4.53 4 2.22.96 2.67.77 3.15.72.48-.05 1.55-.63 1.77-1.24.22-.61.22-1.13.15-1.24-.07-.11-.26-.17-.56-.32s-1.77-.87-2.05-.97c-.28-.1-.48-.15-.68.15-.2.3-.77.97-.95 1.17-.18.2-.35.22-.65.07-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.79-1.67-2.09-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.65-1.57-.9-2.16z"/>
                           </svg>
                         </div>
+                      </div>
 
-                        {/* Bottom Attached Pill ("Scan & Chat on WhatsApp") */}
-                        <div style={{ position: "absolute", bottom: -9, left: "50%", transform: "translateX(-50%)", background: "#007A3E", color: "#FFFFFF", borderRadius: 16, padding: "2px 9px", fontSize: 7.5, fontWeight: 700, display: "flex", alignItems: "center", gap: 4, whiteSpace: "nowrap", boxShadow: "0 2px 4px rgba(0,0,0,0.2)" }}>
-                          <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      {/* Separate Standalone Pill ("Scan & Chat on WhatsApp") */}
+                      <div style={{ display: "flex", justifyContent: "center", marginBottom: 8 }}>
+                        <div style={{ background: "#007A3E", color: "#FFFFFF", borderRadius: 16, padding: "3px 12px", fontSize: 8, fontWeight: 700, display: "inline-flex", alignItems: "center", gap: 5, whiteSpace: "nowrap", boxShadow: "0 2px 5px rgba(0,0,0,0.15)" }}>
+                          <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                             <rect x="5" y="2" width="14" height="20" rx="2" ry="2" fill="none" stroke="#FFFFFF" />
                             <path d="M12 18h.01" stroke="#FFFFFF" />
                             <path d="M9 7l3 3-3 3" stroke="#FFFFFF" />

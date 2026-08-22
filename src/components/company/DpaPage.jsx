@@ -625,9 +625,10 @@ const DpaPage = () => {
           .policy-content { padding-top: 20px !important; padding-bottom: 30px !important; }
           .mobile-toc-wrapper {
             display: block !important;
-            position: sticky;
-            top: 70px;
-            z-index: 25;
+            position: sticky !important;
+            top: 63px !important;
+            z-index: 100 !important;
+            margin-top: 0 !important;
             margin-bottom: 16px !important;
             width: calc(100% + 32px) !important;
             margin-left: -16px !important;
@@ -638,6 +639,7 @@ const DpaPage = () => {
             border-left: none !important;
             border-right: none !important;
             border-radius: 0 !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
           }
           .dpa-page-wrapper article > div:first-child {
             margin-bottom: 16px !important;
