@@ -117,7 +117,7 @@ const Navbar = () => {
           padding: 8px 9px;
           flex-direction: column;
           justify-content: center;
-          gap: 3.5px;
+          gap: 4.5px;
           align-items: center;
           transition: all 0.2s ease;
         }
@@ -318,14 +318,13 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* 4 Laying Lines Menu Button (Mobile View) */}
+        {/* 3-Line Hamburger Menu Button (Mobile View) */}
         <button
           className="mobile-menu-btn"
           onClick={() => setMobileMenuOpen(true)}
           aria-label="Open Navigation Menu"
           title="Open Menu"
         >
-          <span className="line" />
           <span className="line" />
           <span className="line" />
           <span className="line" />
