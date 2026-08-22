@@ -481,16 +481,29 @@ const DpaPage = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 200;
+      if (
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 60
+      ) {
+        setActiveSection(sections[sections.length - 1].id);
+        return;
+      }
+
+      const threshold = 160;
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i].id);
-        if (el && el.offsetTop <= scrollPosition) {
-          setActiveSection(sections[i].id);
-          break;
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= threshold) {
+            setActiveSection(sections[i].id);
+            return;
+          }
         }
       }
+      setActiveSection(sections[0].id);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -498,9 +511,8 @@ const DpaPage = () => {
     setActiveSection(id);
     const element = document.getElementById(id);
     if (element) {
-      const mobileTocEl = document.querySelector(".mobile-toc-wrapper");
-      const isMobileTocVisible = mobileTocEl && window.getComputedStyle(mobileTocEl).display !== "none";
-      const offset = isMobileTocVisible ? 130 : 95;
+      const isMobile = window.innerWidth <= 768;
+      const offset = isMobile ? 135 : 95;
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({
         top: elementPosition - offset,
@@ -625,27 +637,31 @@ const DpaPage = () => {
           .policy-content { padding-top: 20px !important; padding-bottom: 30px !important; }
           .mobile-toc-wrapper {
             display: block !important;
+            position: -webkit-sticky !important;
             position: sticky !important;
-            top: 63px !important;
+            top: 64px !important;
             z-index: 100 !important;
             margin-top: 0 !important;
             margin-bottom: 16px !important;
             width: calc(100% + 32px) !important;
             margin-left: -16px !important;
             margin-right: -16px !important;
+            background: #FFFFFF !important;
           }
           .mobile-toc-wrapper > div {
-            border: 1px solid #E2E8F0 !important;
+            border-top: 1px solid #E2E8F0 !important;
+            border-bottom: 1px solid #E2E8F0 !important;
             border-left: none !important;
             border-right: none !important;
             border-radius: 0 !important;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+            background: #FFFFFF !important;
           }
           .dpa-page-wrapper article > div:first-child {
             margin-bottom: 16px !important;
           }
           .dpa-page-wrapper article > div[id] {
-            scroll-margin-top: 130px !important;
+            scroll-margin-top: 135px !important;
             padding: 20px 16px !important;
             margin-bottom: 14px !important;
           }
