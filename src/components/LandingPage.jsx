@@ -64,6 +64,7 @@ const VideoBanner = () => {
     <div style={{ position: "relative", borderRadius: 24, overflow: "hidden", boxShadow: "0 16px 36px rgba(0,0,0,0.08)", marginBottom: 32, background: "#000", cursor: isPlaying ? "default" : "pointer" }} onClick={!isPlaying ? handlePlay : undefined}>
       <video 
         ref={videoRef}
+        className="lp-video-player"
         src="/testimonial_video.mp4" 
         controls={isPlaying}
         style={{ width: "100%", height: 360, objectFit: "cover", display: "block" }}
@@ -241,12 +242,15 @@ const LandingPage = () => {
         .lp-nav-arrow-left { position: absolute; left: -24px; }
         .lp-nav-arrow-right { position: absolute; right: -24px; }
         .lp-hiw-img-col { position: relative; width: 65%; margin: 0 auto; }
+        .lp-features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; align-items: stretch; }
+        .lp-category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 48px; }
+        .lp-ai-pill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 
         @media (max-width: 900px) {
           .lp-hero-row { flex-direction: column; gap: 24px; }
           .lp-hero-left { flex: 1 1 100%; min-width: unset; }
           .lp-hero-right { flex: 1 1 100%; min-width: unset; }
-          .lp-ai-grid { grid-template-columns: 1fr !important; }
+          .lp-ai-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
           .lp-compare-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
           .lp-hiw-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
           .lp-hiw-img-col { width: 80% !important; }
@@ -259,49 +263,171 @@ const LandingPage = () => {
         }
 
         @media (max-width: 768px) {
-          .lp-hero-section { padding: 80px 4% 32px !important; }
-          .lp-hero-right { display: flex !important; width: 100% !important; margin-top: 18px !important; align-items: center !important; justify-content: center !important; padding: 0 8px !important; }
-          .lp-hero-mockup-wrap { width: 100% !important; max-width: 520px !important; transform: none !important; margin-bottom: 0 !important; }
+          .lp-hero-section { padding: 90px 4% 32px !important; }
+          .lp-hero-h1 { font-size: 28px !important; line-height: 1.15 !important; margin-bottom: 10px !important; }
+          .lp-hero-tagline { font-size: 14px !important; margin-bottom: 16px !important; }
+          .lp-hero-desc { font-size: 11.5px !important; line-height: 1.55 !important; margin-bottom: 24px !important; max-width: 100% !important; }
+          .lp-hero-right { display: flex !important; width: 100% !important; margin-top: 24px !important; align-items: center !important; justify-content: center !important; padding: 0 68px !important; box-sizing: border-box !important; overflow: visible !important; }
+          .lp-hero-mockup-wrap { width: 100% !important; max-width: 380px !important; transform: none !important; margin: 0 auto !important; }
           .lp-hero-viewport { min-height: auto !important; }
-          .lp-hero-sidebar { width: 34px !important; padding: 6px 2px !important; gap: 6px !important; }
+          .lp-hero-sidebar { width: 32px !important; padding: 6px 2px !important; gap: 6px !important; }
           .lp-hero-canvas { padding: 6px 8px !important; gap: 5px !important; }
-          .lp-hero-top-row { gap: 6px !important; }
-          .lp-hero-top-row > div { padding: 4px 6px !important; }
+          .lp-hero-top-row { gap: 5px !important; }
+          .lp-hero-top-row > div { padding: 4px 5px !important; }
           .lp-hero-mid-row { padding: 4px 8px !important; }
           .lp-hero-chart { height: 22px !important; }
-          .lp-hero-bottom-row { gap: 6px !important; }
+          .lp-hero-bottom-row { gap: 5px !important; }
           .lp-hero-bottom-row > div { padding: 4px 8px !important; }
-          .lp-hero-badge { display: flex !important; padding: 3px 6px !important; font-size: 9px !important; z-index: 12 !important; box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important; }
-          .lp-hero-badge span { font-size: 8.5px !important; }
-          .lp-badge-wa   { left: -14px !important; top: 18px !important; }
-          .lp-badge-api  { left: -18px !important; top: 85px !important; }
-          .lp-badge-rzp  { left: -14px !important; bottom: 50px !important; }
-          .lp-badge-ship { right: -14px !important; top: 20px !important; }
-          .lp-badge-goog { right: -12px !important; top: 90px !important; }
-          .lp-badge-ondc { right: -12px !important; bottom: 55px !important; }
-          .lp-compare-card-pad { padding: 24px 20px !important; }
-          .lp-newsletter-section { padding: 60px 5% !important; }
-          .lp-choose-inner { grid-template-columns: 1fr !important; gap: 12px !important; }
-          .lp-choose-img { max-height: 320px; overflow: hidden; justify-content: center !important; }
-          .lp-choose-img img { max-height: 320px; object-fit: contain; width: auto !important; transform: none !important; }
-          .lp-industry-item { width: calc(50% - 8px) !important; height: 140px !important; }
+          .lp-hero-badge { display: flex !important; padding: 3px 8px !important; font-size: 8.5px !important; border-radius: 20px !important; z-index: 12 !important; box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important; white-space: nowrap !important; }
+          .lp-hero-badge span { font-size: 8px !important; }
+          .lp-badge-wa   { left: -65px !important; top: 18px !important; }
+          .lp-badge-api  { left: -70px !important; top: 85px !important; }
+          .lp-badge-rzp  { left: -65px !important; bottom: 50px !important; }
+          .lp-badge-ship { right: -65px !important; top: 20px !important; }
+          .lp-badge-goog { right: -60px !important; top: 90px !important; }
+          .lp-badge-ondc { right: -60px !important; bottom: 55px !important; }
+          
+          .lp-features-strip { padding: 28px 16px !important; }
+          .lp-features-heading { font-size: 20px !important; margin-bottom: 18px !important; }
+          .lp-features-grid { grid-template-columns: 1fr 1fr !important; gap: 10px !important; }
+          .lp-feature-card { padding: 10px 12px !important; gap: 10px !important; border-radius: 12px !important; }
+          .lp-feature-title { font-size: 12px !important; white-space: normal !important; }
+          .lp-feature-desc { font-size: 9.5px !important; white-space: normal !important; }
+
+          .lp-preview-section { padding: 32px 4% 20px !important; }
+          .lp-preview-heading { font-size: 24px !important; line-height: 1.25 !important; margin-bottom: 10px !important; }
+          .lp-preview-desc { font-size: 13px !important; margin-bottom: 24px !important; }
+
+          .lp-compare-section { padding: 16px 4% 40px !important; }
+          .lp-compare-heading { font-size: 24px !important; }
+          .lp-compare-card-pad { padding: 24px 18px !important; border-radius: 18px !important; }
+          .lp-compare-item-text { font-size: 13px !important; }
+          .lp-compare-card-title { font-size: 18px !important; margin-bottom: 18px !important; }
+
+          .lp-ai-section { padding: 30px 4% !important; }
+          .lp-ai-card { padding: 22px 18px !important; border-radius: 18px !important; }
+          .lp-ai-robot-card { height: 240px !important; max-height: 240px !important; border-radius: 18px !important; }
+
+          .lp-category-section { padding: 32px 4% 40px !important; }
+          .lp-category-heading { font-size: 24px !important; }
+          .lp-category-grid { grid-template-columns: 1fr 1fr !important; gap: 10px !important; margin-bottom: 28px !important; }
+          .lp-category-card { padding: 14px 12px !important; border-radius: 12px !important; gap: 8px !important; }
+          .lp-category-card h3 { font-size: 11.5px !important; margin-bottom: 4px !important; }
+          .lp-category-card p { font-size: 9.5px !important; line-height: 1.4 !important; }
+
+          .lp-hiw-section { padding: 0 0 36px !important; }
+          .lp-hiw-badge { font-size: 9px !important; padding: 4px 8px !important; }
+          .lp-hiw-badge-1 { top: 8% !important; left: 0% !important; }
+          .lp-hiw-badge-2 { top: 20% !important; right: 0% !important; }
+          .lp-hiw-badge-3 { top: 65% !important; left: 4% !important; }
+          .lp-hiw-steps-col { padding-top: 16px !important; }
+
+          .lp-choose-section { padding: 24px 0 !important; }
+          .lp-choose-inner { grid-template-columns: 1fr 1fr !important; gap: 14px 10px !important; }
+          .lp-choose-img { max-height: 280px; overflow: hidden; justify-content: center !important; }
+          .lp-choose-img img { max-height: 280px; object-fit: contain; width: auto !important; transform: none !important; }
+
+          .lp-industry-section { padding: 30px 4% 40px !important; }
+          .lp-industry-header { margin-bottom: 24px !important; }
+          .lp-industry-heading { font-size: 24px !important; }
+          .lp-industry-desc { font-size: 12.5px !important; }
+          .lp-industry-dark-box { padding: 8px !important; border-radius: 14px !important; }
+          .lp-industry-flex { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+          .lp-industry-item { width: 100% !important; height: 160px !important; border-radius: 12px !important; }
+          .lp-industry-content { padding: 12px !important; }
+          .lp-industry-icon { width: 28px !important; height: 28px !important; margin-bottom: 8px !important; border-radius: 6px !important; }
+          .lp-industry-icon svg { width: 16px !important; height: 16px !important; }
+          .lp-industry-card-title { font-size: 13.5px !important; margin-bottom: 4px !important; }
+          .lp-industry-card-desc { font-size: 10px !important; line-height: 1.35 !important; max-width: 100% !important; }
           .lp-meta-badge span { font-size: 12px !important; }
           .lp-hero-btns { gap: 10px; }
+
+          .lp-testimonial-section { padding: 20px 4% 40px !important; }
+          .lp-testimonial-card-active { transform: none !important; padding: 22px 18px !important; border-radius: 18px !important; min-height: auto !important; }
+          .lp-video-player { height: 220px !important; }
+
+          .lp-newsletter-section { padding: 50px 4% !important; }
         }
 
         @media (max-width: 480px) {
-          .lp-hero-section { padding: 70px 3% 24px !important; }
-          .lp-hero-mockup-wrap { max-width: 100% !important; }
-          .lp-hero-top-row > div { padding: 3px 4px !important; }
-          .lp-badge-wa   { left: -8px !important; top: 14px !important; }
-          .lp-badge-api  { left: -12px !important; top: 75px !important; }
-          .lp-badge-rzp  { left: -8px !important; bottom: 40px !important; }
-          .lp-badge-ship { right: -8px !important; top: 16px !important; }
-          .lp-badge-goog { right: -6px !important; top: 80px !important; }
-          .lp-badge-ondc { right: -6px !important; bottom: 45px !important; }
-          .lp-industry-item { width: 100% !important; height: 130px !important; }
+          .lp-hero-section { padding: 80px 3% 20px !important; }
+          .lp-meta-box { padding: 6px 14px !important; gap: 6px !important; }
+          .lp-meta-box span { font-size: 11px !important; }
+          .lp-hero-h1 { font-size: 24px !important; line-height: 1.18 !important; }
+          .lp-hero-right { padding: 0 56px !important; overflow: visible !important; }
+          .lp-hero-mockup-wrap { max-width: 310px !important; }
+          .lp-hero-top-row > div { padding: 3px 3px !important; }
+          .lp-hero-bottom-row { grid-template-columns: 1fr !important; gap: 6px !important; }
+          .lp-hero-badge { padding: 2.5px 6px !important; font-size: 7.5px !important; white-space: nowrap !important; }
+          .lp-hero-badge span { font-size: 7.5px !important; }
+          .lp-badge-wa   { left: -58px !important; top: 14px !important; }
+          .lp-badge-api  { left: -62px !important; top: 75px !important; }
+          .lp-badge-rzp  { left: -58px !important; bottom: 40px !important; }
+          .lp-badge-ship { right: -58px !important; top: 16px !important; }
+          .lp-badge-goog { right: -54px !important; top: 80px !important; }
+          .lp-badge-ondc { right: -54px !important; bottom: 45px !important; }
+
+          .lp-features-grid { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+          .lp-feature-card { padding: 8px 10px !important; gap: 8px !important; }
+          .lp-feature-title { font-size: 11px !important; }
+          .lp-feature-desc { font-size: 8.5px !important; }
+
+          .lp-compare-item-text { font-size: 11.5px !important; }
+          .lp-compare-card-title { font-size: 15px !important; margin-bottom: 14px !important; }
+
+          .lp-ai-pill-grid { grid-template-columns: 1fr 1fr !important; gap: 6px !important; }
+          .lp-ai-pill-item { padding: 7px 8px !important; font-size: 10.5px !important; }
+          .lp-ai-robot-card { height: 200px !important; max-height: 200px !important; }
+
+          .lp-category-grid { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+          .lp-category-card { padding: 10px 8px !important; border-radius: 10px !important; }
+          .lp-category-card h3 { font-size: 10.5px !important; }
+          .lp-category-card p { font-size: 8.5px !important; }
+
+          .lp-choose-inner { grid-template-columns: 1fr 1fr !important; gap: 10px 6px !important; }
+          .lp-choose-inner h4 { font-size: 11px !important; }
+          .lp-choose-inner p { font-size: 8.5px !important; }
+
+          .lp-industry-section { padding: 24px 3% 36px !important; }
+          .lp-industry-header { margin-bottom: 20px !important; }
+          .lp-industry-heading { font-size: 22px !important; }
+          .lp-industry-desc { font-size: 12px !important; }
+          .lp-industry-dark-box { padding: 6px !important; border-radius: 12px !important; }
+          .lp-industry-flex { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 6px !important; }
+          .lp-industry-item { width: 100% !important; height: 150px !important; border-radius: 10px !important; }
+          .lp-industry-content { padding: 10px !important; }
+          .lp-industry-icon { width: 26px !important; height: 26px !important; margin-bottom: 6px !important; border-radius: 6px !important; }
+          .lp-industry-icon svg { width: 14px !important; height: 14px !important; }
+          .lp-industry-card-title { font-size: 12px !important; margin-bottom: 3px !important; }
+          .lp-industry-card-desc { font-size: 9px !important; line-height: 1.3 !important; }
+
           .lp-testimonial-grid { gap: 0 !important; }
-          .lp-newsletter-section { padding: 40px 4% !important; }
+          .lp-video-player { height: 190px !important; }
+          .lp-nav-arrow-left { left: -4px !important; width: 34px !important; height: 34px !important; }
+          .lp-nav-arrow-right { right: -4px !important; width: 34px !important; height: 34px !important; }
+
+          .lp-newsletter-section { padding: 36px 3% !important; }
+          .lp-newsletter-section h2 { font-size: 22px !important; }
+          .lp-newsletter-section p { font-size: 12px !important; padding: 0 !important; margin-bottom: 24px !important; }
+        }
+
+        @media (max-width: 360px) {
+          .lp-hero-right { padding: 0 46px !important; overflow: visible !important; }
+          .lp-hero-mockup-wrap { max-width: 270px !important; }
+          .lp-badge-wa   { left: -48px !important; top: 12px !important; }
+          .lp-badge-api  { left: -52px !important; top: 68px !important; }
+          .lp-badge-rzp  { left: -48px !important; bottom: 35px !important; }
+          .lp-badge-ship { right: -48px !important; top: 14px !important; }
+          .lp-badge-goog { right: -45px !important; top: 72px !important; }
+          .lp-badge-ondc { right: -45px !important; bottom: 38px !important; }
+          .lp-compare-item-text { font-size: 10.5px !important; }
+          .lp-compare-card-title { font-size: 14px !important; }
+          .lp-features-grid { grid-template-columns: 1fr !important; }
+          .lp-ai-pill-grid { grid-template-columns: 1fr !important; }
+          .lp-category-grid { grid-template-columns: 1fr !important; }
+          .lp-choose-inner { grid-template-columns: 1fr !important; }
+          .lp-industry-flex { grid-template-columns: 1fr !important; gap: 8px !important; }
+          .lp-industry-item { height: 130px !important; }
         }
       `}</style>
 
@@ -312,7 +438,7 @@ const LandingPage = () => {
           <div className="lp-hero-left">
             <div className="lp-meta-badge" style={{ marginBottom: 28, flexWrap: "wrap" }}>
               {/* Meta Badge */}
-              <div style={{
+              <div className="lp-meta-box" style={{
                  background: "#FFFFFF",
                  borderRadius: "40px",
                  padding: "8px 20px",
@@ -336,20 +462,20 @@ const LandingPage = () => {
                </div>
             </div>
 
-            <h1 style={{ fontFamily: "'Inter', sans-serif", fontSize: 36, fontWeight: 800, lineHeight: 1.05, letterSpacing: "normal", marginBottom: 8, color: "#111827" }}>
+            <h1 className="lp-hero-h1" style={{ fontFamily: "'Inter', sans-serif", fontSize: 36, fontWeight: 800, lineHeight: 1.05, letterSpacing: "normal", marginBottom: 8, color: "#111827" }}>
               India's Digital<br />
               <span style={{ color: "#16A34A" }}>Business Operating</span><br />
               <span style={{ color: "#111827" }}>System</span>
             </h1>
 
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, color: "#111827", lineHeight: 1.5, marginBottom: 8, fontWeight: 600 }}>
+            <p className="lp-hero-sub" style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, color: "#111827", lineHeight: 1.5, marginBottom: 8, fontWeight: 600 }}>
               Own Your Business. Own Your Customers.<br />
               <span style={{ fontWeight: 600 }}>Own Your Future.</span>
             </p>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 16, color: "#111827", fontWeight: 800, marginBottom: 24, wordBreak: "break-word", overflowWrap: "break-word" }}>
+            <p className="lp-hero-tagline" style={{ fontFamily: "'Inter', sans-serif", fontSize: 16, color: "#111827", fontWeight: 800, marginBottom: 24, wordBreak: "break-word", overflowWrap: "break-word" }}>
               Broadcast Smarter. Automate Faster. <span style={{ color: "#16A34A" }}>Grow Without Limits.</span>
             </p>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, color: "#4B5563", lineHeight: 1.6, marginBottom: 40, maxWidth: 480, fontWeight: 500 }}>
+            <p className="lp-hero-desc" style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, color: "#4B5563", lineHeight: 1.6, marginBottom: 40, maxWidth: 480, fontWeight: 500 }}>
               MessBee is India's comprehensive Digital Business Operating System, powered by the Official WhatsApp Business API. We help businesses connect with customers at scale through WhatsApp Broadcasting, automated messaging, customer engagement, sales workflows, payments and AI-powered business automation all from one unified platform.
             </p>
 
@@ -605,17 +731,14 @@ const LandingPage = () => {
       </section>
 
       {/* ═══════════════ EVERYTHING YOU NEED HEADING & FEATURES STRIP ═══════════════ */}
-      <section style={{ background: "linear-gradient(135deg, #16A34A 0%, #15803D 100%)", padding: "36px 4% 36px", textAlign: "center", boxShadow: "0 10px 30px rgba(22, 163, 74, 0.15)" }}>
-        <h2 style={{ fontFamily: "'Inter', sans-serif", fontSize: 24, fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.5px", margin: "0 0 24px 0" }}>
+      <section className="lp-features-strip" style={{ background: "linear-gradient(135deg, #16A34A 0%, #15803D 100%)", padding: "36px 4% 36px", textAlign: "center", boxShadow: "0 10px 30px rgba(22, 163, 74, 0.15)" }}>
+        <h2 className="lp-features-heading" style={{ fontFamily: "'Inter', sans-serif", fontSize: 24, fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.5px", margin: "0 0 24px 0" }}>
           Everything You Need to Run and Grow Your Business
         </h2>
 
-        <div style={{
+        <div className="lp-features-grid" style={{
           maxWidth: 1380,
           margin: "0 auto",
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
-          gap: "14px",
           alignItems: "stretch"
         }}>
           {[
@@ -696,6 +819,7 @@ const LandingPage = () => {
           ].map((item, idx) => (
             <div
               key={idx}
+              className="lp-feature-card"
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -732,10 +856,10 @@ const LandingPage = () => {
                 {item.icon}
               </div>
               <div style={{ textAlign: "left", minWidth: 0 }}>
-                <div style={{ fontSize: 12.5, fontWeight: 700, color: "#0F172A", lineHeight: 1.2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                <div className="lp-feature-title" style={{ fontSize: 12.5, fontWeight: 700, color: "#0F172A", lineHeight: 1.2, overflow: "hidden", textOverflow: "ellipsis" }}>
                   {item.title}
                 </div>
-                <div style={{ fontSize: 10.5, color: "#64748B", fontWeight: 500, marginTop: 2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                <div className="lp-feature-desc" style={{ fontSize: 10.5, color: "#64748B", fontWeight: 500, marginTop: 2, overflow: "hidden", textOverflow: "ellipsis" }}>
                   {item.desc}
                 </div>
               </div>
@@ -745,16 +869,16 @@ const LandingPage = () => {
       </section>
 
       {/* ═══════════════ PLATFORM PREVIEW & DASHBOARD SECTION ═══════════════ */}
-      <section style={{ background: "#FFFFFF", padding: "40px 6% 24px", textAlign: "center" }}>
+      <section className="lp-preview-section" style={{ background: "#FFFFFF", padding: "40px 6% 24px", textAlign: "center" }}>
         <div style={{ maxWidth: 1180, margin: "0 auto", position: "relative" }}>
           
           <div style={{ color: "#16A34A", fontSize: 13, fontWeight: 800, marginBottom: 10, letterSpacing: "0.5px" }}>
             Explore Services
           </div>
-          <h2 style={{ fontFamily: "'Inter', sans-serif", fontSize: 32, fontWeight: 800, color: "#0F172A", lineHeight: 1.2, marginBottom: 10, letterSpacing: "-0.8px" }}>
+          <h2 className="lp-preview-heading" style={{ fontFamily: "'Inter', sans-serif", fontSize: 32, fontWeight: 800, color: "#0F172A", lineHeight: 1.2, marginBottom: 10, letterSpacing: "-0.8px" }}>
             Scale Your Business with <span style={{ color: "#16A34A" }}>MessBee's</span> Powerful<br />WhatsApp API Platform
           </h2>
-          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: "#64748B", marginBottom: 36, fontWeight: 500 }}>
+          <p className="lp-preview-desc" style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: "#64748B", marginBottom: 36, fontWeight: 500 }}>
             Everything your business needs to connect, engage and grow at scale.
           </p>
 
@@ -785,11 +909,11 @@ const LandingPage = () => {
       </section>
 
       {/* ═══════════════ MARKETPLACE VS MESSBEE SECTION ═══════════════ */}
-      <section style={{ padding: "20px 6% 60px", background: "#FFFFFF", textAlign: "center" }}>
+      <section className="lp-compare-section" style={{ padding: "20px 6% 60px", background: "#FFFFFF", textAlign: "center" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
 
           {/* VS Title */}
-          <h2 style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(24px, 4vw, 34px)", fontWeight: 800, color: "#0F172A", marginBottom: 12, letterSpacing: "-0.5px" }}>
+          <h2 className="lp-compare-heading" style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(24px, 4vw, 34px)", fontWeight: 800, color: "#0F172A", marginBottom: 12, letterSpacing: "-0.5px" }}>
             Marketplace <span style={{ color: "#16A34A" }}>vs</span> Messbee
           </h2>
           <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(13px, 2vw, 16px)", color: "#64748B", fontWeight: 500, marginBottom: 32 }}>
@@ -810,7 +934,7 @@ const LandingPage = () => {
               justifyContent: "space-between"
             }}>
               <div>
-                <h3 style={{ fontSize: 22, fontWeight: 700, color: "#475569", marginBottom: 28 }}>Traditional Marketplaces</h3>
+                <h3 className="lp-compare-card-title" style={{ fontSize: 22, fontWeight: 700, color: "#475569", marginBottom: 28 }}>Traditional Marketplaces</h3>
                 <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
                   {[
                     "High Commissions (up to 30%)",
@@ -824,7 +948,7 @@ const LandingPage = () => {
                           <line x1="6" y1="6" x2="18" y2="18"></line>
                         </svg>
                       </div>
-                      <span style={{ fontSize: 15.5, fontWeight: 500, color: "#DC2626" }}>{item}</span>
+                      <span className="lp-compare-item-text" style={{ fontSize: 15.5, fontWeight: 500, color: "#DC2626" }}>{item}</span>
                     </div>
                   ))}
                 </div>
@@ -845,7 +969,7 @@ const LandingPage = () => {
             }}>
               <div>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 28 }}>
-                  <h3 style={{ fontSize: 22, fontWeight: 800, color: "#FFFFFF", margin: 0 }}>Messbee Operating System</h3>
+                  <h3 className="lp-compare-card-title" style={{ fontSize: 22, fontWeight: 800, color: "#FFFFFF", margin: 0 }}>Messbee Operating System</h3>
                   <div style={{ background: "#FFFFFF", color: "#15803D", fontSize: 11, fontWeight: 800, padding: "5px 12px", borderRadius: 20, boxShadow: "0 4px 10px rgba(0,0,0,0.1)", letterSpacing: "0.5px" }}>
                     RECOMMENDED
                   </div>
@@ -863,7 +987,7 @@ const LandingPage = () => {
                           <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>
                       </div>
-                      <span style={{ fontSize: 15.5, fontWeight: 600, color: "#FFFFFF" }}>{item}</span>
+                      <span className="lp-compare-item-text" style={{ fontSize: 15.5, fontWeight: 600, color: "#FFFFFF" }}>{item}</span>
                     </div>
                   ))}
                 </div>
@@ -874,11 +998,11 @@ const LandingPage = () => {
       </section>
 
       {/* ═══════════════ AI POWERED BUSINESS SECTION ═══════════════ */}
-      <section style={{ padding: "40px 5%", background: "#FFFFFF" }}>
+      <section className="lp-ai-section" style={{ padding: "40px 5%", background: "#FFFFFF" }}>
         <div className="lp-ai-grid">
 
           {/* Left Column - Content Card */}
-          <div style={{
+          <div className="lp-ai-card" style={{
             background: "linear-gradient(135deg, #0F172A 0%, #1E293B 100%)",
             borderRadius: 24,
             padding: "30px 30px",
@@ -902,14 +1026,14 @@ const LandingPage = () => {
               </p>
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+            <div className="lp-ai-pill-grid">
               {[
                 "Reply instantly", "Sell products",
                 "Recommend products", "Collect payments",
                 "Book appointments", "Recover abandoned carts",
                 "Answer FAQs", "Generate reports"
               ].map((item, i) => (
-                <div key={i} style={{ background: "rgba(255, 255, 255, 0.05)", border: "1px solid rgba(255, 255, 255, 0.08)", borderRadius: 10, padding: "9px 12px", display: "flex", alignItems: "center", gap: 8 }}>
+                <div key={i} className="lp-ai-pill-item" style={{ background: "rgba(255, 255, 255, 0.05)", border: "1px solid rgba(255, 255, 255, 0.08)", borderRadius: 10, padding: "9px 12px", display: "flex", alignItems: "center", gap: 8 }}>
                   <div style={{ width: 18, height: 18, borderRadius: "50%", background: "#064E3B", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                     <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#34D399" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="20 6 9 17 4 12" />
@@ -922,7 +1046,7 @@ const LandingPage = () => {
           </div>
 
           {/* Right Column - Robot Image Showcase Card (Equal Height) */}
-          <div style={{
+          <div className="lp-ai-robot-card" style={{
             borderRadius: 24,
             overflow: "hidden",
             boxShadow: "0 18px 36px -12px rgba(15, 23, 42, 0.28)",
@@ -949,14 +1073,14 @@ const LandingPage = () => {
       </section>
 
       {/* ═══════════════ BROWSE BY CATEGORY SECTION ═══════════════ */}
-      <section style={{ padding: "40px 6% 50px", background: "#FFFFFF" }}>
+      <section className="lp-category-section" style={{ padding: "40px 6% 50px", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
 
           <div style={{ textAlign: "center", marginBottom: 32 }}>
             <div style={{ fontFamily: "'Inter', sans-serif", color: "#10B981", fontSize: 11, fontWeight: 500, letterSpacing: "0.5px", marginBottom: 12 }}>
               Explore Services
             </div>
-            <h2 style={{ fontFamily: "'Inter', sans-serif", fontSize: 28, fontWeight: 600, color: "#0F172A", marginBottom: 12, letterSpacing: "normal" }}>
+            <h2 className="lp-category-heading" style={{ fontFamily: "'Inter', sans-serif", fontSize: 28, fontWeight: 600, color: "#0F172A", marginBottom: 12, letterSpacing: "normal" }}>
               Browse by <span style={{ color: "#10B981" }}>Category</span>
             </h2>
             <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 13, color: "#94A3B8", fontWeight: 400 }}>
@@ -964,7 +1088,7 @@ const LandingPage = () => {
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 20, marginBottom: 48 }}>
+          <div className="lp-category-grid" style={{ alignItems: "stretch" }}>
             {[
               {
                 icon: (
@@ -1027,7 +1151,7 @@ const LandingPage = () => {
                 ), title: "Team Management", desc: "Roles, permissions, and performance tracking at any scale."
               }
             ].map((item, idx) => (
-              <div key={idx} style={{ background: "#247844", borderRadius: 16, padding: "18px 20px", color: "#FFFFFF", display: "flex", flexDirection: "column", gap: 12, transition: "transform 0.2s", cursor: "pointer" }} onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-4px)"} onMouseLeave={(e) => e.currentTarget.style.transform = "none"}>
+              <div key={idx} className="lp-category-card" style={{ background: "#247844", borderRadius: 16, padding: "18px 20px", color: "#FFFFFF", display: "flex", flexDirection: "column", gap: 12, transition: "transform 0.2s", cursor: "pointer" }} onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-4px)"} onMouseLeave={(e) => e.currentTarget.style.transform = "none"}>
                 <div style={{ width: 36, height: 36, border: "1px solid rgba(255,255,255,0.3)", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center" }}>
                   {item.icon}
                 </div>
@@ -1052,7 +1176,7 @@ const LandingPage = () => {
       </section>
 
       {/* ═══════════════ HOW IT WORKS SECTION ═══════════════ */}
-      <section id="how-it-works" style={{ padding: "0 0 50px", background: "radial-gradient(circle at 25% 50%, #FDF0D5 0%, #F4F5F7 50%)" }}>
+      <section id="how-it-works" className="lp-hiw-section" style={{ padding: "0 0 50px", background: "radial-gradient(circle at 25% 50%, #FDF0D5 0%, #F4F5F7 50%)" }}>
         <div className="lp-hiw-grid">
 
           {/* Left - Image side */}
@@ -1085,19 +1209,19 @@ const LandingPage = () => {
                 <line x1="70" y1="30" x2="65" y2="40" />
               </g>
             </svg>
-            <div className="lp-hiw-badge" style={{ top: "25%", left: "-20%", zIndex: 11 }}>
+            <div className="lp-hiw-badge lp-hiw-badge-1" style={{ top: "25%", left: "-20%", zIndex: 11 }}>
               100% ready for business
             </div>
-            <div className="lp-hiw-badge" style={{ top: "15%", right: "-10%" }}>
+            <div className="lp-hiw-badge lp-hiw-badge-2" style={{ top: "15%", right: "-10%" }}>
               Global Available
             </div>
-            <div className="lp-hiw-badge" style={{ top: "60%", left: "-10%" }}>
+            <div className="lp-hiw-badge lp-hiw-badge-3" style={{ top: "60%", left: "-10%" }}>
               Secure System
             </div>
           </div>
 
           {/* Right - Text and steps */}
-          <div style={{ paddingTop: 64 }}>
+          <div className="lp-hiw-steps-col" style={{ paddingTop: 64 }}>
             <div style={{ fontFamily: "'Inter', sans-serif", color: "#10B981", fontSize: 12, fontWeight: 500, marginBottom: 8 }}>
               Simple Process
             </div>
@@ -1140,7 +1264,7 @@ const LandingPage = () => {
       </section>
 
       {/* ═══════════════ WHY CHOOSE US SECTION ═══════════════ */}
-      <section style={{ padding: "30px 0", background: "#0A0A0A", position: "relative", overflow: "hidden" }}>
+      <section className="lp-choose-section" style={{ padding: "30px 0", background: "#0A0A0A", position: "relative", overflow: "hidden" }}>
 
         {/* Map Background Pattern */}
         <div style={{
@@ -1225,23 +1349,23 @@ const LandingPage = () => {
       </section>
 
       {/* ═══════════════ MADE ON SECTION ═══════════════ */}
-      <section style={{ padding: "40px 6% 100px", background: "#FFFFFF" }}>
+      <section className="lp-industry-section" style={{ padding: "40px 6% 100px", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
 
-          <div style={{ textAlign: "center", marginBottom: 64 }}>
+          <div className="lp-industry-header" style={{ textAlign: "center", marginBottom: 64 }}>
             <div style={{ fontFamily: "'Inter', sans-serif", color: "#10B981", fontSize: 12, fontWeight: 500, marginBottom: 8 }}>
               Industries
             </div>
-            <h2 style={{ fontFamily: "'Inter', sans-serif", fontSize: 28, fontWeight: 700, color: "#0F172A", marginBottom: 12, letterSpacing: "normal" }}>
+            <h2 className="lp-industry-heading" style={{ fontFamily: "'Inter', sans-serif", fontSize: 28, fontWeight: 700, color: "#0F172A", marginBottom: 12, letterSpacing: "normal" }}>
               Built For <span style={{ color: "#10B981" }}>Every Industry</span>
             </h2>
-            <p style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: "#64748B" }}>
+            <p className="lp-industry-desc" style={{ fontFamily: "'Inter', sans-serif", fontSize: 14, color: "#64748B" }}>
               Empowering Indian businesses to generate leads, automate support and scale revenue.
             </p>
           </div>
 
           {/* Dark Background Container for Image Gallery */}
-          <div style={{ background: "#0D0D0D", borderRadius: 10, padding: "10px", boxShadow: "0 20px 50px rgba(0,0,0,0.2)" }}>
+          <div className="lp-industry-dark-box" style={{ background: "#0D0D0D", borderRadius: 10, padding: "10px", boxShadow: "0 20px 50px rgba(0,0,0,0.2)" }}>
             <div className="lp-industry-flex">
               {[
                 { title: "Kirana Store", desc: "Manage orders, send offers and update customers instantly.", icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" /></svg>, bgImage: "https://images.unsplash.com/photo-1578916171728-46686eac8d58?q=80&w=800", color: "#4CAF50", cols: 3 },
@@ -1280,16 +1404,16 @@ const LandingPage = () => {
                   <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 100%)" }} />
 
                   {/* Content */}
-                  <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: 16, display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+                  <div className="lp-industry-content" style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: 16, display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
 
                     {/* Icon */}
-                    <div style={{ width: 36, height: 36, borderRadius: 8, background: item.color, display: "flex", alignItems: "center", justifyContent: "center", color: "#FFFFFF", marginBottom: 12 }}>
+                    <div className="lp-industry-icon" style={{ width: 36, height: 36, borderRadius: 8, background: item.color, display: "flex", alignItems: "center", justifyContent: "center", color: "#FFFFFF", marginBottom: 12 }}>
                       {item.icon}
                     </div>
 
                     {/* Text */}
-                    <h3 style={{ fontSize: 16, fontWeight: 700, color: "#FFFFFF", marginBottom: 6 }}>{item.title}</h3>
-                    <p style={{ fontSize: 11, color: "rgba(255,255,255,0.8)", lineHeight: 1.5, maxWidth: "90%" }}>{item.desc}</p>
+                    <h3 className="lp-industry-card-title" style={{ fontSize: 16, fontWeight: 700, color: "#FFFFFF", marginBottom: 6 }}>{item.title}</h3>
+                    <p className="lp-industry-card-desc" style={{ fontSize: 11, color: "rgba(255,255,255,0.8)", lineHeight: 1.5, maxWidth: "90%" }}>{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -1299,7 +1423,7 @@ const LandingPage = () => {
       </section>
 
       {/* ═══════════════ TESTIMONIALS SECTION ═══════════════ */}
-      <section style={{ padding: "20px 5% 50px", background: "radial-gradient(ellipse at top, #FFF7E3 0%, #FFFFFF 50%)" }}>
+      <section className="lp-testimonial-section" style={{ padding: "20px 5% 50px", background: "radial-gradient(ellipse at top, #FFF7E3 0%, #FFFFFF 50%)" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
 
           <div style={{ textAlign: "center", marginBottom: 32 }}>
@@ -1395,7 +1519,7 @@ const LandingPage = () => {
                 // eslint-disable-next-line no-unused-vars
                 <div
                   key={idx}
-                  className={!item.isCenter ? "lp-testimonial-side" : ""}
+                  className={!item.isCenter ? "lp-testimonial-side" : "lp-testimonial-card-active"}
                   style={{
                     background: item.isCenter
                       ? "linear-gradient(135deg, #FFE492 0%, #FFFFFF 65%)"
