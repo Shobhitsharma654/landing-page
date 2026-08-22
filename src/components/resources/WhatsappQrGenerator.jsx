@@ -5,6 +5,7 @@ import { QRCodeSVG } from "qrcode.react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import defaultLogo from "../../assets/logo.jpeg";
+import { submitToWebhookOrEmail } from "../../utils/formSubmit";
 
 const WhatsappQrGenerator = () => {
   const [countryCode, setCountryCode] = useState("91");
@@ -63,22 +64,13 @@ const WhatsappQrGenerator = () => {
     setGeneratedDeepLink(link);
     setIsGenerating(true);
 
-    // Silent lead capture to backend
-    try {
-      const apiBase = import.meta.env.VITE_API_URL || "http://localhost:5000";
-      await fetch(`${apiBase}/api/qr-generator`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          phone: `+${countryCode}${cleanedNumber}`,
-          message: message.trim(),
-          source: "WhatsApp QR Generator Tool",
-          generatedAt: new Date().toISOString()
-        })
-      }).catch(() => null);
-    } catch (err) {
-      // Ignore
-    }
+    // Silent lead capture to localStorage and email/webhook without connection errors
+    submitToWebhookOrEmail("qr-generator", {
+      phone: `+${countryCode}${cleanedNumber}`,
+      message: message.trim(),
+      source: "WhatsApp QR Generator Tool",
+      businessName: businessName.trim() || undefined,
+    }).catch(() => {});
 
     setTimeout(() => {
       setIsGenerating(false);
