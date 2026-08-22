@@ -233,8 +233,9 @@ const LandingPage = () => {
         }
         * { box-sizing: border-box !important; }
         section { max-width: 100% !important; overflow: hidden !important; box-sizing: border-box !important; }
-        .lp-hero-row { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 4vw; width: 100%; max-width: 1280px; margin: 0 auto; box-sizing: border-box; }
-        .lp-hero-left { flex: 1 1 500px; min-width: 300px; max-width: 100%; }
+        .lp-hero-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 32px; width: 100%; max-width: 1280px; margin: 0 auto; box-sizing: border-box; }
+        .lp-hero-left { flex: 1 1 480px; min-width: 300px; max-width: 580px; }
+        .lp-hero-right { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 85px; box-sizing: border-box; }
         @keyframes badgeFloat1 { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-6px); } }
         @keyframes badgeFloat2 { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(6px); } }
         .lp-hero-badge { position: absolute; background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(12px); border-radius: 30px; padding: 6px 14px; display: flex; align-items: center; gap: 7px; box-shadow: 0 12px 28px -4px rgba(15, 23, 42, 0.12), 0 4px 10px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(241, 245, 249, 0.9); border: 1px solid rgba(255, 255, 255, 0.9); z-index: 10; white-space: nowrap; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -243,14 +244,43 @@ const LandingPage = () => {
         .lp-float-badge { position: absolute; background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(12px); border-radius: 30px; padding: 8px 18px; display: flex; align-items: center; gap: 8px; box-shadow: 0 14px 32px -4px rgba(15, 23, 42, 0.12), 0 4px 12px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(241, 245, 249, 0.9); border: 1px solid rgba(255, 255, 255, 0.9); z-index: 10; white-space: nowrap; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
         .lp-float-badge:hover { transform: scale(1.08) translateY(-3px) !important; box-shadow: 0 18px 36px -4px rgba(22, 163, 74, 0.22), 0 0 0 1px rgba(22, 163, 74, 0.35) !important; }
         
+        .lp-dash-kpi-card { background: #FFFFFF; border-radius: 8px; padding: 5px 5px !important; border: 1px solid #E2E8F0; display: flex; align-items: center; gap: 5px !important; box-shadow: 0 1px 3px rgba(0,0,0,0.02); min-width: 0 !important; overflow: hidden !important; }
+        .lp-dash-kpi-icon { width: 18px !important; height: 18px !important; border-radius: 5px !important; display: flex; align-items: center; justify-content: center; flex-shrink: 0 !important; }
+        .lp-dash-kpi-icon svg { width: 9px !important; height: 9px !important; }
+        .lp-dash-kpi-label { font-size: 5.2px !important; color: #64748B; font-weight: 500; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; }
+        .lp-dash-kpi-title { font-size: 6.8px !important; font-weight: 600; color: #0F172A; line-height: 1.15; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; }
+        .lp-dash-kpi-sub { font-size: 5.2px !important; font-weight: 500; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; }
+        .lp-dash-bottom-card { padding: 6px 7px !important; gap: 4px !important; border-radius: 7px !important; }
+        .lp-lead-item-title { font-size: 6.5px !important; }
+        .lp-lead-item-badge { font-size: 5.2px !important; padding: 1px 3px !important; }
+        .lp-ai-bubble { padding: 3px 5px !important; font-size: 5.8px !important; border-radius: 4px !important; line-height: 1.25 !important; }
+        .lp-ai-input { padding: 2.5px 4px !important; font-size: 5.2px !important; }
+        .lp-ai-btn { width: 12px !important; height: 12px !important; }
+
         @media (max-width: 1200px) and (min-width: 769px) {
+          .lp-hero-row { justify-content: space-between !important; gap: 20px !important; }
+          .lp-hero-right { padding: 0 70px !important; }
+          .lp-hero-mockup-wrap { max-width: 290px !important; }
+          .lp-dash-kpi-card { padding: 4px 4px !important; gap: 3.5px !important; border-radius: 6px !important; }
+          .lp-dash-kpi-icon { width: 16px !important; height: 16px !important; border-radius: 4px !important; }
+          .lp-dash-kpi-icon svg { width: 8px !important; height: 8px !important; }
+          .lp-dash-kpi-label { font-size: 4.8px !important; }
+          .lp-dash-kpi-title { font-size: 6px !important; }
+          .lp-dash-kpi-sub { font-size: 4.8px !important; }
+          .lp-lead-item-title { font-size: 5.8px !important; }
+          .lp-lead-item-badge { font-size: 4.8px !important; }
+          .lp-ai-bubble { padding: 2.5px 4px !important; font-size: 5.2px !important; }
+          .lp-ai-input { padding: 2px 3.5px !important; font-size: 4.8px !important; }
+          .lp-ai-btn { width: 10px !important; height: 10px !important; }
           .lp-fbadge-wa { left: -10px !important; }
           .lp-fbadge-api { left: -16px !important; }
           .lp-fbadge-rzp { left: -8px !important; }
           .lp-fbadge-ship { right: -10px !important; }
           .lp-fbadge-goog { right: -16px !important; }
           .lp-fbadge-ondc { right: -8px !important; }
-          .lp-float-badge { padding: 6px 14px !important; font-size: 11px !important; }
+          .lp-float-badge { padding: 5px 12px !important; font-size: 9.5px !important; }
+          .lp-preview-img-wrap { width: 85% !important; max-width: 700px !important; margin: 0 auto !important; }
+          .lp-preview-img { width: 100% !important; max-width: 700px !important; }
         }
         @media (max-width: 768px) {
           .lp-float-badge { display: none !important; }
@@ -274,10 +304,23 @@ const LandingPage = () => {
         .lp-ai-pill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 
         @media (max-width: 900px) {
-          .lp-hero-row { flex-direction: column; gap: 24px; }
+          .lp-hero-row { flex-direction: column; gap: 28px; }
           .lp-hero-left { flex: 1 1 100%; min-width: unset; }
-          .lp-hero-right { flex: 1 1 100%; min-width: unset; }
+          .lp-hero-right { flex: 1 1 100%; width: 100%; min-width: unset; padding: 0 75px !important; align-items: center !important; justify-content: center !important; margin: 0 auto !important; }
+          .lp-hero-mockup-wrap { max-width: 275px !important; margin: 0 auto !important; }
+          .lp-dash-kpi-card { padding: 3.5px 3px !important; gap: 3px !important; }
+          .lp-dash-kpi-icon { width: 14px !important; height: 14px !important; }
+          .lp-dash-kpi-icon svg { width: 7px !important; height: 7px !important; }
+          .lp-dash-kpi-label { font-size: 4.2px !important; }
+          .lp-dash-kpi-title { font-size: 5.5px !important; }
+          .lp-dash-kpi-sub { font-size: 4.2px !important; }
+          .lp-lead-item-title { font-size: 5.2px !important; }
+          .lp-lead-item-badge { font-size: 4.2px !important; }
+          .lp-ai-bubble { padding: 2px 3.5px !important; font-size: 4.8px !important; }
+          .lp-ai-input { padding: 2px 3px !important; font-size: 4.5px !important; }
           .lp-hero-badge { display: none !important; }
+          .lp-preview-img-wrap { width: 85% !important; max-width: 600px !important; margin: 0 auto !important; }
+          .lp-preview-img { width: 100% !important; max-width: 600px !important; }
           .lp-ai-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
           .lp-compare-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
           .lp-hiw-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
@@ -294,8 +337,7 @@ const LandingPage = () => {
           .lp-hero-section { padding: 90px 4% 32px !important; overflow: hidden !important; }
           .lp-hero-h1 { font-size: 28px !important; line-height: 1.15 !important; margin-bottom: 10px !important; }
           .lp-hero-tagline { font-size: 14px !important; margin-bottom: 16px !important; }
-          .lp-hero-desc { font-size: 11.5px !important; line-height: 1.55 !important; margin-bottom: 24px !important; max-width: 100% !important; }
-          .lp-hero-right { display: flex !important; width: 100% !important; max-width: 100% !important; margin-top: 24px !important; align-items: center !important; justify-content: center !important; padding: 0 !important; box-sizing: border-box !important; overflow: hidden !important; }
+          .lp-hero-right { display: flex !important; width: 100% !important; max-width: 100% !important; margin-top: 20px !important; align-items: center !important; justify-content: center !important; padding: 0 !important; box-sizing: border-box !important; overflow: hidden !important; }
           .lp-hero-mockup-wrap { width: 95% !important; max-width: 95% !important; transform: none !important; margin: 0 auto !important; padding: 0 !important; overflow: hidden !important; }
           .lp-hero-badge { display: none !important; }
           .lp-hero-pill { display: none !important; }
@@ -393,13 +435,13 @@ const LandingPage = () => {
         }
 
         @media (max-width: 480px) {
-          .lp-hero-section { padding: 80px 3% 20px !important; overflow: hidden !important; }
+          .lp-hero-section { padding: 80px 4% 20px !important; overflow: hidden !important; }
           .lp-meta-box { padding: 5px 10px !important; gap: 6px !important; }
           .lp-meta-box span { font-size: 10px !important; }
           .lp-meta-box svg { width: 15px !important; height: 15px !important; }
           .lp-meta-box div { width: 14px !important; height: 14px !important; }
           .lp-hero-h1 { font-size: 24px !important; line-height: 1.18 !important; }
-          .lp-hero-right { padding: 0 !important; width: 100% !important; max-width: 100% !important; overflow: hidden !important; }
+          .lp-hero-right { display: flex !important; padding: 0 !important; width: 100% !important; max-width: 100% !important; align-items: center !important; justify-content: center !important; overflow: hidden !important; }
           .lp-hero-mockup-wrap { width: 92% !important; max-width: 92% !important; margin: 0 auto !important; padding: 0 !important; overflow: hidden !important; }
           .lp-hero-badge { display: none !important; }
           .lp-dash-sidebar { width: 20px !important; padding: 5px 2px !important; gap: 4px !important; border-radius: 6px !important; }
@@ -491,32 +533,6 @@ const LandingPage = () => {
         <div className="lp-hero-row">
           {/* Left content */}
           <div className="lp-hero-left">
-            <div className="lp-meta-badge" style={{ marginBottom: 28, flexWrap: "wrap" }}>
-              {/* Meta Badge */}
-              <div className="lp-meta-box" style={{
-                 background: "#FFFFFF",
-                 borderRadius: "40px",
-                 padding: "8px 20px",
-                 display: "flex",
-                 alignItems: "center",
-                 gap: "10px",
-                 boxShadow: "0 4px 15px rgba(0,0,0,0.05)",
-                 border: "1px solid #E5E7EB",
-                 whiteSpace: "normal",
-                 flexWrap: "wrap"
-               }}>
-                 <svg width="24" height="24" viewBox="0 0 16 16" fill="#0668E1">
-                   <path fillRule="evenodd" d="M8.217 5.243C9.145 3.988 10.171 3 11.483 3 13.96 3 16 6.153 16.001 9.907c0 2.29-.986 3.725-2.757 3.725-1.543 0-2.395-.866-3.924-3.424l-.667-1.123-.118-.197a55 55 0 0 0-.53-.877l-1.178 2.08c-1.673 2.925-2.615 3.541-3.923 3.541C1.086 13.632 0 12.217 0 9.973 0 6.388 1.995 3 4.598 3q.477-.001.924.122c.31.086.611.22.913.407.577.359 1.154.915 1.782 1.714m1.516 2.224q-.378-.615-.727-1.133L9 6.326c.845-1.305 1.543-1.954 2.372-1.954 1.723 0 3.102 2.537 3.102 5.653 0 1.188-.39 1.877-1.195 1.877-.773 0-1.142-.51-2.61-2.87zM4.846 4.756c.725.1 1.385.634 2.34 2.001A212 212 0 0 0 5.551 9.3c-1.357 2.126-1.826 2.603-2.581 2.603-.777 0-1.24-.682-1.24-1.9 0-2.602 1.298-5.264 2.846-5.264q.137 0 .27.018"/>
-                 </svg>
-                 <span style={{ fontSize: "14px", fontWeight: "600", color: "#64748B" }}>
-                   Meta Tech Partner. Powered by official WhatsApp API
-                 </span>
-                 <div style={{ width: 20, height: 20, background: "#16A34A", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFF" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
-                 </div>
-               </div>
-            </div>
-
             <h1 className="lp-hero-h1" style={{ fontFamily: "'Inter', sans-serif", fontSize: 36, fontWeight: 800, lineHeight: 1.05, letterSpacing: "normal", marginBottom: 8, color: "#111827" }}>
               India's Digital<br />
               <span style={{ color: "#16A34A" }}>Business Operating</span><br />
@@ -524,15 +540,40 @@ const LandingPage = () => {
             </h1>
 
             <p className="lp-hero-sub" style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, color: "#111827", lineHeight: 1.5, marginBottom: 8, fontWeight: 600 }}>
-              Own Your Business. Own Your Customers.<br />
-              <span style={{ fontWeight: 600 }}>Own Your Future.</span>
+              Own Your Business. Own Your Customers. Own Your Future.
             </p>
             <p className="lp-hero-tagline" style={{ fontFamily: "'Inter', sans-serif", fontSize: 16, color: "#111827", fontWeight: 800, marginBottom: 24, wordBreak: "break-word", overflowWrap: "break-word" }}>
               Broadcast Smarter. Automate Faster. <span style={{ color: "#16A34A" }}>Grow Without Limits.</span>
             </p>
-            <p className="lp-hero-desc" style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, color: "#4B5563", lineHeight: 1.6, marginBottom: 40, maxWidth: 480, fontWeight: 500 }}>
+            <p className="lp-hero-desc" style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, color: "#4B5563", lineHeight: 1.6, marginBottom: 24, maxWidth: 480, fontWeight: 500 }}>
               MessBee is India's comprehensive Digital Business Operating System, powered by the Official WhatsApp Business API. We help businesses connect with customers at scale through WhatsApp Broadcasting, automated messaging, customer engagement, sales workflows, payments and AI-powered business automation all from one unified platform.
             </p>
+
+            {/* Meta Badge (Moved above CTA buttons) */}
+            <div className="lp-meta-badge" style={{ marginBottom: 20, display: "inline-flex", flexWrap: "wrap" }}>
+              <div className="lp-meta-box" style={{
+                 background: "#FFFFFF",
+                 borderRadius: "40px",
+                 padding: "6px 16px",
+                 display: "flex",
+                 alignItems: "center",
+                 gap: "8px",
+                 boxShadow: "0 2px 10px rgba(0,0,0,0.04)",
+                 border: "1px solid #E5E7EB",
+                 whiteSpace: "normal",
+                 flexWrap: "wrap"
+               }}>
+                <svg width="20" height="20" viewBox="0 0 16 16" fill="#0668E1">
+                  <path fillRule="evenodd" d="M8.217 5.243C9.145 3.988 10.171 3 11.483 3 13.96 3 16 6.153 16.001 9.907c0 2.29-.986 3.725-2.757 3.725-1.543 0-2.395-.866-3.924-3.424l-.667-1.123-.118-.197a55 55 0 0 0-.53-.877l-1.178 2.08c-1.673 2.925-2.615 3.541-3.923 3.541C1.086 13.632 0 12.217 0 9.973 0 6.388 1.995 3 4.598 3q.477-.001.924.122c.31.086.611.22.913.407.577.359 1.154.915 1.782 1.714m1.516 2.224q-.378-.615-.727-1.133L9 6.326c.845-1.305 1.543-1.954 2.372-1.954 1.723 0 3.102 2.537 3.102 5.653 0 1.188-.39 1.877-1.195 1.877-.773 0-1.142-.51-2.61-2.87zM4.846 4.756c.725.1 1.385.634 2.34 2.001A212 212 0 0 0 5.551 9.3c-1.357 2.126-1.826 2.603-2.581 2.603-.777 0-1.24-.682-1.24-1.9 0-2.602 1.298-5.264 2.846-5.264q.137 0 .27.018"/>
+                </svg>
+                <span style={{ fontSize: "12.5px", fontWeight: "600", color: "#64748B" }}>
+                  Meta Tech Partner. Powered by official WhatsApp API
+                </span>
+                <div style={{ width: 16, height: 16, background: "#16A34A", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#FFF" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                </div>
+              </div>
+            </div>
 
             <div className="lp-hero-btns">
               <button onClick={() => window.open((import.meta.env.VITE_ADMIN_URL || "http://localhost:5174") + "/signup", "_blank")} style={{ background: "#16A34A", color: "#FFF", border: "none", borderRadius: 40, padding: "8px 16px", fontSize: 11, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>Get Started</button>
@@ -545,14 +586,8 @@ const LandingPage = () => {
 
           {/* Right: Pixel-Perfect Crisp Dashboard UI Mockup */}
           <div className="lp-hero-right">
-            {/* Value / Capability Pill */}
-            <div className="lp-hero-pill" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#F0FDF4", borderRadius: 40, padding: "5px 14px", marginBottom: "16px", zIndex: 2, border: "1px solid #DCFCE7", boxShadow: "0 2px 6px rgba(22, 163, 74, 0.08)" }}>
-              <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#16A34A" }} />
-              <span style={{ fontSize: 10.5, fontWeight: 700, color: "#16A34A" }}>⚡ AI-Powered Lead Generation & Growth Engine</span>
-            </div>
-
             {/* Dashboard Container with Ambient Glow, Pure UI Dashboard & Floating Integration Badges */}
-            <div className="lp-hero-mockup-wrap" style={{ position: "relative", width: "100%", maxWidth: 540, overflow: "visible" }}>
+            <div className="lp-hero-mockup-wrap" style={{ position: "relative", width: "100%", maxWidth: 310, overflow: "visible" }}>
               
               {/* Premium Ambient Emerald Glow behind mockup */}
               <div style={{
@@ -653,7 +688,7 @@ const LandingPage = () => {
                     justifyContent: "center"
                   }}>
                     <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                    <span style={{ fontSize: 9.5, color: "#64748B", fontWeight: 500 }}>app.messbee.com</span>
+                    <span style={{ fontSize: 8.5, color: "#64748B", fontWeight: 500 }}>tools.messbee.com</span>
                   </div>
 
                   {/* Right: Bell & Avatar */}
@@ -697,42 +732,42 @@ const LandingPage = () => {
                   {/* Content Canvas */}
                   <div className="lp-dash-canvas" style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: "6px" }}>
                     
-                    {/* Row 1: Top 3 Action Cards (1 Line / 3 Columns with Rich Height & Spacing) */}
-                    <div className="lp-dash-kpi-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 }}>
+                    {/* Row 1: Top 3 Action Cards (Responsive KPI Row) */}
+                    <div className="lp-dash-kpi-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 6 }}>
                       
                       {/* Card 1: Lead Generation */}
-                      <div className="lp-dash-kpi-card" style={{ background: "#FFFFFF", borderRadius: 12, padding: "14px 14px", border: "1px solid #E2E8F0", display: "flex", alignItems: "center", gap: 11, boxShadow: "0 1px 3px rgba(0,0,0,0.02)" }}>
-                        <div className="lp-dash-kpi-icon" style={{ width: 34, height: 34, borderRadius: 9, background: "#DCFCE7", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.2"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+                      <div className="lp-dash-kpi-card">
+                        <div className="lp-dash-kpi-icon" style={{ background: "#DCFCE7" }}>
+                          <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.2"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
                         </div>
-                        <div style={{ minWidth: 0, flex: 1, display: "flex", flexDirection: "column", gap: 5 }}>
-                          <div className="lp-dash-kpi-label" style={{ fontSize: 7.5, color: "#64748B", fontWeight: 600 }}>Lead Generation</div>
-                          <div className="lp-dash-kpi-title" style={{ fontSize: 11, fontWeight: 800, color: "#0F172A", lineHeight: 1.15 }}>Create Campaign</div>
-                          <div className="lp-dash-kpi-sub" style={{ fontSize: 8, color: "#16A34A", fontWeight: 700 }}>By Business Type</div>
+                        <div style={{ minWidth: 0, flex: 1, display: "flex", flexDirection: "column", gap: 2 }}>
+                          <div className="lp-dash-kpi-label">Lead Gen</div>
+                          <div className="lp-dash-kpi-title">Campaigns</div>
+                          <div className="lp-dash-kpi-sub" style={{ color: "#16A34A" }}>Targeted</div>
                         </div>
                       </div>
 
                       {/* Card 2: Broadcast */}
-                      <div className="lp-dash-kpi-card" style={{ background: "#FFFFFF", borderRadius: 12, padding: "14px 14px", border: "1px solid #E2E8F0", display: "flex", alignItems: "center", gap: 11, boxShadow: "0 1px 3px rgba(0,0,0,0.02)" }}>
-                        <div className="lp-dash-kpi-icon" style={{ width: 34, height: 34, borderRadius: 9, background: "#E0F2FE", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0284C7" strokeWidth="2.2"><path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"/><path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"/><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5"/><path d="M19.1 4.9C23 8.8 23 15.2 19.1 19.1"/></svg>
+                      <div className="lp-dash-kpi-card">
+                        <div className="lp-dash-kpi-icon" style={{ background: "#E0F2FE" }}>
+                          <svg viewBox="0 0 24 24" fill="none" stroke="#0284C7" strokeWidth="2.2"><path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"/><path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"/><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5"/><path d="M19.1 4.9C23 8.8 23 15.2 19.1 19.1"/></svg>
                         </div>
-                        <div style={{ minWidth: 0, flex: 1, display: "flex", flexDirection: "column", gap: 5 }}>
-                          <div className="lp-dash-kpi-label" style={{ fontSize: 7.5, color: "#64748B", fontWeight: 600 }}>Broadcast</div>
-                          <div className="lp-dash-kpi-title" style={{ fontSize: 11, fontWeight: 800, color: "#0F172A", lineHeight: 1.15 }}>Instant Reach</div>
-                          <div className="lp-dash-kpi-sub" style={{ fontSize: 8, color: "#0284C7", fontWeight: 700 }}>Offers & Catalog</div>
+                        <div style={{ minWidth: 0, flex: 1, display: "flex", flexDirection: "column", gap: 2 }}>
+                          <div className="lp-dash-kpi-label">Broadcast</div>
+                          <div className="lp-dash-kpi-title">Instant Reach</div>
+                          <div className="lp-dash-kpi-sub" style={{ color: "#0284C7" }}>Catalog</div>
                         </div>
                       </div>
 
                       {/* Card 3: Support */}
-                      <div className="lp-dash-kpi-card" style={{ background: "#FFFFFF", borderRadius: 12, padding: "14px 14px", border: "1px solid #E2E8F0", display: "flex", alignItems: "center", gap: 11, boxShadow: "0 1px 3px rgba(0,0,0,0.02)" }}>
-                        <div className="lp-dash-kpi-icon" style={{ width: 34, height: 34, borderRadius: 9, background: "#F3E8FF", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9333EA" strokeWidth="2.2"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="16" y1="16" x2="16" y2="16"/></svg>
+                      <div className="lp-dash-kpi-card">
+                        <div className="lp-dash-kpi-icon" style={{ background: "#F3E8FF" }}>
+                          <svg viewBox="0 0 24 24" fill="none" stroke="#9333EA" strokeWidth="2.2"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="16" y1="16" x2="16" y2="16"/></svg>
                         </div>
-                        <div style={{ minWidth: 0, flex: 1, display: "flex", flexDirection: "column", gap: 5 }}>
-                          <div className="lp-dash-kpi-label" style={{ fontSize: 7.5, color: "#64748B", fontWeight: 600 }}>Support</div>
-                          <div className="lp-dash-kpi-title" style={{ fontSize: 11, fontWeight: 800, color: "#0F172A", lineHeight: 1.15 }}>100% Automated</div>
-                          <div className="lp-dash-kpi-sub" style={{ fontSize: 8, color: "#9333EA", fontWeight: 700 }}>24/7 AI Sales Rep</div>
+                        <div style={{ minWidth: 0, flex: 1, display: "flex", flexDirection: "column", gap: 2 }}>
+                          <div className="lp-dash-kpi-label">Support</div>
+                          <div className="lp-dash-kpi-title">Automated</div>
+                          <div className="lp-dash-kpi-sub" style={{ color: "#9333EA" }}>24/7 AI Rep</div>
                         </div>
                       </div>
 
@@ -741,10 +776,10 @@ const LandingPage = () => {
                     {/* Row 2: Business Growth & Lead Funnel */}
                     <div className="lp-dash-funnel-box" style={{ background: "#FFFFFF", borderRadius: 10, padding: "6px 8px", border: "1px solid #E2E8F0", display: "flex", flexDirection: "column", gap: 4 }}>
                       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                        <div style={{ fontSize: 8.5, fontWeight: 800, color: "#0F172A" }}>Business Growth & Lead Funnel</div>
+                        <div style={{ fontSize: 8.5, fontWeight: 600, color: "#0F172A" }}>Business Growth & Lead Funnel</div>
                         <div style={{ display: "inline-flex", alignItems: "center", gap: 3, background: "#ECFDF5", border: "1px solid #A7F3D0", borderRadius: 10, padding: "1px 6px" }}>
                           <span style={{ fontSize: 7 }}>⚡</span>
-                          <span style={{ fontSize: 7, fontWeight: 700, color: "#16A34A" }}>Active System</span>
+                          <span style={{ fontSize: 7, fontWeight: 500, color: "#16A34A" }}>Active System</span>
                         </div>
                       </div>
 
@@ -778,17 +813,17 @@ const LandingPage = () => {
                             <div style={{ width: 16, height: 16, borderRadius: "50%", background: "#25D366", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                               <svg width="9" height="9" viewBox="0 0 24 24" fill="#FFF"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
                             </div>
-                            <span style={{ fontSize: 9, fontWeight: 800, color: "#0F172A", whiteSpace: "nowrap" }}>Live Leads</span>
+                            <span style={{ fontSize: 9, fontWeight: 600, color: "#0F172A", whiteSpace: "nowrap" }}>Live Leads</span>
                           </div>
-                          <span style={{ fontSize: 7, color: "#64748B", fontWeight: 700, background: "#F8FAFC", border: "1px solid #E2E8F0", padding: "1px 5px", borderRadius: 3 }}>All</span>
+                          <span style={{ fontSize: 7, color: "#64748B", fontWeight: 500, background: "#F8FAFC", border: "1px solid #E2E8F0", padding: "1px 5px", borderRadius: 3 }}>All</span>
                         </div>
 
                         <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
                           {[
-                            { type: "Website Inquiry", time: "10:24 AM", badge: "Auto-Replied", bg: "#DCFCE7", color: "#16A34A" },
-                            { type: "Catalog View", time: "09:48 AM", badge: "Followup Sent", bg: "#E0F2FE", color: "#0284C7" },
-                            { type: "Order Request", time: "09:15 AM", badge: "Payment Ready", bg: "#FEF3C7", color: "#D97706" },
-                            { type: "Product Enquiry", time: "08:50 AM", badge: "Auto-Replied", bg: "#DCFCE7", color: "#16A34A" },
+                            { type: "Website Inquiry", badge: "Auto-Replied", bg: "#DCFCE7", color: "#16A34A" },
+                            { type: "Catalog View", badge: "Followup Sent", bg: "#E0F2FE", color: "#0284C7" },
+                            { type: "Order Request", badge: "Payment Ready", bg: "#FEF3C7", color: "#D97706" },
+                            { type: "Product Enquiry", badge: "Auto-Replied", bg: "#DCFCE7", color: "#16A34A" },
                           ].map((lead, idx) => (
                             <div key={idx} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "2px 0", borderBottom: idx < 3 ? "1px solid #F8FAFC" : "none" }}>
                               <div style={{ display: "flex", alignItems: "center", gap: 3, minWidth: 0 }}>
@@ -796,11 +831,10 @@ const LandingPage = () => {
                                 <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#25D366", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                                   <svg width="6" height="6" viewBox="0 0 24 24" fill="#FFF"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
                                 </div>
-                                <span className="lp-lead-item-title" style={{ fontSize: 7.8, fontWeight: 700, color: "#1E293B" }}>{lead.type}</span>
+                                <span className="lp-lead-item-title" style={{ fontSize: 7.8, fontWeight: 500, color: "#1E293B" }}>{lead.type}</span>
                               </div>
                               <div style={{ display: "flex", alignItems: "center", gap: 3, flexShrink: 0 }}>
-                                <span className="lp-lead-item-time" style={{ fontSize: 6.8, color: "#94A3B8" }}>{lead.time}</span>
-                                <span className="lp-lead-item-badge" style={{ fontSize: 6.5, fontWeight: 700, background: lead.bg, color: lead.color, padding: "1.5px 4px", borderRadius: 3 }}>{lead.badge}</span>
+                                <span className="lp-lead-item-badge" style={{ fontSize: 6.5, fontWeight: 500, background: lead.bg, color: lead.color, padding: "1.5px 4px", borderRadius: 3 }}>{lead.badge}</span>
                                 <span className="lp-lead-item-arrow" style={{ fontSize: 8, color: "#94A3B8" }}>›</span>
                               </div>
                             </div>
@@ -815,11 +849,11 @@ const LandingPage = () => {
                             <div style={{ width: 14, height: 14, borderRadius: 4, background: "#7C3AED", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                               <svg width="8" height="8" viewBox="0 0 24 24" fill="#FFF"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                             </div>
-                            <span style={{ fontSize: 9, fontWeight: 800, color: "#0F172A", whiteSpace: "nowrap" }}>AI Assistant</span>
+                            <span style={{ fontSize: 9, fontWeight: 600, color: "#0F172A", whiteSpace: "nowrap" }}>AI Assistant</span>
                           </div>
                           <div style={{ display: "flex", alignItems: "center", gap: 3 }}>
                             <div style={{ width: 4, height: 4, borderRadius: "50%", background: "#10B981" }} />
-                            <span style={{ fontSize: 6.5, color: "#64748B", fontWeight: 600 }}>Online</span>
+                            <span style={{ fontSize: 6.5, color: "#64748B", fontWeight: 500 }}>Online</span>
                           </div>
                         </div>
 
@@ -853,6 +887,13 @@ const LandingPage = () => {
               </div>
 
             </div>
+
+            {/* Value / Capability Pill (Positioned below the mockup image) */}
+            <div className="lp-hero-pill" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#F0FDF4", borderRadius: 40, padding: "6px 16px", marginTop: "20px", zIndex: 2, border: "1px solid #DCFCE7", boxShadow: "0 2px 8px rgba(22, 163, 74, 0.08)" }}>
+              <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#16A34A" }} />
+              <span style={{ fontSize: 11, fontWeight: 600, color: "#16A34A" }}>⚡ AI-Powered Lead Generation & Growth Engine</span>
+            </div>
+
           </div>
         </div>
       </section>
@@ -996,7 +1037,7 @@ const LandingPage = () => {
             position: "relative",
             margin: "0 auto",
             width: "100%",
-            maxWidth: 1060,
+            maxWidth: 820,
             display: "flex",
             justifyContent: "center",
             alignItems: "center"
@@ -1007,7 +1048,7 @@ const LandingPage = () => {
               alt="MessBee WhatsApp API Platform"
               style={{
                 width: "100%",
-                maxWidth: 1060,
+                maxWidth: 820,
                 height: "auto",
                 borderRadius: 16,
                 boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.04)",
