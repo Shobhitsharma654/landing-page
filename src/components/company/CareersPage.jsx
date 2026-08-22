@@ -112,7 +112,7 @@ const FAQS = [
   },
   {
     q: "Can I send my resume even if there is no suitable vacancy?",
-    a: "Yes. You may submit your resume to careers@messbee.com for consideration for future opportunities.",
+    a: "Yes. You may submit your resume to info@messbee.com for consideration for future opportunities.",
   },
 ];
 
@@ -524,7 +524,7 @@ const CareersPage = () => {
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
               View Open Positions
             </button>
-            <button className="careers-btn-secondary" onClick={() => window.location.href = "mailto:careers@messbee.com"}>
+            <button className="careers-btn-secondary" onClick={() => window.location.href = "mailto:info@messbee.com"}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
               Send Your Resume
             </button>
@@ -808,7 +808,7 @@ const CareersPage = () => {
             <p style={{ fontSize: 14, color: "#64748B", lineHeight: 1.8, marginBottom: 28 }}>
               Check our current openings across engineering, product, design, business and operations. Find the role that matches your skills and ambitions.
             </p>
-            <button className="careers-btn-primary" onClick={() => window.location.href = "mailto:careers@messbee.com"}>
+            <button className="careers-btn-primary" onClick={() => window.location.href = "mailto:info@messbee.com"}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
               View Open Positions
             </button>
@@ -828,12 +828,12 @@ const CareersPage = () => {
             <p style={{ fontSize: 13, color: "#94A3B8", marginBottom: 28, lineHeight: 1.7 }}>
               Please do not send confidential information, passwords, financial credentials or other sensitive personal information in your resume or application unless specifically required.
             </p>
-            <button className="careers-btn-secondary" onClick={() => window.location.href = "mailto:careers@messbee.com"}>
+            <button className="careers-btn-secondary" onClick={() => window.location.href = "mailto:info@messbee.com"}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
               Send Your Resume
             </button>
             <p style={{ fontSize: 12, color: "#94A3B8", marginTop: 16 }}>
-              <a href="mailto:careers@messbee.com" style={{ color: "#16A34A", textDecoration: "none", fontWeight: 600 }}>careers@messbee.com</a>
+              <a href="mailto:info@messbee.com" style={{ color: "#16A34A", textDecoration: "none", fontWeight: 600 }}>info@messbee.com</a>
             </p>
           </div>
         </div>
@@ -909,7 +909,7 @@ const CareersPage = () => {
             <button
               className="careers-btn-secondary"
               style={{ borderColor: "#16A34A", color: "#16A34A", background: "#FFFFFF" }}
-              onClick={() => window.location.href = "mailto:careers@messbee.com"}
+              onClick={() => window.location.href = "mailto:info@messbee.com"}
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
               Send Your Resume
