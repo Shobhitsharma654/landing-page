@@ -743,7 +743,7 @@ const CookiesPage = () => {
                       {[
                         { label: "Operating Brand", value: "MessBee" },
                         { label: "Country", value: "India" },
-                        { label: "Privacy", value: "privacy@messbee.com", href: "mailto:privacy@messbee.com" },
+                        { label: "Privacy", value: "info@messbee.com", href: "mailto:privacy@messbee.com" },
                         { label: "Support", value: "support@messbee.com", href: "mailto:support@messbee.com" },
                       ].map((item) => (
                         <div key={item.label} style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 14 }}>
