@@ -399,14 +399,14 @@ const SmbPage = () => {
           .smb-hero-row { gap: 32px; }
         }
 
-        .smb-hero-right-col { flex: 0.9; min-width: 320px; position: relative; display: flex; justify-content: center; }
+        .smb-hero-right-col { flex: 0.9; min-width: 320px; position: relative; display: flex; justify-content: center; width: 100%; }
         .smb-hero-right-card { transform: scale(0.8); transform-origin: center right; width: 100%; max-width: 480px; }
 
         /* Compact Laptop / Tablet-Laptop (under 1024px) */
         @media (max-width: 1023px) {
           .smb-hero-row { flex-direction: column !important; }
           .smb-hero-right-col { width: 100% !important; min-width: unset !important; justify-content: center !important; margin-top: 24px !important; }
-          .smb-hero-right-card { transform: none !important; transform-origin: center center !important; max-width: 340px !important; margin: 0 auto !important; }
+          .smb-hero-right-card { transform: none !important; transform-origin: center center !important; max-width: 480px !important; width: 100% !important; margin: 0 auto !important; }
           .grid-col-5 { grid-template-columns: repeat(2, 1fr); }
           .grid-col-4 { grid-template-columns: repeat(2, 1fr); }
           .grid-col-3 { grid-template-columns: repeat(1, 1fr); }
@@ -415,6 +415,20 @@ const SmbPage = () => {
 
         /* Mobile Phones & Tablets (under 768px) */
         @media (max-width: 768px) {
+          .smb-hero-section {
+            margin-top: 0px !important;
+            padding-top: 84px !important;
+            padding-bottom: 28px !important;
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+          }
+          .smb-hero-right-card {
+            transform: none !important;
+            max-width: 100% !important;
+            width: 100% !important;
+            margin: 0 auto !important;
+            padding: 24px 18px !important;
+          }
           .grid-col-4, .grid-col-3 {
             grid-template-columns: repeat(2, 1fr) !important;
             gap: 10px !important;
@@ -487,6 +501,14 @@ const SmbPage = () => {
           .smb-india-card {
             padding: 20px 14px !important;
             border-radius: 16px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .smb-hero-right-card {
+            max-width: 100% !important;
+            width: 100% !important;
+            padding: 20px 14px !important;
           }
         }
 
@@ -585,6 +607,7 @@ const SmbPage = () => {
           SECTION 1: HERO (SMB Specific Graphic Layout & Compact Typography)
          ═══════════════════════════════════════════════════════════════════ */}
       <section
+        className="smb-hero-section"
         style={{
           marginTop: 70,
           padding: "56px 6% 64px",

@@ -501,6 +501,47 @@ const PricingPage = () => {
           }
         }
 
+        /* ── Pricing Summary Table Responsive (Phone View: Fit all 4 columns without scroll) ── */
+        @media (max-width: 639px) {
+          .pricing-summary-section {
+            padding: 36px 12px !important;
+          }
+          .pricing-summary-table-wrapper {
+            overflow-x: hidden !important;
+          }
+          .pricing-summary-grid-header,
+          .pricing-summary-grid-row {
+            min-width: 0 !important;
+            width: 100% !important;
+            grid-template-columns: 1.15fr 0.95fr 0.95fr 0.95fr !important;
+            padding: 10px 4px !important;
+            font-size: 11px !important;
+          }
+          .pricing-summary-grid-header {
+            font-size: 9.5px !important;
+            letter-spacing: 0.2px !important;
+            padding: 10px 2px !important;
+          }
+          .pricing-sub-period {
+            display: block;
+            font-size: 8.5px;
+            font-weight: 600;
+            color: #64748B;
+            margin-top: 1px;
+            text-transform: none;
+          }
+        }
+        @media (max-width: 380px) {
+          .pricing-summary-grid-header,
+          .pricing-summary-grid-row {
+            padding: 9px 2px !important;
+            font-size: 10px !important;
+          }
+          .pricing-summary-grid-header {
+            font-size: 9px !important;
+          }
+        }
+
         /* Reference CTA Button (Top Positioned) */
         .btn-card-cta-top {
           width: 100%;
@@ -1154,7 +1195,7 @@ const PricingPage = () => {
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 2: PRICING SUMMARY
          ═══════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: "48px 6%", background: "#FFFFFF", borderBottom: "1px solid #F1F5F9" }}>
+      <section className="pricing-summary-section" style={{ padding: "48px 6%", background: "#FFFFFF", borderBottom: "1px solid #F1F5F9" }}>
         <div style={{ maxWidth: 1000, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 24 }}>
             <Pill>SUMMARY</Pill>
@@ -1163,7 +1204,7 @@ const PricingPage = () => {
             </h2>
           </div>
 
-          <div style={{
+          <div className="pricing-summary-table-wrapper" style={{
             background: "#FFFFFF",
             borderRadius: 14,
             border: "1.5px solid #E2E8F0",
@@ -1171,7 +1212,7 @@ const PricingPage = () => {
             overflowX: "auto",
             boxShadow: "0 2px 8px rgba(0,0,0,0.02)",
           }}>
-            <div style={{
+            <div className="pricing-summary-grid-header" style={{
               display: "grid",
               gridTemplateColumns: "1.2fr 1fr 1fr 1fr",
               minWidth: 540,
@@ -1187,8 +1228,8 @@ const PricingPage = () => {
             }}>
               <div>Plan</div>
               <div>Monthly</div>
-              <div>Quarterly (3 Mo)</div>
-              <div>Annual (12 Mo)</div>
+              <div>Quarterly <span className="pricing-sub-period">(3 Mo)</span></div>
+              <div>Annual <span className="pricing-sub-period">(12 Mo)</span></div>
             </div>
 
             {summaryTableData.map((row, idx) => {
@@ -1200,6 +1241,7 @@ const PricingPage = () => {
               return (
                 <div
                   key={row.plan}
+                  className="pricing-summary-grid-row"
                   style={{
                     display: "grid",
                     gridTemplateColumns: "1.2fr 1fr 1fr 1fr",
