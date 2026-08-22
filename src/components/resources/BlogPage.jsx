@@ -929,7 +929,7 @@ const BlogPage = () => {
                 style={{
                   padding: 22,
                   animationDelay: `${idx * 50}ms`,
-                  borderLeft: "4px solid #16A34A",
+                  // border: "4px solid ",
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>

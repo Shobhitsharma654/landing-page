@@ -41,7 +41,7 @@ import {
   FiTarget,
   FiCheckSquare
 } from "react-icons/fi";
-import { FiFolder, FiGift, FiAward, FiRefreshCw, FiArrowUpRight, FiTag } from "react-icons/fi";
+import { FiFolder, FiGift, FiAward, FiRefreshCw, FiArrowUpRight, FiTag, FiChevronLeft, FiChevronRight, FiArrowLeft, FiArrowRight } from "react-icons/fi";
 
 /* ══════════════════════════════════════════════════════
    MessBee — About Page
@@ -951,8 +951,8 @@ const AboutPage = () => {
               <div>
 
                 <h3 style={{ fontSize: "clamp(24px,2.8vw,34px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.18, marginBottom: 20, fontFamily: "'Inter', sans-serif" }}>
-                  From Local Business<br />
-                  <span style={{ color: "#16A34A" }}>to Growing Enterprise</span>
+                  From Local Business to<br />
+                  <span style={{ color: "#16A34A" }}> Growing Enterprise</span>
                 </h3>
 
                 <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.9, marginBottom: 10, fontFamily: "'Inter', sans-serif" }}>
@@ -1057,45 +1057,63 @@ const AboutPage = () => {
           .carousel-card-hover {
             transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
           }
-          .carousel-mobile-nav-btn {
-            display: none;
-            background: #FFFFFF;
-            border: 1.5px solid #BBF7D0;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            min-width: 40px;
-            min-height: 40px;
-            flex-shrink: 0;
-            align-items: center;
-            justify-content: center;
-            color: #16A34A;
-            cursor: pointer;
-            box-shadow: 0 4px 14px rgba(22, 163, 74, 0.12);
-            transition: all 0.2s ease;
-          }
-          .carousel-mobile-nav-btn:active {
-            transform: scale(0.92);
-            background: #F0FDF4;
-          }
-          @media (max-width: 768px) {
-            .carousel-arrow {
-              display: none !important;
-            }
-            .carousel-mobile-nav-btn {
-              display: inline-flex !important;
-            }
-            .carousel-card-item {
-              width: calc(100vw - 32px) !important;
-              max-width: 340px !important;
-            }
-          }
+           .carousel-mobile-nav-btn {
+             display: none;
+             background: #FFFFFF;
+             border: 1.5px solid #BBF7D0;
+             border-radius: 50% !important;
+             width: 36px !important;
+             height: 36px !important;
+             min-width: 36px !important;
+             min-height: 36px !important;
+             max-width: 36px !important;
+             max-height: 36px !important;
+             flex-shrink: 0 !important;
+             align-items: center !important;
+             justify-content: center !important;
+             color: #16A34A !important;
+             cursor: pointer;
+             box-shadow: 0 2px 8px rgba(22, 163, 74, 0.08) !important;
+             transition: all 0.2s ease;
+             padding: 0 !important;
+             margin: 0 !important;
+             line-height: 1 !important;
+           }
+           .carousel-mobile-nav-btn:active {
+             transform: scale(0.92);
+             background: #F0FDF4;
+           }
+           @media (max-width: 768px) {
+             .carousel-arrow {
+               display: none !important;
+             }
+             .carousel-mobile-nav-btn {
+               display: inline-flex !important;
+             }
+             .carousel-card-item {
+               width: calc(100vw - 32px) !important;
+               max-width: 333px !important;
+             }
+             .carousel-header-container {
+               text-align: left !important;
+             }
+             .carousel-header-title {
+               text-align: left !important;
+               margin-left: 0 !important;
+               margin-right: auto !important;
+             }
+             .carousel-header-desc {
+               text-align: left !important;
+               margin-left: 0 !important;
+               margin-right: auto !important;
+             }
+           }
         `}</style>
 
-        <div style={{ maxWidth: 1140, margin: "0 auto", textAlign: "center" }}>
+        <div className="carousel-header-container" style={{ maxWidth: 1140, margin: "0 auto", textAlign: "center" }}>
 
           {/* Header */}
-          <div style={{ marginBottom: 0 }}>
+          <div style={{ marginBottom: 0, textAlign: "inherit" }}>
             <div style={{
               display: "inline-flex", alignItems: "center", gap: 8,
               background: "rgba(22,163,74,0.08)", border: "1px solid rgba(22,163,74,0.22)",
@@ -1105,11 +1123,11 @@ const AboutPage = () => {
               <span style={{ color: "#16A34A", fontSize: 12, fontWeight: 700, letterSpacing: 0.8, textTransform: "uppercase" }}>All-in-One Capabilities</span>
             </div>
 
-            <h2 style={{ fontSize: "clamp(28px,3.5vw,42px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.18, marginBottom: 10 }}>
+            <h2 className="carousel-header-title" style={{ fontSize: "clamp(28px,3.5vw,42px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.18, marginBottom: 10 }}>
               Everything Your Business Needs, <span style={{ color: "#16A34A" }}>Connected</span>
             </h2>
 
-            <p style={{ fontSize: 16, color: "#64748B", maxWidth: 700, margin: "0 auto", lineHeight: 1.6 }}>
+            <p className="carousel-header-desc" style={{ fontSize: 16, color: "#64748B", maxWidth: 700, margin: "0 auto", lineHeight: 1.6 }}>
               Instead of managing scattered systems, run your communication, workflows, database, marketing and daily operations on a single connected operating system.
             </p>
           </div>
@@ -1429,9 +1447,7 @@ const AboutPage = () => {
               onClick={() => setActiveFeature(prev => (prev > 0 ? prev - 1 : 11))}
               aria-label="Previous capability"
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="15 18 9 12 15 6" />
-              </svg>
+              <FiArrowLeft style={{ width: 18, height: 18, strokeWidth: 3 }} />
             </button>
             <div style={{ display: "flex", alignItems: "center" }}>
               {Array.from({ length: 12 }).map((_, i) => (
@@ -1447,9 +1463,7 @@ const AboutPage = () => {
               onClick={() => setActiveFeature(prev => (prev < 11 ? prev + 1 : 0))}
               aria-label="Next capability"
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="9 18 15 12 9 6" />
-              </svg>
+              <FiArrowRight style={{ width: 18, height: 18, strokeWidth: 3 }} />
             </button>
           </div>
 
@@ -1466,7 +1480,7 @@ const AboutPage = () => {
       </section>
 
       {/* ── API CONNECTIVITY & INTEGRATION SECTION ── */}
-      <section style={{ padding: "80px 6%", background: "#FFFFFF", position: "relative" }}>
+      <section className="connectivity-section-pad" style={{ padding: "80px 6%", background: "#FFFFFF", position: "relative" }}>
         <style>{`
           @keyframes pulseRing {
             0% { transform: scale(0.95); opacity: 0.8; }
@@ -1527,34 +1541,67 @@ const AboutPage = () => {
             opacity: 1;
           }
           @media (max-width: 768px) {
+            .connectivity-section-pad {
+              padding: 32px 4% !important;
+            }
+            .connectivity-container {
+              flex-direction: column !important;
+              gap: 12px !important;
+              align-items: center !important;
+            }
+            .connectivity-left {
+              flex: 1 1 100% !important;
+              text-align: left !important;
+            }
+            .connectivity-left > div, .connectivity-left > p, .connectivity-left > h2 {
+              text-align: left !important;
+            }
+            .connectivity-left div[style*="borderLeft"] {
+              border-left: 3px solid #16A34A !important;
+              border-top: none !important;
+              padding-left: 16px !important;
+              padding-top: 0 !important;
+            }
+            .connectivity-left div[style*='flexWrap: "wrap"'] {
+              justify-content: flex-start !important;
+            }
             .connectivity-right {
               width: 100% !important;
               overflow: hidden !important;
-              margin-top: 10px !important;
+              margin-top: 0px !important;
+              display: flex !important;
+              justify-content: center !important;
+              align-items: center !important;
+              height: 370px !important;
             }
             .visualizer-container {
-              transform: scale(0.82);
-              transform-origin: center center;
-              margin: -15px auto !important;
+              position: relative !important;
+              transform: scale(0.92) !important;
+              transform-origin: center center !important;
+              left: 0 !important;
+              margin: 0 !important;
+              flex-shrink: 0 !important;
             }
             .node-tooltip {
-              opacity: 0.9 !important;
-              bottom: -22px !important;
-              font-size: 8.5px !important;
-              padding: 2px 6px !important;
+              display: none !important;
             }
           }
           @media (max-width: 480px) {
+            .connectivity-right {
+              display: flex !important;
+              justify-content: center !important;
+              align-items: center !important;
+              overflow: hidden !important;
+              height: 310px !important;
+            }
             .visualizer-container {
-              transform: scale(0.72);
-              transform-origin: center center;
-              margin: -32px auto !important;
+              transform: scale(0.76) !important;
+              transform-origin: center center !important;
+              left: 0 !important;
+              margin: 0 !important;
             }
             .node-tooltip {
-              opacity: 0.95 !important;
-              bottom: -20px !important;
-              font-size: 8px !important;
-              padding: 2px 5px !important;
+              display: none !important;
             }
           }
         `}</style>
@@ -1669,8 +1716,8 @@ const AboutPage = () => {
                       position: "absolute",
                       left: node.x - 34,
                       top: node.y - 34,
-                      width: "68px",
-                      height: "68px",
+                      width: "70px",
+                      height: "70px",
                       borderRadius: "50%",
                       background: "#FFFFFF",
                       border: "1px solid #E2E8F0",
@@ -2305,12 +2352,29 @@ const AboutPage = () => {
               align-self: flex-end;
             }
           }
+          @media (max-width: 768px) {
+            .philosophy-container {
+              text-align: left !important;
+            }
+            .philosophy-title {
+              text-align: left !important;
+              margin-left: 0 !important;
+              margin-right: auto !important;
+            }
+            .philosophy-callout {
+              text-align: left !important;
+              margin-left: 0 !important;
+              margin-right: auto !important;
+              padding-left: 0 !important;
+              padding-right: 0 !important;
+            }
+          }
         `}</style>
 
-        <div style={{ maxWidth: 1100, margin: "0 auto", textAlign: "center" }}>
+        <div className="philosophy-container" style={{ maxWidth: 1100, margin: "0 auto", textAlign: "center" }}>
 
           {/* Header */}
-          <div style={{ marginBottom: 30 }}>
+          <div style={{ marginBottom: 30, textAlign: "inherit" }}>
             <div style={{
               display: "inline-flex", alignItems: "center", gap: 8,
               background: "rgba(22,163,74,0.08)", border: "1px solid rgba(22,163,74,0.22)",
@@ -2320,14 +2384,14 @@ const AboutPage = () => {
               <span style={{ color: "#16A34A", fontSize: 12, fontWeight: 700, letterSpacing: 0.8, textTransform: "uppercase" }}>Our Philosophy</span>
             </div>
 
-            <h2 style={{ fontSize: "clamp(28px,3.5vw,42px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.18, maxWidth: 850, margin: "0 auto 24px auto" }}>
+            <h2 className="philosophy-title" style={{ fontSize: "clamp(28px,3.5vw,42px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.18, maxWidth: 850, margin: "0 auto 24px auto" }}>
               Your Business. Your Brand.<br />
               <span style={{ color: "#16A34A" }}>Your Customer Relationships.</span>
             </h2>
           </div>
 
           {/* Principle Callout */}
-          <div style={{
+          <div className="philosophy-callout" style={{
             padding: "10px 30px",
             maxWidth: 850,
             margin: "0 auto 30px auto",
@@ -2479,12 +2543,27 @@ const AboutPage = () => {
             background: #FFFFFF;
             color: #EC4899;
           }
+          @media (max-width: 768px) {
+            .growth-roadmap-container {
+              text-align: left !important;
+            }
+            .growth-roadmap-title {
+              text-align: left !important;
+              margin-left: 0 !important;
+              margin-right: auto !important;
+            }
+            .growth-roadmap-desc {
+              text-align: left !important;
+              margin-left: 0 !important;
+              margin-right: auto !important;
+            }
+          }
         `}</style>
 
-        <div style={{ maxWidth: 1100, margin: "0 auto", textAlign: "center" }}>
+        <div className="growth-roadmap-container" style={{ maxWidth: 1100, margin: "0 auto", textAlign: "center" }}>
 
           {/* Header */}
-          <div style={{ marginBottom: 48 }}>
+          <div style={{ marginBottom: 48, textAlign: "inherit" }}>
             <div style={{
               display: "inline-flex", alignItems: "center", gap: 8,
               background: "rgba(22,163,74,0.08)", border: "1px solid rgba(22,163,74,0.22)",
@@ -2494,17 +2573,17 @@ const AboutPage = () => {
               <span style={{ color: "#16A34A", fontSize: 12, fontWeight: 700, letterSpacing: 0.8, textTransform: "uppercase" }}>Scalable Growth</span>
             </div>
 
-            <h2 style={{ fontSize: "clamp(28px,3.5vw,42px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.18, marginBottom: 16 }}>
+            <h2 className="growth-roadmap-title" style={{ fontSize: "clamp(28px,3.5vw,42px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.18, marginBottom: 16 }}>
               Designed to <span style={{ color: "#16A34A" }}>Grow With Your Business</span>
             </h2>
 
-            <p style={{ fontSize: 19, color: "#1E293B", fontWeight: 800, maxWidth: 720, margin: "0 auto 10px auto", lineHeight: 1.5, fontFamily: "'Inter', sans-serif" }}>
+            <p className="growth-roadmap-desc" style={{ fontSize: 19, color: "#1E293B", fontWeight: 800, maxWidth: 720, margin: "0 auto 10px auto", lineHeight: 1.5, fontFamily: "'Inter', sans-serif" }}>
               You do not need to implement everything on day one.
             </p>
-            <p style={{ fontSize: 16, color: "#475569", fontWeight: 500, maxWidth: 720, margin: "0 auto 6px auto", lineHeight: 1.6, fontFamily: "'Inter', sans-serif" }}>
+            <p className="growth-roadmap-desc" style={{ fontSize: 16, color: "#475569", fontWeight: 500, maxWidth: 720, margin: "0 auto 6px auto", lineHeight: 1.6, fontFamily: "'Inter', sans-serif" }}>
               Start with the capabilities your business <span style={{ color: "#16A34A", fontWeight: 700 }}>needs today</span>.
             </p>
-            <p style={{ fontSize: 16, color: "#475569", fontWeight: 500, maxWidth: 720, margin: "0 auto", lineHeight: 1.6, fontFamily: "'Inter', sans-serif" }}>
+            <p className="growth-roadmap-desc" style={{ fontSize: 16, color: "#475569", fontWeight: 500, maxWidth: 720, margin: "0 auto", lineHeight: 1.6, fontFamily: "'Inter', sans-serif" }}>
               As your business grows, <span style={{ color: "#16A34A", fontWeight: 700 }}>expand dynamically</span> into additional workflows and capabilities.
             </p>
           </div>
@@ -2930,6 +3009,23 @@ const AboutPage = () => {
             font-family: 'Inter', sans-serif;
             line-height: 1.3;
           }
+          .vision-card-icon-wrapper {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: rgba(22, 163, 74, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(22, 163, 74, 0.15);
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+          }
+          .vision-card-icon-wrapper svg {
+            width: 18px;
+            height: 18px;
+            transition: all 0.3s ease;
+          }
           .vision-banner {
             display: inline-block;
             background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);
@@ -3010,19 +3106,47 @@ const AboutPage = () => {
 
           @media (max-width: 768px) {
             .vision-section {
-              padding: 28px 16px !important;
+              padding: 32px 16px !important;
+            }
+            .vision-content-container {
+              text-align: left !important;
+            }
+            .vision-title-main {
+              text-align: left !important;
+              margin-left: 0 !important;
+              margin-right: auto !important;
+            }
+            .vision-paragraph-main {
+              text-align: left !important;
+              margin-left: 0 !important;
+              margin-right: auto !important;
+            }
+            .vision-label-main {
+              text-align: left !important;
             }
             .vision-cards-grid {
               grid-template-columns: repeat(2, 1fr) !important;
-              gap: 10px !important;
-              margin-bottom: 20px !important;
+              gap: 12px !important;
+              margin-bottom: 24px !important;
+              max-width: 100% !important;
             }
             .vision-card {
-              padding: 10px 12px !important;
-              gap: 8px !important;
+              padding: 12px 14px !important;
+              gap: 12px !important;
+              border-radius: 14px !important;
             }
             .vision-card-title {
-              font-size: 12px !important;
+              font-size: 13.5px !important;
+              font-weight: 700 !important;
+            }
+            .vision-card-icon-wrapper {
+              width: 36px !important;
+              height: 36px !important;
+              border-radius: 10px !important;
+            }
+            .vision-card-icon-wrapper svg {
+              width: 16px !important;
+              height: 16px !important;
             }
             .vision-banner {
               padding: 10px 16px !important;
@@ -3035,16 +3159,34 @@ const AboutPage = () => {
 
           @media (max-width: 576px) {
             .vision-cards-grid {
-              grid-template-columns: 1fr !important;
+              grid-template-columns: repeat(2, 1fr) !important;
               gap: 8px !important;
+            }
+            .vision-card {
+              padding: 10px 10px !important;
+              gap: 8px !important;
+              border-radius: 12px !important;
+            }
+            .vision-card-title {
+              font-size: 12px !important;
+              font-weight: 700 !important;
+            }
+            .vision-card-icon-wrapper {
+              width: 32px !important;
+              height: 32px !important;
+              border-radius: 8px !important;
+            }
+            .vision-card-icon-wrapper svg {
+              width: 15px !important;
+              height: 15px !important;
             }
           }
         `}</style>
 
-        <div style={{ maxWidth: 1100, margin: "0 auto", textAlign: "center" }}>
+        <div className="vision-content-container" style={{ maxWidth: 1100, margin: "0 auto", textAlign: "center" }}>
 
           {/* Header */}
-          <div style={{ marginBottom: 10 }}>
+          <div style={{ marginBottom: 10, textAlign: "inherit" }}>
             <div style={{
               display: "inline-flex", alignItems: "center", gap: 8,
               background: "rgba(22,163,74,0.08)", border: "1px solid rgba(22,163,74,0.22)",
@@ -3054,45 +3196,33 @@ const AboutPage = () => {
               <span style={{ color: "#16A34A", fontSize: 12, fontWeight: 700, letterSpacing: 0.8, textTransform: "uppercase" }}>Our Vision</span>
             </div>
 
-            <h2 style={{ fontSize: "clamp(24px, 2.8vw, 38px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.18, maxWidth: 850, margin: "0 auto 24px auto" }}>
+            <h2 className="vision-title-main" style={{ fontSize: "clamp(24px, 2.8vw, 38px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.18, maxWidth: 850, margin: "0 auto 24px auto" }}>
               A Digital Future Where Every Business<br />
               <span style={{ color: "#16A34A" }}>Can Own Its Growth</span>
             </h2>
           </div>
 
           {/* Core Vision Paragraph */}
-          <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.8, maxWidth: 850, margin: "0 auto 40px auto", fontFamily: "'Inter', sans-serif" }}>
+          <p className="vision-paragraph-main" style={{ fontSize: 15, color: "#475569", lineHeight: 1.8, maxWidth: 850, margin: "0 auto 40px auto", fontFamily: "'Inter', sans-serif" }}>
             We envision a future where a local business can access the fundamental digital capabilities required to compete, serve customers and grow—without having to build a complex technology infrastructure from scratch.
           </p>
 
           {/* Grid Layout of Ownership Pillars */}
-          <div style={{ fontSize: 12.5, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 20 }}>
+          <div className="vision-label-main" style={{ fontSize: 12.5, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 20 }}>
             We want businesses to have:
           </div>
 
           <div className="vision-cards-grid">
             {[
-              { title: "Their Own Brand", icon: <FiTag style={{ color: "#16A34A", width: 16, height: 16 }} /> },
-              { title: "Their Own Customer Relationships", icon: <FiHeart style={{ color: "#16A34A", width: 16, height: 16 }} /> },
-              { title: "Their Own Digital Store", icon: <FiShoppingBag style={{ color: "#16A34A", width: 16, height: 16 }} /> },
-              { title: "Their Own Business Workflows", icon: <FiSettings style={{ color: "#16A34A", width: 16, height: 16 }} /> },
-              { title: "Their Own AI-Assisted Experience", icon: <FiCpu style={{ color: "#16A34A", width: 16, height: 16 }} /> },
-              { title: "Their Own Digital Ecosystem", icon: <FiGlobe style={{ color: "#16A34A", width: 16, height: 16 }} /> }
+              { title: "Their Own Brand", icon: <FiTag style={{ color: "#16A34A" }} /> },
+              { title: "Their Own Customer Relationships", icon: <FiHeart style={{ color: "#16A34A" }} /> },
+              { title: "Their Own Digital Store", icon: <FiShoppingBag style={{ color: "#16A34A" }} /> },
+              { title: "Their Own Business Workflows", icon: <FiSettings style={{ color: "#16A34A" }} /> },
+              { title: "Their Own AI-Assisted Experience", icon: <FiCpu style={{ color: "#16A34A" }} /> },
+              { title: "Their Own Digital Ecosystem", icon: <FiGlobe style={{ color: "#16A34A" }} /> }
             ].map((pillar, idx) => (
               <div key={idx} className="vision-card">
-                <div style={{
-                  width: "34px",
-                  height: "34px",
-                  borderRadius: "8px",
-                  background: "rgba(22, 163, 74, 0.06)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "15px",
-                  border: "1px solid rgba(22, 163, 74, 0.12)",
-                  flexShrink: 0,
-                  
-                }}>
+                <div className="vision-card-icon-wrapper">
                   {pillar.icon}
                 </div>
                 <h4 className="vision-card-title">
@@ -3135,6 +3265,62 @@ const AboutPage = () => {
             color: #FFFFFF;
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(22, 163, 74, 0.15);
+          }
+          .tenets-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+          }
+          .tenet-card {
+            font-size: 14px;
+            font-weight: 700;
+            background: #F8FAFC;
+            border: 1.5px solid #E2E8F0;
+            padding: 8px 14px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-family: 'Inter', sans-serif;
+          }
+          .tenet-icon-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            flex-shrink: 0;
+          }
+          @media (max-width: 768px) {
+            .tenets-container {
+              display: grid !important;
+              grid-template-columns: repeat(2, 1fr) !important;
+              gap: 10px !important;
+              max-width: 100% !important;
+            }
+            .tenet-card {
+              padding: 10px 10px !important;
+              gap: 10px !important;
+              border-radius: 12px !important;
+              font-size: 12px !important;
+            }
+            .tenet-icon-wrapper {
+              width: 24px !important;
+              height: 24px !important;
+            }
+            .tenet-icon-wrapper svg {
+              width: 12px !important;
+              height: 12px !important;
+            }
+          }
+          @media (max-width: 576px) {
+            .tenets-container {
+              grid-template-columns: repeat(2, 1fr) !important;
+              gap: 8px !important;
+            }
           }
         `}</style>
 
@@ -3186,7 +3372,7 @@ const AboutPage = () => {
               <div style={{ fontSize: 13, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 24 }}>
                 Our approach is centered around:
               </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+              <div className="tenets-container">
                 {[
                   { name: "Innovation", icon: <FiZap style={{ width: 12, height: 12 }} />, color: "#F59E0B" },
                   { name: "Reliability", icon: <FiHeart style={{ width: 12, height: 12 }} />, color: "#0EA5E9" },
@@ -3204,33 +3390,17 @@ const AboutPage = () => {
                       key={idx}
                       onMouseEnter={() => setHoveredLeaderCap(idx)}
                       onMouseLeave={() => setHoveredLeaderCap(null)}
+                      className="tenet-card"
                       style={{
-                        fontSize: "14px",
-                        fontWeight: 700,
                         background: isHovered ? val.color : "#F8FAFC",
-                        border: `1.5px solid ${isHovered ? val.color : "#E2E8F0"}`,
-                        padding: "8px 14px",
-                        borderRadius: "20px",
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 20,
-                        cursor: "pointer",
+                        borderColor: isHovered ? val.color : "#E2E8F0",
                         transform: isHovered ? "translateX(4px)" : "translateX(0)",
-                        transition: "all 0.2s ease",
                         boxShadow: isHovered ? "0 4px 12px rgba(0,0,0,0.05)" : "none",
-                        fontFamily: "'Inter', sans-serif"
                       }}
                     >
-                      <div style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        width: 22,
-                        height: 22,
-                        borderRadius: "50%",
+                      <div className="tenet-icon-wrapper" style={{
                         background: isHovered ? "rgba(255, 255, 255, 0.2)" : `${val.color}15`,
                         color: isHovered ? "#FFFFFF" : val.color,
-                        flexShrink: 0
                       }}>
                         {val.icon}
                       </div>
@@ -3637,18 +3807,18 @@ const AboutPage = () => {
       </section>
 
       {/* ── BOTTOM CTA ── */}
-      <section style={{ background: "#F0FDF4", padding: "100px 6%", textAlign: "center", position: "relative", overflow: "hidden" }}>
+      <section style={{ background: "#F0FDF4", padding: "60px 6%", textAlign: "center", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 700, height: 700, background: "rgba(22,163,74,.09)", borderRadius: "50%", filter: "blur(100px)", pointerEvents: "none" }} />
         <div style={{ position: "relative", zIndex: 2, maxWidth: 980, margin: "0 auto" }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 9, background: "#FFFFFF", border: "1px solid #BBF7D0", borderRadius: 40, padding: "8px 22px", marginBottom: 24, boxShadow: "0 2px 8px rgba(0,0,0,0.03)" }}>
             <svg width="10" height="10" viewBox="0 0 10 10" fill="#16A34A"><circle cx="5" cy="5" r="5" /></svg>
             <span style={{ fontSize: 14.5, fontWeight: 700, color: "#16A34A" }}>Get Started Today</span>
           </div>
-          <h2 style={{ fontSize: "clamp(36px, 5.2vw, 60px)", fontWeight: 900, color: "#111827", letterSpacing: "-1.5px", lineHeight: 1.12, marginBottom: 20 }}>
+          <h2 style={{ fontSize: "clamp(26px, 3.5vw, 38px)", fontWeight: 900, color: "#111827", lineHeight: 1.12, marginBottom: 20 }}>
             MessBee: One Business.<br />
             <span style={{ color: "#16A34A" }}>One Connected Digital Ecosystem.</span>
           </h2>
-          <p style={{ fontSize: 17.5, color: "#64748B", lineHeight: 1.7, maxWidth: 660, margin: "0 auto 38px" }}>
+          <p style={{ fontSize: 14.5, color: "#64748B", lineHeight: 1.7, maxWidth: 660, margin: "0 auto 38px" }}>
             Your Business. Your Brand. Your Customers. Your Control.<br />
             <strong style={{ color: "#0F172A" }}>MessBee &mdash; India&apos;s Digital Business Operating System</strong>
           </p>
