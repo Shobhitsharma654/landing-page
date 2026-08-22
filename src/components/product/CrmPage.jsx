@@ -397,11 +397,11 @@ const CrmPage = () => {
       <Navbar />
 
       {/* ── HERO ── */}
-      <section className="crm-hero-section" style={{ background:"#fff", padding:"118px 6% 60px" }}>
+      <section className="crm-hero-section" style={{ background:"#fff", padding:"92px 6% 48px" }}>
         <div style={{ maxWidth:1200, margin:"0 auto" }}>
           <div className="hg" style={{ alignItems:"flex-start" }}>
             <div className="hl">
-              <div style={{ display:"inline-flex", alignItems:"center", gap:6, background:GL, border:`1px solid ${GB}`, borderRadius:40, padding:"5px 14px", marginBottom:28 }}>
+              <div style={{ display:"inline-flex", alignItems:"center", gap:6, background:GL, border:`1px solid ${GB}`, borderRadius:40, padding:"5px 14px", marginBottom:16 }}>
                 <div style={{ width:6, height:6, borderRadius:"50%", background:G }}/>
                 <span style={{ fontSize:11.5, fontWeight:600, color:G }}>MessBee CRM</span>
               </div>
@@ -415,7 +415,7 @@ const CrmPage = () => {
                 follow up with prospects, and build stronger customer relationships from one centralized platform.
               </p>
 
-              <div style={{ display:"flex", flexWrap:"wrap", gap:8, marginBottom:36 }}>
+              <div style={{ display:"flex", flexWrap:"wrap", gap:8, marginBottom:32 }}>
                 {["Manage Customers.","Track Leads.","Build Relationships.","Grow Your Business."].map(t => (
                   <span key={t} style={{ background:BS, border:"1px solid #E5E7EB", color:MU, borderRadius:40, padding:"4px 12px", fontSize:12, fontWeight:600 }}>{t}</span>
                 ))}
@@ -514,7 +514,7 @@ const CrmPage = () => {
                 {/* Text side */}
                 <div>
                   <Pill color={sec.color} bg={sec.bg} border={sec.color+"40"}>{sec.badge}</Pill>
-                  <h2 style={{ fontSize:"clamp(18px,2.5vw,28px)", fontWeight:900, color:D2, lineHeight:1.2, letterSpacing:"-1px", marginBottom:10 }}>
+                  <h2 style={{ fontSize:"clamp(20px, 2.5vw, 32px)", fontWeight:900, color:D2, lineHeight:1.2, letterSpacing:"-1px", marginBottom:10 }}>
                     {sec.headline}
                   </h2>
                   <p style={{ fontSize:13, fontWeight:600, color:sec.color, marginBottom:14 }}>{sec.sub}</p>

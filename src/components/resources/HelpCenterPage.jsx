@@ -409,13 +409,21 @@ const HelpCenterPage = () => {
           }
           .help-hero-graphic-box {
             margin-top: 10px !important;
-            min-width: 100% !important;
+            padding-top: 24px !important;
+            margin-bottom: 0 !important;
+            min-width: 0 !important;
             width: 100% !important;
+            justify-content: center !important;
           }
           .help-hero-graphic-card {
             transform: none !important;
-            border-radius: 18px !important;
-            padding: 20px 16px !important;
+            transform-origin: top center !important;
+            margin: 0 auto !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            border-radius: 20px !important;
+            padding: 22px 16px !important;
+            box-sizing: border-box !important;
           }
           .help-btn-primary, .help-btn-secondary {
             width: 100% !important;
@@ -466,6 +474,10 @@ const HelpCenterPage = () => {
         }
 
         @media (max-width: 480px) {
+          .help-hero-graphic-card {
+            padding: 18px 12px !important;
+            border-radius: 18px !important;
+          }
           .help-section {
             padding: 20px 14px !important;
           }
@@ -523,8 +535,8 @@ const HelpCenterPage = () => {
       <section
         className="help-hero-section"
         style={{
-          marginTop: 40,
-          padding: "56px 6% 64px",
+          marginTop: 0,
+          padding: "92px 6% 48px",
           position: "relative",
           background: "linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)",
           overflow: "hidden",
@@ -544,7 +556,7 @@ const HelpCenterPage = () => {
           }}
         />
 
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", width: "100%", position: "relative", zIndex: 1 }}>
           <div className="help-hero-row">
             {/* Left Column: Text Copy */}
             <div className="help-hero-left" style={{ flex: 1.15 }}>
@@ -571,26 +583,26 @@ const HelpCenterPage = () => {
               {/* H1 Heading */}
               <h1
                 style={{
-                  fontSize: "clamp(24px, 2.6vw, 36px)",
+                  fontSize: "clamp(28px, 2.9vw, 42px)",
                   fontWeight: 900,
                   color: "#0F172A",
-                  lineHeight: 1.18,
-                  letterSpacing: "-1.2px",
-                  marginBottom: 12,
+                  lineHeight: 1.12,
+                  letterSpacing: "-1px",
+                  marginBottom: 14,
                 }}
               >
                 MessBee Help Center – <span style={{ color: "#16A34A" }}>Guides, Answers &amp; Support</span>
               </h1>
 
-              <p style={{ fontSize: 16, fontWeight: 800, color: "#16A34A", marginBottom: 16, letterSpacing: "-0.2px" }}>
+              <p style={{ fontSize: 16, fontWeight: 800, color: "#16A34A", marginBottom: 12, letterSpacing: "-0.2px" }}>
                 Get the Help You Need, When You Need It
               </p>
 
-              <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 20 }}>
+              <p style={{ fontSize: 14, color: "#64748B", lineHeight: 1.65, marginBottom: 16, maxWidth: 540 }}>
                 The MessBee Help Center gives you instant access to setup guides, how-to articles and troubleshooting resources — everything you need to get started and make the most of the platform.
               </p>
 
-              <div style={{ fontSize: 16, fontWeight: 900, color: "#15803D", marginBottom: 24, letterSpacing: "-0.3px" }}>
+              <div style={{ fontSize: 15, fontWeight: 800, color: "#15803D", marginBottom: 20, letterSpacing: "-0.2px" }}>
                 Find an Answer. Follow the Steps. Get Back to Business.
               </div>
 
@@ -609,20 +621,22 @@ const HelpCenterPage = () => {
             </div>
 
             {/* Right Column: Hero Graphic Box with Dark Forest Green Gradient */}
-            <div className="help-hero-graphic-box" style={{ flex: 0.85, minWidth: 320, position: "relative", marginTop: 60 }}>
+            <div className="help-hero-graphic-box" style={{ flex: 0.85, minWidth: 320, position: "relative", display: "flex", justifyContent: "center", paddingTop: 20, marginBottom: -120 }}>
               <div
                 className="help-hero-graphic-card"
                 style={{
                   background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
                   borderRadius: 24,
-                  padding: "24px 20px",
-                  boxShadow: "0 20px 50px rgba(2, 44, 34, 0.4)",
-                  border: "1px solid rgba(52, 211, 153, 0.25)",
+                  padding: 28,
+                  boxShadow: "0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)",
+                  border: "1px solid rgba(34,197,94,.2)",
                   color: "#FFFFFF",
                   position: "relative",
+                  width: "100%",
+                  maxWidth: 460,
+                  transform: "scale(0.75)",
+                  transformOrigin: "top center",
                   overflow: "hidden",
-                  transform: "scale(0.88)",
-                  transformOrigin: "top right",
                 }}
               >
                 <div
@@ -640,23 +654,23 @@ const HelpCenterPage = () => {
                 />
 
                 {/* Header featuring Official MessBee Logo */}
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20, borderBottom: "1px solid rgba(255,255,255,0.12)", paddingBottom: 14 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                    <div style={{ width: 34, height: 34, borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.2)", flexShrink: 0, background: "#FFFFFF", padding: 2 }}>
-                      <img src={defaultLogo} alt="MessBee" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 28, borderBottom: "1px solid rgba(255,255,255,0.12)", paddingBottom: 16 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                    <div style={{ width: 40, height: 40, borderRadius: 10, overflow: "hidden", border: "1px solid rgba(255,255,255,0.2)", flexShrink: 0, background: "#FFFFFF", padding: 4 }}>
+                      <img src={defaultLogo} alt="MessBee" style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius: 6 }} />
                     </div>
                     <div>
-                      <div style={{ fontSize: 13, fontWeight: 900, color: "#FFFFFF" }}>MessBee Support Desk</div>
-                      <div style={{ fontSize: 10, color: "#4ADE80", fontWeight: 700 }}>24/7 Documentation Hub</div>
+                      <div style={{ fontSize: 17, fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.3px" }}>MessBee Support Desk</div>
+                      <div style={{ fontSize: 11, color: "#34D399", fontWeight: 700 }}>24/7 Documentation Hub</div>
                     </div>
                   </div>
-                  <span style={{ fontSize: 10, background: "rgba(52,211,153,0.2)", color: "#34D399", padding: "3px 10px", borderRadius: 20, fontWeight: 700, border: "1px solid rgba(52,211,153,0.3)" }}>
+                  <span style={{ fontSize: 11, background: "rgba(16,185,129,0.15)", color: "#34D399", padding: "6px 12px", borderRadius: 20, fontWeight: 700, border: "1px solid rgba(16,185,129,0.4)" }}>
                     Official Guides
                   </span>
                 </div>
 
                 {/* Help Nodes Grid */}
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 16 }}>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 24 }}>
                   {[
                     { label: "Getting Started", icon: "⚙️" },
                     { label: "CRM & Contacts", icon: "📊" },
@@ -666,26 +680,26 @@ const HelpCenterPage = () => {
                     <div
                       key={i}
                       style={{
-                        background: "rgba(255,255,255,0.06)",
-                        border: "1px solid rgba(52,211,153,0.2)",
+                        background: "rgba(16,185,129,0.09)",
+                        border: "1px solid rgba(16,185,129,0.25)",
                         borderRadius: 14,
-                        padding: 12,
+                        padding: "14px 16px",
                         display: "flex",
                         flexDirection: "column",
                         gap: 4,
                       }}
                     >
-                      <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                        <span style={{ fontSize: 18 }}>{node.icon}</span>
-                        <span style={{ fontSize: 12, fontWeight: 800, color: "#FFFFFF" }}>{node.label}</span>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                        <span style={{ fontSize: 16 }}>{node.icon}</span>
+                        <span style={{ fontSize: 13, fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.2px" }}>{node.label}</span>
                       </div>
-                      <span style={{ fontSize: 10, color: "#34D399", fontWeight: 700 }}>Step-by-Step Help</span>
+                      <span style={{ fontSize: 11, color: "#34D399", fontWeight: 700 }}>Step-by-Step Help</span>
                     </div>
                   ))}
                 </div>
 
-                <div style={{ background: "rgba(52,211,153,0.15)", border: "1px solid rgba(52,211,153,0.3)", borderRadius: 12, padding: 12, textAlign: "center" }}>
-                  <span style={{ fontSize: 11.5, fontWeight: 800, color: "#4ADE80" }}>
+                <div style={{ background: "rgba(16,185,129,0.09)", border: "1px solid rgba(16,185,129,0.25)", borderRadius: 12, padding: "14px", textAlign: "center" }}>
+                  <span style={{ fontSize: 12, fontWeight: 800, color: "#34D399" }}>
                     Find an Answer. Follow the Steps. Get Back to Business.
                   </span>
                 </div>
@@ -717,7 +731,7 @@ const HelpCenterPage = () => {
             >
               Knowledge Base
             </div>
-            <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               How Can We <span style={{ color: "#16A34A" }}>Help?</span>
             </h2>
           </div>
@@ -823,7 +837,7 @@ const HelpCenterPage = () => {
             >
               Popular Guides
             </div>
-            <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 10 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 10 }}>
               Quick Answers to Common Questions
             </h2>
             <p style={{ fontSize: 13.5, color: "#64748B" }}>
@@ -877,7 +891,7 @@ const HelpCenterPage = () => {
       <section style={{ padding: "60px 6%", background: GL, borderTop: `1px solid ${GB}`, borderBottom: `1px solid ${GB}` }}>
         <div style={{ maxWidth: 1060, margin: "0 auto", textAlign: "center" }}>
           <Pill>Issue Resolution</Pill>
-          <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 900, color: D2, letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 16 }}>
+          <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: D2, letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 16 }}>
             Troubleshooting<br />
             <span style={{ color: G }}>Something isn't working as expected?</span>
           </h2>
@@ -956,7 +970,7 @@ const HelpCenterPage = () => {
             >
               Release Notes
             </div>
-            <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 10 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 10 }}>
               Product Updates
             </h2>
             <p style={{ fontSize: 13.5, color: "#64748B", maxWidth: 640, margin: "0 auto" }}>
@@ -1029,7 +1043,7 @@ const HelpCenterPage = () => {
           >
             Direct Assistance
           </div>
-          <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+          <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
             Need More Help?
           </h2>
 
@@ -1060,7 +1074,7 @@ const HelpCenterPage = () => {
         <div style={{ maxWidth: 760, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 36 }}>
             <Pill>FAQ</Pill>
-            <h2 style={{ fontSize: "clamp(18px, 2.5vw, 30px)", fontWeight: 900, color: D2, letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: D2, letterSpacing: "-1px" }}>
               Frequently Asked Questions
             </h2>
           </div>

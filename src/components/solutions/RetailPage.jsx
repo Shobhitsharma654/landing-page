@@ -448,14 +448,14 @@ const RetailPage = () => {
           .retail-hero-row { gap: 32px; }
         }
 
-        .retail-hero-right-col { flex: 0.9; min-width: 320px; position: relative; display: flex; justify-content: center; }
-        .retail-hero-right-card { transform: scale(0.8); transform-origin: center right; width: 100%; max-width: 480px; }
+        .retail-hero-right-col { flex: 0.9; min-width: 320px; position: relative; display: flex; justify-content: center; padding-top: 20px; margin-bottom: -120px; }
+        .retail-hero-right-card { transform: scale(0.75); transform-origin: top center; width: 100%; max-width: 460px; }
 
         /* Compact Laptop / Tablet-Laptop (under 1024px) */
         @media (max-width: 1023px) {
           .retail-hero-row { flex-direction: column !important; }
-          .retail-hero-right-col { width: 100% !important; min-width: unset !important; justify-content: center !important; margin-top: 24px !important; }
-          .retail-hero-right-card { transform: none !important; transform-origin: center center !important; max-width: 440px !important; margin: 0 auto !important; }
+          .retail-hero-right-col { width: 100% !important; min-width: 0 !important; justify-content: center !important; padding-top: 24px !important; margin-bottom: 0 !important; }
+          .retail-hero-right-card { transform: none !important; transform-origin: top center !important; max-width: 100% !important; width: 100% !important; margin: 0 auto !important; padding: 22px 16px !important; box-sizing: border-box !important; border-radius: 20px !important; }
           .grid-col-5 { grid-template-columns: repeat(2, 1fr); }
           .grid-col-4 { grid-template-columns: repeat(2, 1fr); }
           .grid-col-3 { grid-template-columns: repeat(1, 1fr); }
@@ -475,8 +475,9 @@ const RetailPage = () => {
           .retail-hero-right-card {
             transform: none !important;
             max-width: 100% !important;
+            width: 100% !important;
             margin: 0 auto !important;
-            padding: 24px 16px !important;
+            padding: 22px 16px !important;
           }
           .grid-col-4, .retail-why-grid, .grid-col-5 {
             grid-template-columns: repeat(2, 1fr) !important;
@@ -622,8 +623,8 @@ const RetailPage = () => {
       <section
         className="retail-hero-section"
         style={{
-          marginTop: 70,
-          padding: "56px 6% 64px",
+          marginTop: 0,
+          padding: "92px 6% 48px",
           position: "relative",
           background: "linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)",
           overflow: "hidden",
@@ -660,7 +661,7 @@ const RetailPage = () => {
                 fontSize: 10.5,
                 fontWeight: 800,
                 letterSpacing: "1px",
-                marginBottom: 18,
+                marginBottom: 16,
                 textTransform: "uppercase",
               }}
             >
@@ -747,8 +748,8 @@ const RetailPage = () => {
                 background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
                 borderRadius: 24,
                 padding: "28px 24px",
-                boxShadow: "0 20px 50px rgba(2, 44, 34, 0.4)",
-                border: "1px solid rgba(52, 211, 153, 0.25)",
+                boxShadow: "0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)",
+                border: "1px solid rgba(34,197,94,.2)",
                 color: "#FFFFFF",
                 position: "relative",
                 overflow: "hidden",
@@ -852,7 +853,7 @@ const RetailPage = () => {
             >
               Everyday Business
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
               Built Around Your <span style={{ color: "#16A34A" }}>Everyday Business</span>
             </h2>
 
@@ -943,7 +944,7 @@ const RetailPage = () => {
             >
               Repeat Business
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
               Turn First-Time Visitors Into <span style={{ color: "#16A34A" }}>Returning Customers</span>
             </h2>
 
@@ -1024,7 +1025,7 @@ const RetailPage = () => {
             >
               Practical Tools
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               Practical Tools for <span style={{ color: "#16A34A" }}>Local Businesses</span>
             </h2>
           </div>
@@ -1098,7 +1099,7 @@ const RetailPage = () => {
             >
               Business Types
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               Useful for <span style={{ color: "#16A34A" }}>Different Local Businesses</span>
             </h2>
           </div>
@@ -1131,7 +1132,7 @@ const RetailPage = () => {
         <div style={{ maxWidth: 1060, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 36 }}>
             <Pill>Unified Experience</Pill>
-            <h2 style={{ fontSize: "clamp(18px, 2.5vw, 30px)", fontWeight: 900, color: D2, letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: D2, letterSpacing: "-1px", marginBottom: 12 }}>
               Keep Your Customers <span style={{ color: G }}>Connected to Your Business</span>
             </h2>
             <p style={{ fontSize: 13, color: MU, maxWidth: 680, margin: "0 auto", lineHeight: 1.68 }}>
@@ -1181,7 +1182,7 @@ const RetailPage = () => {
             >
               Why MessBee
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               Why Retail &amp; Local Businesses <span style={{ color: "#16A34A" }}>Choose MessBee</span>
             </h2>
           </div>
@@ -1258,7 +1259,7 @@ const RetailPage = () => {
               </div>
 
               {/* Title from Prompt */}
-              <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, marginBottom: 14, letterSpacing: "-1px" }}>
+              <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, marginBottom: 14, letterSpacing: "-1px" }}>
                 Made for the Way Local Businesses Grow
               </h2>
 
@@ -1315,7 +1316,7 @@ const RetailPage = () => {
         <div style={{ maxWidth: 760, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 36 }}>
             <Pill>FAQ</Pill>
-            <h2 style={{ fontSize: "clamp(18px, 2.5vw, 30px)", fontWeight: 900, color: D2, letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: D2, letterSpacing: "-1px" }}>
               Frequently Asked Questions
             </h2>
           </div>

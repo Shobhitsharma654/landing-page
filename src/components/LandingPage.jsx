@@ -6,7 +6,7 @@ import { submitToWebhookOrEmail } from "../utils/formSubmit";
 import defaultLogo from "../assets/logo.jpeg";
 import heroDashboard from "../assets/hero-messscale.png";
 import howItWorksPerson from "../assets/how_it_works_person.jpg";
-import chooseUsWoman from "../assets/messgirl.png";
+import chooseUsWoman from "../assets/messwoman.png";
 import messbeeText from "../assets/messbee_text.png";
 import reviewerRajesh from "../assets/reviewer_rajesh.png";
 import reviewerPriya from "../assets/reviewer_priya.png";
@@ -232,8 +232,8 @@ const LandingPage = () => {
         .lp-compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; text-align: left; max-width: 1200px; margin: 0 auto; }
         .lp-ai-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: stretch; }
         .lp-hiw-grid { max-width: 1280px; margin: 0 auto; padding: 0 6%; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-        .lp-choose-grid { max-width: 1280px; margin: 0 auto; padding: 0 6%; display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; position: relative; z-index: 1; align-items: center; }
-        .lp-choose-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; }
+        .lp-choose-grid { max-width: 1280px; margin: 0 auto; padding: 0 6%; display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; position: relative; z-index: 1; align-items: flex-end; }
+        .lp-choose-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; margin-bottom: 30px; }
         .lp-testimonial-grid { display: grid; grid-template-columns: 1fr 1.15fr 1fr; gap: 16px; align-items: center; }
         .lp-industry-flex { display: flex; flex-wrap: wrap; gap: 16px; }
         .lp-meta-badge { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
@@ -321,8 +321,8 @@ const LandingPage = () => {
 
           .lp-choose-section { padding: 24px 0 !important; }
           .lp-choose-inner { grid-template-columns: 1fr 1fr !important; gap: 14px 10px !important; }
-          .lp-choose-img { max-height: 280px; overflow: hidden; justify-content: center !important; }
-          .lp-choose-img img { max-height: 280px; object-fit: contain; width: auto !important; transform: none !important; }
+          .lp-choose-img { max-height: none; overflow: visible; justify-content: center !important; margin-top: 10px; }
+          .lp-choose-img img { max-height: 290px; object-fit: contain; width: auto !important; transform: none !important; }
 
           .lp-industry-section { padding: 30px 4% 40px !important; }
           .lp-industry-header { margin-bottom: 24px !important; }
@@ -1257,30 +1257,34 @@ const LandingPage = () => {
       </section>
 
       {/* ═══════════════ WHY CHOOSE US SECTION ═══════════════ */}
-      <section className="lp-choose-section" style={{ padding: "30px 0", background: "#0A0A0A", position: "relative", overflow: "hidden" }}>
+      <section className="lp-choose-section" style={{ padding: "40px 0 0", background: "#0A0A0A", position: "relative", overflow: "hidden" }}>
 
-        {/* Map Background Pattern */}
+        {/* Map Background Pattern (confined to left side behind content) */}
         <div style={{
           position: "absolute",
-          inset: 0,
+          top: 0,
+          bottom: 0,
+          left: 0,
+          width: "60%",
           backgroundColor: "#6B5A42",
           WebkitMaskImage: "url('https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg')",
           WebkitMaskSize: "cover",
-          WebkitMaskPosition: "center",
+          WebkitMaskPosition: "left center",
           maskImage: "url('https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg')",
           maskSize: "cover",
-          maskPosition: "center",
-          opacity: 0.25,
-          zIndex: 0
+          maskPosition: "left center",
+          opacity: 0.20,
+          zIndex: 0,
+          pointerEvents: "none"
         }} />
-        {/* Decorative circles */}
+        {/* Decorative white circles */}
         <div className="lp-choose-deco" style={{ position: "absolute", bottom: -40, left: -40, width: 160, height: 160, borderRadius: "50%", border: "30px solid #FFFFFF", zIndex: 0 }}></div>
         <div className="lp-choose-deco" style={{ position: "absolute", top: 30, right: -80, width: 240, height: 240, borderRadius: "50%", border: "50px solid #FFFFFF", zIndex: 0 }}></div>
 
         <div className="lp-choose-grid">
 
           {/* Left - Content */}
-          <div style={{ position: "relative", zIndex: 10 }}>
+          <div style={{ position: "relative", zIndex: 10, paddingBottom: 20 }}>
             <h2 style={{ fontSize: 26, fontWeight: 900, color: "#FFFFFF", marginBottom: 20, letterSpacing: "-0.5px" }}>
               Why Should You <span style={{ color: "#16A34A" }}>Choose Us</span>
             </h2>
@@ -1310,32 +1314,40 @@ const LandingPage = () => {
             </div>
           </div>
 
-          {/* Right - Woman Image */}
+          {/* Right - Woman Image with Multi-Stop Smooth Fade */}
           <div className="lp-choose-img" style={{ display: "flex", alignItems: "flex-end", justifyContent: "flex-end", overflow: "visible", position: "relative" }}>
-            {/* Soft Warm / Yellow Ambient Glow */}
+            {/* Soft Ambient Brand Glow */}
             <div style={{
               position: "absolute",
-              width: "480px",
-              height: "480px",
+              width: "440px",
+              height: "440px",
               borderRadius: "50%",
-              background: "radial-gradient(circle, rgba(245, 158, 11, 0.36) 0%, rgba(217, 119, 6, 0.20) 42%, rgba(180, 83, 9, 0.08) 62%, rgba(0, 0, 0, 0) 78%)",
-              top: "5%",
+              background: "radial-gradient(circle, rgba(22, 163, 74, 0.22) 0%, rgba(16, 185, 129, 0.10) 38%, rgba(245, 158, 11, 0.05) 60%, transparent 75%)",
+              top: "0%",
               right: "-5%",
-              filter: "blur(60px)",
+              filter: "blur(50px)",
               pointerEvents: "none",
               zIndex: 0
             }} />
 
-            <img src={chooseUsWoman} alt="Professional woman with laptop" style={{
-              width: "95%",
-              height: "auto",
-              display: "block",
-              objectFit: "contain",
-              transform: "translateX(20px)",
-              filter: "brightness(1.18) contrast(1.05) drop-shadow(0 14px 40px rgba(0,0,0,0.6))",
+            <div style={{
               position: "relative",
-              zIndex: 1
-            }} />
+              zIndex: 1,
+              width: "100%",
+              display: "flex",
+              justifyContent: "flex-end",
+              WebkitMaskImage: "linear-gradient(to bottom, #000 0%, #000 70%, rgba(0,0,0,0.6) 84%, transparent 96%)",
+              maskImage: "linear-gradient(to bottom, #000 0%, #000 70%, rgba(0,0,0,0.6) 84%, transparent 96%)"
+            }}>
+              <img src={chooseUsWoman} alt="Professional woman with laptop" style={{
+                width: "95%",
+                height: "auto",
+                display: "block",
+                objectFit: "contain",
+                transform: "translateX(20px)",
+                filter: "drop-shadow(0 15px 30px rgba(0,0,0,0.6))"
+              }} />
+            </div>
           </div>
 
         </div>

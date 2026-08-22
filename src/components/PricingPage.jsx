@@ -501,6 +501,32 @@ const PricingPage = () => {
           }
         }
 
+        @media (max-width: 1023px) {
+          .pricing-hero-right-box {
+            width: 100% !important;
+            min-width: 0 !important;
+            justify-content: center !important;
+            padding-top: 24px !important;
+            margin-bottom: 0 !important;
+          }
+          .pricing-hero-right-card {
+            transform: none !important;
+            transform-origin: top center !important;
+            margin: 0 auto !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            padding: 22px 16px !important;
+            box-sizing: border-box !important;
+            border-radius: 20px !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .pricing-hero-right-card {
+            padding: 18px 12px !important;
+            border-radius: 18px !important;
+          }
+        }
+
         /* ── Pricing Summary Table Responsive (Phone View: Fit all 4 columns without scroll) ── */
         @media (max-width: 639px) {
           .pricing-summary-section {
@@ -595,41 +621,41 @@ const PricingPage = () => {
           background: linear-gradient(135deg, #16A34A 0%, #15803D 100%);
           color: #FFFFFF;
           border: none;
-          border-radius: 10px;
-          padding: 11px 22px;
-          font-size: 13px;
+          border-radius: 8px;
+          padding: 8px 16px;
+          font-size: 11.5px;
           font-weight: 800;
           cursor: pointer;
           transition: all 0.2s ease;
           display: inline-flex;
           align-items: center;
-          gap: 6px;
-          box-shadow: 0 4px 14px rgba(22, 163, 74, 0.3);
+          gap: 5px;
+          box-shadow: 0 3px 10px rgba(22, 163, 74, 0.25);
         }
         .hero-btn-primary:hover {
           background: linear-gradient(135deg, #15803D 0%, #166534 100%);
-          transform: translateY(-1.5px);
-          box-shadow: 0 6px 20px rgba(22, 163, 74, 0.4);
+          transform: translateY(-1px);
+          box-shadow: 0 5px 14px rgba(22, 163, 74, 0.35);
         }
 
         .hero-btn-secondary {
           background: #FFFFFF;
           color: #16A34A;
           border: 1px solid #BBF7D0;
-          border-radius: 10px;
-          padding: 11px 22px;
-          font-size: 13px;
+          border-radius: 8px;
+          padding: 8px 16px;
+          font-size: 11.5px;
           font-weight: 800;
           cursor: pointer;
           transition: all 0.2s ease;
           display: inline-flex;
           align-items: center;
-          gap: 6px;
+          gap: 5px;
         }
         .hero-btn-secondary:hover {
           background: #F0FDF4;
           border-color: #16A34A;
-          transform: translateY(-1.5px);
+          transform: translateY(-1px);
         }
 
         /* ── Compact Comparison Table Scrollbar & Styling ── */
@@ -674,20 +700,20 @@ const PricingPage = () => {
 
         /* ── Typography & Paragraph scaling for all laptops ── */
         .hero-title-text {
-          font-size: clamp(24px, 2.8vw, 40px);
+          font-size: clamp(28px, 2.9vw, 42px);
           font-weight: 900;
           color: #0F172A;
-          line-height: 1.25;
+          line-height: 1.12;
           letter-spacing: -1px;
           margin-bottom: 14px;
         }
 
         .hero-subtitle-text {
-          font-size: clamp(14.5px, 1.2vw, 16.5px);
-          font-weight: 800;
+          font-size: clamp(12.5px, 0.98vw, 14px);
+          font-weight: 700;
           color: #16A34A;
-          line-height: 1.45;
-          margin-bottom: 14px;
+          line-height: 1.4;
+          margin-bottom: 10px;
           letter-spacing: -0.2px;
         }
 
@@ -700,12 +726,12 @@ const PricingPage = () => {
         }
 
         .hero-punchline-text {
-          font-size: clamp(13.5px, 1.1vw, 15.5px);
-          font-weight: 900;
+          font-size: clamp(12px, 0.95vw, 13.5px);
+          font-weight: 800;
           color: #15803D;
-          line-height: 1.5;
-          margin-bottom: 24px;
-          letter-spacing: -0.3px;
+          line-height: 1.4;
+          margin-bottom: 16px;
+          letter-spacing: -0.2px;
         }
 
         .card-plan-title {
@@ -763,8 +789,8 @@ const PricingPage = () => {
          ═══════════════════════════════════════════════════════════════════ */}
       <section
         style={{
-          marginTop: 70,
-          padding: "56px 6% 60px",
+          marginTop: 0,
+          padding: "92px 6% 48px",
           minHeight: "calc(88vh - 70px)",
           display: "flex",
           alignItems: "center",
@@ -821,21 +847,17 @@ const PricingPage = () => {
               </p>
 
               <p className="hero-desc-text">
-                Choosing the right platform should be simple and transparent. MessBee provides predictable, feature-packed pricing designed for startups, growing teams and established businesses.
-              </p>
-
-              <p className="hero-desc-text">
-                Start with essential tools for WhatsApp messaging and CRM, or unlock advanced workflow automations, APIs, and multi-agent collaboration as your business expands.
+                Transparent, feature-packed pricing tailored to scale with your business. Start with essential WhatsApp CRM tools or unlock advanced automations, APIs, and multi-agent workflows as you grow.
               </p>
 
               <div className="hero-punchline-text">
                 Transparent Pricing. Zero Hidden Fees. Cancel Anytime.
               </div>
 
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginBottom: 22 }}>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 16 }}>
                 <button className="hero-btn-primary" onClick={scrollToPricing}>
                   Explore Pricing Plans
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="12" y1="5" x2="12" y2="19" />
                     <polyline points="19 12 12 19 5 12" />
                   </svg>
@@ -846,30 +868,35 @@ const PricingPage = () => {
               </div>
 
               {/* Trust badges */}
-              <div style={{ display: "flex", gap: 18, flexWrap: "wrap", fontSize: "clamp(11.5px, 0.9vw, 12.5px)", color: "#64748B", fontWeight: 600, lineHeight: 1.5 }}>
-                <span style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                  <CheckIcon size={14} color="#16A34A" /> No Credit Card Required
+              <div style={{ display: "flex", gap: 14, flexWrap: "wrap", fontSize: "11px", color: "#64748B", fontWeight: 600, lineHeight: 1.5 }}>
+                <span style={{ display: "flex", alignItems: "center", gap: 4 }}>
+                  <CheckIcon size={12} color="#16A34A" /> No Credit Card Required
                 </span>
-                <span style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                  <CheckIcon size={14} color="#16A34A" /> Flexible Billing Options
+                <span style={{ display: "flex", alignItems: "center", gap: 4 }}>
+                  <CheckIcon size={12} color="#16A34A" /> Flexible Billing Options
                 </span>
-                <span style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                  <CheckIcon size={14} color="#16A34A" /> GST Invoice Available
+                <span style={{ display: "flex", alignItems: "center", gap: 4 }}>
+                  <CheckIcon size={12} color="#16A34A" /> GST Invoice Available
                 </span>
               </div>
             </div>
 
-            {/* Right Column: Hero Graphic Box with Dark Forest Green Gradient (Matching Resources & Solutions) */}
-            <div style={{ flex: 0.85, minWidth: 260, maxWidth: "100%", width: "100%", position: "relative" }}>
+            {/* Right Column: Hero Graphic Box with Dark Forest Green Gradient */}
+            <div className="pricing-hero-right-box" style={{ flex: 0.85, minWidth: 320, position: "relative", display: "flex", justifyContent: "center", paddingTop: 20, marginBottom: -120 }}>
               <div
+                className="pricing-hero-right-card"
                 style={{
                   background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
-                  borderRadius: 22,
-                  padding: "26px 20px",
-                  boxShadow: "0 18px 45px rgba(2, 44, 34, 0.38)",
-                  border: "1px solid rgba(52, 211, 153, 0.25)",
+                  borderRadius: 24,
+                  padding: 28,
+                  boxShadow: "0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)",
+                  border: "1px solid rgba(34,197,94,.2)",
                   color: "#FFFFFF",
                   position: "relative",
+                  width: "100%",
+                  maxWidth: 460,
+                  transform: "scale(0.75)",
+                  transformOrigin: "top center",
                   overflow: "hidden",
                 }}
               >
@@ -879,8 +906,8 @@ const PricingPage = () => {
                     position: "absolute",
                     top: "20%",
                     left: "25%",
-                    width: 240,
-                    height: 240,
+                    width: 200,
+                    height: 200,
                     borderRadius: "50%",
                     background: "radial-gradient(circle, rgba(52,211,153,0.3) 0%, rgba(52,211,153,0) 70%)",
                     pointerEvents: "none",
@@ -888,54 +915,50 @@ const PricingPage = () => {
                 />
 
                 {/* Header featuring Official MessBee Logo */}
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16, borderBottom: "1px solid rgba(255,255,255,0.12)", paddingBottom: 12 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 9 }}>
-                    <div style={{ width: 34, height: 34, borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.2)", flexShrink: 0, background: "#FFFFFF", padding: 2 }}>
-                      <img src={defaultLogo} alt="MessBee" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 28, borderBottom: "1px solid rgba(255,255,255,0.12)", paddingBottom: 16 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                    <div style={{ width: 40, height: 40, borderRadius: 10, overflow: "hidden", border: "1px solid rgba(255,255,255,0.2)", flexShrink: 0, background: "#FFFFFF", padding: 4 }}>
+                      <img src={defaultLogo} alt="MessBee" style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius: 6 }} />
                     </div>
                     <div>
-                      <div style={{ fontSize: 13, fontWeight: 900, color: "#FFFFFF" }}>MessBee Pricing Engine</div>
-                      <div style={{ fontSize: 10, color: "#4ADE80", fontWeight: 700 }}>High Value &amp; Scalability</div>
+                      <div style={{ fontSize: 17, fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.3px" }}>MessBee Pricing Engine</div>
+                      <div style={{ fontSize: 11, color: "#34D399", fontWeight: 700 }}>High Value &amp; Scalability</div>
                     </div>
                   </div>
-                  <span style={{ fontSize: 10, background: "rgba(52,211,153,0.2)", color: "#34D399", padding: "2.5px 9px", borderRadius: 20, fontWeight: 700, border: "1px solid rgba(52,211,153,0.3)" }}>
+                  <span style={{ fontSize: 11, background: "rgba(16,185,129,0.15)", color: "#34D399", padding: "6px 12px", borderRadius: 20, fontWeight: 700, border: "1px solid rgba(16,185,129,0.4)" }}>
                     Verified ROI
                   </span>
                 </div>
 
                 {/* Pricing Showcase Nodes Grid */}
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 14 }}>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 24 }}>
                   {[
-                    { label: "Free Plan", price: "₹0/mo", note: "Try & Test", icon: "🚀" },
-                    { label: "Basic Plan", price: "₹899/mo", note: "WhatsApp + CRM", icon: "⚡" },
-                    { label: "Growth Plan", price: "₹1,299/mo", note: "API & Auto", icon: "📈" },
-                    { label: "Professional", price: "₹2,500/mo", note: "Scale & Webhooks", icon: "💼" },
-                  ].map((node, i) => (
+                    { icon: "🚀", title: "Free Plan", sub: "₹0/mo • Try & Test" },
+                    { icon: "⚡", title: "Basic Plan", sub: "₹899/mo • WhatsApp + CRM" },
+                    { icon: "📈", title: "Growth Plan", sub: "₹1,299/mo • API & Auto" },
+                    { icon: "💼", title: "Professional", sub: "₹2,500/mo • Scale" },
+                  ].map(card => (
                     <div
-                      key={i}
+                      key={card.title}
                       style={{
-                        background: "rgba(255,255,255,0.06)",
-                        border: "1px solid rgba(52,211,153,0.2)",
-                        borderRadius: 10,
-                        padding: 10,
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: 2,
+                        background: "rgba(16,185,129,0.09)",
+                        border: "1px solid rgba(16,185,129,0.25)",
+                        borderRadius: 14,
+                        padding: "14px 16px",
                       }}
                     >
-                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                        <span style={{ fontSize: 14 }}>{node.icon}</span>
-                        <span style={{ fontSize: 11.5, fontWeight: 900, color: "#4ADE80" }}>{node.price}</span>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+                        <span style={{ fontSize: 16 }}>{card.icon}</span>
+                        <span style={{ fontSize: 13, fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.2px" }}>{card.title}</span>
                       </div>
-                      <span style={{ fontSize: 11.5, fontWeight: 800, color: "#FFFFFF" }}>{node.label}</span>
-                      <span style={{ fontSize: 9.5, color: "#94A3B8", fontWeight: 600 }}>{node.note}</span>
+                      <div style={{ fontSize: 11, fontWeight: 700, color: "#34D399" }}>{card.sub}</div>
                     </div>
                   ))}
                 </div>
 
                 {/* Bottom value line */}
-                <div style={{ background: "rgba(52,211,153,0.15)", border: "1px solid rgba(52,211,153,0.3)", borderRadius: 8, padding: 9, textAlign: "center" }}>
-                  <span style={{ fontSize: 11, fontWeight: 800, color: "#4ADE80" }}>
+                <div style={{ background: "rgba(16,185,129,0.09)", border: "1px solid rgba(16,185,129,0.25)", borderRadius: 12, padding: "14px", textAlign: "center" }}>
+                  <span style={{ fontSize: 12, fontWeight: 800, color: "#34D399" }}>
                     Predictable Pricing. Instant ROI. Scale On Your Terms.
                   </span>
                 </div>
@@ -961,11 +984,11 @@ const PricingPage = () => {
           <div style={{ textAlign: "center", marginBottom: 20 }}>
             <Pill>PLAN &amp; PRICING</Pill>
             <h2 style={{
-              fontSize: "clamp(20px, 2.4vw, 30px)",
+              fontSize: "clamp(20px, 2.5vw, 32px)",
               fontWeight: 900,
               color: "#0F172A",
               lineHeight: 1.15,
-              letterSpacing: "-0.8px",
+              letterSpacing: "-1px",
               marginBottom: 10,
             }}>
               Choose the Plan That Fits Your Growth
@@ -1199,7 +1222,7 @@ const PricingPage = () => {
         <div style={{ maxWidth: 1000, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 24 }}>
             <Pill>SUMMARY</Pill>
-            <h2 style={{ fontSize: "clamp(20px, 2.2vw, 30px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-0.8px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               PRICING SUMMARY
             </h2>
           </div>
@@ -1272,7 +1295,7 @@ const PricingPage = () => {
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 28 }}>
             <Pill>TRANSPARENT BILLING</Pill>
-            <h2 style={{ fontSize: "clamp(20px, 2.2vw, 30px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-0.8px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               ANNUAL PRICE CALCULATION
             </h2>
           </div>
@@ -1404,7 +1427,7 @@ const PricingPage = () => {
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 28 }}>
             <Pill>TIER ARCHITECTURE</Pill>
-            <h2 style={{ fontSize: "clamp(20px, 2.2vw, 30px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-0.8px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               PLAN POSITIONING
             </h2>
           </div>
@@ -1471,7 +1494,7 @@ const PricingPage = () => {
         <div style={{ maxWidth: 1160, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 20 }}>
             <Pill>DETAILED BREAKDOWN</Pill>
-            <h2 style={{ fontSize: "clamp(20px, 2.2vw, 28px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-0.6px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               6. PLAN COMPARISON
             </h2>
             <p style={{ fontSize: 12, color: "#64748B", maxWidth: 500, margin: "6px auto 0" }}>

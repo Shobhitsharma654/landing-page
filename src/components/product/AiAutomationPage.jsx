@@ -160,7 +160,7 @@ const CSS = `
   .step-btn.act { background:#F0FDF4;border:1px solid #BBF7D0; }
   .step-card { background:#fff;border:1.5px solid #F1F5F9;border-radius:16px;padding:24px 22px; }
   /* Grids */
-  .a-hg  { display:flex;flex-wrap:wrap;align-items:flex-start;gap:56px; }
+  .a-hg  { display:flex;flex-wrap:wrap;align-items:flex-start;gap:48px; }
   .a-hl  { flex:1 1 440px;min-width:280px; }
   .a-hr  { flex:1 1 360px;min-width:280px;display:flex;justify-content:center; }
   .a-fg  { display:grid;grid-template-columns:repeat(3,1fr);gap:16px; }
@@ -197,7 +197,7 @@ const CSS = `
     .a-hr {
       width: 100% !important;
       justify-content: center !important;
-      padding-top: 14px !important;
+      padding-top: 24px !important;
       margin-bottom: 0 !important;
     }
     .a-hr > div {
@@ -206,7 +206,6 @@ const CSS = `
       margin: 0 auto !important;
       max-width: 100% !important;
       padding: 24px 16px !important;
-      margin-top: 0 !important;
     }
     .a-resp {
       grid-template-columns: 1fr !important;
@@ -236,7 +235,7 @@ const CSS = `
     .awc     { padding:12px 10px!important; border-radius:10px!important; }
     .a-ctr   { display:flex!important; flex-direction:row!important; align-items:center!important; gap:10px!important; flex-wrap:wrap!important; }
     .a-hr    { width:100%!important; justify-content:center!important; padding-top:24px!important; margin-bottom:0!important; }
-    .a-hr > div { transform:none!important; transform-origin:top center!important; margin:0 auto!important; width:100%!important; max-width:100%!important; padding:20px 14px!important; box-sizing:border-box!important; margin-top:0!important; }
+    .a-hr > div { transform:none!important; transform-origin:top center!important; margin:0 auto!important; width:100%!important; max-width:100%!important; padding:22px 16px!important; box-sizing:border-box!important; }
     .ai-vis-wrap { margin-bottom:0!important; margin-top:20px!important; width:100%!important; }
     .ai-vis-card { transform:none!important; transform-origin:top center!important; height:auto!important; width:100%!important; max-width:100%!important; margin:0 auto!important; box-sizing:border-box!important; }
     .eco-g   { grid-template-columns:repeat(2,1fr)!important; gap:10px!important; }
@@ -246,14 +245,11 @@ const CSS = `
     .a-stat  { grid-template-columns:repeat(2,1fr)!important; }
   }
   @media(max-width:480px){
+    .a-hr > div { padding:18px 12px!important; border-radius:18px!important; }
     .a-stat  { grid-template-columns:1fr!important; }
     .eco-g   { grid-template-columns:repeat(2,1fr)!important; gap:10px!important; }
     .a-why   { grid-template-columns:repeat(2,1fr)!important; gap:8px!important; }
-    .awc     { padding:10px 8px!important; border-radius:8px!important; }
     .a-fg    { grid-template-columns:1fr!important; }
-    .a-hr > div {
-      padding: 16px 10px !important;
-    }
   }
 
   /* ── Global responsive section overrides ── */
@@ -263,8 +259,6 @@ const CSS = `
     .bubble-wrap { gap:8px!important; }
   }
   @media(max-width:640px){
-    /* Hero sections */
-    .a-hg,.m-hg,.wa-hg { flex-direction:column!important;gap:24px!important; }
     /* Trust stat bars compact */
     .a-stat,.m-stat,.wa-stat { text-align:center; }
     /* Step cards */
@@ -322,14 +316,14 @@ const AiPage = () => {
       <Navbar/>
 
       {/* ══ HERO ══ */}
-      <section className="ai-hero-section" style={{background:"#fff",padding:"118px 6% 20px",position:"relative",overflow:"hidden"}}>
+      <section className="ai-hero-section" style={{background:"#fff",padding:"92px 6% 48px",position:"relative",overflow:"hidden"}}>
 
 
         <div style={{maxWidth:1200,margin:"0 auto",position:"relative",zIndex:1}}>
           <div className="a-hg">
             {/* Left */}
             <div className="a-hl">
-              <div style={{display:"inline-flex",alignItems:"center",gap:6,background:"rgba(22,163,74,.1)",border:"1px solid rgba(22,163,74,.25)",borderRadius:40,padding:"5px 14px",marginBottom:28}}>
+              <div style={{display:"inline-flex",alignItems:"center",gap:6,background:"rgba(22,163,74,.1)",border:"1px solid rgba(22,163,74,.25)",borderRadius:40,padding:"5px 14px",marginBottom:16}}>
                 <div style={{width:6,height:6,borderRadius:"50%",background:G}}/>
                 <span style={{fontSize:12,fontWeight:600,color:G}}>MessBee AI & Automation</span>
               </div>
@@ -343,7 +337,7 @@ const AiPage = () => {
                 Automate repetitive tasks, assist customer interactions and create smarter business workflows using AI and configurable automation — all in one connected environment.
               </p>
 
-              <div style={{display:"flex",flexWrap:"wrap",gap:8,marginBottom:40}}>
+              <div style={{display:"flex",flexWrap:"wrap",gap:8,marginBottom:32}}>
                 {["Think Smarter.","Automate Better.","Grow Faster."].map(t => (
                   <span key={t} style={{ background:"#F1F5F9", border:"1px solid #E5E7EB", color:MU, borderRadius:40, padding:"4px 12px", fontSize:12, fontWeight:600 }}>{t}</span>
                 ))}
@@ -358,8 +352,8 @@ const AiPage = () => {
             </div>
 
             {/* Right — AI workflow visualization */}
-            <div className="a-hr">
-              <div style={{background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)",borderRadius:24,padding:28,boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)",border:"1px solid rgba(34,197,94,.2)",width:"100%",maxWidth:460,transform:"scale(0.75)",transformOrigin:"top center",marginTop:"72px",overflow:"hidden"}}>
+            <div className="a-hr" style={{ paddingTop: "70px", marginBottom: "-140px" }}>
+              <div style={{background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)",borderRadius:24,padding:28,boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)",border:"1px solid rgba(34,197,94,.2)",width:"100%",maxWidth:460,transform:"scale(0.75)",transformOrigin:"top center",overflow:"hidden"}}>
                 {/* Header */}
                 <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:28 }}>
                   <div style={{ display:"flex", alignItems:"center", gap:12 }}>

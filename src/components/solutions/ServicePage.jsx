@@ -500,14 +500,14 @@ const ServicePage = () => {
           .service-hero-row { gap: 32px; }
         }
 
-        .service-hero-right-col { flex: 0.9; min-width: 320px; position: relative; display: flex; justify-content: center; }
-        .service-hero-right-card { transform: scale(0.8); transform-origin: center right; width: 100%; max-width: 480px; }
+        .service-hero-right-col { flex: 0.9; min-width: 320px; position: relative; display: flex; justify-content: center; padding-top: 20px; margin-bottom: -120px; }
+        .service-hero-right-card { transform: scale(0.75); transform-origin: top center; width: 100%; max-width: 460px; }
 
         /* Compact Laptop / Tablet-Laptop (under 1024px) */
         @media (max-width: 1023px) {
           .service-hero-row { flex-direction: column !important; }
-          .service-hero-right-col { width: 100% !important; min-width: unset !important; justify-content: center !important; margin-top: 24px !important; }
-          .service-hero-right-card { transform: none !important; transform-origin: center center !important; max-width: 440px !important; margin: 0 auto !important; }
+          .service-hero-right-col { width: 100% !important; min-width: 0 !important; justify-content: center !important; padding-top: 24px !important; margin-bottom: 0 !important; }
+          .service-hero-right-card { transform: none !important; transform-origin: top center !important; max-width: 100% !important; width: 100% !important; margin: 0 auto !important; padding: 22px 16px !important; box-sizing: border-box !important; border-radius: 20px !important; }
           .grid-col-6, .service-journey-grid { grid-template-columns: repeat(2, 1fr); }
           .grid-col-4, .service-after-grid { grid-template-columns: repeat(2, 1fr); }
           .grid-col-3, .service-why-grid { grid-template-columns: repeat(1, 1fr); }
@@ -526,8 +526,9 @@ const ServicePage = () => {
           .service-hero-right-card {
             transform: none !important;
             max-width: 100% !important;
+            width: 100% !important;
             margin: 0 auto !important;
-            padding: 24px 16px !important;
+            padding: 22px 16px !important;
           }
           .grid-col-4, .service-journey-grid, .service-why-grid, .service-after-grid {
             grid-template-columns: repeat(2, 1fr) !important;
@@ -591,8 +592,8 @@ const ServicePage = () => {
       <section
         className="service-hero-section"
         style={{
-          marginTop: 70,
-          padding: "56px 6% 64px",
+          marginTop: 0,
+          padding: "92px 6% 48px",
           position: "relative",
           background: "linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)",
           overflow: "hidden",
@@ -629,7 +630,7 @@ const ServicePage = () => {
                 fontSize: 10.5,
                 fontWeight: 800,
                 letterSpacing: "1px",
-                marginBottom: 18,
+                marginBottom: 16,
                 textTransform: "uppercase",
               }}
             >
@@ -716,8 +717,8 @@ const ServicePage = () => {
                 background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
                 borderRadius: 24,
                 padding: "28px 24px",
-                boxShadow: "0 20px 50px rgba(2, 44, 34, 0.4)",
-                border: "1px solid rgba(52, 211, 153, 0.25)",
+                boxShadow: "0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)",
+                border: "1px solid rgba(34,197,94,.2)",
                 color: "#FFFFFF",
                 position: "relative",
                 overflow: "hidden",
@@ -821,7 +822,7 @@ const ServicePage = () => {
             >
               Organized Operations
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
               Built Around Your <span style={{ color: "#16A34A" }}>Service Business</span>
             </h2>
 
@@ -908,7 +909,7 @@ const ServicePage = () => {
             >
               Customer Journey
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
               From Enquiry to <span style={{ color: "#16A34A" }}>Long-Term Customer</span>
             </h2>
 
@@ -988,7 +989,7 @@ const ServicePage = () => {
             >
               Essential Tools
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               Tools That Fit <span style={{ color: "#16A34A" }}>Service Businesses</span>
             </h2>
           </div>
@@ -1057,7 +1058,7 @@ const ServicePage = () => {
             >
               Follow-Up Automation
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
               Spend Less Time <span style={{ color: "#16A34A" }}>Chasing Follow-Ups</span>
             </h2>
             <p style={{ fontSize: 13.5, color: "#64748B", maxWidth: 640, margin: "0 auto 6px", lineHeight: 1.68 }}>
@@ -1103,7 +1104,7 @@ const ServicePage = () => {
         <div style={{ maxWidth: 1060, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 36 }}>
             <Pill>Unified History</Pill>
-            <h2 style={{ fontSize: "clamp(18px, 2.5vw, 30px)", fontWeight: 900, color: D2, letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: D2, letterSpacing: "-1px", marginBottom: 12 }}>
               Keep Customer Conversations <span style={{ color: G }}>Connected</span>
             </h2>
             <p style={{ fontSize: 13, color: MU, maxWidth: 680, margin: "0 auto", lineHeight: 1.68 }}>
@@ -1153,7 +1154,7 @@ const ServicePage = () => {
             >
               Post-Service Engagement
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
               Stay Connected <span style={{ color: "#16A34A" }}>After the Service</span>
             </h2>
             <p style={{ fontSize: 13.5, color: "#64748B", maxWidth: 640, margin: "0 auto 6px", lineHeight: 1.68 }}>
@@ -1213,7 +1214,7 @@ const ServicePage = () => {
             >
               Target Industries
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               Suitable for <span style={{ color: "#16A34A" }}>Different Service Businesses</span>
             </h2>
           </div>
@@ -1262,7 +1263,7 @@ const ServicePage = () => {
             >
               Why MessBee
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               Why Service Businesses <span style={{ color: "#16A34A" }}>Choose MessBee</span>
             </h2>
           </div>
@@ -1338,7 +1339,7 @@ const ServicePage = () => {
               </div>
 
               {/* Title from Prompt */}
-              <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, marginBottom: 14, letterSpacing: "-1px" }}>
+              <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, marginBottom: 14, letterSpacing: "-1px" }}>
                 Built for India's Service Economy
               </h2>
 
@@ -1397,7 +1398,7 @@ const ServicePage = () => {
         <div style={{ maxWidth: 760, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 36 }}>
             <Pill>FAQ</Pill>
-            <h2 style={{ fontSize: "clamp(18px, 2.5vw, 30px)", fontWeight: 900, color: D2, letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: D2, letterSpacing: "-1px" }}>
               Frequently Asked Questions
             </h2>
           </div>

@@ -132,9 +132,9 @@ const CSS = `
   .fqt  { font-size:13px;font-weight:600;transition:color .2s;line-height:1.5; }
 
   /* Layout grids */
-  .wa-hg   { display:flex;flex-wrap:wrap;align-items:center;gap:56px; }
-  .wa-hl   { flex:1 1 440px;min-width:280px; }
-  .wa-hr   { flex:1 1 360px;min-width:280px;display:flex;justify-content:center; }
+  .wa-hg   { display:flex;flex-wrap:wrap;align-items:center;gap:48px; }
+  .wa-hl   { flex:1 1 420px;min-width:280px; }
+  .wa-hr   { flex:1 1 340px;min-width:280px;display:flex;justify-content:center; }
   .wa-fg   { display:grid;grid-template-columns:repeat(4,1fr);gap:20px; }
   .wa-cap  { display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center; }
   .wa-cap.rev { direction:rtl; }
@@ -292,12 +292,12 @@ const WaPage = () => {
       <Navbar />
 
       {/* ══ HERO — Plain White ══ */}
-      <section style={{ background:"#fff", padding:"118px 6% 40px", position:"relative", overflow:"hidden" }}>
+      <section style={{ background:"#fff", padding:"92px 6% 48px", position:"relative", overflow:"hidden" }}>
         <div style={{ maxWidth:1200, margin:"0 auto", position:"relative", zIndex:1 }}>
           <div className="wa-hg">
             {/* Left */}
             <div className="wa-hl">
-              <div style={{ display:"inline-flex", alignItems:"center", gap:6, background:GL, border:`1px solid ${GB}`, borderRadius:40, padding:"5px 14px", marginBottom:28 }}>
+              <div style={{ display:"inline-flex", alignItems:"center", gap:6, background:GL, border:`1px solid ${GB}`, borderRadius:40, padding:"5px 14px", marginBottom:16 }}>
                 <div style={{ width:6, height:6, borderRadius:"50%", background:WA }}/>
                 <span style={{ fontSize:12, fontWeight:600, color:G }}>MessBee WhatsApp Business</span>
               </div>
@@ -308,12 +308,12 @@ const WaPage = () => {
                 The Smarter Way
               </h1>
 
-              <p style={{ fontSize:14, color:MU, lineHeight:1.7, marginBottom:32, maxWidth:520 }}>
+              <p style={{ fontSize:15, color:MU, lineHeight:1.75, marginBottom:10, maxWidth:520 }}>
                 Manage customer conversations, send approved business messages, follow up on leads
                 and build real relationships — all through the WhatsApp Business Platform.
               </p>
 
-              <div style={{ display:"flex", flexWrap:"wrap", gap:8, marginBottom:40 }}>
+              <div style={{ display:"flex", flexWrap:"wrap", gap:8, marginBottom:32 }}>
                 {["Connect.","Communicate.","Automate.","Grow."].map(t => (
                   <span key={t} style={{ background:"#F1F5F9", border:"1px solid #E5E7EB", color:MU, borderRadius:40, padding:"4px 12px", fontSize:12, fontWeight:600 }}>{t}</span>
                 ))}
@@ -331,8 +331,8 @@ const WaPage = () => {
 
             </div>
 
-            <div className="wa-hr" style={{ alignItems:"flex-start" }}>
-              <div style={{ background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)", borderRadius:24, padding:28, boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)", border:"1px solid rgba(34,197,94,.2)", width:"100%", maxWidth:460, transform:"scale(0.75)", transformOrigin:"top center", marginTop:76, marginLeft:40, overflow:"hidden" }}>
+            <div className="wa-hr" style={{ paddingTop: "20px", marginBottom: "-120px" }}>
+              <div style={{ background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)", borderRadius:24, padding:28, boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)", border:"1px solid rgba(34,197,94,.2)", width:"100%", maxWidth:460, transform:"scale(0.75)", transformOrigin:"top center", overflow:"hidden" }}>
                 {/* Header */}
                 <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:28 }}>
                   <div style={{ display:"flex", alignItems:"center", gap:12 }}>

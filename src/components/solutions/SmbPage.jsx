@@ -399,14 +399,14 @@ const SmbPage = () => {
           .smb-hero-row { gap: 32px; }
         }
 
-        .smb-hero-right-col { flex: 0.9; min-width: 320px; position: relative; display: flex; justify-content: center; width: 100%; }
-        .smb-hero-right-card { transform: scale(0.8); transform-origin: center right; width: 100%; max-width: 480px; }
+        .smb-hero-right-col { flex: 0.9; min-width: 320px; position: relative; display: flex; justify-content: center; width: 100%; padding-top: 20px; margin-bottom: -120px; }
+        .smb-hero-right-card { transform: scale(0.75); transform-origin: top center; width: 100%; max-width: 460px; }
 
         /* Compact Laptop / Tablet-Laptop (under 1024px) */
         @media (max-width: 1023px) {
           .smb-hero-row { flex-direction: column !important; }
-          .smb-hero-right-col { width: 100% !important; min-width: unset !important; justify-content: center !important; margin-top: 24px !important; }
-          .smb-hero-right-card { transform: none !important; transform-origin: center center !important; max-width: 480px !important; width: 100% !important; margin: 0 auto !important; }
+          .smb-hero-right-col { width: 100% !important; min-width: 0 !important; justify-content: center !important; padding-top: 24px !important; margin-bottom: 0 !important; }
+          .smb-hero-right-card { transform: none !important; transform-origin: top center !important; max-width: 100% !important; width: 100% !important; margin: 0 auto !important; padding: 22px 16px !important; box-sizing: border-box !important; border-radius: 20px !important; }
           .grid-col-5 { grid-template-columns: repeat(2, 1fr); }
           .grid-col-4 { grid-template-columns: repeat(2, 1fr); }
           .grid-col-3 { grid-template-columns: repeat(1, 1fr); }
@@ -427,7 +427,7 @@ const SmbPage = () => {
             max-width: 100% !important;
             width: 100% !important;
             margin: 0 auto !important;
-            padding: 24px 18px !important;
+            padding: 22px 16px !important;
           }
           .grid-col-4, .grid-col-3 {
             grid-template-columns: repeat(2, 1fr) !important;
@@ -508,7 +508,8 @@ const SmbPage = () => {
           .smb-hero-right-card {
             max-width: 100% !important;
             width: 100% !important;
-            padding: 20px 14px !important;
+            padding: 18px 12px !important;
+            border-radius: 18px !important;
           }
         }
 
@@ -609,8 +610,8 @@ const SmbPage = () => {
       <section
         className="smb-hero-section"
         style={{
-          marginTop: 70,
-          padding: "56px 6% 64px",
+          marginTop: 0,
+          padding: "92px 6% 48px",
           position: "relative",
           background: "linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)",
           overflow: "hidden",
@@ -647,7 +648,7 @@ const SmbPage = () => {
                 fontSize: 10.5,
                 fontWeight: 800,
                 letterSpacing: "1px",
-                marginBottom: 18,
+                marginBottom: 16,
                 textTransform: "uppercase",
               }}
             >
@@ -729,8 +730,8 @@ const SmbPage = () => {
                 background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
                 borderRadius: 24,
                 padding: "28px 24px",
-                boxShadow: "0 20px 50px rgba(2, 44, 34, 0.4)",
-                border: "1px solid rgba(52, 211, 153, 0.25)",
+                boxShadow: "0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)",
+                border: "1px solid rgba(34,197,94,.2)",
                 color: "#FFFFFF",
                 position: "relative",
                 overflow: "hidden",
@@ -823,7 +824,7 @@ const SmbPage = () => {
             >
               Organized Workflow
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
               Built for <span style={{ color: "#16A34A" }}>Growing Businesses</span>
             </h2>
 
@@ -915,7 +916,7 @@ const SmbPage = () => {
             >
               Key Capabilities
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               What MessBee <span style={{ color: "#16A34A" }}>Can Help You With</span>
             </h2>
           </div>
@@ -984,7 +985,7 @@ const SmbPage = () => {
             >
               Versatile Support
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               Made for <span style={{ color: "#16A34A" }}>Different Types of Businesses</span>
             </h2>
           </div>
@@ -1030,7 +1031,7 @@ const SmbPage = () => {
         <div style={{ maxWidth: 1060, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 36 }}>
             <Pill>Efficiency</Pill>
-            <h2 style={{ fontSize: "clamp(18px, 2.5vw, 30px)", fontWeight: 900, color: D2, letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: D2, letterSpacing: "-1px", marginBottom: 12 }}>
               Less Switching. <span style={{ color: G }}>More Getting Things Done.</span>
             </h2>
             <p style={{ fontSize: 13, color: MU, maxWidth: 660, margin: "0 auto 8px", lineHeight: 1.68 }}>
@@ -1081,7 +1082,7 @@ const SmbPage = () => {
             >
               Why MessBee
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               Why Businesses <span style={{ color: "#16A34A" }}>Choose MessBee</span>
             </h2>
           </div>
@@ -1159,7 +1160,7 @@ const SmbPage = () => {
               </div>
 
               {/* Title from Prompt */}
-              <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, marginBottom: 14, letterSpacing: "-1px" }}>
+              <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, marginBottom: 14, letterSpacing: "-1px" }}>
                 Built With Indian Businesses in Mind
               </h2>
 
@@ -1223,7 +1224,7 @@ const SmbPage = () => {
             >
               FAQ
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               Frequently Asked <span style={{ color: "#16A34A" }}>Questions</span>
             </h2>
           </div>
