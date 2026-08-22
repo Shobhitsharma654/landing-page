@@ -512,7 +512,8 @@ const AboutPage = () => {
             flex-direction: column !important;
             gap: 10px !important;
           }
-          .about-page-wrapper button {
+          .about-hero-section button,
+          .about-section button {
             width: 100% !important;
             justify-content: center !important;
             padding: 12px 20px !important;

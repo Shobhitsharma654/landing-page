@@ -110,11 +110,15 @@ const Navbar = () => {
         /* 4 Horizontal Lines Menu Button for Mobile */
         .mobile-menu-btn {
           display: none;
+          width: 38px !important;
+          height: 38px !important;
+          flex-shrink: 0 !important;
+          box-sizing: border-box !important;
           background: #F8FAFC;
           border: 1px solid #E2E8F0;
           border-radius: 10px;
           cursor: pointer;
-          padding: 8px 9px;
+          padding: 8px 9px !important;
           flex-direction: column;
           justify-content: center;
           gap: 4.5px;
