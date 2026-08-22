@@ -218,16 +218,43 @@ const LandingPage = () => {
   ];
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "hidden" }}>
+    <div style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "hidden", width: "100%", maxWidth: "100vw", position: "relative" }}>
       {/* ═══════════════ NAVBAR ═══════════════ */}
       <Navbar />
 
       {/* ═══════════════ RESPONSIVE CSS ═══════════════ */}
       <style>{`
-        .lp-hero-row { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 4vw; width: 100%; max-width: 1280px; margin: 0 auto; }
-        .lp-hero-left { flex: 1 1 500px; min-width: 300px; }
-        .lp-hero-right { flex: 1.1 1 460px; min-width: 320px; display: flex; flex-direction: column; align-items: center; position: relative; }
-        .lp-hero-badge { position: absolute; background: #FFFFFF; border-radius: 30px; padding: 5px 12px; display: flex; align-items: center; gap: 6px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 1px solid #F1F5F9; z-index: 10; }
+        html, body, #root {
+          overflow-x: hidden !important;
+          max-width: 100vw !important;
+          width: 100% !important;
+          position: relative;
+          touch-action: pan-y !important;
+        }
+        * { box-sizing: border-box !important; }
+        section { max-width: 100% !important; overflow: hidden !important; box-sizing: border-box !important; }
+        .lp-hero-row { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 4vw; width: 100%; max-width: 1280px; margin: 0 auto; box-sizing: border-box; }
+        .lp-hero-left { flex: 1 1 500px; min-width: 300px; max-width: 100%; }
+        @keyframes badgeFloat1 { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-6px); } }
+        @keyframes badgeFloat2 { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(6px); } }
+        .lp-hero-badge { position: absolute; background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(12px); border-radius: 30px; padding: 6px 14px; display: flex; align-items: center; gap: 7px; box-shadow: 0 12px 28px -4px rgba(15, 23, 42, 0.12), 0 4px 10px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(241, 245, 249, 0.9); border: 1px solid rgba(255, 255, 255, 0.9); z-index: 10; white-space: nowrap; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+        .lp-hero-badge:hover { transform: scale(1.06) translateY(-2px) !important; box-shadow: 0 16px 36px -4px rgba(22, 163, 74, 0.2), 0 0 0 1px rgba(22, 163, 74, 0.3) !important; }
+        
+        .lp-float-badge { position: absolute; background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(12px); border-radius: 30px; padding: 8px 18px; display: flex; align-items: center; gap: 8px; box-shadow: 0 14px 32px -4px rgba(15, 23, 42, 0.12), 0 4px 12px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(241, 245, 249, 0.9); border: 1px solid rgba(255, 255, 255, 0.9); z-index: 10; white-space: nowrap; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+        .lp-float-badge:hover { transform: scale(1.08) translateY(-3px) !important; box-shadow: 0 18px 36px -4px rgba(22, 163, 74, 0.22), 0 0 0 1px rgba(22, 163, 74, 0.35) !important; }
+        
+        @media (max-width: 1200px) and (min-width: 769px) {
+          .lp-fbadge-wa { left: -10px !important; }
+          .lp-fbadge-api { left: -16px !important; }
+          .lp-fbadge-rzp { left: -8px !important; }
+          .lp-fbadge-ship { right: -10px !important; }
+          .lp-fbadge-goog { right: -16px !important; }
+          .lp-fbadge-ondc { right: -8px !important; }
+          .lp-float-badge { padding: 6px 14px !important; font-size: 11px !important; }
+        }
+        @media (max-width: 768px) {
+          .lp-float-badge { display: none !important; }
+        }
         .lp-hiw-badge { position: absolute; background: #FFFFFF; padding: 8px 14px; border-radius: 24px; font-size: 11px; font-weight: 600; color: #1E293B; box-shadow: 0 4px 15px rgba(0,0,0,0.08); z-index: 11; }
         .lp-compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; text-align: left; max-width: 1200px; margin: 0 auto; }
         .lp-ai-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: stretch; }
@@ -242,7 +269,7 @@ const LandingPage = () => {
         .lp-nav-arrow-left { position: absolute; left: -24px; }
         .lp-nav-arrow-right { position: absolute; right: -24px; }
         .lp-hiw-img-col { position: relative; width: 65%; margin: 0 auto; }
-        .lp-features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; align-items: stretch; }
+        .lp-features-grid { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: stretch; }
         .lp-category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 48px; }
         .lp-ai-pill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 
@@ -250,6 +277,7 @@ const LandingPage = () => {
           .lp-hero-row { flex-direction: column; gap: 24px; }
           .lp-hero-left { flex: 1 1 100%; min-width: unset; }
           .lp-hero-right { flex: 1 1 100%; min-width: unset; }
+          .lp-hero-badge { display: none !important; }
           .lp-ai-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
           .lp-compare-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
           .lp-hiw-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
@@ -258,27 +286,42 @@ const LandingPage = () => {
           .lp-choose-deco { display: none !important; }
           .lp-testimonial-grid { grid-template-columns: 1fr !important; }
           .lp-testimonial-side { display: none !important; }
-          .lp-nav-arrow-left { left: -8px !important; }
-          .lp-nav-arrow-right { right: -8px !important; }
+          .lp-nav-arrow-left { left: 4px !important; }
+          .lp-nav-arrow-right { right: 4px !important; }
         }
 
         @media (max-width: 768px) {
-          .lp-hero-section { padding: 90px 4% 32px !important; }
+          .lp-hero-section { padding: 90px 4% 32px !important; overflow: hidden !important; }
           .lp-hero-h1 { font-size: 28px !important; line-height: 1.15 !important; margin-bottom: 10px !important; }
           .lp-hero-tagline { font-size: 14px !important; margin-bottom: 16px !important; }
           .lp-hero-desc { font-size: 11.5px !important; line-height: 1.55 !important; margin-bottom: 24px !important; max-width: 100% !important; }
-          .lp-hero-right { display: flex !important; width: 100% !important; margin-top: 24px !important; align-items: center !important; justify-content: center !important; padding: 0 8px !important; box-sizing: border-box !important; overflow: visible !important; }
-          .lp-hero-mockup-wrap { width: 100% !important; max-width: 100% !important; transform: none !important; margin: 0 auto !important; }
-          .lp-hero-viewport { min-height: auto !important; }
-          .lp-hero-sidebar { width: 32px !important; padding: 6px 2px !important; gap: 6px !important; }
-          .lp-hero-canvas { padding: 6px 8px !important; gap: 5px !important; }
-          .lp-hero-top-row { gap: 5px !important; }
-          .lp-hero-top-row > div { padding: 4px 5px !important; }
-          .lp-hero-mid-row { padding: 4px 8px !important; }
-          .lp-hero-chart { height: 22px !important; }
-          .lp-hero-bottom-row { gap: 5px !important; }
-          .lp-hero-bottom-row > div { padding: 4px 8px !important; }
+          .lp-hero-right { display: flex !important; width: 100% !important; max-width: 100% !important; margin-top: 24px !important; align-items: center !important; justify-content: center !important; padding: 0 !important; box-sizing: border-box !important; overflow: hidden !important; }
+          .lp-hero-mockup-wrap { width: 95% !important; max-width: 95% !important; transform: none !important; margin: 0 auto !important; padding: 0 !important; overflow: hidden !important; }
           .lp-hero-badge { display: none !important; }
+          .lp-hero-pill { display: none !important; }
+          .lp-dash-sidebar { width: 22px !important; padding: 6px 2px !important; gap: 5px !important; border-radius: 8px !important; }
+          .lp-dash-sidebar svg { width: 8px !important; height: 8px !important; }
+          .lp-dash-sidebar > div:first-child { width: 16px !important; height: 16px !important; border-radius: 4px !important; }
+          .lp-dash-body { padding: 6px !important; gap: 6px !important; }
+          .lp-dash-canvas { gap: 5px !important; }
+          .lp-dash-kpi-row { grid-template-columns: 1fr 1fr 1fr !important; gap: 3px !important; width: 100% !important; }
+          .lp-dash-kpi-card { padding: 5px 3px !important; border-radius: 6px !important; gap: 3px !important; min-width: 0 !important; overflow: hidden !important; }
+          .lp-dash-kpi-icon { width: 18px !important; height: 18px !important; border-radius: 5px !important; flex-shrink: 0 !important; }
+          .lp-dash-kpi-icon svg { width: 9px !important; height: 9px !important; }
+          .lp-dash-kpi-label { font-size: 5px !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; }
+          .lp-dash-kpi-title { font-size: 7px !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; }
+          .lp-dash-kpi-sub { font-size: 5px !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; }
+          .lp-dash-funnel-box { padding: 4px 6px !important; gap: 3px !important; }
+          .lp-dash-funnel-svg { height: 16px !important; }
+          .lp-dash-bottom-grid { grid-template-columns: 1fr 1fr !important; gap: 4px !important; width: 100% !important; overflow: hidden !important; }
+          .lp-dash-bottom-card { padding: 5px 4px !important; gap: 3px !important; border-radius: 6px !important; min-width: 0 !important; overflow: hidden !important; }
+          .lp-lead-item-time { display: none !important; }
+          .lp-lead-item-arrow { display: none !important; }
+          .lp-lead-item-badge { font-size: 4.5px !important; padding: 1px 3px !important; border-radius: 2px !important; }
+          .lp-lead-item-title { font-size: 5.5px !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; }
+          .lp-ai-bubble { padding: 3px 4px !important; font-size: 5px !important; border-radius: 4px !important; line-height: 1.2 !important; }
+          .lp-ai-input { padding: 2px 4px !important; font-size: 4.8px !important; }
+          .lp-ai-btn { width: 12px !important; height: 12px !important; }
           .lp-meta-box { padding: 6px 12px !important; gap: 8px !important; }
           .lp-meta-box span { font-size: 11px !important; }
           .lp-meta-box svg { width: 18px !important; height: 18px !important; }
@@ -286,24 +329,27 @@ const LandingPage = () => {
           
           .lp-features-strip { padding: 28px 16px !important; }
           .lp-features-heading { font-size: 20px !important; margin-bottom: 18px !important; }
-          .lp-features-grid { grid-template-columns: 1fr 1fr !important; gap: 10px !important; }
-          .lp-feature-card { padding: 10px 12px !important; gap: 10px !important; border-radius: 12px !important; }
+          .lp-features-grid { display: flex !important; flex-wrap: wrap !important; gap: 10px !important; justify-content: center !important; }
+          .lp-feature-card { padding: 10px 14px !important; min-width: 140px !important; flex: 1 1 140px !important; }
           .lp-feature-title { font-size: 12px !important; white-space: normal !important; }
           .lp-feature-desc { font-size: 9.5px !important; white-space: normal !important; }
 
           .lp-preview-section { padding: 32px 4% 20px !important; }
           .lp-preview-heading { font-size: 24px !important; line-height: 1.25 !important; margin-bottom: 10px !important; }
           .lp-preview-desc { font-size: 13px !important; margin-bottom: 24px !important; }
+          .lp-preview-img-wrap { width: 95% !important; max-width: 95% !important; margin: 0 auto !important; }
+          .lp-preview-img { width: 100% !important; max-width: 100% !important; border-radius: 12px !important; }
 
           .lp-compare-section { padding: 16px 4% 40px !important; }
           .lp-compare-heading { font-size: 24px !important; }
           .lp-compare-card-pad { padding: 24px 18px !important; border-radius: 18px !important; }
-          .lp-compare-item-text { font-size: 13px !important; }
+          .lp-compare-item-text { font-size: 11.5px !important; }
           .lp-compare-card-title { font-size: 18px !important; margin-bottom: 18px !important; }
 
           .lp-ai-section { padding: 30px 4% !important; }
           .lp-ai-card { padding: 22px 18px !important; border-radius: 18px !important; }
-          .lp-ai-robot-card { height: 240px !important; max-height: 240px !important; border-radius: 18px !important; }
+          .lp-ai-robot-card { width: 100% !important; height: auto !important; min-height: 260px !important; max-height: 360px !important; border-radius: 18px !important; overflow: hidden !important; }
+          .lp-ai-robot-card img { width: 100% !important; height: 100% !important; object-fit: cover !important; object-position: center !important; }
 
           .lp-category-section { padding: 32px 4% 40px !important; }
           .lp-category-heading { font-size: 24px !important; }
@@ -347,31 +393,47 @@ const LandingPage = () => {
         }
 
         @media (max-width: 480px) {
-          .lp-hero-section { padding: 80px 3% 20px !important; }
+          .lp-hero-section { padding: 80px 3% 20px !important; overflow: hidden !important; }
           .lp-meta-box { padding: 5px 10px !important; gap: 6px !important; }
           .lp-meta-box span { font-size: 10px !important; }
           .lp-meta-box svg { width: 15px !important; height: 15px !important; }
           .lp-meta-box div { width: 14px !important; height: 14px !important; }
           .lp-hero-h1 { font-size: 24px !important; line-height: 1.18 !important; }
-          .lp-hero-right { padding: 0 4px !important; overflow: visible !important; }
-          .lp-hero-mockup-wrap { max-width: 100% !important; }
-          .lp-hero-top-row > div { padding: 3px 3px !important; }
-          .lp-hero-bottom-row { grid-template-columns: 1fr !important; gap: 6px !important; }
-          .lp-hero-badge { padding: 2.5px 6px !important; font-size: 7.5px !important; white-space: nowrap !important; }
-          .lp-hero-badge span { font-size: 7.5px !important; }
-          .lp-badge-wa   { left: -58px !important; top: 14px !important; }
-          .lp-badge-api  { left: -62px !important; top: 75px !important; }
-          .lp-badge-rzp  { left: -58px !important; bottom: 40px !important; }
-          .lp-badge-ship { right: -58px !important; top: 16px !important; }
-          .lp-badge-goog { right: -54px !important; top: 80px !important; }
-          .lp-badge-ondc { right: -54px !important; bottom: 45px !important; }
+          .lp-hero-right { padding: 0 !important; width: 100% !important; max-width: 100% !important; overflow: hidden !important; }
+          .lp-hero-mockup-wrap { width: 92% !important; max-width: 92% !important; margin: 0 auto !important; padding: 0 !important; overflow: hidden !important; }
+          .lp-hero-badge { display: none !important; }
+          .lp-dash-sidebar { width: 20px !important; padding: 5px 2px !important; gap: 4px !important; border-radius: 6px !important; }
+          .lp-dash-sidebar svg { width: 7.5px !important; height: 7.5px !important; }
+          .lp-dash-sidebar > div:first-child { width: 14px !important; height: 14px !important; border-radius: 3px !important; }
+          .lp-dash-body { padding: 5px !important; gap: 5px !important; }
+          .lp-dash-canvas { gap: 4px !important; }
+          .lp-dash-kpi-row { grid-template-columns: 1fr 1fr 1fr !important; gap: 2.5px !important; width: 100% !important; }
+          .lp-dash-kpi-card { padding: 4px 2.5px !important; border-radius: 5px !important; gap: 2.5px !important; min-width: 0 !important; overflow: hidden !important; }
+          .lp-dash-kpi-icon { width: 16px !important; height: 16px !important; border-radius: 4px !important; flex-shrink: 0 !important; }
+          .lp-dash-kpi-icon svg { width: 8px !important; height: 8px !important; }
+          .lp-dash-kpi-label { font-size: 4.5px !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; }
+          .lp-dash-kpi-title { font-size: 6.5px !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; }
+          .lp-dash-kpi-sub { font-size: 4.5px !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; }
+          .lp-dash-funnel-box { padding: 3px 5px !important; gap: 2px !important; }
+          .lp-dash-funnel-svg { height: 14px !important; }
+          .lp-dash-bottom-grid { grid-template-columns: 1fr 1fr !important; gap: 3px !important; width: 100% !important; overflow: hidden !important; }
+          .lp-dash-bottom-card { padding: 4px 3px !important; gap: 2.5px !important; border-radius: 5px !important; min-width: 0 !important; overflow: hidden !important; }
+          .lp-lead-item-time { display: none !important; }
+          .lp-lead-item-arrow { display: none !important; }
+          .lp-lead-item-badge { font-size: 4px !important; padding: 1px 2.5px !important; border-radius: 2px !important; }
+          .lp-lead-item-title { font-size: 4.8px !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; }
+          .lp-ai-bubble { padding: 2.5px 3.5px !important; font-size: 4.5px !important; border-radius: 3px !important; line-height: 1.18 !important; }
+          .lp-ai-input { padding: 2px 3px !important; font-size: 4.2px !important; }
+          .lp-ai-btn { width: 10px !important; height: 10px !important; }
+          .lp-preview-img-wrap { width: 92% !important; max-width: 92% !important; margin: 0 auto !important; }
+          .lp-preview-img { width: 100% !important; max-width: 100% !important; border-radius: 10px !important; }
 
-          .lp-features-grid { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
-          .lp-feature-card { padding: 8px 10px !important; gap: 8px !important; }
+          .lp-features-grid { display: flex !important; flex-wrap: wrap !important; gap: 8px !important; justify-content: center !important; }
+          .lp-feature-card { padding: 8px 10px !important; gap: 8px !important; min-width: 130px !important; flex: 1 1 130px !important; }
           .lp-feature-title { font-size: 11px !important; }
           .lp-feature-desc { font-size: 8.5px !important; }
 
-          .lp-compare-item-text { font-size: 11.5px !important; }
+          .lp-compare-item-text { font-size: 10.5px !important; }
           .lp-compare-card-title { font-size: 15px !important; margin-bottom: 14px !important; }
 
           .lp-ai-pill-grid { grid-template-columns: 1fr 1fr !important; gap: 6px !important; }
@@ -484,61 +546,84 @@ const LandingPage = () => {
           {/* Right: Pixel-Perfect Crisp Dashboard UI Mockup */}
           <div className="lp-hero-right">
             {/* Value / Capability Pill */}
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#F0FDF4", borderRadius: 40, padding: "5px 14px", marginBottom: "16px", zIndex: 2, border: "1px solid #DCFCE7", boxShadow: "0 2px 6px rgba(22, 163, 74, 0.08)" }}>
+            <div className="lp-hero-pill" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#F0FDF4", borderRadius: 40, padding: "5px 14px", marginBottom: "16px", zIndex: 2, border: "1px solid #DCFCE7", boxShadow: "0 2px 6px rgba(22, 163, 74, 0.08)" }}>
               <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#16A34A" }} />
               <span style={{ fontSize: 10.5, fontWeight: 700, color: "#16A34A" }}>⚡ AI-Powered Lead Generation & Growth Engine</span>
             </div>
 
-            {/* Dashboard Container with Floating Integration Badges */}
-            <div className="lp-hero-mockup-wrap" style={{ position: "relative", width: "100%", maxWidth: 480 }}>
+            {/* Dashboard Container with Ambient Glow, Pure UI Dashboard & Floating Integration Badges */}
+            <div className="lp-hero-mockup-wrap" style={{ position: "relative", width: "100%", maxWidth: 540, overflow: "visible" }}>
               
+              {/* Premium Ambient Emerald Glow behind mockup */}
+              <div style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                width: "90%",
+                height: "85%",
+                background: "radial-gradient(circle, rgba(22, 163, 74, 0.20) 0%, rgba(16, 185, 129, 0.08) 45%, transparent 72%)",
+                filter: "blur(40px)",
+                pointerEvents: "none",
+                zIndex: 0
+              }} />
+
               {/* Floating Badge: WhatsApp */}
-              <div className="lp-hero-badge lp-badge-wa" style={{ left: -48, top: 32 }}>
-                <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#10B981" }} />
-                <span style={{ fontSize: 10.5, fontWeight: 700, color: "#64748B" }}>WhatsApp</span>
+              <div className="lp-hero-badge lp-badge-wa" style={{ right: "calc(100% - 4px)", left: "auto", top: "12%", animation: "badgeFloat1 4s ease-in-out infinite" }}>
+                <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#10B981", boxShadow: "0 0 8px rgba(16, 185, 129, 0.7)", flexShrink: 0 }} />
+                <span style={{ fontSize: 11, fontWeight: 700, color: "#334155" }}>WhatsApp</span>
               </div>
 
               {/* Floating Badge: API Ready */}
-              <div className="lp-hero-badge lp-badge-api" style={{ left: -54, top: 125 }}>
-                <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#EC4899" }} />
-                <span style={{ fontSize: 10.5, fontWeight: 700, color: "#64748B" }}>API Ready</span>
+              <div className="lp-hero-badge lp-badge-api" style={{ right: "calc(100% - 4px)", left: "auto", top: "46%", animation: "badgeFloat2 5s ease-in-out infinite 0.5s" }}>
+                <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#EC4899", boxShadow: "0 0 8px rgba(236, 72, 153, 0.7)", flexShrink: 0 }} />
+                <span style={{ fontSize: 11, fontWeight: 700, color: "#334155" }}>API Ready</span>
               </div>
 
               {/* Floating Badge: Razorpay */}
-              <div className="lp-hero-badge lp-badge-rzp" style={{ left: -50, bottom: 95 }}>
-                <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#2563EB" }} />
-                <span style={{ fontSize: 10.5, fontWeight: 700, color: "#64748B" }}>Razorpay</span>
+              <div className="lp-hero-badge lp-badge-rzp" style={{ right: "calc(100% - 4px)", left: "auto", bottom: "16%", animation: "badgeFloat1 4.5s ease-in-out infinite 1s" }}>
+                <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#2563EB", boxShadow: "0 0 8px rgba(37, 99, 235, 0.7)", flexShrink: 0 }} />
+                <span style={{ fontSize: 11, fontWeight: 700, color: "#334155" }}>Razorpay</span>
               </div>
 
               {/* Floating Badge: Shiprocket */}
-              <div className="lp-hero-badge lp-badge-ship" style={{ right: -48, top: 35 }}>
-                <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#F97316" }} />
-                <span style={{ fontSize: 10.5, fontWeight: 700, color: "#64748B" }}>Shiprocket</span>
+              <div className="lp-hero-badge lp-badge-ship" style={{ left: "calc(100% - 4px)", right: "auto", top: "14%", animation: "badgeFloat2 4.2s ease-in-out infinite 0.2s" }}>
+                <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#F97316", boxShadow: "0 0 8px rgba(249, 115, 22, 0.7)", flexShrink: 0 }} />
+                <span style={{ fontSize: 11, fontWeight: 700, color: "#334155" }}>Shiprocket</span>
               </div>
 
               {/* Floating Badge: Google */}
-              <div className="lp-hero-badge lp-badge-goog" style={{ right: -42, top: 130 }}>
-                <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#F59E0B" }} />
-                <span style={{ fontSize: 10.5, fontWeight: 700, color: "#64748B" }}>Google</span>
+              <div className="lp-hero-badge lp-badge-goog" style={{ left: "calc(100% - 4px)", right: "auto", top: "46%", animation: "badgeFloat1 4.8s ease-in-out infinite 0.8s" }}>
+                <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#F59E0B", boxShadow: "0 0 8px rgba(245, 158, 11, 0.7)", flexShrink: 0 }} />
+                <span style={{ fontSize: 11, fontWeight: 700, color: "#334155" }}>Google</span>
               </div>
 
               {/* Floating Badge: ONDC */}
-              <div className="lp-hero-badge lp-badge-ondc" style={{ right: -42, bottom: 100 }}>
-                <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#6366F1" }} />
-                <span style={{ fontSize: 10.5, fontWeight: 700, color: "#64748B" }}>ONDC</span>
+              <div className="lp-hero-badge lp-badge-ondc" style={{ left: "calc(100% - 4px)", right: "auto", bottom: "16%", animation: "badgeFloat2 4.4s ease-in-out infinite 1.2s" }}>
+                <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#6366F1", boxShadow: "0 0 8px rgba(99, 102, 241, 0.7)", flexShrink: 0 }} />
+                <span style={{ fontSize: 11, fontWeight: 700, color: "#334155" }}>ONDC</span>
               </div>
 
-              {/* Main Crisp Vector Dashboard Window */}
-              <div style={{
-                background: "#FFFFFF",
-                borderRadius: 16,
-                border: "1px solid #E2E8F0",
-                boxShadow: "0 20px 45px -12px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0,0,0,0.02)",
-                display: "flex",
-                flexDirection: "column",
-                overflow: "hidden"
-              }}>
-                
+              {/* Pure Crisp Vector UI Dashboard Mockup (Text Copy Disabled) */}
+              <div
+                className="lp-mockup-browser"
+                style={{
+                  userSelect: "none",
+                  WebkitUserSelect: "none",
+                  MozUserSelect: "none",
+                  msUserSelect: "none",
+                  background: "#FFFFFF",
+                  borderRadius: 20,
+                  border: "1px solid #E2E8F0",
+                  boxShadow: "0 25px 60px -12px rgba(15, 23, 42, 0.15), 0 0 0 1px rgba(0,0,0,0.02)",
+                  display: "flex",
+                  flexDirection: "column",
+                  overflow: "hidden",
+                  width: "100%",
+                  position: "relative",
+                  zIndex: 1
+                }}
+              >
                 {/* Browser Header Bar */}
                 <div style={{
                   background: "#FFFFFF",
@@ -548,12 +633,14 @@ const LandingPage = () => {
                   alignItems: "center",
                   justifyContent: "space-between"
                 }}>
+                  {/* 3 Dots */}
                   <div style={{ display: "flex", gap: 5, alignItems: "center" }}>
                     <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#FF5F56" }} />
                     <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#FFBD2E" }} />
                     <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#27C93F" }} />
                   </div>
 
+                  {/* URL Pill */}
                   <div style={{
                     background: "#F8FAFC",
                     borderRadius: 20,
@@ -562,159 +649,206 @@ const LandingPage = () => {
                     alignItems: "center",
                     gap: 5,
                     border: "1px solid #E2E8F0",
-                    width: 170,
+                    width: "clamp(120px, 32%, 180px)",
                     justifyContent: "center"
                   }}>
-                    <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                     <span style={{ fontSize: 9.5, color: "#64748B", fontWeight: 500 }}>app.messbee.com</span>
                   </div>
 
+                  {/* Right: Bell & Avatar */}
                   <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#64748B" strokeWidth="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
                     <div style={{ width: 14, height: 14, borderRadius: "50%", background: "#10B981" }} />
                   </div>
                 </div>
 
-                {/* Dashboard Main Viewport */}
-                <div className="lp-hero-viewport" style={{ display: "flex", background: "#F8FAFC", minHeight: 330 }}>
+                {/* Main Dashboard Body */}
+                <div className="lp-dash-body" style={{ display: "flex", background: "#F8FAFC", padding: "8px", gap: "8px", minHeight: "auto" }}>
                   
-                  {/* Left Dark Sidebar */}
-                  <div className="lp-hero-sidebar" style={{
-                    width: 42,
-                    background: "#0F172A",
-                    padding: "10px 4px",
+                  {/* Left Vertical Dark Capsule Sidebar */}
+                  <div className="lp-dash-sidebar" style={{
+                    width: 30,
+                    background: "#0B132B",
+                    borderRadius: 12,
+                    padding: "8px 3px",
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
-                    gap: 10,
+                    gap: 8,
                     flexShrink: 0
                   }}>
-                    {/* Active Apps Grid Icon */}
-                    <div style={{ width: 26, height: 26, borderRadius: 6, background: "#16A34A", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2.5">
-                        <rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/>
-                      </svg>
+                    {/* Active Grid Icon */}
+                    <div style={{ width: 20, height: 20, borderRadius: 5, background: "#10B981", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2.5"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>
                     </div>
 
                     {/* Nav Icons */}
-                    {[
-                      <><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></>,
-                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>,
-                      <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>,
-                      <path d="m21 16-9 5-9-5V8l9-5 9 5v8z"/>,
-                      <><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></>,
-                      <rect x="2" y="5" width="20" height="14" rx="2"/>,
-                      <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>,
-                      <circle cx="12" cy="12" r="3"/>
-                    ].map((icon, i) => (
-                      <svg key={i} width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#64748B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ cursor: "pointer" }}>
-                        {icon}
-                      </svg>
-                    ))}
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#64748B" strokeWidth="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#64748B" strokeWidth="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#64748B" strokeWidth="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#64748B" strokeWidth="2"><path d="m21 16-9 5-9-5V8l9-5 9 5v8z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#64748B" strokeWidth="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#64748B" strokeWidth="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#64748B" strokeWidth="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    <div style={{ marginTop: "auto", width: 4, height: 4, borderRadius: "50%", background: "#475569" }} />
                   </div>
 
-                  {/* Dashboard Content Canvas */}
-                  <div className="lp-hero-canvas" style={{ flex: 1, padding: "10px", display: "flex", flexDirection: "column", gap: 8 }}>
+                  {/* Content Canvas */}
+                  <div className="lp-dash-canvas" style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: "6px" }}>
                     
-                    {/* Top Row: 3 Business Value Cards */}
-                    <div className="lp-hero-top-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 }}>
-                      <div style={{ background: "#FFFFFF", borderRadius: 10, border: "1px solid #E2E8F0", padding: "8px 10px" }}>
-                        <div style={{ fontSize: 9, color: "#64748B", fontWeight: 600 }}>Lead Generation</div>
-                        <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", margin: "1px 0" }}>Create Campaign</div>
-                        <div style={{ fontSize: 8, fontWeight: 700, color: "#16A34A" }}>By Business Type</div>
+                    {/* Row 1: Top 3 Action Cards (1 Line / 3 Columns with Rich Height & Spacing) */}
+                    <div className="lp-dash-kpi-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 }}>
+                      
+                      {/* Card 1: Lead Generation */}
+                      <div className="lp-dash-kpi-card" style={{ background: "#FFFFFF", borderRadius: 12, padding: "14px 14px", border: "1px solid #E2E8F0", display: "flex", alignItems: "center", gap: 11, boxShadow: "0 1px 3px rgba(0,0,0,0.02)" }}>
+                        <div className="lp-dash-kpi-icon" style={{ width: 34, height: 34, borderRadius: 9, background: "#DCFCE7", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.2"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+                        </div>
+                        <div style={{ minWidth: 0, flex: 1, display: "flex", flexDirection: "column", gap: 5 }}>
+                          <div className="lp-dash-kpi-label" style={{ fontSize: 7.5, color: "#64748B", fontWeight: 600 }}>Lead Generation</div>
+                          <div className="lp-dash-kpi-title" style={{ fontSize: 11, fontWeight: 800, color: "#0F172A", lineHeight: 1.15 }}>Create Campaign</div>
+                          <div className="lp-dash-kpi-sub" style={{ fontSize: 8, color: "#16A34A", fontWeight: 700 }}>By Business Type</div>
+                        </div>
                       </div>
 
-                      <div style={{ background: "#FFFFFF", borderRadius: 10, border: "1px solid #E2E8F0", padding: "8px 10px" }}>
-                        <div style={{ fontSize: 9, color: "#64748B", fontWeight: 600 }}>Broadcast</div>
-                        <div style={{ fontSize: 13.5, fontWeight: 800, color: "#0F172A", margin: "1px 0" }}>Instant Reach</div>
-                        <div style={{ fontSize: 8, fontWeight: 700, color: "#16A34A" }}>Offers & Catalog</div>
+                      {/* Card 2: Broadcast */}
+                      <div className="lp-dash-kpi-card" style={{ background: "#FFFFFF", borderRadius: 12, padding: "14px 14px", border: "1px solid #E2E8F0", display: "flex", alignItems: "center", gap: 11, boxShadow: "0 1px 3px rgba(0,0,0,0.02)" }}>
+                        <div className="lp-dash-kpi-icon" style={{ width: 34, height: 34, borderRadius: 9, background: "#E0F2FE", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0284C7" strokeWidth="2.2"><path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"/><path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"/><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5"/><path d="M19.1 4.9C23 8.8 23 15.2 19.1 19.1"/></svg>
+                        </div>
+                        <div style={{ minWidth: 0, flex: 1, display: "flex", flexDirection: "column", gap: 5 }}>
+                          <div className="lp-dash-kpi-label" style={{ fontSize: 7.5, color: "#64748B", fontWeight: 600 }}>Broadcast</div>
+                          <div className="lp-dash-kpi-title" style={{ fontSize: 11, fontWeight: 800, color: "#0F172A", lineHeight: 1.15 }}>Instant Reach</div>
+                          <div className="lp-dash-kpi-sub" style={{ fontSize: 8, color: "#0284C7", fontWeight: 700 }}>Offers & Catalog</div>
+                        </div>
                       </div>
 
-                      <div style={{ background: "#FFFFFF", borderRadius: 10, border: "1px solid #E2E8F0", padding: "8px 10px" }}>
-                        <div style={{ fontSize: 9, color: "#64748B", fontWeight: 600 }}>Support</div>
-                        <div style={{ fontSize: 13.5, fontWeight: 800, color: "#0F172A", margin: "1px 0" }}>100% Automated</div>
-                        <div style={{ fontSize: 8, fontWeight: 700, color: "#16A34A" }}>24/7 AI Sales Rep</div>
+                      {/* Card 3: Support */}
+                      <div className="lp-dash-kpi-card" style={{ background: "#FFFFFF", borderRadius: 12, padding: "14px 14px", border: "1px solid #E2E8F0", display: "flex", alignItems: "center", gap: 11, boxShadow: "0 1px 3px rgba(0,0,0,0.02)" }}>
+                        <div className="lp-dash-kpi-icon" style={{ width: 34, height: 34, borderRadius: 9, background: "#F3E8FF", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9333EA" strokeWidth="2.2"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="16" y1="16" x2="16" y2="16"/></svg>
+                        </div>
+                        <div style={{ minWidth: 0, flex: 1, display: "flex", flexDirection: "column", gap: 5 }}>
+                          <div className="lp-dash-kpi-label" style={{ fontSize: 7.5, color: "#64748B", fontWeight: 600 }}>Support</div>
+                          <div className="lp-dash-kpi-title" style={{ fontSize: 11, fontWeight: 800, color: "#0F172A", lineHeight: 1.15 }}>100% Automated</div>
+                          <div className="lp-dash-kpi-sub" style={{ fontSize: 8, color: "#9333EA", fontWeight: 700 }}>24/7 AI Sales Rep</div>
+                        </div>
                       </div>
+
                     </div>
 
-                    {/* Middle Row: Business Growth Funnel */}
-                    <div className="lp-hero-mid-row" style={{ background: "#FFFFFF", borderRadius: 10, border: "1px solid #E2E8F0", padding: "8px 12px", display: "flex", flexDirection: "column" }}>
-                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
-                        <span style={{ fontSize: 10, fontWeight: 700, color: "#334155" }}>Business Growth & Lead Funnel</span>
-                        <span style={{ fontSize: 8, fontWeight: 700, color: "#16A34A", background: "#ECFDF5", padding: "1px 6px", borderRadius: 10, border: "1px solid #A7F3D0" }}>⚡ Active System</span>
+                    {/* Row 2: Business Growth & Lead Funnel */}
+                    <div className="lp-dash-funnel-box" style={{ background: "#FFFFFF", borderRadius: 10, padding: "6px 8px", border: "1px solid #E2E8F0", display: "flex", flexDirection: "column", gap: 4 }}>
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                        <div style={{ fontSize: 8.5, fontWeight: 800, color: "#0F172A" }}>Business Growth & Lead Funnel</div>
+                        <div style={{ display: "inline-flex", alignItems: "center", gap: 3, background: "#ECFDF5", border: "1px solid #A7F3D0", borderRadius: 10, padding: "1px 6px" }}>
+                          <span style={{ fontSize: 7 }}>⚡</span>
+                          <span style={{ fontSize: 7, fontWeight: 700, color: "#16A34A" }}>Active System</span>
+                        </div>
                       </div>
 
-                      {/* Vector SVG Trend Curve */}
-                      <div className="lp-hero-chart" style={{ width: "100%", height: 36, position: "relative" }}>
-                        <svg viewBox="0 0 400 60" preserveAspectRatio="none" style={{ width: "100%", height: "100%", overflow: "visible" }}>
+                      {/* Funnel Graph Curve */}
+                      <div className="lp-dash-funnel-svg" style={{ height: 22, width: "100%", position: "relative" }}>
+                        <svg width="100%" height="100%" viewBox="0 0 320 28" preserveAspectRatio="none" style={{ overflow: "visible" }}>
                           <defs>
-                            <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
-                              <stop offset="0%" stopColor="#16A34A" stopOpacity="0.25"/>
-                              <stop offset="100%" stopColor="#16A34A" stopOpacity="0.0"/>
+                            <linearGradient id="funnelGradHero" x1="0" y1="0" x2="0" y2="1">
+                              <stop offset="0%" stopColor="#10B981" stopOpacity="0.25" />
+                              <stop offset="100%" stopColor="#10B981" stopOpacity="0.0" />
                             </linearGradient>
                           </defs>
-                          <path d="M0,45 C60,44 120,46 180,38 C240,30 300,24 400,10 L400,60 L0,60 Z" fill="url(#chartGrad)" />
-                          <path d="M0,45 C60,44 120,46 180,38 C240,30 300,24 400,10" fill="none" stroke="#16A34A" strokeWidth="2.5" strokeLinecap="round" />
+                          <path d="M 15 22 C 70 20, 110 17, 160 14 C 210 11, 260 7, 305 3 L 305 28 L 15 28 Z" fill="url(#funnelGradHero)" />
+                          <path d="M 15 22 C 70 20, 110 17, 160 14 C 210 11, 260 7, 305 3" fill="none" stroke="#10B981" strokeWidth="2" strokeLinecap="round" />
+                          <circle cx="15" cy="22" r="3" fill="#10B981" />
+                          <circle cx="85" cy="18" r="3" fill="#10B981" />
+                          <circle cx="160" cy="14" r="3" fill="#10B981" />
+                          <circle cx="235" cy="9" r="3" fill="#10B981" />
+                          <circle cx="305" cy="3" r="3" fill="#10B981" />
                         </svg>
-                      </div>
-
-                      {/* Funnel Steps on X-Axis */}
-                      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 7.5, color: "#64748B", fontWeight: 600, paddingTop: 2 }}>
-                        <span>Capture Leads</span>
-                        <span>Share Catalog</span>
-                        <span>Auto Followup</span>
-                        <span>Close Sales</span>
-                        <span>Collect Payment</span>
                       </div>
                     </div>
 
-                    {/* Bottom Row: Live Leads & AI Assistant */}
-                    <div className="lp-hero-bottom-row" style={{ display: "grid", gridTemplateColumns: "1.1fr 1.3fr", gap: 8 }}>
+                    {/* Row 3: Bottom Row (Live Leads + AI Sales Assistant in 1 Line) */}
+                    <div className="lp-dash-bottom-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
                       
-                      {/* Live Leads & Inquiries */}
-                      <div style={{ background: "#FFFFFF", borderRadius: 10, border: "1px solid #E2E8F0", padding: "8px 10px", display: "flex", flexDirection: "column", gap: 5 }}>
-                        <div style={{ fontSize: 10, fontWeight: 700, color: "#334155", marginBottom: 1 }}>Live WhatsApp Leads</div>
-                        {[
-                          { action: "Website Inquiry", status: "Auto-Replied" },
-                          { action: "Catalog View", status: "Followup Sent" },
-                          { action: "Order Request", status: "Payment Ready" }
-                        ].map((item, i) => (
-                          <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 8.5 }}>
-                            <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                              <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#10B981" }} />
-                              <span style={{ fontWeight: 600, color: "#334155" }}>{item.action}</span>
+                      {/* Left: Live WhatsApp Leads */}
+                      <div className="lp-dash-bottom-card" style={{ background: "#FFFFFF", borderRadius: 10, padding: "8px 10px", border: "1px solid #E2E8F0", display: "flex", flexDirection: "column", gap: 6, boxShadow: "0 1px 3px rgba(0,0,0,0.02)" }}>
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                          <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                            <div style={{ width: 16, height: 16, borderRadius: "50%", background: "#25D366", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                              <svg width="9" height="9" viewBox="0 0 24 24" fill="#FFF"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
                             </div>
-                            <span style={{ fontWeight: 700, color: "#16A34A", background: "#ECFDF5", padding: "1px 5px", borderRadius: 4 }}>{item.status}</span>
+                            <span style={{ fontSize: 9, fontWeight: 800, color: "#0F172A", whiteSpace: "nowrap" }}>Live Leads</span>
                           </div>
-                        ))}
+                          <span style={{ fontSize: 7, color: "#64748B", fontWeight: 700, background: "#F8FAFC", border: "1px solid #E2E8F0", padding: "1px 5px", borderRadius: 3 }}>All</span>
+                        </div>
+
+                        <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+                          {[
+                            { type: "Website Inquiry", time: "10:24 AM", badge: "Auto-Replied", bg: "#DCFCE7", color: "#16A34A" },
+                            { type: "Catalog View", time: "09:48 AM", badge: "Followup Sent", bg: "#E0F2FE", color: "#0284C7" },
+                            { type: "Order Request", time: "09:15 AM", badge: "Payment Ready", bg: "#FEF3C7", color: "#D97706" },
+                            { type: "Product Enquiry", time: "08:50 AM", badge: "Auto-Replied", bg: "#DCFCE7", color: "#16A34A" },
+                          ].map((lead, idx) => (
+                            <div key={idx} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "2px 0", borderBottom: idx < 3 ? "1px solid #F8FAFC" : "none" }}>
+                              <div style={{ display: "flex", alignItems: "center", gap: 3, minWidth: 0 }}>
+                                <div style={{ width: 4, height: 4, borderRadius: "50%", background: "#10B981", flexShrink: 0 }} />
+                                <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#25D366", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                                  <svg width="6" height="6" viewBox="0 0 24 24" fill="#FFF"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                                </div>
+                                <span className="lp-lead-item-title" style={{ fontSize: 7.8, fontWeight: 700, color: "#1E293B" }}>{lead.type}</span>
+                              </div>
+                              <div style={{ display: "flex", alignItems: "center", gap: 3, flexShrink: 0 }}>
+                                <span className="lp-lead-item-time" style={{ fontSize: 6.8, color: "#94A3B8" }}>{lead.time}</span>
+                                <span className="lp-lead-item-badge" style={{ fontSize: 6.5, fontWeight: 700, background: lead.bg, color: lead.color, padding: "1.5px 4px", borderRadius: 3 }}>{lead.badge}</span>
+                                <span className="lp-lead-item-arrow" style={{ fontSize: 8, color: "#94A3B8" }}>›</span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
                       </div>
 
-                      {/* AI Assistant Card (Dark) */}
-                      <div style={{ background: "#0B132B", borderRadius: 10, padding: "8px 10px", display: "flex", flexDirection: "column", gap: 5, color: "#FFFFFF" }}>
-                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                      {/* Right: AI Sales Assistant */}
+                      <div className="lp-dash-bottom-card" style={{ background: "#FFFFFF", borderRadius: 10, padding: "8px 10px", border: "1px solid #E2E8F0", display: "flex", flexDirection: "column", gap: 6, boxShadow: "0 1px 3px rgba(0,0,0,0.02)" }}>
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                           <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                            <div style={{ width: 12, height: 12, borderRadius: "50%", background: "#16A34A", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                              <svg width="7" height="7" viewBox="0 0 24 24" fill="#FFF"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            <div style={{ width: 14, height: 14, borderRadius: 4, background: "#7C3AED", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                              <svg width="8" height="8" viewBox="0 0 24 24" fill="#FFF"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                             </div>
-                            <span style={{ fontSize: 9.5, fontWeight: 700 }}>AI Sales Assistant</span>
+                            <span style={{ fontSize: 9, fontWeight: 800, color: "#0F172A", whiteSpace: "nowrap" }}>AI Assistant</span>
                           </div>
-                          <div style={{ width: 4, height: 4, borderRadius: "50%", background: "#10B981" }} />
+                          <div style={{ display: "flex", alignItems: "center", gap: 3 }}>
+                            <div style={{ width: 4, height: 4, borderRadius: "50%", background: "#10B981" }} />
+                            <span style={{ fontSize: 6.5, color: "#64748B", fontWeight: 600 }}>Online</span>
+                          </div>
                         </div>
 
                         {/* Prompt bubble */}
-                        <div style={{ background: "#1E293B", borderRadius: 5, padding: "5px 7px", fontSize: 8, color: "#CBD5E1", lineHeight: 1.3 }}>
-                          "How do I generate more leads today?"
+                        <div className="lp-ai-bubble" style={{ background: "#FAF5FF", border: "1px solid #F3E8FF", borderRadius: 6, padding: "4px 7px", fontSize: 7, color: "#475569", lineHeight: 1.3 }}>
+                          "How to generate more leads?"
                         </div>
 
                         {/* Reply bubble */}
-                        <div style={{ background: "#064E3B", border: "1px solid #047857", borderRadius: 5, padding: "5px 7px", fontSize: 8, color: "#34D399", lineHeight: 1.3, fontWeight: 500 }}>
-                          Run a broadcast to website visitors with your new catalog link.
+                        <div className="lp-ai-bubble" style={{ background: "#F0FDF4", border: "1px solid #DCFCE7", borderRadius: 6, padding: "4px 7px", fontSize: 7, color: "#166534", lineHeight: 1.3, display: "flex", alignItems: "flex-start", gap: 4 }}>
+                          <span style={{ color: "#16A34A", fontSize: 8 }}>✦</span>
+                          <span>Run a broadcast with your catalog.</span>
+                        </div>
+
+                        {/* Input placeholder */}
+                        <div style={{ display: "flex", alignItems: "center", gap: 4, marginTop: "auto" }}>
+                          <div className="lp-ai-input" style={{ flex: 1, background: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: 5, padding: "3px 6px", fontSize: 6.5, color: "#94A3B8" }}>
+                            Ask me anything...
+                          </div>
+                          <div className="lp-ai-btn" style={{ width: 14, height: 14, borderRadius: 4, background: "#7C3AED", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                            <svg width="7" height="7" viewBox="0 0 24 24" fill="#FFF"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                          </div>
                         </div>
                       </div>
 
                     </div>
 
                   </div>
+
                 </div>
               </div>
 
@@ -724,140 +858,122 @@ const LandingPage = () => {
       </section>
 
       {/* ═══════════════ EVERYTHING YOU NEED HEADING & FEATURES STRIP ═══════════════ */}
-      <section className="lp-features-strip" style={{ background: "linear-gradient(135deg, #16A34A 0%, #15803D 100%)", padding: "36px 4% 36px", textAlign: "center", boxShadow: "0 10px 30px rgba(22, 163, 74, 0.15)" }}>
-        <h2 className="lp-features-heading" style={{ fontFamily: "'Inter', sans-serif", fontSize: 24, fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.5px", margin: "0 0 24px 0" }}>
-          Everything You Need to Run and Grow Your Business
-        </h2>
+      <section className="lp-features-strip" style={{ background: "linear-gradient(135deg, #16A34A 0%, #15803D 100%)", padding: "28px 3%" }}>
+        <div style={{ maxWidth: 1380, margin: "0 auto" }}>
+          <h2 className="lp-features-heading" style={{ textAlign: "center", fontSize: "clamp(16px, 2vw, 22px)", fontWeight: 800, color: "#FFFFFF", marginBottom: 18, letterSpacing: "-0.3px" }}>
+            Everything You Need to Run and Grow Your Business
+          </h2>
 
-        <div className="lp-features-grid" style={{
-          maxWidth: 1380,
-          margin: "0 auto",
-          alignItems: "stretch"
-        }}>
-          {[
-            {
-              title: "CRM",
-              desc: "Manage relationships",
-              icon: (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="8" r="3.2" />
-                  <path d="M6 18c0-3 2.7-5 6-5s6 2 6 5" />
-                  <circle cx="4" cy="9" r="1.5" />
-                  <circle cx="20" cy="9" r="1.5" />
-                  <path d="M5.5 9.5l2.5 1.5" />
-                  <path d="M18.5 9.5l-2.5 1.5" />
-                </svg>
-              )
-            },
-            {
-              title: "Digital Store",
-              desc: "Launch your storefront",
-              icon: (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M3 9l1.5-5h15L21 9v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z" />
-                  <path d="M3 9h18" />
-                  <path d="M9 13h6" />
-                  <path d="M10 9v4" />
-                  <path d="M14 9v4" />
-                </svg>
-              )
-            },
-            {
-              title: "Marketing Automation",
-              desc: "Run campaigns that convert",
-              icon: (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="m15 4 4 4L8 19l-4-4L15 4z" />
-                  <path d="m18 1 2 2" />
-                  <path d="M20 7l2 2" />
-                  <path d="M13 2l-1 2" />
-                  <path d="M7 16l-3 3" />
-                </svg>
-              )
-            },
-            {
-              title: "Orders",
-              desc: "Manage orders seamlessly",
-              icon: (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="8" cy="21" r="1.5" />
-                  <circle cx="19" cy="21" r="1.5" />
-                  <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
-                </svg>
-              )
-            },
-            {
-              title: "Payments",
-              desc: "Accept payments securely",
-              icon: (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                  <path d="M2 17l10 5 10-5" />
-                  <path d="M2 12l10 5 10-5" />
-                </svg>
-              )
-            },
-            {
-              title: "Team Management",
-              desc: "Roles, access & control",
-              icon: (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                  <circle cx="9" cy="7" r="4" />
-                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                </svg>
-              )
-            }
-          ].map((item, idx) => (
-            <div
-              key={idx}
-              className="lp-feature-card"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 12,
-                background: "#FFFFFF",
-                padding: "12px 16px",
-                borderRadius: 14,
-                boxShadow: "0 6px 16px rgba(0, 0, 0, 0.08)",
-                border: "1px solid rgba(255, 255, 255, 0.5)",
-                transition: "all 0.2s ease"
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "translateY(-3px)";
-                e.currentTarget.style.boxShadow = "0 12px 24px rgba(0,0,0,0.12)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = "0 6px 16px rgba(0, 0, 0, 0.08)";
-              }}
-            >
+          <div className="lp-features-grid" style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: 12,
+            justifyContent: "center"
+          }}>
+            {[
+              {
+                title: "CRM",
+                desc: "Manage relationships",
+                icon: (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                  </svg>
+                )
+              },
+              {
+                title: "Digital Store",
+                desc: "Launch your storefront",
+                icon: (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M3 9l1.5-5h15L21 9v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z" />
+                    <path d="M3 9h18" />
+                    <path d="M9 13h6" />
+                  </svg>
+                )
+              },
+              {
+                title: "Marketing Automation",
+                desc: "Run campaigns that convert",
+                icon: (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EA580C" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                  </svg>
+                )
+              },
+              {
+                title: "Orders",
+                desc: "Manage orders seamlessly",
+                icon: (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9333EA" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="8" cy="21" r="1.5" />
+                    <circle cx="19" cy="21" r="1.5" />
+                    <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+                  </svg>
+                )
+              },
+              {
+                title: "Payments",
+                desc: "Accept payments securely",
+                icon: (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#CA8A04" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="5" width="20" height="14" rx="2" />
+                    <line x1="2" y1="10" x2="22" y2="10" />
+                  </svg>
+                )
+              },
+              {
+                title: "Team Management",
+                desc: "Roles, access & control",
+                icon: (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0284C7" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    <polyline points="9 12 11 14 15 10" />
+                  </svg>
+                )
+              }
+            ].map((item, idx) => (
               <div
+                key={idx}
+                className="lp-feature-card"
                 style={{
-                  width: 38,
-                  height: 38,
-                  borderRadius: 10,
-                  background: "#F0FDF4",
-                  boxShadow: "0 2px 6px rgba(22, 163, 74, 0.12)",
+                  background: "#FFFFFF",
+                  borderRadius: 12,
+                  padding: "10px 16px",
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0
+                  gap: 10,
+                  minWidth: 160,
+                  flex: "1 1 160px",
+                  maxWidth: 210,
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
+                  transition: "all 0.2s ease"
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.boxShadow = "0 6px 16px rgba(0,0,0,0.12)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.08)";
                 }}
               >
-                {item.icon}
-              </div>
-              <div style={{ textAlign: "left", minWidth: 0 }}>
-                <div className="lp-feature-title" style={{ fontSize: 12.5, fontWeight: 700, color: "#0F172A", lineHeight: 1.2, overflow: "hidden", textOverflow: "ellipsis" }}>
-                  {item.title}
+                <div style={{ flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  {item.icon}
                 </div>
-                <div className="lp-feature-desc" style={{ fontSize: 10.5, color: "#64748B", fontWeight: 500, marginTop: 2, overflow: "hidden", textOverflow: "ellipsis" }}>
-                  {item.desc}
+                <div style={{ textAlign: "left", minWidth: 0 }}>
+                  <div className="lp-feature-title" style={{ fontSize: 12, fontWeight: 800, color: "#0F172A", lineHeight: 1.2 }}>
+                    {item.title}
+                  </div>
+                  <div className="lp-feature-desc" style={{ fontSize: 10.5, color: "#64748B", marginTop: 1, lineHeight: 1.2 }}>
+                    {item.desc}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
@@ -875,29 +991,31 @@ const LandingPage = () => {
             Everything your business needs to connect, engage and grow at scale.
           </p>
 
-          {/* Desktop Dashboard Image */}
-          <div style={{
+          {/* Platform Showcase Image */}
+          <div className="lp-preview-img-wrap" style={{
             position: "relative",
             margin: "0 auto",
             width: "100%",
-            maxWidth: 1040,
+            maxWidth: 1060,
             display: "flex",
             justifyContent: "center",
             alignItems: "center"
           }}>
             <img
+              className="lp-preview-img"
               src={heroDashboard}
               alt="MessBee WhatsApp API Platform"
               style={{
                 width: "100%",
-                maxWidth: 1040,
+                maxWidth: 1060,
                 height: "auto",
                 borderRadius: 16,
-                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.04)",
+                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.04)",
                 display: "block"
               }}
             />
           </div>
+
         </div>
       </section>
 
@@ -928,20 +1046,20 @@ const LandingPage = () => {
             }}>
               <div>
                 <h3 className="lp-compare-card-title" style={{ fontSize: 22, fontWeight: 700, color: "#475569", marginBottom: 28 }}>Traditional Marketplaces</h3>
-                <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                   {[
                     "High Commissions (up to 30%)",
                     "No Customer Data Access",
                     "Competing with your own products"
                   ].map((item, i) => (
-                    <div key={i} style={{ display: "flex", alignItems: "center", gap: 14 }}>
-                      <div style={{ width: 28, height: 28, borderRadius: "50%", background: "#FEE2E2", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#DC2626" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <div key={i} style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                      <div style={{ width: 24, height: 24, borderRadius: "50%", background: "#FEE2E2", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#DC2626" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                           <line x1="18" y1="6" x2="6" y2="18"></line>
                           <line x1="6" y1="6" x2="18" y2="18"></line>
                         </svg>
                       </div>
-                      <span className="lp-compare-item-text" style={{ fontSize: 15.5, fontWeight: 500, color: "#DC2626" }}>{item}</span>
+                      <span className="lp-compare-item-text" style={{ fontSize: 13, fontWeight: 500, color: "#DC2626" }}>{item}</span>
                     </div>
                   ))}
                 </div>
@@ -968,19 +1086,19 @@ const LandingPage = () => {
                   </div>
                 </div>
 
-                <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                   {[
                     "0% Transaction Commission",
                     "Complete CRM & Data Control",
                     "Direct-to-Consumer Growth"
                   ].map((item, i) => (
-                    <div key={i} style={{ display: "flex", alignItems: "center", gap: 14 }}>
-                      <div style={{ width: 28, height: 28, borderRadius: "50%", background: "rgba(255, 255, 255, 0.25)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <div key={i} style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                      <div style={{ width: 24, height: 24, borderRadius: "50%", background: "rgba(255, 255, 255, 0.25)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                           <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>
                       </div>
-                      <span className="lp-compare-item-text" style={{ fontSize: 15.5, fontWeight: 600, color: "#FFFFFF" }}>{item}</span>
+                      <span className="lp-compare-item-text" style={{ fontSize: 13, fontWeight: 600, color: "#FFFFFF" }}>{item}</span>
                     </div>
                   ))}
                 </div>
@@ -1001,7 +1119,7 @@ const LandingPage = () => {
             padding: "30px 30px",
             color: "#FFFFFF",
             boxShadow: "0 18px 36px -12px rgba(15, 23, 42, 0.28)",
-            border: "1px solid #334155",
+            border: "1px solid #1E293B",
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between"
@@ -1038,17 +1156,19 @@ const LandingPage = () => {
             </div>
           </div>
 
-          {/* Right Column - Robot Image Showcase Card (Equal Height) */}
+          {/* Right Column - Robot Image Showcase Card (Full Width Showcase) */}
           <div className="lp-ai-robot-card" style={{
             borderRadius: 24,
             overflow: "hidden",
             boxShadow: "0 18px 36px -12px rgba(15, 23, 42, 0.28)",
             border: "1px solid #1E293B",
-            background: "#000000",
+            background: "linear-gradient(135deg, #0F172A 0%, #1E293B 100%)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            width: "100%",
             height: "100%",
+            minHeight: 320,
             boxSizing: "border-box"
           }}>
             <img
@@ -1057,7 +1177,8 @@ const LandingPage = () => {
               style={{
                 width: "100%",
                 height: "100%",
-                objectFit: "contain",
+                objectFit: "cover",
+                objectPosition: "center",
                 display: "block"
               }}
             />
