@@ -1018,7 +1018,7 @@ const PrivacyPage = () => {
           .mobile-toc-wrapper {
             display: block !important;
             position: sticky;
-            top: 70px;
+            top: 64px;
             z-index: 25;
             margin-bottom: 16px !important;
             width: calc(100% + 32px) !important;
