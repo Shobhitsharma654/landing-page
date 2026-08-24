@@ -540,6 +540,7 @@ const DpaPage = () => {
         .dpa-page-wrapper h3,
         .dpa-page-wrapper h4 { font-size: 12px !important; font-weight: 800 !important; }
         .dpa-page-wrapper p { font-size: 12px !important; font-weight: 400 !important; line-height: 1.7 !important; }
+        .dpa-page-wrapper .dpa-hero-desc { font-size: 14px !important; font-weight: 600 !important; line-height: 1.75 !important; }
         .dpa-page-wrapper .toc-item { font-size: 12px !important; }
         .dpa-page-wrapper .mobile-toc-wrapper span { font-size: 12px !important; }
 
@@ -812,8 +813,9 @@ const DpaPage = () => {
 
           {/* Description */}
           <p
+            className="dpa-hero-desc"
             style={{
-              fontSize: 17,
+              fontSize: 16,
               color: "#475569",
               lineHeight: 1.75,
               maxWidth: 1100,
@@ -832,7 +834,7 @@ const DpaPage = () => {
       <section className="policy-content" style={{ background: "#FFFFFF" }}>
         <div
           className="dpa-container"
-          style={{ maxWidth: 1380, margin: "0 auto" }}
+          style={{ maxWidth: 1280, margin: "0 auto" }}
         >
           {/* ── Sticky Table of Contents ── */}
           <aside className="dpa-sidebar no-scrollbar">
@@ -882,7 +884,7 @@ const DpaPage = () => {
           </aside>
 
           {/* ── Article ── */}
-          <article className="dpa-article">
+          <article className="dpa-article" style={{ flex: 1, minWidth: 0 }}>
             {/* Plain language box */}
             <div
               style={{

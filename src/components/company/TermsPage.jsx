@@ -1639,6 +1639,7 @@ const TermsPage = () => {
         .terms-page-wrapper h4 { font-size: 12px !important; font-weight: 800 !important; }
         .terms-page-wrapper p,
         .terms-page-wrapper .terms-section-content { font-size: 12px !important; font-weight: 400 !important; line-height: 1.7 !important; }
+        .terms-page-wrapper .terms-hero-desc { font-size: 14px !important; font-weight: 600 !important; line-height: 1.75 !important; }
         .terms-page-wrapper .toc-item { font-size: 12px !important; }
         .terms-page-wrapper .mobile-toc-wrapper span { font-size: 12px !important; }
 
@@ -1916,6 +1917,7 @@ const TermsPage = () => {
 
           {/* Description */}
           <p
+            className="terms-hero-desc"
             style={{
               fontSize: 17,
               color: "#475569",
@@ -1935,7 +1937,7 @@ const TermsPage = () => {
       <section style={{ padding: "40px 6%", background: "#FFFFFF" }}>
         <div
           className="terms-container"
-          style={{ maxWidth: 1380, margin: "0 auto" }}
+          style={{ maxWidth: 1280, margin: "0 auto" }}
         >
           {/* ── Sticky Table of Contents ── */}
           <aside className="terms-sidebar no-scrollbar">

@@ -612,6 +612,7 @@ const RefundPage = () => {
         .refund-page-wrapper h4 { font-size: 12px !important; font-weight: 800 !important; }
         .refund-page-wrapper p,
         .refund-page-wrapper .refund-section-content { font-size: 12px !important; font-weight: 400 !important; line-height: 1.7 !important; }
+        .refund-page-wrapper .refund-hero-desc { font-size: 14px !important; font-weight: 600 !important; line-height: 1.75 !important; }
         .refund-page-wrapper .toc-item { font-size: 12px !important; }
         .refund-page-wrapper .mobile-toc-wrapper span { font-size: 12px !important; }
 
@@ -798,7 +799,7 @@ const RefundPage = () => {
           <div style={{ width: 48, height: 4, background: "linear-gradient(90deg, #16A34A, #4ADE80)", borderRadius: 4, marginBottom: 24 }} />
 
           {/* Description */}
-          <p style={{ fontSize: 17, color: "#475569", lineHeight: 1.75, maxWidth: 860, margin: 0 }}>
+          <p className="refund-hero-desc" style={{ fontSize: 17, color: "#475569", lineHeight: 1.75, maxWidth: 860, margin: 0 }}>
             Understand how billing, refunds, and cancellations work on the MessBee platform. We believe in transparent and fair billing practices.
           </p>
         </div>

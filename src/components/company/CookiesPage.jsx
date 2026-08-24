@@ -287,6 +287,7 @@ const CookiesPage = () => {
         .cookies-page-wrapper h4 { font-size: 12px !important; font-weight: 800 !important; }
         .cookies-page-wrapper p,
         .cookies-page-wrapper .cookies-section-content { font-size: 12px !important; font-weight: 400 !important; line-height: 1.7 !important; }
+        .cookies-page-wrapper .cookies-hero-desc { font-size: 14px !important; font-weight: 600 !important; line-height: 1.75 !important; }
         .cookies-page-wrapper .toc-item { font-size: 12px !important; }
         .cookies-page-wrapper .mobile-toc-wrapper span { font-size: 12px !important; }
 
@@ -491,7 +492,7 @@ const CookiesPage = () => {
           <div style={{ width: 48, height: 4, background: "linear-gradient(90deg, #16A34A, #4ADE80)", borderRadius: 4, marginBottom: 24 }} />
 
           {/* Description */}
-          <p style={{ fontSize: 17, color: "#475569", lineHeight: 1.75, maxWidth: 850, margin: 0 }}>
+          <p className="cookies-hero-desc" style={{ fontSize: 17, color: "#475569", lineHeight: 1.75, maxWidth: 850, margin: 0 }}>
             This Cookie Policy explains how MessBee, uses cookies and similar technologies on messbee.com, our applications and related digital services.<br />
             This policy should be read with our Privacy Policy and Terms &amp; Conditions.
           </p>
@@ -501,7 +502,7 @@ const CookiesPage = () => {
 
       {/* ═══ MAIN CONTENT ═══ */}
       <section className="policy-content" style={{ background: "#FFFFFF" }}>
-        <div className="cookies-container" style={{ maxWidth: 1380, margin: "0 auto" }}>
+        <div className="cookies-container" style={{ maxWidth: 1280, margin: "0 auto" }}>
 
           {/* ── Sticky Table of Contents ── */}
           <aside className="cookies-sidebar no-scrollbar">
@@ -540,7 +541,7 @@ const CookiesPage = () => {
           </aside>
 
           {/* ── Article ── */}
-          <article className="cookies-article">
+          <article className="cookies-article" style={{ flex: 1, minWidth: 0 }}>
 
             {/* Plain language box */}
             <div style={{

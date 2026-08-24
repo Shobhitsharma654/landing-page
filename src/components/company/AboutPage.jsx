@@ -169,6 +169,36 @@ const AboutPage = () => {
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { margin: 0; }
 
+        .about-page-wrapper .about-lead-quote {
+          border-left: 3px solid #16A34A !important;
+          padding-left: 16px !important;
+          margin-top: 18px !important;
+          margin-bottom: 18px !important;
+        }
+        .about-page-wrapper .about-lead-quote p {
+          font-size: 14.5px !important;
+          font-weight: 700 !important;
+          line-height: 1.6 !important;
+        }
+        @media (max-width: 768px) {
+          .about-page-wrapper .about-lead-quote {
+            margin-top: 12px !important;
+            margin-bottom: 12px !important;
+            padding-left: 12px !important;
+          }
+          .about-page-wrapper .about-lead-quote p {
+            font-size: 13.5px !important;
+          }
+        }
+        .about-page-wrapper .about-lead-block {
+          margin-bottom: 48px;
+        }
+        @media (max-width: 768px) {
+          .about-page-wrapper .about-lead-block {
+            margin-bottom: 24px !important;
+          }
+        }
+
         /* Global Typography Overrides from ABOUT_TYPOGRAPHY_README.md */
         .about-page-wrapper h1,
         .about-page-wrapper h2,
@@ -1000,22 +1030,42 @@ const AboutPage = () => {
               gap: 8px 10px !important;
             }
             .growth-step-title {
-              font-size: 10px !important;
+              font-size: 11.5px !important;
+              text-align: center !important;
+              width: 100% !important;
+            }
+            .growth-step-title span {
+              font-size: 12px !important;
             }
             .growth-step-card {
-              padding: 5px 8px !important;
+              padding: 8px 10px !important;
+              border-radius: 16px !important;
+              text-align: center !important;
+              align-items: center !important;
+              justify-content: center !important;
+            }
+            .growth-step-card > div {
+              justify-content: center !important;
+              width: 100% !important;
+            }
+            .growth-step-tag {
+              display: none !important;
             }
           }
           @media (max-width: 576px) {
             .growth-timeline-vertical {
               grid-template-columns: repeat(2, 1fr) !important;
-              gap: 7px 8px !important;
+              gap: 6px 8px !important;
             }
             .growth-step-title {
-              font-size: 9.5px !important;
+              font-size: 11px !important;
+            }
+            .growth-step-title span {
+              font-size: 11.5px !important;
             }
             .growth-step-card {
-              padding: 4px 6px !important;
+              padding: 6px 8px !important;
+              border-radius: 12px !important;
             }
           }
         `}</style>
@@ -1028,7 +1078,7 @@ const AboutPage = () => {
             <div style={{ flex: "1 1 480px" }}>
 
               {/* Built for the Way Indian Businesses Operate */}
-              <div style={{ marginBottom: 48 }}>
+              <div className="about-lead-block">
                 <div style={{
                   display: "inline-flex", alignItems: "center", gap: 8,
                   background: "rgba(22,163,74,0.08)", border: "1px solid rgba(22,163,74,0.22)",
@@ -1043,12 +1093,7 @@ const AboutPage = () => {
                   <span style={{ color: "#16A34A" }}>Indian Businesses</span> Operate
                 </h2>
 
-                <div style={{
-                  borderLeft: "3px solid #16A34A",
-                  paddingLeft: 16,
-                  marginTop: 24,
-                  marginBottom: 24,
-                }}>
+                <div className="about-lead-quote">
                   <p style={{ fontSize: 12, fontWeight: 800, color: "#0F172A", margin: 0, fontFamily: "'Inter', sans-serif", lineHeight: 1.45 }}>
                     Indian businesses are diverse.
                   </p>
@@ -1058,12 +1103,7 @@ const AboutPage = () => {
                   A neighbourhood Kirana store, a restaurant, a coaching institute, a pharmacy, a fashion boutique, a distributor, a manufacturer and a multi-branch enterprise do not operate in the same way.
                 </p>
 
-                <div style={{
-                  borderLeft: "3px solid #16A34A",
-                  paddingLeft: 16,
-                  marginTop: 24,
-                  marginBottom: 24,
-                }}>
+                <div className="about-lead-quote">
                   <p style={{ fontSize: 12, fontWeight: 800, color: "#0F172A", margin: 0, fontFamily: "'Inter', sans-serif", lineHeight: 1.45 }}>
                     MessBee is designed around this reality.
                   </p>
@@ -1121,7 +1161,7 @@ const AboutPage = () => {
                           <span style={{ color: step.color, marginRight: 7, fontWeight: 700, fontSize: 11 }}>{step.badge}</span>
                           {step.title}
                         </div>
-                        <span style={{ fontSize: 7.5, fontWeight: 700, letterSpacing: 0.5, padding: "2.5px 8px", borderRadius: 20, background: step.bg, color: step.color }}>
+                        <span className="growth-step-tag" style={{ fontSize: 7.5, fontWeight: 700, letterSpacing: 0.5, padding: "2.5px 8px", borderRadius: 20, background: step.bg, color: step.color }}>
                           {step.tag}
                         </span>
                       </div>
@@ -1753,12 +1793,7 @@ const AboutPage = () => {
                 <span style={{ color: "#16A34A" }}>Your Existing Technology</span>
               </h2>
 
-              <div style={{
-                borderLeft: "3px solid #16A34A",
-                paddingLeft: 16,
-                marginTop: 24,
-                marginBottom: 24,
-              }}>
+              <div className="about-lead-quote">
                 <p style={{ fontSize: 17, fontWeight: 700, color: "#0F172A", margin: 0, fontFamily: "'Inter', sans-serif" }}>
                   Every business already uses technology.
                 </p>
@@ -2354,12 +2389,7 @@ const AboutPage = () => {
                 Messaging is only one part of a modern business. A customer may discover your business through a campaign, ask a question through WhatsApp, visit your digital store, place an order, make a payment, receive an update, and later return for another purchase.
               </p>
 
-              <div style={{
-                borderLeft: "3px solid #16A34A",
-                paddingLeft: 16,
-                marginTop: 24,
-                marginBottom: 24,
-              }}>
+              <div className="about-lead-quote">
                 <p style={{ fontSize: 17, fontWeight: 700, color: "#0F172A", margin: 0, fontFamily: "'Inter', sans-serif" }}>
                   MessBee is designed to connect these interactions.
                 </p>
@@ -2918,19 +2948,10 @@ const AboutPage = () => {
                 MessBee is being developed with security, responsible data handling and compliance-oriented technology practices as important considerations.
               </p>
 
-              <div style={{
-                borderLeft: "3px solid #16A34A",
-                paddingLeft: 16,
-                marginTop: 20,
-                marginBottom: 20,
-              }}>
-                <p style={{ fontSize: 16, fontWeight: 700, color: "#0F172A", lineHeight: 1.5, margin: 0, fontFamily: "'Inter', sans-serif" }}>
-                  Businesses operate with valuable customer and operational information. Responsible technology therefore requires more than simply adding features.
-                </p>
-              </div>
+            
 
               <p style={{ fontSize: 15, color: "#64748B", lineHeight: 1.5, margin: 0, fontFamily: "'Inter', sans-serif" }}>
-                Specific security, privacy and compliance commitments are subject to the applicable MessBee policies, agreements, technical implementation and service terms.
+              Businesses operate with valuable customer and operational information. Responsible technology therefore requires more than simply adding features.  Specific security, privacy and compliance commitments are subject to the applicable MessBee policies, agreements, technical implementation and service terms.
               </p>
             </div>
 
@@ -3485,12 +3506,7 @@ const AboutPage = () => {
                 The leadership philosophy behind MessBee is straightforward:
               </p>
 
-              <div style={{
-                borderLeft: "3px solid #16A34A",
-                paddingLeft: 16,
-                marginTop: 16,
-                marginBottom: 24,
-              }}>
+              <div className="about-lead-quote">
                 <p style={{ fontSize: 17, fontWeight: 700, color: "#1f2328", lineHeight: 1.6, margin: 0, fontFamily: "'Inter', sans-serif" }}>
                   Technology should give businesses more control—not create more dependency.
                 </p>
@@ -3776,56 +3792,64 @@ const AboutPage = () => {
       <section style={{ padding: "40px 6%", background: "#FAFAFA" }}>
         <style>{`
           .promise-container {
-            background: linear-gradient(135deg, #16A34A 0%, #15803D 100%);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: #F0FDF4;
+            border: 1px solid #BBF7D0;
             border-radius: 22px;
             padding: 44px 36px;
             max-width: 1100px;
             margin: 0 auto;
             text-align: center;
-            box-shadow: 0 20px 50px rgba(22, 163, 74, 0.25);
-            color: #FFFFFF;
+            box-shadow: 0 20px 50px rgba(22, 163, 74, 0.05);
+            color: #1E293B;
             position: relative;
             overflow: hidden;
           }
           .promise-container h2,
           .promise-container h3,
-          .promise-container p,
           .promise-container .promise-verbs-hdr,
           .promise-container .promise-verb-text {
-            color: #FFFFFF !important;
+            color: #0F172A !important;
+          }
+          .promise-container p {
+            color: #334155 !important;
+          }
+          .promise-container .promise-negation-hdr {
+            color: #475569 !important;
+          }
+          .promise-container h3 span.logo-mess {
+            color: #15803D !important;
+          }
+          .promise-container h3 span.logo-bee {
+            color: #22C55E !important;
           }
           .promise-container .promise-verb-icon {
-            color: #4ADE80 !important;
-          }
-          .promise-container .promise-verb-light-card:hover .promise-verb-icon {
-            color: #FFFFFF !important;
+            color: #16A34A !important;
           }
           .promise-verb-light-card {
-            background: rgba(255, 255, 255, 0.07);
-            border: 1px solid rgba(52, 211, 153, 0.3);
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
             border-radius: 12px;
             padding: 10px 16px;
             font-size: 13.5px;
             font-weight: 800;
-            color: #FFFFFF;
+            color: #1E293B;
             font-family: 'Inter', sans-serif;
             text-align: center;
             transition: all 0.25s ease;
             cursor: default;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
           }
           .promise-verb-light-card:hover {
-            background: rgba(74, 222, 128, 0.22) !important;
-            border-color: #4ADE80 !important;
+            background: #F0FDF4 !important;
+            border-color: #16A34A !important;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(74, 222, 128, 0.3) !important;
+            box-shadow: 0 6px 18px rgba(22, 163, 74, 0.08) !important;
           }
           .promise-verb-light-card:hover .promise-verb-icon {
-            color: #FFFFFF !important;
+            color: #16A34A !important;
           }
           .promise-verb-light-card:hover .promise-verb-text {
-            color: #FFFFFF !important;
+            color: #1E293B !important;
           }
           @media (max-width: 768px) {
             .promise-container {
@@ -3866,7 +3890,7 @@ const AboutPage = () => {
           </h2>
 
           {/* Negation Text Paragraphs */}
-          <div style={{ fontSize: 15.5, color: "rgba(255, 255, 255, 0.75)", lineHeight: 1.7, marginBottom: 14 }}>
+          <div className="promise-negation-hdr" style={{ fontSize: 15.5, color: "rgba(255, 255, 255, 0.75)", lineHeight: 1.7, marginBottom: 14 }}>
             <p style={{ margin: "0 0 4px 0", fontFamily: "'Inter', sans-serif" }}>
               MessBee is not intended to be just another messaging tool.
             </p>
@@ -3942,7 +3966,7 @@ const AboutPage = () => {
             marginTop: 24
           }}>
             <h3 style={{ fontSize: "18px", fontWeight: 900, color: "#FFFFFF", marginBottom: 6, fontFamily: "'Inter', sans-serif" }}>
-              <span style={{ color: "#FFFFFF" }}>MessBee</span> &mdash; India&apos;s Digital Business Operating System
+              <span className="logo-mess">Mess</span><span className="logo-bee">Bee</span> &mdash; India&apos;s Digital Business Operating System
             </h3>
 
             <p style={{ fontSize: "14.5px", fontWeight: 800, color: "#FFFFFF", letterSpacing: 0.5, margin: 0, fontFamily: "'Inter', sans-serif" }}>
