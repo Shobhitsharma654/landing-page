@@ -855,7 +855,7 @@ const AboutPage = () => {
               },
               {
                 anim: "bounce", color: "#64748B", bg: "#F8FAFC",
-                title: "Inventory", desc: "Real-time stock management",
+                title: "  tory", desc: "Real-time stock management",
                 svg: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /><polyline points="3.27 6.96 12 12.01 20.73 6.96" /><line x1="12" y1="22.08" x2="12" y2="12" /></svg>,
               },
               {
@@ -898,8 +898,8 @@ const AboutPage = () => {
                   onMouseLeave={() => setHoveredCap(null)}
                   style={{
                     background: isHovered ? f.color : `${f.color}0a`,
-                    borderRadius: "30px",
-                    padding: "8px 18px",
+                    borderRadius: "10px",
+                    padding: "10px 18px",
                     border: `1px solid ${isHovered ? f.color : `${f.color}25`}`,
                     transition: "all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1)",
                     cursor: "pointer",
@@ -3626,7 +3626,7 @@ const AboutPage = () => {
             border: 1.5px solid #E2E8F0;
             border-left: 3px solid transparent;
             padding: 8px 14px;
-            border-radius: 24px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             gap: 12px;
