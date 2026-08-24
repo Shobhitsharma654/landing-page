@@ -36,7 +36,7 @@ const FaqItem = ({ q, a }) => {
           userSelect: "none",
         }}
       >
-        <span style={{ fontSize: 14.5, fontWeight: 700, color: open ? G : D2, transition: "color 0.2s", paddingRight: "12px" }}>
+        <span className="contact-faq-question" style={{ fontSize: 14.5, fontWeight: 700, color: open ? G : D2, transition: "color 0.2s", paddingRight: "12px" }}>
           {q}
         </span>
         <div
@@ -75,7 +75,7 @@ const FaqItem = ({ q, a }) => {
           padding: open ? "0px 20px 14px 20px" : "0px 20px",
         }}
       >
-        <div style={{ fontSize: 13.5, color: D2, lineHeight: 1.6, borderTop: open ? "1px solid #F1F5F9" : "none", paddingTop: open ? "8px" : "0px" }}>
+        <div className="contact-faq-answer" style={{ fontSize: 13.5, color: D2, lineHeight: 1.6, borderTop: open ? "1px solid #F1F5F9" : "none", paddingTop: open ? "8px" : "0px" }}>
           {a}
         </div>
       </div>
@@ -135,9 +135,67 @@ const ContactUsPage = () => {
   };
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "hidden", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+    <div className="contact-page-wrapper" style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "hidden", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        
+        /* Global Typography Overrides from ABOUT_TYPOGRAPHY_README.md & Contact Section */
+        .contact-page-wrapper h1,
+        .contact-page-wrapper h2 {
+          font-size: clamp(20px, 2.5vw, 32px) !important;
+          font-weight: 900 !important;
+          color: #0F172A !important;
+          line-height: 1.2 !important;
+        }
+        .contact-page-wrapper h1 span,
+        .contact-page-wrapper h2 span {
+          color: #16A34A !important;
+        }
+        .contact-page-wrapper p,
+        .contact-page-wrapper .contact-faq-answer {
+          font-size: 12px !important;
+          font-weight: 400 !important;
+          color: #475569 !important;
+          line-height: 1.45 !important;
+        }
+        .contact-page-wrapper h3,
+        .contact-page-wrapper h4,
+        .contact-page-wrapper .category-card-title {
+          font-size: 12px !important;
+          font-weight: 800 !important;
+          color: #0F172A !important;
+          line-height: 1.45 !important;
+        }
+        .contact-page-wrapper .contact-faq-question {
+          font-size: 14.5px !important;
+          font-weight: 700 !important;
+          color: #0F172A !important;
+          line-height: 1.45 !important;
+        }
+        .contact-page-wrapper .category-card-desc {
+          font-size: 12px !important;
+          font-weight: 400 !important;
+          color: #64748B !important;
+          line-height: 1.45 !important;
+        }
+        .contact-page-wrapper .category-card-footer {
+          font-size: 12px !important;
+          font-weight: 700 !important;
+        }
+        .contact-page-wrapper .contact-btn-primary {
+          padding: 8px 18px !important;
+          font-size: 12.5px !important;
+          font-weight: 700 !important;
+          box-shadow: 0 1px 5px rgba(22, 163, 74, 0.25) !important;
+          border-radius: 40px !important;
+        }
+        .contact-page-wrapper .contact-btn-secondary {
+          padding: 10px 20px !important;
+          font-size: 12.5px !important;
+          font-weight: 600 !important;
+          border-radius: 40px !important;
+        }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         /* ── GLOBAL SECTION RESPONSIVENESS ── */

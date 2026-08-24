@@ -151,7 +151,7 @@ const FaqItem = ({ q, a }) => {
       }}
     >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16 }}>
-        <span style={{ fontSize: 15, fontWeight: 700, color: "#0F172A" }}>{q}</span>
+        <span className="careers-faq-question" style={{ fontSize: 15, fontWeight: 700, color: "#0F172A" }}>{q}</span>
         <span style={{
           width: 28, height: 28, borderRadius: "50%",
           background: open ? "#16A34A" : "#F1F5F9",
@@ -164,7 +164,7 @@ const FaqItem = ({ q, a }) => {
         </span>
       </div>
       {open && (
-        <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.75, margin: "14px 0 0", paddingRight: 44 }}>
+        <p className="careers-faq-answer" style={{ fontSize: 14, color: "#475569", lineHeight: 1.75, margin: "14px 0 0", paddingRight: 44 }}>
           {a}
         </p>
       )}
@@ -180,6 +180,56 @@ const CareersPage = () => {
     <div className="careers-page-wrapper" style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        
+        /* Global Typography Overrides from ABOUT_TYPOGRAPHY_README.md & Careers Section */
+        .careers-page-wrapper h1,
+        .careers-page-wrapper h2 {
+          font-size: clamp(20px, 2.5vw, 32px) !important;
+          font-weight: 900 !important;
+          line-height: 1.2 !important;
+        }
+        .careers-page-wrapper p,
+        .careers-page-wrapper .careers-faq-answer {
+          font-size: 12px !important;
+          font-weight: 400 !important;
+          line-height: 1.45 !important;
+        }
+        .careers-page-wrapper .careers-lead-highlight {
+          font-size: 16px !important;
+          font-weight: 800 !important;
+          color: #16A34A !important;
+        }
+        .careers-page-wrapper h3,
+        .careers-page-wrapper h4 {
+          font-size: 12px !important;
+          font-weight: 800 !important;
+          line-height: 1.45 !important;
+        }
+        .careers-page-wrapper .careers-faq-question {
+          font-size: 14.5px !important;
+          font-weight: 700 !important;
+          line-height: 1.45 !important;
+        }
+        .careers-page-wrapper .trait-pill,
+        .careers-page-wrapper .tech-tag,
+        .careers-page-wrapper .team-role-item,
+        .careers-page-wrapper .students-program-item {
+          font-size: 12px !important;
+          font-weight: 600 !important;
+        }
+        .careers-page-wrapper .careers-btn-primary {
+          padding: 8px 18px !important;
+          font-size: 12.5px !important;
+          font-weight: 700 !important;
+          border-radius: 40px !important;
+        }
+        .careers-page-wrapper .careers-btn-secondary {
+          padding: 10px 20px !important;
+          font-size: 12.5px !important;
+          font-weight: 600 !important;
+          border-radius: 40px !important;
+        }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
         .careers-btn-primary {
           background: #16A34A; color: #FFFFFF; border: none;
@@ -505,7 +555,7 @@ const CareersPage = () => {
             Careers at {" "}
             <span style={{ color: "#16A34A" }}>MessBee</span>
           </h1>
-          <p style={{ fontSize: 16, fontWeight: 700, color: "#334155", marginBottom: 16, letterSpacing: "-0.3px" }}>
+          <p className="careers-lead-highlight" style={{ fontSize: 16, fontWeight: 700, color: "#334155", marginBottom: 16, letterSpacing: "-0.3px" }}>
             Build the Future of Digital Business With Us
           </p>
           <div style={{ width: 48, height: 4, background: "linear-gradient(90deg, #16A34A, #4ADE80)", borderRadius: 4, marginBottom: 28 }} />
@@ -701,7 +751,7 @@ const CareersPage = () => {
                 <h3 style={{ fontSize: 15, fontWeight: 800, color: "#0F172A", marginBottom: 14 }}>{team.name}</h3>
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                   {team.roles.map((role, j) => (
-                    <div key={j} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13, color: "#475569" }}>
+                    <div key={j} className="team-role-item" style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 13, color: "#475569" }}>
                       <span style={{ width: 5, height: 5, borderRadius: "50%", background: team.color, flexShrink: 0 }} />
                       {role}
                     </div>
@@ -738,7 +788,7 @@ const CareersPage = () => {
             </div>
             <div style={{ flex: "1 1 260px", display: "flex", flexDirection: "column", gap: 12 }}>
               {["Internships", "Graduate roles", "Junior Developer positions", "Design roles", "Technical training opportunities"].map((item, i) => (
-                <div key={i} style={{
+                <div key={i} className="students-program-item" style={{
                   display: "flex", alignItems: "center", gap: 12,
                   background: "#FFFFFF", border: "1px solid #D1FAE5", borderRadius: 12,
                   padding: "14px 18px", fontSize: 14, fontWeight: 600, color: "#065F46",

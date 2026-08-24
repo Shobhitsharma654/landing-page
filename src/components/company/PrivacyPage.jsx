@@ -910,6 +910,17 @@ const PrivacyPage = () => {
   return (
     <div className="privacy-page-wrapper" style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "clip", minHeight: "100vh" }}>
       <style>{`
+        /* ── PAGE-WIDE TYPOGRAPHY OVERRIDES (font-size & weight only — no color changes) ── */
+        .privacy-page-wrapper { font-family: 'Inter', 'Segoe UI', sans-serif !important; }
+        .privacy-page-wrapper h1 { font-size: clamp(20px, 2.5vw, 32px) !important; font-weight: 900 !important; letter-spacing: -0.5px !important; }
+        .privacy-page-wrapper h2 { font-size: 16px !important; font-weight: 800 !important; }
+        .privacy-page-wrapper h3,
+        .privacy-page-wrapper h4 { font-size: 12px !important; font-weight: 800 !important; }
+        .privacy-page-wrapper p { font-size: 12px !important; font-weight: 400 !important; line-height: 1.7 !important; }
+        .privacy-page-wrapper .privacy-hero-desc { font-size: 14px !important; font-weight: 600 !important; line-height: 1.75 !important; }
+        .privacy-page-wrapper .toc-item { font-size: 12px !important; }
+        .privacy-page-wrapper .mobile-toc-wrapper span { font-size: 12px !important; }
+
         .no-scrollbar::-webkit-scrollbar {
           display: none !important;
         }
@@ -1069,7 +1080,7 @@ const PrivacyPage = () => {
             margin-bottom: 12px !important;
           }
           .privacy-page-wrapper h2 {
-            font-size: clamp(17px, 2vw, 22px) !important;
+            font-size: 15px !important;
           }
           .privacy-page-wrapper h3 {
             font-size: 13.5px !important;
@@ -1124,7 +1135,7 @@ const PrivacyPage = () => {
           <div style={{ width: 48, height: 4, background: "linear-gradient(90deg, #16A34A, #4ADE80)", borderRadius: 4, marginBottom: 24 }} />
 
           {/* Description */}
-          <p style={{ fontSize: 17, color: "#475569", lineHeight: 1.75, maxWidth: 1060, margin: 0 }}>
+          <p className="privacy-hero-desc" style={{ fontSize: 17, color: "#475569", lineHeight: 1.75, maxWidth: 1060, margin: 0 }}>
             We take your privacy seriously. Learn how MessBee collects, uses and protects your personal information to keep your data safe.
           </p>
         </div>
@@ -1132,7 +1143,7 @@ const PrivacyPage = () => {
 
       {/* ═══ MAIN CONTENT ═══ */}
       <section style={{ padding: "50px 6%", background: "#FFFFFF" }}>
-        <div className="privacy-container" style={{ maxWidth: 1380, margin: "0 auto" }}>
+        <div className="privacy-container" style={{ maxWidth: 1280, margin: "0 auto" }}>
 
           {/* ── Sticky Table of Contents ── */}
           <aside className="privacy-sidebar no-scrollbar">

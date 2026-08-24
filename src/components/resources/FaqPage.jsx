@@ -382,9 +382,25 @@ const FaqPage = () => {
   });
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "hidden", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+    <div className="faq-page-wrapper" style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "hidden", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+        /* ── PAGE-WIDE TYPOGRAPHY OVERRIDES (font-size & weight only — no color changes) ── */
+        .faq-page-wrapper { font-family: 'Inter', 'Segoe UI', sans-serif !important; }
+        .faq-page-wrapper h1,
+        .faq-page-wrapper h2 { font-size: clamp(20px, 2.5vw, 32px) !important; font-weight: 900 !important; letter-spacing: -0.5px !important; }
+        .faq-page-wrapper h3,
+        .faq-page-wrapper h4 { font-size: 12px !important; font-weight: 800 !important; }
+        .faq-page-wrapper p { font-size: 12px !important; font-weight: 400 !important; line-height: 1.7 !important; }
+        .faq-page-wrapper .faq-card-question { font-size: 14.5px !important; font-weight: 700 !important; }
+        .faq-page-wrapper .faq-card-body p { font-size: 12px !important; font-weight: 400 !important; line-height: 1.7 !important; }
+        .faq-page-wrapper .faq-card-body span { font-size: 12px !important; }
+        .faq-page-wrapper .category-pill-btn { font-size: 12px !important; }
+        .faq-page-wrapper input { font-size: 12px !important; }
+        .faq-page-wrapper .faq-btn-primary { font-size: 12.5px !important; font-weight: 700 !important; padding: 8px 18px !important; }
+        .faq-page-wrapper .faq-btn-secondary { font-size: 12.5px !important; font-weight: 600 !important; padding: 10px 20px !important; }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         /* ── BUTTONS ── */

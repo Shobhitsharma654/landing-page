@@ -168,6 +168,111 @@ const AboutPage = () => {
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { margin: 0; }
+
+        .about-page-wrapper .about-lead-quote {
+          border-left: 3px solid #16A34A !important;
+          padding-left: 16px !important;
+          margin-top: 18px !important;
+          margin-bottom: 18px !important;
+        }
+        .about-page-wrapper .about-lead-quote p {
+          font-size: 14.5px !important;
+          font-weight: 700 !important;
+          line-height: 1.6 !important;
+        }
+        @media (max-width: 768px) {
+          .about-page-wrapper .about-lead-quote {
+            margin-top: 12px !important;
+            margin-bottom: 12px !important;
+            padding-left: 12px !important;
+          }
+          .about-page-wrapper .about-lead-quote p {
+            font-size: 13.5px !important;
+          }
+        }
+        .about-page-wrapper .about-lead-block {
+          margin-bottom: 48px;
+        }
+        @media (max-width: 768px) {
+          .about-page-wrapper .about-lead-block {
+            margin-bottom: 24px !important;
+          }
+        }
+
+        /* Global Typography Overrides from ABOUT_TYPOGRAPHY_README.md */
+        .about-page-wrapper h1,
+        .about-page-wrapper h2,
+        .about-page-wrapper h3 {
+          font-size: clamp(20px, 2.5vw, 32px) !important;
+          font-weight: 900 !important;
+          color: #0F172A !important;
+          line-height: 1.2 !important;
+        }
+        .about-page-wrapper h1 span,
+        .about-page-wrapper h2 span,
+        .about-page-wrapper h3 span {
+          color: #16A34A !important;
+        }
+        .about-page-wrapper p {
+          font-size: 12px !important;
+          font-weight: 400 !important;
+          color: #475569 !important;
+          line-height: 1.45 !important;
+        }
+        .about-page-wrapper .capabilities-left p:first-of-type,
+        .about-page-wrapper .connectivity-left div[style*="borderLeft"] p {
+          font-size: 14px !important;
+          font-weight: 800 !important;
+          line-height: 1.45 !important;
+        }
+        .about-page-wrapper .hero-left-col p:first-of-type,
+        .about-page-wrapper .hero-left-col p:last-of-type {
+          font-size: 12px !important;
+          font-weight: 800 !important;
+          line-height: 1.45 !important;
+        }
+        .about-page-wrapper .hero-left-col p:nth-of-type(2) {
+          font-size: 12px !important;
+          line-height: 1.45 !important;
+        }
+        .about-page-wrapper h4,
+        .about-page-wrapper .growth-step-title,
+        .about-page-wrapper .choose-card h4,
+        .about-page-wrapper .industry-card h4,
+        .about-page-wrapper .manifesto-card h4,
+        .about-page-wrapper .vision-card-title,
+        .about-page-wrapper .carousel-card-item h4,
+        .about-page-wrapper .flow-step-pill {
+          font-size: 12px !important;
+          font-weight: 800 !important;
+          color: #0F172A !important;
+          line-height: 1.45 !important;
+        }
+        .about-page-wrapper .about-faq-question {
+          font-size: 14.5px !important;
+          font-weight: 700 !important;
+          color: #0F172A !important;
+          line-height: 1.45 !important;
+        }
+        .about-page-wrapper .growth-step-desc,
+        .about-page-wrapper .choose-card p,
+        .about-page-wrapper .industry-card p,
+        .about-page-wrapper .manifesto-card p,
+        .about-page-wrapper .about-faq-answer,
+        .about-page-wrapper .carousel-card-item p,
+        .about-page-wrapper .carousel-card-item span,
+        .about-page-wrapper .tenet-card span,
+        .about-page-wrapper .aim-pill {
+          font-size: 12px !important;
+          font-weight: 400 !important;
+          color: #64748B !important;
+          line-height: 1.45 !important;
+        }
+        .about-page-wrapper .promise-verb-light-card,
+        .about-page-wrapper .promise-verb-text {
+          font-size: 12px !important;
+        }
+
         @keyframes fadeUp { from { opacity:0; transform:translateY(32px); } to { opacity:1; transform:translateY(0); } }
         @keyframes scaleIn { from { transform:scale(0.92); opacity:0; } to { transform:scale(1); opacity:1; } }
         @keyframes capCardIn { from { opacity:0; transform:translateY(20px) scale(0.95); } to { opacity:1; transform:translateY(0) scale(1); } }
@@ -203,6 +308,9 @@ const AboutPage = () => {
         .capability-pill-badge {
           font-size: 15px;
         }
+        .capability-pill-badge span {
+          font-size: 13px !important;
+        }
 
         /* Responsive scaling for pill chips grid & margin-top */
         @media (max-width: 1440px) {
@@ -230,6 +338,9 @@ const AboutPage = () => {
             font-size: 13px !important;
             padding: 6px 14px !important;
           }
+          .capability-pill-badge span {
+            font-size: 12px !important;
+          }
         }
         @media (max-width: 1024px) {
           .capabilities-grid-cols {
@@ -241,6 +352,9 @@ const AboutPage = () => {
             font-size: 10.5px !important;
             padding: 5px 10px !important;
           }
+          .capability-pill-badge span {
+            font-size: 11px !important;
+          }
         }
         @media (max-width: 768px) {
           .capabilities-grid-cols {
@@ -251,6 +365,9 @@ const AboutPage = () => {
           .capability-pill-badge {
             font-size: 9.8px !important;
             padding: 4px 8px !important;
+          }
+          .capability-pill-badge span {
+            font-size: 10.5px !important;
           }
         }
         @media (max-width: 576px) {
@@ -272,10 +389,11 @@ const AboutPage = () => {
           padding: 60px 6%;
         }
         .about-page-wrapper section.about-capabilities-section {
-          padding: 30px 6% 0px !important;
+          padding: 80px 8% 60px !important;
         }
         .about-page-wrapper section.about-indian-market-section {
-          padding: 10px 6% 40px !important;
+          padding: 80px 8% 80px !important;
+          margin-top: 45px !important;
         }
         .about-hero-section {
           padding: 100px 6% 70px;
@@ -322,7 +440,6 @@ const AboutPage = () => {
             font-size: 13.5px !important;
             line-height: 1.65 !important;
           }
-          .about-page-wrapper .hero-left-col p:first-of-type,
           .about-page-wrapper .capabilities-left p:first-of-type {
             font-size: 14.5px !important;
           }
@@ -362,7 +479,6 @@ const AboutPage = () => {
             font-size: 13px !important;
             line-height: 1.6 !important;
           }
-          .about-page-wrapper .hero-left-col p:first-of-type,
           .about-page-wrapper .capabilities-left p:first-of-type {
             font-size: 14px !important;
           }
@@ -447,9 +563,7 @@ const AboutPage = () => {
             font-size: 13px !important;
             line-height: 1.6 !important;
           }
-          .about-page-wrapper .hero-left-col p:first-of-type {
-            font-size: 14.5px !important;
-          }
+
           .about-page-wrapper .capabilities-left p:first-of-type {
             font-size: 13px !important;
           }
@@ -468,6 +582,9 @@ const AboutPage = () => {
           .connectivity-container,
           .security-container {
             gap: 24px !important;
+          }
+          .security-left {
+            transform: none !important;
           }
 
           /* Mobile Typography Scaling */
@@ -498,9 +615,7 @@ const AboutPage = () => {
             font-size: 13.5px !important;
             line-height: 1.65 !important;
           }
-          .about-page-wrapper .hero-left-col p:first-of-type {
-            font-size: 14.5px !important;
-          }
+
           .about-page-wrapper .capabilities-left p:first-of-type {
             font-size: 13.5px !important;
           }
@@ -550,21 +665,21 @@ const AboutPage = () => {
         <div className="hero-flex-container" style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", gap: 60, flexWrap: "wrap" }}>
 
           {/* ── LEFT 60% — text ── */}
-          <div className="about-hero-animate hero-left-col" style={{ flex: "0 0 58%", minWidth: 280 }}>
+          <div className="about-hero-animate hero-left-col" style={{ flex: "0 0 58%", minWidth: 280, transform: "translateY(-20px)" }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(22,163,74,0.08)", border: "1px solid rgba(22,163,74,0.22)", borderRadius: 40, padding: "6px 18px", marginBottom: 28 }}>
               <FiBookOpen style={{ color: "#16A34A", width: 14, height: 14 }} />
               <span style={{ color: "#16A34A", fontSize: 13, fontWeight: 600 }}>Our Story</span>
             </div>
-            <h1 style={{ fontSize: "clamp(20px,4vw,45px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.1, marginBottom: 20, textAlign: "left" }}>
+            <h1 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.2, marginBottom: 20, textAlign: "left" }}>
               India&apos;s Digital Business {" "} <br />
               <span style={{ color: "#16A34A" }}>Operating System</span>
             </h1>
-            <p style={{ fontSize: 17, color: "#475569", lineHeight: 1.7, marginBottom: 20, textAlign: "left" }}>
+            <p style={{ fontSize: 10, color: "#475569", lineHeight: 1.45, marginBottom: 20, textAlign: "left" }}>
               Own Your Business.{" "}
               <span style={{ color: "#16A34A", fontWeight: 700 }}>Own Your Customers.</span>{" "}
               Own Your Growth.
             </p>
-            <p style={{ fontSize: 14, color: "#334155", lineHeight: 1.85, marginBottom: 16, textAlign: "left" }}>
+            <p style={{ fontSize: 12, color: "#334155", lineHeight: 1.45, marginBottom: 16, textAlign: "left" }}>
               MessBee is a unified digital business platform built for Indian businesses to manage customer relationships,
               communication, sales, marketing, automation, and everyday business operations from one connected system.
               <br />
@@ -574,7 +689,7 @@ const AboutPage = () => {
               <br />
               Instead of managing separate tools for customer communication, CRM, marketing, orders, automation and business operations, businesses can use MessBee to create a more connected and organized digital ecosystem around their own brand.
             </p>
-            <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.85, marginBottom: 36, fontWeight: 600, textAlign: "left" }}>
+            <p style={{ fontSize: 10, color: "#475569", lineHeight: 1.45, marginBottom: 36, fontWeight: 600, textAlign: "left" }}>
               <span style={{ color: "#16A34A" }}>One platform.</span>{" "}
               One business ecosystem.{" "}
               <span style={{ color: "#16A34A" }}>One place to manage your digital growth.</span>
@@ -584,8 +699,8 @@ const AboutPage = () => {
                 onClick={() => window.open((import.meta.env.VITE_ADMIN_URL || "http://localhost:5174") + "/signup", "_blank")}
                 style={{
                   background: "#16A34A", color: "#FFFFFF", border: "none", borderRadius: 40,
-                  padding: "14px 36px", fontSize: 15, fontWeight: 700, cursor: "pointer",
-                  boxShadow: "0 4px 24px rgba(22,163,74,0.25)", transition: "all 0.2s",
+                  padding: "8px 18px", fontSize: 12.5, fontWeight: 700, cursor: "pointer",
+                  boxShadow: "0 1px 5px rgba(22,163,74,0.25)", transition: "all 0.2s",
                 }}
                 onMouseEnter={e => e.currentTarget.style.transform = "scale(1.04)"}
                 onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
@@ -596,7 +711,7 @@ const AboutPage = () => {
                 onClick={() => navigate("/business")}
                 style={{
                   background: "#F1F5F9", color: "#334155", border: "1px solid #E2E8F0",
-                  borderRadius: 40, padding: "14px 36px", fontSize: 15, fontWeight: 600, cursor: "pointer", transition: "all 0.2s",
+                  borderRadius: 40, padding: "10px 20px", fontSize: 12.5, fontWeight: 600, cursor: "pointer", transition: "all 0.2s",
                 }}
                 onMouseEnter={e => { e.currentTarget.style.background = "#E2E8F0"; e.currentTarget.style.transform = "scale(1.04)"; }}
                 onMouseLeave={e => { e.currentTarget.style.background = "#F1F5F9"; e.currentTarget.style.transform = "scale(1)"; }}
@@ -629,7 +744,7 @@ const AboutPage = () => {
       </section>
 
       {/* ── WHAT IS MESSBEE ── */}
-      <section className="about-section about-capabilities-section" style={{ background: "#ffffff", padding: "30px 6% 0px" }}>
+      <section className="about-section about-capabilities-section" style={{ background: "#ffffff" }}>
         <div className="capabilities-container" style={{ maxWidth: 1200, margin: "0 auto", display: "flex", gap: 60, alignItems: "flex-start", flexWrap: "wrap" }}>
 
           {/* LEFT — text */}
@@ -643,21 +758,21 @@ const AboutPage = () => {
               <span style={{ color: "#16A34A", fontSize: 12, fontWeight: 700, letterSpacing: 0.8, textTransform: "uppercase" }}>What Is MessBee?</span>
             </div>
 
-            <h2 style={{ fontSize: "clamp(25px,3.5vw,37px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.18, marginBottom: 24 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.2, marginBottom: 24 }}>
               What Is <span style={{ color: "#16A34A" }}>MessBee?</span>
             </h2>
 
-            <p style={{ fontSize: "clamp(16px, 1.8vw, 19px)", fontWeight: 800, color: "#16A34A", lineHeight: 1.4, marginBottom: 14 }}>
+            <p style={{ fontSize: 12, fontWeight: 800, color: "#16A34A", lineHeight: 1.45, marginBottom: 14 }}>
               MessBee is more than a messaging platform, CRM, or chatbot.
             </p>
 
-            <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.9, marginBottom: 16 }}>
+            <p style={{ fontSize: 10, color: "#475569", lineHeight: 1.45, marginBottom: 16 }}>
               It is designed as a <strong style={{ color: "#0F172A" }}>Digital Business Operating System</strong> that connects
               the different parts of a modern business—from the first customer enquiry to engagement,
               conversion, order, payment, follow-up and long-term retention.
             </p>
 
-            <p style={{ fontSize: 14, fontWeight: 700, color: "#334155", marginBottom: 24 }}>
+            <p style={{ fontSize: 10, fontWeight: 700, color: "#334155", marginBottom: 24 }}>
               With MessBee, businesses can bring together:
             </p>
 
@@ -671,7 +786,7 @@ const AboutPage = () => {
                 <div style={{ width: 22, height: 22, borderRadius: "50%", background: "#16A34A", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 2 }}>
                   <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
                 </div>
-                <span style={{ fontSize: 14, fontWeight: 600, color: "#15803D", lineHeight: 1.6 }}>
+                <span style={{ fontSize: 10, fontWeight: 600, color: "#15803D", lineHeight: 1.45 }}>
                   Help businesses spend less time managing disconnected digital tools and more time serving customers and growing their business.
                 </span>
               </div>
@@ -681,11 +796,11 @@ const AboutPage = () => {
               onClick={() => window.open((import.meta.env.VITE_ADMIN_URL || "http://localhost:5174") + "/signup", "_blank")}
               style={{
                 background: "#16A34A", color: "#FFFFFF", border: "none", borderRadius: 40,
-                padding: "14px 34px", fontSize: 15, fontWeight: 700, cursor: "pointer",
-                boxShadow: "0 4px 20px rgba(22,163,74,0.35)", transition: "all 0.2s",
+                padding: "10px 24px", fontSize: 13.5, fontWeight: 700, cursor: "pointer",
+                boxShadow: "0 4px 14px rgba(22,163,74,0.35)", transition: "all 0.2s",
               }}
-              onMouseEnter={e => { e.currentTarget.style.transform = "scale(1.04)"; e.currentTarget.style.boxShadow = "0 6px 28px rgba(22,163,74,0.45)"; }}
-              onMouseLeave={e => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.boxShadow = "0 4px 20px rgba(22,163,74,0.35)"; }}>
+              onMouseEnter={e => { e.currentTarget.style.transform = "scale(1.03)"; e.currentTarget.style.background = "#15803D"; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.background = "#16A34A"; }}>
               Get Started →
             </button>
           </div>
@@ -784,13 +899,13 @@ const AboutPage = () => {
                   style={{
                     background: isHovered ? f.color : `${f.color}0a`,
                     borderRadius: "30px",
-                    padding: "5px 12px",
+                    padding: "8px 18px",
                     border: `1px solid ${isHovered ? f.color : `${f.color}25`}`,
                     transition: "all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1)",
                     cursor: "pointer",
                     display: "flex",
                     alignItems: "center",
-                    gap: 6,
+                    gap: 8,
                     transform: isHovered ? "translateY(-2px)" : "translateY(0)",
                     boxShadow: isHovered ? `0 4px 12px ${f.color}30` : "none",
                   }}
@@ -804,12 +919,12 @@ const AboutPage = () => {
                     transition: "color 0.25s ease",
                     flexShrink: 0
                   }}>
-                    <svg style={{ width: 12, height: 12 }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg style={{ width: 14, height: 14 }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                       {f.svg.props.children}
                     </svg>
                   </div>
                   <span style={{
-                    fontSize: 11,
+                    fontSize: 13,
                     fontWeight: 600,
                     color: isHovered ? "#FFFFFF" : "#0F172A",
                     transition: "color 0.25s ease",
@@ -828,7 +943,7 @@ const AboutPage = () => {
 
 
       {/* ── INDIAN BUSINESSES OPERATING SYSTEM (PREMIUM DESIGN) ── */}
-      <section className="about-indian-market-section" style={{ padding: "10px 6% 40px", background: "linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)", borderBottom: "1px solid #F1F5F9", position: "relative" }}>
+      <section className="about-indian-market-section" style={{ background: "linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)", borderBottom: "1px solid #F1F5F9", position: "relative" }}>
         <style>{`
           .growth-timeline-vertical {
             display: grid;
@@ -870,14 +985,15 @@ const AboutPage = () => {
             transform: translateY(-2px);
           }
           .growth-step-title {
-            font-size: 11px;
-            font-weight: 600;
+            font-size: 12px;
+            font-weight: 800;
             color: #0F172A;
             margin-bottom: 2px;
             transition: color 0.2s ease;
+            line-height: 1.45;
           }
           .growth-step-desc {
-            font-size: 13px;
+            font-size: 10px;
             color: #64748B;
             line-height: 1.45;
           }
@@ -914,22 +1030,42 @@ const AboutPage = () => {
               gap: 8px 10px !important;
             }
             .growth-step-title {
-              font-size: 10px !important;
+              font-size: 11.5px !important;
+              text-align: center !important;
+              width: 100% !important;
+            }
+            .growth-step-title span {
+              font-size: 12px !important;
             }
             .growth-step-card {
-              padding: 5px 8px !important;
+              padding: 8px 10px !important;
+              border-radius: 16px !important;
+              text-align: center !important;
+              align-items: center !important;
+              justify-content: center !important;
+            }
+            .growth-step-card > div {
+              justify-content: center !important;
+              width: 100% !important;
+            }
+            .growth-step-tag {
+              display: none !important;
             }
           }
           @media (max-width: 576px) {
             .growth-timeline-vertical {
               grid-template-columns: repeat(2, 1fr) !important;
-              gap: 7px 8px !important;
+              gap: 6px 8px !important;
             }
             .growth-step-title {
-              font-size: 9.5px !important;
+              font-size: 11px !important;
+            }
+            .growth-step-title span {
+              font-size: 11.5px !important;
             }
             .growth-step-card {
-              padding: 4px 6px !important;
+              padding: 6px 8px !important;
+              border-radius: 12px !important;
             }
           }
         `}</style>
@@ -942,7 +1078,7 @@ const AboutPage = () => {
             <div style={{ flex: "1 1 480px" }}>
 
               {/* Built for the Way Indian Businesses Operate */}
-              <div style={{ marginBottom: 48 }}>
+              <div className="about-lead-block">
                 <div style={{
                   display: "inline-flex", alignItems: "center", gap: 8,
                   background: "rgba(22,163,74,0.08)", border: "1px solid rgba(22,163,74,0.22)",
@@ -952,38 +1088,28 @@ const AboutPage = () => {
                   <span style={{ color: "#16A34A", fontSize: 12, fontWeight: 700, letterSpacing: 0.8, textTransform: "uppercase" }}>Indian Market</span>
                 </div>
 
-                <h2 style={{ fontSize: "clamp(26px,3vw,38px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.18, marginBottom: 24, fontFamily: "'Inter', sans-serif" }}>
+                <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.2, marginBottom: 24, fontFamily: "'Inter', sans-serif" }}>
                   Built for the Way<br />
                   <span style={{ color: "#16A34A" }}>Indian Businesses</span> Operate
                 </h2>
 
-                <div style={{
-                  borderLeft: "3px solid #16A34A",
-                  paddingLeft: 16,
-                  marginTop: 24,
-                  marginBottom: 24,
-                }}>
-                  <p style={{ fontSize: 17, fontWeight: 700, color: "#0F172A", margin: 0, fontFamily: "'Inter', sans-serif" }}>
+                <div className="about-lead-quote">
+                  <p style={{ fontSize: 12, fontWeight: 800, color: "#0F172A", margin: 0, fontFamily: "'Inter', sans-serif", lineHeight: 1.45 }}>
                     Indian businesses are diverse.
                   </p>
                 </div>
 
-                <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.9, marginBottom: 10, fontFamily: "'Inter', sans-serif" }}>
+                <p style={{ fontSize: 10, color: "#475569", lineHeight: 1.45, marginBottom: 10, fontFamily: "'Inter', sans-serif" }}>
                   A neighbourhood Kirana store, a restaurant, a coaching institute, a pharmacy, a fashion boutique, a distributor, a manufacturer and a multi-branch enterprise do not operate in the same way.
                 </p>
 
-                <div style={{
-                  borderLeft: "3px solid #16A34A",
-                  paddingLeft: 16,
-                  marginTop: 24,
-                  marginBottom: 24,
-                }}>
-                  <p style={{ fontSize: 17, fontWeight: 700, color: "#0F172A", margin: 0, fontFamily: "'Inter', sans-serif" }}>
+                <div className="about-lead-quote">
+                  <p style={{ fontSize: 12, fontWeight: 800, color: "#0F172A", margin: 0, fontFamily: "'Inter', sans-serif", lineHeight: 1.45 }}>
                     MessBee is designed around this reality.
                   </p>
                 </div>
 
-                <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.9, fontFamily: "'Inter', sans-serif" }}>
+                <p style={{ fontSize: 10, color: "#475569", lineHeight: 1.45, fontFamily: "'Inter', sans-serif" }}>
                   Whether your business primarily handles enquiries, bookings, orders, customer relationships, repeat purchases, marketing campaigns or multiple business locations, MessBee provides a flexible digital environment that can adapt to different business workflows.
                 </p>
               </div>
@@ -992,20 +1118,20 @@ const AboutPage = () => {
               {/* From Local Business to Growing Enterprise */}
               <div>
 
-                <h3 style={{ fontSize: "clamp(24px,2.8vw,34px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.18, marginBottom: 20, fontFamily: "'Inter', sans-serif" }}>
+                <h3 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.2, marginBottom: 20, fontFamily: "'Inter', sans-serif" }}>
                   From Local Business to<br />
                   <span style={{ color: "#16A34A" }}> Growing Enterprise</span>
                 </h3>
 
-                <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.9, marginBottom: 10, fontFamily: "'Inter', sans-serif" }}>
+                <p style={{ fontSize: 10, color: "#475569", lineHeight: 1.45, marginBottom: 10, fontFamily: "'Inter', sans-serif" }}>
                   A business can start with customer communication and gradually expand its use of MessBee as its requirements grow.
                 </p>
 
-                <p style={{ fontSize: 16, color: "#475569", lineHeight: 1.9, marginBottom: 5, marginTop:15,fontWeight: 700, fontFamily: "'Inter', sans-serif" }}>
+                <p style={{ fontSize: 12, color: "#475569", lineHeight: 1.45, marginBottom: 5, marginTop: 15, fontWeight: 700, fontFamily: "'Inter', sans-serif" }}>
                   For example:
                 </p>
 
-                <p style={{ fontSize: 14, color: "#475569", lineHeight: 1.9, marginTop: 15, fontFamily: "'Inter', sans-serif" }}>
+                <p style={{ fontSize: 10, color: "#475569", lineHeight: 1.45, marginTop: 15, fontFamily: "'Inter', sans-serif" }}>
                   This makes MessBee suitable for businesses at different stages of digital growth.
                 </p>
               </div>
@@ -1035,7 +1161,7 @@ const AboutPage = () => {
                           <span style={{ color: step.color, marginRight: 7, fontWeight: 700, fontSize: 11 }}>{step.badge}</span>
                           {step.title}
                         </div>
-                        <span style={{ fontSize: 7.5, fontWeight: 700, letterSpacing: 0.5, padding: "2.5px 8px", borderRadius: 20, background: step.bg, color: step.color }}>
+                        <span className="growth-step-tag" style={{ fontSize: 7.5, fontWeight: 700, letterSpacing: 0.5, padding: "2.5px 8px", borderRadius: 20, background: step.bg, color: step.color }}>
                           {step.tag}
                         </span>
                       </div>
@@ -1175,7 +1301,7 @@ const AboutPage = () => {
           </div>
 
           {/* Slider Layout */}
-          <div style={{ position: "relative", width: "100%", height: "540px", display: "flex", alignItems: "center", justifyContent: "center", margin: "30px auto 0" }}>
+          <div style={{ position: "relative", width: "100%", height: "490px", display: "flex", alignItems: "center", justifyContent: "center", margin: "30px auto 0" }}>
 
             {/* Left Control Arrow */}
             <button
@@ -1383,7 +1509,7 @@ const AboutPage = () => {
                     style={{
                       position: "absolute",
                       width: "360px",
-                      height: "490px",
+                      height: "440px",
                       borderRadius: "20px",
                       background: "#FFFFFF",
                       border: "1px solid #E2E8F0",
@@ -1667,12 +1793,7 @@ const AboutPage = () => {
                 <span style={{ color: "#16A34A" }}>Your Existing Technology</span>
               </h2>
 
-              <div style={{
-                borderLeft: "3px solid #16A34A",
-                paddingLeft: 16,
-                marginTop: 24,
-                marginBottom: 24,
-              }}>
+              <div className="about-lead-quote">
                 <p style={{ fontSize: 17, fontWeight: 700, color: "#0F172A", margin: 0, fontFamily: "'Inter', sans-serif" }}>
                   Every business already uses technology.
                 </p>
@@ -2268,12 +2389,7 @@ const AboutPage = () => {
                 Messaging is only one part of a modern business. A customer may discover your business through a campaign, ask a question through WhatsApp, visit your digital store, place an order, make a payment, receive an update, and later return for another purchase.
               </p>
 
-              <div style={{
-                borderLeft: "3px solid #16A34A",
-                paddingLeft: 16,
-                marginTop: 24,
-                marginBottom: 24,
-              }}>
+              <div className="about-lead-quote">
                 <p style={{ fontSize: 17, fontWeight: 700, color: "#0F172A", margin: 0, fontFamily: "'Inter', sans-serif" }}>
                   MessBee is designed to connect these interactions.
                 </p>
@@ -2762,10 +2878,10 @@ const AboutPage = () => {
             background: #F8FAFC;
             border: 1px solid #F1F5F9;
             border-radius: 12px;
-            padding: 12px 14px;
+            padding: 10px 14px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             text-align: left;
             cursor: default;
@@ -2813,7 +2929,7 @@ const AboutPage = () => {
           <div className="security-container" style={{ display: "flex", gap: "80px", alignItems: "center", flexWrap: "wrap" }}>
 
             {/* Left Column: Manifesto details */}
-            <div className="security-left" style={{ flex: "1 1 480px", textAlign: "left" }}>
+            <div className="security-left" style={{ flex: "1 1 480px", textAlign: "left", transform: "translateY(-20px)" }}>
               <div style={{
                 display: "inline-flex", alignItems: "center", gap: 8,
                 background: "rgba(22,163,74,0.08)", border: "1px solid rgba(22,163,74,0.22)",
@@ -2832,19 +2948,10 @@ const AboutPage = () => {
                 MessBee is being developed with security, responsible data handling and compliance-oriented technology practices as important considerations.
               </p>
 
-              <div style={{
-                borderLeft: "3px solid #16A34A",
-                paddingLeft: 16,
-                marginTop: 20,
-                marginBottom: 20,
-              }}>
-                <p style={{ fontSize: 16, fontWeight: 700, color: "#0F172A", lineHeight: 1.5, margin: 0, fontFamily: "'Inter', sans-serif" }}>
-                  Businesses operate with valuable customer and operational information. Responsible technology therefore requires more than simply adding features.
-                </p>
-              </div>
+            
 
               <p style={{ fontSize: 15, color: "#64748B", lineHeight: 1.5, margin: 0, fontFamily: "'Inter', sans-serif" }}>
-                Specific security, privacy and compliance commitments are subject to the applicable MessBee policies, agreements, technical implementation and service terms.
+              Businesses operate with valuable customer and operational information. Responsible technology therefore requires more than simply adding features.  Specific security, privacy and compliance commitments are subject to the applicable MessBee policies, agreements, technical implementation and service terms.
               </p>
             </div>
 
@@ -2891,7 +2998,7 @@ const AboutPage = () => {
             background: #F9FAFB;
             border: 1px solid #E5E7EB;
             border-radius: 12px;
-            padding: 12px 16px;
+            padding: 10px 15px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -2922,6 +3029,9 @@ const AboutPage = () => {
             .our-mission-flex-row {
               gap: 20px !important;
             }
+            .our-mission-left {
+              transform: none !important;
+            }
             .our-mission-aims-grid {
               grid-template-columns: repeat(2, 1fr) !important;
               gap: 8px !important;
@@ -2949,7 +3059,7 @@ const AboutPage = () => {
           <div className="our-mission-flex-row">
 
             {/* Left Column: Text description */}
-            <div style={{ flex: "1 1 500px", textAlign: "left" }}>
+            <div className="our-mission-left" style={{ flex: "1 1 500px", textAlign: "left", transform: "translateY(-40px)" }}>
               <div style={{
                 display: "inline-flex", alignItems: "center", gap: 8,
                 background: "rgba(22,163,74,0.08)", border: "1px solid rgba(22,163,74,0.22)",
@@ -3337,6 +3447,9 @@ const AboutPage = () => {
             flex-shrink: 0;
           }
           @media (max-width: 768px) {
+            .leadership-left {
+              transform: none !important;
+            }
             .tenets-container {
               display: grid !important;
               grid-template-columns: repeat(2, 1fr) !important;
@@ -3370,7 +3483,7 @@ const AboutPage = () => {
           <div style={{ display: "flex", gap: "80px", alignItems: "center", flexWrap: "wrap" }}>
 
             {/* Left Column: Bio Details */}
-            <div style={{ flex: "1 1 480px", textAlign: "left" }}>
+            <div className="leadership-left" style={{ flex: "1 1 420px", textAlign: "left", transform: "translateY(-50px)" }}>
               <div style={{
                 display: "inline-flex", alignItems: "center", gap: 8,
                 background: "rgba(22,163,74,0.08)", border: "1px solid rgba(22,163,74,0.22)",
@@ -3393,13 +3506,8 @@ const AboutPage = () => {
                 The leadership philosophy behind MessBee is straightforward:
               </p>
 
-              <div style={{
-                borderLeft: "3px solid #16A34A",
-                paddingLeft: 16,
-                marginTop: 16,
-                marginBottom: 24,
-              }}>
-                <p style={{ fontSize: 17, fontWeight: 700, color: "#0F172A", lineHeight: 1.6, margin: 0, fontFamily: "'Inter', sans-serif" }}>
+              <div className="about-lead-quote">
+                <p style={{ fontSize: 17, fontWeight: 700, color: "#1f2328", lineHeight: 1.6, margin: 0, fontFamily: "'Inter', sans-serif" }}>
                   Technology should give businesses more control—not create more dependency.
                 </p>
               </div>
@@ -3475,7 +3583,7 @@ const AboutPage = () => {
           }
           .about-faq-trigger {
             width: 100%;
-            padding: 18px 24px;
+            padding: 14px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -3684,43 +3792,64 @@ const AboutPage = () => {
       <section style={{ padding: "40px 6%", background: "#FAFAFA" }}>
         <style>{`
           .promise-container {
-            background: linear-gradient(135deg, #14532D 0%, #022C22 100%);
-            border: 1px solid rgba(52, 211, 153, 0.25);
+            background: #F0FDF4;
+            border: 1px solid #BBF7D0;
             border-radius: 22px;
             padding: 44px 36px;
             max-width: 1100px;
             margin: 0 auto;
             text-align: center;
-            box-shadow: 0 20px 50px rgba(2, 44, 34, 0.35);
-            color: #FFFFFF;
+            box-shadow: 0 20px 50px rgba(22, 163, 74, 0.05);
+            color: #1E293B;
             position: relative;
             overflow: hidden;
           }
+          .promise-container h2,
+          .promise-container h3,
+          .promise-container .promise-verbs-hdr,
+          .promise-container .promise-verb-text {
+            color: #0F172A !important;
+          }
+          .promise-container p {
+            color: #334155 !important;
+          }
+          .promise-container .promise-negation-hdr {
+            color: #475569 !important;
+          }
+          .promise-container h3 span.logo-mess {
+            color: #15803D !important;
+          }
+          .promise-container h3 span.logo-bee {
+            color: #22C55E !important;
+          }
+          .promise-container .promise-verb-icon {
+            color: #16A34A !important;
+          }
           .promise-verb-light-card {
-            background: rgba(255, 255, 255, 0.07);
-            border: 1px solid rgba(52, 211, 153, 0.3);
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
             border-radius: 12px;
             padding: 10px 16px;
             font-size: 13.5px;
             font-weight: 800;
-            color: #FFFFFF;
+            color: #1E293B;
             font-family: 'Inter', sans-serif;
             text-align: center;
             transition: all 0.25s ease;
             cursor: default;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
           }
           .promise-verb-light-card:hover {
-            background: rgba(74, 222, 128, 0.22) !important;
-            border-color: #4ADE80 !important;
+            background: #F0FDF4 !important;
+            border-color: #16A34A !important;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(74, 222, 128, 0.3) !important;
+            box-shadow: 0 6px 18px rgba(22, 163, 74, 0.08) !important;
           }
           .promise-verb-light-card:hover .promise-verb-icon {
-            color: #FFFFFF !important;
+            color: #16A34A !important;
           }
           .promise-verb-light-card:hover .promise-verb-text {
-            color: #FFFFFF !important;
+            color: #1E293B !important;
           }
           @media (max-width: 768px) {
             .promise-container {
@@ -3761,7 +3890,7 @@ const AboutPage = () => {
           </h2>
 
           {/* Negation Text Paragraphs */}
-          <div style={{ fontSize: 15.5, color: "rgba(255, 255, 255, 0.75)", lineHeight: 1.7, marginBottom: 14 }}>
+          <div className="promise-negation-hdr" style={{ fontSize: 15.5, color: "rgba(255, 255, 255, 0.75)", lineHeight: 1.7, marginBottom: 14 }}>
             <p style={{ margin: "0 0 4px 0", fontFamily: "'Inter', sans-serif" }}>
               MessBee is not intended to be just another messaging tool.
             </p>
@@ -3771,12 +3900,12 @@ const AboutPage = () => {
           </div>
 
           {/* Connection Text Header Highlight */}
-          <p style={{ fontSize: "clamp(18px, 2.5vw, 22px)", fontWeight: 900, color: "#4ADE80", lineHeight: 1.35, margin: "0 auto 16px auto", fontFamily: "'Inter', sans-serif" }}>
+          <p style={{ fontSize: "clamp(18px, 2.5vw, 22px)", fontWeight: 900, color: "#FFFFFF", lineHeight: 1.35, margin: "0 auto 16px auto", fontFamily: "'Inter', sans-serif" }}>
             MessBee brings these capabilities together into one connected business ecosystem.
           </p>
 
           {/* Verbs Heading */}
-          <div style={{ fontSize: 12, fontWeight: 700, color: "rgba(255, 255, 255, 0.65)", textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 12 }}>
+          <div className="promise-verbs-hdr" style={{ fontSize: 12, fontWeight: 700, color: "rgba(255, 255, 255, 0.65)", textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 12 }}>
             A platform where businesses can:
           </div>
 
@@ -3832,15 +3961,15 @@ const AboutPage = () => {
 
           {/* Digital OS Footer Text Details */}
           <div style={{
-            borderTop: "1px solid rgba(52, 211, 153, 0.2)",
+            borderTop: "1px solid rgba(255, 255, 255, 0.2)",
             paddingTop: 24,
             marginTop: 24
           }}>
             <h3 style={{ fontSize: "18px", fontWeight: 900, color: "#FFFFFF", marginBottom: 6, fontFamily: "'Inter', sans-serif" }}>
-              <span style={{ color: "#4ADE80" }}>MessBee</span> &mdash; India&apos;s Digital Business Operating System
+              <span className="logo-mess">Mess</span><span className="logo-bee">Bee</span> &mdash; India&apos;s Digital Business Operating System
             </h3>
 
-            <p style={{ fontSize: "14.5px", fontWeight: 800, color: "#4ADE80", letterSpacing: 0.5, margin: 0, fontFamily: "'Inter', sans-serif" }}>
+            <p style={{ fontSize: "14.5px", fontWeight: 800, color: "#FFFFFF", letterSpacing: 0.5, margin: 0, fontFamily: "'Inter', sans-serif" }}>
               Own Your Business <span style={{ color: "rgba(255,255,255,0.4)" }}>&bull;</span> Own Your Customers <span style={{ color: "rgba(255,255,255,0.4)" }}>&bull;</span> Own Your Growth
             </p>
           </div>
@@ -3869,11 +3998,11 @@ const AboutPage = () => {
               onClick={() => window.open((import.meta.env.VITE_ADMIN_URL || "http://localhost:5174") + "/signup", "_blank")}
               style={{
                 background: "#16A34A", color: "#FFFFFF", border: "none", borderRadius: 40,
-                padding: "10px 24px", fontSize: 13.5, fontWeight: 700, cursor: "pointer",
-                boxShadow: "0 4px 14px rgba(22,163,74,0.35)", transition: "all 0.2s",
+                padding: "8px 18px", fontSize: 12.5, fontWeight: 700, cursor: "pointer",
+                boxShadow: "0 1px 5px rgba(22,163,74,0.25)", transition: "all 0.2s",
               }}
-              onMouseEnter={e => { e.currentTarget.style.transform = "scale(1.03)"; e.currentTarget.style.background = "#15803D"; }}
-              onMouseLeave={e => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.background = "#16A34A"; }}
+              onMouseEnter={e => { e.currentTarget.style.transform = "scale(1.04)"; e.currentTarget.style.background = "#15803D"; e.currentTarget.style.boxShadow = "0 2px 8px rgba(22,163,74,0.35)"; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.background = "#16A34A"; e.currentTarget.style.boxShadow = "0 1px 5px rgba(22,163,74,0.25)"; }}
             >
               Get Started
             </button>
@@ -3881,11 +4010,11 @@ const AboutPage = () => {
               onClick={() => navigate("/contact#contact-form-section")}
               style={{
                 background: "#FFFFFF", color: "#111827", border: "1.5px solid #BBF7D0",
-                borderRadius: 40, padding: "10px 24px", fontSize: 13.5, fontWeight: 600,
+                borderRadius: 40, padding: "10px 20px", fontSize: 12.5, fontWeight: 600,
                 cursor: "pointer", transition: "all 0.2s", boxShadow: "0 2px 8px rgba(0,0,0,0.02)",
               }}
-              onMouseOver={(e) => { e.currentTarget.style.borderColor = "#16A34A"; e.currentTarget.style.color = "#16A34A"; }}
-              onMouseOut={(e) => { e.currentTarget.style.borderColor = "#BBF7D0"; e.currentTarget.style.color = "#111827"; }}
+              onMouseOver={(e) => { e.currentTarget.style.borderColor = "#16A34A"; e.currentTarget.style.color = "#16A34A"; e.currentTarget.style.transform = "scale(1.04)"; }}
+              onMouseOut={(e) => { e.currentTarget.style.borderColor = "#BBF7D0"; e.currentTarget.style.color = "#111827"; e.currentTarget.style.transform = "scale(1)"; }}
             >
               Contact Support
             </button>

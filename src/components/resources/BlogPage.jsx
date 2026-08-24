@@ -306,7 +306,7 @@ const FaqItem = ({ q, a }) => {
           cursor: "pointer",
         }}
       >
-        <span style={{ fontSize: 14, fontWeight: 700, color: open ? G : D2, transition: "color .2s" }}>{q}</span>
+        <span className="blog-faq-trigger" style={{ fontSize: 14, fontWeight: 700, color: open ? G : D2, transition: "color .2s" }}>{q}</span>
         <div
           style={{
             width: 28,
@@ -334,7 +334,7 @@ const FaqItem = ({ q, a }) => {
         </div>
       </div>
       {open && (
-        <div style={{ fontSize: 13, color: MU, lineHeight: 1.8, paddingBottom: 16 }}>{a}</div>
+        <div className="blog-faq-answer" style={{ fontSize: 13, color: MU, lineHeight: 1.8, paddingBottom: 16 }}>{a}</div>
       )}
     </div>
   );
@@ -356,9 +356,21 @@ const BlogPage = () => {
   };
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", color: "#0F172A", background: "#FFFFFF" }}>
+    <div className="blog-page-wrapper" style={{ fontFamily: "'Inter', sans-serif", color: "#0F172A", background: "#FFFFFF" }}>
       {/* Dynamic CSS Styling & Media Queries matching Solution/Resource Pages */}
       <style>{`
+        /* ── PAGE-WIDE TYPOGRAPHY OVERRIDES (font-size & weight only — no color changes) ── */
+        .blog-page-wrapper { font-family: 'Inter', 'Segoe UI', sans-serif !important; }
+        .blog-page-wrapper h1,
+        .blog-page-wrapper h2 { font-size: clamp(20px, 2.5vw, 32px) !important; font-weight: 900 !important; letter-spacing: -0.5px !important; }
+        .blog-page-wrapper h3,
+        .blog-page-wrapper h4 { font-size: 12px !important; font-weight: 800 !important; }
+        .blog-page-wrapper p { font-size: 12px !important; font-weight: 400 !important; line-height: 1.7 !important; }
+        .blog-page-wrapper .blog-faq-trigger { font-size: 14.5px !important; font-weight: 700 !important; }
+        .blog-page-wrapper .blog-faq-answer { font-size: 12px !important; line-height: 1.8 !important; }
+        .blog-page-wrapper .blog-btn-primary { font-size: 12.5px !important; font-weight: 700 !important; padding: 8px 18px !important; }
+        .blog-page-wrapper .blog-btn-secondary { font-size: 12.5px !important; font-weight: 600 !important; padding: 10px 20px !important; }
+
         .blog-glass-card {
           background: #FFFFFF;
           border: 1px solid #E2E8F0;

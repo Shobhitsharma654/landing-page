@@ -116,6 +116,20 @@ const COMPLIANCE = [
 /* ── Shared CSS ── */
 const CSS = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  /* ── PAGE-WIDE TYPOGRAPHY OVERRIDES (font-size & weight only — no color changes) ── */
+  .marketing-automation-page-wrapper { font-family: 'Inter', 'Segoe UI', sans-serif !important; }
+  .marketing-automation-page-wrapper h1,
+  .marketing-automation-page-wrapper h2 { font-size: clamp(20px, 2.5vw, 32px) !important; font-weight: 900 !important; letter-spacing: -0.5px !important; }
+  .marketing-automation-page-wrapper h3,
+  .marketing-automation-page-wrapper h4 { font-size: 12px !important; font-weight: 800 !important; }
+  .marketing-automation-page-wrapper p { font-size: 12px !important; font-weight: 400 !important; line-height: 1.7 !important; }
+  .marketing-automation-page-wrapper .fqt { font-size: 14.5px !important; font-weight: 700 !important; }
+  .marketing-automation-page-wrapper .mkt-faq-answer { font-size: 12px !important; line-height: 1.8 !important; }
+  .marketing-automation-page-wrapper .gbtn { font-size: 12.5px !important; font-weight: 700 !important; padding: 8px 18px !important; }
+  .marketing-automation-page-wrapper .dbtn { font-size: 12.5px !important; font-weight: 600 !important; padding: 10px 20px !important; }
+
+  /* ── COMPONENT STYLES ── */
   .gbtn  { background:#16A34A;color:#fff;border:none;border-radius:40px;padding:12px 28px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;box-shadow:0 4px 20px rgba(22,163,74,.3); }
   .gbtn:hover { background:#15803D;transform:translateY(-1px);box-shadow:0 8px 28px rgba(22,163,74,.4); }
   .dbtn  { background:#111827;color:#fff;border:none;border-radius:40px;padding:12px 28px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;display:inline-flex;align-items:center;gap:8px; }
@@ -225,6 +239,8 @@ const CSS = `
       font-size: 13px !important;
       padding: 0 2px !important;
     }
+  }
+
   /* Connected Platform Grid Desktop & Mobile */
   .mkt-connect-grid {
     display: flex;
@@ -253,16 +269,28 @@ const CSS = `
     display: inline-flex;
     align-items: center;
   }
+  .mkt-arrow-desktop {
+    display: inline !important;
+  }
+  .mkt-arrow-mobile {
+    display: none !important;
+  }
 
-  @media(max-width:860px){
+  @media(max-width:768px){
     .mkt-connect-grid {
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      flex-wrap: wrap !important;
-      gap: 10px 4px !important;
+      flex-direction: column !important;
+      gap: 8px !important;
       margin: 16px auto !important;
     }
+    .mkt-arrow-desktop {
+      display: none !important;
+    }
+    .mkt-arrow-mobile {
+      display: inline !important;
+    }
+  }
+
+  @media(max-width:860px){
     .mkt-connect-badge {
       background: rgba(255,255,255,.08) !important;
       border: 1px solid rgba(255,255,255,.15) !important;
@@ -295,6 +323,11 @@ const CSS = `
     }
   }
 
+  /* Flow Strip Styles */
+  .flow-strip { display:flex;align-items:center;justify-content:flex-start;flex-wrap:wrap;gap:8px 4px;margin-top:12px;width:100%;max-width:100%; }
+  .flow-item { background:#F0FDF4;border:1.5px solid #BBF7D0;color:#16A34A;border-radius:6px;padding:5px 10px;font-size:12px;font-weight:700;display:inline-block; }
+  .flow-arr { color:#94A3B8;font-size:13px;font-weight:700;padding:0 2px;display:inline-flex;align-items:center; }
+
   /* ── Global responsive section overrides ── */
   @media(max-width:860px){
     .sec-pad { padding-top:60px!important;padding-bottom:60px!important; }
@@ -312,10 +345,7 @@ const CSS = `
     .afc:hover,.awc:hover,.mfc:hover,.mwc:hover,.wfc:hover,.wyc:hover { transform:none!important; }
     /* Compliance grid */
     .comp-grid { grid-template-columns:1fr!important; }
-  /* Flow Strip Styles */
-  .flow-strip { display:flex;align-items:center;justify-content:flex-start;flex-wrap:wrap;gap:8px 4px;margin-top:12px;width:100%;max-width:100%; }
-  .flow-item { background:#F0FDF4;border:1.5px solid #BBF7D0;color:#16A34A;border-radius:6px;padding:5px 10px;font-size:12px;font-weight:700;display:inline-block; }
-  .flow-arr { color:#94A3B8;font-size:13px;font-weight:700;padding:0 2px;display:inline-flex;align-items:center; }
+  }
   @media(max-width:768px){
     .flow-strip {
       display: flex !important;
@@ -328,7 +358,6 @@ const CSS = `
     .flow-item { padding:4px 8px!important; font-size:10.5px!important; text-align:center!important; }
     .flow-arr { font-size:12px!important; padding:0 2px!important; color:#94A3B8!important; }
   }
-  }
   @media(max-width:480px){
     .m-hr > div {
       padding: 18px 12px !important;
@@ -339,6 +368,7 @@ const CSS = `
     .bubble { font-size:12px!important; }
     .acc-hd { padding:12px 14px!important; }
   }
+
 `;
 
 const Check = ({ color = G }) => (
@@ -388,7 +418,7 @@ const MarketingPage = () => {
   const adminUrl = import.meta.env.VITE_ADMIN_URL || "http://localhost:5174";
 
   return (
-    <div style={{fontFamily:"'Inter','Segoe UI',sans-serif",background:"#fff",color:D,overflowX:"hidden"}}>
+    <div className="marketing-automation-page-wrapper" style={{fontFamily:"'Inter','Segoe UI',sans-serif",background:"#fff",color:D,overflowX:"hidden"}}>
       <style>{CSS}</style>
       <title>Marketing Automation Software for Businesses | MessBee</title>
       <Navbar />
@@ -662,7 +692,12 @@ const MarketingPage = () => {
                 {["CRM", "Segmentation", "Campaign", "Automation", "Engagement", "Analytics"].map((item, i, arr) => (
                   <React.Fragment key={item}>
                     <div className="mkt-connect-badge">{item}</div>
-                    {i < arr.length - 1 && <span className="mkt-connect-arrow">→</span>}
+                    {i < arr.length - 1 && (
+                      <span className="mkt-connect-arrow">
+                        <span className="mkt-arrow-desktop">→</span>
+                        <span className="mkt-arrow-mobile">↓</span>
+                      </span>
+                    )}
                   </React.Fragment>
                 ))}
               </div>
@@ -766,7 +801,7 @@ const MarketingPage = () => {
                   </svg>
                 </div>
               </div>
-              {openFaq===i && <div style={{fontSize:13,color:MU,lineHeight:1.8,paddingBottom:16}}>{faq.a}</div>}
+              {openFaq===i && <div className="mkt-faq-answer" style={{fontSize:13,color:MU,lineHeight:1.8,paddingBottom:16}}>{faq.a}</div>}
             </div>
           ))}
         </div>

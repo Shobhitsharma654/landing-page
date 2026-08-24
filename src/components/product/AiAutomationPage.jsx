@@ -137,6 +137,20 @@ const RESPONSIBLE_AI = [
 /* ── CSS ── */
 const CSS = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  /* ── PAGE-WIDE TYPOGRAPHY OVERRIDES (font-size & weight only — no color changes) ── */
+  .ai-page-wrapper { font-family: 'Inter', 'Segoe UI', sans-serif !important; }
+  .ai-page-wrapper h1,
+  .ai-page-wrapper h2 { font-size: clamp(20px, 2.5vw, 32px) !important; font-weight: 900 !important; letter-spacing: -0.5px !important; }
+  .ai-page-wrapper h3,
+  .ai-page-wrapper h4 { font-size: 12px !important; font-weight: 800 !important; }
+  .ai-page-wrapper p { font-size: 12px !important; font-weight: 400 !important; line-height: 1.7 !important; }
+  .ai-page-wrapper .fqt { font-size: 14.5px !important; font-weight: 700 !important; }
+  .ai-page-wrapper .ai-faq-answer { font-size: 12px !important; line-height: 1.8 !important; }
+  .ai-page-wrapper .gbtn { font-size: 12.5px !important; font-weight: 700 !important; padding: 8px 18px !important; }
+  .ai-page-wrapper .dbtn { font-size: 12.5px !important; font-weight: 600 !important; padding: 10px 20px !important; }
+
+  /* ── COMPONENT STYLES ── */
   .gbtn { background:#16A34A;color:#fff;border:none;border-radius:40px;padding:12px 28px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;box-shadow:0 4px 20px rgba(22,163,74,.3); }
   .gbtn:hover { background:#15803D;transform:translateY(-1px);box-shadow:0 8px 28px rgba(22,163,74,.4); }
   .gbtn2 { background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:40px;padding:12px 28px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s; }
@@ -310,7 +324,7 @@ const AiPage = () => {
   const step = STEPS[activeStep];
 
   return (
-    <div style={{fontFamily:"'Inter','Segoe UI',sans-serif",background:"#fff",color:D,overflowX:"hidden"}}>
+    <div className="ai-page-wrapper" style={{fontFamily:"'Inter','Segoe UI',sans-serif",background:"#fff",color:D,overflowX:"hidden"}}>
       <style>{CSS}</style>
       <title>AI & Business Automation Platform | MessBee</title>
       <Navbar/>
@@ -329,7 +343,7 @@ const AiPage = () => {
               </div>
 
               <h1 style={{fontSize:"clamp(28px,3vw,42px)",fontWeight:900,color:D2,lineHeight:1.08,letterSpacing:"-1px",marginBottom:20}}>
-                Make Your Business<br/>Smarter With<br/>
+                Make Your Business Smarter With<br/>
                 <span style={{color:G}}>AI-Powered Automation</span>
               </h1>
 
@@ -430,7 +444,7 @@ const AiPage = () => {
           <div style={{textAlign:"center",marginBottom:40}}>
             <Pill>Platform Capabilities</Pill>
             <h2 style={{fontSize:"clamp(20px,2.5vw,32px)",fontWeight:900,color:D2,letterSpacing:"-1px",marginBottom:12}}>
-              Everything in MessBee<br/>AI & Automation
+              Everything in MessBee AI & Automation
             </h2>
           </div>
           <div className="a-fg">
@@ -586,7 +600,7 @@ const AiPage = () => {
           <h2 style={{fontSize:"clamp(20px,2.5vw,32px)",fontWeight:900,color:D2,letterSpacing:"-1px",marginBottom:10}}>
             Connect AI With Your MessBee Ecosystem
           </h2>
-          <p style={{fontSize:13,color:MU,lineHeight:1.7,maxWidth:480,margin:"0 auto 28px"}}>
+          <p style={{fontSize:13,color:MU,lineHeight:1.7,maxWidth:560,margin:"0 auto 28px"}}>
             AI becomes more useful when it works with the rest of your business — not as a standalone tool.
           </p>
           <div className="eco-g">
@@ -640,10 +654,10 @@ const AiPage = () => {
           <h2 style={{fontSize:"clamp(20px,2.5vw,32px)",fontWeight:900,color:D2,letterSpacing:"-1px",marginBottom:14}}>
             Built for Indian Businesses
           </h2>
-          <p style={{fontSize:13,color:MU,lineHeight:1.7,maxWidth:580,margin:"0 auto 28px"}}>
-            Indian businesses manage customer enquiries, follow-ups, orders, marketing and support across multiple channels. MessBee AI & Automation helps bring these into a more connected, efficient digital workflow.
+          <p style={{fontSize:13,color:MU,lineHeight:1.7,maxWidth:700,margin:"0 auto 28px"}}>
+            Indian businesses manage customer enquiries, follow-ups, orders, marketing and support across multiple channels.MessBee AI & Automation helps bring these into a more connected, efficient digital workflow.
           </p>
-          <div className="ai-journey-flow" style={{display:"flex",alignItems:"center",justifyContent:"center",flexWrap:"wrap",gap:"8px 4px",marginBottom:28}}>
+          <div className="ai-journey-flow" style={{display:"flex",alignItems:"center",justifyContent:"center",flexWrap:"wrap",gap:"8px 4px",marginBottom:20}}>
             {["Understand","Assist","Automate","Engage","Improve"].map((step,i,arr) => (
               <React.Fragment key={step}>
                 <span style={{background:"#fff",border:"1.5px solid "+GB,color:G,borderRadius:6,padding:"4px 10px",fontSize:11,fontWeight:700,display:"inline-block"}}>{step}</span>
@@ -721,7 +735,7 @@ const AiPage = () => {
                   </svg>
                 </div>
               </div>
-              {openFaq===i && <div style={{fontSize:13,color:MU,lineHeight:1.8,paddingBottom:16}}>{faq.a}</div>}
+              {openFaq===i && <div className="ai-faq-answer" style={{fontSize:13,color:MU,lineHeight:1.8,paddingBottom:16}}>{faq.a}</div>}
             </div>
           ))}
         </div>
@@ -739,7 +753,7 @@ const AiPage = () => {
             Ready to Make Your Business<br/>
             <span style={{color:G}}>Smarter With AI?</span>
           </h2>
-          <p style={{fontSize:14,color:MU,lineHeight:1.7,maxWidth:480,margin:"0 auto 32px"}}>
+          <p style={{fontSize:14,color:MU,lineHeight:1.7,maxWidth:520,margin:"0 auto 32px"}}>
             Join thousands of businesses using MessBee AI & Automation to reduce manual work, respond faster and create smarter customer workflows.
           </p>
           <div style={{display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap"}}>

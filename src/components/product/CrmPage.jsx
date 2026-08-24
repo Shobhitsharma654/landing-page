@@ -174,6 +174,19 @@ const Arrow = () => (
 
 const CSS = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  /* ── PAGE-WIDE TYPOGRAPHY OVERRIDES (font-size & weight only — no color changes) ── */
+  .crm-page-wrapper { font-family: 'Inter', 'Segoe UI', sans-serif !important; }
+  .crm-page-wrapper h1,
+  .crm-page-wrapper h2 { font-size: clamp(20px, 2.5vw, 32px) !important; font-weight: 900 !important; letter-spacing: -0.5px !important; }
+  .crm-page-wrapper h3,
+  .crm-page-wrapper h4 { font-size: 12px !important; font-weight: 800 !important; }
+  .crm-page-wrapper p { font-size: 12px !important; font-weight: 400 !important; line-height: 1.7 !important; }
+  .crm-page-wrapper .fqt { font-size: 14.5px !important; font-weight: 700 !important; }
+  .crm-page-wrapper .crm-faq-answer { font-size: 12px !important; line-height: 1.8 !important; }
+  .crm-page-wrapper .cp { font-size: 12.5px !important; font-weight: 700 !important; padding: 8px 18px !important; }
+  .crm-page-wrapper .cd { font-size: 12.5px !important; font-weight: 600 !important; padding: 10px 20px !important; }
+
   .cp { background:#16A34A;color:#fff;border:none;border-radius:40px;padding:11px 26px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;box-shadow:0 4px 18px rgba(22,163,74,.3); }
   .cp:hover { background:#15803D;transform:translateY(-1px);box-shadow:0 6px 24px rgba(22,163,74,.4); }
   .cd { background:#111827;color:#fff;border:none;border-radius:40px;padding:11px 26px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;display:inline-flex;align-items:center;gap:8px; }
@@ -388,7 +401,7 @@ const CrmPage = () => {
   const adminUrl = import.meta.env.VITE_ADMIN_URL || "http://localhost:5174";
 
   return (
-    <div style={{ fontFamily:"'Inter','Segoe UI',sans-serif", background:"#fff", color:D, overflowX:"hidden" }}>
+    <div className="crm-page-wrapper" style={{ fontFamily:"'Inter','Segoe UI',sans-serif", background:"#fff", color:D, overflowX:"hidden" }}>
       <style>{CSS}</style>
 
       {/* SEO */}
@@ -699,7 +712,7 @@ const CrmPage = () => {
                   </svg>
                 </div>
               </div>
-              {openFaq===i && <div style={{ fontSize:13, color:MU, lineHeight:1.8, paddingBottom:16 }}>{faq.a}</div>}
+              {openFaq===i && <div className="crm-faq-answer" style={{ fontSize:13, color:MU, lineHeight:1.8, paddingBottom:16 }}>{faq.a}</div>}
             </div>
           ))}
         </div>

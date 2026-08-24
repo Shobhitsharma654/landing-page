@@ -310,9 +310,23 @@ const ContactPage = () => {
   };
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "hidden", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+    <div className="contact-support-page-wrapper" style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "hidden", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+        /* ── PAGE-WIDE TYPOGRAPHY OVERRIDES (font-size & weight only — no color changes) ── */
+        .contact-support-page-wrapper { font-family: 'Inter', 'Segoe UI', sans-serif !important; }
+        .contact-support-page-wrapper h1,
+        .contact-support-page-wrapper h2 { font-size: clamp(20px, 2.5vw, 32px) !important; font-weight: 900 !important; letter-spacing: -0.5px !important; }
+        .contact-support-page-wrapper h3,
+        .contact-support-page-wrapper h4 { font-size: 12px !important; font-weight: 800 !important; }
+        .contact-support-page-wrapper p { font-size: 12px !important; font-weight: 400 !important; line-height: 1.7 !important; }
+        .contact-support-page-wrapper .contact-btn-primary { font-size: 12.5px !important; font-weight: 700 !important; padding: 8px 18px !important; }
+        .contact-support-page-wrapper .contact-btn-secondary { font-size: 12.5px !important; font-weight: 600 !important; padding: 10px 20px !important; }
+        .contact-support-page-wrapper input,
+        .contact-support-page-wrapper select,
+        .contact-support-page-wrapper textarea { font-size: 12px !important; }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         /* ── GLOBAL SECTION RESPONSIVENESS ── */
