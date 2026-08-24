@@ -1579,16 +1579,29 @@ const TermsPage = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 200;
+      if (
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 60
+      ) {
+        setActiveSection(sections[sections.length - 1].id);
+        return;
+      }
+
+      const threshold = 160;
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i].id);
-        if (el && el.offsetTop <= scrollPosition) {
-          setActiveSection(sections[i].id);
-          break;
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= threshold) {
+            setActiveSection(sections[i].id);
+            return;
+          }
         }
       }
+      setActiveSection(sections[0].id);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -1596,9 +1609,8 @@ const TermsPage = () => {
     setActiveSection(id);
     const element = document.getElementById(id);
     if (element) {
-      const mobileTocEl = document.querySelector(".mobile-toc-wrapper");
-      const isMobileTocVisible = mobileTocEl && window.getComputedStyle(mobileTocEl).display !== "none";
-      const offset = isMobileTocVisible ? 485 : 95;
+      const isMobile = window.innerWidth <= 768;
+      const offset = isMobile ? 135 : 95;
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({
         top: elementPosition - offset,
@@ -1619,6 +1631,18 @@ const TermsPage = () => {
       }}
     >
       <style>{`
+        /* ── PAGE-WIDE TYPOGRAPHY OVERRIDES (font-size & weight only — no color changes) ── */
+        .terms-page-wrapper { font-family: 'Inter', 'Segoe UI', sans-serif !important; }
+        .terms-page-wrapper h1 { font-size: clamp(20px, 2.5vw, 32px) !important; font-weight: 900 !important; letter-spacing: -0.5px !important; }
+        .terms-page-wrapper h2 { font-size: 16px !important; font-weight: 800 !important; }
+        .terms-page-wrapper h3,
+        .terms-page-wrapper h4 { font-size: 12px !important; font-weight: 800 !important; }
+        .terms-page-wrapper p,
+        .terms-page-wrapper .terms-section-content { font-size: 12px !important; font-weight: 400 !important; line-height: 1.7 !important; }
+        .terms-page-wrapper .terms-hero-desc { font-size: 14px !important; font-weight: 600 !important; line-height: 1.75 !important; }
+        .terms-page-wrapper .toc-item { font-size: 12px !important; }
+        .terms-page-wrapper .mobile-toc-wrapper span { font-size: 12px !important; }
+
         .no-scrollbar::-webkit-scrollbar {
           display: none !important;
         }
@@ -1740,25 +1764,31 @@ const TermsPage = () => {
           }
           .mobile-toc-wrapper {
             display: block !important;
-            position: sticky;
-            top: 70px;
-            z-index: 25;
+            position: -webkit-sticky !important;
+            position: sticky !important;
+            top: 64px !important;
+            z-index: 100 !important;
+            margin-top: 0 !important;
             margin-bottom: 16px !important;
             width: calc(100% + 32px) !important;
             margin-left: -16px !important;
             margin-right: -16px !important;
+            background: #FFFFFF !important;
           }
           .mobile-toc-wrapper > div {
-            border: 1px solid #E2E8F0 !important;
+            border-top: 1px solid #E2E8F0 !important;
+            border-bottom: 1px solid #E2E8F0 !important;
             border-left: none !important;
             border-right: none !important;
             border-radius: 0 !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+            background: #FFFFFF !important;
           }
           .terms-page-wrapper article > div:first-child {
             margin-bottom: 16px !important;
           }
           .terms-page-wrapper article > div[id] {
-            scroll-margin-top: 485px !important;
+            scroll-margin-top: 135px !important;
             padding: 20px 16px !important;
             margin-bottom: 14px !important;
           }
@@ -1774,7 +1804,7 @@ const TermsPage = () => {
             margin-bottom: 12px !important;
           }
           .terms-page-wrapper h2 {
-            font-size: clamp(17px, 2vw, 22px) !important;
+            font-size: 15px !important;
           }
           .terms-page-wrapper h3 {
             font-size: 13.5px !important;
@@ -1887,6 +1917,7 @@ const TermsPage = () => {
 
           {/* Description */}
           <p
+            className="terms-hero-desc"
             style={{
               fontSize: 17,
               color: "#475569",
@@ -1906,7 +1937,7 @@ const TermsPage = () => {
       <section style={{ padding: "40px 6%", background: "#FFFFFF" }}>
         <div
           className="terms-container"
-          style={{ maxWidth: 1380, margin: "0 auto" }}
+          style={{ maxWidth: 1280, margin: "0 auto" }}
         >
           {/* ── Sticky Table of Contents ── */}
           <aside className="terms-sidebar no-scrollbar">
@@ -2168,6 +2199,7 @@ const TermsPage = () => {
                   {s.title}
                 </h2>
                 <div
+                  className="terms-section-content"
                   style={{
                     fontSize: 14,
                     color: "#4B5563",

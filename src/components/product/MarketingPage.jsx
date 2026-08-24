@@ -116,6 +116,20 @@ const COMPLIANCE = [
 /* ── Shared CSS ── */
 const CSS = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  /* ── PAGE-WIDE TYPOGRAPHY OVERRIDES (font-size & weight only — no color changes) ── */
+  .marketing-automation-page-wrapper { font-family: 'Inter', 'Segoe UI', sans-serif !important; }
+  .marketing-automation-page-wrapper h1,
+  .marketing-automation-page-wrapper h2 { font-size: clamp(20px, 2.5vw, 32px) !important; font-weight: 900 !important; letter-spacing: -0.5px !important; }
+  .marketing-automation-page-wrapper h3,
+  .marketing-automation-page-wrapper h4 { font-size: 12px !important; font-weight: 800 !important; }
+  .marketing-automation-page-wrapper p { font-size: 12px !important; font-weight: 400 !important; line-height: 1.7 !important; }
+  .marketing-automation-page-wrapper .fqt { font-size: 14.5px !important; font-weight: 700 !important; }
+  .marketing-automation-page-wrapper .mkt-faq-answer { font-size: 12px !important; line-height: 1.8 !important; }
+  .marketing-automation-page-wrapper .gbtn { font-size: 12.5px !important; font-weight: 700 !important; padding: 8px 18px !important; }
+  .marketing-automation-page-wrapper .dbtn { font-size: 12.5px !important; font-weight: 600 !important; padding: 10px 20px !important; }
+
+  /* ── COMPONENT STYLES ── */
   .gbtn  { background:#16A34A;color:#fff;border:none;border-radius:40px;padding:12px 28px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;box-shadow:0 4px 20px rgba(22,163,74,.3); }
   .gbtn:hover { background:#15803D;transform:translateY(-1px);box-shadow:0 8px 28px rgba(22,163,74,.4); }
   .dbtn  { background:#111827;color:#fff;border:none;border-radius:40px;padding:12px 28px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;display:inline-flex;align-items:center;gap:8px; }
@@ -137,7 +151,7 @@ const CSS = `
   .acc-hd:hover { background:#FAFAFA; }
   .acc-body { padding:0 16px 20px;background:#fff; }
   /* Layout */
-  .m-hg  { display:flex;flex-wrap:wrap;align-items:flex-start;gap:56px; }
+  .m-hg  { display:flex;flex-wrap:wrap;align-items:flex-start;gap:48px; }
   .m-hl  { flex:1 1 440px;min-width:280px; }
   .m-hr  { flex:1 1 360px;min-width:280px;display:flex;justify-content:center; }
   .m-fg  { display:grid;grid-template-columns:repeat(4,1fr);gap:16px; }
@@ -155,15 +169,164 @@ const CSS = `
   @media(max-width:860px){
     .m-stat { grid-template-columns:repeat(2,1fr)!important; }
   }
+  @media(max-width:768px){
+    .m-hr {
+      width: 100% !important;
+      justify-content: center !important;
+      padding-top: 24px !important;
+      margin-bottom: 0 !important;
+    }
+    .m-hr > div {
+      transform: none !important;
+      transform-origin: top center !important;
+      margin: 0 auto !important;
+      max-width: 100% !important;
+      padding: 24px 16px !important;
+    }
+  }
   @media(max-width:640px){
     .m-fg  { grid-template-columns:1fr!important; }
-    .m-why { grid-template-columns:1fr!important; }
+    .m-why { grid-template-columns:repeat(2,1fr)!important; gap:10px!important; }
+    .mwc   { padding:12px 10px!important; border-radius:10px!important; }
     .m-ctr { display:flex!important; flex-direction:row!important; align-items:center!important; gap:10px!important; flex-wrap:wrap!important; }
     .gbtn,.dbtn,.gbtn2 { width:auto!important; padding:10px 18px!important; font-size:12px!important; }
     .m-hr  { width:100%!important; justify-content:center!important; padding-top:24px!important; margin-bottom:0!important; }
-    .m-hr > div { transform:none!important; transform-origin:top center!important; margin:0 auto!important; max-width:340px!important; margin-top:0!important; margin-bottom:0!important; }
+    .m-hr > div { transform:none!important; transform-origin:top center!important; margin:0 auto!important; width:100%!important; max-width:100%!important; padding:22px 16px!important; box-sizing:border-box!important; }
     .ch-grid { grid-template-columns:1fr!important; }
   }
+
+  /* India First Flow Box */
+  .mkt-india-grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px 4px;
+  }
+  .mkt-india-pill {
+    background: #F0FDF4;
+    border: 1.5px solid #BBF7D0;
+    color: #16A34A;
+    border-radius: 8px;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    display: inline-block;
+  }
+  .mkt-india-arrow {
+    color: #94A3B8;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 0 4px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  @media(max-width:768px){
+    .mkt-india-box {
+      padding: 14px 10px !important;
+      max-width: 350px !important;
+      box-sizing: border-box !important;
+    }
+    .mkt-india-grid {
+      gap: 10px 4px !important;
+    }
+    .mkt-india-pill {
+      padding: 5px 10px !important;
+      font-size: 11px !important;
+    }
+    .mkt-india-arrow {
+      font-size: 13px !important;
+      padding: 0 2px !important;
+    }
+  }
+
+  /* Connected Platform Grid Desktop & Mobile */
+  .mkt-connect-grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px 6px;
+    margin: 20px auto;
+  }
+  .mkt-connect-badge {
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #fff;
+    display: inline-block;
+    box-sizing: border-box;
+  }
+  .mkt-connect-arrow {
+    color: #4ADE80;
+    font-size: 16px;
+    font-weight: 900;
+    padding: 0 2px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .mkt-arrow-desktop {
+    display: inline !important;
+  }
+  .mkt-arrow-mobile {
+    display: none !important;
+  }
+
+  @media(max-width:768px){
+    .mkt-connect-grid {
+      flex-direction: column !important;
+      gap: 8px !important;
+      margin: 16px auto !important;
+    }
+    .mkt-arrow-desktop {
+      display: none !important;
+    }
+    .mkt-arrow-mobile {
+      display: inline !important;
+    }
+  }
+
+  @media(max-width:860px){
+    .mkt-connect-badge {
+      background: rgba(255,255,255,.08) !important;
+      border: 1px solid rgba(255,255,255,.15) !important;
+      border-radius: 6px !important;
+      padding: 5px 10px !important;
+      font-size: 11px !important;
+      font-weight: 700 !important;
+      color: #fff !important;
+      text-align: center !important;
+    }
+    .mkt-connect-arrow {
+      color: #4ADE80 !important;
+      font-size: 13px !important;
+      font-weight: 900 !important;
+      padding: 0 1px !important;
+    }
+  }
+
+  @media(max-width:480px){
+    .mkt-connect-grid {
+      gap: 8px 3px !important;
+    }
+    .mkt-connect-badge {
+      padding: 4px 8px !important;
+      font-size: 10.5px !important;
+      border-radius: 6px !important;
+    }
+    .mkt-connect-arrow {
+      font-size: 12px !important;
+    }
+  }
+
+  /* Flow Strip Styles */
+  .flow-strip { display:flex;align-items:center;justify-content:flex-start;flex-wrap:wrap;gap:8px 4px;margin-top:12px;width:100%;max-width:100%; }
+  .flow-item { background:#F0FDF4;border:1.5px solid #BBF7D0;color:#16A34A;border-radius:6px;padding:5px 10px;font-size:12px;font-weight:700;display:inline-block; }
+  .flow-arr { color:#94A3B8;font-size:13px;font-weight:700;padding:0 2px;display:inline-flex;align-items:center; }
 
   /* ── Global responsive section overrides ── */
   @media(max-width:860px){
@@ -172,8 +335,6 @@ const CSS = `
     .bubble-wrap { gap:8px!important; }
   }
   @media(max-width:640px){
-    /* Hero sections */
-    .a-hg,.m-hg,.wa-hg { flex-direction:column!important;gap:24px!important; }
     /* Trust stat bars compact */
     .a-stat,.m-stat,.wa-stat { text-align:center; }
     /* Step cards */
@@ -184,15 +345,30 @@ const CSS = `
     .afc:hover,.awc:hover,.mfc:hover,.mwc:hover,.wfc:hover,.wyc:hover { transform:none!important; }
     /* Compliance grid */
     .comp-grid { grid-template-columns:1fr!important; }
-    /* Flow strips wrap nicely */
-    .flow-strip { justify-content:flex-start!important; }
+  }
+  @media(max-width:768px){
+    .flow-strip {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      flex-wrap: wrap !important;
+      gap: 10px 4px !important;
+      width: 100% !important;
+    }
+    .flow-item { padding:4px 8px!important; font-size:10.5px!important; text-align:center!important; }
+    .flow-arr { font-size:12px!important; padding:0 2px!important; color:#94A3B8!important; }
   }
   @media(max-width:480px){
+    .m-hr > div {
+      padding: 18px 12px !important;
+      border-radius: 18px !important;
+    }
     .fqt { font-size:13px!important; }
     .step-card { padding:16px 12px!important; }
     .bubble { font-size:12px!important; }
     .acc-hd { padding:12px 14px!important; }
   }
+
 `;
 
 const Check = ({ color = G }) => (
@@ -206,11 +382,11 @@ const Pill = ({ children }) => (
 );
 
 const FlowStrip = ({ steps }) => (
-  <div style={{display:"flex",alignItems:"center",flexWrap:"wrap",gap:0,marginTop:12}}>
+  <div className="flow-strip">
     {steps.map((s,i) => (
       <React.Fragment key={s}>
-        <span style={{background:GL,border:"1.5px solid "+GB,color:G,borderRadius:8,padding:"7px 14px",fontSize:13,fontWeight:700}}>{s}</span>
-        {i < steps.length-1 && <span style={{color:"#94A3B8",fontSize:18,padding:"0 4px"}}>→</span>}
+        <span className="flow-item">{s}</span>
+        {i < steps.length-1 && <span className="flow-arr">→</span>}
       </React.Fragment>
     ))}
   </div>
@@ -242,19 +418,19 @@ const MarketingPage = () => {
   const adminUrl = import.meta.env.VITE_ADMIN_URL || "http://localhost:5174";
 
   return (
-    <div style={{fontFamily:"'Inter','Segoe UI',sans-serif",background:"#fff",color:D,overflowX:"hidden"}}>
+    <div className="marketing-automation-page-wrapper" style={{fontFamily:"'Inter','Segoe UI',sans-serif",background:"#fff",color:D,overflowX:"hidden"}}>
       <style>{CSS}</style>
       <title>Marketing Automation Software for Businesses | MessBee</title>
       <Navbar />
 
       {/* ══ HERO — clean white like CRM ══ */}
-      <section style={{background:"#fff",padding:"118px 6% 80px",position:"relative",overflow:"hidden"}}>
+      <section style={{background:"#fff",padding:"92px 6% 48px",position:"relative",overflow:"hidden"}}>
 
         <div style={{maxWidth:1200,margin:"0 auto",position:"relative",zIndex:1}}>
           <div className="m-hg">
             {/* Left */}
             <div className="m-hl">
-              <div style={{display:"inline-flex",alignItems:"center",gap:6,background:GL,border:`1px solid ${GB}`,borderRadius:40,padding:"5px 14px",marginBottom:28}}>
+              <div style={{display:"inline-flex",alignItems:"center",gap:6,background:GL,border:`1px solid ${GB}`,borderRadius:40,padding:"5px 14px",marginBottom:16}}>
                 <div style={{width:6,height:6,borderRadius:"50%",background:G}}/>
                 <span style={{fontSize:12,fontWeight:600,color:G}}>MessBee Marketing Automation</span>
               </div>
@@ -269,7 +445,7 @@ const MarketingPage = () => {
                 Instead of manually managing every campaign, follow-up and interaction — automate it.
               </p>
 
-              <div style={{display:"flex",flexWrap:"wrap",gap:8,marginBottom:40}}>
+              <div style={{display:"flex",flexWrap:"wrap",gap:8,marginBottom:32}}>
                 {["Plan.","Automate.","Engage.","Measure.","Grow."].map(t => (
                   <span key={t} style={{ background:"#F1F5F9", border:"1px solid #E5E7EB", color:MU, borderRadius:40, padding:"4px 12px", fontSize:12, fontWeight:600 }}>{t}</span>
                 ))}
@@ -284,8 +460,8 @@ const MarketingPage = () => {
             </div>
 
             {/* Right — marketing funnel panel */}
-            <div className="m-hr">
-              <div style={{background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)",borderRadius:24,padding:28,boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)",border:"1px solid rgba(34,197,94,.2)",width:"100%",maxWidth:460,transform:"scale(0.75)",transformOrigin:"top right",marginTop:"76px",marginBottom:"-120px",overflow:"hidden"}}>
+            <div className="m-hr" style={{ paddingTop: "70px", marginBottom: "-140px" }}>
+              <div style={{background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)",borderRadius:24,padding:28,boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)",border:"1px solid rgba(34,197,94,.2)",width:"100%",maxWidth:460,transform:"scale(0.75)",transformOrigin:"top center",overflow:"hidden"}}>
                 {/* Header */}
                 <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:28 }}>
                   <div style={{ display:"flex", alignItems:"center", gap:12 }}>
@@ -512,12 +688,17 @@ const MarketingPage = () => {
               <p style={{ fontSize: 15, color: "rgba(255,255,255,.5)", lineHeight: 1.75, maxWidth: 560, margin: "0 auto 40px" }}>
                 Marketing automation becomes more powerful when connected with CRM, segmentation and analytics — not managed separately.
               </p>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: "10px 12px" }}>
+              <div className="mkt-connect-grid">
                 {["CRM", "Segmentation", "Campaign", "Automation", "Engagement", "Analytics"].map((item, i, arr) => (
-                  <div key={item} style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
-                    <div style={{ background: "rgba(255,255,255,.08)", border: "1px solid rgba(255,255,255,.15)", borderRadius: 10, padding: "8px 16px", fontSize: 13, fontWeight: 700, color: "#fff" }}>{item}</div>
-                    {i < arr.length - 1 && <span style={{ color: "#4ADE80", fontSize: 18, fontWeight: 900 }}>→</span>}
-                  </div>
+                  <React.Fragment key={item}>
+                    <div className="mkt-connect-badge">{item}</div>
+                    {i < arr.length - 1 && (
+                      <span className="mkt-connect-arrow">
+                        <span className="mkt-arrow-desktop">→</span>
+                        <span className="mkt-arrow-mobile">↓</span>
+                      </span>
+                    )}
+                  </React.Fragment>
                 ))}
               </div>
             </div>
@@ -547,7 +728,7 @@ const MarketingPage = () => {
       </section>
 
       {/* ══ BUILT FOR INDIA — green-tinted ══ */}
-      <section style={{background:GL,padding:"72px 6%",borderTop:"1px solid "+GB,borderBottom:"1px solid "+GB}}>
+      <section style={{background:GL,padding:"60px 6%",borderTop:"1px solid "+GB,borderBottom:"1px solid "+GB}}>
         <div style={{maxWidth:860,margin:"0 auto",textAlign:"center"}}>
           <Pill>India First</Pill>
           <h2 style={{fontSize:"clamp(20px,2.5vw,32px)",fontWeight:900,color:D2,letterSpacing:"-1px",marginBottom:16}}>
@@ -556,13 +737,15 @@ const MarketingPage = () => {
           <p style={{fontSize:15,color:"#374151",lineHeight:1.8,maxWidth:640,margin:"0 auto 40px"}}>
             MessBee Marketing Automation helps Indian businesses move from manual marketing to organized, measurable and scalable customer journeys across WhatsApp, SMS and email.
           </p>
-          <div style={{background:"#fff",border:"1.5px solid "+GB,borderRadius:16,padding:"16px 32px",display:"inline-flex",flexWrap:"wrap",alignItems:"center",gap:0,justifyContent:"center",marginBottom:32}}>
-            {["Attract","Engage","Nurture","Convert","Retain"].map((step,i,arr) => (
-              <React.Fragment key={step}>
-                <span style={{background:GL,border:"1.5px solid "+GB,color:G,borderRadius:8,padding:"5px 12px",fontSize:12,fontWeight:700}}>{step}</span>
-                {i<arr.length-1 && <span style={{color:"#94A3B8",fontSize:16,padding:"0 6px"}}>→</span>}
-              </React.Fragment>
-            ))}
+          <div className="mkt-india-box" style={{background:"#fff",border:"1.5px solid "+GB,borderRadius:16,padding:"16px 32px",display:"inline-block",maxWidth:720,width:"100%",marginBottom:32}}>
+            <div className="mkt-india-grid">
+              {["Attract","Engage","Nurture","Convert","Retain"].map((step,i) => (
+                <React.Fragment key={step}>
+                  <span className="mkt-india-pill">{step}</span>
+                  {i < 4 && <span className="mkt-india-arrow">→</span>}
+                </React.Fragment>
+              ))}
+            </div>
           </div><br/>
           <button id="mkt-india-start" className="gbtn" onClick={() => window.open(adminUrl+"/signup","_blank")}>
             Get Started
@@ -618,7 +801,7 @@ const MarketingPage = () => {
                   </svg>
                 </div>
               </div>
-              {openFaq===i && <div style={{fontSize:13,color:MU,lineHeight:1.8,paddingBottom:16}}>{faq.a}</div>}
+              {openFaq===i && <div className="mkt-faq-answer" style={{fontSize:13,color:MU,lineHeight:1.8,paddingBottom:16}}>{faq.a}</div>}
             </div>
           ))}
         </div>

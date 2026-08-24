@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
+import { submitToWebhookOrEmail } from "../../utils/formSubmit";
 
 const G = "#16A34A";
 const GL = "#F0FDF4";
@@ -35,7 +36,7 @@ const FaqItem = ({ q, a }) => {
           userSelect: "none",
         }}
       >
-        <span style={{ fontSize: 14.5, fontWeight: 700, color: open ? G : D2, transition: "color 0.2s", paddingRight: "12px" }}>
+        <span className="contact-faq-question" style={{ fontSize: 14.5, fontWeight: 700, color: open ? G : D2, transition: "color 0.2s", paddingRight: "12px" }}>
           {q}
         </span>
         <div
@@ -74,7 +75,7 @@ const FaqItem = ({ q, a }) => {
           padding: open ? "0px 20px 14px 20px" : "0px 20px",
         }}
       >
-        <div style={{ fontSize: 13.5, color: D2, lineHeight: 1.6, borderTop: open ? "1px solid #F1F5F9" : "none", paddingTop: open ? "8px" : "0px" }}>
+        <div className="contact-faq-answer" style={{ fontSize: 13.5, color: D2, lineHeight: 1.6, borderTop: open ? "1px solid #F1F5F9" : "none", paddingTop: open ? "8px" : "0px" }}>
           {a}
         </div>
       </div>
@@ -118,36 +119,83 @@ const ContactUsPage = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     setStatus("submitting");
-    try {
-      const apiBase = import.meta.env.VITE_API_URL || "http://localhost:5000";
-      const res = await fetch(`${apiBase}/api/contact`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          subject: `[Enquiry: ${form.interest}] Org: ${form.orgName || "N/A"}`,
-          message: `Phone: ${form.phone || "N/A"}\n\n${form.message}`,
-        }),
-      });
-      if (res.ok) {
-        setStatus("success");
-        setForm({ name: "", orgName: "", email: "", phone: "", interest: "General Enquiry", message: "" });
-        setTimeout(() => setStatus("idle"), 4000);
-      } else {
-        setStatus("error");
-        setTimeout(() => setStatus("idle"), 3000);
-      }
-    } catch {
-      setStatus("error");
-      setTimeout(() => setStatus("idle"), 3000);
-    }
+
+    await submitToWebhookOrEmail("contact", {
+      name: form.name,
+      orgName: form.orgName,
+      email: form.email,
+      phone: form.phone,
+      interest: form.interest,
+      message: form.message,
+    });
+
+    setStatus("success");
+    setForm({ name: "", orgName: "", email: "", phone: "", interest: "General Enquiry", message: "" });
+    setTimeout(() => setStatus("idle"), 5000);
   };
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "hidden", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+    <div className="contact-page-wrapper" style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "hidden", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        
+        /* Global Typography Overrides from ABOUT_TYPOGRAPHY_README.md & Contact Section */
+        .contact-page-wrapper h1,
+        .contact-page-wrapper h2 {
+          font-size: clamp(20px, 2.5vw, 32px) !important;
+          font-weight: 900 !important;
+          color: #0F172A !important;
+          line-height: 1.2 !important;
+        }
+        .contact-page-wrapper h1 span,
+        .contact-page-wrapper h2 span {
+          color: #16A34A !important;
+        }
+        .contact-page-wrapper p,
+        .contact-page-wrapper .contact-faq-answer {
+          font-size: 12px !important;
+          font-weight: 400 !important;
+          color: #475569 !important;
+          line-height: 1.45 !important;
+        }
+        .contact-page-wrapper h3,
+        .contact-page-wrapper h4,
+        .contact-page-wrapper .category-card-title {
+          font-size: 12px !important;
+          font-weight: 800 !important;
+          color: #0F172A !important;
+          line-height: 1.45 !important;
+        }
+        .contact-page-wrapper .contact-faq-question {
+          font-size: 14.5px !important;
+          font-weight: 700 !important;
+          color: #0F172A !important;
+          line-height: 1.45 !important;
+        }
+        .contact-page-wrapper .category-card-desc {
+          font-size: 12px !important;
+          font-weight: 400 !important;
+          color: #64748B !important;
+          line-height: 1.45 !important;
+        }
+        .contact-page-wrapper .category-card-footer {
+          font-size: 12px !important;
+          font-weight: 700 !important;
+        }
+        .contact-page-wrapper .contact-btn-primary {
+          padding: 8px 18px !important;
+          font-size: 12.5px !important;
+          font-weight: 700 !important;
+          box-shadow: 0 1px 5px rgba(22, 163, 74, 0.25) !important;
+          border-radius: 40px !important;
+        }
+        .contact-page-wrapper .contact-btn-secondary {
+          padding: 10px 20px !important;
+          font-size: 12.5px !important;
+          font-weight: 600 !important;
+          border-radius: 40px !important;
+        }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         /* ── GLOBAL SECTION RESPONSIVENESS ── */
@@ -954,13 +1002,12 @@ const ContactUsPage = () => {
                   Visit Us
                 </h3>
                 <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-                  <div style={{ fontSize: 16, fontWeight: 900, color: "#16A34A", display: "flex", alignItems: "center", gap: 8 }}>
+                  <div style={{ fontSize: 17, fontWeight: 800, color: "#16A34A", display: "flex", alignItems: "center", gap: 8 }}>
                     MessBee
                   </div>
-          
                   <div style={{ fontSize: 13.5, color: "#475569", display: "flex", alignItems: "flex-start", gap: 8, lineHeight: 1.55 }}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2.5" style={{ marginTop: 2, flexShrink: 0 }}><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
-                    <span><strong>Corporate Office:</strong> MessBee, Devika Tower, 510A, Chander Nagar, Surya Nagar, Ghaziabad, Uttar Pradesh 201011</span>
+                    <span><strong>Corporate Office:</strong> 510A, Devika Tower, Chander Nagar, Surya Nagar, Ghaziabad, Uttar Pradesh 201011</span>
                   </div>
                   <div style={{ fontSize: 13.5, color: "#475569", display: "flex", alignItems: "flex-start", gap: 8 }}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2.5" style={{ marginTop: 2, flexShrink: 0 }}><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
@@ -1008,7 +1055,7 @@ const ContactUsPage = () => {
                 </div>
                 <div style={{ fontSize: 13.5, fontWeight: 600, color: "#64748B", display: "flex", alignItems: "center", gap: 6 }}>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
-                  <span>Email: hello@messbee.com</span>
+                  <span>Email: support@messbee.com</span>
                 </div>
               </div>
             </div>
@@ -1122,11 +1169,18 @@ const ContactUsPage = () => {
                     />
                   </div>
 
+                  {status === "success" && (
+                    <div style={{ background: "#F0FDF4", border: "1.5px solid #86EFAC", borderRadius: 10, padding: "12px 16px", color: "#15803D", fontSize: 13.5, fontWeight: 600, display: "flex", alignItems: "center", gap: 8 }}>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                      <span>Thank you! Your enquiry has been submitted and saved. We'll be in touch soon.</span>
+                    </div>
+                  )}
+
                   <button
                     type="submit"
                     disabled={status === "submitting"}
                     className="contact-btn-primary"
-                    style={{ width: "100%", justifyContent: "center", marginTop: 6, padding: "14px 20px", fontSize: 14.5, borderRadius: 10 }}
+                    style={{ width: "100%", justifyContent: "center", marginTop: 6, padding: "14px 20px", fontSize: 14.5, borderRadius: 10, opacity: status === "submitting" ? 0.7 : 1 }}
                   >
                     {status === "submitting" ? "Submitting..." : status === "success" ? "Enquiry Submitted ✓" : "Submit Enquiry"}
                   </button>
@@ -1160,7 +1214,7 @@ const ContactUsPage = () => {
                 <span style={{ fontSize: 12, fontWeight: 800, color: "#16A34A", letterSpacing: "0.5px", textTransform: "uppercase" }}>Corporate Office Location</span>
               </div>
               <a
-                href="https://www.google.com/maps/dir//MessBee,+510A,+Chander+Nagar,+Surya+Nagar,+Ghaziabad,+Uttar+Pradesh+201011/@28.6686012,77.3308721,16z"
+                href="https://www.google.com/maps/dir//MessBee,+510,+Devika+Tower,+HIG+Flats,+Chander+Nagar,+Surya+Nagar,+Ghaziabad,+Uttar+Pradesh+201011,+India/@28.6686012,77.3308721,16z"
                 target="_blank"
                 rel="noreferrer"
                 className="corporate-office-link"
@@ -1185,12 +1239,15 @@ const ContactUsPage = () => {
 
             <div className="corporate-office-details" style={{ borderTop: "1px solid #F1F5F9", paddingTop: 16, display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 20 }}>
               <div style={{ flex: "1 1 500px" }}>
-                <h3 style={{ fontSize: 17, fontWeight: 900, color: "#0F172A", marginBottom: 6, display: "flex", alignItems: "center", gap: 8 }}>
-                  MessBee Corporate Office
+                <h3 style={{ fontSize: 17, fontWeight: 800, color: "#16A34A", marginBottom: 10, fontFamily: "'Inter', sans-serif" }}>
+                  MessBee
                 </h3>
-                <p style={{ fontSize: 15, fontWeight: 700, color: "#1E293B", margin: 0, lineHeight: 1.6, fontFamily: "'Inter', sans-serif" }}>
-                  MessBee, Devika Tower, 510A, Chander Nagar, Surya Nagar, Ghaziabad, Uttar Pradesh 201011
-                </p>
+                <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2.5" style={{ flexShrink: 0, marginTop: 4 }}><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
+                  <p style={{ fontSize: 14, fontWeight: 500, color: "#475569", margin: 0, lineHeight: 1.6, fontFamily: "'Inter', sans-serif" }}>
+                    <strong style={{ color: "#1E293B" }}>Corporate Office:</strong> 510A, Devika Tower, Chander Nagar, Surya Nagar, Ghaziabad, Uttar Pradesh 201011
+                  </p>
+                </div>
               </div>
 
               <div className="corporate-office-contacts" style={{ display: "flex", gap: 24, flexWrap: "wrap", alignItems: "center" }}>
@@ -1228,7 +1285,7 @@ const ContactUsPage = () => {
             }}>
               <iframe
                 title="MessBee Corporate Office Location Map"
-                src="https://maps.google.com/maps?q=MessBee,+510A,+Chander+Nagar,+Surya+Nagar,+Ghaziabad,+Uttar+Pradesh+201011&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=MessBee,+510,+Devika+Tower,+HIG+Flats,+Chander+Nagar,+Surya+Nagar,+Ghaziabad,+Uttar+Pradesh+201011,+India&t=&z=16&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

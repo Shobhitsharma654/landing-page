@@ -3,6 +3,7 @@ import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
 import defaultLogo from "../../assets/logo.jpeg";
+import { MoveRight } from "lucide-react";
 
 const G  = "#16A34A";
 const GL = "#F0FDF4";
@@ -269,9 +270,21 @@ const HelpCenterPage = () => {
   };
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", color: "#0F172A", background: "#FFFFFF" }}>
+    <div className="help-center-page-wrapper" style={{ fontFamily: "'Inter', sans-serif", color: "#0F172A", background: "#FFFFFF" }}>
       {/* Dynamic CSS Styling & Media Queries matching Solution/Resource Pages */}
       <style>{`
+        /* ── PAGE-WIDE TYPOGRAPHY OVERRIDES (font-size & weight only — no color changes) ── */
+        .help-center-page-wrapper { font-family: 'Inter', 'Segoe UI', sans-serif !important; }
+        .help-center-page-wrapper h1,
+        .help-center-page-wrapper h2 { font-size: clamp(20px, 2.5vw, 32px) !important; font-weight: 900 !important; letter-spacing: -0.5px !important; }
+        .help-center-page-wrapper h3,
+        .help-center-page-wrapper h4 { font-size: 12px !important; font-weight: 800 !important; }
+        .help-center-page-wrapper p { font-size: 12px !important; font-weight: 400 !important; line-height: 1.7 !important; }
+        .help-center-page-wrapper .faq-card-question { font-size: 14.5px !important; font-weight: 700 !important; }
+        .help-center-page-wrapper .faq-card-answer { font-size: 12px !important; line-height: 1.8 !important; }
+        .help-center-page-wrapper .help-btn-primary { font-size: 12.5px !important; font-weight: 700 !important; padding: 8px 18px !important; }
+        .help-center-page-wrapper .help-btn-secondary { font-size: 12.5px !important; font-weight: 600 !important; padding: 10px 20px !important; }
+
         .help-glass-card {
           background: #FFFFFF;
           border: 1px solid #E2E8F0;
@@ -344,6 +357,37 @@ const HelpCenterPage = () => {
           gap: 14px;
         }
 
+        .help-trouble-flow {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          margin-bottom: 26px;
+        }
+        .help-flow-row-wrapper {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+        .help-flow-card {
+          background: #fff;
+          border: 1.5px solid #BBF7D0;
+          color: #16A34A;
+          border-radius: 6px;
+          padding: 8px 16px;
+          font-size: 12px;
+          font-weight: 700;
+        }
+        .help-flow-arrow {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0 6px;
+        }
+        .help-row-start-arrow {
+          display: none !important;
+        }
+
         /* Large Laptops / Desktops (1440px +) */
         @media (min-width: 1440px) {
           .help-hero-row { gap: 60px; }
@@ -377,13 +421,21 @@ const HelpCenterPage = () => {
           }
           .help-hero-graphic-box {
             margin-top: 10px !important;
-            min-width: 100% !important;
+            padding-top: 24px !important;
+            margin-bottom: 0 !important;
+            min-width: 0 !important;
             width: 100% !important;
+            justify-content: center !important;
           }
           .help-hero-graphic-card {
             transform: none !important;
-            border-radius: 18px !important;
-            padding: 20px 16px !important;
+            transform-origin: top center !important;
+            margin: 0 auto !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            border-radius: 20px !important;
+            padding: 22px 16px !important;
+            box-sizing: border-box !important;
           }
           .help-btn-primary, .help-btn-secondary {
             width: 100% !important;
@@ -397,9 +449,47 @@ const HelpCenterPage = () => {
             grid-template-columns: 1fr !important;
             gap: 14px !important;
           }
+          .help-trouble-flow {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 12px !important;
+            max-width: 100% !important;
+            margin-bottom: 26px !important;
+          }
+          .help-flow-row-wrapper {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 6px !important;
+            width: 100% !important;
+          }
+          .help-flow-card {
+            padding: 6px 14px !important;
+            font-size: 13px !important;
+            border-radius: 6px !important;
+            width: auto !important;
+            box-sizing: border-box !important;
+            text-align: center !important;
+          }
+          .help-flow-arrow {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 0 2px !important;
+          }
+          .help-row-end-arrow {
+            display: none !important;
+          }
+          .help-row-start-arrow {
+            display: inline-flex !important;
+          }
         }
 
         @media (max-width: 480px) {
+          .help-hero-graphic-card {
+            padding: 18px 12px !important;
+            border-radius: 18px !important;
+          }
           .help-section {
             padding: 20px 14px !important;
           }
@@ -415,6 +505,20 @@ const HelpCenterPage = () => {
           }
           .help-glass-card {
             padding: 16px 14px !important;
+          }
+          .help-trouble-flow {
+            gap: 8px !important;
+          }
+          .help-flow-row-wrapper {
+            gap: 4px !important;
+          }
+          .help-flow-card {
+            padding: 5px 10px !important;
+            font-size: 12px !important;
+          }
+          .help-flow-arrow svg {
+            width: 11px !important;
+            height: 11px !important;
           }
         }
 
@@ -443,8 +547,8 @@ const HelpCenterPage = () => {
       <section
         className="help-hero-section"
         style={{
-          marginTop: 40,
-          padding: "56px 6% 64px",
+          marginTop: 0,
+          padding: "92px 6% 48px",
           position: "relative",
           background: "linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)",
           overflow: "hidden",
@@ -464,7 +568,7 @@ const HelpCenterPage = () => {
           }}
         />
 
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", width: "100%", position: "relative", zIndex: 1 }}>
           <div className="help-hero-row">
             {/* Left Column: Text Copy */}
             <div className="help-hero-left" style={{ flex: 1.15 }}>
@@ -491,26 +595,26 @@ const HelpCenterPage = () => {
               {/* H1 Heading */}
               <h1
                 style={{
-                  fontSize: "clamp(24px, 2.6vw, 36px)",
+                  fontSize: "clamp(28px, 2.9vw, 42px)",
                   fontWeight: 900,
                   color: "#0F172A",
-                  lineHeight: 1.18,
-                  letterSpacing: "-1.2px",
-                  marginBottom: 12,
+                  lineHeight: 1.12,
+                  letterSpacing: "-1px",
+                  marginBottom: 14,
                 }}
               >
                 MessBee Help Center – <span style={{ color: "#16A34A" }}>Guides, Answers &amp; Support</span>
               </h1>
 
-              <p style={{ fontSize: 16, fontWeight: 800, color: "#16A34A", marginBottom: 16, letterSpacing: "-0.2px" }}>
+              <p style={{ fontSize: 16, fontWeight: 800, color: "#16A34A", marginBottom: 12, letterSpacing: "-0.2px" }}>
                 Get the Help You Need, When You Need It
               </p>
 
-              <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 20 }}>
+              <p style={{ fontSize: 14, color: "#64748B", lineHeight: 1.65, marginBottom: 16, maxWidth: 540 }}>
                 The MessBee Help Center gives you instant access to setup guides, how-to articles and troubleshooting resources — everything you need to get started and make the most of the platform.
               </p>
 
-              <div style={{ fontSize: 16, fontWeight: 900, color: "#15803D", marginBottom: 24, letterSpacing: "-0.3px" }}>
+              <div style={{ fontSize: 15, fontWeight: 800, color: "#15803D", marginBottom: 20, letterSpacing: "-0.2px" }}>
                 Find an Answer. Follow the Steps. Get Back to Business.
               </div>
 
@@ -529,20 +633,22 @@ const HelpCenterPage = () => {
             </div>
 
             {/* Right Column: Hero Graphic Box with Dark Forest Green Gradient */}
-            <div className="help-hero-graphic-box" style={{ flex: 0.85, minWidth: 320, position: "relative", marginTop: 60 }}>
+            <div className="help-hero-graphic-box" style={{ flex: 0.85, minWidth: 320, position: "relative", display: "flex", justifyContent: "center", paddingTop: 20, marginBottom: -120 }}>
               <div
                 className="help-hero-graphic-card"
                 style={{
                   background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
                   borderRadius: 24,
-                  padding: "24px 20px",
-                  boxShadow: "0 20px 50px rgba(2, 44, 34, 0.4)",
-                  border: "1px solid rgba(52, 211, 153, 0.25)",
+                  padding: 28,
+                  boxShadow: "0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)",
+                  border: "1px solid rgba(34,197,94,.2)",
                   color: "#FFFFFF",
                   position: "relative",
+                  width: "100%",
+                  maxWidth: 460,
+                  transform: "scale(0.75)",
+                  transformOrigin: "top center",
                   overflow: "hidden",
-                  transform: "scale(0.88)",
-                  transformOrigin: "top right",
                 }}
               >
                 <div
@@ -560,23 +666,23 @@ const HelpCenterPage = () => {
                 />
 
                 {/* Header featuring Official MessBee Logo */}
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20, borderBottom: "1px solid rgba(255,255,255,0.12)", paddingBottom: 14 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                    <div style={{ width: 34, height: 34, borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.2)", flexShrink: 0, background: "#FFFFFF", padding: 2 }}>
-                      <img src={defaultLogo} alt="MessBee" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 28, borderBottom: "1px solid rgba(255,255,255,0.12)", paddingBottom: 16 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                    <div style={{ width: 40, height: 40, borderRadius: 10, overflow: "hidden", border: "1px solid rgba(255,255,255,0.2)", flexShrink: 0, background: "#FFFFFF", padding: 4 }}>
+                      <img src={defaultLogo} alt="MessBee" style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius: 6 }} />
                     </div>
                     <div>
-                      <div style={{ fontSize: 13, fontWeight: 900, color: "#FFFFFF" }}>MessBee Support Desk</div>
-                      <div style={{ fontSize: 10, color: "#4ADE80", fontWeight: 700 }}>24/7 Documentation Hub</div>
+                      <div style={{ fontSize: 17, fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.3px" }}>MessBee Support Desk</div>
+                      <div style={{ fontSize: 11, color: "#34D399", fontWeight: 700 }}>24/7 Documentation Hub</div>
                     </div>
                   </div>
-                  <span style={{ fontSize: 10, background: "rgba(52,211,153,0.2)", color: "#34D399", padding: "3px 10px", borderRadius: 20, fontWeight: 700, border: "1px solid rgba(52,211,153,0.3)" }}>
+                  <span style={{ fontSize: 11, background: "rgba(16,185,129,0.15)", color: "#34D399", padding: "6px 12px", borderRadius: 20, fontWeight: 700, border: "1px solid rgba(16,185,129,0.4)" }}>
                     Official Guides
                   </span>
                 </div>
 
                 {/* Help Nodes Grid */}
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 16 }}>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 24 }}>
                   {[
                     { label: "Getting Started", icon: "⚙️" },
                     { label: "CRM & Contacts", icon: "📊" },
@@ -586,26 +692,26 @@ const HelpCenterPage = () => {
                     <div
                       key={i}
                       style={{
-                        background: "rgba(255,255,255,0.06)",
-                        border: "1px solid rgba(52,211,153,0.2)",
+                        background: "rgba(16,185,129,0.09)",
+                        border: "1px solid rgba(16,185,129,0.25)",
                         borderRadius: 14,
-                        padding: 12,
+                        padding: "14px 16px",
                         display: "flex",
                         flexDirection: "column",
                         gap: 4,
                       }}
                     >
-                      <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                        <span style={{ fontSize: 18 }}>{node.icon}</span>
-                        <span style={{ fontSize: 12, fontWeight: 800, color: "#FFFFFF" }}>{node.label}</span>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                        <span style={{ fontSize: 16 }}>{node.icon}</span>
+                        <span style={{ fontSize: 13, fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.2px" }}>{node.label}</span>
                       </div>
-                      <span style={{ fontSize: 10, color: "#34D399", fontWeight: 700 }}>Step-by-Step Help</span>
+                      <span style={{ fontSize: 11, color: "#34D399", fontWeight: 700 }}>Step-by-Step Help</span>
                     </div>
                   ))}
                 </div>
 
-                <div style={{ background: "rgba(52,211,153,0.15)", border: "1px solid rgba(52,211,153,0.3)", borderRadius: 12, padding: 12, textAlign: "center" }}>
-                  <span style={{ fontSize: 11.5, fontWeight: 800, color: "#4ADE80" }}>
+                <div style={{ background: "rgba(16,185,129,0.09)", border: "1px solid rgba(16,185,129,0.25)", borderRadius: 12, padding: "14px", textAlign: "center" }}>
+                  <span style={{ fontSize: 12, fontWeight: 800, color: "#34D399" }}>
                     Find an Answer. Follow the Steps. Get Back to Business.
                   </span>
                 </div>
@@ -637,7 +743,7 @@ const HelpCenterPage = () => {
             >
               Knowledge Base
             </div>
-            <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               How Can We <span style={{ color: "#16A34A" }}>Help?</span>
             </h2>
           </div>
@@ -743,7 +849,7 @@ const HelpCenterPage = () => {
             >
               Popular Guides
             </div>
-            <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 10 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 10 }}>
               Quick Answers to Common Questions
             </h2>
             <p style={{ fontSize: 13.5, color: "#64748B" }}>
@@ -797,7 +903,7 @@ const HelpCenterPage = () => {
       <section style={{ padding: "60px 6%", background: GL, borderTop: `1px solid ${GB}`, borderBottom: `1px solid ${GB}` }}>
         <div style={{ maxWidth: 1060, margin: "0 auto", textAlign: "center" }}>
           <Pill>Issue Resolution</Pill>
-          <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 900, color: D2, letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 16 }}>
+          <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: D2, letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 16 }}>
             Troubleshooting<br />
             <span style={{ color: G }}>Something isn't working as expected?</span>
           </h2>
@@ -805,17 +911,44 @@ const HelpCenterPage = () => {
             Our troubleshooting guides can help you identify and resolve common issues related to:
           </p>
 
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: 0, marginBottom: 26 }}>
-            {TROUBLESHOOTING_NODES.map((node, i, arr) => (
-              <React.Fragment key={node}>
-                <span style={{ background: "#fff", border: `1.5px solid ${GB}`, color: G, borderRadius: 6, padding: "8px 16px", fontSize: 12, fontWeight: 700 }}>
-                  {node}
-                </span>
-                {i < arr.length - 1 && (
-                  <span style={{ color: "#94A3B8", fontSize: 15, padding: "0 6px" }}>→</span>
-                )}
-              </React.Fragment>
-            ))}
+          <div className="help-trouble-flow">
+            <div className="help-flow-row-wrapper">
+              <span className="help-flow-card">Account</span>
+              <span className="help-flow-arrow">
+                <MoveRight size={14} color="#16A34A" strokeWidth={3} />
+              </span>
+              <span className="help-flow-card">Integrations</span>
+              <span className="help-flow-arrow help-row-end-arrow">
+                <MoveRight size={14} color="#16A34A" strokeWidth={3} />
+              </span>
+            </div>
+            <div className="help-flow-row-wrapper">
+              <span className="help-flow-arrow help-row-start-arrow">
+                <MoveRight size={14} color="#16A34A" strokeWidth={3} />
+              </span>
+              <span className="help-flow-card">Messaging</span>
+              <span className="help-flow-arrow">
+                <MoveRight size={14} color="#16A34A" strokeWidth={3} />
+              </span>
+              <span className="help-flow-card">Campaigns</span>
+              <span className="help-flow-arrow">
+                <MoveRight size={14} color="#16A34A" strokeWidth={3} />
+              </span>
+              <span className="help-flow-card">Automation</span>
+              <span className="help-flow-arrow help-row-end-arrow">
+                <MoveRight size={14} color="#16A34A" strokeWidth={3} />
+              </span>
+            </div>
+            <div className="help-flow-row-wrapper">
+              <span className="help-flow-arrow help-row-start-arrow">
+                <MoveRight size={14} color="#16A34A" strokeWidth={3} />
+              </span>
+              <span className="help-flow-card">Store</span>
+              <span className="help-flow-arrow">
+                <MoveRight size={14} color="#16A34A" strokeWidth={3} />
+              </span>
+              <span className="help-flow-card">Payments</span>
+            </div>
           </div>
 
           <p style={{ fontSize: 13, color: MU, marginBottom: 24, fontWeight: 700 }}>
@@ -849,7 +982,7 @@ const HelpCenterPage = () => {
             >
               Release Notes
             </div>
-            <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 10 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 10 }}>
               Product Updates
             </h2>
             <p style={{ fontSize: 13.5, color: "#64748B", maxWidth: 640, margin: "0 auto" }}>
@@ -922,7 +1055,7 @@ const HelpCenterPage = () => {
           >
             Direct Assistance
           </div>
-          <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+          <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
             Need More Help?
           </h2>
 
@@ -953,7 +1086,7 @@ const HelpCenterPage = () => {
         <div style={{ maxWidth: 760, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 36 }}>
             <Pill>FAQ</Pill>
-            <h2 style={{ fontSize: "clamp(18px, 2.5vw, 30px)", fontWeight: 900, color: D2, letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: D2, letterSpacing: "-1px" }}>
               Frequently Asked Questions
             </h2>
           </div>

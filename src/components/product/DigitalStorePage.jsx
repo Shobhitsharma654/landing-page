@@ -143,6 +143,20 @@ const Check = () => (
 
 const CSS = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  /* ── PAGE-WIDE TYPOGRAPHY OVERRIDES (font-size & weight only — no color changes) ── */
+  .ds-page-wrapper { font-family: 'Inter', 'Segoe UI', sans-serif !important; }
+  .ds-page-wrapper h1,
+  .ds-page-wrapper h2 { font-size: clamp(20px, 2.5vw, 32px) !important; font-weight: 900 !important; letter-spacing: -0.5px !important; }
+  .ds-page-wrapper h3,
+  .ds-page-wrapper h4 { font-size: 12px !important; font-weight: 800 !important; }
+  .ds-page-wrapper p { font-size: 12px !important; font-weight: 400 !important; line-height: 1.7 !important; }
+  .ds-page-wrapper .fqt { font-size: 14.5px !important; font-weight: 700 !important; }
+  .ds-page-wrapper .ds-faq-answer { font-size: 12px !important; line-height: 1.8 !important; }
+  .ds-page-wrapper .dsp { font-size: 12.5px !important; font-weight: 700 !important; padding: 8px 18px !important; }
+  .ds-page-wrapper .dsd { font-size: 12.5px !important; font-weight: 600 !important; padding: 10px 20px !important; }
+
+  /* ── COMPONENT STYLES ── */
   .dsp { background:#16A34A;color:#fff;border:none;border-radius:40px;padding:11px 26px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;box-shadow:0 4px 18px rgba(22,163,74,.3); }
   .dsp:hover { background:#15803D;transform:translateY(-1px);box-shadow:0 6px 24px rgba(22,163,74,.4); }
   .dsd { background:#fff;color:#111827;border:1.5px solid #F1F5F9;border-radius:40px;padding:11px 26px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s; }
@@ -175,8 +189,33 @@ const CSS = `
     .ds-nav { width:100%!important; padding-right:0!important; margin-bottom:16px!important; }
     .ds-why { grid-template-columns:repeat(2,1fr)!important; }
     .ds-in { grid-template-columns:1fr!important; gap:24px!important; }
-    .ds-vis-card { max-width:340px!important; margin:0 auto!important; }
+    .ds-vis-card { max-width:440px!important; margin:0 auto!important; }
   }
+  @media(max-width:768px){
+    .ds-hero-section {
+      padding-top: 84px !important;
+      padding-bottom: 28px !important;
+      padding-left: 16px !important;
+      padding-right: 16px !important;
+    }
+    .ds-hr {
+      width: 100% !important;
+      justify-content: center !important;
+      padding-top: 14px !important;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+    }
+    .ds-hr > div {
+      transform: none !important;
+      transform-origin: top center !important;
+      margin: 0 auto !important;
+      max-width: 100% !important;
+      padding: 24px 16px !important;
+      margin-top: 0 !important;
+    }
+    .ds-vis-card {
+      max-width: 100% !important;
+    }
   @media(max-width:640px){
     .ds-fg { grid-template-columns:1fr!important; }
     .ds-why { grid-template-columns:1fr!important; }
@@ -184,7 +223,14 @@ const CSS = `
     .ds-ctr { display:flex!important; flex-direction:row!important; align-items:center!important; gap:10px!important; flex-wrap:wrap!important; }
     .dsp { padding:10px 18px!important; font-size:12px!important; }
     .ds-hr { width:100%!important; justify-content:center!important; margin-top:24px!important; }
-    .ds-hr > div { transform:none!important; transform-origin:top center!important; margin:0 auto!important; max-width:340px!important; }
+    .ds-hr > div { transform:none!important; transform-origin:top center!important; margin:0 auto!important; width:100%!important; max-width:100%!important; padding:20px 14px!important; box-sizing:border-box!important; }
+    .ds-vis-card { max-width:100%!important; width:100%!important; box-sizing:border-box!important; }
+  }
+  @media(max-width:480px){
+    .ds-fg { grid-template-columns:1fr!important; }
+    .ds-why { grid-template-columns:1fr!important; }
+    .ds-eco { grid-template-columns:repeat(2,1fr)!important; }
+    .ds-hr > div { padding:18px 12px!important; border-radius:18px!important; }
   }
   @media(hover:none){
     .dsf:hover,.why-card:hover { transform:none!important; }
@@ -200,7 +246,7 @@ const DigitalStorePage = () => {
   const step = STEPS[activeStep];
 
   return (
-    <div style={{ fontFamily:"'Inter','Segoe UI',sans-serif", background:"#fff", color:D, overflowX:"hidden" }}>
+    <div className="ds-page-wrapper" style={{ fontFamily:"'Inter','Segoe UI',sans-serif", background:"#fff", color:D, overflowX:"hidden" }}>
       <style>{CSS}</style>
       <title>Digital Store for Businesses | Online Storefront & Commerce | MessBee</title>
       <meta name="description" content="Create your digital storefront with MessBee. Showcase products and services, manage customer enquiries, orders and supported payments while connecting your store with CRM and automation." />
@@ -208,23 +254,23 @@ const DigitalStorePage = () => {
       <Navbar />
 
       {/* ── HERO ── */}
-      <section style={{ background:"#fff", padding:"118px 6% 60px" }}>
+      <section className="ds-hero-section" style={{ background:"#fff", padding:"92px 6% 48px" }}>
         <div style={{ maxWidth:1200, margin:"0 auto" }}>
           <div style={{ display:"flex", flexWrap:"wrap", alignItems:"flex-start", gap:48 }}>
             <div style={{ flex:"1 1 420px", minWidth:280 }}>
-              <div style={{ display:"inline-flex", alignItems:"center", gap:6, background:GL, border:`1px solid ${GB}`, borderRadius:40, padding:"5px 14px", marginBottom:28 }}>
+              <div style={{ display:"inline-flex", alignItems:"center", gap:6, background:GL, border:`1px solid ${GB}`, borderRadius:40, padding:"5px 14px", marginBottom:16 }}>
                 <div style={{ width:6, height:6, borderRadius:"50%", background:G }}/>
                 <span style={{ fontSize:11.5, fontWeight:600, color:G }}>MessBee Digital Store</span>
               </div>
-              <h1 style={{ fontSize:"clamp(28px,3vw,42px)", fontWeight:900, color:D2, letterSpacing:"-1px", lineHeight:1.1, marginBottom:16 }}>
+              <h1 style={{ fontSize:"clamp(28px, 2.9vw, 42px)", fontWeight:900, color:D2, letterSpacing:"-1px", lineHeight:1.12, marginBottom:16 }}>
                 Build Your Digital<br/>
                 <span style={{ color:G }}>Storefront</span>
               </h1>
 
-              <p style={{ fontSize:15, color:MU, lineHeight:1.75, maxWidth:500, marginBottom:32 }}>
+              <p style={{ fontSize:15, color:MU, lineHeight:1.75, maxWidth:500, marginBottom:24 }}>
                 MessBee Digital Store helps businesses create and manage their digital presence for products and services, showcase their offerings, connect with customers and manage commerce workflows from one connected platform.
               </p>
-              <div style={{ display:"flex", flexWrap:"wrap", gap:8, marginBottom:36 }}>
+              <div style={{ display:"flex", flexWrap:"wrap", gap:8, marginBottom:32 }}>
                 {["Showcase.","Sell.","Connect.","Grow."].map(t => (
                   <span key={t} style={{ background:BS, border:"1px solid #E5E7EB", color:MU, borderRadius:40, padding:"4px 12px", fontSize:12, fontWeight:600 }}>{t}</span>
                 ))}
@@ -239,7 +285,7 @@ const DigitalStorePage = () => {
             </div>
 
             {/* Storefront mockup */}
-            <div className="ds-hr" style={{ flex:"1 1 340px", minWidth:280, display:"flex", justifyContent:"center", marginTop:76 }}>
+            <div className="ds-hr" style={{ flex:"1 1 340px", minWidth:280, display:"flex", justifyContent:"center", paddingTop: "70px", marginBottom: "-140px" }}>
               <div style={{ background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)", borderRadius:24, padding:28, boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)", border:"1px solid rgba(34,197,94,.2)", width:"100%", maxWidth:460, transform:"scale(0.75)", transformOrigin:"top center", overflow:"hidden" }}>
                 {/* Header */}
                 <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:28 }}>
@@ -289,7 +335,7 @@ const DigitalStorePage = () => {
       <section style={{ background:BA, padding:"48px 6%", borderTop:`1px solid ${BS}` }}>
         <div style={{ maxWidth:860, margin:"0 auto", textAlign:"center" }}>
           <Pill>Your Business, Online</Pill>
-          <h2 style={{ fontSize:"clamp(18px,2vw,28px)", fontWeight:900, color:D2, letterSpacing:"-1px", marginBottom:10 }}>
+          <h2 style={{ fontSize:"clamp(20px, 2.5vw, 32px)", fontWeight:900, color:D2, letterSpacing:"-1px", marginBottom:10 }}>
             A Digital Storefront for Every Business
           </h2>
           <p style={{ fontSize:13, color:MU, lineHeight:1.75, maxWidth:560, margin:"0 auto" }}>
@@ -303,7 +349,7 @@ const DigitalStorePage = () => {
         <div style={{ maxWidth:1160, margin:"0 auto" }}>
           <div style={{ textAlign:"center", marginBottom:40 }}>
             <Pill>Platform Capabilities</Pill>
-            <h2 style={{ fontSize:"clamp(18px,2.5vw,30px)", fontWeight:900, color:D2, letterSpacing:"-1px", marginBottom:10 }}>
+            <h2 style={{ fontSize:"clamp(20px, 2.5vw, 32px)", fontWeight:900, color:D2, letterSpacing:"-1px", marginBottom:10 }}>
               Manage Your Digital Store
             </h2>
           </div>
@@ -324,7 +370,7 @@ const DigitalStorePage = () => {
         <div style={{ maxWidth:1060, margin:"0 auto" }}>
           <div style={{ textAlign:"center", marginBottom:36 }}>
             <Pill>Deep Dive</Pill>
-            <h2 style={{ fontSize:"clamp(18px,2.5vw,30px)", fontWeight:900, color:D2, letterSpacing:"-1px" }}>
+            <h2 style={{ fontSize:"clamp(20px, 2.5vw, 32px)", fontWeight:900, color:D2, letterSpacing:"-1px" }}>
               Digital Store Capabilities
             </h2>
           </div>
@@ -352,10 +398,10 @@ const DigitalStorePage = () => {
                     {step.flow && (
                       <div style={{ marginBottom:14 }}>
                         <div style={{ fontSize:11, color:MU, fontWeight:600, marginBottom:6, textTransform:"uppercase", letterSpacing:1 }}>Workflow</div>
-                        <div style={{ display:"flex", alignItems:"center", flexWrap:"wrap", gap:0 }}>
+                        <div style={{ display:"flex", alignItems:"center", flexWrap:"wrap", gap:"8px 3px" }}>
                           {step.flow.map((f,i) => (
                             <React.Fragment key={f}>
-                              <span style={{ background:GL, border:`1.5px solid ${GB}`, color:G, borderRadius:6, padding:"4px 10px", fontSize:11, fontWeight:700 }}>{f}</span>
+                              <span style={{ background:GL, border:`1.5px solid ${GB}`, color:G, borderRadius:6, padding:"4px 10px", fontSize:11, fontWeight:700, display:"inline-block" }}>{f}</span>
                               {i<step.flow.length-1 && <span style={{ color:"#94A3B8", fontSize:13, padding:"0 3px" }}>→</span>}
                             </React.Fragment>
                           ))}
@@ -408,7 +454,7 @@ const DigitalStorePage = () => {
       <section style={{ background:GL, padding:"48px 6%", borderTop:`1px solid ${GB}`, borderBottom:`1px solid ${GB}` }}>
         <div style={{ maxWidth:1060, margin:"0 auto", textAlign:"center" }}>
           <Pill>Connected Ecosystem</Pill>
-          <h2 style={{ fontSize:"clamp(18px,2.5vw,30px)", fontWeight:900, color:D2, letterSpacing:"-1px", marginBottom:10 }}>
+          <h2 style={{ fontSize:"clamp(20px, 2.5vw, 32px)", fontWeight:900, color:D2, letterSpacing:"-1px", marginBottom:10 }}>
             Connect Your Digital Store With MessBee
           </h2>
           <p style={{ fontSize:13, color:MU, lineHeight:1.7, maxWidth:480, margin:"0 auto 28px" }}>
@@ -423,7 +469,7 @@ const DigitalStorePage = () => {
               </div>
             ))}
           </div>
-          <div style={{ marginTop:24, display:"flex", alignItems:"center", justifyContent:"center", flexWrap:"wrap", gap:0 }}>
+          <div style={{ marginTop:24, display:"flex", alignItems:"center", justifyContent:"center", flexWrap:"wrap", gap:"10px 6px" }}>
             {["Store","Customer","CRM","Communication","Order","Payment","Follow-Up"].map((item,i,arr) => (
               <React.Fragment key={item}>
                 <span style={{ background:"#fff", border:`1.5px solid ${GB}`, color:G, borderRadius:6, padding:"4px 10px", fontSize:11, fontWeight:700 }}>{item}</span>
@@ -439,7 +485,7 @@ const DigitalStorePage = () => {
         <div style={{ maxWidth:1100, margin:"0 auto" }}>
           <div style={{ textAlign:"center", marginBottom:36 }}>
             <Pill>Why MessBee</Pill>
-            <h2 style={{ fontSize:"clamp(18px,2.5vw,30px)", fontWeight:900, color:D2, letterSpacing:"-1px" }}>
+            <h2 style={{ fontSize:"clamp(20px, 2.5vw, 32px)", fontWeight:900, color:D2, letterSpacing:"-1px" }}>
               Why Businesses Choose MessBee Digital Store
             </h2>
           </div>
@@ -462,7 +508,7 @@ const DigitalStorePage = () => {
             <div style={{ width:7, height:7, borderRadius:"50%", background:G }}/>
             <span style={{ fontSize:12, fontWeight:600, color:G }}>Built for Indian Businesses</span>
           </div>
-          <h2 style={{ fontSize:"clamp(18px,2.5vw,30px)", fontWeight:900, color:D2, letterSpacing:"-1px", marginBottom:12 }}>
+          <h2 style={{ fontSize:"clamp(20px, 2.5vw, 32px)", fontWeight:900, color:D2, letterSpacing:"-1px", marginBottom:12 }}>
             From Local Retailers to Growing Online Businesses
           </h2>
           <p style={{ fontSize:13, color:MU, lineHeight:1.7, maxWidth:580, margin:"0 auto 20px" }}>
@@ -486,7 +532,7 @@ const DigitalStorePage = () => {
       <section style={{ background:"#fff", padding:"48px 6%", borderTop:`1px solid ${BS}` }}>
         <div style={{ maxWidth:760, margin:"0 auto", textAlign:"center" }}>
           <Pill>Your Customer Relationship</Pill>
-          <h2 style={{ fontSize:"clamp(18px,2.5vw,28px)", fontWeight:900, color:D2, letterSpacing:"-1px", marginBottom:12 }}>
+          <h2 style={{ fontSize:"clamp(20px, 2.5vw, 32px)", fontWeight:900, color:D2, letterSpacing:"-1px", marginBottom:12 }}>
             Your Digital Store. Your Customer Relationship.
           </h2>
           <p style={{ fontSize:13, color:MU, lineHeight:1.75, maxWidth:580, margin:"0 auto 16px" }}>
@@ -503,7 +549,7 @@ const DigitalStorePage = () => {
         <div style={{ maxWidth:760, margin:"0 auto" }}>
           <div style={{ textAlign:"center", marginBottom:36 }}>
             <Pill>FAQ</Pill>
-            <h2 style={{ fontSize:"clamp(18px,2.5vw,30px)", fontWeight:900, color:D2, letterSpacing:"-1px" }}>
+            <h2 style={{ fontSize:"clamp(20px, 2.5vw, 32px)", fontWeight:900, color:D2, letterSpacing:"-1px" }}>
               Frequently Asked Questions
             </h2>
           </div>
@@ -517,7 +563,7 @@ const DigitalStorePage = () => {
                   </svg>
                 </div>
               </div>
-              {openFaq===i && <div style={{ fontSize:13, color:MU, lineHeight:1.8, paddingBottom:16 }}>{faq.a}</div>}
+              {openFaq===i && <div className="ds-faq-answer" style={{ fontSize:13, color:MU, lineHeight:1.8, paddingBottom:16 }}>{faq.a}</div>}
             </div>
           ))}
         </div>

@@ -382,9 +382,25 @@ const FaqPage = () => {
   });
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "hidden", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+    <div className="faq-page-wrapper" style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "hidden", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+        /* ── PAGE-WIDE TYPOGRAPHY OVERRIDES (font-size & weight only — no color changes) ── */
+        .faq-page-wrapper { font-family: 'Inter', 'Segoe UI', sans-serif !important; }
+        .faq-page-wrapper h1,
+        .faq-page-wrapper h2 { font-size: clamp(20px, 2.5vw, 32px) !important; font-weight: 900 !important; letter-spacing: -0.5px !important; }
+        .faq-page-wrapper h3,
+        .faq-page-wrapper h4 { font-size: 12px !important; font-weight: 800 !important; }
+        .faq-page-wrapper p { font-size: 12px !important; font-weight: 400 !important; line-height: 1.7 !important; }
+        .faq-page-wrapper .faq-card-question { font-size: 14.5px !important; font-weight: 700 !important; }
+        .faq-page-wrapper .faq-card-body p { font-size: 12px !important; font-weight: 400 !important; line-height: 1.7 !important; }
+        .faq-page-wrapper .faq-card-body span { font-size: 12px !important; }
+        .faq-page-wrapper .category-pill-btn { font-size: 12px !important; }
+        .faq-page-wrapper input { font-size: 12px !important; }
+        .faq-page-wrapper .faq-btn-primary { font-size: 12.5px !important; font-weight: 700 !important; padding: 8px 18px !important; }
+        .faq-page-wrapper .faq-btn-secondary { font-size: 12.5px !important; font-weight: 600 !important; padding: 10px 20px !important; }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         /* ── BUTTONS ── */
@@ -505,13 +521,21 @@ const FaqPage = () => {
           }
           .faq-hero-graphic-box {
             margin-top: 10px !important;
-            min-width: 100% !important;
+            padding-top: 24px !important;
+            margin-bottom: 0 !important;
+            min-width: 0 !important;
             width: 100% !important;
+            justify-content: center !important;
           }
           .faq-hero-graphic-card {
             transform: none !important;
-            border-radius: 18px !important;
-            padding: 20px 16px !important;
+            transform-origin: top center !important;
+            margin: 0 auto !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            border-radius: 20px !important;
+            padding: 22px 16px !important;
+            box-sizing: border-box !important;
           }
           .faq-btn-primary, .faq-btn-secondary {
             width: 100% !important;
@@ -545,6 +569,10 @@ const FaqPage = () => {
         }
 
         @media (max-width: 480px) {
+          .faq-hero-graphic-card {
+            padding: 18px 12px !important;
+            border-radius: 18px !important;
+          }
           .faq-hero-section {
             margin-top: 0px !important;
             padding-top: 78px !important;
@@ -588,8 +616,8 @@ const FaqPage = () => {
       <section
         className="faq-hero-section"
         style={{
-          marginTop: 40,
-          padding: "56px 6% 64px",
+          marginTop: 0,
+          padding: "92px 6% 48px",
           position: "relative",
           background: "linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)",
           overflow: "hidden",
@@ -610,7 +638,7 @@ const FaqPage = () => {
           }}
         />
 
-        <div className="faq-hero-row" style={{ maxWidth: 1280, margin: "0 auto", position: "relative", zIndex: 1 }}>
+        <div className="faq-hero-row" style={{ maxWidth: 1200, margin: "0 auto", width: "100%", position: "relative", zIndex: 1 }}>
           {/* Left Text Column */}
           <div className="faq-hero-left" style={{ flex: 1.1, minWidth: 320 }}>
             {/* Provided Badge: FAQs */}
@@ -626,7 +654,7 @@ const FaqPage = () => {
                 fontSize: 10.5,
                 fontWeight: 800,
                 letterSpacing: "1px",
-                marginBottom: 18,
+                marginBottom: 16,
                 textTransform: "uppercase",
               }}
             >
@@ -650,17 +678,17 @@ const FaqPage = () => {
             </h1>
 
             {/* Provided Sub-headline */}
-            <p style={{ fontSize: "clamp(15px, 1.4vw, 18px)", fontWeight: 800, color: "#16A34A", marginBottom: 14, letterSpacing: "-0.3px" }}>
+            <p style={{ fontSize: "clamp(15px, 1.4vw, 18px)", fontWeight: 800, color: "#16A34A", marginBottom: 12, letterSpacing: "-0.3px" }}>
               Frequently Asked Questions About MessBee
             </p>
 
             {/* Provided Paragraph 1 */}
-            <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 12, maxWidth: 540 }}>
+            <p style={{ fontSize: 14, color: "#64748B", lineHeight: 1.65, marginBottom: 10, maxWidth: 540 }}>
               Have questions about MessBee, its products, integrations or business features? Find answers to some of the most common questions below.
             </p>
 
             {/* Provided Paragraph 2 */}
-            <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 26, maxWidth: 540 }}>
+            <p style={{ fontSize: 14, color: "#64748B", lineHeight: 1.65, marginBottom: 20, maxWidth: 540 }}>
               If you cannot find what you are looking for, visit the Help Center or contact our support team.
             </p>
 
@@ -681,20 +709,22 @@ const FaqPage = () => {
           </div>
 
           {/* Right Column: Visual FAQ Graphic Node Box with Official MessBee Logo */}
-          <div className="faq-hero-graphic-box" style={{ flex: 0.85, minWidth: 320, position: "relative", marginTop: 60 }}>
+          <div className="faq-hero-graphic-box" style={{ flex: 0.85, minWidth: 320, position: "relative", display: "flex", justifyContent: "center", paddingTop: 20, marginBottom: -120 }}>
             <div
               className="faq-hero-graphic-card"
               style={{
                 background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
                 borderRadius: 24,
-                padding: "24px 20px",
-                boxShadow: "0 20px 50px rgba(2, 44, 34, 0.4)",
-                border: "1px solid rgba(52, 211, 153, 0.25)",
+                padding: 28,
+                boxShadow: "0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)",
+                border: "1px solid rgba(34,197,94,.2)",
                 color: "#FFFFFF",
                 position: "relative",
+                width: "100%",
+                maxWidth: 460,
+                transform: "scale(0.75)",
+                transformOrigin: "top center",
                 overflow: "hidden",
-                transform: "scale(0.88)",
-                transformOrigin: "top right",
               }}
             >
               {/* Outer Pulse aura background */}
@@ -713,23 +743,23 @@ const FaqPage = () => {
               />
 
               {/* Header featuring Official MessBee Logo */}
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20, borderBottom: "1px solid rgba(255,255,255,0.12)", paddingBottom: 14 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                  <div style={{ width: 34, height: 34, borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.2)", flexShrink: 0, background: "#FFFFFF", padding: 2 }}>
-                    <img src={defaultLogo} alt="MessBee" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 28, borderBottom: "1px solid rgba(255,255,255,0.12)", paddingBottom: 16 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <div style={{ width: 40, height: 40, borderRadius: 10, overflow: "hidden", border: "1px solid rgba(255,255,255,0.2)", flexShrink: 0, background: "#FFFFFF", padding: 4 }}>
+                    <img src={defaultLogo} alt="MessBee" style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius: 6 }} />
                   </div>
                   <div>
-                    <div style={{ fontSize: 13, fontWeight: 900, color: "#FFFFFF" }}>MessBee Knowledge Base</div>
-                    <div style={{ fontSize: 10, color: "#4ADE80", fontWeight: 700 }}>Instant Answers &amp; Documentation</div>
+                    <div style={{ fontSize: 17, fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.3px" }}>MessBee Knowledge Base</div>
+                    <div style={{ fontSize: 11, color: "#34D399", fontWeight: 700 }}>Instant Answers &amp; Documentation</div>
                   </div>
                 </div>
-                <span style={{ fontSize: 10, background: "rgba(52,211,153,0.2)", color: "#34D399", padding: "3px 10px", borderRadius: 20, fontWeight: 700, border: "1px solid rgba(52,211,153,0.3)" }}>
+                <span style={{ fontSize: 11, background: "rgba(16,185,129,0.15)", color: "#34D399", padding: "6px 12px", borderRadius: 20, fontWeight: 700, border: "1px solid rgba(16,185,129,0.4)" }}>
                   24/7 Access
                 </span>
               </div>
 
               {/* Fast Category Quick Nodes */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 16 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 24 }}>
                 {[
                   { label: "CRM & Contacts", icon: "👥", count: "4 Questions" },
                   { label: "WhatsApp API", icon: "💬", count: "5 Questions" },
@@ -739,21 +769,20 @@ const FaqPage = () => {
                   <div
                     key={i}
                     style={{
-                      background: "rgba(255,255,255,0.05)",
-                      border: "1px solid rgba(255,255,255,0.1)",
-                      borderRadius: 12,
-                      padding: 12,
+                      background: "rgba(16,185,129,0.09)",
+                      border: "1px solid rgba(16,185,129,0.25)",
+                      borderRadius: 14,
+                      padding: "14px 16px",
                       display: "flex",
                       flexDirection: "column",
                       gap: 4,
-                      backdropFilter: "blur(4px)",
                     }}
                   >
-                    <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                      <span style={{ fontSize: 18 }}>{item.icon}</span>
-                      <span style={{ fontSize: 12, fontWeight: 800, color: "#FFFFFF" }}>{item.label}</span>
+                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                      <span style={{ fontSize: 16 }}>{item.icon}</span>
+                      <span style={{ fontSize: 13, fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.2px" }}>{item.label}</span>
                     </div>
-                    <span style={{ fontSize: 10, color: "#4ADE80", fontWeight: 700 }}>{item.count}</span>
+                    <span style={{ fontSize: 11, color: "#34D399", fontWeight: 700 }}>{item.count}</span>
                   </div>
                 ))}
               </div>
@@ -880,7 +909,7 @@ const FaqPage = () => {
       >
         <div style={{ maxWidth: 860, margin: "0 auto", textAlign: "center" }}>
           {/* Title from Prompt */}
-          <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 14 }}>
+          <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 14 }}>
             Still Have Questions?
           </h2>
 

@@ -65,16 +65,16 @@ const LIBRARY_RESOURCES = [
 
 // 2. Learn What Matters to Your Business (10 Topic Items from prompt)
 const BUSINESS_TOPICS = [
-  "How to manage customer relationships",
-  "How to improve lead follow-ups",
-  "How WhatsApp Business works",
-  "How to plan customer communication",
-  "How marketing automation can save time",
-  "How AI can support everyday business tasks",
-  "How to build a digital presence",
-  "How to improve customer retention",
-  "How to organize business workflows",
-  "How to use data more effectively",
+  { text: "How to manage customer relationships", icon: "👥" },
+  { text: "How to improve lead follow-ups", icon: "💬" },
+  { text: "How WhatsApp Business works", icon: "📱" },
+  { text: "How to plan customer communication", icon: "📅" },
+  { text: "How marketing automation can save time", icon: "⚙️" },
+  { text: "How AI can support everyday business tasks", icon: "🤖" },
+  { text: "How to build a digital presence", icon: "🌐" },
+  { text: "How to improve customer retention", icon: "🎯" },
+  { text: "How to organize business workflows", icon: "📁" },
+  { text: "How to use data more effectively", icon: "📈" },
 ];
 
 // 3. Resources for Different Business Stages (4 Stage Cards from prompt)
@@ -252,9 +252,21 @@ const BusinessLibraryPage = () => {
   };
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", color: "#0F172A", background: "#FFFFFF" }}>
+    <div className="business-library-page-wrapper" style={{ fontFamily: "'Inter', sans-serif", color: "#0F172A", background: "#FFFFFF" }}>
       {/* Dynamic CSS Styling & Media Queries matching Solution/Resource Pages */}
       <style>{`
+        /* ── PAGE-WIDE TYPOGRAPHY OVERRIDES (font-size & weight only — no color changes) ── */
+        .business-library-page-wrapper { font-family: 'Inter', 'Segoe UI', sans-serif !important; }
+        .business-library-page-wrapper h1,
+        .business-library-page-wrapper h2 { font-size: clamp(20px, 2.5vw, 32px) !important; font-weight: 900 !important; letter-spacing: -0.5px !important; }
+        .business-library-page-wrapper h3,
+        .business-library-page-wrapper h4 { font-size: 12px !important; font-weight: 800 !important; }
+        .business-library-page-wrapper p { font-size: 12px !important; font-weight: 400 !important; line-height: 1.7 !important; }
+        .business-library-page-wrapper .faq-card-question { font-size: 14.5px !important; font-weight: 700 !important; }
+        .business-library-page-wrapper .faq-card-answer { font-size: 12px !important; line-height: 1.8 !important; }
+        .business-library-page-wrapper .library-btn-primary { font-size: 12.5px !important; font-weight: 700 !important; padding: 8px 18px !important; }
+        .business-library-page-wrapper .library-btn-secondary { font-size: 12.5px !important; font-weight: 600 !important; padding: 10px 20px !important; }
+
         .library-glass-card {
           background: #FFFFFF;
           border: 1px solid #E2E8F0;
@@ -346,13 +358,21 @@ const BusinessLibraryPage = () => {
           }
           .library-hero-graphic-box {
             margin-top: 10px !important;
-            min-width: 100% !important;
+            padding-top: 24px !important;
+            margin-bottom: 0 !important;
+            min-width: 0 !important;
             width: 100% !important;
+            justify-content: center !important;
           }
           .library-hero-graphic-card {
             transform: none !important;
-            border-radius: 18px !important;
-            padding: 20px 16px !important;
+            transform-origin: top center !important;
+            margin: 0 auto !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            border-radius: 20px !important;
+            padding: 22px 16px !important;
+            box-sizing: border-box !important;
           }
           .library-btn-primary, .library-btn-secondary {
             width: 100% !important;
@@ -362,13 +382,36 @@ const BusinessLibraryPage = () => {
             padding: 18px 16px !important;
             border-radius: 14px !important;
           }
-          .resources-auto-grid, .topics-auto-grid, .four-auto-grid {
+          .resources-auto-grid {
             grid-template-columns: 1fr !important;
             gap: 14px !important;
+          }
+          .topics-auto-grid, .four-auto-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 14px !important;
+          }
+          .topics-auto-grid .library-glass-card {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 8px !important;
+            padding: 16px 14px !important;
+          }
+          .topics-auto-grid .library-glass-card span {
+            font-size: 13.5px !important;
+          }
+          .four-auto-grid .library-glass-card {
+            border-left: 1px solid #E2E8F0 !important;
+          }
+          .four-auto-grid .library-glass-card:hover {
+            border-left-color: #BBF7D0 !important;
           }
         }
 
         @media (max-width: 480px) {
+          .library-hero-graphic-card {
+            padding: 18px 12px !important;
+            border-radius: 18px !important;
+          }
           .library-section {
             padding: 20px 14px !important;
           }
@@ -384,6 +427,21 @@ const BusinessLibraryPage = () => {
           }
           .library-glass-card {
             padding: 16px 14px !important;
+          }
+          .resources-auto-grid {
+            grid-template-columns: 1fr !important;
+            gap: 12px !important;
+          }
+          .topics-auto-grid, .four-auto-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
+          }
+          .topics-auto-grid .library-glass-card {
+            padding: 14px 12px !important;
+            gap: 6px !important;
+          }
+          .topics-auto-grid .library-glass-card span {
+            font-size: 12.5px !important;
           }
         }
 
@@ -413,7 +471,7 @@ const BusinessLibraryPage = () => {
         className="library-hero-section"
         style={{
           marginTop: 0,
-          padding: "80px 6% 64px",
+          padding: "92px 6% 48px",
           position: "relative",
           background: "linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)",
           overflow: "hidden",
@@ -433,7 +491,7 @@ const BusinessLibraryPage = () => {
           }}
         />
 
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", width: "100%", position: "relative", zIndex: 1 }}>
           <div className="library-hero-row">
             {/* Left Column: Text Copy */}
             <div className="library-hero-left" style={{ flex: 1.15 }}>
@@ -460,26 +518,26 @@ const BusinessLibraryPage = () => {
               {/* H1 Heading */}
               <h1
                 style={{
-                  fontSize: "clamp(24px, 2.6vw, 36px)",
+                  fontSize: "clamp(28px, 2.9vw, 42px)",
                   fontWeight: 900,
                   color: "#0F172A",
-                  lineHeight: 1.18,
-                  letterSpacing: "-1.2px",
+                  lineHeight: 1.12,
+                  letterSpacing: "-1px",
                   marginBottom: 12,
                 }}
               >
                 Business Library – <span style={{ color: "#16A34A" }}>Practical Guides &amp; Resources for Growing Businesses</span>
               </h1>
 
-              <p style={{ fontSize: 16, fontWeight: 800, color: "#16A34A", marginBottom: 16, letterSpacing: "-0.2px" }}>
-                Practical Resources to Help You Run and Grow Your Business
+              <p style={{ fontSize: 16, fontWeight: 800, color: "#16A34A", marginBottom: 12, letterSpacing: "-0.2px" }}>
+                Knowledge &amp; Practical Resources to Scale Your Business
               </p>
 
-              <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 20 }}>
+              <p style={{ fontSize: 14, color: "#64748B", lineHeight: 1.65, marginBottom: 16, maxWidth: 540 }}>
                 Every business has questions — on growth, communication, leads and operations. MessBee Business Library puts the right answers in one place, so your team can move faster and work smarter.
               </p>
 
-              <div style={{ fontSize: 16, fontWeight: 900, color: "#15803D", marginBottom: 24, letterSpacing: "-0.3px" }}>
+              <div style={{ fontSize: 15, fontWeight: 800, color: "#15803D", marginBottom: 20, letterSpacing: "-0.2px" }}>
                 Learn Better. Work Smarter. Grow With Confidence.
               </div>
 
@@ -495,20 +553,22 @@ const BusinessLibraryPage = () => {
             </div>
 
             {/* Right Column: Hero Graphic Box with Dark Forest Green Gradient */}
-            <div className="library-hero-graphic-box" style={{ flex: 0.85, minWidth: 320, position: "relative", marginTop: 60 }}>
+            <div className="library-hero-graphic-box" style={{ flex: 0.85, minWidth: 320, position: "relative", display: "flex", justifyContent: "center", paddingTop: 20, marginBottom: -120 }}>
               <div
                 className="library-hero-graphic-card"
                 style={{
                   background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
                   borderRadius: 24,
-                  padding: "24px 20px",
-                  boxShadow: "0 20px 50px rgba(2, 44, 34, 0.4)",
-                  border: "1px solid rgba(52, 211, 153, 0.25)",
+                  padding: 28,
+                  boxShadow: "0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)",
+                  border: "1px solid rgba(34,197,94,.2)",
                   color: "#FFFFFF",
                   position: "relative",
+                  width: "100%",
+                  maxWidth: 460,
+                  transform: "scale(0.75)",
+                  transformOrigin: "top center",
                   overflow: "hidden",
-                  transform: "scale(0.88)",
-                  transformOrigin: "top right",
                 }}
               >
                 <div
@@ -526,23 +586,23 @@ const BusinessLibraryPage = () => {
                 />
 
                 {/* Header featuring Official MessBee Logo */}
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20, borderBottom: "1px solid rgba(255,255,255,0.12)", paddingBottom: 14 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                    <div style={{ width: 34, height: 34, borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.2)", flexShrink: 0, background: "#FFFFFF", padding: 2 }}>
-                      <img src={defaultLogo} alt="MessBee" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 28, borderBottom: "1px solid rgba(255,255,255,0.12)", paddingBottom: 16 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                    <div style={{ width: 40, height: 40, borderRadius: 10, overflow: "hidden", border: "1px solid rgba(255,255,255,0.2)", flexShrink: 0, background: "#FFFFFF", padding: 4 }}>
+                      <img src={defaultLogo} alt="MessBee" style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius: 6 }} />
                     </div>
                     <div>
-                      <div style={{ fontSize: 13, fontWeight: 900, color: "#FFFFFF" }}>MessBee Resource Vault</div>
-                      <div style={{ fontSize: 10, color: "#4ADE80", fontWeight: 700 }}>Curated Business Library</div>
+                      <div style={{ fontSize: 17, fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.3px" }}>MessBee Resource Vault</div>
+                      <div style={{ fontSize: 11, color: "#34D399", fontWeight: 700 }}>Curated Business Library</div>
                     </div>
                   </div>
-                  <span style={{ fontSize: 10, background: "rgba(52,211,153,0.2)", color: "#34D399", padding: "3px 10px", borderRadius: 20, fontWeight: 700, border: "1px solid rgba(52,211,153,0.3)" }}>
+                  <span style={{ fontSize: 11, background: "rgba(16,185,129,0.15)", color: "#34D399", padding: "6px 12px", borderRadius: 20, fontWeight: 700, border: "1px solid rgba(16,185,129,0.4)" }}>
                     Verified Guides
                   </span>
                 </div>
 
                 {/* Library Nodes Grid */}
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 16 }}>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 24 }}>
                   {[
                     { label: "Business Guides", icon: "📖" },
                     { label: "WhatsApp Guides", icon: "💬" },
@@ -552,26 +612,26 @@ const BusinessLibraryPage = () => {
                     <div
                       key={i}
                       style={{
-                        background: "rgba(255,255,255,0.06)",
-                        border: "1px solid rgba(52,211,153,0.2)",
+                        background: "rgba(16,185,129,0.09)",
+                        border: "1px solid rgba(16,185,129,0.25)",
                         borderRadius: 14,
-                        padding: 12,
+                        padding: "14px 16px",
                         display: "flex",
                         flexDirection: "column",
                         gap: 4,
                       }}
                     >
-                      <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                        <span style={{ fontSize: 18 }}>{node.icon}</span>
-                        <span style={{ fontSize: 12, fontWeight: 800, color: "#FFFFFF" }}>{node.label}</span>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                        <span style={{ fontSize: 16 }}>{node.icon}</span>
+                        <span style={{ fontSize: 13, fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.2px" }}>{node.label}</span>
                       </div>
-                      <span style={{ fontSize: 10, color: "#34D399", fontWeight: 700 }}>Practical Insights</span>
+                      <span style={{ fontSize: 11, color: "#34D399", fontWeight: 700 }}>Practical Insights</span>
                     </div>
                   ))}
                 </div>
 
-                <div style={{ background: "rgba(52,211,153,0.15)", border: "1px solid rgba(52,211,153,0.3)", borderRadius: 12, padding: 12, textAlign: "center" }}>
-                  <span style={{ fontSize: 11.5, fontWeight: 800, color: "#4ADE80" }}>
+                <div style={{ background: "rgba(16,185,129,0.09)", border: "1px solid rgba(16,185,129,0.25)", borderRadius: 12, padding: "14px", textAlign: "center" }}>
+                  <span style={{ fontSize: 12, fontWeight: 800, color: "#34D399" }}>
                     Learn Better. Work Smarter. Grow With Confidence.
                   </span>
                 </div>
@@ -603,7 +663,7 @@ const BusinessLibraryPage = () => {
             >
               Library Content
             </div>
-            <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               What You'll Find in the <span style={{ color: "#16A34A" }}>Business Library</span>
             </h2>
           </div>
@@ -698,7 +758,7 @@ const BusinessLibraryPage = () => {
             >
               Practical Topics
             </div>
-            <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 10 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 10 }}>
               Learn What Matters to Your Business
             </h2>
             <p style={{ fontSize: 13.5, color: "#64748B", maxWidth: 700, margin: "0 auto" }}>
@@ -730,15 +790,14 @@ const BusinessLibraryPage = () => {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    fontSize: 13,
-                    fontWeight: 900,
+                    fontSize: 14,
                     flexShrink: 0,
                   }}
                 >
-                  ✓
+                  {topic.icon}
                 </div>
                 <span style={{ fontSize: 13, fontWeight: 700, color: "#334155" }}>
-                  {topic}
+                  {topic.text}
                 </span>
               </div>
             ))}
@@ -768,7 +827,7 @@ const BusinessLibraryPage = () => {
             >
               Growth Stages
             </div>
-            <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               Resources for <span style={{ color: "#16A34A" }}>Different Business Stages</span>
             </h2>
           </div>
@@ -840,7 +899,7 @@ const BusinessLibraryPage = () => {
             >
               Core Value
             </div>
-            <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               Why Use the <span style={{ color: "#16A34A" }}>MessBee Business Library?</span>
             </h2>
           </div>
@@ -897,7 +956,7 @@ const BusinessLibraryPage = () => {
         <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 500, height: 500, background: "rgba(22,163,74,.08)", borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none" }} />
         <div style={{ position: "relative", zIndex: 2, maxWidth: 860, margin: "0 auto" }}>
           <Pill>A Resource Centre for Modern Businesses</Pill>
-          <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 900, color: D2, letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 16 }}>
+          <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: D2, letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 16 }}>
             Whether you're a local retailer or growing company,<br />
             <span style={{ color: G }}>the right information helps you grow.</span>
           </h2>
@@ -920,7 +979,7 @@ const BusinessLibraryPage = () => {
         <div style={{ maxWidth: 760, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 36 }}>
             <Pill>FAQ</Pill>
-            <h2 style={{ fontSize: "clamp(18px, 2.5vw, 30px)", fontWeight: 900, color: D2, letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: D2, letterSpacing: "-1px" }}>
               Frequently Asked Questions
             </h2>
           </div>

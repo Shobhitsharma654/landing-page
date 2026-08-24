@@ -3,6 +3,7 @@ import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
 import defaultLogo from "../../assets/logo.jpeg";
+import { submitToWebhookOrEmail } from "../../utils/formSubmit";
 
 const G  = "#16A34A";
 const GL = "#F0FDF4";
@@ -261,7 +262,14 @@ const FaqItem = ({ q, a }) => {
 
 const ContactPage = () => {
   const navigate = useNavigate();
-  const [form, setForm] = useState({ name: "", email: "", accountName: "", product: "CRM", message: "" });
+  const [form, setForm] = useState({
+    name: "",
+    businessName: "",
+    email: "",
+    phone: "",
+    interest: "MessBee Products",
+    message: "",
+  });
   const [status, setStatus] = useState("idle");
 
   useEffect(() => {
@@ -279,36 +287,46 @@ const ContactPage = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     setStatus("submitting");
-    try {
-      const apiBase = import.meta.env.VITE_API_URL || "http://localhost:5000";
-      const res = await fetch(`${apiBase}/api/contact`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          subject: `[${form.product}] Account: ${form.accountName || "N/A"}`,
-          message: form.message,
-        }),
-      });
-      if (res.ok) {
-        setStatus("success");
-        setForm({ name: "", email: "", accountName: "", product: "CRM", message: "" });
-        setTimeout(() => setStatus("idle"), 4000);
-      } else {
-        setStatus("error");
-        setTimeout(() => setStatus("idle"), 3000);
-      }
-    } catch {
-      setStatus("error");
-      setTimeout(() => setStatus("idle"), 3000);
-    }
+
+    await submitToWebhookOrEmail("support", {
+      name: form.name,
+      businessName: form.businessName,
+      email: form.email,
+      phone: form.phone,
+      interest: form.interest,
+      message: form.message,
+    });
+
+    setStatus("success");
+    setForm({
+      name: "",
+      businessName: "",
+      email: "",
+      phone: "",
+      interest: "MessBee Products",
+      message: "",
+    });
+    setTimeout(() => setStatus("idle"), 5000);
   };
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "hidden", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+    <div className="contact-support-page-wrapper" style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "hidden", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+        /* ── PAGE-WIDE TYPOGRAPHY OVERRIDES (font-size & weight only — no color changes) ── */
+        .contact-support-page-wrapper { font-family: 'Inter', 'Segoe UI', sans-serif !important; }
+        .contact-support-page-wrapper h1,
+        .contact-support-page-wrapper h2 { font-size: clamp(20px, 2.5vw, 32px) !important; font-weight: 900 !important; letter-spacing: -0.5px !important; }
+        .contact-support-page-wrapper h3,
+        .contact-support-page-wrapper h4 { font-size: 12px !important; font-weight: 800 !important; }
+        .contact-support-page-wrapper p { font-size: 12px !important; font-weight: 400 !important; line-height: 1.7 !important; }
+        .contact-support-page-wrapper .contact-btn-primary { font-size: 12.5px !important; font-weight: 700 !important; padding: 8px 18px !important; }
+        .contact-support-page-wrapper .contact-btn-secondary { font-size: 12.5px !important; font-weight: 600 !important; padding: 10px 20px !important; }
+        .contact-support-page-wrapper input,
+        .contact-support-page-wrapper select,
+        .contact-support-page-wrapper textarea { font-size: 12px !important; }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         /* ── GLOBAL SECTION RESPONSIVENESS ── */
@@ -430,8 +448,12 @@ const ContactPage = () => {
         }
         .contact-hero-right {
           flex: 0.9;
-          min-width: 0;
+          min-width: 320px;
           position: relative;
+          display: flex;
+          justify-content: center;
+          padding-top: 20px;
+          margin-bottom: -120px;
         }
 
         .grid-col-3 {
@@ -483,6 +505,20 @@ const ContactPage = () => {
           .contact-hero-left, .contact-hero-right {
             width: 100% !important;
             flex: none !important;
+            padding-top: 24px !important;
+            margin-bottom: 0 !important;
+            min-width: 0 !important;
+            justify-content: center !important;
+          }
+          .contact-hero-right > div {
+            transform: none !important;
+            transform-origin: top center !important;
+            margin: 0 auto !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            border-radius: 20px !important;
+            padding: 22px 16px !important;
+            box-sizing: border-box !important;
           }
           .grid-col-5 {
             grid-template-columns: repeat(2, 1fr);
@@ -557,6 +593,10 @@ const ContactPage = () => {
           .contact-form-info-box, .contact-form-box {
             padding: 18px 14px !important;
           }
+          .contact-hero-right > div {
+            padding: 18px 12px !important;
+            border-radius: 18px !important;
+          }
         }
 
         /* Glowing Pulse Animation */
@@ -582,9 +622,10 @@ const ContactPage = () => {
           SECTION 1: HERO
          ═══════════════════════════════════════════════════════════════════ */}
       <section
-        className="contact-section contact-hero-section"
+        className="contact-hero-section"
         style={{
-          marginTop: 70,
+          marginTop: 0,
+          padding: "92px 6% 48px",
           position: "relative",
           background: "linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)",
           overflow: "hidden",
@@ -621,7 +662,7 @@ const ContactPage = () => {
                 fontSize: 10.5,
                 fontWeight: 800,
                 letterSpacing: "1px",
-                marginBottom: 18,
+                marginBottom: 16,
                 textTransform: "uppercase",
               }}
             >
@@ -681,11 +722,15 @@ const ContactPage = () => {
               style={{
                 background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
                 borderRadius: 24,
-                padding: "28px 24px",
-                boxShadow: "0 20px 50px rgba(2, 44, 34, 0.4)",
-                border: "1px solid rgba(52, 211, 153, 0.25)",
+                padding: 28,
+                boxShadow: "0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)",
+                border: "1px solid rgba(34,197,94,.2)",
                 color: "#FFFFFF",
                 position: "relative",
+                width: "100%",
+                maxWidth: 460,
+                transform: "scale(0.75)",
+                transformOrigin: "top center",
                 overflow: "hidden",
               }}
             >
@@ -783,7 +828,7 @@ const ContactPage = () => {
             >
               Support Scope
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               How Can <span style={{ color: "#16A34A" }}>We Help?</span>
             </h2>
           </div>
@@ -871,7 +916,7 @@ const ContactPage = () => {
             >
               Self-Service Help
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
               Before You <span style={{ color: "#16A34A" }}>Contact Support</span>
             </h2>
 
@@ -939,7 +984,7 @@ const ContactPage = () => {
             >
               Direct Message
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
               Contact Our <span style={{ color: "#16A34A" }}>Support Team</span>
             </h2>
             <p style={{ fontSize: 13.5, color: "#64748B", maxWidth: 620, margin: "0 auto", lineHeight: 1.68 }}>
@@ -948,135 +993,171 @@ const ContactPage = () => {
           </div>
 
           <div className="contact-hero-row" style={{ alignItems: "stretch" }}>
-            {/* Left Box */}
-            <div className="contact-form-info-box" style={{ flex: 1, background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 20, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-              <div>
-                <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#F0FDF4", border: "1px solid #BBF7D0", borderRadius: 30, padding: "5px 14px", marginBottom: 14 }}>
-                  <span style={{ fontSize: 12, fontWeight: 800, color: "#16A34A" }}>Email Support</span>
+            {/* Left Box: Visit Us & Connect with MessBee */}
+            <div className="contact-form-info-box" style={{ flex: 1, display: "flex", flexDirection: "column", gap: 20, justifyContent: "space-between" }}>
+              {/* Box 1: Visit Us */}
+              <div style={{ background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 24, padding: "28px", boxShadow: "0 4px 16px rgba(15, 23, 42, 0.02)" }}>
+                <h3 style={{ fontSize: 18, fontWeight: 900, color: "#0F172A", marginBottom: 20, display: "flex", alignItems: "center", gap: 8, borderBottom: "1.5px solid #E2E8F0", paddingBottom: 12 }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.5"><circle cx="12" cy="10" r="3" /><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z" /></svg>
+                  Visit Us
+                </h3>
+                <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                  <div style={{ fontSize: 17, fontWeight: 800, color: "#16A34A", display: "flex", alignItems: "center", gap: 8 }}>
+                    MessBee
+                  </div>
+                  <div style={{ fontSize: 13.5, color: "#475569", display: "flex", alignItems: "flex-start", gap: 8, lineHeight: 1.55 }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2.5" style={{ marginTop: 2, flexShrink: 0 }}><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
+                    <span><strong>Corporate Office:</strong> 510A, Devika Tower, Chander Nagar, Surya Nagar, Ghaziabad, Uttar Pradesh 201011</span>
+                  </div>
+                  <div style={{ fontSize: 13.5, color: "#475569", display: "flex", alignItems: "flex-start", gap: 8 }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2.5" style={{ marginTop: 2, flexShrink: 0 }}><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+                    <span><strong>Ph:</strong> 0120-2611111, +91-9217742081</span>
+                  </div>
+                  <div style={{ fontSize: 13.5, color: "#475569", display: "flex", alignItems: "flex-start", gap: 8 }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2.5" style={{ marginTop: 2, flexShrink: 0 }}><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
+                    <span><strong>Email:</strong> support@messbee.com</span>
+                  </div>
                 </div>
+              </div>
 
-                <div style={{ fontSize: 16, fontWeight: 900, color: "#16A34A", marginBottom: 16 }}>
-                  <a href="mailto:support@messbee.com" style={{ color: "#16A34A", textDecoration: "none" }}>
-                    support@messbee.com
+              {/* Box 2: Connect with MessBee */}
+              <div style={{ background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 24, padding: "28px", boxShadow: "0 4px 16px rgba(15, 23, 42, 0.02)" }}>
+                <h3 style={{ fontSize: 18, fontWeight: 900, color: "#0F172A", marginBottom: 14, display: "flex", alignItems: "center", gap: 8, borderBottom: "1.5px solid #E2E8F0", paddingBottom: 12 }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.5"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" /><path d="M13.73 21a2 2 0 0 1-3.46 0" /></svg>
+                  Connect With MessBee
+                </h3>
+                <p style={{ fontSize: 13.5, color: "#64748B", marginBottom: 16, lineHeight: 1.6 }}>
+                  Follow MessBee for product updates, business insights, and company news.
+                </p>
+
+                {/* Social media icons grid */}
+                <div style={{ display: "flex", gap: 12, marginBottom: 16 }}>
+                  <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="social-link-btn linkedin">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                  </a>
+                  <a href="https://facebook.com" target="_blank" rel="noreferrer" className="social-link-btn facebook">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                  </a>
+                  <a href="https://instagram.com" target="_blank" rel="noreferrer" className="social-link-btn instagram">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                  </a>
+                  <a href="https://youtube.com" target="_blank" rel="noreferrer" className="social-link-btn youtube">
+                    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.518 3.545 12 3.545 12 3.545s-7.518 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.87.508 9.388.508 9.388.508s7.518 0 9.388-.508a3.002 3.002 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                  </a>
+                  <a href="https://x.com" target="_blank" rel="noreferrer" className="social-link-btn x">
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.6.75zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633z"/></svg>
                   </a>
                 </div>
 
-                <p style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", marginBottom: 10 }}>
-                  For faster assistance, please include:
-                </p>
-
-                <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 20 }}>
-                  {[
-                    "Your registered email address",
-                    "Business or account name",
-                    "Product or feature you're using",
-                    "A clear description of the issue",
-                    "Relevant error message, if any",
-                    "Screenshot or screen recording, where useful",
-                  ].map((item, i) => (
-                    <div key={i} style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                      <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#16A34A", flexShrink: 0 }} />
-                      <span style={{ fontSize: 12.5, fontWeight: 600, color: "#475569" }}>{item}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div style={{ marginTop: 20, paddingTop: 16, borderTop: "1px solid #E2E8F0" }}>
-                  <div style={{ fontSize: 12, fontWeight: 800, color: "#16A34A", textTransform: "uppercase", letterSpacing: "0.5px", marginBottom: 8, display: "flex", alignItems: "center", gap: 6 }}>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
-                    Corporate Office Address
-                  </div>
-                  <p style={{ fontSize: 13, fontWeight: 700, color: "#0F172A", margin: 0, lineHeight: 1.55 }}>
-                    MessBee, Devika Tower, 510A, Chander Nagar, Surya Nagar, Ghaziabad, Uttar Pradesh 201011
-                  </p>
-                  <div style={{ fontSize: 12, color: "#64748B", marginTop: 6 }}>
-                    Ph: 0120-2611111 / +91-9217742081
-                  </div>
+                <div style={{ fontSize: 13.5, fontWeight: 600, color: "#64748B", display: "flex", alignItems: "center", gap: 6 }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
+                  <span>Email: support@messbee.com</span>
                 </div>
               </div>
             </div>
 
-            {/* Right Box */}
-            <div className="contact-form-box" style={{ flex: 1.25, background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 20, boxShadow: "0 6px 24px rgba(0,0,0,0.02)", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+            {/* Right Box: Contact Form */}
+            <div className="contact-form-box" style={{ flex: 1.2, background: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 24, padding: "32px", boxShadow: "0 4px 16px rgba(15, 23, 42, 0.02)", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
               <div>
-                <h3 style={{ fontSize: 16, fontWeight: 900, color: "#0F172A", marginBottom: 14 }}>
-                  Submit Support Request
+                <h3 style={{ fontSize: 18, fontWeight: 900, color: "#0F172A", marginBottom: 20, display: "flex", alignItems: "center", gap: 8, borderBottom: "1.5px solid #E2E8F0", paddingBottom: 12 }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /><polyline points="10 9 9 9 8 9" /></svg>
+                  Contact Form
                 </h3>
 
-                <form onSubmit={handleFormSubmit} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                  <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                    <div style={{ flex: "1 1 180px" }}>
-                      <label style={{ display: "block", fontSize: 12, fontWeight: 700, color: "#374151", marginBottom: 5 }}>
-                        Full Name *
+                <form onSubmit={handleFormSubmit} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                  {/* Row 1: Full Name + Business Name */}
+                  <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+                    <div style={{ flex: "1 1 200px" }}>
+                      <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#374151", marginBottom: 6 }}>
+                        Full Name*
                       </label>
                       <input
                         type="text"
                         required
-                        placeholder="Your Name"
+                        placeholder="Enter your name"
                         value={form.name}
                         onChange={(e) => setForm({ ...form, name: e.target.value })}
                         className="contact-input"
                       />
                     </div>
 
-                    <div style={{ flex: "1 1 180px" }}>
-                      <label style={{ display: "block", fontSize: 12, fontWeight: 700, color: "#374151", marginBottom: 5 }}>
-                        Registered Email Address *
+                    <div style={{ flex: "1 1 200px" }}>
+                      <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#374151", marginBottom: 6 }}>
+                        Business / Organization Name
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="Enter your business name"
+                        value={form.businessName}
+                        onChange={(e) => setForm({ ...form, businessName: e.target.value })}
+                        className="contact-input"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Row 2: Work Email + Phone Number */}
+                  <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+                    <div style={{ flex: "1 1 200px" }}>
+                      <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#374151", marginBottom: 6 }}>
+                        Work Email*
                       </label>
                       <input
                         type="email"
                         required
-                        placeholder="name@company.com"
+                        placeholder="Enter your business email"
                         value={form.email}
                         onChange={(e) => setForm({ ...form, email: e.target.value })}
                         className="contact-input"
                       />
                     </div>
-                  </div>
 
-                  <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                    <div style={{ flex: "1 1 180px" }}>
-                      <label style={{ display: "block", fontSize: 12, fontWeight: 700, color: "#374151", marginBottom: 5 }}>
-                        Business or Account Name
+                    <div style={{ flex: "1 1 200px" }}>
+                      <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#374151", marginBottom: 6 }}>
+                        Phone Number
                       </label>
                       <input
                         type="text"
-                        placeholder="Your Business Name"
-                        value={form.accountName}
-                        onChange={(e) => setForm({ ...form, accountName: e.target.value })}
+                        placeholder="Enter your contact number"
+                        value={form.phone}
+                        onChange={(e) => setForm({ ...form, phone: e.target.value })}
                         className="contact-input"
                       />
                     </div>
-
-                    <div style={{ flex: "1 1 180px" }}>
-                      <label style={{ display: "block", fontSize: 12, fontWeight: 700, color: "#374151", marginBottom: 5 }}>
-                        Product or Feature
-                      </label>
-                      <select
-                        value={form.product}
-                        onChange={(e) => setForm({ ...form, product: e.target.value })}
-                        className="contact-input"
-                        style={{ cursor: "pointer", background: "#FFFFFF" }}
-                      >
-                        <option value="Account & Setup">Account &amp; Setup</option>
-                        <option value="CRM">CRM</option>
-                        <option value="WhatsApp Business">WhatsApp Business</option>
-                        <option value="Marketing Automation">Marketing Automation</option>
-                        <option value="AI & Automation">AI &amp; Automation</option>
-                        <option value="Digital Store">Digital Store</option>
-                        <option value="Technical Issue">Technical Issue</option>
-                      </select>
-                    </div>
                   </div>
 
+                  {/* Row 3: I'm Interested In */}
                   <div>
-                    <label style={{ display: "block", fontSize: 12, fontWeight: 700, color: "#374151", marginBottom: 5 }}>
-                      Description of the Issue *
+                    <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#374151", marginBottom: 6 }}>
+                      I’m Interested In*
+                    </label>
+                    <select
+                      value={form.interest}
+                      onChange={(e) => setForm({ ...form, interest: e.target.value })}
+                      className="contact-input"
+                      style={{ cursor: "pointer", background: "#F8FAFC" }}
+                    >
+                      <option value="MessBee Products">MessBee Products</option>
+                      <option value="CRM">CRM</option>
+                      <option value="WhatsApp Business">WhatsApp Business</option>
+                      <option value="Marketing Automation">Marketing Automation</option>
+                      <option value="AI & Automation">AI &amp; Automation</option>
+                      <option value="Digital Store">Digital Store</option>
+                      <option value="Enterprise Solutions">Enterprise Solutions</option>
+                      <option value="Partnership">Partnership</option>
+                      <option value="General Enquiry">General Enquiry</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+
+                  {/* Row 4: How Can We Help? */}
+                  <div>
+                    <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#374151", marginBottom: 6 }}>
+                      How Can We Help?*
                     </label>
                     <textarea
                       required
                       rows={4}
-                      placeholder="Describe your issue or question..."
+                      placeholder="Tell us about your requirement or question."
                       value={form.message}
                       onChange={(e) => setForm({ ...form, message: e.target.value })}
                       className="contact-input"
@@ -1084,13 +1165,20 @@ const ContactPage = () => {
                     />
                   </div>
 
+                  {status === "success" && (
+                    <div style={{ background: "#F0FDF4", border: "1.5px solid #86EFAC", borderRadius: 10, padding: "12px 16px", color: "#15803D", fontSize: 13.5, fontWeight: 600, display: "flex", alignItems: "center", gap: 8 }}>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16A34A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                      <span>Thank you! Your enquiry has been submitted and saved. We'll be in touch soon.</span>
+                    </div>
+                  )}
+
                   <button
                     type="submit"
                     disabled={status === "submitting"}
                     className="contact-btn-primary"
-                    style={{ width: "100%", justifyContent: "center", marginTop: 4, padding: "12px 20px", fontSize: 14 }}
+                    style={{ width: "100%", justifyContent: "center", marginTop: 6, padding: "14px 20px", fontSize: 14.5, borderRadius: 10, opacity: status === "submitting" ? 0.7 : 1 }}
                   >
-                    {status === "submitting" ? "Submitting..." : status === "success" ? "Message Sent ✓" : "Send Support Request"}
+                    {status === "submitting" ? "Submitting..." : status === "success" ? "Enquiry Submitted ✓" : "Submit Enquiry"}
                   </button>
                 </form>
               </div>
@@ -1122,7 +1210,7 @@ const ContactPage = () => {
                 <span style={{ fontSize: 12, fontWeight: 800, color: "#16A34A", letterSpacing: "0.5px", textTransform: "uppercase" }}>Corporate Office Location</span>
               </div>
               <a
-                href="https://www.google.com/maps/dir//MessBee,+510A,+Chander+Nagar,+Surya+Nagar,+Ghaziabad,+Uttar+Pradesh+201011/@28.6686012,77.3308721,16z"
+                href="https://www.google.com/maps/dir//MessBee,+510,+Devika+Tower,+HIG+Flats,+Chander+Nagar,+Surya+Nagar,+Ghaziabad,+Uttar+Pradesh+201011,+India/@28.6686012,77.3308721,16z"
                 target="_blank"
                 rel="noreferrer"
                 style={{
@@ -1146,12 +1234,15 @@ const ContactPage = () => {
 
             <div style={{ borderTop: "1px solid #F1F5F9", paddingTop: 16, display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 20 }}>
               <div style={{ flex: "1 1 500px" }}>
-                <h3 style={{ fontSize: 17, fontWeight: 900, color: "#0F172A", marginBottom: 6, display: "flex", alignItems: "center", gap: 8 }}>
-                  MessBee Corporate Office
+                <h3 style={{ fontSize: 17, fontWeight: 800, color: "#16A34A", marginBottom: 10, fontFamily: "'Inter', sans-serif" }}>
+                  MessBee
                 </h3>
-                <p style={{ fontSize: 15, fontWeight: 700, color: "#1E293B", margin: 0, lineHeight: 1.6, fontFamily: "'Inter', sans-serif" }}>
-                  MessBee, Devika Tower, 510A, Chander Nagar, Surya Nagar, Ghaziabad, Uttar Pradesh 201011
-                </p>
+                <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2.5" style={{ flexShrink: 0, marginTop: 4 }}><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
+                  <p style={{ fontSize: 14, fontWeight: 500, color: "#475569", margin: 0, lineHeight: 1.6, fontFamily: "'Inter', sans-serif" }}>
+                    <strong style={{ color: "#1E293B" }}>Corporate Office:</strong> 510A, Devika Tower, Chander Nagar, Surya Nagar, Ghaziabad, Uttar Pradesh 201011
+                  </p>
+                </div>
               </div>
 
               <div style={{ display: "flex", gap: 24, flexWrap: "wrap", alignItems: "center" }}>
@@ -1189,7 +1280,7 @@ const ContactPage = () => {
             }}>
               <iframe
                 title="MessBee Corporate Office Location Map"
-                src="https://maps.google.com/maps?q=MessBee,+510A,+Chander+Nagar,+Surya+Nagar,+Ghaziabad,+Uttar+Pradesh+201011&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=MessBee,+510,+Devika+Tower,+HIG+Flats,+Chander+Nagar,+Surya+Nagar,+Ghaziabad,+Uttar+Pradesh+201011,+India&t=&z=16&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -1224,7 +1315,7 @@ const ContactPage = () => {
             >
               Investigation Details
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
               Technical <span style={{ color: "#16A34A" }}>Support</span>
             </h2>
 
@@ -1269,7 +1360,7 @@ const ContactPage = () => {
       <section className="contact-section" style={{ background: "#FFFFFF" }}>
         <div style={{ maxWidth: 860, margin: "0 auto", textAlign: "center" }}>
           <Pill>Partnerships</Pill>
-          <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 900, color: D2, letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 16 }}>
+          <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: D2, letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 16 }}>
             Business &amp; Partnership Enquiries
           </h2>
           <p style={{ fontSize: 13.5, color: MU, lineHeight: 1.68, marginBottom: 20, maxWidth: 720, margin: "0 auto 20px" }}>
@@ -1288,7 +1379,7 @@ const ContactPage = () => {
         <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 500, height: 500, background: "rgba(22,163,74,.08)", borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none" }} />
         <div style={{ position: "relative", zIndex: 2, maxWidth: 860, margin: "0 auto" }}>
           <Pill>A Better Support Experience</Pill>
-          <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 900, color: D2, letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 16 }}>
+          <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: D2, letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 16 }}>
             We want support conversations<br />
             <span style={{ color: G }}>to be straightforward.</span>
           </h2>
@@ -1315,7 +1406,7 @@ const ContactPage = () => {
         <div style={{ maxWidth: 760, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 36 }}>
             <Pill>FAQ</Pill>
-            <h2 style={{ fontSize: "clamp(18px, 2.5vw, 30px)", fontWeight: 900, color: D2, letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: D2, letterSpacing: "-1px" }}>
               Frequently Asked Questions
             </h2>
           </div>

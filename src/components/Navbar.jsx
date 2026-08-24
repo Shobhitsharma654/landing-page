@@ -86,7 +86,6 @@ const Navbar = () => {
   ];
 
   const resourcesLinks = [
-    { label: "QR & Connect", path: "/qr-connect" },
     { label: "Business Library", path: "/resources/business-library" },
     { label: "Help Center", path: "/resources/help-center" },
     { label: "Blog", path: "/resources/blog" },
@@ -111,14 +110,18 @@ const Navbar = () => {
         /* 4 Horizontal Lines Menu Button for Mobile */
         .mobile-menu-btn {
           display: none;
+          width: 38px !important;
+          height: 38px !important;
+          flex-shrink: 0 !important;
+          box-sizing: border-box !important;
           background: #F8FAFC;
           border: 1px solid #E2E8F0;
           border-radius: 10px;
           cursor: pointer;
-          padding: 8px 9px;
+          padding: 8px 9px !important;
           flex-direction: column;
           justify-content: center;
-          gap: 3.5px;
+          gap: 4.5px;
           align-items: center;
           transition: all 0.2s ease;
         }
@@ -171,20 +174,25 @@ const Navbar = () => {
           .desktop-nav { display: none !important; }
           .nav-desktop-auth { display: none !important; }
           .mobile-menu-btn { display: flex !important; }
+          .nav-container-box { padding: 0 16px !important; }
+        }
+        @media (max-width: 480px) {
+          .nav-container-box { padding: 0 12px !important; }
         }
       `}</style>
-
       {/* Main Fixed Navbar */}
-      <nav style={{
+      <nav className="nav-container-box" style={{
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000,
         background: "#FFFFFF",
-        borderBottom: "none",
-        boxShadow: "0 10px 40px -10px rgba(0,0,0,0.15)",
+        borderBottom: "1px solid #F1F5F9",
+        boxShadow: "0 2px 16px rgba(0,0,0,0.08)",
         padding: "0 6%",
-        height: 70,
+        height: 64,
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
+        boxSizing: "border-box",
+        width: "100%",
         transition: "all 0.3s"
       }}>
         {/* Logo */}
@@ -315,14 +323,13 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* 4 Laying Lines Menu Button (Mobile View) */}
+        {/* 3-Line Hamburger Menu Button (Mobile View) */}
         <button
           className="mobile-menu-btn"
           onClick={() => setMobileMenuOpen(true)}
           aria-label="Open Navigation Menu"
           title="Open Menu"
         >
-          <span className="line" />
           <span className="line" />
           <span className="line" />
           <span className="line" />

@@ -259,7 +259,7 @@ const FaqItem = ({ q, a }) => {
           cursor: "pointer",
         }}
       >
-        <span style={{ fontSize: 14, fontWeight: 700, color: open ? G : D2, transition: "color .2s" }}>{q}</span>
+        <span className="retail-faq-question" style={{ fontSize: 14, fontWeight: 700, color: open ? G : D2, transition: "color .2s" }}>{q}</span>
         <div
           style={{
             width: 28,
@@ -287,7 +287,7 @@ const FaqItem = ({ q, a }) => {
         </div>
       </div>
       {open && (
-        <div style={{ fontSize: 13, color: MU, lineHeight: 1.8, paddingBottom: 16 }}>{a}</div>
+        <div className="retail-faq-answer" style={{ fontSize: 13, color: MU, lineHeight: 1.8, paddingBottom: 16 }}>{a}</div>
       )}
     </div>
   );
@@ -308,9 +308,72 @@ const RetailPage = () => {
   };
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "hidden", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+    <div className="retail-page-wrapper" style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "hidden", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        
+        /* Global Typography Overrides from ABOUT_TYPOGRAPHY_README.md & Retail Section */
+        .retail-page-wrapper h1,
+        .retail-page-wrapper h2 {
+          font-size: clamp(20px, 2.5vw, 32px) !important;
+          font-weight: 900 !important;
+          color: #0F172A !important;
+          line-height: 1.2 !important;
+        }
+        .retail-page-wrapper h1 span,
+        .retail-page-wrapper h2 span {
+          color: #16A34A !important;
+        }
+        .retail-page-wrapper p,
+        .retail-page-wrapper .retail-faq-answer {
+          font-size: 12px !important;
+          font-weight: 400 !important;
+          color: #475569 !important;
+          line-height: 1.45 !important;
+        }
+        .retail-page-wrapper h3,
+        .retail-page-wrapper h4,
+        .retail-page-wrapper .retail-journey-title {
+          font-size: 12px !important;
+          font-weight: 800 !important;
+          color: #0F172A !important;
+          line-height: 1.45 !important;
+        }
+        .retail-page-wrapper .retail-faq-question {
+          font-size: 14.5px !important;
+          font-weight: 700 !important;
+          color: #0F172A !important;
+          line-height: 1.45 !important;
+        }
+        .retail-page-wrapper .retail-journey-desc {
+          font-size: 12px !important;
+          font-weight: 400 !important;
+          color: #64748B !important;
+          line-height: 1.45 !important;
+        }
+        .retail-page-wrapper .retail-local-card h2 {
+          color: #FFFFFF !important;
+        }
+        .retail-page-wrapper .retail-local-card p {
+          color: #94A3B8 !important;
+        }
+        .retail-page-wrapper .retail-local-card p:last-of-type {
+          color: #4ADE80 !important;
+        }
+        .retail-page-wrapper .retail-btn-primary {
+          padding: 8px 18px !important;
+          font-size: 12.5px !important;
+          font-weight: 700 !important;
+          box-shadow: 0 1px 5px rgba(22, 163, 74, 0.25) !important;
+          border-radius: 40px !important;
+        }
+        .retail-page-wrapper .retail-btn-secondary {
+          padding: 10px 20px !important;
+          font-size: 12.5px !important;
+          font-weight: 600 !important;
+          border-radius: 40px !important;
+        }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         /* ── BUTTONS ── */
@@ -422,6 +485,11 @@ const RetailPage = () => {
           grid-template-columns: repeat(5, 1fr);
           gap: 14px;
         }
+        .retail-why-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 18px;
+        }
 
         /* Large Laptops / Desktops (1440px +) */
         @media (min-width: 1440px) {
@@ -443,28 +511,153 @@ const RetailPage = () => {
           .retail-hero-row { gap: 32px; }
         }
 
-        .retail-hero-right-col { flex: 0.9; min-width: 320px; position: relative; display: flex; justify-content: center; }
-        .retail-hero-right-card { transform: scale(0.8); transform-origin: center right; width: 100%; max-width: 480px; }
+        .retail-hero-right-col { flex: 0.9; min-width: 320px; position: relative; display: flex; justify-content: center; padding-top: 20px; margin-bottom: -120px; }
+        .retail-hero-right-card { transform: scale(0.75); transform-origin: top center; width: 100%; max-width: 460px; }
 
         /* Compact Laptop / Tablet-Laptop (under 1024px) */
         @media (max-width: 1023px) {
           .retail-hero-row { flex-direction: column !important; }
-          .retail-hero-right-col { width: 100% !important; min-width: unset !important; justify-content: center !important; margin-top: 24px !important; }
-          .retail-hero-right-card { transform: none !important; transform-origin: center center !important; max-width: 340px !important; margin: 0 auto !important; }
+          .retail-hero-right-col { width: 100% !important; min-width: 0 !important; justify-content: center !important; padding-top: 24px !important; margin-bottom: 0 !important; }
+          .retail-hero-right-card { transform: none !important; transform-origin: top center !important; max-width: 100% !important; width: 100% !important; margin: 0 auto !important; padding: 22px 16px !important; box-sizing: border-box !important; border-radius: 20px !important; }
           .grid-col-5 { grid-template-columns: repeat(2, 1fr); }
           .grid-col-4 { grid-template-columns: repeat(2, 1fr); }
           .grid-col-3 { grid-template-columns: repeat(1, 1fr); }
           .grid-col-2 { grid-template-columns: repeat(1, 1fr); }
+          .retail-why-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
 
         /* Mobile Phones & Tablets (under 768px) */
         @media (max-width: 768px) {
-          .grid-col-5, .grid-col-4, .grid-col-3, .grid-col-2 {
+          .retail-hero-section {
+            margin-top: 0px !important;
+            padding-top: 84px !important;
+            padding-bottom: 28px !important;
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+          }
+          .retail-hero-right-card {
+            transform: none !important;
+            max-width: 100% !important;
+            width: 100% !important;
+            margin: 0 auto !important;
+            padding: 22px 16px !important;
+          }
+          .grid-col-4, .retail-why-grid, .grid-col-5 {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 12px !important;
+          }
+          .grid-col-3, .grid-col-2 {
             grid-template-columns: 1fr !important;
             gap: 12px !important;
           }
           .retail-glass-card {
-            padding: 14px 16px !important;
+            padding: 12px 10px !important;
+            border-radius: 12px !important;
+            align-items: flex-start !important;
+            flex-direction: column !important;
+            gap: 8px !important;
+          }
+          .retail-glass-card-icon {
+            width: 30px !important;
+            height: 30px !important;
+            font-size: 15px !important;
+            border-radius: 8px !important;
+            margin-top: 0 !important;
+            margin-bottom: 4px !important;
+          }
+          .retail-glass-card-text {
+            font-size: 13.5px !important;
+            line-height: 1.3 !important;
+          }
+          .retail-journey-card {
+            padding: 16px 14px !important;
+            border-radius: 14px !important;
+          }
+          .retail-journey-icon {
+            width: 36px !important;
+            height: 36px !important;
+            font-size: 18px !important;
+            border-radius: 10px !important;
+            margin-bottom: 10px !important;
+          }
+          .retail-journey-title {
+            font-size: 16px !important;
+            margin-bottom: 6px !important;
+          }
+          .retail-journey-desc {
+            font-size: 13px !important;
+            line-height: 1.45 !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .retail-hero-right-card {
+            padding: 18px 12px !important;
+          }
+          .grid-col-4, .retail-why-grid, .grid-col-5 {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 8px !important;
+          }
+          .grid-col-3, .grid-col-2 {
+            grid-template-columns: 1fr !important;
+            gap: 10px !important;
+          }
+          .retail-glass-card {
+            padding: 10px 8px !important;
+            border-radius: 10px !important;
+            align-items: flex-start !important;
+            flex-direction: column !important;
+            gap: 6px !important;
+          }
+          .retail-glass-card-text {
+            font-size: 12.5px !important;
+          }
+          .retail-journey-card {
+            padding: 14px 12px !important;
+            border-radius: 12px !important;
+          }
+          .retail-journey-icon {
+            width: 32px !important;
+            height: 32px !important;
+            font-size: 16px !important;
+            border-radius: 8px !important;
+            margin-bottom: 8px !important;
+          }
+          .retail-journey-title {
+            font-size: 15px !important;
+          }
+          .retail-journey-desc {
+            font-size: 12px !important;
+          }
+          .retail-local-section {
+            padding: 32px 16px !important;
+          }
+          .retail-local-card {
+            padding: 24px 18px !important;
+            border-radius: 18px !important;
+          }
+          .retail-callout-pill {
+            display: block !important;
+            text-align: center !important;
+            padding: 10px 14px !important;
+            font-size: 12.5px !important;
+            line-height: 1.45 !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .retail-local-section {
+            padding: 24px 12px !important;
+          }
+          .retail-local-card {
+            padding: 20px 14px !important;
+            border-radius: 16px !important;
+          }
+          .retail-callout-pill {
+            padding: 9px 12px !important;
+            font-size: 12px !important;
           }
         }
 
@@ -491,9 +684,10 @@ const RetailPage = () => {
           SECTION 1: HERO (Retail & Local Specific Graphic Layout with MessBee Logo)
          ═══════════════════════════════════════════════════════════════════ */}
       <section
+        className="retail-hero-section"
         style={{
-          marginTop: 70,
-          padding: "56px 6% 64px",
+          marginTop: 0,
+          padding: "92px 6% 48px",
           position: "relative",
           background: "linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)",
           overflow: "hidden",
@@ -530,7 +724,7 @@ const RetailPage = () => {
                 fontSize: 10.5,
                 fontWeight: 800,
                 letterSpacing: "1px",
-                marginBottom: 18,
+                marginBottom: 16,
                 textTransform: "uppercase",
               }}
             >
@@ -617,8 +811,8 @@ const RetailPage = () => {
                 background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
                 borderRadius: 24,
                 padding: "28px 24px",
-                boxShadow: "0 20px 50px rgba(2, 44, 34, 0.4)",
-                border: "1px solid rgba(52, 211, 153, 0.25)",
+                boxShadow: "0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)",
+                border: "1px solid rgba(34,197,94,.2)",
                 color: "#FFFFFF",
                 position: "relative",
                 overflow: "hidden",
@@ -722,7 +916,7 @@ const RetailPage = () => {
             >
               Everyday Business
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
               Built Around Your <span style={{ color: "#16A34A" }}>Everyday Business</span>
             </h2>
 
@@ -764,6 +958,7 @@ const RetailPage = () => {
                 }}
               >
                 <div
+                  className="retail-glass-card-icon"
                   style={{
                     width: 38,
                     height: 38,
@@ -780,7 +975,7 @@ const RetailPage = () => {
                 >
                   {item.icon}
                 </div>
-                <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", lineHeight: 1.35 }}>
+                <div className="retail-glass-card-text" style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", lineHeight: 1.35 }}>
                   {item.text}
                 </div>
               </div>
@@ -812,7 +1007,7 @@ const RetailPage = () => {
             >
               Repeat Business
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
               Turn First-Time Visitors Into <span style={{ color: "#16A34A" }}>Returning Customers</span>
             </h2>
 
@@ -829,7 +1024,7 @@ const RetailPage = () => {
             {RETAIL_JOURNEY_STEPS.map((s, i) => (
               <div
                 key={s.step}
-                className="retail-glass-card"
+                className="retail-glass-card retail-journey-card"
                 style={{
                   padding: 18,
                   border: `1px solid ${s.border}`,
@@ -841,6 +1036,7 @@ const RetailPage = () => {
               >
                 <div>
                   <div
+                    className="retail-journey-icon"
                     style={{
                       width: 36,
                       height: 36,
@@ -856,10 +1052,10 @@ const RetailPage = () => {
                   >
                     {s.icon}
                   </div>
-                  <h3 style={{ fontSize: 14.5, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>
+                  <h3 className="retail-journey-title" style={{ fontSize: 14.5, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>
                     {s.step}
                   </h3>
-                  <p style={{ fontSize: 12, color: "#64748B", lineHeight: 1.55 }}>
+                  <p className="retail-journey-desc" style={{ fontSize: 12, color: "#64748B", lineHeight: 1.55 }}>
                     {s.desc}
                   </p>
                 </div>
@@ -892,7 +1088,7 @@ const RetailPage = () => {
             >
               Practical Tools
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               Practical Tools for <span style={{ color: "#16A34A" }}>Local Businesses</span>
             </h2>
           </div>
@@ -966,7 +1162,7 @@ const RetailPage = () => {
             >
               Business Types
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               Useful for <span style={{ color: "#16A34A" }}>Different Local Businesses</span>
             </h2>
           </div>
@@ -999,7 +1195,7 @@ const RetailPage = () => {
         <div style={{ maxWidth: 1060, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 36 }}>
             <Pill>Unified Experience</Pill>
-            <h2 style={{ fontSize: "clamp(18px, 2.5vw, 30px)", fontWeight: 900, color: D2, letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: D2, letterSpacing: "-1px", marginBottom: 12 }}>
               Keep Your Customers <span style={{ color: G }}>Connected to Your Business</span>
             </h2>
             <p style={{ fontSize: 13, color: MU, maxWidth: 680, margin: "0 auto", lineHeight: 1.68 }}>
@@ -1007,7 +1203,7 @@ const RetailPage = () => {
             </p>
           </div>
 
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: 0, marginBottom: 26 }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", rowGap: 12, marginBottom: 26 }}>
             {RETAIL_FLOW_NODES.map((node, i, arr) => (
               <React.Fragment key={node}>
                 <span style={{ background: "#fff", border: `1.5px solid ${GB}`, color: G, borderRadius: 6, padding: "8px 16px", fontSize: 12, fontWeight: 700 }}>
@@ -1049,13 +1245,13 @@ const RetailPage = () => {
             >
               Why MessBee
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               Why Retail &amp; Local Businesses <span style={{ color: "#16A34A" }}>Choose MessBee</span>
             </h2>
           </div>
 
           {/* 6 Reason Cards from Prompt */}
-          <div className="grid-col-3">
+          <div className="retail-why-grid">
             {WHY_CHOOSE_MESSBEE.map((r, idx) => (
               <div
                 key={idx}
@@ -1093,9 +1289,10 @@ const RetailPage = () => {
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 8: MADE FOR THE WAY LOCAL BUSINESSES GROW
          ═══════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: "64px 6%", background: "#FAFAFA" }}>
+      <section className="retail-local-section" style={{ padding: "64px 6%", background: "#FAFAFA" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <div
+            className="retail-local-card"
             style={{
               background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
               borderRadius: 22,
@@ -1125,7 +1322,7 @@ const RetailPage = () => {
               </div>
 
               {/* Title from Prompt */}
-              <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, marginBottom: 14, letterSpacing: "-1px" }}>
+              <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, marginBottom: 14, letterSpacing: "-1px" }}>
                 Made for the Way Local Businesses Grow
               </h2>
 
@@ -1139,6 +1336,7 @@ const RetailPage = () => {
 
               {/* Headline Callout from Prompt */}
               <div
+                className="retail-callout-pill"
                 style={{
                   display: "inline-block",
                   background: "#16A34A",
@@ -1181,7 +1379,7 @@ const RetailPage = () => {
         <div style={{ maxWidth: 760, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 36 }}>
             <Pill>FAQ</Pill>
-            <h2 style={{ fontSize: "clamp(18px, 2.5vw, 30px)", fontWeight: 900, color: D2, letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: D2, letterSpacing: "-1px" }}>
               Frequently Asked Questions
             </h2>
           </div>

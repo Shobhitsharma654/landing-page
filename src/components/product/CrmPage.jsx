@@ -174,6 +174,19 @@ const Arrow = () => (
 
 const CSS = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  /* ── PAGE-WIDE TYPOGRAPHY OVERRIDES (font-size & weight only — no color changes) ── */
+  .crm-page-wrapper { font-family: 'Inter', 'Segoe UI', sans-serif !important; }
+  .crm-page-wrapper h1,
+  .crm-page-wrapper h2 { font-size: clamp(20px, 2.5vw, 32px) !important; font-weight: 900 !important; letter-spacing: -0.5px !important; }
+  .crm-page-wrapper h3,
+  .crm-page-wrapper h4 { font-size: 12px !important; font-weight: 800 !important; }
+  .crm-page-wrapper p { font-size: 12px !important; font-weight: 400 !important; line-height: 1.7 !important; }
+  .crm-page-wrapper .fqt { font-size: 14.5px !important; font-weight: 700 !important; }
+  .crm-page-wrapper .crm-faq-answer { font-size: 12px !important; line-height: 1.8 !important; }
+  .crm-page-wrapper .cp { font-size: 12.5px !important; font-weight: 700 !important; padding: 8px 18px !important; }
+  .crm-page-wrapper .cd { font-size: 12.5px !important; font-weight: 600 !important; padding: 10px 20px !important; }
+
   .cp { background:#16A34A;color:#fff;border:none;border-radius:40px;padding:11px 26px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;box-shadow:0 4px 18px rgba(22,163,74,.3); }
   .cp:hover { background:#15803D;transform:translateY(-1px);box-shadow:0 6px 24px rgba(22,163,74,.4); }
   .cd { background:#111827;color:#fff;border:none;border-radius:40px;padding:11px 26px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;display:inline-flex;align-items:center;gap:8px; }
@@ -188,7 +201,8 @@ const CSS = `
   .fq { display:flex;justify-content:space-between;align-items:center;padding:14px 0;cursor:pointer;gap:16px; }
   .fq:hover .fqt { color:#16A34A; }
   .fqt { font-size:13px;font-weight:600;transition:color .2s;line-height:1.5; }
-  .sec-grid { display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start; }
+  .sec-grid { display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;min-width:0;width:100%; }
+  .sec-grid > * { min-width:0;max-width:100%;word-break:break-word;overflow-wrap:break-word; }
   .sec-grid.rev { direction:rtl; }
   .sec-grid.rev > * { direction:ltr; }
   .hg { display:flex;flex-wrap:wrap;align-items:center;gap:48px; }
@@ -201,37 +215,182 @@ const CSS = `
   .ctr { display:flex;gap:14px;flex-wrap:wrap; }
   .sc { background:#FAFAFA;border:1.5px solid #F1F5F9;border-radius:16px;padding:28px 20px;text-align:center; transition:all .2s; }
   .sc:hover { border-color:#BBF7D0; transform:translateY(-2px); box-shadow:0 12px 32px rgba(22,163,74,.05); }
-  .flow-strip { display:flex;align-items:center;flex-wrap:wrap;gap:0; }
-  .flow-item { background:#F0FDF4;border:1.5px solid #BBF7D0;color:#16A34A;border-radius:8px;padding:8px 16px;font-size:13px;font-weight:700; }
-  .flow-arr { color:#94A3B8;font-size:18px;padding:0 6px; }
-  .connect-strip { display:flex;align-items:center;flex-wrap:wrap;gap:0;justify-content:center; }
-  .connect-item { color:#fff;padding:8px 12px;font-size:14px;font-weight:700; }
-  .connect-arr { color:rgba(255,255,255,.6);font-size:18px;padding:0 6px;font-weight:700; }
+  .flow-strip { display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 4px;margin-bottom:16px;width:100%;max-width:100%; }
+  .flow-item { background:#F0FDF4;border:1.5px solid #BBF7D0;color:#16A34A;border-radius:6px;padding:4px 8px;font-size:11px;font-weight:700;display:inline-block; }
+  .flow-arr { color:#94A3B8;font-size:13px;font-weight:700;padding:0 2px;display:inline-flex;align-items:center; }
+  @media(max-width:768px){
+    .flow-strip {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      flex-wrap: wrap !important;
+      gap: 10px 4px !important;
+      width: 100% !important;
+      margin: 0 auto 16px !important;
+    }
+    .flow-item { padding:4px 8px!important; font-size:10.5px!important; text-align:center!important; }
+    .flow-arr { font-size:12px!important; padding:0 2px!important; color:#94A3B8!important; }
+  }
+  /* Connected Business Grid Desktop & Mobile */
+  .crm-connect-grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px 6px;
+    margin: 20px auto;
+  }
+  .crm-connect-badge {
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #fff;
+    display: inline-block;
+    box-sizing: border-box;
+  }
+  .crm-connect-arrow {
+    color: #4ADE80;
+    font-size: 16px;
+    font-weight: 900;
+    padding: 0 2px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  @media(max-width:860px){
+    .crm-connect-grid {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      flex-wrap: wrap !important;
+      gap: 10px 4px !important;
+      margin: 16px auto !important;
+    }
+    .crm-connect-badge {
+      background: rgba(255,255,255,.08) !important;
+      border: 1px solid rgba(255,255,255,.15) !important;
+      border-radius: 6px !important;
+      padding: 5px 10px !important;
+      font-size: 11px !important;
+      font-weight: 700 !important;
+      color: #fff !important;
+      text-align: center !important;
+    }
+    .crm-connect-arrow {
+      color: #4ADE80 !important;
+      font-size: 13px !important;
+      font-weight: 900 !important;
+      padding: 0 1px !important;
+    }
+  }
+
+  @media(max-width:480px){
+    .crm-connect-grid {
+      gap: 8px 3px !important;
+    }
+    .crm-connect-badge {
+      padding: 4px 8px !important;
+      font-size: 10.5px !important;
+      border-radius: 6px !important;
+    }
+    .crm-connect-arrow {
+      font-size: 12px !important;
+    }
+  }
+  .crm-steps-grid { display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 10px; }
+  .crm-step-item { display:inline-flex;align-items:center;gap:8px; }
+  .crm-step-pill { background:#F0FDF4;border:1.5px solid #BBF7D0;color:#16A34A;border-radius:8px;padding:5px 12px;font-size:12px;font-weight:700;display:inline-block; }
+  .crm-step-arrow { color:#94A3B8;font-size:15px; }
+  * { box-sizing: border-box; }
+  .crm-sec-card { background:linear-gradient(135deg, #14532d 0%, #022c22 100%); border-radius:16px; padding:18px; border:1px solid rgba(34,197,94,.3); box-shadow:0 24px 56px rgba(0,0,0,.18); max-width:400px; margin:110px auto 0; width:100%; box-sizing:border-box; overflow:hidden; }
   @media(max-width:1100px){
     .fg { grid-template-columns:repeat(2,1fr)!important; }
     .sec-grid { grid-template-columns:1fr!important; }
     .sec-grid.rev { direction:ltr; }
     .wg { grid-template-columns:repeat(2,1fr)!important; }
+    .crm-sec-card { margin-top:24px!important; max-width:100%!important; }
   }
   @media(max-width:860px){
     .ig { grid-template-columns:1fr!important; }
     .sg { grid-template-columns:1fr 1fr!important; }
   }
+  @media(max-width:768px){
+    .crm-hero-section {
+      padding-top: 84px !important;
+      padding-bottom: 28px !important;
+      padding-left: 16px !important;
+      padding-right: 16px !important;
+    }
+    .hr {
+      width: 100% !important;
+      justify-content: center !important;
+      padding-top: 24px !important;
+      margin-bottom: 0 !important;
+    }
+    .hr > div {
+      transform: none !important;
+      transform-origin: top center !important;
+      margin: 0 auto !important;
+      max-width: 100% !important;
+      padding: 24px 16px !important;
+    }
+    .crm-sec-card {
+      margin-top: 20px !important;
+      max-width: 100% !important;
+      width: 100% !important;
+      padding: 18px 14px !important;
+      box-sizing: border-box !important;
+    }
+    .crm-india-section {
+      padding: 40px 16px !important;
+    }
+    .crm-steps-box {
+      padding: 12px 8px !important;
+      max-width: 310px !important;
+    }
+    .crm-steps-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 10px !important;
+    }
+    .crm-step-item {
+      display: block !important;
+    }
+    .crm-step-pill {
+      display: block !important;
+      text-align: center !important;
+      width: 100% !important;
+    }
+    .crm-step-arrow {
+      display: none !important;
+    }
+  }
   @media(max-width:640px){
-    .fg  { grid-template-columns:1fr!important; }
-    .wg  { grid-template-columns:1fr!important; }
+    .fg  { grid-template-columns:repeat(2, 1fr)!important; gap:10px!important; }
+    .cf  { padding:12px 10px!important; border-radius:12px!important; }
+    .crm-overview-section { padding-left:22px!important; padding-right:22px!important; }
+    .wg  { grid-template-columns:repeat(2, 1fr)!important; gap:10px!important; }
+    .why-card { padding:12px 10px!important; border-radius:10px!important; }
     .ctr { display:flex!important; flex-direction:row!important; align-items:center!important; gap:10px!important; flex-wrap:wrap!important; }
     .cp, .cd { padding:10px 18px!important; font-size:12px!important; }
     .hr  { width:100%!important; justify-content:center!important; padding-top:24px!important; margin-bottom:0!important; }
-    .hr > div { transform:none!important; transform-origin:top center!important; margin:0 auto!important; max-width:340px!important; }
-    .crm-sec-card { margin-top:24px!important; }
+    .hr > div { transform:none!important; transform-origin:top center!important; margin:0 auto!important; width:100%!important; max-width:100%!important; padding:22px 16px!important; box-sizing:border-box!important; }
+    .crm-sec-card { margin-top:20px!important; max-width:100%!important; width:100%!important; padding:16px 12px!important; box-sizing:border-box!important; }
     .sg  { grid-template-columns:1fr 1fr!important; }
     .ig  { grid-template-columns:1fr!important; }
     .sec-grid { grid-template-columns:1fr!important; }
   }
   @media(max-width:480px){
+    .fg  { grid-template-columns:repeat(2, 1fr)!important; gap:8px!important; }
+    .cf  { padding:10px 8px!important; border-radius:10px!important; }
+    .crm-overview-section { padding-left:20px!important; padding-right:20px!important; }
+    .hr > div { padding:18px 12px!important; border-radius:18px!important; }
     .sg  { grid-template-columns:1fr!important; }
     .sc  { padding:20px 14px!important; }
+    .crm-sec-card { padding: 16px 12px !important; }
   }
 `;
 
@@ -242,7 +401,7 @@ const CrmPage = () => {
   const adminUrl = import.meta.env.VITE_ADMIN_URL || "http://localhost:5174";
 
   return (
-    <div style={{ fontFamily:"'Inter','Segoe UI',sans-serif", background:"#fff", color:D, overflowX:"hidden" }}>
+    <div className="crm-page-wrapper" style={{ fontFamily:"'Inter','Segoe UI',sans-serif", background:"#fff", color:D, overflowX:"hidden" }}>
       <style>{CSS}</style>
 
       {/* SEO */}
@@ -251,11 +410,11 @@ const CrmPage = () => {
       <Navbar />
 
       {/* ── HERO ── */}
-      <section style={{ background:"#fff", padding:"118px 6% 60px" }}>
+      <section className="crm-hero-section" style={{ background:"#fff", padding:"92px 6% 48px" }}>
         <div style={{ maxWidth:1200, margin:"0 auto" }}>
           <div className="hg" style={{ alignItems:"flex-start" }}>
             <div className="hl">
-              <div style={{ display:"inline-flex", alignItems:"center", gap:6, background:GL, border:`1px solid ${GB}`, borderRadius:40, padding:"5px 14px", marginBottom:28 }}>
+              <div style={{ display:"inline-flex", alignItems:"center", gap:6, background:GL, border:`1px solid ${GB}`, borderRadius:40, padding:"5px 14px", marginBottom:16 }}>
                 <div style={{ width:6, height:6, borderRadius:"50%", background:G }}/>
                 <span style={{ fontSize:11.5, fontWeight:600, color:G }}>MessBee CRM</span>
               </div>
@@ -269,7 +428,7 @@ const CrmPage = () => {
                 follow up with prospects, and build stronger customer relationships from one centralized platform.
               </p>
 
-              <div style={{ display:"flex", flexWrap:"wrap", gap:8, marginBottom:36 }}>
+              <div style={{ display:"flex", flexWrap:"wrap", gap:8, marginBottom:32 }}>
                 {["Manage Customers.","Track Leads.","Build Relationships.","Grow Your Business."].map(t => (
                   <span key={t} style={{ background:BS, border:"1px solid #E5E7EB", color:MU, borderRadius:40, padding:"4px 12px", fontSize:12, fontWeight:600 }}>{t}</span>
                 ))}
@@ -334,7 +493,7 @@ const CrmPage = () => {
 
 
       {/* ── OVERVIEW FEATURES GRID ── */}
-      <section id="crm-overview" style={{ background:"#fff", padding:"20px 6% 40px" }}>
+      <section id="crm-overview" className="crm-overview-section" style={{ background:"#fff", padding:"20px 6% 40px" }}>
         <div style={{ maxWidth:1160, margin:"0 auto" }}>
           <div style={{ textAlign:"center", marginBottom:32 }}>
             <Pill>What You Can Do</Pill>
@@ -368,7 +527,7 @@ const CrmPage = () => {
                 {/* Text side */}
                 <div>
                   <Pill color={sec.color} bg={sec.bg} border={sec.color+"40"}>{sec.badge}</Pill>
-                  <h2 style={{ fontSize:"clamp(18px,2.5vw,28px)", fontWeight:900, color:D2, lineHeight:1.2, letterSpacing:"-1px", marginBottom:10 }}>
+                  <h2 style={{ fontSize:"clamp(20px, 2.5vw, 32px)", fontWeight:900, color:D2, lineHeight:1.2, letterSpacing:"-1px", marginBottom:10 }}>
                     {sec.headline}
                   </h2>
                   <p style={{ fontSize:13, fontWeight:600, color:sec.color, marginBottom:14 }}>{sec.sub}</p>
@@ -381,7 +540,7 @@ const CrmPage = () => {
                         {sec.flow.map((f,i) => (
                           <React.Fragment key={f}>
                             <span className="flow-item">{f}</span>
-                            {i < sec.flow.length-1 && <span className="flow-arr">&#8594;</span>}
+                            {i < sec.flow.length-1 && <span className="flow-arr">→</span>}
                           </React.Fragment>
                         ))}
                       </div>
@@ -400,7 +559,7 @@ const CrmPage = () => {
                 </div>
 
                 {/* Visual side */}
-                <div className="crm-sec-card" style={{ background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)", borderRadius:16, padding:18, border:`1px solid rgba(34,197,94,.3)`, boxShadow:"0 24px 56px rgba(0,0,0,.18)", maxWidth:400, margin:"110px auto 0", width:"100%" }}>
+                <div className="crm-sec-card">
                   <div style={{ marginBottom:14, display:"flex", alignItems:"center", gap:8 }}>
                     <div style={{ width:32, height:32, borderRadius:8, background:sec.bg, display:"flex", alignItems:"center", justifyContent:"center", fontSize:16 }}>{OVERVIEW[idx]?.icon}</div>
                     <div>
@@ -439,13 +598,13 @@ const CrmPage = () => {
       })}
 
       {/* ── CRM CONNECTS GROWTH ── */}
-      <section style={{ padding: "64px 6%", background: "#FAFAFA" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+      <section style={{ padding: "60px 6%", background: "#FAFAFA" }}>
+        <div style={{ maxWidth: 1300, margin: "0 auto" }}>
           <div
             style={{
               background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
               borderRadius: 22,
-              padding: "48px 40px",
+              padding: "40px 40px",
               color: "#FFFFFF",
               position: "relative",
               overflow: "hidden",
@@ -461,12 +620,12 @@ const CrmPage = () => {
               <p style={{ fontSize: 14, color: "rgba(255,255,255,.55)", lineHeight: 1.75, maxWidth: 580, margin: "0 auto 16px" }}>
                 MessBee CRM is designed to work alongside your broader business operations — not in isolation.
               </p>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: "10px 12px" }}>
+              <div className="crm-connect-grid">
                 {["CRM", "Communication", "Marketing", "Automation", "Commerce", "Analytics"].map((item, i, arr) => (
-                  <div key={item} style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
-                    <span className="connect-item">{item}</span>
-                    {i < arr.length - 1 && <span style={{ color: "rgba(255,255,255,.6)", fontSize: 18, fontWeight: 700 }}>→</span>}
-                  </div>
+                  <React.Fragment key={item}>
+                    <div className="crm-connect-badge">{item}</div>
+                    {i < arr.length - 1 && <span className="crm-connect-arrow">→</span>}
+                  </React.Fragment>
                 ))}
               </div>
               <p style={{ fontSize: 13, color: "rgba(255,255,255,.35)", marginTop: 16, marginBottom: 0 }}>
@@ -499,7 +658,7 @@ const CrmPage = () => {
       </section>
 
       {/* ── BUILT FOR INDIA ── */}
-      <section style={{ background:GL, padding:"80px 6%", borderTop:`1px solid ${GB}`, borderBottom:`1px solid ${GB}` }}>
+      <section className="crm-india-section" style={{ background:GL, padding:"80px 6%", borderTop:`1px solid ${GB}`, borderBottom:`1px solid ${GB}` }}>
         <div style={{ maxWidth:1000, margin:"0 auto", textAlign:"center" }}>
           <Pill>Built for Indian Businesses</Pill>
           <h2 style={{ fontSize:"clamp(20px,2.5vw,32px)", fontWeight:900, color:D2, letterSpacing:"-1px", marginBottom:14 }}>
@@ -513,13 +672,15 @@ const CrmPage = () => {
             MessBee CRM is designed to help businesses move from scattered customer information to a more
             organized digital customer-management workflow.
           </p>
-          <div style={{ background:"#fff", border:`1.5px solid ${GB}`, borderRadius:16, padding:"12px 32px", display:"inline-block", maxWidth:720 }}>
+          <div className="crm-steps-box" style={{ background:"#fff", border:`1.5px solid ${GB}`, borderRadius:16, padding:"12px 32px", display:"inline-block", maxWidth:720, width: "100%" }}>
             <p style={{ fontSize:11, color:MU, fontWeight:600, marginBottom:8, textTransform:"uppercase", letterSpacing:1 }}>From First Enquiry to Long-Term Customer</p>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: "8px 10px" }}>
+            <div className="crm-steps-grid">
               {["Capture","Organize","Communicate","Follow Up","Convert","Retain"].map((step,i,arr) => (
-                <div key={step} style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
-                  <span style={{ background:GL, border:`1.5px solid ${GB}`, color:G, borderRadius:8, padding:"5px 12px", fontSize:12, fontWeight:700 }}>{step}</span>
-                  {i < arr.length-1 && <span style={{ color:"#94A3B8", fontSize:15 }}>→</span>}
+                <div key={step} className="crm-step-item">
+                  <span className="crm-step-pill">
+                    {i + 1}. {step}
+                  </span>
+                  {i < arr.length-1 && <span className="crm-step-arrow">→</span>}
                 </div>
               ))}
             </div>
@@ -551,7 +712,7 @@ const CrmPage = () => {
                   </svg>
                 </div>
               </div>
-              {openFaq===i && <div style={{ fontSize:13, color:MU, lineHeight:1.8, paddingBottom:16 }}>{faq.a}</div>}
+              {openFaq===i && <div className="crm-faq-answer" style={{ fontSize:13, color:MU, lineHeight:1.8, paddingBottom:16 }}>{faq.a}</div>}
             </div>
           ))}
         </div>

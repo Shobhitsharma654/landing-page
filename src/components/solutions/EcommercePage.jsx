@@ -306,7 +306,7 @@ const FaqItem = ({ q, a }) => {
           cursor: "pointer",
         }}
       >
-        <span style={{ fontSize: 14, fontWeight: 700, color: open ? G : D2, transition: "color .2s" }}>{q}</span>
+        <span className="ecom-faq-question" style={{ fontSize: 14, fontWeight: 700, color: open ? G : D2, transition: "color .2s" }}>{q}</span>
         <div
           style={{
             width: 28,
@@ -334,7 +334,7 @@ const FaqItem = ({ q, a }) => {
         </div>
       </div>
       {open && (
-        <div style={{ fontSize: 13, color: MU, lineHeight: 1.8, paddingBottom: 16 }}>{a}</div>
+        <div className="ecom-faq-answer" style={{ fontSize: 13, color: MU, lineHeight: 1.8, paddingBottom: 16 }}>{a}</div>
       )}
     </div>
   );
@@ -355,9 +355,74 @@ const EcommercePage = () => {
   };
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "hidden", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+    <div className="ecom-page-wrapper" style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "hidden", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        
+        /* Global Typography Overrides from ABOUT_TYPOGRAPHY_README.md & Ecommerce Section */
+        .ecom-page-wrapper h1,
+        .ecom-page-wrapper h2 {
+          font-size: clamp(20px, 2.5vw, 32px) !important;
+          font-weight: 900 !important;
+          color: #0F172A !important;
+          line-height: 1.2 !important;
+        }
+        .ecom-page-wrapper h1 span,
+        .ecom-page-wrapper h2 span {
+          color: #16A34A !important;
+        }
+        .ecom-page-wrapper p,
+        .ecom-page-wrapper .ecom-faq-answer {
+          font-size: 12px !important;
+          font-weight: 400 !important;
+          color: #475569 !important;
+          line-height: 1.45 !important;
+        }
+        .ecom-page-wrapper h3,
+        .ecom-page-wrapper h4,
+        .ecom-page-wrapper .ecom-why-title,
+        .ecom-page-wrapper .ecom-model-title {
+          font-size: 12px !important;
+          font-weight: 800 !important;
+          color: #0F172A !important;
+          line-height: 1.45 !important;
+        }
+        .ecom-page-wrapper .ecom-faq-question {
+          font-size: 14.5px !important;
+          font-weight: 700 !important;
+          color: #0F172A !important;
+          line-height: 1.45 !important;
+        }
+        .ecom-page-wrapper .ecom-why-desc,
+        .ecom-page-wrapper .ecom-model-desc {
+          font-size: 12px !important;
+          font-weight: 400 !important;
+          color: #64748B !important;
+          line-height: 1.45 !important;
+        }
+        .ecom-page-wrapper .ecom-india-card h2 {
+          color: #FFFFFF !important;
+        }
+        .ecom-page-wrapper .ecom-india-card p {
+          color: #94A3B8 !important;
+        }
+        .ecom-page-wrapper .ecom-india-card p:last-of-type {
+          color: #4ADE80 !important;
+        }
+        .ecom-page-wrapper .ecom-btn-primary {
+          padding: 8px 18px !important;
+          font-size: 12.5px !important;
+          font-weight: 700 !important;
+          box-shadow: 0 1px 5px rgba(22, 163, 74, 0.25) !important;
+          border-radius: 40px !important;
+        }
+        .ecom-page-wrapper .ecom-btn-secondary {
+          padding: 10px 20px !important;
+          font-size: 12.5px !important;
+          font-weight: 600 !important;
+          border-radius: 40px !important;
+        }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         /* ── BUTTONS ── */
@@ -490,14 +555,14 @@ const EcommercePage = () => {
           .ecom-hero-row { gap: 32px; }
         }
 
-        .ecom-hero-right-col { flex: 0.9; min-width: 320px; position: relative; display: flex; justify-content: center; }
-        .ecom-hero-right-card { transform: scale(0.8); transform-origin: center right; width: 100%; max-width: 480px; }
+        .ecom-hero-right-col { flex: 0.9; min-width: 320px; position: relative; display: flex; justify-content: center; padding-top: 20px; margin-bottom: -120px; }
+        .ecom-hero-right-card { transform: scale(0.75); transform-origin: top center; width: 100%; max-width: 460px; }
 
         /* Compact Laptop / Tablet-Laptop (under 1024px) */
         @media (max-width: 1023px) {
           .ecom-hero-row { flex-direction: column !important; }
-          .ecom-hero-right-col { width: 100% !important; min-width: unset !important; justify-content: center !important; margin-top: 24px !important; }
-          .ecom-hero-right-card { transform: none !important; transform-origin: center center !important; max-width: 340px !important; margin: 0 auto !important; }
+          .ecom-hero-right-col { width: 100% !important; min-width: 0 !important; justify-content: center !important; padding-top: 24px !important; margin-bottom: 0 !important; }
+          .ecom-hero-right-card { transform: none !important; transform-origin: top center !important; max-width: 100% !important; width: 100% !important; margin: 0 auto !important; padding: 22px 16px !important; box-sizing: border-box !important; border-radius: 20px !important; }
           .grid-col-5 { grid-template-columns: repeat(2, 1fr); }
           .grid-col-4 { grid-template-columns: repeat(2, 1fr); }
           .grid-col-3 { grid-template-columns: repeat(1, 1fr); }
@@ -506,12 +571,194 @@ const EcommercePage = () => {
 
         /* Mobile Phones & Tablets (under 768px) */
         @media (max-width: 768px) {
+          .ecom-hero-section {
+            margin-top: 0px !important;
+            padding-top: 84px !important;
+            padding-bottom: 28px !important;
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+          }
+          .ecom-hero-right-card {
+            transform: none !important;
+            max-width: 100% !important;
+            width: 100% !important;
+            margin: 0 auto !important;
+            padding: 22px 16px !important;
+          }
           .grid-col-5, .grid-col-4, .grid-col-3, .grid-col-2 {
             grid-template-columns: 1fr !important;
             gap: 12px !important;
           }
+          .ecom-built-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
+          }
+          .ecom-built-grid .ecom-glass-card {
+            padding: 16px 14px !important;
+            border-radius: 14px !important;
+            align-items: flex-start !important;
+            flex-direction: column !important;
+            gap: 8px !important;
+          }
+          .ecom-built-grid .ecom-glass-card-icon {
+            width: 36px !important;
+            height: 36px !important;
+            font-size: 18px !important;
+            border-radius: 10px !important;
+            margin-top: 0 !important;
+            margin-bottom: 10px !important;
+          }
+          .ecom-built-grid .ecom-glass-card-text {
+            font-size: 14px !important;
+            line-height: 1.3 !important;
+          }
+          .ecom-why-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
+          }
+          .ecom-why-grid .ecom-glass-card {
+            padding: 16px 14px !important;
+            border-radius: 14px !important;
+          }
+          .ecom-why-grid .ecom-glass-card-icon {
+            width: 36px !important;
+            height: 36px !important;
+            font-size: 18px !important;
+            border-radius: 10px !important;
+            margin-bottom: 10px !important;
+          }
+          .ecom-why-title {
+            font-size: 16px !important;
+            line-height: 1.3 !important;
+          }
+          .ecom-why-desc {
+            font-size: 13px !important;
+            line-height: 1.45 !important;
+          }
+          .ecom-models-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
+          }
+          .ecom-models-grid .ecom-glass-card {
+            padding: 16px 14px !important;
+            border-radius: 14px !important;
+          }
+          .ecom-model-bullet {
+            width: 8px !important;
+            height: 8px !important;
+            margin-bottom: 10px !important;
+          }
+          .ecom-model-title {
+            font-size: 16px !important;
+            margin-bottom: 6px !important;
+          }
+          .ecom-model-desc {
+            font-size: 13px !important;
+            line-height: 1.45 !important;
+          }
           .ecom-glass-card {
             padding: 14px 16px !important;
+          }
+          .ecom-segments-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .ecom-hero-right-card {
+            padding: 18px 12px !important;
+          }
+          .grid-col-5, .grid-col-4, .grid-col-3, .grid-col-2 {
+            grid-template-columns: 1fr !important;
+            gap: 10px !important;
+          }
+          .ecom-india-section {
+            padding: 32px 16px !important;
+          }
+          .ecom-india-card {
+            padding: 24px 18px !important;
+            border-radius: 18px !important;
+          }
+          .ecom-callout-pill {
+            display: block !important;
+            text-align: center !important;
+            padding: 10px 14px !important;
+            font-size: 12.5px !important;
+            line-height: 1.45 !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+          }
+          .ecom-built-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 8px !important;
+          }
+          .ecom-built-grid .ecom-glass-card {
+            padding: 14px 12px !important;
+            border-radius: 12px !important;
+            align-items: flex-start !important;
+            flex-direction: column !important;
+            gap: 6px !important;
+          }
+          .ecom-built-grid .ecom-glass-card-text {
+            font-size: 13px !important;
+          }
+          .ecom-why-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 8px !important;
+          }
+          .ecom-why-grid .ecom-glass-card {
+            padding: 14px 12px !important;
+            border-radius: 12px !important;
+          }
+          .ecom-why-title {
+            font-size: 15px !important;
+          }
+          .ecom-why-desc {
+            font-size: 12px !important;
+          }
+          .ecom-models-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 8px !important;
+          }
+          .ecom-models-grid .ecom-glass-card {
+            padding: 14px 12px !important;
+            border-radius: 12px !important;
+          }
+          .ecom-model-bullet {
+            width: 7px !important;
+            height: 7px !important;
+            margin-bottom: 8px !important;
+          }
+          .ecom-model-title {
+            font-size: 15px !important;
+          }
+          .ecom-model-desc {
+            font-size: 12px !important;
+          }
+          .ecom-segments-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 8px !important;
+          }
+          .ecom-segments-grid > div {
+            padding: 12px 10px !important;
+          }
+          .ecom-segments-grid > div span {
+            font-size: 11.5px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .ecom-india-section {
+            padding: 24px 12px !important;
+          }
+          .ecom-india-card {
+            padding: 20px 14px !important;
+            border-radius: 16px !important;
+          }
+          .ecom-callout-pill {
+            padding: 9px 12px !important;
+            font-size: 12px !important;
           }
         }
 
@@ -538,9 +785,10 @@ const EcommercePage = () => {
           SECTION 1: HERO (Strictly Provided Copy)
          ═══════════════════════════════════════════════════════════════════ */}
       <section
+        className="ecom-hero-section"
         style={{
-          marginTop: 70,
-          padding: "56px 6% 64px",
+          marginTop: 0,
+          padding: "92px 6% 48px",
           position: "relative",
           background: "linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)",
           overflow: "hidden",
@@ -577,7 +825,7 @@ const EcommercePage = () => {
                 fontSize: 10.5,
                 fontWeight: 800,
                 letterSpacing: "1px",
-                marginBottom: 18,
+                marginBottom: 16,
                 textTransform: "uppercase",
               }}
             >
@@ -664,8 +912,8 @@ const EcommercePage = () => {
                 background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
                 borderRadius: 24,
                 padding: "28px 24px",
-                boxShadow: "0 20px 50px rgba(2, 44, 34, 0.4)",
-                border: "1px solid rgba(52, 211, 153, 0.25)",
+                boxShadow: "0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)",
+                border: "1px solid rgba(34,197,94,.2)",
                 color: "#FFFFFF",
                 position: "relative",
                 overflow: "hidden",
@@ -762,7 +1010,7 @@ const EcommercePage = () => {
             >
               Overview
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
               Built for Growing <span style={{ color: "#16A34A" }}>E-commerce Businesses</span>
             </h2>
 
@@ -790,7 +1038,7 @@ const EcommercePage = () => {
           </div>
 
           {/* 9 List Items Grid */}
-          <div className="grid-col-3">
+          <div className="grid-col-3 ecom-built-grid">
             {WITH_MESSBEE_YOU_CAN.map((item, idx) => (
               <div
                 key={idx}
@@ -804,6 +1052,7 @@ const EcommercePage = () => {
                 }}
               >
                 <div
+                  className="ecom-glass-card-icon"
                   style={{
                     width: 38,
                     height: 38,
@@ -820,7 +1069,7 @@ const EcommercePage = () => {
                 >
                   {item.icon}
                 </div>
-                <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", lineHeight: 1.35 }}>
+                <div className="ecom-glass-card-text" style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", lineHeight: 1.35 }}>
                   {item.text}
                 </div>
               </div>
@@ -852,7 +1101,7 @@ const EcommercePage = () => {
             >
               Customer Journey
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
               From Product Discovery to <span style={{ color: "#16A34A" }}>Repeat Customer</span>
             </h2>
 
@@ -943,7 +1192,7 @@ const EcommercePage = () => {
             >
               Capabilities
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               Tools for Your <span style={{ color: "#16A34A" }}>E-commerce Workflow</span>
             </h2>
           </div>
@@ -995,7 +1244,7 @@ const EcommercePage = () => {
         <div style={{ maxWidth: 1060, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 36 }}>
             <Pill>Workflow Synergy</Pill>
-            <h2 style={{ fontSize: "clamp(18px, 2.5vw, 30px)", fontWeight: 900, color: D2, letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: D2, letterSpacing: "-1px", marginBottom: 12 }}>
               Make Customer Communication <span style={{ color: G }}>Part of Your Store</span>
             </h2>
             <p style={{ fontSize: 13, color: MU, maxWidth: 660, margin: "0 auto", lineHeight: 1.68 }}>
@@ -1003,7 +1252,7 @@ const EcommercePage = () => {
             </p>
           </div>
 
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: 0, marginBottom: 26 }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", rowGap: 12, marginBottom: 26 }}>
             {STORE_FLOW_NODES.map((node, i, arr) => (
               <React.Fragment key={node}>
                 <span style={{ background: "#fff", border: `1.5px solid ${GB}`, color: G, borderRadius: 6, padding: "8px 16px", fontSize: 12, fontWeight: 700 }}>
@@ -1045,7 +1294,7 @@ const EcommercePage = () => {
             >
               Segmentation
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
               Re-Engage Customers <span style={{ color: "#16A34A" }}>Without Starting From Zero</span>
             </h2>
             <p style={{ fontSize: 13.5, color: "#64748B", maxWidth: 640, margin: "0 auto 6px", lineHeight: 1.68 }}>
@@ -1057,7 +1306,7 @@ const EcommercePage = () => {
           </div>
 
           {/* 7 Groups List Grid */}
-          <div className="grid-col-4" style={{ marginBottom: 28 }}>
+          <div className="ecom-segments-grid grid-col-4" style={{ marginBottom: 28 }}>
             {CUSTOMER_SEGMENTS.map((seg, idx) => (
               <div
                 key={idx}
@@ -1118,7 +1367,7 @@ const EcommercePage = () => {
             >
               Automation
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
               Reduce <span style={{ color: "#16A34A" }}>Manual Work</span>
             </h2>
             <p style={{ fontSize: 13.5, color: "#64748B", maxWidth: 640, margin: "0 auto", lineHeight: 1.68 }}>
@@ -1127,7 +1376,7 @@ const EcommercePage = () => {
           </div>
 
           {/* 7 Workflows Grid from Prompt */}
-          <div className="grid-col-4" style={{ marginBottom: 28 }}>
+          <div className="ecom-segments-grid grid-col-4" style={{ marginBottom: 28 }}>
             {AUTOMATION_WORKFLOWS.map((auto, idx) => (
               <div
                 key={idx}
@@ -1178,13 +1427,13 @@ const EcommercePage = () => {
             >
               Why MessBee
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               Why E-commerce Businesses <span style={{ color: "#16A34A" }}>Choose MessBee</span>
             </h2>
           </div>
 
           {/* 7 Reason Cards from Prompt */}
-          <div className="grid-col-3">
+          <div className="grid-col-3 ecom-why-grid">
             {WHY_CHOOSE_MESSBEE.map((r, idx) => (
               <div
                 key={idx}
@@ -1195,6 +1444,7 @@ const EcommercePage = () => {
                 }}
               >
                 <div
+                  className="ecom-glass-card-icon"
                   style={{
                     width: 38,
                     height: 38,
@@ -1211,8 +1461,8 @@ const EcommercePage = () => {
                 >
                   {r.icon}
                 </div>
-                <h3 style={{ fontSize: 14.5, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>{r.title}</h3>
-                <p style={{ fontSize: 12.5, color: "#64748B", lineHeight: 1.6 }}>{r.desc}</p>
+                <h3 className="ecom-why-title" style={{ fontSize: 14.5, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>{r.title}</h3>
+                <p className="ecom-why-desc" style={{ fontSize: 12.5, color: "#64748B", lineHeight: 1.6 }}>{r.desc}</p>
               </div>
             ))}
           </div>
@@ -1242,7 +1492,7 @@ const EcommercePage = () => {
             >
               Business Models
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
               For Different <span style={{ color: "#16A34A" }}>E-commerce Businesses</span>
             </h2>
             <p style={{ fontSize: 13.5, color: "#64748B", maxWidth: 500, margin: "0 auto" }}>
@@ -1251,7 +1501,7 @@ const EcommercePage = () => {
           </div>
 
           {/* 5 Business Type Cards from Prompt */}
-          <div className="grid-col-5">
+          <div className="grid-col-5 ecom-models-grid">
             {BUSINESS_TYPES.map((b, idx) => (
               <div
                 key={idx}
@@ -1267,6 +1517,7 @@ const EcommercePage = () => {
               >
                 <div>
                   <div
+                    className="ecom-model-bullet"
                     style={{
                       width: 9,
                       height: 9,
@@ -1275,8 +1526,8 @@ const EcommercePage = () => {
                       marginBottom: 12,
                     }}
                   />
-                  <h3 style={{ fontSize: 14.5, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>{b.type}</h3>
-                  <p style={{ fontSize: 12, color: "#64748B", lineHeight: 1.55 }}>{b.desc}</p>
+                  <h3 className="ecom-model-title" style={{ fontSize: 14.5, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>{b.type}</h3>
+                  <p className="ecom-model-desc" style={{ fontSize: 12, color: "#64748B", lineHeight: 1.55 }}>{b.desc}</p>
                 </div>
               </div>
             ))}
@@ -1287,9 +1538,10 @@ const EcommercePage = () => {
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 10: BUILT FOR E-COMMERCE BUSINESSES IN INDIA
          ═══════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: "64px 6%", background: "#FFFFFF" }}>
+      <section className="ecom-india-section" style={{ padding: "64px 6%", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <div
+            className="ecom-india-card"
             style={{
               background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
               borderRadius: 22,
@@ -1319,7 +1571,7 @@ const EcommercePage = () => {
               </div>
 
               {/* Title from Prompt */}
-              <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, marginBottom: 14, letterSpacing: "-1px" }}>
+              <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, marginBottom: 14, letterSpacing: "-1px" }}>
                 Built for E-commerce Businesses in India
               </h2>
 
@@ -1333,6 +1585,7 @@ const EcommercePage = () => {
 
               {/* Headline Callout from Prompt */}
               <div
+                className="ecom-callout-pill"
                 style={{
                   display: "inline-block",
                   background: "#16A34A",
@@ -1381,7 +1634,7 @@ const EcommercePage = () => {
         <div style={{ maxWidth: 760, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 36 }}>
             <Pill>FAQ</Pill>
-            <h2 style={{ fontSize: "clamp(18px, 2.5vw, 30px)", fontWeight: 900, color: D2, letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: D2, letterSpacing: "-1px" }}>
               Frequently Asked Questions
             </h2>
           </div>

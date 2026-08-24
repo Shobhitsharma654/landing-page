@@ -306,7 +306,7 @@ const FaqItem = ({ q, a }) => {
           cursor: "pointer",
         }}
       >
-        <span style={{ fontSize: 14, fontWeight: 700, color: open ? G : D2, transition: "color .2s" }}>{q}</span>
+        <span className="blog-faq-trigger" style={{ fontSize: 14, fontWeight: 700, color: open ? G : D2, transition: "color .2s" }}>{q}</span>
         <div
           style={{
             width: 28,
@@ -334,7 +334,7 @@ const FaqItem = ({ q, a }) => {
         </div>
       </div>
       {open && (
-        <div style={{ fontSize: 13, color: MU, lineHeight: 1.8, paddingBottom: 16 }}>{a}</div>
+        <div className="blog-faq-answer" style={{ fontSize: 13, color: MU, lineHeight: 1.8, paddingBottom: 16 }}>{a}</div>
       )}
     </div>
   );
@@ -356,9 +356,21 @@ const BlogPage = () => {
   };
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", color: "#0F172A", background: "#FFFFFF" }}>
+    <div className="blog-page-wrapper" style={{ fontFamily: "'Inter', sans-serif", color: "#0F172A", background: "#FFFFFF" }}>
       {/* Dynamic CSS Styling & Media Queries matching Solution/Resource Pages */}
       <style>{`
+        /* ── PAGE-WIDE TYPOGRAPHY OVERRIDES (font-size & weight only — no color changes) ── */
+        .blog-page-wrapper { font-family: 'Inter', 'Segoe UI', sans-serif !important; }
+        .blog-page-wrapper h1,
+        .blog-page-wrapper h2 { font-size: clamp(20px, 2.5vw, 32px) !important; font-weight: 900 !important; letter-spacing: -0.5px !important; }
+        .blog-page-wrapper h3,
+        .blog-page-wrapper h4 { font-size: 12px !important; font-weight: 800 !important; }
+        .blog-page-wrapper p { font-size: 12px !important; font-weight: 400 !important; line-height: 1.7 !important; }
+        .blog-page-wrapper .blog-faq-trigger { font-size: 14.5px !important; font-weight: 700 !important; }
+        .blog-page-wrapper .blog-faq-answer { font-size: 12px !important; line-height: 1.8 !important; }
+        .blog-page-wrapper .blog-btn-primary { font-size: 12.5px !important; font-weight: 700 !important; padding: 8px 18px !important; }
+        .blog-page-wrapper .blog-btn-secondary { font-size: 12.5px !important; font-weight: 600 !important; padding: 10px 20px !important; }
+
         .blog-glass-card {
           background: #FFFFFF;
           border: 1px solid #E2E8F0;
@@ -450,13 +462,21 @@ const BlogPage = () => {
           }
           .blog-hero-graphic-box {
             margin-top: 10px !important;
-            min-width: 100% !important;
+            padding-top: 24px !important;
+            margin-bottom: 0 !important;
+            min-width: 0 !important;
             width: 100% !important;
+            justify-content: center !important;
           }
           .blog-hero-graphic-card {
             transform: none !important;
-            border-radius: 18px !important;
-            padding: 20px 16px !important;
+            transform-origin: top center !important;
+            margin: 0 auto !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            border-radius: 20px !important;
+            padding: 22px 16px !important;
+            box-sizing: border-box !important;
           }
           .blog-btn-primary, .blog-btn-secondary {
             width: 100% !important;
@@ -466,13 +486,21 @@ const BlogPage = () => {
             padding: 18px 16px !important;
             border-radius: 14px !important;
           }
-          .topics-auto-grid, .flex-auto-grid, .action-auto-grid {
+          .topics-auto-grid {
             grid-template-columns: 1fr !important;
+            gap: 14px !important;
+          }
+          .flex-auto-grid, .action-auto-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
             gap: 14px !important;
           }
         }
 
         @media (max-width: 480px) {
+          .blog-hero-graphic-card {
+            padding: 18px 12px !important;
+            border-radius: 18px !important;
+          }
           .blog-section {
             padding: 20px 14px !important;
           }
@@ -488,6 +516,14 @@ const BlogPage = () => {
           }
           .blog-glass-card {
             padding: 16px 14px !important;
+          }
+          .topics-auto-grid {
+            grid-template-columns: 1fr !important;
+            gap: 12px !important;
+          }
+          .flex-auto-grid, .action-auto-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
           }
         }
 
@@ -516,8 +552,8 @@ const BlogPage = () => {
       <section
         className="blog-hero-section"
         style={{
-          marginTop: 40,
-          padding: "56px 6% 64px",
+          marginTop: 0,
+          padding: "92px 6% 48px",
           position: "relative",
           background: "linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)",
           overflow: "hidden",
@@ -537,7 +573,7 @@ const BlogPage = () => {
           }}
         />
 
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", width: "100%", position: "relative", zIndex: 1 }}>
           <div className="blog-hero-row">
             {/* Left Column: Text Copy */}
             <div className="blog-hero-left" style={{ flex: 1.15 }}>
@@ -564,26 +600,26 @@ const BlogPage = () => {
               {/* H1 Heading */}
               <h1
                 style={{
-                  fontSize: "clamp(24px, 2.6vw, 36px)",
+                  fontSize: "clamp(28px, 2.9vw, 42px)",
                   fontWeight: 900,
                   color: "#0F172A",
-                  lineHeight: 1.18,
-                  letterSpacing: "-1.2px",
-                  marginBottom: 12,
+                  lineHeight: 1.12,
+                  letterSpacing: "-1px",
+                  marginBottom: 14,
                 }}
               >
                 MessBee Blog – <span style={{ color: "#16A34A" }}>Practical Insights for Modern Businesses</span>
               </h1>
 
-              <p style={{ fontSize: 16, fontWeight: 800, color: "#16A34A", marginBottom: 16, letterSpacing: "-0.2px" }}>
+              <p style={{ fontSize: 16, fontWeight: 800, color: "#16A34A", marginBottom: 12, letterSpacing: "-0.2px" }}>
                 Practical Ideas, Guides &amp; Insights for Growing Businesses
               </p>
 
-              <p style={{ fontSize: 13.5, color: "#475569", lineHeight: 1.68, marginBottom: 20 }}>
+              <p style={{ fontSize: 14, color: "#64748B", lineHeight: 1.65, marginBottom: 16, maxWidth: 540 }}>
                 The MessBee Blog covers practical insights on CRM, WhatsApp Business, marketing, AI and digital commerce — helping business owners and teams make smarter decisions as they grow.
               </p>
 
-              <div style={{ fontSize: 16, fontWeight: 900, color: "#15803D", marginBottom: 24, letterSpacing: "-0.3px" }}>
+              <div style={{ fontSize: 15, fontWeight: 800, color: "#15803D", marginBottom: 20, letterSpacing: "-0.2px" }}>
                 Read. Learn. Apply. Grow.
               </div>
 
@@ -599,20 +635,22 @@ const BlogPage = () => {
             </div>
 
             {/* Right Column: Hero Graphic Box with Dark Forest Green Gradient */}
-            <div className="blog-hero-graphic-box" style={{ flex: 0.85, minWidth: 320, position: "relative", marginTop: 60 }}>
+            <div className="blog-hero-graphic-box" style={{ flex: 0.85, minWidth: 320, position: "relative", display: "flex", justifyContent: "center", paddingTop: 20, marginBottom: -120 }}>
               <div
                 className="blog-hero-graphic-card"
                 style={{
                   background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
                   borderRadius: 24,
-                  padding: "24px 20px",
-                  boxShadow: "0 20px 50px rgba(2, 44, 34, 0.4)",
-                  border: "1px solid rgba(52, 211, 153, 0.25)",
+                  padding: 28,
+                  boxShadow: "0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)",
+                  border: "1px solid rgba(34,197,94,.2)",
                   color: "#FFFFFF",
                   position: "relative",
+                  width: "100%",
+                  maxWidth: 460,
+                  transform: "scale(0.75)",
+                  transformOrigin: "top center",
                   overflow: "hidden",
-                  transform: "scale(0.88)",
-                  transformOrigin: "top right",
                 }}
               >
                 <div
@@ -630,23 +668,23 @@ const BlogPage = () => {
                 />
 
                 {/* Header featuring Official MessBee Logo */}
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 20, borderBottom: "1px solid rgba(255,255,255,0.12)", paddingBottom: 14 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                    <div style={{ width: 34, height: 34, borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.2)", flexShrink: 0, background: "#FFFFFF", padding: 2 }}>
-                      <img src={defaultLogo} alt="MessBee" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 28, borderBottom: "1px solid rgba(255,255,255,0.12)", paddingBottom: 16 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                    <div style={{ width: 40, height: 40, borderRadius: 10, overflow: "hidden", border: "1px solid rgba(255,255,255,0.2)", flexShrink: 0, background: "#FFFFFF", padding: 4 }}>
+                      <img src={defaultLogo} alt="MessBee" style={{ width: "100%", height: "100%", objectFit: "contain", borderRadius: 6 }} />
                     </div>
                     <div>
-                      <div style={{ fontSize: 13, fontWeight: 900, color: "#FFFFFF" }}>MessBee Blog Insights</div>
-                      <div style={{ fontSize: 10, color: "#4ADE80", fontWeight: 700 }}>Practical Knowledge Hub</div>
+                      <div style={{ fontSize: 17, fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.3px" }}>MessBee Blog Insights</div>
+                      <div style={{ fontSize: 11, color: "#34D399", fontWeight: 700 }}>Practical Knowledge Hub</div>
                     </div>
                   </div>
-                  <span style={{ fontSize: 10, background: "rgba(52,211,153,0.2)", color: "#34D399", padding: "3px 10px", borderRadius: 20, fontWeight: 700, border: "1px solid rgba(52,211,153,0.3)" }}>
+                  <span style={{ fontSize: 11, background: "rgba(16,185,129,0.15)", color: "#34D399", padding: "6px 12px", borderRadius: 20, fontWeight: 700, border: "1px solid rgba(16,185,129,0.4)" }}>
                     Updated Weekly
                   </span>
                 </div>
 
                 {/* Topic Nodes Grid */}
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 16 }}>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 24 }}>
                   {[
                     { label: "Business Growth", icon: "🚀" },
                     { label: "WhatsApp Guide", icon: "💬" },
@@ -656,26 +694,26 @@ const BlogPage = () => {
                     <div
                       key={i}
                       style={{
-                        background: "rgba(255,255,255,0.06)",
-                        border: "1px solid rgba(52,211,153,0.2)",
+                        background: "rgba(16,185,129,0.09)",
+                        border: "1px solid rgba(16,185,129,0.25)",
                         borderRadius: 14,
-                        padding: 12,
+                        padding: "14px 16px",
                         display: "flex",
                         flexDirection: "column",
                         gap: 4,
                       }}
                     >
-                      <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                        <span style={{ fontSize: 18 }}>{node.icon}</span>
-                        <span style={{ fontSize: 12, fontWeight: 800, color: "#FFFFFF" }}>{node.label}</span>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                        <span style={{ fontSize: 16 }}>{node.icon}</span>
+                        <span style={{ fontSize: 13, fontWeight: 800, color: "#FFFFFF", letterSpacing: "-0.2px" }}>{node.label}</span>
                       </div>
-                      <span style={{ fontSize: 10, color: "#34D399", fontWeight: 700 }}>Actionable Ideas</span>
+                      <span style={{ fontSize: 11, color: "#34D399", fontWeight: 700 }}>Actionable Ideas</span>
                     </div>
                   ))}
                 </div>
 
-                <div style={{ background: "rgba(52,211,153,0.15)", border: "1px solid rgba(52,211,153,0.3)", borderRadius: 12, padding: 12, textAlign: "center" }}>
-                  <span style={{ fontSize: 11.5, fontWeight: 800, color: "#4ADE80" }}>
+                <div style={{ background: "rgba(16,185,129,0.09)", border: "1px solid rgba(16,185,129,0.25)", borderRadius: 12, padding: "14px", textAlign: "center" }}>
+                  <span style={{ fontSize: 12, fontWeight: 800, color: "#34D399" }}>
                     Read. Learn. Apply. Grow.
                   </span>
                 </div>
@@ -707,7 +745,7 @@ const BlogPage = () => {
             >
               Categories &amp; Themes
             </div>
-            <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               Explore <span style={{ color: "#16A34A" }}>Business Topics</span>
             </h2>
           </div>
@@ -817,7 +855,7 @@ const BlogPage = () => {
             >
               Featured Articles
             </div>
-            <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 10 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 10 }}>
               Latest From MessBee
             </h2>
             <p style={{ fontSize: 13.5, color: "#64748B", maxWidth: 640, margin: "0 auto" }}>
@@ -897,7 +935,7 @@ const BlogPage = () => {
             >
               Structured Approach
             </div>
-            <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
               Guides That Help You Take Action
             </h2>
             <p style={{ fontSize: 13.5, color: "#64748B", maxWidth: 680, margin: "0 auto 6px", lineHeight: 1.68 }}>
@@ -917,7 +955,7 @@ const BlogPage = () => {
                 style={{
                   padding: 22,
                   animationDelay: `${idx * 50}ms`,
-                  borderLeft: "4px solid #16A34A",
+                  // border: "4px solid ",
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
@@ -977,7 +1015,7 @@ const BlogPage = () => {
             >
               Audience Focus
             </div>
-            <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
               For Business Owners &amp; Teams
             </h2>
             <p style={{ fontSize: 13.5, color: "#64748B", maxWidth: 760, margin: "0 auto", lineHeight: 1.68 }}>
@@ -1053,7 +1091,7 @@ const BlogPage = () => {
             >
               Our Core Pillars
             </div>
-            <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               Why Read the <span style={{ color: "#16A34A" }}>MessBee Blog?</span>
             </h2>
           </div>
@@ -1109,7 +1147,7 @@ const BlogPage = () => {
       <section style={{ padding: "64px 6%", background: GL, borderTop: `1px solid ${GB}`, borderBottom: `1px solid ${GB}` }}>
         <div style={{ maxWidth: 860, margin: "0 auto", textAlign: "center" }}>
           <Pill>Our Approach to Business Information</Pill>
-          <h2 style={{ fontSize: "clamp(24px, 2.6vw, 36px)", fontWeight: 900, color: D2, letterSpacing: "-1px", marginBottom: 14 }}>
+          <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: D2, letterSpacing: "-1px", marginBottom: 14 }}>
             Technology and platform policies can change quickly.
           </h2>
 
@@ -1133,7 +1171,7 @@ const BlogPage = () => {
       <section style={{ padding: "64px 6%", background: "#FFFFFF" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 32 }}>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 8 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 8 }}>
               Popular Searches
             </h2>
             <p style={{ fontSize: 13.5, color: "#64748B" }}>
@@ -1181,7 +1219,7 @@ const BlogPage = () => {
         <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 500, height: 500, background: "rgba(22,163,74,.08)", borderRadius: "50%", filter: "blur(80px)", pointerEvents: "none" }} />
         <div style={{ position: "relative", zIndex: 2, maxWidth: 860, margin: "0 auto" }}>
           <Pill>Start With What Your Business Needs</Pill>
-          <h2 style={{ fontSize: "clamp(22px, 3vw, 36px)", fontWeight: 900, color: D2, letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 16 }}>
+          <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: D2, letterSpacing: "-1px", lineHeight: 1.1, marginBottom: 16 }}>
             You don't need to adopt every new technology<br />
             <span style={{ color: G }}>to build a better business.</span>
           </h2>
@@ -1207,7 +1245,7 @@ const BlogPage = () => {
         <div style={{ maxWidth: 760, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 36 }}>
             <Pill>FAQ</Pill>
-            <h2 style={{ fontSize: "clamp(18px, 2.5vw, 30px)", fontWeight: 900, color: D2, letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: D2, letterSpacing: "-1px" }}>
               Frequently Asked Questions
             </h2>
           </div>

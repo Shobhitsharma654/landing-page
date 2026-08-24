@@ -102,6 +102,18 @@ const FAQS = [
 const CSS = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
+  /* ── PAGE-WIDE TYPOGRAPHY OVERRIDES (font-size & weight only — no color changes) ── */
+  .wa-page-wrapper { font-family: 'Inter', 'Segoe UI', sans-serif !important; }
+  .wa-page-wrapper h1,
+  .wa-page-wrapper h2 { font-size: clamp(20px, 2.5vw, 32px) !important; font-weight: 900 !important; letter-spacing: -0.5px !important; }
+  .wa-page-wrapper h3,
+  .wa-page-wrapper h4 { font-size: 12px !important; font-weight: 800 !important; }
+  .wa-page-wrapper p { font-size: 12px !important; font-weight: 400 !important; line-height: 1.7 !important; }
+  .wa-page-wrapper .fqt { font-size: 14.5px !important; font-weight: 700 !important; }
+  .wa-page-wrapper .wa-faq-answer { font-size: 12px !important; line-height: 1.8 !important; }
+  .wa-page-wrapper .wbp { font-size: 12.5px !important; font-weight: 700 !important; padding: 8px 18px !important; }
+  .wa-page-wrapper .wbd { font-size: 12.5px !important; font-weight: 600 !important; padding: 10px 20px !important; }
+
   /* Buttons */
   .wbp  { background:#16A34A;color:#fff;border:none;border-radius:40px;padding:10px 24px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;box-shadow:0 4px 18px rgba(22,163,74,.3); }
   .wbp:hover { background:#15803D;transform:translateY(-1px);box-shadow:0 6px 24px rgba(22,163,74,.4); }
@@ -132,9 +144,9 @@ const CSS = `
   .fqt  { font-size:13px;font-weight:600;transition:color .2s;line-height:1.5; }
 
   /* Layout grids */
-  .wa-hg   { display:flex;flex-wrap:wrap;align-items:center;gap:56px; }
-  .wa-hl   { flex:1 1 440px;min-width:280px; }
-  .wa-hr   { flex:1 1 360px;min-width:280px;display:flex;justify-content:center; }
+  .wa-hg   { display:flex;flex-wrap:wrap;align-items:center;gap:48px; }
+  .wa-hl   { flex:1 1 420px;min-width:280px; }
+  .wa-hr   { flex:1 1 340px;min-width:280px;display:flex;justify-content:center; }
   .wa-fg   { display:grid;grid-template-columns:repeat(4,1fr);gap:20px; }
   .wa-cap  { display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center; }
   .wa-cap.rev { direction:rtl; }
@@ -157,17 +169,99 @@ const CSS = `
   }
   @media(max-width:640px){
     .wa-fg   { grid-template-columns:1fr!important; }
-    .wa-why  { grid-template-columns:1fr!important; }
+    .wa-why  { grid-template-columns:repeat(2,1fr)!important; gap:10px!important; }
+    .wyc     { padding:12px 10px!important; border-radius:10px!important; }
     .wa-ctr  { display:flex!important; flex-direction:row!important; align-items:center!important; gap:10px!important; flex-wrap:wrap!important; }
     .wbp,.wbo,.wbd { width:auto!important; padding:10px 18px!important; font-size:12px!important; text-align:center!important; justify-content:center!important; }
     .wa-hr   { width:100%!important; justify-content:center!important; padding-top:24px!important; margin-bottom:0!important; }
-    .wa-hr > div { transform:none!important; transform-origin:top center!important; margin:0 auto!important; max-width:340px!important; }
+    .wa-hr > div { transform:none!important; transform-origin:top center!important; margin:0 auto!important; width:100%!important; max-width:100%!important; padding:20px 14px!important; box-sizing:border-box!important; }
     .wa-stat { grid-template-columns:repeat(2,1fr)!important; }
   }
   @media(max-width:480px){
+    .wa-hr > div { padding:18px 12px!important; border-radius:18px!important; }
     .wa-stat { grid-template-columns:1fr!important; }
     .wa-fg   { grid-template-columns:1fr!important; }
-    .wa-why  { grid-template-columns:1fr!important; }
+    .wa-why  { grid-template-columns:repeat(2,1fr)!important; gap:8px!important; }
+    .wyc     { padding:10px 8px!important; border-radius:8px!important; }
+  }
+
+  /* Flow Grid Desktop & Mobile */
+  .wa-flow-grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px 6px;
+  }
+  .wa-flow-badge {
+    background: #FFFFFF;
+    border: 1.5px solid #BBF7D0;
+    color: #15803D;
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    display: inline-block;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .wa-flow-arrow {
+    color: #4ADE80;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 0 2px;
+  }
+
+  @media(max-width:860px){
+    .wa-connect-section {
+      padding: 28px 16px !important;
+    }
+    .wa-connect-card {
+      padding: 20px 14px !important;
+      border-radius: 18px !important;
+    }
+  }
+
+  @media(max-width:768px){
+    .wa-india-journey {
+      padding: 16px 12px !important;
+      gap: 8px !important;
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .wa-india-journey span:nth-child(even) {
+      display: none !important;
+    }
+    .wa-india-journey span:nth-child(odd) {
+      width: 100% !important;
+      text-align: center !important;
+      box-sizing: border-box !important;
+      padding: 8px 6px !important;
+      font-size: 12px !important;
+    }
+  }
+
+  @media(max-width:480px){
+    .wa-connect-section {
+      padding: 20px 10px !important;
+    }
+    .wa-connect-card {
+      padding: 16px 10px !important;
+      border-radius: 16px !important;
+    }
+    .wa-flow-grid {
+      gap: 8px 4px !important;
+    }
+    .wa-flow-badge {
+      padding: 4px 8px !important;
+      font-size: 10.5px !important;
+      border-radius: 6px !important;
+    }
+    .wa-flow-arrow {
+      font-size: 12px !important;
+      padding: 0 1px !important;
+    }
   }
 `;
 
@@ -204,18 +298,18 @@ const WaPage = () => {
   const adminUrl = import.meta.env.VITE_ADMIN_URL || "http://localhost:5174";
 
   return (
-    <div style={{ fontFamily:"'Inter','Segoe UI',sans-serif", background:"#fff", color:D, overflowX:"hidden" }}>
+    <div className="wa-page-wrapper" style={{ fontFamily:"'Inter','Segoe UI',sans-serif", background:"#fff", color:D, overflowX:"hidden" }}>
       <style>{CSS}</style>
       <title>WhatsApp Business Platform for Businesses | MessBee</title>
       <Navbar />
 
       {/* ══ HERO — Plain White ══ */}
-      <section style={{ background:"#fff", padding:"118px 6% 40px", position:"relative", overflow:"hidden" }}>
+      <section style={{ background:"#fff", padding:"92px 6% 48px", position:"relative", overflow:"hidden" }}>
         <div style={{ maxWidth:1200, margin:"0 auto", position:"relative", zIndex:1 }}>
           <div className="wa-hg">
             {/* Left */}
             <div className="wa-hl">
-              <div style={{ display:"inline-flex", alignItems:"center", gap:6, background:GL, border:`1px solid ${GB}`, borderRadius:40, padding:"5px 14px", marginBottom:28 }}>
+              <div style={{ display:"inline-flex", alignItems:"center", gap:6, background:GL, border:`1px solid ${GB}`, borderRadius:40, padding:"5px 14px", marginBottom:16 }}>
                 <div style={{ width:6, height:6, borderRadius:"50%", background:WA }}/>
                 <span style={{ fontSize:12, fontWeight:600, color:G }}>MessBee WhatsApp Business</span>
               </div>
@@ -226,12 +320,12 @@ const WaPage = () => {
                 The Smarter Way
               </h1>
 
-              <p style={{ fontSize:14, color:MU, lineHeight:1.7, marginBottom:32, maxWidth:520 }}>
+              <p style={{ fontSize:15, color:MU, lineHeight:1.75, marginBottom:10, maxWidth:520 }}>
                 Manage customer conversations, send approved business messages, follow up on leads
                 and build real relationships — all through the WhatsApp Business Platform.
               </p>
 
-              <div style={{ display:"flex", flexWrap:"wrap", gap:8, marginBottom:40 }}>
+              <div style={{ display:"flex", flexWrap:"wrap", gap:8, marginBottom:32 }}>
                 {["Connect.","Communicate.","Automate.","Grow."].map(t => (
                   <span key={t} style={{ background:"#F1F5F9", border:"1px solid #E5E7EB", color:MU, borderRadius:40, padding:"4px 12px", fontSize:12, fontWeight:600 }}>{t}</span>
                 ))}
@@ -249,8 +343,8 @@ const WaPage = () => {
 
             </div>
 
-            <div className="wa-hr" style={{ alignItems:"flex-start" }}>
-              <div style={{ background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)", borderRadius:24, padding:28, boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)", border:"1px solid rgba(34,197,94,.2)", width:"100%", maxWidth:460, transform:"scale(0.75)", transformOrigin:"top center", marginTop:76, marginLeft:40, overflow:"hidden" }}>
+            <div className="wa-hr" style={{ paddingTop: "20px", marginBottom: "-120px" }}>
+              <div style={{ background:"linear-gradient(135deg, #14532d 0%, #022c22 100%)", borderRadius:24, padding:28, boxShadow:"0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)", border:"1px solid rgba(34,197,94,.2)", width:"100%", maxWidth:460, transform:"scale(0.75)", transformOrigin:"top center", overflow:"hidden" }}>
                 {/* Header */}
                 <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", marginBottom:28 }}>
                   <div style={{ display:"flex", alignItems:"center", gap:12 }}>
@@ -386,9 +480,10 @@ const WaPage = () => {
       </section>
 
       {/* ══ CONNECT FLOW — darker green ══ */}
-      <section style={{ padding: "64px 6%", background: "#FAFAFA" }}>
+      <section className="wa-connect-section" style={{ padding: "64px 6%", background: "#FAFAFA" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <div
+            className="wa-connect-card"
             style={{
               background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
               borderRadius: 22,
@@ -409,12 +504,12 @@ const WaPage = () => {
               <p style={{ fontSize: 15, color: "rgba(255,255,255,.55)", lineHeight: 1.75, maxWidth: 560, margin: "0 auto 40px" }}>
                 WhatsApp is most powerful when it's connected to your customer data and business workflows — not siloed as a standalone messaging app.
               </p>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: "10px 12px" }}>
+              <div className="wa-flow-grid" style={{ marginTop: 24, display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: "10px 6px" }}>
                 {["WhatsApp", "CRM", "Automation", "Marketing", "Commerce", "Analytics"].map((item, i, arr) => (
-                  <div key={item} style={{ display: "inline-flex", alignItems: "center", gap: 10 }}>
-                    <div style={{ background: "rgba(255,255,255,.08)", border: "1px solid rgba(255,255,255,.15)", borderRadius: 10, padding: "8px 16px", fontSize: 13, fontWeight: 700, color: "#fff" }}>{item}</div>
-                    {i < arr.length - 1 && <span style={{ color: WA, fontSize: 18, fontWeight: 900 }}>→</span>}
-                  </div>
+                  <React.Fragment key={item}>
+                    <span className="wa-flow-badge">{item}</span>
+                    {i < arr.length - 1 && <span className="wa-flow-arrow">→</span>}
+                  </React.Fragment>
                 ))}
               </div>
             </div>
@@ -454,7 +549,7 @@ const WaPage = () => {
             WhatsApp is India's most used communication app. MessBee helps local retailers, service businesses, e-commerce stores and growing companies use WhatsApp as part of a professional, scalable digital business — not just a personal chat app.
           </p>
           {/* Journey */}
-          <div style={{ background:"#fff", border:"1.5px solid #A7F3D0", borderRadius:16, padding:"24px 28px", display:"inline-flex", flexWrap:"wrap", alignItems:"center", gap:4, justifyContent:"center", marginBottom:32 }}>
+          <div className="wa-india-journey" style={{ background:"#fff", border:"1.5px solid #A7F3D0", borderRadius:16, padding:"24px 28px", display:"inline-flex", flexWrap:"wrap", alignItems:"center", gap:4, justifyContent:"center", marginBottom:32 }}>
             {["Connect","Engage","Follow Up","Convert","Support","Retain"].map((step,i,arr) => (
               <React.Fragment key={step}>
                 <span style={{ background:WAL, border:"1.5px solid #A7F3D0", color:WAD, borderRadius:8, padding:"7px 16px", fontSize:13, fontWeight:700 }}>{step}</span>
@@ -510,7 +605,7 @@ const WaPage = () => {
                   </svg>
                 </div>
               </div>
-              {openFaq===i && <div style={{ fontSize:12, color:MU, lineHeight:1.8, paddingBottom:16 }}>{faq.a}</div>}
+              {openFaq===i && <div className="wa-faq-answer" style={{ fontSize:12, color:MU, lineHeight:1.8, paddingBottom:16 }}>{faq.a}</div>}
             </div>
           ))}
         </div>

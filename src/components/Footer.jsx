@@ -20,7 +20,6 @@ const SOLUTIONS_LINKS = [
 ];
 
 const RESOURCES_LINKS = [
-  { label: "QR & Connect",       path: "/qr-connect" },
   { label: "Business Library",  path: "/resources/business-library" },
   { label: "Help Center",       path: "/resources/help-center" },
   { label: "Blog",              path: "/resources/blog" },
@@ -193,10 +192,21 @@ const Footer = () => {
             font-size: 22px;
           }
         }
-        @media (max-width: 1024px) {
+        @media (max-width: 1280px) and (min-width: 769px) {
           .footer-grid-container {
-            grid-template-columns: 1fr 1fr 1fr !important;
-            gap: 24px !important;
+            grid-template-columns: 2fr 1.2fr 1.2fr 1.4fr 1.5fr !important;
+            gap: 16px !important;
+          }
+          .footer-grid-container span {
+            font-size: 11px !important;
+          }
+          .footer-grid-container div {
+            font-size: 10px !important;
+            margin-bottom: 12px !important;
+          }
+          .footer-brand-col p {
+            font-size: 11.5px !important;
+            margin-bottom: 24px !important;
           }
         }
         @media (max-width: 768px) {

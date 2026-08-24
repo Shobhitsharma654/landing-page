@@ -215,7 +215,7 @@ const FaqItem = ({ q, a }) => {
           cursor: "pointer",
         }}
       >
-        <span style={{ fontSize: 14, fontWeight: 700, color: open ? G : D2, transition: "color .2s" }}>{q}</span>
+        <span className="smb-faq-question" style={{ fontSize: 14, fontWeight: 700, color: open ? G : D2, transition: "color .2s" }}>{q}</span>
         <div
           style={{
             width: 28,
@@ -243,7 +243,7 @@ const FaqItem = ({ q, a }) => {
         </div>
       </div>
       {open && (
-        <div style={{ fontSize: 13, color: MU, lineHeight: 1.8, paddingBottom: 16 }}>{a}</div>
+        <div className="smb-faq-answer" style={{ fontSize: 13, color: MU, lineHeight: 1.8, paddingBottom: 16 }}>{a}</div>
       )}
     </div>
   );
@@ -264,9 +264,69 @@ const SmbPage = () => {
   };
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "hidden", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+    <div className="smb-page-wrapper" style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "hidden", minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        
+        /* Global Typography Overrides from ABOUT_TYPOGRAPHY_README.md & SMB Section */
+        .smb-page-wrapper h1,
+        .smb-page-wrapper h2 {
+          font-size: clamp(20px, 2.5vw, 32px) !important;
+          font-weight: 900 !important;
+          color: #0F172A !important;
+          line-height: 1.2 !important;
+        }
+        .smb-page-wrapper h1 span,
+        .smb-page-wrapper h2 span {
+          color: #16A34A !important;
+        }
+        .smb-page-wrapper p,
+        .smb-page-wrapper .smb-faq-answer {
+          font-size: 12px !important;
+          font-weight: 400 !important;
+          color: #475569 !important;
+          line-height: 1.45 !important;
+        }
+        .smb-page-wrapper h3,
+        .smb-page-wrapper h4 {
+          font-size: 12px !important;
+          font-weight: 800 !important;
+          color: #0F172A !important;
+          line-height: 1.45 !important;
+        }
+        .smb-page-wrapper .smb-faq-question {
+          font-size: 14.5px !important;
+          font-weight: 700 !important;
+          color: #0F172A !important;
+          line-height: 1.45 !important;
+        }
+        .smb-page-wrapper .smb-india-card h2 {
+          color: #FFFFFF !important;
+        }
+        .smb-page-wrapper .smb-india-card p {
+          color: #94A3B8 !important;
+        }
+        .smb-page-wrapper .smb-india-card p:last-of-type {
+          color: #4ADE80 !important;
+        }
+        .smb-page-wrapper .smb-eff-card {
+          font-size: 12px !important;
+          font-weight: 600 !important;
+        }
+        .smb-page-wrapper .smb-btn-primary {
+          padding: 8px 18px !important;
+          font-size: 12.5px !important;
+          font-weight: 700 !important;
+          box-shadow: 0 1px 5px rgba(22, 163, 74, 0.25) !important;
+          border-radius: 40px !important;
+        }
+        .smb-page-wrapper .smb-btn-secondary {
+          padding: 10px 20px !important;
+          font-size: 12.5px !important;
+          font-weight: 600 !important;
+          border-radius: 40px !important;
+        }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         /* ── BUTTONS ── */
@@ -399,14 +459,14 @@ const SmbPage = () => {
           .smb-hero-row { gap: 32px; }
         }
 
-        .smb-hero-right-col { flex: 0.9; min-width: 320px; position: relative; display: flex; justify-content: center; }
-        .smb-hero-right-card { transform: scale(0.8); transform-origin: center right; width: 100%; max-width: 480px; }
+        .smb-hero-right-col { flex: 0.9; min-width: 320px; position: relative; display: flex; justify-content: center; width: 100%; padding-top: 20px; margin-bottom: -120px; }
+        .smb-hero-right-card { transform: scale(0.75); transform-origin: top center; width: 100%; max-width: 460px; }
 
         /* Compact Laptop / Tablet-Laptop (under 1024px) */
         @media (max-width: 1023px) {
           .smb-hero-row { flex-direction: column !important; }
-          .smb-hero-right-col { width: 100% !important; min-width: unset !important; justify-content: center !important; margin-top: 24px !important; }
-          .smb-hero-right-card { transform: none !important; transform-origin: center center !important; max-width: 340px !important; margin: 0 auto !important; }
+          .smb-hero-right-col { width: 100% !important; min-width: 0 !important; justify-content: center !important; padding-top: 24px !important; margin-bottom: 0 !important; }
+          .smb-hero-right-card { transform: none !important; transform-origin: top center !important; max-width: 100% !important; width: 100% !important; margin: 0 auto !important; padding: 22px 16px !important; box-sizing: border-box !important; border-radius: 20px !important; }
           .grid-col-5 { grid-template-columns: repeat(2, 1fr); }
           .grid-col-4 { grid-template-columns: repeat(2, 1fr); }
           .grid-col-3 { grid-template-columns: repeat(1, 1fr); }
@@ -415,12 +475,101 @@ const SmbPage = () => {
 
         /* Mobile Phones & Tablets (under 768px) */
         @media (max-width: 768px) {
-          .grid-col-5, .grid-col-4, .grid-col-3, .grid-col-2 {
+          .smb-hero-section {
+            margin-top: 0px !important;
+            padding-top: 84px !important;
+            padding-bottom: 28px !important;
+            padding-left: 16px !important;
+            padding-right: 16px !important;
+          }
+          .smb-hero-right-card {
+            transform: none !important;
+            max-width: 100% !important;
+            width: 100% !important;
+            margin: 0 auto !important;
+            padding: 22px 16px !important;
+          }
+          .grid-col-4, .grid-col-3 {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px !important;
+          }
+          .smb-help-grid {
+            grid-template-columns: 1fr !important;
+            gap: 14px !important;
+          }
+          .grid-col-5, .grid-col-2 {
             grid-template-columns: 1fr !important;
             gap: 12px !important;
           }
           .smb-glass-card {
-            padding: 14px 16px !important;
+            padding: 12px 10px !important;
+            border-radius: 12px !important;
+          }
+          .smb-why-title {
+            font-size: 12.5px !important;
+            line-height: 1.3 !important;
+          }
+          .smb-why-desc {
+            font-size: 11px !important;
+            line-height: 1.5 !important;
+          }
+          .smb-glass-card-icon {
+            width: 30px !important;
+            height: 30px !important;
+            font-size: 15px !important;
+            border-radius: 8px !important;
+            margin-bottom: 8px !important;
+          }
+          .smb-glass-card-text {
+            font-size: 11.5px !important;
+            line-height: 1.3 !important;
+          }
+          .smb-india-section {
+            padding: 32px 16px !important;
+          }
+          .smb-india-card {
+            padding: 24px 18px !important;
+            border-radius: 18px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .grid-col-4, .grid-col-3 {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 8px !important;
+          }
+          .smb-help-grid {
+            grid-template-columns: 1fr !important;
+            gap: 12px !important;
+          }
+          .smb-glass-card {
+            padding: 10px 8px !important;
+            border-radius: 10px !important;
+          }
+          .smb-why-title {
+            font-size: 11.5px !important;
+          }
+          .smb-why-desc {
+            font-size: 10px !important;
+          }
+          .smb-glass-card-text {
+            font-size: 10.5px !important;
+          }
+          .smb-india-section {
+            padding: 24px 12px !important;
+          }
+          .smb-india-card {
+            padding: 20px 14px !important;
+            border-radius: 16px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .smb-hero-right-card {
+            max-width: 100% !important;
+            width: 100% !important;
+            padding: 18px 12px !important;
+            border-radius: 18px !important;
           }
         }
 
@@ -431,6 +580,78 @@ const SmbPage = () => {
         }
         .pulse-aura {
           animation: auraPulse 3.5s ease-in-out infinite;
+        }
+
+        /* Efficiency Flow Grid */
+        .smb-efficiency-grid {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 12px 6px;
+          margin: 24px auto;
+        }
+        .smb-eff-card {
+          background: #FFFFFF;
+          border: 1.5px solid #BBF7D0;
+          color: #16A34A;
+          border-radius: 8px;
+          padding: 8px 16px;
+          font-size: 13.5px;
+          font-weight: 700;
+          display: inline-block;
+          box-shadow: 0 2px 6px rgba(22, 163, 74, 0.05);
+        }
+        .smb-eff-arrow {
+          color: #94A3B8;
+          font-size: 16px;
+          font-weight: 700;
+          padding: 0 4px;
+          display: inline-flex;
+          align-items: center;
+        }
+
+        @media (max-width: 768px) {
+          .smb-efficiency-grid {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            flex-wrap: wrap !important;
+            gap: 10px 4px !important;
+            margin: 18px auto 22px !important;
+            width: 100% !important;
+          }
+          .smb-eff-card {
+            background: #FFFFFF !important;
+            border: 1.5px solid #BBF7D0 !important;
+            border-radius: 7px !important;
+            padding: 6px 12px !important;
+            font-size: 13.5px !important;
+            font-weight: 700 !important;
+            color: #16A34A !important;
+            text-align: center !important;
+            box-sizing: border-box !important;
+          }
+          .smb-eff-arrow {
+            color: #94A3B8 !important;
+            font-size: 14px !important;
+            font-weight: 700 !important;
+            padding: 0 2px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .smb-efficiency-grid {
+            gap: 8px 3px !important;
+          }
+          .smb-eff-card {
+            padding: 5px 10px !important;
+            font-size: 12.5px !important;
+            border-radius: 6px !important;
+          }
+          .smb-eff-arrow {
+            font-size: 13px !important;
+          }
         }
       `}</style>
 
@@ -447,9 +668,10 @@ const SmbPage = () => {
           SECTION 1: HERO (SMB Specific Graphic Layout & Compact Typography)
          ═══════════════════════════════════════════════════════════════════ */}
       <section
+        className="smb-hero-section"
         style={{
-          marginTop: 70,
-          padding: "56px 6% 64px",
+          marginTop: 0,
+          padding: "92px 6% 48px",
           position: "relative",
           background: "linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)",
           overflow: "hidden",
@@ -486,7 +708,7 @@ const SmbPage = () => {
                 fontSize: 10.5,
                 fontWeight: 800,
                 letterSpacing: "1px",
-                marginBottom: 18,
+                marginBottom: 16,
                 textTransform: "uppercase",
               }}
             >
@@ -568,8 +790,8 @@ const SmbPage = () => {
                 background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
                 borderRadius: 24,
                 padding: "28px 24px",
-                boxShadow: "0 20px 50px rgba(2, 44, 34, 0.4)",
-                border: "1px solid rgba(52, 211, 153, 0.25)",
+                boxShadow: "0 32px 80px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.1)",
+                border: "1px solid rgba(34,197,94,.2)",
                 color: "#FFFFFF",
                 position: "relative",
                 overflow: "hidden",
@@ -662,7 +884,7 @@ const SmbPage = () => {
             >
               Organized Workflow
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px", marginBottom: 12 }}>
               Built for <span style={{ color: "#16A34A" }}>Growing Businesses</span>
             </h2>
 
@@ -701,6 +923,7 @@ const SmbPage = () => {
                 }}
               >
                 <div
+                  className="smb-glass-card-icon"
                   style={{
                     width: 38,
                     height: 38,
@@ -717,7 +940,7 @@ const SmbPage = () => {
                 >
                   {item.icon}
                 </div>
-                <div style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", lineHeight: 1.35 }}>
+                <div className="smb-glass-card-text" style={{ fontSize: 13, fontWeight: 800, color: "#0F172A", lineHeight: 1.35 }}>
                   {item.text}
                 </div>
               </div>
@@ -753,13 +976,13 @@ const SmbPage = () => {
             >
               Key Capabilities
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               What MessBee <span style={{ color: "#16A34A" }}>Can Help You With</span>
             </h2>
           </div>
 
           {/* 6 Feature Tool Cards from Prompt */}
-          <div className="grid-col-3">
+          <div className="grid-col-3 smb-help-grid">
             {WHAT_MESSBEE_HELP_WITH.map((t, idx) => (
               <div
                 key={idx}
@@ -822,7 +1045,7 @@ const SmbPage = () => {
             >
               Versatile Support
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               Made for <span style={{ color: "#16A34A" }}>Different Types of Businesses</span>
             </h2>
           </div>
@@ -868,7 +1091,7 @@ const SmbPage = () => {
         <div style={{ maxWidth: 1060, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 36 }}>
             <Pill>Efficiency</Pill>
-            <h2 style={{ fontSize: "clamp(18px, 2.5vw, 30px)", fontWeight: 900, color: D2, letterSpacing: "-1px", marginBottom: 12 }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: D2, letterSpacing: "-1px", marginBottom: 12 }}>
               Less Switching. <span style={{ color: G }}>More Getting Things Done.</span>
             </h2>
             <p style={{ fontSize: 13, color: MU, maxWidth: 660, margin: "0 auto 8px", lineHeight: 1.68 }}>
@@ -879,14 +1102,12 @@ const SmbPage = () => {
             </p>
           </div>
 
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap", gap: 0, marginBottom: 26 }}>
-            {WORKFLOW_FLOW_NODES.map((node, i, arr) => (
+          <div className="smb-efficiency-grid">
+            {WORKFLOW_FLOW_NODES.map((node, i) => (
               <React.Fragment key={node}>
-                <span style={{ background: "#fff", border: `1.5px solid ${GB}`, color: G, borderRadius: 6, padding: "8px 16px", fontSize: 12, fontWeight: 700 }}>
-                  {node}
-                </span>
-                {i < arr.length - 1 && (
-                  <span style={{ color: "#94A3B8", fontSize: 15, padding: "0 6px" }}>→</span>
+                <div className="smb-eff-card">{node}</div>
+                {i < WORKFLOW_FLOW_NODES.length - 1 && (
+                  <span className="smb-eff-arrow">→</span>
                 )}
               </React.Fragment>
             ))}
@@ -921,7 +1142,7 @@ const SmbPage = () => {
             >
               Why MessBee
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               Why Businesses <span style={{ color: "#16A34A" }}>Choose MessBee</span>
             </h2>
           </div>
@@ -938,6 +1159,7 @@ const SmbPage = () => {
                 }}
               >
                 <div
+                  className="smb-glass-card-icon"
                   style={{
                     width: 38,
                     height: 38,
@@ -954,8 +1176,8 @@ const SmbPage = () => {
                 >
                   {r.icon}
                 </div>
-                <h3 style={{ fontSize: 14.5, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>{r.title}</h3>
-                <p style={{ fontSize: 12.5, color: "#64748B", lineHeight: 1.6 }}>{r.desc}</p>
+                <h3 className="smb-why-title" style={{ fontSize: 14.5, fontWeight: 900, color: "#0F172A", marginBottom: 6 }}>{r.title}</h3>
+                <p className="smb-why-desc" style={{ fontSize: 12.5, color: "#64748B", lineHeight: 1.6 }}>{r.desc}</p>
               </div>
             ))}
           </div>
@@ -965,9 +1187,10 @@ const SmbPage = () => {
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 7: BUILT WITH INDIAN BUSINESSES IN MIND
          ═══════════════════════════════════════════════════════════════════ */}
-      <section style={{ padding: "64px 6%", background: "#FAFAFA" }}>
+      <section className="smb-india-section" style={{ padding: "64px 6%", background: "#FAFAFA" }}>
         <div style={{ maxWidth: 1280, margin: "0 auto" }}>
           <div
+            className="smb-india-card"
             style={{
               background: "linear-gradient(135deg, #14532D 0%, #022C22 100%)",
               borderRadius: 22,
@@ -997,7 +1220,7 @@ const SmbPage = () => {
               </div>
 
               {/* Title from Prompt */}
-              <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, marginBottom: 14, letterSpacing: "-1px" }}>
+              <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, marginBottom: 14, letterSpacing: "-1px" }}>
                 Built With Indian Businesses in Mind
               </h2>
 
@@ -1061,7 +1284,7 @@ const SmbPage = () => {
             >
               FAQ
             </div>
-            <h2 style={{ fontSize: "clamp(22px, 2.4vw, 34px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
+            <h2 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", letterSpacing: "-1px" }}>
               Frequently Asked <span style={{ color: "#16A34A" }}>Questions</span>
             </h2>
           </div>
