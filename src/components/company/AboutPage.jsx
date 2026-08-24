@@ -748,7 +748,7 @@ const AboutPage = () => {
         <div className="capabilities-container" style={{ maxWidth: 1200, margin: "0 auto", display: "flex", gap: 60, alignItems: "flex-start", flexWrap: "wrap" }}>
 
           {/* LEFT — text */}
-          <div className="capabilities-left" style={{ flex: "1.3 1 540px" }}>
+          <div className="capabilities-left" style={{ flex: "1.3 1 480px" }}>
             <div style={{
               display: "inline-flex", alignItems: "center", gap: 8,
               background: "rgba(22,163,74,0.08)", border: "1px solid rgba(22,163,74,0.22)",
@@ -948,9 +948,9 @@ const AboutPage = () => {
           .growth-timeline-vertical {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 9px 14px;
+            gap: 14px 18px;
             position: relative;
-            max-width: 600px;
+            max-width: 720px;
             margin: 0;
             padding: 0;
             width: 100%;
@@ -969,33 +969,65 @@ const AboutPage = () => {
           }
           .growth-step-card {
             background: #FFFFFF;
-            border: 1.5px solid #E2E8F0;
-            border-radius: 30px;
-            padding: 6px 16px;
-            box-shadow: 0 3px 10px rgba(15, 23, 42, 0.01);
+            border: 1px solid #E2E8F0;
+            border-radius: 14px;
+            padding: 6px 10px;
+            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.02);
             flex-grow: 1;
-            transition: all 0.25s ease;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            gap: 10px;
+            align-items: center;
           }
           .growth-step-item:hover .growth-step-card {
             border-color: #CBD5E1;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
             transform: translateY(-2px);
           }
-          .growth-step-title {
-            font-size: 12px;
-            font-weight: 800;
-            color: #0F172A;
-            margin-bottom: 2px;
-            transition: color 0.2s ease;
-            line-height: 1.45;
+          .growth-step-icon-wrapper {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
           }
-          .growth-step-desc {
-            font-size: 10px;
-            color: #64748B;
-            line-height: 1.45;
+          .growth-step-icon-wrapper svg {
+            width: 15px !important;
+            height: 15px !important;
+          }
+          .growth-step-content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex-grow: 1;
+          }
+          .growth-step-title {
+            font-size: 12.5px !important;
+            font-weight: 800 !important;
+            color: #0F172A !important;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            line-height: 1.2 !important;
+          }
+          .growth-step-num {
+            font-weight: 900;
+            font-size: 12.5px;
+          }
+          .growth-step-badge-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            align-self: flex-start;
+            font-size: 8px !important;
+            font-weight: 800 !important;
+            color: #FFFFFF !important;
+            padding: 2px 8px !important;
+            border-radius: 5px !important;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
           }
           .growth-timeline-col {
             margin-top: 0px;
@@ -1015,7 +1047,7 @@ const AboutPage = () => {
             }
             .growth-timeline-vertical {
               grid-template-columns: repeat(2, 1fr) !important;
-              gap: 9px 12px !important;
+              gap: 12px 14px !important;
             }
           }
           @media (max-width: 768px) {
@@ -1027,45 +1059,59 @@ const AboutPage = () => {
             }
             .growth-timeline-vertical {
               grid-template-columns: repeat(2, 1fr) !important;
-              gap: 8px 10px !important;
-            }
-            .growth-step-title {
-              font-size: 11.5px !important;
-              text-align: center !important;
-              width: 100% !important;
-            }
-            .growth-step-title span {
-              font-size: 12px !important;
+              gap: 12px 14px !important;
             }
             .growth-step-card {
-              padding: 8px 10px !important;
-              border-radius: 16px !important;
-              text-align: center !important;
-              align-items: center !important;
-              justify-content: center !important;
+              padding: 6px 10px !important;
+              gap: 8px !important;
             }
-            .growth-step-card > div {
-              justify-content: center !important;
-              width: 100% !important;
+            .growth-step-icon-wrapper {
+              width: 32px !important;
+              height: 32px !important;
             }
-            .growth-step-tag {
-              display: none !important;
+            .growth-step-badge-pill {
+              font-size: 7px !important;
+              padding: 1.5px 6px !important;
+              border-radius: 4px !important;
+            }
+            .growth-step-icon-wrapper svg {
+              width: 14px !important;
+              height: 14px !important;
+            }
+            .growth-step-title {
+              font-size: 13px !important;
+            }
+            .growth-step-num {
+              font-size: 13.5px !important;
             }
           }
           @media (max-width: 576px) {
             .growth-timeline-vertical {
-              grid-template-columns: repeat(2, 1fr) !important;
-              gap: 6px 8px !important;
-            }
-            .growth-step-title {
-              font-size: 11px !important;
-            }
-            .growth-step-title span {
-              font-size: 11.5px !important;
+              grid-template-columns: 1fr !important;
+              gap: 10px !important;
             }
             .growth-step-card {
-              padding: 6px 8px !important;
-              border-radius: 12px !important;
+              padding: 7px 10px !important;
+              border-radius: 16px !important;
+            }
+            .growth-step-icon-wrapper {
+              width: 34px !important;
+              height: 34px !important;
+            }
+            .growth-step-icon-wrapper svg {
+              width: 15px !important;
+              height: 15px !important;
+            }
+            .growth-step-title {
+              font-size: 14px !important;
+            }
+            .growth-step-num {
+              font-size: 14.5px !important;
+            }
+            .growth-step-badge-pill {
+              font-size: 7.5px !important;
+              padding: 2px 7px !important;
+              border-radius: 4px !important;
             }
           }
         `}</style>
@@ -1075,14 +1121,14 @@ const AboutPage = () => {
           <div className="indian-market-flex-row">
 
             {/* Left Column: All Text Content */}
-            <div style={{ flex: "1 1 480px" }}>
+            <div style={{ flex: "1 1 380px", marginTop: "-40px" }}>
 
               {/* Built for the Way Indian Businesses Operate */}
               <div className="about-lead-block">
                 <div style={{
                   display: "inline-flex", alignItems: "center", gap: 8,
                   background: "rgba(22,163,74,0.08)", border: "1px solid rgba(22,163,74,0.22)",
-                  borderRadius: 40, padding: "5px 16px", marginBottom: 24,
+                  borderRadius: 40, padding: "5px 16px", marginBottom: 20,
                 }}>
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="#16A34A"><circle cx="12" cy="12" r="10" /></svg>
                   <span style={{ color: "#16A34A", fontSize: 12, fontWeight: 700, letterSpacing: 0.8, textTransform: "uppercase" }}>Indian Market</span>
@@ -1115,13 +1161,12 @@ const AboutPage = () => {
               </div>
 
 
-              {/* From Local Business to Growing Enterprise */}
-              <div>
 
-                <h3 style={{ fontSize: "clamp(20px, 2.5vw, 32px)", fontWeight: 900, color: "#0F172A", lineHeight: 1.2, marginBottom: 20, fontFamily: "'Inter', sans-serif" }}>
-                  From Local Business to<br />
-                  <span style={{ color: "#16A34A" }}> Growing Enterprise</span>
-                </h3>
+                <div className="about-lead-quote" style={{ marginTop: "-40px" }}>
+                  <p style={{ fontSize: 14, fontWeight: 900, color: "#0F172A", margin: 0, fontFamily: "'Inter', sans-serif", lineHeight: 1.35 }}>
+                    From Local Business to <span style={{ color: "#16A34A" }}>Growing Enterprise</span>
+                  </p>
+                </div>
 
                 <p style={{ fontSize: 10, color: "#475569", lineHeight: 1.45, marginBottom: 10, fontFamily: "'Inter', sans-serif" }}>
                   A business can start with customer communication and gradually expand its use of MessBee as its requirements grow.
@@ -1134,38 +1179,197 @@ const AboutPage = () => {
                 <p style={{ fontSize: 10, color: "#475569", lineHeight: 1.45, marginTop: 15, fontFamily: "'Inter', sans-serif" }}>
                   This makes MessBee suitable for businesses at different stages of digital growth.
                 </p>
-              </div>
+
 
             </div>
 
             {/* Right Column: Timeline Cards */}
-            <div className="growth-timeline-col" style={{ flex: "1 1 480px" }}>
+            <div className="growth-timeline-col" style={{ flex: "1.4 1 460px", marginTop: "30px" }}>
               <div className="growth-timeline-vertical" style={{ margin: 0, padding: 0 }}>
                 {[
-                  { title: "Customer Communication", color: "#10B981", bg: "#F0FDF4", badge: "01", tag: "CONNECT" },
-                  { title: "CRM", color: "#10B981", bg: "#F0FDF4", badge: "02", tag: "CONNECT" },
-                  { title: "Digital Store", color: "#10B981", bg: "#F0FDF4", badge: "03", tag: "CONNECT" },
-                  { title: "AI Assistant", color: "#6366F1", bg: "#EEF2FF", badge: "04", tag: "AUTOMATE" },
-                  { title: "Automation", color: "#6366F1", bg: "#EEF2FF", badge: "05", tag: "AUTOMATE" },
-                  { title: "Marketing", color: "#6366F1", bg: "#EEF2FF", badge: "06", tag: "AUTOMATE" },
-                  { title: "Orders", color: "#F59E0B", bg: "#FFFBEB", badge: "07", tag: "TRANSACT" },
-                  { title: "Payments", color: "#F59E0B", bg: "#FFFBEB", badge: "08", tag: "TRANSACT" },
-                  { title: "Loyalty", color: "#F59E0B", bg: "#FFFBEB", badge: "09", tag: "TRANSACT" },
-                  { title: "Analytics", color: "#EC4899", bg: "#FDF2F8", badge: "10", tag: "SCALE" },
-                  { title: "Multi-Location Management", color: "#EC4899", bg: "#FDF2F8", badge: "11", tag: "SCALE" }
+                  {
+                    title: "Customer Communication",
+                    color: "#10B981",
+                    bg: "#ECFDF5",
+                    badge: "01",
+                    tag: "CONNECT",
+                    icon: (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                        <path d="M8 10h.01M12 10h.01M16 10h.01" />
+                      </svg>
+                    )
+                  },
+                  {
+                    title: "CRM",
+                    color: "#10B981",
+                    bg: "#ECFDF5",
+                    badge: "02",
+                    tag: "CONNECT",
+                    icon: (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                      </svg>
+                    )
+                  },
+                  {
+                    title: "Digital Store",
+                    color: "#10B981",
+                    bg: "#ECFDF5",
+                    badge: "03",
+                    tag: "CONNECT",
+                    icon: (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="9" cy="21" r="1" />
+                        <circle cx="20" cy="21" r="1" />
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                      </svg>
+                    )
+                  },
+                  {
+                    title: "AI Assistant",
+                    color: "#2563EB",
+                    bg: "#EFF6FF",
+                    badge: "04",
+                    tag: "AUTOMATE",
+                    icon: (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="3" y="11" width="18" height="10" rx="2" />
+                        <circle cx="12" cy="5" r="2" />
+                        <path d="M12 7v4" />
+                        <line x1="8" y1="16" x2="8" y2="16.01" />
+                        <line x1="16" y1="16" x2="16" y2="16.01" />
+                      </svg>
+                    )
+                  },
+                  {
+                    title: "Automation",
+                    color: "#2563EB",
+                    bg: "#EFF6FF",
+                    badge: "05",
+                    tag: "AUTOMATE",
+                    icon: (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="12" cy="12" r="3" />
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                      </svg>
+                    )
+                  },
+                  {
+                    title: "Marketing",
+                    color: "#2563EB",
+                    bg: "#EFF6FF",
+                    badge: "06",
+                    tag: "AUTOMATE",
+                    icon: (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563EB" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                        <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+                      </svg>
+                    )
+                  },
+                  {
+                    title: "Orders",
+                    color: "#EA580C",
+                    bg: "#FFF7ED",
+                    badge: "07",
+                    tag: "TRANSACT",
+                    icon: (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EA580C" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="21 8 21 21 3 21 3 8" />
+                        <rect x="1" y="3" width="22" height="5" />
+                        <line x1="10" y1="12" x2="14" y2="12" />
+                      </svg>
+                    )
+                  },
+                  {
+                    title: "Payments",
+                    color: "#EA580C",
+                    bg: "#FFF7ED",
+                    badge: "08",
+                    tag: "TRANSACT",
+                    icon: (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EA580C" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M20 12V8H6a2 2 0 0 1-2-2 2 2 0 0 1 2-2h14v4" />
+                        <path d="M4 6v12a2 2 0 0 0 2 2h14v-4" />
+                        <path d="M18 12a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h4v-6H18z" />
+                      </svg>
+                    )
+                  },
+                  {
+                    title: "Loyalty",
+                    color: "#EA580C",
+                    bg: "#FFF7ED",
+                    badge: "09",
+                    tag: "TRANSACT",
+                    icon: (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EA580C" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 12 20 22 4 22 4 12" />
+                        <rect x="2" y="7" width="20" height="5" />
+                        <line x1="12" y1="22" x2="12" y2="7" />
+                        <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
+                        <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
+                      </svg>
+                    )
+                  },
+                  {
+                    title: "Analytics",
+                    color: "#7C3AED",
+                    bg: "#F5F3FF",
+                    badge: "10",
+                    tag: "SCALE",
+                    icon: (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="18" y1="20" x2="18" y2="10" />
+                        <line x1="12" y1="20" x2="12" y2="4" />
+                        <line x1="6" y1="20" x2="6" y2="14" />
+                      </svg>
+                    )
+                  },
+                  {
+                    title: "Multi-Location Management",
+                    color: "#7C3AED",
+                    bg: "#F5F3FF",
+                    badge: "11",
+                    tag: "SCALE",
+                    icon: (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                        <circle cx="12" cy="10" r="3" />
+                      </svg>
+                    )
+                  },
+                  {
+                    title: "Integrations",
+                    color: "#7C3AED",
+                    bg: "#F5F3FF",
+                    badge: "12",
+                    tag: "SCALE",
+                    icon: (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M12 22v-4h3c1.66 0 3-1.34 3-3V12h4v-3h-4V6c0-1.66-1.34-3-3-3h-3V1H9v2H6c-1.66 0-3 1.34-3 3v3H1v3h2v3c0 1.66 1.34 3 3 3h3v2h3z" />
+                      </svg>
+                    )
+                  }
                 ].map((step, idx) => (
                   <div key={idx} className="growth-step-item">
                     <div className="growth-step-card">
-                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                      <div className="growth-step-icon-wrapper" style={{ background: step.bg }}>
+                        {step.icon}
+                      </div>
+                      <div className="growth-step-content">
                         <div className="growth-step-title" style={{ margin: 0 }}>
-                          <span style={{ color: step.color, marginRight: 7, fontWeight: 700, fontSize: 11 }}>{step.badge}</span>
+                          <span className="growth-step-num" style={{ color: step.color }}>{step.badge}</span>
                           {step.title}
                         </div>
-                        <span className="growth-step-tag" style={{ fontSize: 7.5, fontWeight: 700, letterSpacing: 0.5, padding: "2.5px 8px", borderRadius: 20, background: step.bg, color: step.color }}>
+                        <span className="growth-step-badge-pill" style={{ background: step.color }}>
                           {step.tag}
                         </span>
                       </div>
-                      <p className="growth-step-desc" style={{ margin: "6px 0 0 0" }}>{step.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -2332,23 +2536,23 @@ const AboutPage = () => {
             display: grid;
             grid-template-columns: 1fr auto 1fr auto 1fr;
             align-items: center;
-            gap: 16px 8px;
+            gap: 16px 4px;
             width: 100%;
             max-width: 540px;
           }
           @media (max-width: 768px) {
             .ecosystem-flow-grid {
               grid-template-columns: repeat(3, 1fr) !important;
-              gap: 10px 8px !important;
+              gap: 8px 6px !important;
               max-width: 100% !important;
             }
             .flow-arrow-icon {
               display: none !important;
             }
             .flow-step-pill {
-              padding: 8px 6px !important;
-              font-size: 11.5px !important;
-              gap: 5px !important;
+              padding: 6px 10px !important;
+              font-size: 12px !important;
+              gap: 8px !important;
               border-radius: 10px !important;
             }
           }
@@ -2878,7 +3082,7 @@ const AboutPage = () => {
             background: #F8FAFC;
             border: 1px solid #F1F5F9;
             border-radius: 12px;
-            padding: 10px 14px;
+            padding: 6px 14px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -2905,7 +3109,7 @@ const AboutPage = () => {
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
           }
           .security-item:hover .security-icon-box {
-            transform: scale(1.1) rotate(6deg);
+            transform: scale(1.1);
             background: #16A34A;
             color: #FFFFFF;
           }
@@ -2995,18 +3199,19 @@ const AboutPage = () => {
       <section style={{ padding: "70px 6%" }}>
         <style>{`
           .aim-pill {
-            background: #F9FAFB;
-            border: 1px solid #E5E7EB;
+            background: #F8FAFC;
+            border: 1px solid #F1F5F9;
             border-radius: 12px;
-            padding: 10px 15px;
+            padding: 7px 12px;
             display: flex;
             align-items: center;
             gap: 10px;
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 12.5px;
+            font-size: 13px;
             font-weight: 700;
-            color: #374151;
+            color: #334155;
             text-align: left;
+            cursor: default;
           }
           .aim-pill:hover {
             background: #FFFFFF;
@@ -3023,7 +3228,7 @@ const AboutPage = () => {
           .our-mission-aims-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 12px;
+            gap: 10px;
           }
           @media (max-width: 768px) {
             .our-mission-flex-row {
@@ -3085,36 +3290,27 @@ const AboutPage = () => {
 
             {/* Right Column: 10 Objectives grid */}
             <div style={{ flex: "1 1 480px" }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 20, textAlign: "left" }}>
+              <div style={{ fontSize: 13, fontWeight: 800, color: "#64748B", textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 20, textAlign: "left" }}>
                 MessBee aims to help businesses:
               </div>
               <div className="our-mission-aims-grid">
                 {[
-                  { label: "Build direct customer relationships", icon: <FiUsers style={{ width: 14, height: 14, color: "#16A34A" }} /> },
-                  { label: "Reduce repetitive manual work", icon: <FiSettings style={{ width: 14, height: 14, color: "#16A34A" }} /> },
-                  { label: "Improve customer experience", icon: <FiHeart style={{ width: 14, height: 14, color: "#16A34A" }} /> },
-                  { label: "Organize business operations", icon: <FiFolder style={{ width: 14, height: 14, color: "#16A34A" }} /> },
-                  { label: "Use AI responsibly", icon: <FiCpu style={{ width: 14, height: 14, color: "#16A34A" }} /> },
-                  { label: "Automate digital workflows", icon: <FiRefreshCw style={{ width: 14, height: 14, color: "#16A34A" }} /> },
-                  { label: "Understand business activity", icon: <FiBarChart2 style={{ width: 14, height: 14, color: "#16A34A" }} /> },
-                  { label: "Encourage customer loyalty", icon: <FiGift style={{ width: 14, height: 14, color: "#16A34A" }} /> },
-                  { label: "Create scalable processes", icon: <FiTrendingUp style={{ width: 14, height: 14, color: "#16A34A" }} /> },
-                  { label: "Grow through technology", icon: <FiArrowUpRight style={{ width: 14, height: 14, color: "#16A34A" }} /> }
+                  { label: "Build direct customer relationships", icon: <FiUsers style={{ width: 18, height: 18, color: "#16A34A" }} /> },
+                  { label: "Reduce repetitive manual work", icon: <FiSettings style={{ width: 18, height: 18, color: "#16A34A" }} /> },
+                  { label: "Improve customer experience", icon: <FiHeart style={{ width: 18, height: 18, color: "#16A34A" }} /> },
+                  { label: "Organize business operations", icon: <FiFolder style={{ width: 18, height: 18, color: "#16A34A" }} /> },
+                  { label: "Use AI responsibly", icon: <FiCpu style={{ width: 18, height: 18, color: "#16A34A" }} /> },
+                  { label: "Automate digital workflows", icon: <FiRefreshCw style={{ width: 18, height: 18, color: "#16A34A" }} /> },
+                  { label: "Understand business activity", icon: <FiBarChart2 style={{ width: 18, height: 18, color: "#16A34A" }} /> },
+                  { label: "Encourage customer loyalty", icon: <FiGift style={{ width: 18, height: 18, color: "#16A34A" }} /> },
+                  { label: "Create scalable processes", icon: <FiTrendingUp style={{ width: 18, height: 18, color: "#16A34A" }} /> },
+                  { label: "Grow through technology", icon: <FiArrowUpRight style={{ width: 18, height: 18, color: "#16A34A" }} /> }
                 ].map((aim, idx) => (
                   <div key={idx} className="aim-pill">
-                    <div style={{
-                      width: "28px",
-                      height: "28px",
-                      borderRadius: "6px",
-                      background: "rgba(22, 163, 74, 0.06)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      flexShrink: 0
-                    }}>
+                    <div className="aim-icon-box">
                       {aim.icon}
                     </div>
-                    <span style={{ fontFamily: "'Inter', sans-serif" }}>{aim.label}</span>
+                    <span style={{ fontFamily: "'Inter', sans-serif", fontWeight: 800 }}>{aim.label}</span>
                   </div>
                 ))}
               </div>
@@ -3138,10 +3334,10 @@ const AboutPage = () => {
             margin: 0 auto 36px auto;
           }
           .vision-card {
-            background: #FFFFFF;
+            background: #F8FAFC;
             border: 1px solid #E2E8F0;
             border-radius: 16px;
-            padding: 16px 20px;
+            padding: 8px 18px;
             display: flex;
             align-items: center;
             gap: 14px;
@@ -3419,20 +3615,21 @@ const AboutPage = () => {
             box-shadow: 0 6px 16px rgba(22, 163, 74, 0.15);
           }
           .tenets-container {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 10px;
           }
           .tenet-card {
             font-size: 14px;
-            font-weight: 700;
+            font-weight: 800;
             background: #F8FAFC;
             border: 1.5px solid #E2E8F0;
+            border-left: 3px solid transparent;
             padding: 8px 14px;
-            border-radius: 20px;
+            border-radius: 24px;
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 12px;
             cursor: pointer;
             transition: all 0.25s ease;
             font-family: 'Inter', sans-serif;
@@ -3483,7 +3680,7 @@ const AboutPage = () => {
           <div style={{ display: "flex", gap: "80px", alignItems: "center", flexWrap: "wrap" }}>
 
             {/* Left Column: Bio Details */}
-            <div className="leadership-left" style={{ flex: "1 1 420px", textAlign: "left", transform: "translateY(-50px)" }}>
+            <div className="leadership-left" style={{ flex: "1 1 420px", textAlign: "left", transform: "translateY(-20px)" }}>
               <div style={{
                 display: "inline-flex", alignItems: "center", gap: 8,
                 background: "rgba(22,163,74,0.08)", border: "1px solid rgba(22,163,74,0.22)",
@@ -3519,7 +3716,7 @@ const AboutPage = () => {
 
             {/* Right Column: Key Tenets Board */}
             <div style={{ flex: "1 1 200px", textAlign: "left" }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 24 }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: "#64748B", textTransform: "uppercase", letterSpacing: 1.2, marginBottom: 20 }}>
                 Our approach is centered around:
               </div>
               <div className="tenets-container">
@@ -3542,19 +3739,21 @@ const AboutPage = () => {
                       onMouseLeave={() => setHoveredLeaderCap(null)}
                       className="tenet-card"
                       style={{
-                        background: isHovered ? val.color : "#F8FAFC",
+                        background: "#F8FAFC",
                         borderColor: isHovered ? val.color : "#E2E8F0",
+                        borderLeftColor: isHovered ? val.color : "transparent",
+                        borderLeftWidth: "3px",
                         transform: isHovered ? "translateX(4px)" : "translateX(0)",
-                        boxShadow: isHovered ? "0 4px 12px rgba(0,0,0,0.05)" : "none",
+                        boxShadow: isHovered ? `0 4px 12px ${val.color}22` : "none",
                       }}
                     >
                       <div className="tenet-icon-wrapper" style={{
-                        background: isHovered ? "rgba(255, 255, 255, 0.2)" : `${val.color}15`,
-                        color: isHovered ? "#FFFFFF" : val.color,
+                        background: `${val.color}15`,
+                        color: val.color,
                       }}>
                         {val.icon}
                       </div>
-                      <span style={{ color: isHovered ? "#FFFFFF" : "#0F172A", transition: "color 0.2s ease" }}>
+                      <span style={{ color: "#0F172A", transition: "color 0.2s ease" }}>
                         {val.name}
                       </span>
                     </div>
