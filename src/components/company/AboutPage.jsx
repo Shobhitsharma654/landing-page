@@ -301,7 +301,8 @@ const AboutPage = () => {
           grid-template-columns: repeat(2, 1fr);
           gap: 10px 16px;
           flex: 1 1 380px;
-          margin-top: clamp(24px, 3.2vw, 45px);
+          margin-top: 65px !important;
+          padding-top: 30px !important;
           align-content: flex-start;
         }
 
@@ -316,13 +317,15 @@ const AboutPage = () => {
         @media (max-width: 1440px) {
           .capabilities-grid-cols {
             gap: 10px 14px;
-            margin-top: 38px !important;
+            margin-top: 60px !important;
+            padding-top: 25px !important;
           }
         }
         @media (max-width: 1366px) {
           .capabilities-grid-cols {
             gap: 9px 14px;
-            margin-top: 32px !important;
+            margin-top: 55px !important;
+            padding-top: 20px !important;
           }
           .capability-pill-badge {
             font-size: 14px !important;
@@ -332,7 +335,8 @@ const AboutPage = () => {
         @media (max-width: 1299px) {
           .capabilities-grid-cols {
             gap: 9px 12px;
-            margin-top: 26px !important;
+            margin-top: 50px !important;
+            padding-top: 20px !important;
           }
           .capability-pill-badge {
             font-size: 13px !important;
@@ -389,11 +393,12 @@ const AboutPage = () => {
           padding: 60px 6%;
         }
         .about-page-wrapper section.about-capabilities-section {
-          padding: 80px 8% 60px !important;
+          padding: 70px 8% 60px !important;
+          margin-top: 50px !important;
         }
         .about-page-wrapper section.about-indian-market-section {
-          padding: 80px 8% 80px !important;
-          margin-top: 45px !important;
+          padding: 70px 8% 80px !important;
+          margin-top: 60px !important;
         }
         .about-hero-section {
           padding: 100px 6% 70px;
@@ -403,6 +408,14 @@ const AboutPage = () => {
         @media (max-width: 1366px) {
           .about-page-wrapper section {
             padding: 48px 5% !important;
+          }
+          .about-page-wrapper section.about-capabilities-section {
+            padding-top: 60px !important;
+            margin-top: 40px !important;
+          }
+          .about-page-wrapper section.about-indian-market-section {
+            padding-top: 60px !important;
+            margin-top: 50px !important;
           }
           .about-page-wrapper .about-hero-section {
             padding: 100px 5% 54px !important;
@@ -454,6 +467,14 @@ const AboutPage = () => {
         @media (max-width: 1299px) {
           .about-page-wrapper section {
             padding: 34px 4% !important;
+          }
+          .about-page-wrapper section.about-capabilities-section {
+            padding-top: 50px !important;
+            margin-top: 35px !important;
+          }
+          .about-page-wrapper section.about-indian-market-section {
+            padding-top: 50px !important;
+            margin-top: 45px !important;
           }
           .about-page-wrapper .about-hero-section {
             padding: 90px 4% 34px !important;
@@ -744,8 +765,8 @@ const AboutPage = () => {
       </section>
 
       {/* ── WHAT IS MESSBEE ── */}
-      <section className="about-section about-capabilities-section" style={{ background: "#ffffff" }}>
-        <div className="capabilities-container" style={{ maxWidth: 1200, margin: "0 auto", display: "flex", gap: 60, alignItems: "flex-start", flexWrap: "wrap" }}>
+      <section className="about-section about-capabilities-section" style={{ background: "#ffffff", marginTop: "50px", paddingTop: "60px" }}>
+        <div className="capabilities-container" style={{ maxWidth: 1200, margin: "0 auto", display: "flex", gap: 60, alignItems: "flex-start", flexWrap: "wrap", paddingTop: "20px" }}>
 
           {/* LEFT — text */}
           <div className="capabilities-left" style={{ flex: "1.3 1 480px" }}>
@@ -806,7 +827,7 @@ const AboutPage = () => {
           </div>
 
           {/* RIGHT — premium wrapping tag cloud (flexible pill badges) */}
-          <div className="capabilities-grid-cols">
+          <div className="capabilities-grid-cols" style={{ marginTop: "65px", paddingTop: "30px" }}>
             {[
               {
                 anim: "bounce", color: "#6366F1", bg: "#EEF2FF",
@@ -855,7 +876,7 @@ const AboutPage = () => {
               },
               {
                 anim: "bounce", color: "#64748B", bg: "#F8FAFC",
-                title: "  tory", desc: "Real-time stock management",
+                title: "Inventory", desc: "Real-time stock management",
                 svg: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /><polyline points="3.27 6.96 12 12.01 20.73 6.96" /><line x1="12" y1="22.08" x2="12" y2="12" /></svg>,
               },
               {
@@ -943,7 +964,7 @@ const AboutPage = () => {
 
 
       {/* ── INDIAN BUSINESSES OPERATING SYSTEM (PREMIUM DESIGN) ── */}
-      <section className="about-indian-market-section" style={{ background: "linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)", borderBottom: "1px solid #F1F5F9", position: "relative" }}>
+      <section className="about-indian-market-section" style={{ background: "linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)", borderBottom: "1px solid #F1F5F9", position: "relative", marginTop: "60px", paddingTop: "60px" }}>
         <style>{`
           .growth-timeline-vertical {
             display: grid;
@@ -952,7 +973,7 @@ const AboutPage = () => {
             position: relative;
             max-width: 720px;
             margin: 0;
-            padding: 0;
+            padding-top: 40px !important;
             width: 100%;
           }
           .growth-step-item {
@@ -971,7 +992,7 @@ const AboutPage = () => {
             background: #FFFFFF;
             border: 1px solid #E2E8F0;
             border-radius: 14px;
-            padding: 6px 10px;
+            padding: 10px 14px !important;
             box-shadow: 0 2px 8px rgba(15, 23, 42, 0.02);
             flex-grow: 1;
             transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1030,7 +1051,8 @@ const AboutPage = () => {
             letter-spacing: 0.3px;
           }
           .growth-timeline-col {
-            margin-top: 0px;
+            margin-top: 60px !important;
+            padding-top: 30px !important;
           }
           .indian-market-flex-row {
             display: flex;
@@ -1043,7 +1065,7 @@ const AboutPage = () => {
               gap: 24px !important;
             }
             .growth-timeline-col {
-              margin-top: 0px !important;
+              margin-top: 24px !important;
             }
             .growth-timeline-vertical {
               grid-template-columns: repeat(2, 1fr) !important;
@@ -1055,7 +1077,7 @@ const AboutPage = () => {
               gap: 12px !important;
             }
             .growth-timeline-col {
-              margin-top: 0px !important;
+              margin-top: 16px !important;
             }
             .growth-timeline-vertical {
               grid-template-columns: repeat(2, 1fr) !important;
@@ -1116,12 +1138,12 @@ const AboutPage = () => {
           }
         `}</style>
 
-        <div style={{ maxWidth: 1200, margin: "0 auto", textAlign: "left" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", textAlign: "left", paddingTop: "20px" }}>
 
           <div className="indian-market-flex-row">
 
             {/* Left Column: All Text Content */}
-            <div style={{ flex: "1 1 380px", marginTop: "-40px" }}>
+            <div style={{ flex: "1 1 380px", marginTop: "0px" }}>
 
               {/* Built for the Way Indian Businesses Operate */}
               <div className="about-lead-block">
@@ -1162,7 +1184,7 @@ const AboutPage = () => {
 
 
 
-                <div className="about-lead-quote" style={{ marginTop: "-40px" }}>
+                <div className="about-lead-quote" style={{ marginTop: "20px" }}>
                   <p style={{ fontSize: 14, fontWeight: 900, color: "#0F172A", margin: 0, fontFamily: "'Inter', sans-serif", lineHeight: 1.35 }}>
                     From Local Business to <span style={{ color: "#16A34A" }}>Growing Enterprise</span>
                   </p>
@@ -1184,8 +1206,8 @@ const AboutPage = () => {
             </div>
 
             {/* Right Column: Timeline Cards */}
-            <div className="growth-timeline-col" style={{ flex: "1.4 1 460px", marginTop: "30px" }}>
-              <div className="growth-timeline-vertical" style={{ margin: 0, padding: 0 }}>
+            <div className="growth-timeline-col" style={{ flex: "1.4 1 460px", marginTop: "60px", paddingTop: "40px" }}>
+              <div className="growth-timeline-vertical" style={{ margin: 0, padding: 0, paddingTop: "30px" }}>
                 {[
                   {
                     title: "Customer Communication",
