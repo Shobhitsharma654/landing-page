@@ -604,6 +604,17 @@ const RefundPage = () => {
   return (
     <div className="refund-page-wrapper" style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "clip", minHeight: "100vh" }}>
       <style>{`
+        /* ── PAGE-WIDE TYPOGRAPHY OVERRIDES (font-size & weight only — no color changes) ── */
+        .refund-page-wrapper { font-family: 'Inter', 'Segoe UI', sans-serif !important; }
+        .refund-page-wrapper h1 { font-size: clamp(20px, 2.5vw, 32px) !important; font-weight: 900 !important; letter-spacing: -0.5px !important; }
+        .refund-page-wrapper h2 { font-size: 16px !important; font-weight: 800 !important; }
+        .refund-page-wrapper h3,
+        .refund-page-wrapper h4 { font-size: 12px !important; font-weight: 800 !important; }
+        .refund-page-wrapper p,
+        .refund-page-wrapper .refund-section-content { font-size: 12px !important; font-weight: 400 !important; line-height: 1.7 !important; }
+        .refund-page-wrapper .toc-item { font-size: 12px !important; }
+        .refund-page-wrapper .mobile-toc-wrapper span { font-size: 12px !important; }
+
         .no-scrollbar::-webkit-scrollbar { display: none !important; }
         .no-scrollbar { -ms-overflow-style: none !important; scrollbar-width: none !important; }
         .refund-container { display: flex; gap: 60px; align-items: flex-start; }
@@ -731,7 +742,7 @@ const RefundPage = () => {
             margin-bottom: 12px !important;
           }
           .refund-page-wrapper h2 {
-            font-size: clamp(17px, 2vw, 22px) !important;
+            font-size: 15px !important;
           }
           .refund-page-wrapper h3 {
             font-size: 13.5px !important;
@@ -1026,7 +1037,10 @@ const RefundPage = () => {
                 <h2 style={{ fontSize: 20, fontWeight: 800, color: "#111827", marginBottom: 16, letterSpacing: "-0.3px", fontFamily: "'Inter', sans-serif" }}>
                   {s.title}
                 </h2>
-                <div style={{ fontSize: 14, color: "#4B5563", lineHeight: 1.6, margin: 0, fontFamily: "'Inter', sans-serif" }}>
+                <div
+                  className="refund-section-content"
+                  style={{ fontSize: 14, color: "#4B5563", lineHeight: 1.6, margin: 0, fontFamily: "'Inter', sans-serif" }}
+                >
                   {renderFormattedContent(s.content)}
                 </div>
               </div>

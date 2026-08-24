@@ -279,6 +279,17 @@ const CookiesPage = () => {
   return (
     <div className="cookies-page-wrapper" style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "clip", minHeight: "100vh" }}>
       <style>{`
+        /* ── PAGE-WIDE TYPOGRAPHY OVERRIDES (font-size & weight only — no color changes) ── */
+        .cookies-page-wrapper { font-family: 'Inter', 'Segoe UI', sans-serif !important; }
+        .cookies-page-wrapper h1 { font-size: clamp(20px, 2.5vw, 32px) !important; font-weight: 900 !important; letter-spacing: -0.5px !important; }
+        .cookies-page-wrapper h2 { font-size: 16px !important; font-weight: 800 !important; }
+        .cookies-page-wrapper h3,
+        .cookies-page-wrapper h4 { font-size: 12px !important; font-weight: 800 !important; }
+        .cookies-page-wrapper p,
+        .cookies-page-wrapper .cookies-section-content { font-size: 12px !important; font-weight: 400 !important; line-height: 1.7 !important; }
+        .cookies-page-wrapper .toc-item { font-size: 12px !important; }
+        .cookies-page-wrapper .mobile-toc-wrapper span { font-size: 12px !important; }
+
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
         * { box-sizing: border-box; }
         .no-scrollbar::-webkit-scrollbar { display: none !important; }
@@ -425,7 +436,7 @@ const CookiesPage = () => {
             margin-bottom: 12px !important;
           }
           .cookies-page-wrapper h2 {
-            font-size: clamp(17px, 2vw, 22px) !important;
+            font-size: 15px !important;
           }
           .cookies-page-wrapper h3 {
             font-size: 13.5px !important;
@@ -749,7 +760,10 @@ const CookiesPage = () => {
                     {s.outro && <p style={{ fontSize: 14, color: "#4B5563", lineHeight: 1.6, margin: "16px 0 0", fontFamily: "'Inter', sans-serif" }}>{s.outro}</p>}
                   </div>
                 ) : (
-                  <div style={{ fontSize: 14, color: "#4B5563", lineHeight: 1.6, margin: 0, fontFamily: "'Inter', sans-serif" }}>
+                  <div
+                    className="cookies-section-content"
+                    style={{ fontSize: 14, color: "#4B5563", lineHeight: 1.6, margin: 0, fontFamily: "'Inter', sans-serif" }}
+                  >
                     {renderFormattedContent(s.content)}
                   </div>
                 )}

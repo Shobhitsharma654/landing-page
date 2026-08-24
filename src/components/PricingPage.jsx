@@ -379,11 +379,20 @@ const PricingPage = () => {
   };
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", color: "#0F172A", background: "#FFFFFF", overflowX: "hidden", minHeight: "100vh" }}>
+    <div className="pricing-page-wrapper" style={{ fontFamily: "'Inter', sans-serif", color: "#0F172A", background: "#FFFFFF", overflowX: "hidden", minHeight: "100vh" }}>
       <Navbar />
 
       {/* Embedded CSS for styling matching Resources/Solutions & responsive across all small, medium, and large laptops */}
       <style>{`
+        /* ── PAGE-WIDE TYPOGRAPHY OVERRIDES (font-size & weight only — no color changes) ── */
+        .pricing-page-wrapper { font-family: 'Inter', 'Segoe UI', sans-serif !important; }
+        .pricing-page-wrapper h1,
+        .pricing-page-wrapper h2 { font-size: clamp(20px, 2.5vw, 32px) !important; font-weight: 900 !important; letter-spacing: -0.5px !important; }
+        .pricing-page-wrapper h3,
+        .pricing-page-wrapper h4 { font-size: 12px !important; font-weight: 800 !important; }
+        .pricing-page-wrapper p { font-size: 12px !important; font-weight: 400 !important; line-height: 1.7 !important; }
+        .pricing-page-wrapper .btn-card-cta-top { font-size: 12.5px !important; font-weight: 700 !important; }
+
         .pricing-hero-row {
           display: flex;
           align-items: center;

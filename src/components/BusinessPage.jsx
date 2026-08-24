@@ -63,9 +63,67 @@ const BusinessPage = () => {
   });
 
   return (
-    <div style={{ fontFamily: "'Inter', 'Segoe UI', sans-serif", minHeight: "100vh", background: "#FFFFFF" }}>
+    <div className="business-page-wrapper" style={{ fontFamily: "'Inter', 'Segoe UI', sans-serif", minHeight: "100vh", background: "#FFFFFF" }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        
+        /* Global Typography Overrides from ABOUT_TYPOGRAPHY_README.md & Business Section */
+        .business-page-wrapper h1,
+        .business-page-wrapper h2 {
+          font-size: clamp(20px, 2.5vw, 32px) !important;
+          font-weight: 900 !important;
+          color: #FFFFFF !important;
+          line-height: 1.2 !important;
+        }
+        .business-page-wrapper h1 span,
+        .business-page-wrapper h2 span {
+          color: #16A34A !important;
+        }
+        .business-page-wrapper p {
+          font-size: 12px !important;
+          font-weight: 400 !important;
+          color: #64748B !important;
+          line-height: 1.45 !important;
+        }
+        .business-page-wrapper .biz-hero p {
+          color: #9CA3AF !important;
+        }
+        .business-page-wrapper .biz-card-title {
+          font-size: 12px !important;
+          font-weight: 800 !important;
+          color: #111827 !important;
+          line-height: 1.45 !important;
+        }
+        .business-page-wrapper .cat-pill {
+          font-size: 12px !important;
+          font-weight: 600 !important;
+        }
+        .business-page-wrapper .biz-btn-primary {
+          padding: 8px 18px !important;
+          font-size: 12.5px !important;
+          font-weight: 700 !important;
+          box-shadow: 0 1px 5px rgba(22, 163, 74, 0.25) !important;
+          border-radius: 40px !important;
+          border: none !important;
+          cursor: pointer !important;
+          transition: all 0.2s !important;
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+        }
+        .business-page-wrapper .biz-btn-secondary {
+          padding: 10px 20px !important;
+          font-size: 12.5px !important;
+          font-weight: 600 !important;
+          border-radius: 40px !important;
+          border: 1px solid rgba(255,255,255,0.15) !important;
+          cursor: pointer !important;
+          transition: all 0.2s !important;
+          display: inline-flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+        }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
         @keyframes fadeUp { from { opacity:0; transform:translateY(32px); } to { opacity:1; transform:translateY(0); } }
         .biz-hero { animation: fadeUp 0.7s ease both; }
@@ -101,7 +159,7 @@ const BusinessPage = () => {
             {search && (
               <button onClick={() => setSearch("")} style={{ background: "none", border: "none", color: "#9CA3AF", cursor: "pointer", fontSize: 16, padding: "4px 8px" }}>✕</button>
             )}
-            <button style={{ background: "#16A34A", color: "#FFFFFF", border: "none", borderRadius: 40, padding: "10px 22px", fontSize: 14, fontWeight: 700, cursor: "pointer", flexShrink: 0 }}>Search</button>
+            <button className="biz-btn-primary" style={{ background: "#16A34A", color: "#FFFFFF" }}>Search</button>
           </div>
         </div>
       </section>
@@ -154,7 +212,7 @@ const BusinessPage = () => {
                       {b.initials}
                     </div>
                     <div>
-                      <div style={{ fontSize: 16, fontWeight: 700, color: "#111827" }}>{b.name}</div>
+                      <div className="biz-card-title" style={{ fontSize: 16, fontWeight: 700, color: "#111827" }}>{b.name}</div>
                       <div style={{ display: "flex", gap: 8, marginTop: 6, flexWrap: "wrap" }}>
                         <span style={{ fontSize: 11, fontWeight: 600, background: "rgba(0,200,83,0.10)", color: "#00a844", borderRadius: 20, padding: "3px 10px" }}>{b.category}</span>
                         <span style={{ fontSize: 11, fontWeight: 600, background: "#F3F4F6", color: "#6B7280", borderRadius: 20, padding: "3px 10px" }}>📍 {b.location}</span>
@@ -187,21 +245,10 @@ const BusinessPage = () => {
             Already using MessBee? Get discovered by thousands of new customers in your city and industry. Takes less than 2 minutes.
           </p>
           <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
-            <button onClick={() => window.open((import.meta.env.VITE_ADMIN_URL || "http://localhost:5174") + "/signup", "_blank")} style={{
-              background: "#16A34A", color: "#FFFFFF", border: "none", borderRadius: 40,
-              padding: "14px 36px", fontSize: 15, fontWeight: 700, cursor: "pointer",
-              boxShadow: "0 4px 24px rgba(0,200,83,0.4)", transition: "all 0.2s",
-            }}
-              onMouseEnter={e => e.currentTarget.style.transform = "scale(1.04)"}
-              onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}>
+            <button className="biz-btn-primary" onClick={() => window.open((import.meta.env.VITE_ADMIN_URL || "http://localhost:5174") + "/signup", "_blank")} style={{ background: "#16A34A", color: "#FFFFFF" }}>
               List my business
             </button>
-            <button onClick={() => navigate("/about")} style={{
-              background: "rgba(255,255,255,0.08)", color: "#E4E4E7", border: "1px solid rgba(255,255,255,0.15)",
-              borderRadius: 40, padding: "14px 36px", fontSize: 15, fontWeight: 600, cursor: "pointer", transition: "all 0.2s",
-            }}
-              onMouseEnter={e => e.currentTarget.style.background = "rgba(255,255,255,0.14)"}
-              onMouseLeave={e => e.currentTarget.style.background = "rgba(255,255,255,0.08)"}>
+            <button className="biz-btn-secondary" onClick={() => navigate("/about")} style={{ color: "#E4E4E7" }}>
               Learn about us
             </button>
           </div>

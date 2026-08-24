@@ -252,9 +252,21 @@ const BusinessLibraryPage = () => {
   };
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", color: "#0F172A", background: "#FFFFFF" }}>
+    <div className="business-library-page-wrapper" style={{ fontFamily: "'Inter', sans-serif", color: "#0F172A", background: "#FFFFFF" }}>
       {/* Dynamic CSS Styling & Media Queries matching Solution/Resource Pages */}
       <style>{`
+        /* ── PAGE-WIDE TYPOGRAPHY OVERRIDES (font-size & weight only — no color changes) ── */
+        .business-library-page-wrapper { font-family: 'Inter', 'Segoe UI', sans-serif !important; }
+        .business-library-page-wrapper h1,
+        .business-library-page-wrapper h2 { font-size: clamp(20px, 2.5vw, 32px) !important; font-weight: 900 !important; letter-spacing: -0.5px !important; }
+        .business-library-page-wrapper h3,
+        .business-library-page-wrapper h4 { font-size: 12px !important; font-weight: 800 !important; }
+        .business-library-page-wrapper p { font-size: 12px !important; font-weight: 400 !important; line-height: 1.7 !important; }
+        .business-library-page-wrapper .faq-card-question { font-size: 14.5px !important; font-weight: 700 !important; }
+        .business-library-page-wrapper .faq-card-answer { font-size: 12px !important; line-height: 1.8 !important; }
+        .business-library-page-wrapper .library-btn-primary { font-size: 12.5px !important; font-weight: 700 !important; padding: 8px 18px !important; }
+        .business-library-page-wrapper .library-btn-secondary { font-size: 12.5px !important; font-weight: 600 !important; padding: 10px 20px !important; }
+
         .library-glass-card {
           background: #FFFFFF;
           border: 1px solid #E2E8F0;

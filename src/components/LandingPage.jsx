@@ -218,12 +218,28 @@ const LandingPage = () => {
   ];
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "hidden", width: "100%", maxWidth: "100vw", position: "relative" }}>
+    <div className="landing-page-wrapper" style={{ fontFamily: "'Inter', sans-serif", background: "#FFFFFF", color: "#0F172A", overflowX: "hidden", width: "100%", maxWidth: "100vw", position: "relative" }}>
       {/* ═══════════════ NAVBAR ═══════════════ */}
       <Navbar />
 
       {/* ═══════════════ RESPONSIVE CSS ═══════════════ */}
       <style>{`
+        /* ── PAGE-WIDE TYPOGRAPHY OVERRIDES (font-size & weight only — no color changes) ── */
+        .landing-page-wrapper { font-family: 'Inter', 'Segoe UI', sans-serif !important; }
+        .landing-page-wrapper h1,
+        .landing-page-wrapper h2 { font-size: clamp(20px, 2.5vw, 32px) !important; font-weight: 900 !important; letter-spacing: -0.5px !important; }
+        .landing-page-wrapper h3,
+        .landing-page-wrapper h4 { font-size: 12px !important; font-weight: 800 !important; }
+        .landing-page-wrapper p { font-size: 12px !important; font-weight: 400 !important; line-height: 1.7 !important; }
+        .landing-page-wrapper .lp-hero-sub { color: #16A34A !important; font-weight: 800 !important; }
+        .landing-page-wrapper .lp-hero-btns button,
+        .landing-page-wrapper .lp-choose-btn,
+        .landing-page-wrapper .lp-newsletter-section button,
+        .landing-page-wrapper .btn-green-primary,
+        .landing-page-wrapper .btn-outline-demo,
+        .landing-page-wrapper .pricing-btn,
+        .landing-page-wrapper .cta-btn { font-size: 12.5px !important; font-weight: 700 !important; padding: 8px 18px !important; }
+
         html, body, #root {
           overflow-x: hidden !important;
           max-width: 100vw !important;
