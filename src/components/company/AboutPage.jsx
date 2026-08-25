@@ -301,8 +301,8 @@ const AboutPage = () => {
           grid-template-columns: repeat(2, 1fr);
           gap: 10px 16px;
           flex: 1 1 380px;
-          margin-top: 65px !important;
-          padding-top: 30px !important;
+          margin-top: 65px;
+          padding-top: 30px;
           align-content: flex-start;
         }
 
@@ -351,6 +351,7 @@ const AboutPage = () => {
             grid-template-columns: repeat(2, 1fr) !important;
             gap: 9px 12px !important;
             margin-top: 20px !important;
+            padding-top: 0px !important;
           }
           .capability-pill-badge {
             font-size: 10.5px !important;
@@ -364,7 +365,8 @@ const AboutPage = () => {
           .capabilities-grid-cols {
             grid-template-columns: repeat(2, 1fr) !important;
             gap: 8px 10px !important;
-            margin-top: 18px !important;
+            margin-top: 14px !important;
+            padding-top: 0px !important;
           }
           .capability-pill-badge {
             font-size: 9.8px !important;
@@ -378,7 +380,8 @@ const AboutPage = () => {
           .capabilities-grid-cols {
             grid-template-columns: repeat(2, 1fr) !important;
             gap: 7px 8px !important;
-            margin-top: 14px !important;
+            margin-top: 10px !important;
+            padding-top: 0px !important;
           }
           .capability-pill-badge {
             font-size: 9px !important;
@@ -392,13 +395,16 @@ const AboutPage = () => {
         .about-section {
           padding: 60px 6%;
         }
+        .about-capabilities-section,
         .about-page-wrapper section.about-capabilities-section {
-          padding: 70px 8% 60px !important;
-          margin-top: 50px !important;
+          padding: 60px 8% 30px;
+          margin-top: 20px;
+          margin-bottom: 0;
         }
+        .about-indian-market-section,
         .about-page-wrapper section.about-indian-market-section {
-          padding: 70px 8% 80px !important;
-          margin-top: 60px !important;
+          padding: 20px 8% 60px;
+          margin-top: 0;
         }
         .about-hero-section {
           padding: 100px 6% 70px;
@@ -409,13 +415,15 @@ const AboutPage = () => {
           .about-page-wrapper section {
             padding: 48px 5% !important;
           }
+          .about-capabilities-section,
           .about-page-wrapper section.about-capabilities-section {
-            padding-top: 60px !important;
-            margin-top: 40px !important;
+            padding: 48px 5% 20px !important;
+            margin-top: 16px !important;
           }
+          .about-indian-market-section,
           .about-page-wrapper section.about-indian-market-section {
-            padding-top: 60px !important;
-            margin-top: 50px !important;
+            padding: 20px 5% 48px !important;
+            margin-top: 0px !important;
           }
           .about-page-wrapper .about-hero-section {
             padding: 100px 5% 54px !important;
@@ -468,13 +476,15 @@ const AboutPage = () => {
           .about-page-wrapper section {
             padding: 34px 4% !important;
           }
+          .about-capabilities-section,
           .about-page-wrapper section.about-capabilities-section {
-            padding-top: 50px !important;
-            margin-top: 35px !important;
+            padding: 34px 4% 14px !important;
+            margin-top: 12px !important;
           }
+          .about-indian-market-section,
           .about-page-wrapper section.about-indian-market-section {
-            padding-top: 50px !important;
-            margin-top: 45px !important;
+            padding: 14px 4% 34px !important;
+            margin-top: 0px !important;
           }
           .about-page-wrapper .about-hero-section {
             padding: 90px 4% 34px !important;
@@ -505,10 +515,23 @@ const AboutPage = () => {
           }
         }
 
-        /* ── Small Laptops / Netbooks (1024px) ── */
+        /* ── Small Laptops / Netbooks / Tablets (1024px) ── */
         @media (max-width: 1024px) {
+          .about-page-wrapper section,
           .about-section {
-            padding: 40px 4% !important;
+            padding: 30px 4% !important;
+          }
+          .about-capabilities-section,
+          .about-page-wrapper section.about-capabilities-section {
+            padding: 24px 4% 0px !important;
+            margin-top: 10px !important;
+            margin-bottom: 0px !important;
+          }
+          .about-indian-market-section,
+          .about-page-wrapper section.about-indian-market-section {
+            padding: 0px 4% 24px !important;
+            margin-top: 0px !important;
+            margin-bottom: 0px !important;
           }
           .about-hero-section {
             padding: 95px 4% 36px !important;
@@ -526,16 +549,16 @@ const AboutPage = () => {
             margin-top: 24px !important;
           }
           .capabilities-container {
-            gap: 30px !important;
+            gap: 16px !important;
             flex-direction: column !important;
             align-items: stretch !important;
+            padding-top: 0px !important;
+            margin-bottom: 0px !important;
           }
-          .capabilities-left {
-            flex: 1 1 100% !important;
-          }
-          .capabilities-right {
-            flex: 1 1 100% !important;
-            margin-top: 20px !important;
+
+          .indian-market-inner-container {
+            padding-top: 0px !important;
+            margin-top: 0px !important;
           }
           .connectivity-container {
             gap: 30px !important;
@@ -592,8 +615,21 @@ const AboutPage = () => {
 
         /* ── Tablets / Large Phones (768px) ── */
         @media (max-width: 768px) {
+          .about-page-wrapper section,
           .about-section {
-            padding: 32px 16px !important;
+            padding: 20px 16px !important;
+          }
+          .about-capabilities-section,
+          .about-page-wrapper section.about-capabilities-section {
+            padding: 12px 16px 0px !important;
+            margin-top: 0px !important;
+            margin-bottom: 0px !important;
+          }
+          .about-indian-market-section,
+          .about-page-wrapper section.about-indian-market-section {
+            padding: 0px 16px 20px !important;
+            margin-top: 0px !important;
+            margin-bottom: 0px !important;
           }
           .about-hero-section {
             padding: 95px 16px 32px !important;
@@ -602,7 +638,19 @@ const AboutPage = () => {
           .capabilities-container,
           .connectivity-container,
           .security-container {
-            gap: 24px !important;
+            gap: 12px !important;
+          }
+          .capabilities-container {
+            padding-top: 0px !important;
+            margin-bottom: 0px !important;
+          }
+          .capabilities-grid-cols {
+            margin-bottom: 0px !important;
+            padding-bottom: 0px !important;
+          }
+          .indian-market-inner-container {
+            padding-top: 0px !important;
+            margin-top: 0px !important;
           }
           .security-left {
             transform: none !important;
@@ -647,8 +695,34 @@ const AboutPage = () => {
 
         /* ── Small Mobile (576px) ── */
         @media (max-width: 576px) {
+          .about-page-wrapper section,
           .about-section {
-            padding: 24px 14px !important;
+            padding: 16px 14px !important;
+          }
+          .about-capabilities-section,
+          .about-page-wrapper section.about-capabilities-section {
+            padding: 8px 14px 0px !important;
+            margin-top: 0px !important;
+            margin-bottom: 0px !important;
+          }
+          .about-indian-market-section,
+          .about-page-wrapper section.about-indian-market-section {
+            padding: 0px 14px 16px !important;
+            margin-top: 0px !important;
+            margin-bottom: 0px !important;
+          }
+          .capabilities-container {
+            padding-top: 0px !important;
+            gap: 8px !important;
+            margin-bottom: 0px !important;
+          }
+          .capabilities-grid-cols {
+            margin-bottom: 0px !important;
+            padding-bottom: 0px !important;
+          }
+          .indian-market-inner-container {
+            padding-top: 0px !important;
+            margin-top: 0px !important;
           }
           .about-hero-section {
             padding: 90px 14px 28px !important;
@@ -666,14 +740,86 @@ const AboutPage = () => {
           }
           .capabilities-grid-cols {
             grid-template-columns: repeat(2, 1fr) !important;
-            gap: 7px 7px !important;
-            margin-top: 14px !important;
+            gap: 6px 6px !important;
+            margin-top: 6px !important;
+            padding-top: 0px !important;
           }
           .capability-pill-badge {
             font-size: 8.5px !important;
             padding: 4px 5px !important;
             width: 100% !important;
             box-sizing: border-box !important;
+          }
+        }
+
+        /* ══ FINAL MOBILE GAP FIX — highest priority, last in cascade ══ */
+        @media (max-width: 1024px) {
+          .about-page-wrapper section.about-capabilities-section .capabilities-left {
+            flex: none !important;
+            margin-bottom: 0px !important;
+          }
+          .about-page-wrapper section.about-capabilities-section .capabilities-grid-cols {
+            flex: none !important;
+            margin-top: 20px !important;
+            margin-bottom: 0 !important;
+          }
+        }
+        @media (max-width: 768px) {
+          .about-page-wrapper section.about-capabilities-section {
+            padding-bottom: 45px !important;
+            margin-bottom: 0 !important;
+          }
+          .about-page-wrapper section.about-capabilities-section .capabilities-container {
+            padding-bottom: 0 !important;
+            margin-bottom: 0 !important;
+            gap: 10px !important;
+          }
+          .about-page-wrapper section.about-capabilities-section .capabilities-left {
+            flex: none !important;
+            margin-bottom: 0px !important;
+          }
+          .about-page-wrapper section.about-capabilities-section .capabilities-grid-cols {
+            flex: none !important;
+            margin-top: 14px !important;
+            margin-bottom: 0 !important;
+            padding-bottom: 0 !important;
+          }
+          .about-page-wrapper section.about-indian-market-section {
+            padding-top: 10px !important;
+            margin-top: 0 !important;
+          }
+          .about-page-wrapper section.about-indian-market-section .indian-market-inner-container {
+            padding-top: 0 !important;
+            margin-top: 0 !important;
+          }
+        }
+        @media (max-width: 576px) {
+          .about-page-wrapper section.about-capabilities-section {
+            padding-bottom: 35px !important;
+            margin-bottom: 0 !important;
+          }
+          .about-page-wrapper section.about-capabilities-section .capabilities-container {
+            padding-bottom: 0 !important;
+            margin-bottom: 0 !important;
+            gap: 6px !important;
+          }
+          .about-page-wrapper section.about-capabilities-section .capabilities-left {
+            flex: none !important;
+            margin-bottom: 0px !important;
+          }
+          .about-page-wrapper section.about-capabilities-section .capabilities-grid-cols {
+            flex: none !important;
+            margin-top: 10px !important;
+            margin-bottom: 0 !important;
+            padding-bottom: 0 !important;
+          }
+          .about-page-wrapper section.about-indian-market-section {
+            padding-top: 6px !important;
+            margin-top: 0 !important;
+          }
+          .about-page-wrapper section.about-indian-market-section .indian-market-inner-container {
+            padding-top: 0 !important;
+            margin-top: 0 !important;
           }
         }
       `}</style>
@@ -765,8 +911,8 @@ const AboutPage = () => {
       </section>
 
       {/* ── WHAT IS MESSBEE ── */}
-      <section className="about-section about-capabilities-section" style={{ background: "#ffffff", marginTop: "50px", paddingTop: "60px" }}>
-        <div className="capabilities-container" style={{ maxWidth: 1200, margin: "0 auto", display: "flex", gap: 60, alignItems: "flex-start", flexWrap: "wrap", paddingTop: "20px" }}>
+      <section className="about-capabilities-section" style={{ background: "#ffffff", paddingBottom: 0, marginBottom: 0 }}>
+        <div className="capabilities-container" style={{ maxWidth: 1200, margin: "0 auto", display: "flex", gap: 60, alignItems: "flex-start", flexWrap: "wrap" }}>
 
           {/* LEFT — text */}
           <div className="capabilities-left" style={{ flex: "1.3 1 480px" }}>
@@ -827,7 +973,7 @@ const AboutPage = () => {
           </div>
 
           {/* RIGHT — premium wrapping tag cloud (flexible pill badges) */}
-          <div className="capabilities-grid-cols" style={{ marginTop: "65px", paddingTop: "30px" }}>
+          <div className="capabilities-grid-cols">
             {[
               {
                 anim: "bounce", color: "#6366F1", bg: "#EEF2FF",
@@ -964,7 +1110,7 @@ const AboutPage = () => {
 
 
       {/* ── INDIAN BUSINESSES OPERATING SYSTEM (PREMIUM DESIGN) ── */}
-      <section className="about-indian-market-section" style={{ background: "linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)", borderBottom: "1px solid #F1F5F9", position: "relative", marginTop: "60px", paddingTop: "60px" }}>
+      <section className="about-indian-market-section" style={{ background: "linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%)", borderBottom: "1px solid #F1F5F9", position: "relative", paddingTop: 0, marginTop: 0 }}>
         <style>{`
           .growth-timeline-vertical {
             display: grid;
@@ -1066,6 +1212,7 @@ const AboutPage = () => {
             }
             .growth-timeline-col {
               margin-top: 24px !important;
+              padding-top: 0px !important;
             }
             .growth-timeline-vertical {
               grid-template-columns: repeat(2, 1fr) !important;
@@ -1078,6 +1225,7 @@ const AboutPage = () => {
             }
             .growth-timeline-col {
               margin-top: 16px !important;
+              padding-top: 0px !important;
             }
             .growth-timeline-vertical {
               grid-template-columns: repeat(2, 1fr) !important;
@@ -1112,6 +1260,10 @@ const AboutPage = () => {
               grid-template-columns: 1fr !important;
               gap: 10px !important;
             }
+            .growth-timeline-col {
+              margin-top: 12px !important;
+              padding-top: 0px !important;
+            }
             .growth-step-card {
               padding: 7px 10px !important;
               border-radius: 16px !important;
@@ -1138,7 +1290,7 @@ const AboutPage = () => {
           }
         `}</style>
 
-        <div style={{ maxWidth: 1200, margin: "0 auto", textAlign: "left", paddingTop: "20px" }}>
+        <div className="indian-market-inner-container" style={{ maxWidth: 1200, margin: "0 auto", textAlign: "left" }}>
 
           <div className="indian-market-flex-row">
 
